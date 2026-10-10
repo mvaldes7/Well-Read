@@ -120,3 +120,125 @@ test('color validator rejects missing and invalid colors', async () => {
     assert.match(disciplineColorProblems(b).join('\n'), bad === '' ? /missing color/ : /invalid color/, String(bad));
   }
 });
+
+// ---------- TSK-012: sources, explanations, citation markers ----------
+const fixture = (lessonPatch) => [{ slug: 'd', title: 'D', description: 'x', color: 'navy', topics: [{ slug: 't', title: 'T', kind: 'era', summary: 's', lessons: [{ id: 'les_ab01', slug: 'l', title: 'L', sections: [{ heading: 'h', body: 'b' }], keyFacts: ['k'], quiz: [{ question: 'q', options: ['a', 'b', 'c', 'd'], answerIndex: 0, explanation: 'e' }], ...lessonPatch }] }] }];
+const SRC = { publisher: 'Encyclopaedia Britannica', title: 'Roman Republic', url: 'https://www.britannica.com/place/Roman-Republic' };
+
+test('every lesson has sources that pass validation, and the real content has no problems', async () => {
+  const { sourceProblems, explanationProblems, citationMarkerProblems } = await import('../../src/content/sources.mjs');
+  assert.deepEqual(sourceProblems(disciplines), []);
+  assert.deepEqual(explanationProblems(disciplines), []);
+  assert.deepEqual(citationMarkerProblems(disciplines), []);
+  for (const x of lessons) assert.ok(Array.isArray(x.l.sources) && x.l.sources.length > 0, `${where(x)}: no sources`);
+});
+
+test('source validator: valid source and optional note accepted', async () => {
+  const { sourceProblems } = await import('../../src/content/sources.mjs');
+  assert.deepEqual(sourceProblems(fixture({ sources: [SRC] })), []);
+  assert.deepEqual(sourceProblems(fixture({ sources: [{ ...SRC, note: 'Overview.' }] })), []);
+  assert.deepEqual(sourceProblems(fixture({})), []); // sources are optional
+  assert.deepEqual(sourceProblems(fixture({ sources: [] })), []);
+});
+
+test('source validator rejects http, malformed and non-web URLs', async () => {
+  const { sourceProblems, isHttpsUrl } = await import('../../src/content/sources.mjs');
+  for (const url of ['http://www.britannica.com/x', 'not a url', 'https//missing-colon.org', '//britannica.com/x', '/relative/path', 'javascript:alert(1)', 'ftp://x.org/f', 'https://', ' https://x.org/a', '', 42, undefined]) {
+    const p = sourceProblems(fixture({ sources: [{ ...SRC, url }] }));
+    assert.equal(p.length, 1, `${JSON.stringify(url)} -> ${p}`);
+    assert.match(p[0], /\.url: expected a valid https URL/);
+    assert.equal(isHttpsUrl(url), false);
+  }
+  assert.equal(isHttpsUrl('https://plato.stanford.edu/entries/socrates/'), true);
+});
+
+test('source validator rejects missing publisher or title, empty note, unknown fields', async () => {
+  const { sourceProblems } = await import('../../src/content/sources.mjs');
+  const without = (key) => Object.fromEntries(Object.entries(SRC).filter(([k]) => k !== key));
+  const noPub = without('publisher');
+  const noTitle = without('title');
+  assert.match(sourceProblems(fixture({ sources: [noPub] })).join(), /publisher: expected non-empty string/);
+  assert.match(sourceProblems(fixture({ sources: [noTitle] })).join(), /title: expected non-empty string/);
+  assert.match(sourceProblems(fixture({ sources: [{ ...SRC, title: '  ' }] })).join(), /title/);
+  assert.match(sourceProblems(fixture({ sources: [{ ...SRC, note: '' }] })).join(), /note/);
+  assert.match(sourceProblems(fixture({ sources: [{ ...SRC, href: 'x' }] })).join(), /unknown field "href"/);
+  assert.match(sourceProblems(fixture({ sources: 'nope' })).join(), /expected an array/);
+  assert.match(sourceProblems(fixture({ sources: [null] })).join(), /expected an object/);
+});
+
+test('source validator rejects duplicate URLs within a lesson (after URL normalisation)', async () => {
+  const { sourceProblems } = await import('../../src/content/sources.mjs');
+  const p = sourceProblems(fixture({ sources: [SRC, { ...SRC, title: 'Other title' }] }));
+  assert.equal(p.length, 1);
+  assert.match(p[0], /sources\[1\]\.url: duplicate of sources\[0\]/);
+  // Host case differences normalise to the same URL.
+  assert.equal(sourceProblems(fixture({ sources: [SRC, { ...SRC, url: 'https://WWW.Britannica.com/place/Roman-Republic' }] })).length, 1);
+  // The same URL in two different lessons is fine (dedupe is per lesson).
+  assert.deepEqual(sourceProblems([...fixture({ sources: [SRC] }), ...fixture({ sources: [SRC] })]), []);
+});
+
+test('every quiz question needs an explanation', async () => {
+  const { explanationProblems } = await import('../../src/content/sources.mjs');
+  for (const x of lessons) for (const q of x.l.quiz) assert.ok(typeof q.explanation === 'string' && q.explanation.trim() !== '', `${where(x)}: missing explanation`);
+  const quiz = (explanation) => fixture({ quiz: [{ question: 'q', options: ['a', 'b', 'c', 'd'], answerIndex: 0, explanation }] });
+  assert.match(explanationProblems(quiz(undefined)).join(), /quiz\[0\]\.explanation: expected non-empty string/);
+  assert.equal(explanationProblems(quiz('')).length, 1);
+  assert.equal(explanationProblems(quiz('   ')).length, 1);
+  assert.equal(explanationProblems(quiz(3)).length, 1);
+  assert.deepEqual(explanationProblems(quiz('Because.')), []);
+});
+
+test('lesson ids are unique across ALL content', () => {
+  const ids = lessons.map((x) => x.l.id);
+  assert.equal(new Set(ids).size, ids.length, ids.join());
+});
+
+test('no citation markers remain in any text field', async () => {
+  const { citationMarkerProblems, textFields } = await import('../../src/content/sources.mjs');
+  // Independent scan of every string field except sources.
+  const scan = (v, path) => {
+    if (typeof v === 'string') {
+      assert.doesNotMatch(v, /\[S\d+\]/, `${path}: [S#] marker`);
+      assert.ok(!v.includes('(['), `${path}: '([' citation`);
+      assert.doesNotMatch(v, /\]\(https?:/, `${path}: markdown link`);
+    } else if (Array.isArray(v)) v.forEach((x, i) => scan(x, `${path}[${i}]`));
+    else if (v && typeof v === 'object') for (const [k, x] of Object.entries(v)) if (k !== 'sources') scan(x, `${path}.${k}`);
+  };
+  scan(disciplines, 'content');
+  assert.ok(textFields(disciplines).length > 500);
+  // The validator catches each kind of leftover markup.
+  for (const [body, kind] of [['Text [S1].', /\[S#\]/], ['Text ([Britannica](https://x.org)).', /inline citation/], ['See [this](https://x.org).', /markdown link/], ['See https://x.org.', /bare URL/], ['**bold**', /emphasis/]]) {
+    assert.match(citationMarkerProblems(fixture({ sections: [{ heading: 'h', body }] })).join(), kind, body);
+  }
+  assert.match(citationMarkerProblems(fixture({ quiz: [{ question: 'q', options: ['a', 'b', 'c', 'd'], answerIndex: 0, explanation: 'Yes [S2].' }] })).join(), /quiz\[0\]\.explanation/);
+});
+
+test('seed lessons keep their permanent ids AND slugs (saved passes stay valid)', () => {
+  const seed = { les_rr01: 'how-the-republic-was-governed', les_fr01: '1789-the-revolution-begins', les_fr02: 'republic-and-terror', les_so01: 'the-examined-life', les_st01: 'origins-of-stoicism', les_st02: 'the-roman-stoics' };
+  const got = Object.fromEntries(lessons.map((x) => [x.l.id, x.l.slug]));
+  for (const [id, slug] of Object.entries(seed)) assert.equal(got[id], slug, id);
+  for (const id of Object.keys(seed)) {
+    const l = lessons.find((x) => x.l.id === id).l;
+    assert.equal(l.sections.length, 3, id);
+    assert.equal(l.keyFacts.length, 5, id);
+    assert.equal(l.quiz.length, 6, id);
+  }
+});
+
+test('imported lessons and discipline order', () => {
+  assert.deepEqual(disciplines.map((d) => d.slug), ['world-history', 'philosophy', 'ancient-history', 'american-civics', 'art-history', 'poetry-and-literature']);
+  const counts = Object.fromEntries(lessons.map((x) => [x.l.id, x.l.quiz.length]));
+  assert.deepEqual(
+    { les_ch01: counts.les_ch01, les_cc01: counts.les_cc01, les_br01: counts.les_br01, les_ir01: counts.les_ir01, les_im01: counts.les_im01, les_cn01: counts.les_cn01 },
+    { les_ch01: 5, les_cc01: 6, les_br01: 5, les_ir01: 6, les_im01: 6, les_cn01: 6 },
+  );
+  for (const x of lessons) for (const s of x.l.sections) assert.ok(!/\n(?!\n)/.test(s.body.replace(/\n\n/g, '')), `${where(x)}: single newline inside a paragraph`);
+});
+
+test('paragraphs() splits section bodies on blank lines', async () => {
+  const { paragraphs } = await import('../../src/lib/ui/paragraphs.mjs');
+  assert.deepEqual(paragraphs('One.\n\nTwo.\n\n\nThree.'), ['One.', 'Two.', 'Three.']);
+  assert.deepEqual(paragraphs('Single paragraph.'), ['Single paragraph.']);
+  assert.deepEqual(paragraphs('  a\nb  \n \n c '), ['a b', 'c']);
+  assert.deepEqual(paragraphs(''), []);
+});
