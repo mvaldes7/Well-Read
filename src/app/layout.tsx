@@ -14,12 +14,15 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en">
       <body>
         <header className="site-header">
-          <Link href="/" className="site-title">
-            FoundationLearn
-          </Link>
-          <Suspense fallback={null}>
-            <UserMenu />
-          </Suspense>
+          <div className="bar">
+            <Link href="/" className="logo">
+              FoundationLearn<small>A personal collection</small>
+            </Link>
+            {/* Sized placeholder while the session streams in, so the header doesn't shift. */}
+            <Suspense fallback={<div className="user-menu user-menu-placeholder" aria-hidden="true" />}>
+              <UserMenu />
+            </Suspense>
+          </div>
         </header>
         <main>{children}</main>
       </body>

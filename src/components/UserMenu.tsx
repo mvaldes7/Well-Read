@@ -1,4 +1,4 @@
-import Link from "next/link";
+import MainNav from "@/components/MainNav";
 import { signOut } from "@/lib/auth/actions";
 import { createClient } from "@/lib/supabase/server";
 
@@ -12,15 +12,17 @@ export default async function UserMenu() {
 
   return (
     <div className="user-menu">
-      <nav aria-label="Main">
-        <Link href="/">Learn</Link> <Link href="/bookshelf">Bookshelf</Link>
-      </nav>
-      <span>
-        Signed in as <strong>{email}</strong>
-      </span>
-      <form action={signOut}>
-        <button type="submit">Sign out</button>
-      </form>
+      <MainNav />
+      <div className="user">
+        <span>
+          Signed in as <strong>{email}</strong>
+        </span>
+        <form action={signOut}>
+          <button type="submit" className="btn-ghost">
+            Sign out
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
