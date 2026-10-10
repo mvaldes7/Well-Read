@@ -1,6 +1,6 @@
 # Architecture
 
-Stack (as of TSK-005):
+Stack (as of TSK-006):
 
 - **Framework:** Next.js 16.4.0 (App Router, Turbopack), React 19.3.0, source in `src/app/`.
 - **Language:** TypeScript 5.x, `strict: true` (`tsconfig.json`), import alias `@/*` → `src/*`.
@@ -41,7 +41,20 @@ Stack (as of TSK-005):
   `INSERT … ON CONFLICT DO NOTHING`, then one conditional `UPDATE` that only matches a worse row, so a
   passed row is never downgraded, even under concurrent submits. If saving fails (e.g. migration not applied),
   the graded result is still shown with a "couldn't be saved" note.
-  Migration: `supabase/migrations/*_lesson_completions.sql` (applied only with Mike's approval).
+  Migration: `supabase/migrations/20261010040740_lesson_completions.sql`, applied to the dev project on
+  2026-10-09 with Mike's approval. The file is kept byte-identical to what was applied, so its header still
+  says "UNAPPLIED"; the applied status is tracked here and in the ledger, not by editing the file.
+- **Progress reads (TSK-006):** `getMyProgress()` (`src/lib/progress/data.ts`, React `cache` per request)
+  re-checks `getClaims()`, then selects only `lesson_id, score, total, passed` for the user with the cookie
+  session (RLS). Errors become a non-leaky message, never a crash. Pure helpers in
+  `src/lib/progress/logic.mjs` drop malformed rows and unknown lesson ids, dedupe duplicates with the
+  best-attempt rule, and build the bookshelf as groups `[{discipline: {slug,title,color}, books}]`: one book
+  per topic with 1+ passed lessons, grouped by discipline, **in content order** (discipline, then topic),
+  with no empty groups. Each discipline has a required `color` token (`src/content/colors.mjs`: crimson, navy,
+  forest, amber, plum, slate) validated by the loader and the .mjs validator; tokens map to real colors only
+  in `globals.css` (`.cover-<token>`), all dark enough for white text (>= 7:1). Per-user UI (`/bookshelf` shelf, topic-list ✓ markers,
+  the lesson "Completed – best X/Y" / "Best attempt so far" line) renders inside `<Suspense>`, so the page
+  shells stay prerendered and only the user's part streams in.
 - **Path guard:** only `/_next/static/*`, `/_next/image*`, `/_next/webpack-hmr` (dev), `/favicon.ico` and
   `/auth/confirm` are public (`PUBLIC_PATHS`/`PUBLIC_PREFIXES` in `src/lib/auth/logic.mjs`, kept in sync
   with the proxy matcher). A file extension doesn't make a path public. Add any future `public/` files to

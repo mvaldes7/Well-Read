@@ -15,7 +15,7 @@ test('classifyPath: auth pages, public assets, everything else protected', () =>
   assert.equal(classifyPath('/signup/'), 'auth');
   assert.equal(classifyPath('/_next/static/chunk.js'), 'public');
   assert.equal(classifyPath('/favicon.ico'), 'public');
-  for (const p of ['/', '/d/philosophy', '/d/philosophy/stoicism/the-roman-stoics', '/d/nope', '/loginx', '/anything']) {
+  for (const p of ['/', '/bookshelf', '/bookshelf/', '/d/philosophy', '/d/philosophy/stoicism/the-roman-stoics', '/d/nope', '/loginx', '/anything']) {
     assert.equal(classifyPath(p), 'protected', p);
   }
 });
@@ -128,4 +128,9 @@ test('confirm helpers: OTP types and login error codes', async () => {
   assert.equal(loginErrorMessage('confirm_failed'), M.confirmFailed);
   assert.equal(loginErrorMessage('<script>'), null);
   assert.equal(loginErrorMessage(null), null);
+});
+
+test('bookshelf is protected: signed-out redirect keeps next', () => {
+  assert.deepEqual(decideAuth({ pathname: '/bookshelf', authed: false }), { type: 'redirect', location: '/login?next=%2Fbookshelf' });
+  assert.deepEqual(decideAuth({ pathname: '/bookshelf', authed: true }), { type: 'next' });
 });

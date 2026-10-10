@@ -3,6 +3,7 @@
     "slug": "world-history",
     "title": "World History",
     "description": "Major eras and turning points that shaped the modern world.",
+    "color": "crimson",
     "topics": [
       {
         "slug": "roman-republic",
@@ -170,6 +171,7 @@
     "slug": "philosophy",
     "title": "Philosophy",
     "description": "Thinkers and schools that asked how we should live and what we can know.",
+    "color": "navy",
     "topics": [
       {
         "slug": "socrates",

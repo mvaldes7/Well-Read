@@ -46,6 +46,15 @@
       "title": "Quiz + saved lesson completion",
       "role": "Builder",
       "type": "impl",
+      "state": "Release Approved",
+      "agent": "Builder",
+      "attempts": {}
+    },
+    {
+      "id": "TSK-006",
+      "title": "Bookshelf + completed state",
+      "role": "Builder",
+      "type": "impl",
       "state": "In Progress",
       "agent": "Builder",
       "attempts": {}
@@ -200,6 +209,42 @@
       "ts": "2026-10-10T03:25:44.093Z",
       "actor": "Builder",
       "taskId": "TSK-005",
+      "action": "start",
+      "from": "Idea",
+      "to": "In Progress",
+      "note": "agent=Builder"
+    },
+    {
+      "ts": "2026-10-10T07:12:14.825Z",
+      "actor": "Builder",
+      "taskId": "TSK-005",
+      "action": "status",
+      "from": "In Progress",
+      "to": "Checks Passed",
+      "note": "PR #5 CI checks job passed (run 38020961208)"
+    },
+    {
+      "ts": "2026-10-10T07:12:14.932Z",
+      "actor": "Builder",
+      "taskId": "TSK-005",
+      "action": "status",
+      "from": "Checks Passed",
+      "to": "Release Approved",
+      "note": "PR #5 merged to main as ec3adea; migration applied to dev with Mike's approval"
+    },
+    {
+      "ts": "2026-10-10T07:12:15.034Z",
+      "actor": "Builder",
+      "taskId": "TSK-006",
+      "action": "add",
+      "from": null,
+      "to": "Idea",
+      "note": null
+    },
+    {
+      "ts": "2026-10-10T07:12:15.159Z",
+      "actor": "Builder",
+      "taskId": "TSK-006",
       "action": "start",
       "from": "Idea",
       "to": "In Progress",

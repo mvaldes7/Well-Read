@@ -1,4 +1,5 @@
 import raw from "./disciplines.json";
+import { DISCIPLINE_COLORS, disciplineColorProblems } from "./colors.mjs";
 import { LESSON_ID_PATTERN, lessonIdProblems } from "./ids.mjs";
 import {
   TOPIC_KINDS,
@@ -87,8 +88,14 @@ function topic(v: unknown, path: string): Topic {
   };
 }
 
+function color(v: unknown, path: string): Discipline["color"] {
+  const c = DISCIPLINE_COLORS.find((k) => k === v);
+  if (!c) fail(path, `expected one of ${DISCIPLINE_COLORS.join(", ")}`);
+  return c;
+}
+
 export function parseDisciplines(data: unknown): Discipline[] {
-  const idProblems = lessonIdProblems(data);
+  const idProblems = [...lessonIdProblems(data), ...disciplineColorProblems(data)];
   if (idProblems.length) throw new Error(`Invalid content: ${idProblems.join("; ")}`);
   return uniqueSlugs(
     arr(data, "disciplines").map((d, i) => {
@@ -98,6 +105,7 @@ export function parseDisciplines(data: unknown): Discipline[] {
         slug: str(d.slug, `${path}.slug`),
         title: str(d.title, `${path}.title`),
         description: str(d.description, `${path}.description`),
+        color: color(d.color, `${path}.color`),
         topics: uniqueSlugs(
           arr(d.topics, `${path}.topics`).map((t, j) => topic(t, `${path}.topics[${j}]`)),
           `${path}.topics`,
@@ -138,4 +146,4 @@ export function getLessonById(id: string) {
   return lessonsById.get(id);
 }
 
-export type { Discipline, Lesson, LessonSection, QuizQuestion, Topic, TopicKind } from "./schema";
+export type { Discipline, DisciplineColor, Lesson, LessonSection, QuizQuestion, Topic, TopicKind } from "./schema";

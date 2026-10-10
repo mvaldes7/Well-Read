@@ -1,7 +1,9 @@
 "use client";
 
-import { useActionState, useState, useTransition, type FormEvent } from "react";
+import { useActionState, useEffect, useState, useTransition, type FormEvent } from "react";
+import { useRouter } from "next/navigation";
 import { submitQuiz, type QuizState } from "@/lib/quiz/actions";
+import { saveMessage } from "@/lib/progress/logic.mjs";
 
 /** Client-safe question: no answerIndex is ever sent to the browser before submit. */
 export interface PublicQuestion {
@@ -14,12 +16,6 @@ interface Props {
   questions: PublicQuestion[];
 }
 
-const SAVE_MESSAGES = {
-  saved: "Progress saved.",
-  kept: "Progress saved earlier; your best result is kept.",
-  failed: "Your result couldn't be saved, so this attempt won't count toward your progress yet. Please try again later.",
-} as const;
-
 export default function Quiz(props: Props) {
   const [attempt, setAttempt] = useState(0);
   return <QuizAttempt key={attempt} {...props} onRetry={() => setAttempt((a) => a + 1)} />;
@@ -29,6 +25,13 @@ function QuizAttempt({ lessonId, questions, onRetry }: Props & { onRetry: () => 
   const [state, dispatch, pending] = useActionState<QuizState, unknown>(submitQuiz, { status: "idle" });
   const [, startTransition] = useTransition();
   const [missing, setMissing] = useState(false);
+  const router = useRouter();
+  const savedNow = state.status === "graded" && state.save === "saved";
+
+  // After a saved attempt, re-render server components so the completion status updates.
+  useEffect(() => {
+    if (savedNow) router.refresh();
+  }, [savedNow, router]);
 
   function onSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -51,7 +54,7 @@ function QuizAttempt({ lessonId, questions, onRetry }: Props & { onRetry: () => 
           </strong>{" "}
           {state.passed ? "Lesson complete." : "You need 70% to complete this lesson."}
         </p>
-        <p className={state.save === "failed" ? "error" : "muted"}>{SAVE_MESSAGES[state.save]}</p>
+        <p className={state.save === "failed" ? "error" : "muted"}>{saveMessage(state.save, state.passed)}</p>
         <ol>
           {state.questions.map((r, i) => (
             <li key={i}>

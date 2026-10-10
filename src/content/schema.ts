@@ -1,3 +1,5 @@
+import { DISCIPLINE_COLORS } from "./colors.mjs";
+
 export const TOPIC_KINDS = ["person", "event", "era", "style"] as const;
 export type TopicKind = (typeof TOPIC_KINDS)[number];
 
@@ -33,9 +35,14 @@ export interface Topic {
   lessons: Lesson[];
 }
 
+export { DISCIPLINE_COLORS };
+/** Named cover-color token; mapped to real colors only in globals.css (`.cover-<token>`). */
+export type DisciplineColor = (typeof DISCIPLINE_COLORS)[number];
+
 export interface Discipline {
   slug: string;
   title: string;
   description: string;
+  color: DisciplineColor;
   topics: Topic[];
 }
