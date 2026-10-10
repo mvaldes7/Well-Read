@@ -7,3 +7,17 @@ test('toRoman', () => {
   for (const [n, r] of Object.entries(cases)) assert.equal(toRoman(Number(n)), r);
   for (const bad of [0, -1, 4000, 1.5, NaN]) assert.equal(toRoman(bad), String(bad));
 });
+
+test('display name is Curio: no "FoundationLearn" left in app source', async () => {
+  const { readdirSync, readFileSync, statSync } = await import('node:fs');
+  const { join } = await import('node:path');
+  const root = new URL('../../src/', import.meta.url).pathname;
+  const files = [];
+  const walk = (d) => { for (const f of readdirSync(d)) { const p = join(d, f); statSync(p).isDirectory() ? walk(p) : files.push(p); } };
+  walk(root);
+  const hits = files.filter((f) => /\.(tsx?|mjs|css|json)$/.test(f) && /foundation\s*-?learn/i.test(readFileSync(f, 'utf8')));
+  assert.deepEqual(hits, []);
+  const layout = readFileSync(join(root, 'app/layout.tsx'), 'utf8');
+  assert.match(layout, /title: \{ default: "Curio", template: "%s · Curio" \}/);
+  assert.match(readFileSync(join(root, 'app/page.tsx'), 'utf8'), /<h1>Curio<\/h1>/);
+});

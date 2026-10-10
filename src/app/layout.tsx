@@ -6,7 +6,7 @@ import UserMenu from "@/components/UserMenu";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: { default: "FoundationLearn", template: "%s · FoundationLearn" },
+  title: { default: "Curio", template: "%s · Curio" },
   description: "Learn foundational subjects: history, philosophy, the arts and poetry.",
 };
 
@@ -17,7 +17,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <header className="site-header">
           <div className="bar">
             <Link href="/" className="logo">
-              FoundationLearn<small>A personal collection</small>
+              Curio<small>A personal collection</small>
             </Link>
             {/* Static shell: the two nav links need no auth data, so they render immediately. */}
             <MainNav />
