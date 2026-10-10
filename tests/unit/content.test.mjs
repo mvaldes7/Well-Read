@@ -100,3 +100,23 @@ test('lesson id checks reject missing, duplicate and badly formatted ids', async
   slugAsId[0].topics[0].lessons[0].slug = 'les_abcd';
   assert.match(lessonIdProblems(slugAsId).join('\n'), /must not equal the slug/);
 });
+
+test('every discipline has a cover color from the allowed set, and they differ', async () => {
+  const { DISCIPLINE_COLORS, disciplineColorProblems } = await import('../../src/content/colors.mjs');
+  assert.deepEqual(disciplineColorProblems(disciplines), []);
+  for (const d of disciplines) assert.ok(DISCIPLINE_COLORS.includes(d.color), d.slug);
+  const bySlug = Object.fromEntries(disciplines.map((d) => [d.slug, d.color]));
+  assert.notEqual(bySlug['world-history'], bySlug['philosophy']);
+});
+
+test('color validator rejects missing and invalid colors', async () => {
+  const { disciplineColorProblems } = await import('../../src/content/colors.mjs');
+  const missing = structuredClone(disciplines);
+  delete missing[0].color;
+  assert.match(disciplineColorProblems(missing).join('\n'), /disciplines\[0\]: missing color/);
+  for (const bad of ['#ff0000', 'red', 'Crimson', 7, '']) {
+    const b = structuredClone(disciplines);
+    b[1].color = bad;
+    assert.match(disciplineColorProblems(b).join('\n'), bad === '' ? /missing color/ : /invalid color/, String(bad));
+  }
+});
