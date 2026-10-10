@@ -1,0 +1,6 @@
+{
+  "version": 1,
+  "limits": { "maxActiveImplementationTasks": 1, "maxRepairAttemptsPerFailure": 2 },
+  "tasks": [],
+  "log": []
+}
