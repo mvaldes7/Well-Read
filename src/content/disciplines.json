@@ -1,0 +1,325 @@
+[
+  {
+    "slug": "world-history",
+    "title": "World History",
+    "description": "Major eras and turning points that shaped the modern world.",
+    "topics": [
+      {
+        "slug": "roman-republic",
+        "title": "The Roman Republic",
+        "kind": "era",
+        "summary": "Rome's period of elected, shared government before the rise of the emperors.",
+        "lessons": [
+          {
+            "slug": "how-the-republic-was-governed",
+            "title": "How the Republic Was Governed",
+            "sections": [
+              {
+                "heading": "From kings to a republic",
+                "body": "According to Roman tradition, Rome was ruled by kings until about 509 BC, when the last king, Tarquin the Proud, was expelled. In place of a king, the Romans created a republic: a state in which power was held by elected officials rather than a hereditary monarch."
+              },
+              {
+                "heading": "Consuls and the Senate",
+                "body": "The highest regular officials were two consuls, elected each year. Having two of them, each able to block the other, and limiting them to one-year terms were meant to stop any single person from taking too much power. The Senate, made up largely of former officials from leading families, advised the magistrates and had great influence over finances and foreign policy. In a serious emergency, a dictator could be appointed with wide powers for a limited term of up to six months."
+              },
+              {
+                "heading": "Patricians, plebeians and written law",
+                "body": "Roman citizens were divided into patricians, an aristocratic group of old families, and plebeians, the common citizens. In a long struggle known as the Conflict of the Orders, the plebeians won important rights, including their own officials, the tribunes of the plebs, who could protect plebeians from abuse by magistrates. Around 450 BC the Romans published the Twelve Tables, their first written code of law, so that the rules were known to everyone."
+              }
+            ],
+            "keyFacts": [
+              "Traditional founding of the Republic: about 509 BC.",
+              "Two consuls were elected every year.",
+              "The Senate advised magistrates and shaped finance and foreign policy.",
+              "Tribunes of the plebs protected plebeians.",
+              "The Twelve Tables (c. 450 BC) were Rome's first written law code."
+            ],
+            "quiz": [
+              {
+                "question": "How many consuls were elected each year in the Roman Republic?",
+                "options": ["One", "Two", "Three", "Ten"],
+                "answerIndex": 1
+              },
+              {
+                "question": "What was the name of Rome's first written code of law?",
+                "options": ["The Code of Hammurabi", "The Magna Carta", "The Twelve Tables", "The Justinian Code"],
+                "answerIndex": 2
+              },
+              {
+                "question": "Which officials were created to protect the plebeians?",
+                "options": ["Tribunes of the plebs", "Censors", "Augurs", "Praetorian prefects"],
+                "answerIndex": 0
+              },
+              {
+                "question": "For how long could a Roman dictator normally hold power?",
+                "options": ["For life", "Ten years", "Five years", "Up to six months"],
+                "answerIndex": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "french-revolution",
+        "title": "The French Revolution",
+        "kind": "event",
+        "summary": "The upheaval of 1789-1799 that overthrew the French monarchy and spread ideas of rights and citizenship.",
+        "lessons": [
+          {
+            "slug": "1789-the-revolution-begins",
+            "title": "1789: The Revolution Begins",
+            "sections": [
+              {
+                "heading": "A kingdom in crisis",
+                "body": "By the late 1780s the French monarchy under King Louis XVI was deeply in debt, partly from costly wars, including its support for the American Revolution. To deal with the crisis, the king summoned the Estates-General, an assembly representing the clergy (First Estate), the nobility (Second Estate) and everyone else (Third Estate). It met in May 1789 for the first time since 1614."
+              },
+              {
+                "heading": "The National Assembly",
+                "body": "Representatives of the Third Estate objected to voting rules that let the two privileged orders outvote them. In June 1789 they declared themselves the National Assembly. Locked out of their usual hall, they gathered at a nearby indoor tennis court and swore the Tennis Court Oath, promising not to separate until France had a constitution."
+              },
+              {
+                "heading": "The Bastille and the rights of man",
+                "body": "On 14 July 1789 crowds in Paris stormed the Bastille, a royal fortress and prison, a day still celebrated as France's national holiday. In August 1789 the Assembly adopted the Declaration of the Rights of Man and of the Citizen, which proclaimed that men are born and remain free and equal in rights."
+              }
+            ],
+            "keyFacts": [
+              "The Estates-General met in May 1789, for the first time since 1614.",
+              "The Third Estate declared itself the National Assembly in June 1789.",
+              "The Tennis Court Oath promised a constitution for France.",
+              "The Bastille was stormed on 14 July 1789.",
+              "The Declaration of the Rights of Man and of the Citizen was adopted in August 1789."
+            ],
+            "quiz": [
+              {
+                "question": "Who was King of France when the Revolution began in 1789?",
+                "options": ["Louis XIV", "Louis XVI", "Napoleon Bonaparte", "Henry IV"],
+                "answerIndex": 1
+              },
+              {
+                "question": "On what date was the Bastille stormed?",
+                "options": ["14 July 1789", "4 July 1776", "1 January 1800", "11 November 1918"],
+                "answerIndex": 0
+              },
+              {
+                "question": "Which group declared itself the National Assembly in June 1789?",
+                "options": ["The clergy", "The nobility", "The royal army", "Representatives of the Third Estate"],
+                "answerIndex": 3
+              },
+              {
+                "question": "What did the deputies promise in the Tennis Court Oath?",
+                "options": ["To restore the king's full powers", "To declare war on Austria", "Not to separate until France had a constitution", "To abolish the Catholic Church"],
+                "answerIndex": 2
+              }
+            ]
+          },
+          {
+            "slug": "republic-and-terror",
+            "title": "Republic and Terror",
+            "sections": [
+              {
+                "heading": "The end of the monarchy",
+                "body": "Tensions between the king and the revolutionaries grew, especially after the royal family's failed attempt to flee in 1791. In September 1792 the monarchy was abolished and France was proclaimed a republic. Louis XVI was put on trial and executed by guillotine in January 1793."
+              },
+              {
+                "heading": "The Reign of Terror",
+                "body": "Facing foreign war and revolts at home, the revolutionary government gave sweeping powers to the Committee of Public Safety, in which Maximilien Robespierre was a leading figure. During the Reign of Terror of 1793-1794, thousands of people suspected of opposing the Revolution were executed. In July 1794 Robespierre himself was overthrown and executed, and the Terror came to an end."
+              },
+              {
+                "heading": "Toward Napoleon",
+                "body": "A new government called the Directory ruled France from 1795, but it was unstable. In November 1799 the general Napoleon Bonaparte seized power in a coup, an event usually taken as the end of the revolutionary decade."
+              }
+            ],
+            "keyFacts": [
+              "France was proclaimed a republic in September 1792.",
+              "Louis XVI was executed in January 1793.",
+              "The Committee of Public Safety led the Reign of Terror (1793-1794).",
+              "Robespierre was executed in July 1794.",
+              "Napoleon Bonaparte seized power in a coup in 1799."
+            ],
+            "quiz": [
+              {
+                "question": "In which year was France first proclaimed a republic?",
+                "options": ["1789", "1792", "1804", "1815"],
+                "answerIndex": 1
+              },
+              {
+                "question": "Which body held sweeping powers during the Reign of Terror?",
+                "options": ["The Estates-General", "The Roman Senate", "The Committee of Public Safety", "The House of Lords"],
+                "answerIndex": 2
+              },
+              {
+                "question": "Which leading figure of the Terror was himself executed in July 1794?",
+                "options": ["Maximilien Robespierre", "Napoleon Bonaparte", "Louis XVIII", "Charles de Gaulle"],
+                "answerIndex": 0
+              },
+              {
+                "question": "Who seized power in a coup in 1799?",
+                "options": ["Louis XVI", "Robespierre", "Marie Antoinette", "Napoleon Bonaparte"],
+                "answerIndex": 3
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "philosophy",
+    "title": "Philosophy",
+    "description": "Thinkers and schools that asked how we should live and what we can know.",
+    "topics": [
+      {
+        "slug": "socrates",
+        "title": "Socrates",
+        "kind": "person",
+        "summary": "The Athenian philosopher who taught by questioning and was put to death for it.",
+        "lessons": [
+          {
+            "slug": "the-examined-life",
+            "title": "Socrates and the Examined Life",
+            "sections": [
+              {
+                "heading": "A philosopher who wrote nothing",
+                "body": "Socrates lived in Athens in the 5th century BC. He wrote no books. What we know of him comes mainly from others, above all his student Plato, whose dialogues feature Socrates as the main speaker, and the writer Xenophon. The playwright Aristophanes also mocked him in his comedy The Clouds."
+              },
+              {
+                "heading": "The Socratic method",
+                "body": "Socrates spent his time in conversation with fellow Athenians, asking them to define ideas such as justice, courage or piety. By asking a series of questions he showed that their answers were often confused or contradictory. This style of questioning to test beliefs is known as the Socratic method. Socrates claimed that his only wisdom was knowing that he did not know."
+              },
+              {
+                "heading": "Trial and death",
+                "body": "In 399 BC Socrates was put on trial in Athens, charged with impiety and with corrupting the young. He was found guilty and sentenced to death, and he died by drinking poison hemlock. In Plato's account of his defence speech, the Apology, Socrates says that the unexamined life is not worth living."
+              }
+            ],
+            "keyFacts": [
+              "Socrates lived in Athens in the 5th century BC.",
+              "He wrote nothing; our main source is his student Plato.",
+              "The Socratic method tests beliefs through questioning.",
+              "He was tried in 399 BC for impiety and corrupting the young.",
+              "He died by drinking hemlock."
+            ],
+            "quiz": [
+              {
+                "question": "Which student of Socrates is our main source for his ideas?",
+                "options": ["Aristotle", "Plato", "Alexander the Great", "Epicurus"],
+                "answerIndex": 1
+              },
+              {
+                "question": "In which city did Socrates live?",
+                "options": ["Sparta", "Rome", "Alexandria", "Athens"],
+                "answerIndex": 3
+              },
+              {
+                "question": "What were the charges against Socrates at his trial?",
+                "options": ["Impiety and corrupting the young", "Treason and theft", "Murder and arson", "Tax evasion and bribery"],
+                "answerIndex": 0
+              },
+              {
+                "question": "How did Socrates die?",
+                "options": ["In battle", "By drinking hemlock", "In exile from old age", "In a shipwreck"],
+                "answerIndex": 1
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "stoicism",
+        "title": "Stoicism",
+        "kind": "style",
+        "summary": "A school of philosophy, born in Athens and popular in Rome, that teaches virtue and calm acceptance of what we cannot control.",
+        "lessons": [
+          {
+            "slug": "origins-of-stoicism",
+            "title": "The Origins of Stoicism",
+            "sections": [
+              {
+                "heading": "Zeno and the painted porch",
+                "body": "Stoicism was founded in Athens around 300 BC by Zeno of Citium. Zeno taught in the Stoa Poikile, the 'painted porch', a public colonnade in the city. The school took its name from this place: Stoics were the people of the stoa."
+              },
+              {
+                "heading": "Virtue as the only good",
+                "body": "The Stoics taught that virtue, made up of wisdom, justice, courage and moderation, is the only true good. Things like wealth, health and reputation were seen as neither good nor bad in themselves. The goal of life was to live in agreement with nature, using reason."
+              },
+              {
+                "heading": "Later leaders",
+                "body": "After Zeno, the school was led by Cleanthes and then by Chrysippus, who wrote a great deal and gave Stoic teaching much of its systematic form."
+              }
+            ],
+            "keyFacts": [
+              "Founded in Athens around 300 BC by Zeno of Citium.",
+              "Named after the Stoa Poikile, the 'painted porch'.",
+              "Virtue is the only true good.",
+              "The goal is to live in agreement with nature through reason.",
+              "Cleanthes and Chrysippus led the school after Zeno."
+            ],
+            "quiz": [
+              {
+                "question": "Who founded Stoicism?",
+                "options": ["Socrates", "Zeno of Citium", "Marcus Aurelius", "Pythagoras"],
+                "answerIndex": 1
+              },
+              {
+                "question": "Where does the name 'Stoicism' come from?",
+                "options": ["A Roman emperor named Stoicus", "A Greek word for 'calm'", "The Stoa Poikile, a painted porch in Athens", "A mountain in Macedonia"],
+                "answerIndex": 2
+              },
+              {
+                "question": "According to the Stoics, what is the only true good?",
+                "options": ["Virtue", "Wealth", "Pleasure", "Fame"],
+                "answerIndex": 0
+              }
+            ]
+          },
+          {
+            "slug": "the-roman-stoics",
+            "title": "The Roman Stoics",
+            "sections": [
+              {
+                "heading": "Seneca",
+                "body": "Seneca the Younger was a Roman statesman, writer and adviser to the emperor Nero. His Letters to Lucilius give practical Stoic advice on facing hardship, using time well and preparing for death."
+              },
+              {
+                "heading": "Epictetus",
+                "body": "Epictetus was born a slave and later became a teacher of philosophy. He did not write his teachings down; his student Arrian recorded them in the Discourses and the short handbook known as the Enchiridion. Epictetus stressed the difference between what is up to us, such as our judgements and choices, and what is not, such as other people's actions and the body."
+              },
+              {
+                "heading": "Marcus Aurelius",
+                "body": "Marcus Aurelius was Roman emperor from AD 161 to 180. During his reign he wrote private notes to himself, in Greek, that are now known as the Meditations. They record his efforts to live by Stoic principles while carrying the duties of an emperor."
+              }
+            ],
+            "keyFacts": [
+              "Seneca advised the emperor Nero and wrote the Letters to Lucilius.",
+              "Epictetus was born a slave; his student Arrian recorded his teachings.",
+              "Epictetus distinguished what is up to us from what is not.",
+              "Marcus Aurelius was Roman emperor from AD 161 to 180.",
+              "The Meditations were private notes written in Greek."
+            ],
+            "quiz": [
+              {
+                "question": "Which Roman emperor wrote the Meditations?",
+                "options": ["Nero", "Augustus", "Constantine", "Marcus Aurelius"],
+                "answerIndex": 3
+              },
+              {
+                "question": "Which Stoic teacher was born a slave?",
+                "options": ["Epictetus", "Seneca", "Marcus Aurelius", "Zeno of Citium"],
+                "answerIndex": 0
+              },
+              {
+                "question": "Which emperor did Seneca serve as an adviser?",
+                "options": ["Hadrian", "Nero", "Trajan", "Julius Caesar"],
+                "answerIndex": 1
+              },
+              {
+                "question": "In which language did Marcus Aurelius write the Meditations?",
+                "options": ["Latin", "Hebrew", "Greek", "Aramaic"],
+                "answerIndex": 2
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
