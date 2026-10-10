@@ -1,10 +1,12 @@
 import raw from "./disciplines.json";
 import { DISCIPLINE_COLORS, disciplineColorProblems } from "./colors.mjs";
 import { LESSON_ID_PATTERN, lessonIdProblems } from "./ids.mjs";
+import { citationMarkerProblems, explanationProblems, isHttpsUrl, sourceProblems } from "./sources.mjs";
 import {
   TOPIC_KINDS,
   type Discipline,
   type Lesson,
+  type LessonSource,
   type QuizQuestion,
   type Topic,
 } from "./schema";
@@ -51,7 +53,20 @@ function question(v: unknown, path: string): QuizQuestion {
     question: str(v.question, `${path}.question`),
     options: [options[0], options[1], options[2], options[3]],
     answerIndex: a,
+    explanation: str(v.explanation, `${path}.explanation`),
   };
+}
+
+function source(v: unknown, path: string): LessonSource {
+  if (!isObject(v)) fail(path, "expected object");
+  if (!isHttpsUrl(v.url)) fail(`${path}.url`, "expected a valid https URL");
+  const out: LessonSource = {
+    publisher: str(v.publisher, `${path}.publisher`),
+    title: str(v.title, `${path}.title`),
+    url: v.url as string,
+  };
+  if (v.note !== undefined) out.note = str(v.note, `${path}.note`);
+  return out;
 }
 
 function lesson(v: unknown, path: string): Lesson {
@@ -69,6 +84,9 @@ function lesson(v: unknown, path: string): Lesson {
     }),
     keyFacts: arr(v.keyFacts, `${path}.keyFacts`).map((f, i) => str(f, `${path}.keyFacts[${i}]`)),
     quiz: arr(v.quiz, `${path}.quiz`, 3).map((q, i) => question(q, `${path}.quiz[${i}]`)),
+    ...(v.sources === undefined
+      ? {}
+      : { sources: arr(v.sources, `${path}.sources`, 0).map((s, i) => source(s, `${path}.sources[${i}]`)) }),
   };
 }
 
@@ -95,7 +113,15 @@ function color(v: unknown, path: string): Discipline["color"] {
 }
 
 export function parseDisciplines(data: unknown): Discipline[] {
-  const idProblems = [...lessonIdProblems(data), ...disciplineColorProblems(data)];
+  // Whole-tree checks first (shared with node:test via the .mjs validators), then the
+  // field-by-field parse below.
+  const idProblems = [
+    ...lessonIdProblems(data),
+    ...disciplineColorProblems(data),
+    ...sourceProblems(data),
+    ...explanationProblems(data),
+    ...citationMarkerProblems(data),
+  ];
   if (idProblems.length) throw new Error(`Invalid content: ${idProblems.join("; ")}`);
   return uniqueSlugs(
     arr(data, "disciplines").map((d, i) => {
@@ -146,4 +172,4 @@ export function getLessonById(id: string) {
   return lessonsById.get(id);
 }
 
-export type { Discipline, DisciplineColor, Lesson, LessonSection, QuizQuestion, Topic, TopicKind } from "./schema";
+export type { Discipline, DisciplineColor, Lesson, LessonSection, LessonSource, QuizQuestion, Topic, TopicKind } from "./schema";

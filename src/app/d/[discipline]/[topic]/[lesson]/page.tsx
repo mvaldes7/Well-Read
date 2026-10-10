@@ -4,8 +4,10 @@ import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import { LessonStatus } from "@/components/Progress";
-import Quiz, { type PublicQuestion } from "@/components/Quiz";
+import Quiz from "@/components/Quiz";
 import { disciplines, getDiscipline, getLesson, getTopic } from "@/content";
+import { toPublicQuestions } from "@/lib/quiz/public.mjs";
+import { paragraphs } from "@/lib/ui/paragraphs.mjs";
 import { toRoman } from "@/lib/ui/roman.mjs";
 
 export function generateStaticParams() {
@@ -21,11 +23,6 @@ export async function generateMetadata({
 }: PageProps<"/d/[discipline]/[topic]/[lesson]">): Promise<Metadata> {
   const { discipline, topic, lesson } = await params;
   return { title: getLesson(discipline, topic, lesson)?.title ?? "Not found" };
-}
-
-// Strip answerIndex: only question text and options may reach the client.
-function toPublicQuestions(quiz: { question: string; options: readonly string[] }[]): PublicQuestion[] {
-  return quiz.map(({ question, options }) => ({ question, options: [...options] }));
 }
 
 export default async function LessonPage({
@@ -58,7 +55,9 @@ export default async function LessonPage({
           </div>
           <div>
             <h2 id={`sec-${i}`}>{s.heading}</h2>
-            <p>{s.body}</p>
+            {paragraphs(s.body).map((p, j) => (
+              <p key={j}>{p}</p>
+            ))}
           </div>
         </section>
       ))}
@@ -82,8 +81,37 @@ export default async function LessonPage({
         <Suspense fallback={null}>
           <LessonStatus lessonId={lesson.id} />
         </Suspense>
+        {/* Only question text and options reach the client; answers and explanations stay server-side. */}
         <Quiz lessonId={lesson.id} questions={toPublicQuestions(lesson.quiz)} />
       </section>
+      {lesson.sources && lesson.sources.length > 0 && (
+        <section className="sources" aria-labelledby="sources-heading">
+          <h2 id="sources-heading">
+            <small>Further reading</small>Sources
+          </h2>
+          <p className="sources-hint" aria-hidden="true">
+            Links open in a new tab.
+          </p>
+          <ol>
+            {lesson.sources.map((s) => (
+              <li key={s.url}>
+                <span className="cite">
+                  <span className="pub">{s.publisher}</span>,{" "}
+                  <a href={s.url} target="_blank" rel="noopener noreferrer">
+                    {s.title}
+                    <span aria-hidden="true" className="ext">
+                      {" "}
+                      ↗
+                    </span>
+                    <span className="visually-hidden"> (opens in a new tab)</span>
+                  </a>
+                </span>
+                {s.note && <span className="note">{s.note}</span>}
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
       <p className="back-link">
         <Link href={topicHref}>← Back to {topic.title}</Link>
       </p>

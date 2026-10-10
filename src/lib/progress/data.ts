@@ -2,7 +2,8 @@ import { cache } from "react";
 import { unstable_rethrow } from "next/navigation";
 import { disciplines } from "@/content";
 import { createClient } from "@/lib/supabase/server";
-import { buildBookshelf, completionLookup, type BookshelfGroup, type Completion } from "./logic.mjs";
+import { isMissingColumnError } from "@/lib/quiz/logic.mjs";
+import { buildBookshelf, completionLookup, progressColumns, type BookshelfGroup, type Completion } from "./logic.mjs";
 
 export type ProgressResult =
   | { status: "ok"; rows: unknown[]; lookup: Map<string, Completion>; groups: BookshelfGroup[] }
@@ -22,10 +23,11 @@ export const getMyProgress = cache(async (): Promise<ProgressResult> => {
     const userId = claims?.claims?.sub;
     if (claimsError || typeof userId !== "string" || !userId) return { status: "signedOut" };
 
-    const { data, error } = await supabase
-      .from("lesson_completions")
-      .select("lesson_id, score, total, passed, completed_at")
-      .eq("user_id", userId);
+    const read = (withFirstPass: boolean) =>
+      supabase.from("lesson_completions").select(progressColumns(withFirstPass)).eq("user_id", userId);
+    let { data, error } = await read(true);
+    // Until the first_passed_at migration is applied the column doesn't exist: read without it.
+    if (error && isMissingColumnError(error)) ({ data, error } = await read(false));
     if (error) {
       console.error(`lesson_completions read failed (${error.code ?? "unknown"})`);
       return { status: "error" };

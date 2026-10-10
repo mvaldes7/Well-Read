@@ -404,3 +404,29 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
   .medallion { width: 44px; height: 44px; font-size: 19px; }
   .topic-level { gap: 10px; }
 }
+
+/* ---------- TSK-012: multi-paragraph sections, explanations, sources ---------- */
+.entry p + p { margin-top: 1em; }
+
+.quiz-result .explain { margin: 8px 0 0; padding: 8px 0 8px 14px; border-left: 2px solid var(--brass); font-size: 15px; line-height: 1.65; color: var(--body); }
+.quiz-result .explain-label { font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--brass-ink); }
+
+.sources { margin: 56px 0 0; padding-top: 28px; border-top: 1px solid var(--line); }
+.sources h2 { margin: 0 0 6px; font-size: 26px; text-align: center; letter-spacing: 0.06em; }
+.sources h2 small { display: block; font-family: var(--sans); font-size: 10px; letter-spacing: 0.4em; color: var(--brass-ink); margin-bottom: 8px; text-transform: uppercase; }
+.sources-hint { text-align: center; margin: 0 0 18px; font-size: 12px; color: var(--sub); }
+.sources ol { margin: 0; padding: 0; list-style: none; counter-reset: src; }
+.sources li { counter-increment: src; display: grid; grid-template-columns: 34px 1fr; column-gap: 8px; padding: 12px 0; border-top: 1px solid var(--line); font-size: 15px; line-height: 1.6; color: var(--body); }
+.sources li:first-child { border-top: 0; }
+.sources li::before { content: counter(src, upper-roman) "."; grid-row: span 2; font-family: var(--serif); color: var(--brass-ink); }
+.sources .cite { grid-column: 2; }
+.sources .pub { display: inline; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sub); }
+.sources a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--brass); text-underline-offset: 3px; }
+.sources a:hover { text-decoration-thickness: 2px; }
+.sources .ext { color: var(--brass-ink); }
+.sources .note { grid-column: 2; display: block; margin-top: 2px; font-size: 14px; color: var(--sub); }
+
+/* Spine titles: one or two vertical lines (spineLines). In vertical-rl the flex column axis is
+   horizontal, so lines sit side by side; the 180deg turn puts the first line on the left. */
+.spine .t { flex-direction: column; }
+.spine .t .ln { display: block; line-height: 1.15; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

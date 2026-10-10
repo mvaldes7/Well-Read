@@ -78,7 +78,11 @@ async function Shelf() {
                             Lv {book.level}
                           </span>
                           <span className="t" aria-hidden="true">
-                            {book.topicTitle}
+                            {s.lines.map((line) => (
+                              <span key={line} className="ln">
+                                {line}
+                              </span>
+                            ))}
                           </span>
                           <span className="cap b" aria-hidden="true" />
                           <span className="tag" aria-hidden="true">

@@ -17,45 +17,129 @@
             "title": "How the Republic Was Governed",
             "sections": [
               {
-                "heading": "From kings to a republic",
-                "body": "According to Roman tradition, Rome was ruled by kings until about 509 BC, when the last king, Tarquin the Proud, was expelled. In place of a king, the Romans created a republic: a state in which power was held by elected officials rather than a hereditary monarch."
+                "heading": "Two consuls instead of a king",
+                "body": "Imagine waking up in a city that has just thrown out its king. What would you put in his place? By the end of the Republic, Romans generally accepted a traditional story: Rome had been ruled by seven kings, and in 509 BCE the last of them, Lucius Tarquinius Superbus, was overthrown. Rather than crown someone new, the Romans replaced kingship with two magistrates called consuls, elected every year. Two leaders instead of one, and only for a year: that design tells you what Romans feared most.\n\nTo see how the system worked from the inside, follow one real career through it. Marcus Tullius Cicero was born in 106 BCE in Arpinum, a town in Latium outside Rome. He was what Romans called a “new man,” someone without noble ancestry. Nobody handed Cicero a place at the top. He had to climb, office by office and election by election, and his path will take you through the machinery of the Republic.\n\nStart with the office Cicero eventually reached. The two consuls were, above all, generals whose task was to lead Rome’s armies in war. In a military emergency, when a single commander seemed necessary, Rome could appoint a dictator in place of the consuls. Even then there was a limit: a dictator could not hold supreme military command for longer than six months. In this system, even the exception came with an expiration date."
               },
               {
-                "heading": "Consuls and the Senate",
-                "body": "The highest regular officials were two consuls, elected each year. Having two of them, each able to block the other, and limiting them to one-year terms were meant to stop any single person from taking too much power. The Senate, made up largely of former officials from leading families, advised the magistrates and had great influence over finances and foreign policy. In a serious emergency, a dictator could be appointed with wide powers for a limited term of up to six months."
+                "heading": "Climbing the ladder of offices",
+                "body": "Roman politicians of senatorial rank followed a set sequence of public offices known as the cursus honorum, the “course of honors.” Over time, laws regulated the ladder. Holding the same magistracy a second time was prohibited, and the praetorship became a requirement for anyone seeking the consulship. Ambition was allowed, but it had to move in order.\n\nCicero’s career follows that path. After making his name as a lawyer, he began his public career in 75 BCE as quaestor, an office of financial administration, in western Sicily. In 66 BCE he served as praetor, a judicial office of great power at the time. He was then elected consul for 63 BCE, helped by conservative senators who feared the revolutionary ideas of his rival, Catiline. A man without noble ancestry had reached the Republic’s highest regular office.\n\nWho did the electing? Romans voted in popular assemblies. The centuriate assembly, military in nature, voted on war and peace and elected the magistrates who held imperium, or military power, including consuls and praetors. The tribal assembly was a civilian body that elected magistrates without imperium and did most of the legislating. So when Cicero ran for praetor and then consul, he was asking the centuriate assembly for its votes."
               },
               {
-                "heading": "Patricians, plebeians and written law",
-                "body": "Roman citizens were divided into patricians, an aristocratic group of old families, and plebeians, the common citizens. In a long struggle known as the Conflict of the Orders, the plebeians won important rights, including their own officials, the tribunes of the plebs, who could protect plebeians from abuse by magistrates. Around 450 BC the Romans published the Twelve Tables, their first written code of law, so that the rules were known to everyone."
+                "heading": "Balanced, or tilted toward the few?",
+                "body": "Then there was the Senate, which may already have advised the kings. Under the Republic it advised both the magistrates and the Roman people. In theory the people were sovereign and the Senate only offered advice, but in practice it wielded enormous power because of the collective prestige of its members. It also controlled the treasury: the Greek historian Polybius noted that, apart from payments to the consuls, quaestors could not spend public money without a decree of the Senate. Cicero the quaestor would have worked inside exactly that rule.\n\nCitizens were also divided into patricians, members of privileged families, and plebeians, the general citizenry. Plebeians were originally excluded from the Senate and from almost all public offices. In a long campaign called the Conflict of the Orders, which lasted until 287 BCE, they withdrew from the state on several occasions to force concessions, elected their own officials called tribunes, and won the inviolability of those tribunes. Polybius observed that if a single tribune interposed, the Senate could not reach a final decision on a matter or even meet.\n\nPolybius admired the result. He argued that the consuls made Rome look monarchical, the Senate aristocratic, and the people democratic, so that even a Roman could not say which the constitution was. But look closely at the voting. In the centuriate assembly, citizens were grouped by wealth, voting started with the wealthier groups, and their votes outweighed those of the poorer. Cicero’s story cuts both ways: a new man could rise, yet the dominant circle of conservative senators never fully accepted him. Whether the Republic was a balance or a system tilted toward the wealthy is a question worth keeping open."
               }
             ],
             "keyFacts": [
-              "Traditional founding of the Republic: about 509 BC.",
-              "Two consuls were elected every year.",
-              "The Senate advised magistrates and shaped finance and foreign policy.",
-              "Tribunes of the plebs protected plebeians.",
-              "The Twelve Tables (c. 450 BC) were Rome's first written law code."
+              "By Roman tradition, the Republic began in 509 BCE, when the last king was overthrown.",
+              "Two consuls were elected every year; a dictator could hold supreme command for no more than six months.",
+              "The cursus honorum was a fixed sequence of offices, and the praetorship became a requirement for the consulship.",
+              "Cicero, a “new man,” was quaestor in 75 BCE, praetor in 66 BCE, and consul in 63 BCE.",
+              "In the centuriate assembly, the wealthier groups voted first and their votes outweighed those of the poorer."
             ],
             "quiz": [
               {
-                "question": "How many consuls were elected each year in the Roman Republic?",
-                "options": ["One", "Two", "Three", "Ten"],
-                "answerIndex": 1
+                "question": "Rome faces a sudden military emergency and wants a single commander in charge. What could it do under the Republic?",
+                "options": [
+                  "Crown a new king for life.",
+                  "Appoint a dictator, whose supreme command could last no more than six months.",
+                  "Let the Senate choose one consul for ten years.",
+                  "Hand command of the army to the tribunes of the plebs."
+                ],
+                "answerIndex": 1,
+                "explanation": "In military emergencies Rome could appoint a dictator in place of the consuls, but only for up to six months."
               },
               {
-                "question": "What was the name of Rome's first written code of law?",
-                "options": ["The Code of Hammurabi", "The Magna Carta", "The Twelve Tables", "The Justinian Code"],
-                "answerIndex": 2
+                "question": "An ambitious Roman wants to run for consul next year but has never served as praetor. What stands in his way?",
+                "options": [
+                  "Consuls were appointed by the outgoing dictator.",
+                  "Only former quaestors of Sicily could become consul.",
+                  "The praetorship had become a requirement for the consulship.",
+                  "The consulship could be held only by members of the Senate’s oldest families."
+                ],
+                "answerIndex": 2,
+                "explanation": "Laws regulating the cursus honorum made the praetorship a prerequisite for the consulship."
               },
               {
-                "question": "Which officials were created to protect the plebeians?",
-                "options": ["Tribunes of the plebs", "Censors", "Augurs", "Praetorian prefects"],
-                "answerIndex": 0
+                "question": "What does Cicero’s path from quaestor to consul suggest about Roman politics?",
+                "options": [
+                  "A man without noble ancestry could rise by winning elections, though the elite never fully accepted him.",
+                  "Offices were inherited from father to son.",
+                  "Consuls were chosen by drawing lots.",
+                  "Only patricians could hold any office at all."
+                ],
+                "answerIndex": 0,
+                "explanation": "Cicero was a “new man” who climbed office by office to the consulship, yet the dominant circle of conservative senators never fully accepted him."
               },
               {
-                "question": "For how long could a Roman dictator normally hold power?",
-                "options": ["For life", "Ten years", "Five years", "Up to six months"],
-                "answerIndex": 3
+                "question": "The Senate is about to decide a matter when a tribune of the plebs interposes. According to Polybius, what happens?",
+                "options": [
+                  "The matter automatically becomes law.",
+                  "The tribune immediately becomes consul.",
+                  "The consuls remove the tribune from office.",
+                  "The Senate cannot reach a final decision on the matter."
+                ],
+                "answerIndex": 3,
+                "explanation": "Polybius wrote that if a single tribune interposed, the Senate could not decide finally about any matter, or even meet."
+              },
+              {
+                "question": "Poorer citizens greatly outnumber the wealthy in the centuriate assembly. Why might the wealthy still decide an election?",
+                "options": [
+                  "Poorer citizens were barred from attending.",
+                  "Citizens voted in groups by wealth, the wealthier groups voted first, and their votes outweighed the poorer.",
+                  "The Senate counted the votes in secret.",
+                  "Only the consuls were allowed to vote."
+                ],
+                "answerIndex": 1,
+                "explanation": "The centuriate assembly grouped citizens by wealth, and the wealthier centuries voted first with votes that outweighed the poorer ones."
+              },
+              {
+                "question": "A friend says, “The Senate only gave advice, so it had little real power.” What is the best response?",
+                "options": [
+                  "That is right; the magistrates usually ignored it.",
+                  "The Senate was the only body the people elected directly.",
+                  "In theory it only advised, but its prestige gave it enormous power, and it controlled public spending.",
+                  "The Senate replaced the consuls after 509 BCE."
+                ],
+                "answerIndex": 2,
+                "explanation": "The Senate’s role was advisory in theory, but its members’ collective prestige gave it great power, and Polybius notes its control of the treasury."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Roman Republic",
+                "url": "https://www.britannica.com/place/Roman-Republic",
+                "note": "Traditional 509 BCE founding, the two annually elected consuls, the six-month dictatorship, the Senate’s role, and the two popular assemblies."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Cicero",
+                "url": "https://www.britannica.com/biography/Cicero",
+                "note": "Cicero’s birth at Arpinum, his offices as quaestor, praetor, and consul, his status as a “new man,” and his relationship with the Optimates."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Cursus honorum",
+                "url": "https://www.britannica.com/topic/cursus-honorum",
+                "note": "The sequence of offices and the laws making the praetorship a prerequisite for the consulship."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Comitia Centuriata",
+                "url": "https://www.britannica.com/topic/Comitia-Centuriata",
+                "note": "Organization of the centuriate assembly by wealth and the weighting of its votes."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Plebeian",
+                "url": "https://www.britannica.com/topic/plebeian",
+                "note": "Patricians and plebeians, the Conflict of the Orders, secessions, and the plebeian tribunes."
+              },
+              {
+                "publisher": "LacusCurtius, University of Chicago",
+                "title": "Polybius, The Histories, Book VI",
+                "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/6*.html",
+                "note": "Primary source (Loeb translation) on the mixed constitution, the Senate’s control of the treasury, and the tribunes’ power to block the Senate."
               }
             ]
           }
@@ -73,45 +157,135 @@
             "title": "1789: The Revolution Begins",
             "sections": [
               {
-                "heading": "A kingdom in crisis",
-                "body": "By the late 1780s the French monarchy under King Louis XVI was deeply in debt, partly from costly wars, including its support for the American Revolution. To deal with the crisis, the king summoned the Estates-General, an assembly representing the clergy (First Estate), the nobility (Second Estate) and everyone else (Third Estate). It met in May 1789 for the first time since 1614."
+                "heading": "A kingdom that couldn’t pay its bills",
+                "body": "Picture a government that has been spending far more than it takes in, year after year, and covering the gap by borrowing. That was the French monarchy in the 1780s, partly because of the long, costly wars of the eighteenth century. Then the borrowing dried up. Historians still argue about exactly why, but the result was clear: mounting debt pushed the monarchy toward fundamental financial change.\n\nIn 1787 the royal government proposed major reforms to taxation and spending. They met furious resistance from a special Assembly of Notables and from the king’s own law courts, especially the Parlement of Paris. These bodies insisted on an old tradition: the French people had once consented to royal decrees through a representative body called the Estates-General. It had not met since 1614, but many saw it as the only national body with the authority to approve reforms and new taxes. Facing imminent bankruptcy, Louis XVI called it in the fall of 1788.\n\nNow meet the person whose ideas will run through this whole lesson. Emmanuel-Joseph Sieyès was a churchman and constitutional theorist. In January 1789 he wrote a pamphlet called What Is the Third Estate?, arguing that the unprivileged Third Estate, everyone outside the clergy and the nobility, was the French nation itself. In an 1899 English translation, his answer to his own title question is blunt: “Everything; but an everything shackled and oppressed.”"
               },
               {
-                "heading": "The National Assembly",
-                "body": "Representatives of the Third Estate objected to voting rules that let the two privileged orders outvote them. In June 1789 they declared themselves the National Assembly. Locked out of their usual hall, they gathered at a nearby indoor tennis court and swore the Tennis Court Oath, promising not to separate until France had a constitution."
+                "heading": "The fight over how to count votes",
+                "body": "Here is the problem Sieyès was attacking. Traditionally, the Estates-General had three estates, the clergy, the nobility, and the commons, each with the same number of deputies and a single vote. Under that arrangement the nobility always dominated, because the clerical deputies included a majority of nobles. Leading nobles wanted to keep this “voting by order,” and many commoners reacted angrily. If you were a Third Estate deputy, you could do the math: two votes against one, every time.\n\nThe pamphlet made Sieyès immensely popular and ensured his election to the Estates-General, which convened on May 5, 1789. Divisions between noble and commoner deputies only deepened. On June 17, on Sieyès’s motion, the deputies of the Third Estate proclaimed themselves a National Assembly, claiming that they alone represented the nation. It was a radical departure that struck directly at the political basis of the monarchy.\n\nThree days later, on June 20, the deputies found themselves locked out of their usual meeting hall at Versailles. Thinking the king meant to force them to disband, they moved to a nearby indoor tennis court and swore never to separate until a written constitution had been established for France. Louis XVI wavered. He refused to recognize the “National Assembly,” yet he also agreed to become a constitutional monarch, a pattern of ambivalence that would continue."
               },
               {
-                "heading": "The Bastille and the rights of man",
-                "body": "On 14 July 1789 crowds in Paris stormed the Bastille, a royal fortress and prison, a day still celebrated as France's national holiday. In August 1789 the Assembly adopted the Declaration of the Rights of Man and of the Citizen, which proclaimed that men are born and remain free and equal in rights."
+                "heading": "Paris, the countryside, and a declaration of rights",
+                "body": "By mid-July, Paris was tense. The deputies at Versailles had been thwarted by the king, and on July 12 Parisians learned that the popular finance minister Jacques Necker had been dismissed. On July 14 a crowd swarmed the Bastille, a medieval royal fortress looming over the workers’ neighborhoods, and took it. Was this a deliberate political act to protect the deputies from royal interference, or a large-scale bread riot that took on political meaning as events unfolded? Bread prices were rising sharply, and historians still debate the question.\n\nThe upheaval spread to the countryside. When peasants heard about the Bastille, rumors also circulated of armed “brigands” coming to burn fields and attack villages. Driven by what became known as the Great Fear, peasants formed armed groups to defend their villages. The National Assembly, feeling pressure to stay ahead of events, responded with the decrees of August 4, announcing the “abolition of feudalism.” They were a first step toward dismantling the old regime’s system of privileges.\n\nOn August 26, 1789, the National Assembly approved the Declaration of the Rights of Man and of the Citizen. Its first article states that men are born and remain free and equal in rights, and that social distinctions may be founded only upon the general good. You can hear Sieyès’s argument in it: privilege has to justify itself. On October 5–6, with bread prices at their highest level of the century, a crowd of women marched from Paris to Versailles and forced the royal family back to Paris. Soon afterward Louis consented to sign the Declaration."
               }
             ],
             "keyFacts": [
-              "The Estates-General met in May 1789, for the first time since 1614.",
-              "The Third Estate declared itself the National Assembly in June 1789.",
-              "The Tennis Court Oath promised a constitution for France.",
-              "The Bastille was stormed on 14 July 1789.",
-              "The Declaration of the Rights of Man and of the Citizen was adopted in August 1789."
+              "The Estates-General had not met since 1614; it convened on May 5, 1789.",
+              "Under “voting by order,” each of the three estates had a single vote.",
+              "On June 17, 1789, on Sieyès’s motion, the Third Estate proclaimed itself the National Assembly.",
+              "Crowds took the Bastille on July 14, 1789.",
+              "The Declaration of the Rights of Man and of the Citizen was approved on August 26, 1789."
             ],
             "quiz": [
               {
-                "question": "Who was King of France when the Revolution began in 1789?",
-                "options": ["Louis XIV", "Louis XVI", "Napoleon Bonaparte", "Henry IV"],
-                "answerIndex": 1
+                "question": "Under “voting by order,” the clergy and the nobility support a proposal and the Third Estate opposes it. What happens?",
+                "options": [
+                  "The proposal passes, two votes to one.",
+                  "The proposal fails, because the Third Estate had the most deputies.",
+                  "The king must break the tie.",
+                  "Each deputy votes individually, so the outcome is uncertain."
+                ],
+                "answerIndex": 0,
+                "explanation": "Each estate had a single vote, so the two privileged orders could outvote the Third Estate every time."
               },
               {
-                "question": "On what date was the Bastille stormed?",
-                "options": ["14 July 1789", "4 July 1776", "1 January 1800", "11 November 1918"],
-                "answerIndex": 0
+                "question": "Sieyès argued that the Third Estate was the whole nation. Which event in 1789 put that idea into action?",
+                "options": [
+                  "Louis XVI calling the Estates-General in 1788.",
+                  "The Third Estate proclaiming itself the National Assembly on June 17.",
+                  "The Assembly of Notables resisting reform in 1787.",
+                  "The women’s march to Versailles in October."
+                ],
+                "answerIndex": 1,
+                "explanation": "On Sieyès’s motion, the Third Estate deputies declared that they alone represented the nation and formed the National Assembly."
               },
               {
-                "question": "Which group declared itself the National Assembly in June 1789?",
-                "options": ["The clergy", "The nobility", "The royal army", "Representatives of the Third Estate"],
-                "answerIndex": 3
+                "question": "Imagine you are one of the deputies taking the Tennis Court Oath. What are you promising?",
+                "options": [
+                  "To restore voting by order.",
+                  "To leave Versailles and return home.",
+                  "Never to separate until France has a written constitution.",
+                  "To give the king full control of taxation."
+                ],
+                "answerIndex": 2,
+                "explanation": "Locked out of their hall on June 20, the deputies swore never to separate until a written constitution had been established."
               },
               {
-                "question": "What did the deputies promise in the Tennis Court Oath?",
-                "options": ["To restore the king's full powers", "To declare war on Austria", "Not to separate until France had a constitution", "To abolish the Catholic Church"],
-                "answerIndex": 2
+                "question": "A historian notes that bread prices in Paris were rising sharply in July 1789. Which interpretation of the taking of the Bastille does this evidence support?",
+                "options": [
+                  "The attack was planned by royal troops.",
+                  "The Bastille was taken to celebrate the Declaration of Rights.",
+                  "Nobles organized the crowd to defend voting by order.",
+                  "The crowd may have begun with a bread riot that took on political meaning as events unfolded."
+                ],
+                "answerIndex": 3,
+                "explanation": "Historians debate whether the crowd acted to protect the deputies or engaged in a traditional bread riot that became political; rising bread prices support the second view."
+              },
+              {
+                "question": "Peasants hear rumors that “brigands” are coming to burn their crops, and they arm themselves. How did the National Assembly respond to movements like this?",
+                "options": [
+                  "With the decrees of August 4, announcing the abolition of feudalism.",
+                  "By recalling the Assembly of Notables.",
+                  "By restoring the old voting rules.",
+                  "By moving the Assembly back to the tennis court."
+                ],
+                "answerIndex": 0,
+                "explanation": "Feeling pressure from the Great Fear in the countryside, the Assembly announced the abolition of feudalism on August 4."
+              },
+              {
+                "question": "Why did Louis XVI end up calling the Estates-General at all?",
+                "options": [
+                  "Because the Third Estate had already declared a republic.",
+                  "Because bankruptcy loomed and powerful bodies insisted only the Estates-General could approve reforms and new taxes.",
+                  "Because it met every year by law.",
+                  "Because Sieyès’s pamphlet ordered him to."
+                ],
+                "answerIndex": 1,
+                "explanation": "Mounting debt and resistance from the Notables and the Parlement, who looked to the Estates-General, forced the king to call it in 1788."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Liberty, Equality, Fraternity (George Mason University & CUNY)",
+                "title": "Monarchy Falls",
+                "url": "https://revolution.chnm.org/exhibits/show/liberty--equality--fraternity/monarchy-falls",
+                "note": "The debt crisis, the 1787 reforms, the Estates-General and voting by order, June 17, the Tennis Court Oath, and the October 5–6 march."
+              },
+              {
+                "publisher": "Liberty, Equality, Fraternity (George Mason University & CUNY)",
+                "title": "Paris and the Politics of Rebellion",
+                "url": "https://revolution.chnm.org/exhibits/show/liberty--equality--fraternity/paris-and-the-politics-of-rebe",
+                "note": "Necker’s dismissal, the taking of the Bastille and the debate over its motives, and the king’s signing of the Declaration."
+              },
+              {
+                "publisher": "Liberty, Equality, Fraternity (George Mason University & CUNY)",
+                "title": "Social Causes of the Revolution",
+                "url": "https://revolution.chnm.org/exhibits/show/liberty--equality--fraternity/social-causes-of-revolution",
+                "note": "The Great Fear and the August 4 decrees."
+              },
+              {
+                "publisher": "Liberty, Equality, Fraternity (George Mason University & CUNY)",
+                "title": "“What Is the Third Estate?” by Emmanuel Sieyès",
+                "url": "https://revolution.chnm.org/exhibits/show/liberty--equality--fraternity/item/485",
+                "note": "Primary source in an 1899 English translation (University of Pennsylvania Press); the quoted line comes from this text."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Emmanuel-Joseph Sieyès",
+                "url": "https://www.britannica.com/biography/Emmanuel-Joseph-Sieyes",
+                "note": "The pamphlet’s date and argument, the May 5 opening of the Estates-General, and Sieyès’s June 17 motion."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Tennis Court Oath",
+                "url": "https://www.britannica.com/event/Tennis-Court-Oath",
+                "note": "The June 20, 1789 oath and its circumstances."
+              },
+              {
+                "publisher": "Avalon Project, Yale Law School",
+                "title": "Declaration of the Rights of Man - 1789",
+                "url": "https://avalon.law.yale.edu/18th_century/rightsof.asp",
+                "note": "Text of the Declaration and its August 26, 1789 approval date."
               }
             ]
           },
@@ -121,45 +295,123 @@
             "title": "Republic and Terror",
             "sections": [
               {
-                "heading": "The end of the monarchy",
-                "body": "Tensions between the king and the revolutionaries grew, especially after the royal family's failed attempt to flee in 1791. In September 1792 the monarchy was abolished and France was proclaimed a republic. Louis XVI was put on trial and executed by guillotine in January 1793."
+                "heading": "From king to citizen",
+                "body": "In 1789 Maximilien Robespierre, born in Arras in 1758, was elected to represent the Third Estate of Artois in the Estates-General. From the very beginning he spoke for popular causes, and admirers called him “the Incorruptible.” Keep him in view throughout this lesson. His path shows how a revolution that began by limiting a king ended by executing one, and then turned on its own leaders.\n\nAt first, almost no one imagined France without a king. That changed fast. In June 1791 the royal family fled Paris in disguise, but the king was recognized and arrested at Varennes. A majority of the Assembly accepted his weak excuse, fearing that punishing him would destabilize the country. Then came war: in April 1792 the Girondin leaders of the new Legislative Assembly declared war on Austria, and early French defeats panicked Paris.\n\nOn August 10, 1792, Parisian militants known as sans-culottes invaded the Tuileries Palace and effectively deposed the king. A new National Convention met in September and, after news of the first great French victory at Valmy, declared France a republic. In December the Convention began Louis’s trial; it voted unanimously to convict him of treason and sentenced him to death. He was executed by guillotine in January 1793 before tens of thousands of onlookers."
               },
               {
-                "heading": "The Reign of Terror",
-                "body": "Facing foreign war and revolts at home, the revolutionary government gave sweeping powers to the Committee of Public Safety, in which Maximilien Robespierre was a leading figure. During the Reign of Terror of 1793-1794, thousands of people suspected of opposing the Revolution were executed. In July 1794 Robespierre himself was overthrown and executed, and the Terror came to an end."
+                "heading": "Government by Terror",
+                "body": "Governing in wartime through a quarrelsome legislature of some 600 members proved nearly impossible. So in the spring of 1793 the Convention handed power to a twelve-member Committee of Public Safety. Pressure was coming from every side: foreign war, a peasant revolt in the Vendée sparked by a call for 300,000 army “volunteers,” and revolts in cities that rejected rule from Paris. On July 27, 1793, Robespierre took his seat on the Committee, and in the following months he came to dominate it.\n\nIn early September 1793, pushed by the sans-culottes, the Committee led the Convention into what became known as the Terror. Britannica dates it from September 5, 1793, to July 27, 1794. In practice it meant the organized use of state power to force compliance: revolutionary tribunals tried “suspects” for treason and sent those convicted to the guillotine. The Terror also enforced price controls known as the maximum, and pursued vaguer aims such as ensuring the “virtue” of all citizens.\n\nThe scale was enormous. About 300,000 people were arrested, and 17,000 of them were tried and executed. As many as 23,000 more were killed without trial or died in prison. Deputies sent out as “representatives on mission” often became the most zealous enforcers; at Nantes, one ordered thousands of rebels drowned in the Loire. By the end of 1793 even radical Jacobins such as Georges Danton argued that the violence had gone too far."
               },
               {
-                "heading": "Toward Napoleon",
-                "body": "A new government called the Directory ruled France from 1795, but it was unstable. In November 1799 the general Napoleon Bonaparte seized power in a coup, an event usually taken as the end of the revolutionary decade."
+                "heading": "The fall of the Incorruptible",
+                "body": "In June 1794 Robespierre staged the Festival of the Supreme Being, an attempt at a civic religion, with himself in the leading role. Two days later he pushed through the Law of 22 Prairial (June 10, 1794), which put the machinery of the Terror directly under the Committee’s control and made openly political prosecutions easier. He defended it as a way to instill virtue, but many deputies concluded that he wanted to eliminate his opponents and rule alone.\n\nIn late July 1794, in the coup known by its revolutionary calendar date, 9 Thermidor, Robespierre and a number of his followers were arrested at the Hôtel de Ville in Paris. He was executed on July 28. Notice the motive: the men who brought him down acted mainly to save themselves from the Terror, not to end it. Only over the following months were the Law of 22 Prairial repealed, the revolutionary tribunals abolished, and the price controls abandoned.\n\nHistorians still disagree about what the Terror means. Some argue it grew out of 1789 itself, whether as the necessary sweeping away of the old regime or because the revolutionaries had unknowingly built authoritarianism into their democratic principles. Others see a revolution swept off course by war, revolt, and economic crisis. The revolutionary decade ended with a twist: in November 1799 Sieyès, the author of What Is the Third Estate?, helped arrange the coup that brought General Napoleon Bonaparte to power."
               }
             ],
             "keyFacts": [
-              "France was proclaimed a republic in September 1792.",
-              "Louis XVI was executed in January 1793.",
-              "The Committee of Public Safety led the Reign of Terror (1793-1794).",
-              "Robespierre was executed in July 1794.",
-              "Napoleon Bonaparte seized power in a coup in 1799."
+              "France was declared a republic in September 1792, and Louis XVI was executed in January 1793.",
+              "The twelve-member Committee of Public Safety was created in spring 1793; Robespierre joined it in July 1793.",
+              "Britannica dates the Reign of Terror from September 5, 1793, to July 27, 1794.",
+              "About 17,000 people were tried and executed; as many as 23,000 more died without trial or in prison.",
+              "Robespierre was arrested on July 27, 1794, and executed the next day."
             ],
             "quiz": [
               {
-                "question": "In which year was France first proclaimed a republic?",
-                "options": ["1789", "1792", "1804", "1815"],
-                "answerIndex": 1
+                "question": "In late 1793 a shopkeeper is accused of being an enemy of the Revolution. Which institution would most likely try them?",
+                "options": [
+                  "The Estates-General.",
+                  "The Directory.",
+                  "A revolutionary tribunal.",
+                  "The Parlement of Paris."
+                ],
+                "answerIndex": 2,
+                "explanation": "During the Terror, revolutionary tribunals tried “suspects” for treason and sent those convicted to the guillotine."
               },
               {
-                "question": "Which body held sweeping powers during the Reign of Terror?",
-                "options": ["The Estates-General", "The Roman Senate", "The Committee of Public Safety", "The House of Lords"],
-                "answerIndex": 2
+                "question": "Why did the Law of 22 Prairial alarm many deputies in June 1794?",
+                "options": [
+                  "It abolished the Committee of Public Safety.",
+                  "It put the Terror under the Committee’s direct control, making political prosecutions easier.",
+                  "It restored the monarchy.",
+                  "It ended the war with Austria."
+                ],
+                "answerIndex": 1,
+                "explanation": "The law concentrated the Terror’s machinery in the Committee, and many feared Robespierre would use it against his opponents."
               },
               {
-                "question": "Which leading figure of the Terror was himself executed in July 1794?",
-                "options": ["Maximilien Robespierre", "Napoleon Bonaparte", "Louis XVIII", "Charles de Gaulle"],
-                "answerIndex": 0
+                "question": "What mainly motivated the deputies who overthrew Robespierre in July 1794?",
+                "options": [
+                  "A plan to restore Louis XVI’s family to the throne.",
+                  "Orders from the Austrian emperor.",
+                  "A wish to make Robespierre king.",
+                  "Saving themselves from the Terror."
+                ],
+                "answerIndex": 3,
+                "explanation": "The coup leaders acted to protect themselves; dismantling the Terror’s institutions took several more months."
               },
               {
-                "question": "Who seized power in a coup in 1799?",
-                "options": ["Louis XVI", "Robespierre", "Marie Antoinette", "Napoleon Bonaparte"],
-                "answerIndex": 3
+                "question": "A historian argues that war, regional revolts, and economic hardship drove France into the Terror. Which interpretation is this?",
+                "options": [
+                  "The Revolution was swept off course by circumstances.",
+                  "The Terror was the unavoidable product of 1789’s principles.",
+                  "The Terror never really happened.",
+                  "The Terror was organized by foreign kings."
+                ],
+                "answerIndex": 0,
+                "explanation": "One school sees the Terror as unconnected to 1789 and caused by the crises of the moment; the other links it to the Revolution’s own principles."
+              },
+              {
+                "question": "Which statement best describes the scale of the Terror according to Britannica?",
+                "options": [
+                  "Only the king and queen were executed.",
+                  "About 300,000 people were executed in Paris alone.",
+                  "About 17,000 people were tried and executed, and up to 23,000 more died without trial or in prison.",
+                  "No one was executed outside Paris."
+                ],
+                "answerIndex": 2,
+                "explanation": "About 300,000 were arrested; 17,000 were tried and executed; as many as 23,000 more were killed without trial or died in prison."
+              },
+              {
+                "question": "Why did the Convention hand power to a twelve-member committee in 1793?",
+                "options": [
+                  "The king appointed the committee before his execution.",
+                  "A divided legislature of some 600 members found it nearly impossible to govern in wartime.",
+                  "The constitution required a committee in every republic.",
+                  "The sans-culottes had abolished the Convention."
+                ],
+                "answerIndex": 1,
+                "explanation": "Faced with war and revolt, the faction-ridden Convention delegated power to the Committee of Public Safety."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Liberty, Equality, Fraternity (George Mason University & CUNY)",
+                "title": "Monarchy Falls",
+                "url": "https://revolution.chnm.org/exhibits/show/liberty--equality--fraternity/monarchy-falls",
+                "note": "The flight to Varennes, the declaration of war, August 10, 1792, and the trial and execution of Louis XVI."
+              },
+              {
+                "publisher": "Liberty, Equality, Fraternity (George Mason University & CUNY)",
+                "title": "War, Terror, and Resistance to the Revolution",
+                "url": "https://revolution.chnm.org/exhibits/show/liberty--equality--fraternity/war-terror-and-resistance",
+                "note": "Valmy and the republic, the Committee of Public Safety, the Vendée, how the Terror worked, the Law of 22 Prairial, 9 Thermidor, the historians’ debate, and the 1799 coup."
+              },
+              {
+                "publisher": "Liberty, Equality, Fraternity (George Mason University & CUNY)",
+                "title": "Paris and the Politics of Rebellion",
+                "url": "https://revolution.chnm.org/exhibits/show/liberty--equality--fraternity/paris-and-the-politics-of-rebe",
+                "note": "Robespierre as “the Incorruptible” and his early support for popular causes."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Reign of Terror",
+                "url": "https://www.britannica.com/event/Reign-of-Terror",
+                "note": "Dates of the Terror, arrest and execution figures, and the maximum."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Maximilien Robespierre",
+                "url": "https://www.britannica.com/biography/Maximilien-Robespierre",
+                "note": "Birth in Arras in 1758, election to the Estates-General, joining the Committee on July 27, 1793, arrest on July 27, 1794, and death on July 28, 1794."
               }
             ]
           }
@@ -185,45 +437,105 @@
             "title": "Socrates and the Examined Life",
             "sections": [
               {
-                "heading": "A philosopher who wrote nothing",
-                "body": "Socrates lived in Athens in the 5th century BC. He wrote no books. What we know of him comes mainly from others, above all his student Plato, whose dialogues feature Socrates as the main speaker, and the writer Xenophon. The playwright Aristophanes also mocked him in his comedy The Clouds."
+                "heading": "A philosopher who left no books",
+                "body": "Socrates, who lived from 469 to 399 BCE, shaped Western philosophy so deeply that it is hard to imagine its history without him. Here is the surprise: he never wrote anything down. He spent his days in the agora, the Athenian marketplace, asking questions of anyone who would talk with him. Everything we know about his ideas comes from people who knew him or wrote about him.\n\nThose sources do not agree. The comic playwright Aristophanes mocked him in Clouds (423 BCE) as a dangerous intellectual who could corrupt the whole city. Xenophon, who knew him, stresses his self-mastery and moderation. Plato, his most famous follower, made him the main speaker in many dialogues and remains our principal source. Working out which portrait is accurate is called the Socratic problem, and some scholars think finding the “real” Socrates is impossible.\n\nSo let one scene from Plato carry you through this lesson. In 399 BCE Socrates, then about seventy, walks to the stoa of the king archon, an Athenian official, for a preliminary hearing on a charge brought by a young poet named Meletus. On the way he falls into conversation with Euthyphro, a diviner he knows, about what piety, or reverence, really is. Plato’s dialogue Euthyphro records that conversation, and it shows you Socrates’ method, his mission, and the danger he was in."
               },
               {
-                "heading": "The Socratic method",
-                "body": "Socrates spent his time in conversation with fellow Athenians, asking them to define ideas such as justice, courage or piety. By asking a series of questions he showed that their answers were often confused or contradictory. This style of questioning to test beliefs is known as the Socratic method. Socrates claimed that his only wisdom was knowing that he did not know."
+                "heading": "Asking “What is it?”",
+                "body": "Socrates typically opened with a deceptively simple question: what is it? What is courage, what is justice, what is piety? In Plato’s dialogue, Euthyphro offers five separate answers. Piety is prosecuting whoever does wrong. Piety is what the gods love. Piety is what all the gods love. Piety is the part of justice concerned with caring for the gods. Piety is knowing how to sacrifice and pray. Socrates tests and refutes each one.\n\nThis kind of cross-examination is called the elenchus. Socrates takes what someone says, asks further questions, and shows that the answer clashes with other things the person believes. Scholars disagree about what the elenchus can actually prove. If it only reveals that someone’s beliefs are inconsistent, how can Socrates conclude that a particular claim is false? Some argue it can establish positive results; others think its job is to expose confusion and improve the person being questioned.\n\nWhy spend his life this way? In Plato’s Apology, Socrates explains that his friend Chaerephon asked the oracle at Delphi whether anyone was wiser than Socrates, and was told no one was. Puzzled, Socrates questioned politicians, poets, and craftsmen, and found that each believed he knew more than he did. Socrates concluded he was better off only because he was aware of his own ignorance. Notice that this is not a claim to know nothing; he held firm convictions, such as that it is never just to harm anyone, while admitting he could not fully explain them."
               },
               {
-                "heading": "Trial and death",
-                "body": "In 399 BC Socrates was put on trial in Athens, charged with impiety and with corrupting the young. He was found guilty and sentenced to death, and he died by drinking poison hemlock. In Plato's account of his defence speech, the Apology, Socrates says that the unexamined life is not worth living."
+                "heading": "On trial for impiety",
+                "body": "The formal charge, as later reported by Diogenes Laertius, was that Socrates did not recognize the gods the city recognized, introduced new divinities, and corrupted the young. Socrates said he heard an inner sign or voice, his daimonion, that warned him away from certain actions, and it seems to have fed the charge about new gods. Here is the irony: Athens had no legal definition of piety. The jurors were in the same position as Euthyphro, needing to know what piety is before judging anyone guilty of lacking it.\n\nReligion was not the whole story, and this part is a matter of interpretation. Athens had just endured the long Peloponnesian War against Sparta (431–404 BCE), and several of Socrates’ associates, including Alcibiades, were seen as sympathetic to Sparta or as traitors. Many Athenians viewed Socrates as a threat to their democracy, and that suspicion contributed to his conviction. Because of an amnesty after the war, the charges themselves were framed in religious terms.\n\nSocrates was convicted and sentenced to death. In Plato’s Apology he tells the jury that he could never keep silent, because “the unexamined life is not worth living for human beings.” He compares himself to a gadfly stinging a sluggish horse, a city that needs to be roused to examine itself. He died after drinking hemlock. The conversation with Euthyphro never reached a definition of piety, but that was never quite the point: it showed how much people claim to know without having examined it."
               }
             ],
             "keyFacts": [
-              "Socrates lived in Athens in the 5th century BC.",
-              "He wrote nothing; our main source is his student Plato.",
-              "The Socratic method tests beliefs through questioning.",
-              "He was tried in 399 BC for impiety and corrupting the young.",
-              "He died by drinking hemlock."
+              "Socrates lived from 469 to 399 BCE and wrote nothing himself.",
+              "Our main sources are Aristophanes, Xenophon, and above all Plato.",
+              "The elenchus is Socrates’ method of cross-examining a claim and refuting it.",
+              "He was charged with not recognizing the city’s gods, introducing new divinities, and corrupting the young.",
+              "In Plato’s Apology he says the unexamined life is not worth living."
             ],
             "quiz": [
               {
-                "question": "Which student of Socrates is our main source for his ideas?",
-                "options": ["Aristotle", "Plato", "Alexander the Great", "Epicurus"],
-                "answerIndex": 1
+                "question": "A friend confidently defines courage. You ask a few more questions and show that the definition contradicts other things your friend believes. What method are you using?",
+                "options": [
+                  "The elenchus.",
+                  "Stoic indifference.",
+                  "The Socratic problem.",
+                  "Divination."
+                ],
+                "answerIndex": 0,
+                "explanation": "The elenchus tests what someone says through cross-examination and refutes it, often by exposing inconsistency."
               },
               {
-                "question": "In which city did Socrates live?",
-                "options": ["Sparta", "Rome", "Alexandria", "Athens"],
-                "answerIndex": 3
+                "question": "A historian notices that Aristophanes, Xenophon, and Plato give conflicting portraits of Socrates. What name do scholars give this difficulty?",
+                "options": [
+                  "The Euthyphro dilemma.",
+                  "The Socratic problem.",
+                  "Double ignorance.",
+                  "The amnesty problem."
+                ],
+                "answerIndex": 1,
+                "explanation": "Because Socrates wrote nothing and the sources disagree, reconstructing the real Socrates is known as the Socratic problem."
               },
               {
-                "question": "What were the charges against Socrates at his trial?",
-                "options": ["Impiety and corrupting the young", "Treason and theft", "Murder and arson", "Tax evasion and bribery"],
-                "answerIndex": 0
+                "question": "In Plato’s Euthyphro, what happens to Euthyphro’s definitions of piety?",
+                "options": [
+                  "Socrates accepts the first one.",
+                  "They consult the oracle to decide.",
+                  "Socrates tests and refutes each one.",
+                  "Euthyphro persuades Socrates to drop the question."
+                ],
+                "answerIndex": 2,
+                "explanation": "Euthyphro offers five definitions, and Socrates refutes each in turn without reaching a final answer."
               },
               {
-                "question": "How did Socrates die?",
-                "options": ["In battle", "By drinking hemlock", "In exile from old age", "In a shipwreck"],
-                "answerIndex": 1
+                "question": "Socrates concluded that he was wiser than the craftsmen he questioned. Why?",
+                "options": [
+                  "He knew more about their crafts than they did.",
+                  "The oracle gave him secret knowledge.",
+                  "He had written more books than they had.",
+                  "He was aware of his own ignorance, while they believed they knew more than they did."
+                ],
+                "answerIndex": 3,
+                "explanation": "Socratic wisdom is awareness of one’s own lack of knowledge, in contrast to people who think they know what they do not."
+              },
+              {
+                "question": "A juror in 399 BCE must decide whether Socrates is impious, but Athens has no legal definition of piety. How does this situation echo the Euthyphro?",
+                "options": [
+                  "Like Euthyphro, the jurors need to know what piety is before they can judge it.",
+                  "It shows that piety was precisely defined in Athenian law.",
+                  "It means the trial was about taxes, not religion.",
+                  "It proves Socrates wrote the law himself."
+                ],
+                "answerIndex": 0,
+                "explanation": "Without a legal definition, the jurors faced the same question Socrates pressed on Euthyphro: what is piety?"
+              },
+              {
+                "question": "Why does Socrates call himself a gadfly in Plato’s Apology?",
+                "options": [
+                  "He wanted to escape Athens.",
+                  "He believed the city, like a sluggish horse, needed to be stirred into examining itself.",
+                  "He was mocking Aristophanes’ play.",
+                  "He was asking the jury for a lighter penalty."
+                ],
+                "answerIndex": 1,
+                "explanation": "A gadfly irritates a horse but rouses it to action; Socrates saw his questioning as rousing Athens to self-examination."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Stanford Encyclopedia of Philosophy",
+                "title": "Socrates",
+                "url": "https://plato.stanford.edu/entries/socrates/",
+                "note": "Dates, the three primary sources and the Socratic problem, the Euthyphro setting before the preliminary hearing, Meletus, and the hemlock."
+              },
+              {
+                "publisher": "Internet Encyclopedia of Philosophy",
+                "title": "Socrates",
+                "url": "https://iep.utm.edu/socrates/",
+                "note": "Life and trial, the formal charges, the amnesty and political context, the oracle and Socratic ignorance, Euthyphro’s five definitions, the elenchus debate, the gadfly, and Apology 38a."
               }
             ]
           }
@@ -241,40 +553,111 @@
             "title": "The Origins of Stoicism",
             "sections": [
               {
-                "heading": "Zeno and the painted porch",
-                "body": "Stoicism was founded in Athens around 300 BC by Zeno of Citium. Zeno taught in the Stoa Poikile, the 'painted porch', a public colonnade in the city. The school took its name from this place: Stoics were the people of the stoa."
+                "heading": "A school named after a porch",
+                "body": "Zeno was born around 335 BCE in Citium, on Cyprus, and went to Athens around 312 BCE. There he attended lectures by the Cynic philosopher Crates of Thebes and by Stilpon of Megara, as well as lectures at Plato’s Academy. He was also a voracious reader of the Socratic dialogues. Out of all of that he built his own philosophy.\n\nAround 300 BCE Zeno began teaching in the Stoa Poikile, the “painted porch” or Painted Colonnade, a public space in Athens. The school took its name from the place: Stoics were the people of the stoa. It competed with the school Epicurus had founded in Athens shortly before. After Zeno, the school was led by Cleanthes of Assos and then by Chrysippus of Soli, who headed it from about 230 to 206 BCE and was its foremost theorist and systematizer.\n\nOne caution before going further. Not a single complete work by Zeno, Cleanthes, or Chrysippus survives. Chrysippus is reported to have written more than 150 works, and only fragments remain, so what we know of early Stoicism comes largely from later reports. To test the ideas, keep one situation in mind (a modern teaching example, not an ancient one): you have trained for months for a race, and on the morning of it you sprain your ankle and cannot run."
               },
               {
-                "heading": "Virtue as the only good",
-                "body": "The Stoics taught that virtue, made up of wisdom, justice, courage and moderation, is the only true good. Things like wealth, health and reputation were seen as neither good nor bad in themselves. The goal of life was to live in agreement with nature, using reason."
+                "heading": "The only thing that is truly good",
+                "body": "The Stoics divided philosophy into logic, physics, and ethics and insisted the parts fit together. They compared philosophy to an egg, with logic as the shell, ethics next, and physics innermost, or to a fertile field, where logic is the surrounding wall, physics the land and trees, and ethics the fruit. The point of the comparisons is that the goal of the whole system is ethical: becoming virtuous and living well.\n\nTheir most startling claim was that virtue is the only good. The virtues, such as prudence, justice, courage, and moderation, are good, and their opposites are bad. Everything else, including life, health, pleasure, beauty, strength, wealth, and reputation, is neither good nor bad. The Stoics called these things “indifferent,” because something truly good always benefits you, while wealth and health can harm as easily as they help. Apply that to your ankle: losing the race has not made you a worse person, and your character is still entirely yours.\n\n“Indifferent” does not mean worthless, though. Health and wealth belong to a “preferred” type of indifferent: they have value, and a sensible person generally pursues them. So a Stoic with a sprained ankle still ices it, sees a doctor, and trains for the next race. What changes is how much rides on the outcome. The Stoic goal of life was summed up as “living in agreement with nature,” and for a rational creature that means letting reason, not fortune, steer."
               },
               {
-                "heading": "Later leaders",
-                "body": "After Zeno, the school was led by Cleanthes and then by Chrysippus, who wrote a great deal and gave Stoic teaching much of its systematic form."
+                "heading": "Emotions as judgments, and an objection",
+                "body": "The Stoics defined a passion as an impulse that is excessive and disobedient to reason. They also thought each passion follows an act of assent, so it can be analyzed as a judgment. In the standard case that judgment makes two mistakes: it gives something the wrong value, treating it as genuinely good or bad, and it decides that a particular reaction is called for. Picture the thought “This is a disaster and I should give up running.” A Stoic would ask you to examine both parts of it.\n\nThat is why the Stoics could make two of their most controversial claims: that happiness is fully in our power, and that the virtuous person feels no passions at all. If virtue is a kind of knowledge, and knowledge depends on what we assent to, then virtue, and with it happiness, is up to us. Notice how demanding this is. It is not advice to hide your feelings but a claim that, rightly understood, the injury never gave you a reason for despair.\n\nNot everyone was convinced, and the disagreement is still debated. Philosophers in Plato’s Academy and Aristotle’s school objected that a terminally ill patient, wracked with pain, impoverished, and despised by everyone, cannot be happy even if virtuous. For them, virtue is necessary for happiness but not enough on its own. The Stoics rejected that view. Your ankle makes the Stoic answer easy to accept; the terminal illness case makes it much harder. Where you land is a good test of how far you would follow Zeno."
               }
             ],
             "keyFacts": [
-              "Founded in Athens around 300 BC by Zeno of Citium.",
-              "Named after the Stoa Poikile, the 'painted porch'.",
-              "Virtue is the only true good.",
-              "The goal is to live in agreement with nature through reason.",
-              "Cleanthes and Chrysippus led the school after Zeno."
+              "Zeno of Citium founded the Stoic school in Athens around 300 BCE.",
+              "The name comes from the Stoa Poikile, the painted porch where Zeno taught.",
+              "Cleanthes and then Chrysippus led the school after Zeno; no complete work by any of the three survives.",
+              "The Stoics held that virtue is the only good, and that health and wealth are “indifferents.”",
+              "The Stoic goal of life was “living in agreement with nature.”"
             ],
             "quiz": [
               {
-                "question": "Who founded Stoicism?",
-                "options": ["Socrates", "Zeno of Citium", "Marcus Aurelius", "Pythagoras"],
-                "answerIndex": 1
+                "question": "An early Stoic loses her savings in a market crash. How would early Stoic ethics classify wealth?",
+                "options": [
+                  "As the highest good.",
+                  "As something evil that must be avoided.",
+                  "As an indifferent: neither good nor bad in itself.",
+                  "As a virtue, like courage."
+                ],
+                "answerIndex": 2,
+                "explanation": "The Stoics counted wealth among the indifferents, which can harm as easily as they benefit."
               },
               {
-                "question": "Where does the name 'Stoicism' come from?",
-                "options": ["A Roman emperor named Stoicus", "A Greek word for 'calm'", "The Stoa Poikile, a painted porch in Athens", "A mountain in Macedonia"],
-                "answerIndex": 2
+                "question": "Should that Stoic try to rebuild her savings?",
+                "options": [
+                  "Yes, because wealth is a preferred indifferent with value, even though it is not truly good.",
+                  "No, because indifferents are completely worthless.",
+                  "Yes, because wealth is the only good.",
+                  "No, because the Stoics required everyone to live in poverty."
+                ],
+                "answerIndex": 0,
+                "explanation": "Preferred indifferents such as health and wealth have value, and a sensible person generally pursues them."
               },
               {
-                "question": "According to the Stoics, what is the only true good?",
-                "options": ["Virtue", "Wealth", "Pleasure", "Fame"],
-                "answerIndex": 0
+                "question": "You feel a surge of panic: “This is a catastrophe, and I have to run away.” What would a Stoic analysis say about this reaction?",
+                "options": [
+                  "It is a bodily reflex with no connection to judgment.",
+                  "It is the correct response to a true evil.",
+                  "It proves that happiness is outside our control.",
+                  "It rests on judgments that give the situation the wrong value and call for the wrong response."
+                ],
+                "answerIndex": 3,
+                "explanation": "The Stoics analyzed passions as judgments that typically misjudge value and what reaction is appropriate."
+              },
+              {
+                "question": "A student reads a confident modern summary of Chrysippus’ views. Why should she treat it with some caution?",
+                "options": [
+                  "Chrysippus wrote only one short book.",
+                  "None of his works survives complete; we rely on fragments and later reports.",
+                  "Chrysippus was not a Stoic.",
+                  "His works were written after Marcus Aurelius."
+                ],
+                "answerIndex": 1,
+                "explanation": "Chrysippus reportedly wrote over 150 works, but only fragments remain."
+              },
+              {
+                "question": "A Stoic compares philosophy to a fertile field. What does the fruit stand for?",
+                "options": [
+                  "Ethics.",
+                  "Logic.",
+                  "Physics.",
+                  "Rhetoric."
+                ],
+                "answerIndex": 0,
+                "explanation": "In the field comparison, logic is the wall, physics the land and trees, and ethics the fruit: the goal of the whole system."
+              },
+              {
+                "question": "A critic says, “A virtuous person who is dying in pain, poor, and despised cannot be happy.” Where does this view come from?",
+                "options": [
+                  "It is the official Stoic position.",
+                  "It comes from Zeno’s teacher Crates.",
+                  "It is the Academic and Peripatetic objection, which the Stoics rejected.",
+                  "It is a modern idea with no ancient parallel."
+                ],
+                "answerIndex": 2,
+                "explanation": "Academic and Peripatetic philosophers argued that virtue is necessary but not sufficient for happiness; the Stoics rejected this."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Stanford Encyclopedia of Philosophy",
+                "title": "Stoicism",
+                "url": "https://plato.stanford.edu/entries/stoicism/",
+                "note": "Founding around 300 BCE, Zeno’s influences, the succession, the lost early works, the parts of philosophy and their analogies, indifferents, passions, and the Academic and Peripatetic objection."
+              },
+              {
+                "publisher": "Internet Encyclopedia of Philosophy",
+                "title": "Stoicism",
+                "url": "https://iep.utm.edu/stoicism/",
+                "note": "The Stoa Poikile as the source of the name, and virtue as the only good."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Zeno of Citium",
+                "url": "https://www.britannica.com/biography/Zeno-of-Citium",
+                "note": "Zeno’s dates, arrival in Athens, teachers, and teaching in the Painted Colonnade."
               }
             ]
           },
@@ -284,45 +667,936 @@
             "title": "The Roman Stoics",
             "sections": [
               {
-                "heading": "Seneca",
-                "body": "Seneca the Younger was a Roman statesman, writer and adviser to the emperor Nero. His Letters to Lucilius give practical Stoic advice on facing hardship, using time well and preparing for death."
+                "heading": "Seneca: philosophy close to power",
+                "body": "Stoicism became especially fashionable in the Roman period. The only complete works by Stoic philosophers that survive come from this imperial era, above all from Seneca, Epictetus, and Marcus Aurelius. Follow one thread through all three: the Roman imperial court. Seneca advised an emperor, Epictetus was enslaved to a man who had served one, and Marcus Aurelius was emperor himself.\n\nSeneca was born around 1 BCE in Corduba, in Spain. Exiled by the emperor Claudius, he was recalled in 49 CE with the help of Agrippina, Claudius’s wife, and became tutor to her son, the young Nero. When Nero took power in 54 CE, Seneca was among his advisers. His most widely read work, the Moral Letters to Lucilius, survives as 124 letters in 20 books. In his writings he attacks the ideas that wealth is a good, that death is an evil, and that anger is justified.\n\nThe story ends badly. As Nero matured he relied less on Seneca, and Seneca was eventually named as an associate in the failed Pisonian conspiracy to overthrow him. In 65 CE Nero ordered him to take his own life. His reputation is still debated. Seneca wrote that poverty is no evil while being one of the wealthiest men in the world, and critics since antiquity have called him a hypocrite. Some scholars, notably Emily Wilson, ask a different question: why he preached what he did so forcefully, given the life he led."
               },
               {
-                "heading": "Epictetus",
-                "body": "Epictetus was born a slave and later became a teacher of philosophy. He did not write his teachings down; his student Arrian recorded them in the Discourses and the short handbook known as the Enchiridion. Epictetus stressed the difference between what is up to us, such as our judgements and choices, and what is not, such as other people's actions and the body."
+                "heading": "Epictetus: what is up to us",
+                "body": "Epictetus was born in the 50s CE in Hierapolis, a Greek city in Asia Minor. He spent part of his life enslaved to Epaphroditus, a rich and powerful freedman who had himself been enslaved to Nero and had served as an administrator in Nero’s court. That is the court thread again. Epictetus studied with the Stoic Musonius Rufus, was eventually freed, and began teaching. When the emperor Domitian banished philosophers from Rome (the sources differ on the year), he left and founded a school at Nicopolis in north-western Greece.\n\nWhat we know of his teaching comes through his student Arrian, who recorded it in the Discourses and in a short abridgment called the Encheiridion, or Handbook. Its central idea is a sorting exercise: some things are “in our power” or “up to us,” and some are not. What is up to us is our capacity to judge what is good and bad, our moral character. Health, wealth, status, and how events turn out are “external things,” not fully in our control.\n\nHis own example makes it concrete. Sickness is not in our power, since it is not wholly up to us whether we get sick or recover. It makes sense to see a doctor, but the doctor’s skill and whether the treatment works are not up to us either. What is up to us is how we judge what happens and how we respond to it. Coming from someone who had been enslaved, the claim that no one else is master of your moral character carried real weight."
               },
               {
-                "heading": "Marcus Aurelius",
-                "body": "Marcus Aurelius was Roman emperor from AD 161 to 180. During his reign he wrote private notes to himself, in Greek, that are now known as the Meditations. They record his efforts to live by Stoic principles while carrying the duties of an emperor."
+                "heading": "Marcus Aurelius: notes to himself",
+                "body": "Marcus Aurelius was born in 121 CE and became emperor in 161, at first ruling alongside Lucius Verus and alone from 169, until his death in 180. His reign was troubled by attacks from Germany, rebellions in northern Italy and Egypt, and an outbreak of plague. He spent much of it on military campaigns in central Europe, and that is where the work he is famous for was likely written.\n\nThe Meditations is a personal notebook, probably written on campaign around 171–175 CE. Its entries appear in no particular order, and it was not a treatise meant to argue a doctrine for readers; Marcus wrote it to himself and for his own use. Even its Greek title, usually translated “To Himself,” comes from a manuscript now lost and may have been added later.\n\nHere the court thread closes. In the Meditations Marcus records borrowing a copy of the works of Epictetus, and Epictetus’s teachings, as recorded by Arrian, deeply influenced him. The most powerful man in the Roman world was learning from a former slave. One nuance: nowhere in the Meditations does Marcus call himself a Stoic. That may simply be because he was writing for himself rather than presenting himself to an audience."
               }
             ],
             "keyFacts": [
-              "Seneca advised the emperor Nero and wrote the Letters to Lucilius.",
-              "Epictetus was born a slave; his student Arrian recorded his teachings.",
-              "Epictetus distinguished what is up to us from what is not.",
-              "Marcus Aurelius was Roman emperor from AD 161 to 180.",
-              "The Meditations were private notes written in Greek."
+              "Seneca advised the emperor Nero and wrote the Moral Letters to Lucilius, of which 124 letters survive.",
+              "In 65 CE, after the Pisonian conspiracy, Nero ordered Seneca to take his own life.",
+              "Epictetus, once enslaved, taught at Nicopolis; his student Arrian recorded the Discourses and the Handbook.",
+              "Epictetus distinguished what is up to us, our judgments and character, from external things.",
+              "Marcus Aurelius ruled from 161 to 180 CE and wrote the Meditations as a private notebook, probably on campaign."
             ],
             "quiz": [
               {
-                "question": "Which Roman emperor wrote the Meditations?",
-                "options": ["Nero", "Augustus", "Constantine", "Marcus Aurelius"],
-                "answerIndex": 3
+                "question": "You get sick, see an excellent doctor, and the treatment still fails. According to Epictetus, what was up to you?",
+                "options": [
+                  "Whether you got sick.",
+                  "How well the doctor did the job.",
+                  "How you judged and responded to what happened.",
+                  "Whether the treatment worked."
+                ],
+                "answerIndex": 2,
+                "explanation": "For Epictetus, illness, the doctor’s skill, and the outcome are not in our power; our judgments and responses are."
               },
               {
-                "question": "Which Stoic teacher was born a slave?",
-                "options": ["Epictetus", "Seneca", "Marcus Aurelius", "Zeno of Citium"],
-                "answerIndex": 0
+                "question": "A critic says Seneca’s praise of poverty cannot be taken seriously. What is the criticism based on?",
+                "options": [
+                  "He was one of the wealthiest men in the world while writing that poverty is no evil.",
+                  "He never wrote about poverty.",
+                  "He refused to advise Nero.",
+                  "He lived his whole life in exile."
+                ],
+                "answerIndex": 0,
+                "explanation": "Critics since antiquity have contrasted Seneca’s enormous wealth with his teaching that poverty is not an evil."
               },
               {
-                "question": "Which emperor did Seneca serve as an adviser?",
-                "options": ["Hadrian", "Nero", "Trajan", "Julius Caesar"],
-                "answerIndex": 1
+                "question": "A student wants to read Epictetus in his own words. What should she understand about the texts?",
+                "options": [
+                  "Epictetus wrote the Meditations.",
+                  "His teaching survives only in a few lines quoted by Seneca.",
+                  "He wrote everything in Latin poetry.",
+                  "His teaching comes to us through the Discourses and Handbook recorded by his student Arrian."
+                ],
+                "answerIndex": 3,
+                "explanation": "Our knowledge of Epictetus comes through two works composed by his student Arrian."
               },
               {
-                "question": "In which language did Marcus Aurelius write the Meditations?",
-                "options": ["Latin", "Hebrew", "Greek", "Aramaic"],
-                "answerIndex": 2
+                "question": "Expecting a carefully organized argument, a reader finds the Meditations full of short, unordered entries. Why?",
+                "options": [
+                  "It was a personal notebook Marcus wrote to himself, probably on campaign.",
+                  "It was assembled by Seneca from Marcus’s speeches.",
+                  "It was a textbook for Stoic students.",
+                  "Later editors scrambled a single long treatise."
+                ],
+                "answerIndex": 0,
+                "explanation": "The Meditations takes the form of a personal notebook written for Marcus’s own use, not a treatise for readers."
+              },
+              {
+                "question": "What connects Epictetus to the court of Nero?",
+                "options": [
+                  "He was Nero’s tutor.",
+                  "He was enslaved to Epaphroditus, a freedman who had served as an administrator in Nero’s court.",
+                  "He led the Pisonian conspiracy.",
+                  "He was Nero’s brother."
+                ],
+                "answerIndex": 1,
+                "explanation": "Epaphroditus had been enslaved to Nero and worked in his court before becoming Epictetus’s owner."
+              },
+              {
+                "question": "Which fact best shows Epictetus’s influence on Marcus Aurelius?",
+                "options": [
+                  "Epictetus served as Marcus’s chief minister.",
+                  "Marcus called himself a Stoic in every entry.",
+                  "Marcus records borrowing a copy of Epictetus’s works, whose teachings deeply influenced him.",
+                  "Epictetus wrote the Meditations for Marcus."
+                ],
+                "answerIndex": 2,
+                "explanation": "Marcus mentions borrowing Epictetus’s works, and Epictetus’s recorded teachings heavily influenced him."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Stanford Encyclopedia of Philosophy",
+                "title": "Stoicism",
+                "url": "https://plato.stanford.edu/entries/stoicism/",
+                "note": "Stoicism’s popularity in the Roman period, the surviving imperial-era works, and Epictetus’s influence on Marcus Aurelius."
+              },
+              {
+                "publisher": "Internet Encyclopedia of Philosophy",
+                "title": "Seneca, Lucius Annaeus",
+                "url": "https://iep.utm.edu/seneca/",
+                "note": "Exile and recall, tutoring Nero, the Pisonian conspiracy and his death, the 124 letters, and the debate over his wealth."
+              },
+              {
+                "publisher": "Stanford Encyclopedia of Philosophy",
+                "title": "Seneca",
+                "url": "https://plato.stanford.edu/entries/seneca/",
+                "note": "Birth in Corduba around 1 BCE and his role among Nero’s advisers."
+              },
+              {
+                "publisher": "Stanford Encyclopedia of Philosophy",
+                "title": "Epictetus",
+                "url": "https://plato.stanford.edu/entries/epictetus/",
+                "note": "Birth in Hierapolis, enslavement to Epaphroditus, Musonius Rufus, banishment, the school at Nicopolis, and Arrian’s records."
+              },
+              {
+                "publisher": "Internet Encyclopedia of Philosophy",
+                "title": "Epictetus",
+                "url": "https://iep.utm.edu/epictetu/",
+                "note": "What is and is not in our power, including the sickness and doctor example."
+              },
+              {
+                "publisher": "Stanford Encyclopedia of Philosophy",
+                "title": "Marcus Aurelius",
+                "url": "https://plato.stanford.edu/entries/marcus-aurelius/",
+                "note": "His reign, its troubles, and the writing of the Meditations during his campaigns."
+              },
+              {
+                "publisher": "Internet Encyclopedia of Philosophy",
+                "title": "Aurelius, Marcus",
+                "url": "https://iep.utm.edu/marcus/",
+                "note": "Co-rule with Lucius Verus, the Meditations as a personal notebook (c. 171–175 CE), its title, and his reading of Epictetus."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "ancient-history",
+    "title": "Ancient History",
+    "description": "The earliest civilizations, the laws they wrote, and what their records reveal.",
+    "color": "amber",
+    "topics": [
+      {
+        "slug": "code-of-hammurabi",
+        "title": "The Code of Hammurabi",
+        "kind": "era",
+        "summary": "The Code of Hammurabi is an ancient Babylonian collection of legal decisions that reveals how a society organized everyday life, punishment, and social hierarchy.",
+        "lessons": [
+          {
+            "id": "les_ch01",
+            "slug": "what-ancient-laws-tell-us",
+            "title": "What Ancient Laws Tell Us About Everyday Life",
+            "sections": [
+              {
+                "heading": "A king puts justice on display",
+                "body": "Imagine trying to understand a civilization without meeting anyone who lived there. Where would you begin? Its laws offer one useful starting point. They reveal what people owned, what they argued about, and which behaviors authorities wanted to punish. The Code of Hammurabi gives us this kind of window into ancient Babylon, through rules concerning everything from business transactions to family relationships.\n\nHammurabi ruled Babylon from approximately 1792 to 1750 BCE. Toward the end of his reign, legal decisions were collected and inscribed on a stone monument called a stele. The collection is conventionally described as containing 282 case laws. It connected the king's authority with the administration of justice and presented legal decisions in a durable, visible form.\n\nA surviving stele was discovered at Susa in 1901 and is now preserved in the Louvre in Paris. Its survival lets historians examine the collection directly rather than relying only on later descriptions. But a monument is not a complete record of everyday court proceedings. To understand its significance, we need to distinguish the rules it presents from everything that actually happened in Babylonian life."
+              },
+              {
+                "heading": "Laws about more than crime",
+                "body": "When you hear “ancient law,” you might picture dramatic punishments. But much of Hammurabi's collection concerns ordinary practical problems: trade, prices, debt, marriage, divorce, and property. These subjects reveal a society in which households, workers, merchants, and landowners had complicated relationships. Law was not just about catching criminals; it also concerned organizing obligations between people.\n\nMany provisions take the form of cases: if a particular situation occurs, a particular consequence follows. That approach differs from beginning with a broad declaration of individual rights. The collection addresses specific disputes and responsibilities, including damage to fields and crops. Its concrete details make it especially valuable for understanding the kinds of problems authorities considered worth addressing.\n\nImagine a disagreement over livestock damaging someone else's crops. The underlying questions remain recognizable: Who caused the damage? Who should bear the loss? What compensation or penalty is appropriate? This is a modern teaching example, not a quotation from the code. It illustrates why ancient legal collections can feel surprisingly familiar even when their solutions differ greatly from ours."
+              },
+              {
+                "heading": "Order did not mean equality",
+                "body": "The code's punishments could be extremely severe. It is associated with the principle of retaliation, often summarized as “an eye for an eye.” Under this approach, a punishment could mirror an injury. But that phrase does not explain the entire collection: its provisions also addressed economic transactions, family obligations, and other matters that had nothing to do with bodily punishment.\n\nSocial status mattered. Penalties varied according to people's status and the circumstances of an offense. Enslavement was part of the society the laws regulated, not a practice they abolished. We should therefore avoid confusing an organized legal system with equal justice. Rules can make relationships more predictable while still preserving deep inequalities between groups.\n\nNor was the collection an exhaustive answer to every possible dispute. Its cases covered many everyday situations without attempting to address all contingencies. Read it as both a legal collection and historical evidence: it shows what rulers sought to regulate, which distinctions mattered, and how power shaped punishment. Its lasting importance lies in the questions it lets us ask about ancient society."
+              }
+            ],
+            "keyFacts": [
+              "Hammurabi ruled Babylon approximately 1792–1750 BCE.",
+              "The collection is conventionally counted as 282 case laws.",
+              "Its subjects include trade, debt, marriage, theft, and slavery.",
+              "Punishments varied with social status and circumstances.",
+              "The surviving stele was discovered at Susa in 1901 and is now in the Louvre."
+            ],
+            "quiz": [
+              {
+                "question": "What is a stele?",
+                "options": [
+                  "A stone monument bearing an inscription.",
+                  "A Babylonian trading ship.",
+                  "A type of criminal trial.",
+                  "A military tax."
+                ],
+                "answerIndex": 0,
+                "explanation": "Hammurabi’s legal collection was inscribed on a stone monument."
+              },
+              {
+                "question": "Which subjects appear in the Code of Hammurabi?",
+                "options": [
+                  "Only religious ceremonies.",
+                  "Trade, debt, family relationships, and criminal offenses.",
+                  "Only military commands.",
+                  "Only the succession of kings."
+                ],
+                "answerIndex": 1,
+                "explanation": "The collection covers economic, family, civil, and criminal matters."
+              },
+              {
+                "question": "What does the variation in penalties by social status reveal?",
+                "options": [
+                  "Everyone received identical treatment.",
+                  "The code abolished enslavement.",
+                  "Legal rules could reinforce social inequality.",
+                  "Social status had no legal significance."
+                ],
+                "answerIndex": 2,
+                "explanation": "Penalties depended partly on status, rather than treating everyone equally."
+              },
+              {
+                "question": "Why is “an eye for an eye” an incomplete summary of the code?",
+                "options": [
+                  "The collection contains no punishments.",
+                  "The collection concerns only paintings.",
+                  "Its provisions were written in modern English.",
+                  "It also addresses business, property, and family obligations."
+                ],
+                "answerIndex": 3,
+                "explanation": "Retaliation was one principle within a much broader collection."
+              },
+              {
+                "question": "What should historians avoid assuming from the surviving collection?",
+                "options": [
+                  "That it gives a complete record of every dispute and how it was handled.",
+                  "That Babylonian society had commercial relationships.",
+                  "That social status mattered.",
+                  "That the collection addressed everyday problems."
+                ],
+                "answerIndex": 0,
+                "explanation": "The collection did not attempt to cover every possible contingency."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Code of Hammurabi",
+                "url": "https://www.britannica.com/topic/Code-of-Hammurabi",
+                "note": "Legal collection, conventional count, subjects, status distinctions, and surviving stele."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Hammurabi",
+                "url": "https://www.britannica.com/biography/Hammurabi",
+                "note": "Reign dates and background on the king and collection."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "History of Mesopotamia: Babylonian law",
+                "url": "https://www.britannica.com/place/Mesopotamia-historical-region-Asia/Babylonian-law",
+                "note": "Case-based organization, scope, severe penalties, and retaliation. This source uses a different paragraph count from the conventional 282 figure; the lesson follows S1 for its count."
+              },
+              {
+                "publisher": "Britannica Kids",
+                "title": "Code of Hammurabi",
+                "url": "https://kids.britannica.com/students/article/Code-of-Hammurabi/319940",
+                "note": "Social class, enslavement, and severity of punishment."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "american-civics",
+    "title": "American Civics",
+    "description": "How the U.S. Constitution organizes government and protects individual rights.",
+    "color": "slate",
+    "topics": [
+      {
+        "slug": "constitutional-convention",
+        "title": "The Constitutional Convention of 1787",
+        "kind": "event",
+        "summary": "The Constitutional Convention created a new framework for American government by strengthening national authority while dividing power among institutions and making consequential compromises over representation and slavery.",
+        "lessons": [
+          {
+            "id": "les_cc01",
+            "slug": "how-the-constitution-divided-power",
+            "title": "How the Constitution Divided Power",
+            "sections": [
+              {
+                "heading": "Why the country needed a new framework",
+                "body": "Before the Constitution, the United States operated under the Articles of Confederation, a framework that left the states largely independent. The national government had responsibilities such as common defense, but it could not levy taxes or regulate trade between the states, leaving it without important tools for carrying out those responsibilities.\n\nThis weakness created a practical problem: national responsibilities required resources that the government could not reliably obtain. Disputes among the states over trade, taxation, territory, and war pensions also threatened the country's unity.\n\nDelegates gathered in Philadelphia in 1787 with instructions to revise the Articles, but they instead developed an entirely new Constitution. Their challenge was to create a government strong enough to handle national problems without concentrating too much power in one place."
+              },
+              {
+                "heading": "Dividing power in two different ways",
+                "body": "The Constitution divided national authority among three branches, an arrangement called separation of powers. In a useful introductory shorthand, Congress makes laws, the executive branch led by the president enforces laws, and the judicial branch interprets laws.\n\nThe branches were not designed to operate in complete isolation: checks and balances give them ways to limit one another's actions. For example, the president can veto legislation, but Congress can override that veto with a two-thirds vote in each house.\n\nThe Constitution also divided authority between the national government and the states, a system called federalism. Keep the distinction clear: separation of powers concerns different branches of government, while federalism concerns different levels of government."
+              },
+              {
+                "heading": "Representation, compromise, and slavery",
+                "body": "Large and small states disagreed about how representation in Congress should work: populous states generally favored representation based on population, while smaller states sought an equal voice for each state. The Great Compromise combined the two approaches by basing House representation on population and giving every state two senators.\n\nSlavery exposed a deeper injustice within the debate over representation. Under the Three-Fifths Compromise, three-fifths of a state's enslaved population counted when allocating House seats and direct taxes among the states. The formula concerned population accounting for political representation and taxation, not a grant of three-fifths of the rights of citizenship.\n\nThe agreement accommodated slavery rather than abolishing it: the Constitution also protected the international slave trade from congressional prohibition until 1808 and required the return of people who escaped enslavement across state lines. Understanding the Convention therefore requires recognizing both its institutional innovations and the protections it gave to an oppressive system."
+              },
+              {
+                "heading": "A proposal still needed public approval",
+                "body": "Signing the Constitution on September 17, 1787, did not by itself put the new government into operation. The document had to be ratified, meaning formally approved, through special conventions in the states, with approval from nine of the thirteen states required under its ratification rule.\n\nSupporters, known as Federalists, argued that a stronger national government was necessary to address the country's problems. Opponents, known as Anti-Federalists, feared excessive central power and objected that the proposed Constitution lacked a bill of rights.\n\nPromises to add a bill of rights helped the Constitution gain approval, and James Madison later led the effort to draft those amendments in the First Congress. This final debate highlighted two different approaches to protecting liberty: organizing government so that power checks power, and expressly identifying rights that government must respect."
+              }
+            ],
+            "keyFacts": [
+              "Convention: Delegates met in Philadelphia in 1787 to revise the Articles but wrote a new Constitution instead.",
+              "Separation of powers: National authority is divided among legislative, executive, and judicial branches.",
+              "Federalism: Authority is divided between the national government and the states.",
+              "Great Compromise: House representation follows population; each state has two senators.",
+              "Three-Fifths Compromise: Three-fifths of the enslaved population counted for allocating House representation and direct taxes.",
+              "Ratification: Approval from nine states was required, and the lack of a bill of rights became a major objection."
+            ],
+            "quiz": [
+              {
+                "question": "What was a major weakness of the national government under the Articles of Confederation?",
+                "options": [
+                  "It could levy taxes without any legal limits.",
+                  "It could not levy taxes to fund its responsibilities.",
+                  "It gave the president authority to dissolve Congress.",
+                  "It prohibited states from running their own governments."
+                ],
+                "answerIndex": 1,
+                "explanation": "The national government lacked the power to tax."
+              },
+              {
+                "question": "Which arrangement illustrates separation of powers rather than federalism?",
+                "options": [
+                  "Dividing authority between state and national governments.",
+                  "Allowing different states to have different policies.",
+                  "Dividing national authority among Congress, the president, and the courts.",
+                  "Giving every state two senators."
+                ],
+                "answerIndex": 2,
+                "explanation": "Separation of powers divides authority among branches, not between national and state governments."
+              },
+              {
+                "question": "A president vetoes a bill, and Congress then overrides the veto with the required votes. Which principle does this illustrate?",
+                "options": [
+                  "Checks and balances.",
+                  "Government by a single branch.",
+                  "Equal representation of states.",
+                  "Ratification by state conventions."
+                ],
+                "answerIndex": 0,
+                "explanation": "A presidential veto and congressional override allow the branches to check one another."
+              },
+              {
+                "question": "What arrangement resulted from the Great Compromise?",
+                "options": [
+                  "Equal state representation in both houses of Congress.",
+                  "Population-based representation in both houses of Congress.",
+                  "One house of Congress with one vote per state.",
+                  "Population-based House representation and equal state representation in the Senate."
+                ],
+                "answerIndex": 3,
+                "explanation": "The compromise combined population-based representation in the House with two senators per state."
+              },
+              {
+                "question": "What did the Three-Fifths Compromise determine?",
+                "options": [
+                  "The proportion of enslaved people who would immediately be freed.",
+                  "How the enslaved population counted for allocating House seats and direct taxes.",
+                  "The proportion of enslaved people allowed to vote.",
+                  "The share of Senate seats reserved for slaveholding states."
+                ],
+                "answerIndex": 1,
+                "explanation": "The formula applied to representation and direct taxation, not emancipation or voting rights."
+              },
+              {
+                "question": "Why did promises to add a bill of rights help the Constitution win approval?",
+                "options": [
+                  "They guaranteed every state the same population.",
+                  "They eliminated the national government's taxing power.",
+                  "They addressed concerns that the new government lacked explicit protections for individual liberties.",
+                  "They replaced state ratifying conventions with a presidential decision."
+                ],
+                "answerIndex": 2,
+                "explanation": "The absence of a bill of rights was a serious objection during ratification, and promises to add one helped secure support."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "National Constitution Center",
+                "title": "The Constitutional Convention of 1787: A Revolution in Government",
+                "url": "https://constitutioncenter.org/the-constitution/white-papers/the-constitutional-convention-of-1787-a-revolution-in-government"
+              },
+              {
+                "publisher": "National Archives",
+                "title": "The Constitution: How Did it Happen?",
+                "url": "https://www.archives.gov/founding-docs/constitution/how-did-it-happen"
+              },
+              {
+                "publisher": "National Constitution Center",
+                "title": "Teacher-led High School Curriculum",
+                "url": "https://constitutioncenter.org/education/constitution-101-curriculum/constitution-101-curriculum-high-school-level"
+              },
+              {
+                "publisher": "National Constitution Center",
+                "title": "Principles of the American Constitution Briefing Document",
+                "url": "https://constitutioncenter.org/media/files/Principles_of_the_American_Constitution_Briefing_Document_(1).pdf"
+              },
+              {
+                "publisher": "National Constitution Center",
+                "title": "Article VII: Ratification Debates - Briefing Document",
+                "url": "https://constitutioncenter.org/media/files/Article_VII__Ratification_Debates_-_Briefing_Document.pdf"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "bill-of-rights",
+        "title": "The Adoption of the Bill of Rights",
+        "kind": "event",
+        "summary": "Ratified in 1791, the Bill of Rights added ten amendments to the U.S. Constitution to protect liberties and place explicit limits on government power.",
+        "lessons": [
+          {
+            "id": "les_br01",
+            "slug": "why-the-constitution-needed-a-bill-of-rights",
+            "title": "Why the Constitution Needed a Bill of Rights",
+            "sections": [
+              {
+                "heading": "A strong government raised a difficult question",
+                "body": "Imagine helping create a new government. You want it strong enough to address national problems, but you also worry about what it might do with that power. How do you keep strength from becoming abuse? This was a central concern in the debate over the U.S. Constitution. A framework explaining how government operates did not satisfy everyone who wanted explicit protections for liberty.\n\nThe Constitution signed in 1787 did not contain a separate bill of rights. Critics feared that the new national government could threaten individual freedoms, and the absence of explicit protections became an important objection during ratification. Supporters argued that the Constitution's structure already restrained power. Promises to add amendments helped address the disagreement and build support for the new system.\n\nJames Madison helped advance those amendments in Congress. In 1789, Congress proposed twelve; ten received the necessary state approval by December 15, 1791. Those ten became the Bill of Rights. This distinction matters: the amendments were not part of the original signed Constitution, but additions adopted through its amendment process."
+              },
+              {
+                "heading": "Protecting expression and private life",
+                "body": "The First Amendment protects freedom of religion, speech, and the press, along with peaceful assembly and petitioning the government. These protections concern more than speaking freely in conversation. They address ways people practice beliefs, circulate information, gather with others, and ask officials to correct problems. The amendment's wording places restrictions on government rather than simply praising these activities as desirable.\n\nReligious liberty has two parts in the First Amendment: government may not establish religion, and it may not prohibit its free exercise. Keep those ideas distinct. One addresses government's relationship with religious institutions; the other protects religious practice. Both appear in the same sentence because freedom of religion involves more than a single kind of protection.\n\nOther amendments address different concerns. The Third restricts quartering soldiers in private homes. The Fourth protects against unreasonable searches and seizures and sets requirements for warrants, including probable cause and particular descriptions of the places and things involved. It does not prohibit every search. Its language draws attention to the conditions under which government may intrude."
+              },
+              {
+                "heading": "Rights matter when someone is accused",
+                "body": "Some protections become especially important when government accuses a person of a crime. The Fifth Amendment includes protections against compelled self-incrimination and being tried twice for the same offense, along with a guarantee of due process. These safeguards concern the way government exercises its power, not merely whether officials believe an accusation is correct.\n\nThe Sixth Amendment addresses criminal proceedings, including a speedy and public trial, an impartial jury, information about the accusation, and assistance of counsel. The Eighth prohibits excessive bail, excessive fines, and cruel and unusual punishments. Together, these provisions show that constitutional protection does not end when someone is accused or convicted: legal procedures and punishment also require limits.\n\nFinally, the Ninth says that listing certain rights must not be understood to deny others retained by the people. The Tenth reserves powers not delegated to the United States, nor prohibited to the states, to the states or the people. The distinction is useful: one warns against treating a list of rights as exhaustive; the other concerns the allocation of government power."
+              }
+            ],
+            "keyFacts": [
+              "The Bill of Rights consists of the first ten constitutional amendments.",
+              "Congress proposed twelve amendments in 1789; ten were ratified by December 15, 1791.",
+              "The First Amendment protects religion, expression, assembly, and petition.",
+              "The Fourth Amendment protects against unreasonable searches and seizures.",
+              "The Fifth, Sixth, and Eighth include safeguards concerning accusation, trials, and punishment.",
+              "The Ninth concerns unlisted rights; the Tenth concerns reserved powers."
+            ],
+            "quiz": [
+              {
+                "question": "What is the Bill of Rights?",
+                "options": [
+                  "The original Articles of Confederation.",
+                  "The first ten amendments to the Constitution.",
+                  "A list of presidential appointments.",
+                  "The complete Constitution."
+                ],
+                "answerIndex": 1,
+                "explanation": "The Bill of Rights consists of the first ten constitutional amendments."
+              },
+              {
+                "question": "Why did promises to add a bill of rights help the Constitution win support?",
+                "options": [
+                  "They removed all national authority.",
+                  "They abolished state governments.",
+                  "They addressed fears about government power and insufficient protections for liberty.",
+                  "They eliminated the amendment process."
+                ],
+                "answerIndex": 2,
+                "explanation": "Explicit protections responded to concerns raised during ratification."
+              },
+              {
+                "question": "Which activity is expressly protected by the First Amendment?",
+                "options": [
+                  "Quartering soldiers in private homes.",
+                  "Conducting any search without justification.",
+                  "Requiring a person to testify against themselves.",
+                  "Peacefully assembling and petitioning the government."
+                ],
+                "answerIndex": 3,
+                "explanation": "Assembly and petition are among the First Amendment’s protections."
+              },
+              {
+                "question": "Which statement best describes the Fourth Amendment?",
+                "options": [
+                  "It protects against unreasonable searches and seizures.",
+                  "It prohibits every government search.",
+                  "It concerns the number of senators.",
+                  "It requires all trials to be secret."
+                ],
+                "answerIndex": 0,
+                "explanation": "The amendment restricts unreasonable searches and seizures and sets warrant requirements."
+              },
+              {
+                "question": "Which distinction between the Ninth and Tenth Amendments is correct?",
+                "options": [
+                  "Both list all rights that anyone can possess.",
+                  "The Ninth concerns unlisted rights; the Tenth concerns reserved powers.",
+                  "The Ninth regulates warrants; the Tenth regulates bail.",
+                  "Both abolish state authority."
+                ],
+                "answerIndex": 1,
+                "explanation": "The Ninth addresses rights retained by the people; the Tenth addresses powers reserved to the states or the people."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "National Archives",
+                "title": "The Bill of Rights: How Did it Happen?",
+                "url": "https://www.archives.gov/founding-docs/bill-of-rights/how-did-it-happen",
+                "note": "Ratification debate, Madison, and the process of adopting amendments."
+              },
+              {
+                "publisher": "National Archives",
+                "title": "The Bill of Rights: A Transcription",
+                "url": "https://www.archives.gov/founding-docs/bill-of-rights-transcript",
+                "note": "Primary-source amendment text and ratification dates."
+              },
+              {
+                "publisher": "National Archives",
+                "title": "The Bill of Rights: What Does it Say?",
+                "url": "https://www.archives.gov/founding-docs/bill-of-rights/what-does-it-say",
+                "note": "Overview of rights and amendment meanings."
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "art-history",
+    "title": "Art History",
+    "description": "Movements and makers that changed how people see and make pictures.",
+    "color": "plum",
+    "topics": [
+      {
+        "slug": "italian-renaissance",
+        "title": "The Italian Renaissance",
+        "kind": "era",
+        "summary": "The Italian Renaissance was a period of renewed interest in ancient Greek and Roman culture during which artists developed influential ways to depict people, emotion, and three-dimensional space.",
+        "lessons": [
+          {
+            "id": "les_ir01",
+            "slug": "how-renaissance-artists-made-pictures-feel-real",
+            "title": "How Renaissance Artists Made Pictures Feel Real",
+            "sections": [
+              {
+                "heading": "A rebirth, not a fresh start",
+                "body": "Imagine looking at a painting and feeling that you could step inside it. The figures seem solid, the room stretches into the distance, and the faces suggest real emotions. During the Renaissance, artists explored ways to create these effects, transforming how they represented people and their surroundings. Their pictures were not simply windows onto reality, but carefully constructed illusions.\n\nThe word “Renaissance” means rebirth. It describes a period in European culture, roughly spanning the fourteenth through sixteenth centuries, associated with renewed interest in ancient Greece and Rome. In Italy, artists looked to classical art while studying the human body and the natural world. Looking backward became a way of developing something new.\n\nThis was not an overnight break with everything medieval. Earlier artists, including Giotto, had already explored solid-looking figures and expressive storytelling. Religious subjects also remained important during the Renaissance. What changed was often how those subjects appeared: sacred figures could occupy recognizable landscapes, show human emotions, and seem to inhabit the same physical world as the viewer."
+              },
+              {
+                "heading": "Making a flat surface look deep",
+                "body": "One of the Renaissance’s important artistic developments was linear perspective: a mathematical method for suggesting depth on a flat surface. In a simple one-point system, lines representing parallel edges receding directly away from the viewer appear to meet at a single vanishing point. That shared point helps make the painted space look coherent rather than arbitrary.\n\nThink about standing in a long, straight hallway. Its walls do not actually move closer together, but their edges appear to converge in the distance. A painter can imitate that appearance. Floor tiles, ceilings, and rows of columns become useful guides, helping establish where objects belong and how large they should appear within the scene.\n\nOther techniques strengthened the illusion. Foreshortening makes an object or body part appear shorter when it points toward or away from the viewer. Light and shadow can make a figure look rounded rather than flat. The early Renaissance painter Masaccio combined convincing light with careful perspective, producing figures that appear to have weight and occupy believable space."
+              },
+              {
+                "heading": "People became worth a closer look",
+                "body": "Renaissance art also reflected humanism, an outlook connected with renewed attention to classical culture and human life. Artists closely studied bodies, faces, and the surrounding world. This interest did not necessarily replace religious belief; it could change how religious stories were presented, making their figures more physically convincing and emotionally recognizable.\n\nPortraiture offered another way to explore individuality. Artists in Florence, Venice, and Italian courts depicted rulers, church leaders, scholars, patrons, and others. A portrait could communicate recognizable appearance, personality, and social position. These were not simply pictures of interchangeable people: particular faces and identities became central to the work.\n\nWhen you encounter a Renaissance painting, ask three questions: How does the artist suggest depth? What makes the bodies seem solid? What do the faces or gestures communicate? Do not expect every work to use the same formula. Paolo Uccello, for example, combined an interest in perspective with decorative features associated with Gothic art. Renaissance innovation could coexist with older traditions."
+              }
+            ],
+            "keyFacts": [
+              "The Renaissance roughly spanned the fourteenth through sixteenth centuries.",
+              "Artists renewed their interest in ancient Greek and Roman culture.",
+              "Linear perspective uses geometry to create an illusion of depth.",
+              "Foreshortening suggests that an object extends toward or away from the viewer.",
+              "Masaccio combined perspective with light to create convincing figures in space.",
+              "Religious art remained important as portraiture and other subjects developed."
+            ],
+            "quiz": [
+              {
+                "question": "What does “Renaissance” mean?",
+                "options": [
+                  "Rebirth.",
+                  "Royal rule.",
+                  "Religious separation.",
+                  "Perfect imitation."
+                ],
+                "answerIndex": 0,
+                "explanation": "The name refers to renewed interest in classical culture and learning."
+              },
+              {
+                "question": "What is the main purpose of linear perspective?",
+                "options": [
+                  "To ensure every figure is the same size.",
+                  "To remove architecture from paintings.",
+                  "To create an illusion of three-dimensional space on a flat surface.",
+                  "To replace all shadows with bright colors."
+                ],
+                "answerIndex": 2,
+                "explanation": "Linear perspective uses mathematical relationships to make painted space appear deep and coherent."
+              },
+              {
+                "question": "In a one-point perspective painting, the receding edges of a hallway appear to meet in the distance. What is that meeting place called?",
+                "options": [
+                  "The foreground.",
+                  "The vanishing point.",
+                  "The portrait plane.",
+                  "The shadow line."
+                ],
+                "answerIndex": 1,
+                "explanation": "The vanishing point is where the relevant receding parallel lines appear to converge."
+              },
+              {
+                "question": "An artist paints an arm reaching toward the viewer so that it appears shorter than an arm seen from the side. Which technique is being used?",
+                "options": [
+                  "Portraiture.",
+                  "Classical symbolism.",
+                  "Decorative patterning.",
+                  "Foreshortening."
+                ],
+                "answerIndex": 3,
+                "explanation": "Foreshortening changes the apparent length of a form to suggest its orientation in space."
+              },
+              {
+                "question": "Which statement best describes the relationship between Renaissance art and religious subjects?",
+                "options": [
+                  "Religious subjects disappeared from Renaissance painting.",
+                  "Only portraits were considered important.",
+                  "Religious subjects remained important, often depicted with more convincing bodies, settings, and emotions.",
+                  "Renaissance artists were required to copy medieval paintings exactly."
+                ],
+                "answerIndex": 2,
+                "explanation": "New approaches to representation changed religious art rather than simply replacing it."
+              },
+              {
+                "question": "Why is it misleading to say that Renaissance artists abandoned every earlier artistic tradition?",
+                "options": [
+                  "Artists could combine newer techniques with older approaches.",
+                  "No Renaissance painter used perspective.",
+                  "Classical art had no influence on Renaissance artists.",
+                  "All Renaissance paintings were identical to medieval paintings."
+                ],
+                "answerIndex": 0,
+                "explanation": "Uccello, for example, combined linear perspective with Gothic figure styles and decorative effects."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "National Galleries of Scotland",
+                "title": "Renaissance",
+                "url": "https://www.nationalgalleries.org/art-and-artists/glossary-terms/renaissance",
+                "note": "Historical timeframe, classical influences, humanism, anatomy, and perspective."
+              },
+              {
+                "publisher": "National Gallery, London",
+                "title": "Cross-curricular ideas: Mathematics and Renaissance art",
+                "url": "https://www.nationalgallery.org.uk/learning/teachers-and-schools/picture-in-focus/cross-curricular-ideas/mathematics",
+                "note": "Linear perspective, vanishing points, and foreshortening."
+              },
+              {
+                "publisher": "National Gallery, London",
+                "title": "Masaccio",
+                "url": "https://www.nationalgallery.org.uk/artists/masaccio",
+                "note": "His use of light and perspective to depict believable figures in space."
+              },
+              {
+                "publisher": "National Gallery, London",
+                "title": "Paolo Uccello",
+                "url": "https://www.nationalgallery.org.uk/artists/paolo-uccello",
+                "note": "The combination of Gothic traditions and Renaissance perspective."
+              },
+              {
+                "publisher": "The Metropolitan Museum of Art",
+                "title": "The Renaissance in Italy and Spain",
+                "url": "https://www.metmuseum.org/met-publications/the-metropolitan-museum-of-art-vol-4-the-renaissance-in-italy-and-spain",
+                "note": "Changing depictions of people, settings, emotion, and religious subjects."
+              },
+              {
+                "publisher": "The Metropolitan Museum of Art",
+                "title": "Featured Publication: The Renaissance Portrait",
+                "url": "https://www.metmuseum.org/perspectives/renaissance-portrait",
+                "note": "Portraiture, individuality, and the people represented in Renaissance art."
+              },
+              {
+                "publisher": "The National Art Center, Tokyo",
+                "title": "European Masterpieces from The Metropolitan Museum of Art",
+                "url": "https://www.nact.jp/english/exhibition_special/2022/met/index.html",
+                "note": "The meaning of Renaissance and the renewed interest in classical culture."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "impressionism",
+        "title": "Impressionism",
+        "kind": "style",
+        "summary": "Impressionism was a nineteenth-century art movement associated with France whose artists explored modern life and fleeting effects of light through innovative uses of color, brushwork, and composition.",
+        "lessons": [
+          {
+            "id": "les_im01",
+            "slug": "painting-the-moment",
+            "title": "Impressionism: Painting the Moment",
+            "sections": [
+              {
+                "heading": "Breaking with the art establishment",
+                "body": "In nineteenth-century Paris, the official annual Salon was a powerful gateway to artistic recognition, with a jury selecting works and awarding medals. Academic taste favored precise drawing, smooth surfaces, and prestigious subjects drawn from history, religion, and mythology.\n\nIn 1874, a group of artists organized an independent exhibition in Paris rather than relying on the Salon's approval. Its participants included Claude Monet, Edgar Degas, and Camille Pissarro, and their shared independence mattered more than adherence to one identical painting style.\n\nMonet exhibited Impression, Sunrise, a painting whose sketchlike appearance helped inspire critic Louis Leroy's mocking use of the term “Impressionists.” What began as an insult became a name adopted by some of the artists, while other critics praised their innovative depictions of contemporary life."
+              },
+              {
+                "heading": "Light and color instead of a polished finish",
+                "body": "Many Impressionist paintings use short, broken brushstrokes and patches of unblended color rather than hiding every trace of the brush. These marks can suggest forms without carefully outlining every detail, placing special emphasis on the effects of light.\n\nColor was important even in areas that earlier painters might have treated with neutral grays or blacks: Impressionists often used colors in shadows and highlights. Newly developed synthetic pigments also expanded the vivid blues, greens, and yellows available to painters.\n\nMany artists worked en plein air, meaning outdoors, where shifting light and weather encouraged them to capture the immediate appearance of a scene. Portable paint tubes and railway travel made this easier, although the seemingly spontaneous appearance of Impressionist paintings could conceal carefully constructed compositions."
+              },
+              {
+                "heading": "Modern life became a worthy subject",
+                "body": "Impressionists often turned away from grand historical or mythological narratives and toward the world around them. Cafés, theaters, boating excursions, dancers, and ordinary moments became subjects worthy of serious painting.\n\nThese subjects reflected a changing society: new railway lines brought city residents into the countryside for leisure, while renovated Paris offered broad boulevards and public gardens. Landscapes could also include factories and railways, so an Impressionist view of nature was not necessarily an escape from modern industry.\n\nDifferent artists explored different parts of this world: Monet and Auguste Renoir painted suburban and rural leisure, while Degas depicted working performers such as dancers and singers. Berthe Morisot and Mary Cassatt also portrayed contemporary life, including subjects from the privileged classes; Cassatt's In the Loge, for example, depicts theatrical leisure."
+              },
+              {
+                "heading": "Recognizing the style without oversimplifying it",
+                "body": "When looking for Impressionist features, useful clues include visible brushwork, an emphasis on light, lively color, and contemporary subjects. A work may suggest a fleeting moment rather than present an explicit story, but the group's diverse approaches make any single checklist incomplete.\n\nThe independent group held eight exhibitions between 1874 and 1886, with membership changing along the way. Pissarro was the only artist to participate in all eight, and disagreements over artistic and political ideas contributed to divisions within the group.\n\nBy the final exhibition, many participants were pursuing styles that no longer looked conventionally Impressionist. The movement nevertheless helped open the way for later experimental art by showing that modern subjects, unconventional techniques, and independence from established exhibition systems could support important artistic innovation."
+              }
+            ],
+            "keyFacts": [
+              "First exhibition: The group's first independent exhibition took place in Paris in 1874.",
+              "Name: A mocking response to Monet's Impression, Sunrise helped give Impressionism its name.",
+              "Technique: Many works feature broken brushstrokes, patches of color, and close attention to light.",
+              "Outdoor painting: En plein air means painting outdoors.",
+              "Subjects: Modern life, leisure, landscapes, and city scenes were important themes.",
+              "Group exhibitions: Eight independent exhibitions took place between 1874 and 1886."
+            ],
+            "quiz": [
+              {
+                "question": "Why was the independent exhibition of 1874 important?",
+                "options": [
+                  "It required every artist to paint religious subjects.",
+                  "It gave artists a way to exhibit outside the official Salon's selection system.",
+                  "It prohibited the use of visible brushstrokes.",
+                  "It ended all public art exhibitions in Paris."
+                ],
+                "answerIndex": 1,
+                "explanation": "The artists organized their own exhibition independently of the jury-selected Salon."
+              },
+              {
+                "question": "Which painting helped give Impressionism its name?",
+                "options": [
+                  "The Dance Class by Edgar Degas.",
+                  "Paris Street, Rainy Day by Gustave Caillebotte.",
+                  "In the Loge by Mary Cassatt.",
+                  "Impression, Sunrise by Claude Monet."
+                ],
+                "answerIndex": 3,
+                "explanation": "Leroy's criticism of Monet's Impression, Sunrise helped establish the name."
+              },
+              {
+                "question": "Imagine a painting of a riverside outing with visible dabs of color and strong attention to reflected sunlight. Which features most strongly suggest an Impressionist approach?",
+                "options": [
+                  "Broken brushwork, light effects, and a modern leisure subject.",
+                  "A perfectly smooth surface and a mythological narrative.",
+                  "The absence of color and all signs of brushwork.",
+                  "The requirement that every object have a sharply drawn outline."
+                ],
+                "answerIndex": 0,
+                "explanation": "Broken brushwork, light effects, and scenes of contemporary leisure are characteristic clues."
+              },
+              {
+                "question": "What does en plein air mean in painting?",
+                "options": [
+                  "Painting only from photographs.",
+                  "Painting without using pigments.",
+                  "Painting outdoors.",
+                  "Painting exclusively at night."
+                ],
+                "answerIndex": 2,
+                "explanation": "En plein air refers to working outdoors."
+              },
+              {
+                "question": "Why did paint tubes and railways matter to Impressionist artists?",
+                "options": [
+                  "They eliminated changes in outdoor light.",
+                  "They made paint easier to carry and countryside locations easier to reach.",
+                  "They required all paintings to depict trains.",
+                  "They prevented artists from working outside studios."
+                ],
+                "answerIndex": 1,
+                "explanation": "Portable paint and convenient travel supported outdoor painting."
+              },
+              {
+                "question": "Which statement best describes the Impressionist group?",
+                "options": [
+                  "Every member used the same technique and painted the same subjects.",
+                  "Its members exhibited only through the official Salon.",
+                  "Its membership stayed unchanged throughout all eight exhibitions.",
+                  "It included artists with different approaches who shared an interest in independent exhibition."
+                ],
+                "answerIndex": 3,
+                "explanation": "The artists differed in style, and the group's membership changed, but independence from the Salon initially united them."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "The Metropolitan Museum of Art",
+                "title": "Impressionism: Art and Modernity",
+                "url": "https://www.metmuseum.org/essays/impressionism-art-and-modernity"
+              },
+              {
+                "publisher": "National Gallery of Art",
+                "title": "What Is Impressionism? 4 Things to Know",
+                "url": "https://www.nga.gov/stories/articles/what-impressionism-4-things-know"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "poetry-and-literature",
+    "title": "Poetry & Literature",
+    "description": "The books and poems readers keep returning to, and why they last.",
+    "color": "forest",
+    "topics": [
+      {
+        "slug": "classic-novels",
+        "title": "Classic Novels",
+        "kind": "style",
+        "summary": "Classic novels are books that remain meaningful across generations, although readers and institutions continually debate which works deserve that recognition.",
+        "lessons": [
+          {
+            "id": "les_cn01",
+            "slug": "what-makes-a-classic-novel",
+            "title": "What Makes a Classic Novel?",
+            "sections": [
+              {
+                "heading": "More than just an old book",
+                "body": "Have you ever noticed that some books stay on shelves for generations while others disappear after a few years? We often call those lasting books classics. But what gives a story that staying power? Age is part of the answer—not the whole answer. An old book can be forgotten, and a much newer book can earn lasting admiration.\n\nA classic is generally a work recognized for its enduring interest, artistic quality, or influence. There is no official checklist or universally agreed-upon definition. Instead, the label develops as readers return to a book, critics examine it, and later generations find reasons to keep it alive. Think of “classic” as a reputation built over time rather than an award handed out once.\n\nThat distinction matters because being popular today is different from lasting for generations. A bestseller tells us that many people bought a book at a particular moment. Calling it a classic makes a broader claim: that it continues to offer something worth reading after its original moment has passed. Some books achieve both kinds of success, but popularity alone does not establish lasting value."
+              },
+              {
+                "heading": "A story that keeps giving you something",
+                "body": "One reason novels endure is that their concerns remain recognizable. The setting might feel unfamiliar, but questions about belonging, ambition, injustice, or family can still feel immediate. You do not need to share a character’s circumstances to recognize a difficult choice or understand the fear of losing something important. That connection helps older stories speak to new readers.\n\nConsider Chinua Achebe’s Things Fall Apart, published in 1958. It follows Okonkwo, an influential man in an Igbo community, as personal struggles and the arrival of missionaries and colonial government reshape his world. The novel explores a particular society and historical experience rather than treating Africa as a vague backdrop. Its specificity is part of its power.\n\nCraft matters, too. A novel can offer carefully developed characters, striking language, or a structure that changes how you understand its events. Achebe uses Igbo proverbs within his storytelling, connecting the novel’s language to the culture it portrays. Good literary writing does not have to mean complicated vocabulary; its strength can lie in how effectively the form serves the story."
+              },
+              {
+                "heading": "Who gets to decide?",
+                "body": "Here is the complication: books do not survive on quality alone. Publishers decide what stays available, teachers choose what students read, and critics influence what receives attention. Together, these choices help shape the literary canon—the body of works a culture treats as especially important. There is no single official canon, even when a reading list makes it look settled.\n\nHistorically, influential Western reading lists often favored white European men, leaving many other writers underrepresented. That means absence from a traditional list is not proof that a book lacks value. It may also reflect who had access to publishing, whose experiences institutions respected, and which books readers were encouraged to discover.\n\nThe canon can change as people revisit those choices. Recognizing overlooked writers does not require pretending that older favorites have no value; it means questioning whether the list was complete. When someone calls a novel a classic, useful questions are: What makes it worth returning to? Whose experience does it reveal? And who helped make sure it was remembered?"
+              }
+            ],
+            "keyFacts": [
+              "A classic usually has enduring interest, artistic quality, or influence.",
+              "Age alone does not make a novel a classic.",
+              "Things Fall Apart was published in 1958.",
+              "The literary canon is a body of works regarded as especially important.",
+              "Publishers, educators, critics, and readers help shape which books survive."
+            ],
+            "quiz": [
+              {
+                "question": "Which description best explains what makes a novel a classic?",
+                "options": [
+                  "It was written more than 100 years ago.",
+                  "It remains valued for its meaning, artistry, or influence over time.",
+                  "It sold more copies than every other book in its publication year.",
+                  "It uses difficult vocabulary throughout."
+                ],
+                "answerIndex": 1,
+                "explanation": "A classic earns lasting recognition because readers continue to find value in it—not simply because it is old."
+              },
+              {
+                "question": "What is the literary canon?",
+                "options": [
+                  "An official worldwide ranking of every published book.",
+                  "A collection containing only ancient Greek and Roman stories.",
+                  "A body of works a culture considers especially important.",
+                  "A legal requirement governing what novelists may write."
+                ],
+                "answerIndex": 2,
+                "explanation": "The canon includes works treated as important by readers and institutions, but its contents can change."
+              },
+              {
+                "question": "Why does Things Fall Apart serve as a useful example in this lesson?",
+                "options": [
+                  "It explores an Igbo community through carefully crafted storytelling.",
+                  "It avoids any particular cultural or historical setting.",
+                  "It proves that only books published before 1900 can be classics.",
+                  "It shows that literary quality depends on complicated vocabulary."
+                ],
+                "answerIndex": 0,
+                "explanation": "The novel’s specific cultural setting and carefully crafted storytelling help explain its literary power."
+              },
+              {
+                "question": "A powerful novel was neglected because publishers and schools overlooked its author’s community. What does this suggest?",
+                "options": [
+                  "The novel must lack artistic quality.",
+                  "Readers cannot disagree with established reading lists.",
+                  "Every neglected book should automatically become a classic.",
+                  "Recognition can depend on institutional choices as well as literary quality."
+                ],
+                "answerIndex": 3,
+                "explanation": "Which books receive attention depends partly on who publishes, teaches, and promotes them."
+              },
+              {
+                "question": "Why might readers connect with a novel set in a society very different from their own?",
+                "options": [
+                  "Every society has identical customs and beliefs.",
+                  "Readers can recognize struggles such as belonging, ambition, and loss despite differences in circumstances.",
+                  "A novel’s historical and cultural setting never matters.",
+                  "Classic novels avoid unfamiliar experiences."
+                ],
+                "answerIndex": 1,
+                "explanation": "Recognizable human concerns can connect readers to a story without making its cultural differences unimportant."
+              },
+              {
+                "question": "A novel becomes a bestseller immediately after publication. What can you conclude?",
+                "options": [
+                  "It has already proved that it will remain meaningful for centuries.",
+                  "It cannot become a classic because it is too popular.",
+                  "It is commercially successful now, but its lasting value remains to be seen.",
+                  "It must have greater artistic quality than books that sell fewer copies."
+                ],
+                "answerIndex": 2,
+                "explanation": "Immediate popularity and enduring value are different; a book may eventually demonstrate both."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Grand Canyon University",
+                "title": "What Makes a Book a Classic?",
+                "url": "https://www.gcu.edu/blog/language-communication/what-makes-a-book-classic",
+                "note": "Definition of a classic, enduring relevance, artistic value, and the absence of a universally agreed-upon definition."
+              },
+              {
+                "publisher": "The Wesleyan Argus",
+                "title": "The Value of Reading Classical Literature in Contemporary Times",
+                "url": "https://wesleyanargus.com/2022/10/13/the-value-of-reading-classical-literature-in-contemporary-times/",
+                "note": "Commentary on literary influence, recognizable human concerns, and the value of reading older works."
+              },
+              {
+                "publisher": "EBSCO",
+                "title": "The Literary Canon",
+                "url": "https://www.ebsco.com/research-starters/literature-and-writing/literary-canon/",
+                "note": "Definition of the literary canon and discussion of representation and changing reading lists."
+              },
+              {
+                "publisher": "Maricopa Open Digital Press",
+                "title": "Exclusion and Inclusion: The ‘Canon’ and Its Discontents",
+                "url": "https://open.maricopa.edu/introlit/chapter/exclusion-and-inclusion-the-canon-and-its-discontents/",
+                "note": "How publishers, critics, educators, and readers influence which works survive and receive recognition."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Things Fall Apart",
+                "url": "https://www.britannica.com/topic/Things-Fall-Apart",
+                "note": "Publication date, Igbo setting, story, and use of proverbs."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Chinua Achebe",
+                "url": "https://www.britannica.com/biography/Chinua-Achebe",
+                "note": "Background on Achebe and the novel’s portrayal of traditional Igbo life during the arrival of missionaries and colonial government."
               }
             ]
           }

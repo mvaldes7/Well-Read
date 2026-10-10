@@ -9,7 +9,12 @@ import { levelFor, passedInTopic } from "./levels.mjs";
 /** @typedef {{ lesson_id: string, score: number, total: number, passed: boolean }} CompletionRow */
 /** @typedef {{ score: number, total: number, passed: boolean }} Completion */
 /** Best attempt plus when it was stored (ISO string, or null when missing/unparseable). */
-/** @typedef {Completion & { completedAt: string | null }} DatedCompletion */
+/**
+ * completedAt: time of the best attempt (upper bound on the first pass).
+ * firstPassedAt: exact time of the first pass (TSK-012), null when not recorded (column
+ * not migrated yet, row never passed, or written before the migration and not backfilled).
+ * @typedef {Completion & { completedAt: string | null, firstPassedAt: string | null }} DatedCompletion
+ */
 /** @typedef {{ id: string }} ContentLesson */
 /** @typedef {{ slug: string, title: string, lessons: ReadonlyArray<ContentLesson> }} ContentTopic */
 /** @typedef {{ slug: string, title: string, color: string, topics: ReadonlyArray<ContentTopic> }} ContentDiscipline */
@@ -47,7 +52,16 @@ export function isCompletionRow(row) {
 }
 
 /**
- * `completed_at` from a row as a normalised ISO string, or null if missing or unparseable.
+ * Columns read from lesson_completions. first_passed_at only exists once the TSK-012
+ * migration is applied; callers retry with withFirstPass=false on a missing-column error.
+ * @param {boolean} withFirstPass
+ */
+export function progressColumns(withFirstPass) {
+  return withFirstPass ? "lesson_id, score, total, passed, completed_at, first_passed_at" : "lesson_id, score, total, passed, completed_at";
+}
+
+/**
+ * A timestamp column from a row as a normalised ISO string, or null if missing or unparseable.
  * @param {unknown} v
  * @returns {string | null}
  */
@@ -72,8 +86,16 @@ export function bestCompletions(rows, disciplines) {
   for (const row of rows) {
     if (!isCompletionRow(row) || !known.has(row.lesson_id)) continue;
     const attempt = { score: row.score, total: row.total, passed: row.passed };
-    if (shouldReplace(map.get(row.lesson_id), attempt)) {
-      map.set(row.lesson_id, { ...attempt, completedAt: isoOrNull(/** @type {Record<string, unknown>} */ (row).completed_at) });
+    const r = /** @type {Record<string, unknown>} */ (row);
+    const prev = map.get(row.lesson_id);
+    // first_passed_at only counts on a passed row; across defensive duplicates keep the earliest.
+    const ownFirst = attempt.passed ? isoOrNull(r.first_passed_at) : null;
+    const firsts = [ownFirst, prev?.firstPassedAt ?? null].filter((d) => d !== null).sort();
+    const firstPassedAt = attempt.passed || prev?.passed ? (firsts[0] ?? null) : null;
+    if (shouldReplace(prev, attempt)) {
+      map.set(row.lesson_id, { ...attempt, completedAt: isoOrNull(r.completed_at), firstPassedAt });
+    } else if (prev) {
+      map.set(row.lesson_id, { ...prev, firstPassedAt: prev.passed ? firstPassedAt : null });
     }
   }
   return map;
@@ -179,19 +201,46 @@ export function hash32(s) {
 }
 
 /**
+ * Split a title into at most two lines for the spine: one line when it fits on the tallest
+ * spine at the smallest font, otherwise the word break that minimises the longer line.
+ * @param {string} title
+ * @returns {string[]}
+ */
+export function spineLines(title) {
+  const t = typeof title === "string" ? title.trim().replace(/\s+/g, " ") : "";
+  if (!t) return [];
+  const len = (/** @type {string} */ x) => [...x].length;
+  const oneLineMax = Math.floor((SPINE.maxHeight - SPINE.chrome) / (SPINE.minFont * SPINE.charEm));
+  const words = t.split(" ");
+  if (len(t) <= oneLineMax || words.length < 2) return [t];
+  let best = [t];
+  let bestLen = Infinity;
+  for (let i = 1; i < words.length; i++) {
+    const a = words.slice(0, i).join(" ");
+    const b = words.slice(i).join(" ");
+    const longest = Math.max(len(a), len(b));
+    if (longest < bestLen) [best, bestLen] = [[a, b], longest];
+  }
+  return best;
+}
+
+/**
  * Deterministic spine look for a book key (e.g. "philosophy/stoicism"): width,
  * height and shade index within the discipline's color family, from different
  * bits of the hash. With a title, the spine grows (up to C2's max height) so the
  * vertical title fits, and the font shrinks (to minFont) if it still wouldn't.
+ * Titles too long for one line at minFont wrap onto two lines (see spineLines);
+ * the fit is computed on the longer line.
  * @param {string} key
  * @param {string} [title]
- * @returns {{ width: number, height: number, shade: number, fontSize: number }}
+ * @returns {{ width: number, height: number, shade: number, fontSize: number, lines: string[] }}
  */
 export function spineStyle(key, title = "") {
   const h = hash32(key);
   const span = (/** @type {number} */ bits, /** @type {number} */ min, /** @type {number} */ max) =>
     min + (bits % (max - min + 1));
-  const chars = typeof title === "string" ? [...title].length : 0;
+  const lines = spineLines(title);
+  const chars = lines.reduce((m, l) => Math.max(m, [...l].length), 0);
   const wanted = SPINE.chrome + Math.ceil(chars * SPINE.maxFont * SPINE.charEm);
   const height = Math.min(SPINE.maxHeight, Math.max(span((h >>> 8) & 0xffff, SPINE.minHeight, SPINE.maxHeight), wanted));
   const fit = chars ? Math.floor((height - SPINE.chrome) / (chars * SPINE.charEm)) : SPINE.maxFont;
@@ -200,5 +249,6 @@ export function spineStyle(key, title = "") {
     height,
     shade: (h >>> 24) % SPINE.shades,
     fontSize: Math.max(SPINE.minFont, Math.min(SPINE.maxFont, fit)),
+    lines,
   };
 }

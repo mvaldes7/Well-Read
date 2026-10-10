@@ -100,6 +100,15 @@
       "title": "Levels + achievements",
       "role": "Builder",
       "type": "impl",
+      "state": "Release Approved",
+      "agent": "Builder",
+      "attempts": {}
+    },
+    {
+      "id": "TSK-012",
+      "title": "Content batch + sources + explanations + first_passed_at",
+      "role": "Builder",
+      "type": "impl",
       "state": "In Progress",
       "agent": "Builder",
       "attempts": {}
@@ -470,6 +479,42 @@
       "ts": "2026-10-10T16:58:24.386Z",
       "actor": "Builder",
       "taskId": "TSK-011",
+      "action": "start",
+      "from": "Idea",
+      "to": "In Progress",
+      "note": "agent=Builder"
+    },
+    {
+      "ts": "2026-10-10T17:43:24.769Z",
+      "actor": "Builder",
+      "taskId": "TSK-011",
+      "action": "status",
+      "from": "In Progress",
+      "to": "Checks Passed",
+      "note": "PR #11 CI checks passed on Node 24 (run 38070582590)"
+    },
+    {
+      "ts": "2026-10-10T17:43:24.817Z",
+      "actor": "Builder",
+      "taskId": "TSK-011",
+      "action": "status",
+      "from": "Checks Passed",
+      "to": "Release Approved",
+      "note": "PR #11 merged as 12344e3; REV-007 no blockers"
+    },
+    {
+      "ts": "2026-10-10T17:43:24.878Z",
+      "actor": "Builder",
+      "taskId": "TSK-012",
+      "action": "add",
+      "from": null,
+      "to": "Idea",
+      "note": null
+    },
+    {
+      "ts": "2026-10-10T17:43:24.922Z",
+      "actor": "Builder",
+      "taskId": "TSK-012",
       "action": "start",
       "from": "Idea",
       "to": "In Progress",

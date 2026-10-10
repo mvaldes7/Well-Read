@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 import { disciplines } from "@/content";
-import { evaluateAchievements, formatEarnedDate, type AchievementResult } from "@/achievements/definitions.mjs";
+import { evaluateAchievements, earnedLabel, type AchievementResult } from "@/achievements/definitions.mjs";
 import { PROGRESS_ERROR, getMyProgress } from "@/lib/progress/data";
 
 export const metadata: Metadata = { title: "Achievements" };
@@ -19,7 +19,7 @@ export default function AchievementsPage() {
       <header className="hero">
         <p className="eyebrow">The Honours Board</p>
         <h1>Achievements</h1>
-        <p>Recognition for what you&apos;ve learned. Dates show when an achievement was earned at the latest.</p>
+        <p>Recognition for what you&apos;ve learned. &ldquo;Earned by&rdquo; marks an older record: you earned it on or before that date.</p>
         <hr className="rule" />
       </header>
       {/* Reads the session cookie, so it streams in behind Suspense (cacheComponents). */}
@@ -58,7 +58,6 @@ async function Board() {
             </h2>
             <ul className="medals">
               {items.map((a) => {
-                const date = formatEarnedDate(a.earnedBy);
                 return (
                   <li key={a.id} className={`medal ${a.earned ? "earned" : "locked"}`}>
                     <span className="medallion" aria-hidden="true">
@@ -71,7 +70,7 @@ async function Board() {
                       </h3>
                       <p className="req">{a.requirement}</p>
                       <p className="medal-status">
-                        {a.earned ? (date ? `Earned by ${date}` : "Earned") : "Locked"}
+                        {earnedLabel(a)}
                         {a.progress && <span className="medal-progress"> · {a.progress}</span>}
                       </p>
                     </div>
