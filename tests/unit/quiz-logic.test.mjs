@@ -1,0 +1,127 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import {
+  QUIZ_ERRORS,
+  gradeQuiz,
+  gradeSubmission,
+  improvementCondition,
+  isPassing,
+  parseSubmission,
+  shouldReplace,
+} from '../../src/lib/quiz/logic.mjs';
+
+const disciplines = JSON.parse(readFileSync(new URL('../../src/content/disciplines.json', import.meta.url), 'utf8'));
+const byId = new Map(disciplines.flatMap((d) => d.topics.flatMap((t) => t.lessons.map((l) => [l.id, l]))));
+const lookup = (id) => byId.get(id)?.quiz;
+const lesson = byId.get('les_rr01'); // 4 questions
+const correct = lesson.quiz.map((q) => q.answerIndex);
+const wrong = (i) => (i + 1) % 4;
+
+/** Synthetic quiz with n questions whose correct answer is always 0. */
+const quizOf = (n) => Array.from({ length: n }, () => ({ options: ['a', 'b', 'c', 'd'], answerIndex: 0 }));
+const answersWith = (n, right) => Array.from({ length: n }, (_, i) => (i < right ? 0 : 1));
+
+test('isPassing: 70% threshold in integer arithmetic', () => {
+  assert.equal(isPassing(7, 10), true);
+  assert.equal(isPassing(6, 10), false);
+  assert.equal(isPassing(3, 4), true); // 75%
+  assert.equal(isPassing(2, 3), false); // 66.7%
+  assert.equal(isPassing(3, 3), true);
+  assert.equal(isPassing(0, 0), false);
+  assert.equal(isPassing(14, 20), true);
+  assert.equal(isPassing(13, 20), false);
+});
+
+test('gradeQuiz: all correct, threshold edge cases, per-question results', () => {
+  const all = gradeQuiz(lesson.quiz, correct);
+  assert.equal(all.ok, true);
+  assert.deepEqual([all.value.score, all.value.total, all.value.passed], [4, 4, true]);
+  assert.ok(all.value.questions.every((q) => q.correct));
+
+  const cases = [[10, 7, true], [10, 6, false], [4, 3, true], [3, 2, false], [5, 4, true], [5, 3, false]];
+  for (const [n, right, passed] of cases) {
+    const r = gradeQuiz(quizOf(n), answersWith(n, right));
+    assert.equal(r.ok, true);
+    assert.deepEqual([r.value.score, r.value.total, r.value.passed], [right, n, passed], `${right}/${n}`);
+  }
+
+  const mixed = gradeQuiz(lesson.quiz, correct.map((c, i) => (i === 0 ? wrong(c) : c)));
+  assert.deepEqual(mixed.value.questions[0], { chosenIndex: wrong(correct[0]), correctIndex: correct[0], correct: false });
+});
+
+test('gradeSubmission: valid payload is graded on the server', () => {
+  const r = gradeSubmission({ lessonId: 'les_rr01', answers: correct }, lookup);
+  assert.equal(r.ok, true);
+  assert.equal(r.value.lessonId, 'les_rr01');
+  assert.deepEqual([r.value.score, r.value.total, r.value.passed], [4, 4, true]);
+});
+
+test('gradeSubmission: forged score/total/passed fields are ignored', () => {
+  const allWrong = correct.map(wrong);
+  const r = gradeSubmission({ lessonId: 'les_rr01', answers: allWrong, score: 4, total: 4, passed: true, userId: 'x' }, lookup);
+  assert.equal(r.ok, true);
+  assert.deepEqual([r.value.score, r.value.total, r.value.passed], [0, 4, false]);
+});
+
+test('gradeSubmission: rejects wrong count, out-of-range, unknown lesson and junk', () => {
+  const bad = [
+    [{ lessonId: 'les_rr01', answers: correct.slice(1) }, QUIZ_ERRORS.wrongCount],
+    [{ lessonId: 'les_rr01', answers: [...correct, 0] }, QUIZ_ERRORS.wrongCount],
+    [{ lessonId: 'les_rr01', answers: [4, 0, 0, 0] }, QUIZ_ERRORS.outOfRange],
+    [{ lessonId: 'les_rr01', answers: [-1, 0, 0, 0] }, QUIZ_ERRORS.outOfRange],
+    [{ lessonId: 'les_rr01', answers: [0.5, 0, 0, 0] }, QUIZ_ERRORS.outOfRange],
+    [{ lessonId: 'les_rr01', answers: ['1', 0, 0, 0] }, QUIZ_ERRORS.outOfRange],
+    [{ lessonId: 'les_zz99', answers: correct }, QUIZ_ERRORS.unknownLesson],
+    [{ lessonId: 'how-the-republic-was-governed', answers: correct }, QUIZ_ERRORS.badRequest], // slug, not id
+    [{ lessonId: 'les_rr01' }, QUIZ_ERRORS.badRequest],
+    [{ lessonId: 'les_rr01', answers: [] }, QUIZ_ERRORS.badRequest],
+    [{ lessonId: 'les_rr01', answers: new Array(51).fill(0) }, QUIZ_ERRORS.badRequest],
+    [{ answers: correct }, QUIZ_ERRORS.badRequest],
+    [null, QUIZ_ERRORS.badRequest],
+    ['les_rr01', QUIZ_ERRORS.badRequest],
+    [[{ lessonId: 'les_rr01', answers: correct }], QUIZ_ERRORS.badRequest],
+  ];
+  for (const [input, error] of bad) {
+    assert.deepEqual(gradeSubmission(input, lookup), { ok: false, error }, JSON.stringify(input));
+  }
+});
+
+test('parseSubmission copies answers (no shared reference with the input)', () => {
+  const input = { lessonId: 'les_rr01', answers: [0, 1, 2, 3] };
+  const r = parseSubmission(input);
+  input.answers[0] = 3;
+  assert.deepEqual(r.value.answers, [0, 1, 2, 3]);
+});
+
+test('shouldReplace: never downgrades a pass, keeps the higher score', () => {
+  const pass4 = { score: 4, total: 4, passed: true };
+  const pass3 = { score: 3, total: 4, passed: true };
+  const fail2 = { score: 2, total: 4, passed: false };
+  const fail1 = { score: 1, total: 4, passed: false };
+  assert.equal(shouldReplace(null, fail1), true);
+  assert.equal(shouldReplace(undefined, pass3), true);
+  assert.equal(shouldReplace(pass3, fail2), false); // no downgrade
+  assert.equal(shouldReplace(pass4, pass3), false); // lower score
+  assert.equal(shouldReplace(pass3, pass3), false); // tie keeps existing
+  assert.equal(shouldReplace(pass3, pass4), true);
+  assert.equal(shouldReplace(fail1, fail2), true);
+  assert.equal(shouldReplace(fail2, fail1), false);
+  assert.equal(shouldReplace(fail2, pass3), true);
+  // different totals compare as fractions: 3/4 (75%) beats 7/10 (70%)
+  assert.equal(shouldReplace({ score: 7, total: 10, passed: true }, pass3), true);
+});
+
+test('improvementCondition matches shouldReplace for equal totals', () => {
+  const total = 4;
+  const all = [];
+  for (let s = 0; s <= total; s++) all.push({ score: s, total, passed: isPassing(s, total) });
+  // Emulate the SQL WHERE clause used in save.ts.
+  const matches = (row, cond) =>
+    cond.onlyIfNotPassed ? row.passed === false && row.score < cond.scoreBelow : row.passed === false || row.score < cond.scoreBelow;
+  for (const existing of all) {
+    for (const attempt of all) {
+      assert.equal(matches(existing, improvementCondition(attempt)), shouldReplace(existing, attempt), `${JSON.stringify(existing)} <- ${JSON.stringify(attempt)}`);
+    }
+  }
+});
