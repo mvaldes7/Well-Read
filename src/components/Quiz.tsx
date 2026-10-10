@@ -18,6 +18,11 @@ interface Props {
 
 export default function Quiz(props: Props) {
   const [attempt, setAttempt] = useState(0);
+  // With cacheComponents, Next keeps visited routes mounted inside React <Activity> and only
+  // hides them on navigation, so a graded result would survive and reappear when the lesson is
+  // reopened (TSK-010 reopen bug). Activity runs effect cleanups when it hides a route, so start
+  // a fresh attempt then; the next visit always opens the quiz form (status comes from the server).
+  useEffect(() => () => setAttempt((a) => a + 1), []);
   return <QuizAttempt key={attempt} {...props} onRetry={() => setAttempt((a) => a + 1)} />;
 }
 
