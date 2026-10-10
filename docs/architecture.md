@@ -1,6 +1,6 @@
 # Architecture
 
-Stack (as of TSK-003):
+Stack (as of TSK-004):
 
 - **Framework:** Next.js 16.4.0 (App Router, Turbopack), React 19.3.0, source in `src/app/`.
 - **Language:** TypeScript 5.x, `strict: true` (`tsconfig.json`), import alias `@/*` → `src/*`.
@@ -17,6 +17,17 @@ Stack (as of TSK-003):
 - **Routes:** `/`, `/d/[discipline]`, `/d/[discipline]/[topic]`, `/d/[discipline]/[topic]/[lesson]`, all
   prerendered via `generateStaticParams`. `src/proxy.ts` (Next 16 Proxy) returns a real 404 for unknown
   `/d/...` slugs, because with Cache Components a `notFound()` in a streamed page keeps a 200 status.
+- **Auth (TSK-004):** Supabase email/password via `@supabase/ssr` + `@supabase/supabase-js`.
+  Clients in `src/lib/supabase/` (browser, server via `cookies()` getAll/setAll, proxy session refresh).
+  `src/proxy.ts` refreshes the session and verifies it with `getClaims()` on every matched request, then
+  (1) redirects signed-out users on any protected path to `/login?next=…`, and signed-in users on
+  `/login`/`/signup` to `/`; (2) for signed-in users only, returns 404 for unknown `/d/...` slugs.
+  Pure decision logic (route classes, redirects, `next` sanitising, error messages) lives in
+  `src/lib/auth/logic.mjs` (JSDoc + `// @ts-check`, type-checked by `tsc` via `allowJs`) so `node:test`
+  can import it. The header's user menu reads cookies inside `<Suspense>` (required by Cache Components).
+  Env (`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`) is optional at build time;
+  when it's missing, auth is treated as not configured and every protected page redirects to `/login`.
+  `NEXT_PUBLIC_*` values are inlined at build time, so build with the env present for a working login.
 - **Tooling outside the app:** `scripts/ledger.mjs` (zero-dependency task ledger CLI) with `node:test` unit tests in `tests/unit/`.
 - **CI:** GitHub Actions, single job `checks` (`.github/workflows/ci.yml`).
 - **Not yet decided/added:** database, auth, hosting/deployment, E2E tests.
