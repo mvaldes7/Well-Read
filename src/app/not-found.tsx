@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-// Root not-found supports metadata (Next 16 docs); the layout template adds " · FoundationLearn".
+// Root not-found supports metadata (Next 16 docs); the layout template adds " · Curio".
 export const metadata: Metadata = { title: "Not found" };
 
 export default function NotFound() {

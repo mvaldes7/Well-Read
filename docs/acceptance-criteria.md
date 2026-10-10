@@ -21,7 +21,7 @@ Source: approved product brief (Mike, 2026-10-09), `docs/product-brief.md`.
 | TSK-003-1 | Seed content is stored in the repo as typed data (`src/content/`), checked against a TS schema: Discipline {slug, title, description, topics} > Topic {slug, title, kind: person/event/era/style, summary, lessons} > Lesson {slug, title, sections[{heading, body}], keyFacts[], quiz[{question, options[4], answerIndex}]}. |
 | TSK-003-2 | The seed includes 2 disciplines (World History, Philosophy), each with 2 topics, and 1-2 short, factually accurate lessons per topic. |
 | TSK-003-3 | Every lesson has 3-5 quiz questions, each with exactly 4 options and one correct `answerIndex` (0-3). Quiz data is stored but not rendered. |
-| TSK-003-4 | `/` shows the site title "FoundationLearn" and lists disciplines. |
+| TSK-003-4 | `/` shows the site title "Curio" and lists disciplines. |
 | TSK-003-5 | `/d/[discipline]` lists topics; `/d/[discipline]/[topic]` lists lessons; `/d/[discipline]/[topic]/[lesson]` renders the lesson's sections and key facts. |
 | TSK-003-6 | An unknown discipline, topic or lesson slug returns a real HTTP 404 with a not-found page. |
 | TSK-003-7 | Pages use semantic HTML, have breadcrumb/back links and plain, readable styling, with no new dependencies. |

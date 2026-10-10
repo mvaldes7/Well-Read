@@ -6,7 +6,7 @@
 
 ## Context
 
-FoundationLearn is a private repository on a free GitHub plan. Branch protection
+The app's repository (github.com/mvaldes7/FoundationLearn) is private, on a free GitHub plan. Branch protection
 rules and required status checks for private repositories require GitHub Pro (or
 a paid org plan), so `main` cannot be technically protected. Work is done by
 several agents (Product Lead, Builder, Architect/Reviewer), all operating through
