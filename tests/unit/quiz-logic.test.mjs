@@ -14,7 +14,9 @@ import {
 const disciplines = JSON.parse(readFileSync(new URL('../../src/content/disciplines.json', import.meta.url), 'utf8'));
 const byId = new Map(disciplines.flatMap((d) => d.topics.flatMap((t) => t.lessons.map((l) => [l.id, l]))));
 const lookup = (id) => byId.get(id)?.quiz;
-const lesson = byId.get('les_rr01'); // 4 questions
+const lesson = byId.get('les_rr01');
+const N = lesson.quiz.length; // 6 since the TSK-012 rewrite
+const rest = (first) => [first, ...new Array(N - 1).fill(0)];
 const correct = lesson.quiz.map((q) => q.answerIndex);
 const wrong = (i) => (i + 1) % 4;
 
@@ -36,7 +38,7 @@ test('isPassing: 70% threshold in integer arithmetic', () => {
 test('gradeQuiz: all correct, threshold edge cases, per-question results', () => {
   const all = gradeQuiz(lesson.quiz, correct);
   assert.equal(all.ok, true);
-  assert.deepEqual([all.value.score, all.value.total, all.value.passed], [4, 4, true]);
+  assert.deepEqual([all.value.score, all.value.total, all.value.passed], [N, N, true]);
   assert.ok(all.value.questions.every((q) => q.correct));
 
   const cases = [[10, 7, true], [10, 6, false], [4, 3, true], [3, 2, false], [5, 4, true], [5, 3, false]];
@@ -47,31 +49,31 @@ test('gradeQuiz: all correct, threshold edge cases, per-question results', () =>
   }
 
   const mixed = gradeQuiz(lesson.quiz, correct.map((c, i) => (i === 0 ? wrong(c) : c)));
-  assert.deepEqual(mixed.value.questions[0], { chosenIndex: wrong(correct[0]), correctIndex: correct[0], correct: false });
+  assert.deepEqual(mixed.value.questions[0], { chosenIndex: wrong(correct[0]), correctIndex: correct[0], correct: false, explanation: lesson.quiz[0].explanation });
 });
 
 test('gradeSubmission: valid payload is graded on the server', () => {
   const r = gradeSubmission({ lessonId: 'les_rr01', answers: correct }, lookup);
   assert.equal(r.ok, true);
   assert.equal(r.value.lessonId, 'les_rr01');
-  assert.deepEqual([r.value.score, r.value.total, r.value.passed], [4, 4, true]);
+  assert.deepEqual([r.value.score, r.value.total, r.value.passed], [N, N, true]);
 });
 
 test('gradeSubmission: forged score/total/passed fields are ignored', () => {
   const allWrong = correct.map(wrong);
-  const r = gradeSubmission({ lessonId: 'les_rr01', answers: allWrong, score: 4, total: 4, passed: true, userId: 'x' }, lookup);
+  const r = gradeSubmission({ lessonId: 'les_rr01', answers: allWrong, score: N, total: N, passed: true, userId: 'x' }, lookup);
   assert.equal(r.ok, true);
-  assert.deepEqual([r.value.score, r.value.total, r.value.passed], [0, 4, false]);
+  assert.deepEqual([r.value.score, r.value.total, r.value.passed], [0, N, false]);
 });
 
 test('gradeSubmission: rejects wrong count, out-of-range, unknown lesson and junk', () => {
   const bad = [
     [{ lessonId: 'les_rr01', answers: correct.slice(1) }, QUIZ_ERRORS.wrongCount],
     [{ lessonId: 'les_rr01', answers: [...correct, 0] }, QUIZ_ERRORS.wrongCount],
-    [{ lessonId: 'les_rr01', answers: [4, 0, 0, 0] }, QUIZ_ERRORS.outOfRange],
-    [{ lessonId: 'les_rr01', answers: [-1, 0, 0, 0] }, QUIZ_ERRORS.outOfRange],
-    [{ lessonId: 'les_rr01', answers: [0.5, 0, 0, 0] }, QUIZ_ERRORS.outOfRange],
-    [{ lessonId: 'les_rr01', answers: ['1', 0, 0, 0] }, QUIZ_ERRORS.outOfRange],
+    [{ lessonId: 'les_rr01', answers: rest(4) }, QUIZ_ERRORS.outOfRange],
+    [{ lessonId: 'les_rr01', answers: rest(-1) }, QUIZ_ERRORS.outOfRange],
+    [{ lessonId: 'les_rr01', answers: rest(0.5) }, QUIZ_ERRORS.outOfRange],
+    [{ lessonId: 'les_rr01', answers: rest('1') }, QUIZ_ERRORS.outOfRange],
     [{ lessonId: 'les_zz99', answers: correct }, QUIZ_ERRORS.unknownLesson],
     [{ lessonId: 'how-the-republic-was-governed', answers: correct }, QUIZ_ERRORS.badRequest], // slug, not id
     [{ lessonId: 'les_rr01' }, QUIZ_ERRORS.badRequest],
@@ -124,4 +126,40 @@ test('improvementCondition matches shouldReplace for equal totals', () => {
       assert.equal(matches(existing, improvementCondition(attempt)), shouldReplace(existing, attempt), `${JSON.stringify(existing)} <- ${JSON.stringify(attempt)}`);
     }
   }
+});
+
+// ---------- TSK-012: public questions and explanations ----------
+import { toPublicQuestions } from '../../src/lib/quiz/public.mjs';
+
+const allLessons = [...byId.values()];
+
+test('toPublicQuestions strips answerIndex and explanation (whitelist: question, options)', () => {
+  for (const l of allLessons) {
+    const pub = toPublicQuestions(l.quiz);
+    assert.equal(pub.length, l.quiz.length);
+    pub.forEach((q, i) => {
+      assert.deepEqual(Object.keys(q).sort(), ['options', 'question'], l.id);
+      assert.equal(q.question, l.quiz[i].question);
+      assert.deepEqual(q.options, l.quiz[i].options);
+    });
+    const json = JSON.stringify(pub);
+    assert.ok(!json.includes('answerIndex') && !json.includes('explanation'), l.id);
+    for (const q of l.quiz) assert.ok(!json.includes(q.explanation), `${l.id}: explanation text leaked`);
+  }
+  // Unknown extra fields never pass through either; options are copied, not shared.
+  const src = [{ question: 'Q', options: ['a', 'b'], answerIndex: 1, explanation: 'E', secret: 'x' }];
+  const out = toPublicQuestions(src);
+  assert.deepEqual(out, [{ question: 'Q', options: ['a', 'b'] }]);
+  assert.notEqual(out[0].options, src[0].options);
+});
+
+test('explanations come back only from grading, one per question', () => {
+  const r = gradeSubmission({ lessonId: 'les_rr01', answers: correct }, lookup);
+  assert.equal(r.ok, true);
+  assert.deepEqual(r.value.questions.map((q) => q.explanation), lesson.quiz.map((q) => q.explanation));
+  // Rejected submissions carry no explanations or answers.
+  const bad = gradeSubmission({ lessonId: 'les_rr01', answers: correct.slice(1) }, lookup);
+  assert.deepEqual(Object.keys(bad).sort(), ['error', 'ok']);
+  // A question without an explanation yields null (content validation requires one anyway).
+  assert.equal(gradeQuiz(quizOf(3), [0, 0, 0]).value.questions[0].explanation, null);
 });

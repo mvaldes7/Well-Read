@@ -4,10 +4,14 @@
 
 import { LESSON_ID_PATTERN } from "../../content/ids.mjs";
 
-/** @typedef {{ answerIndex: number }} GradableQuestion */
+/** @typedef {{ answerIndex: number, explanation?: string }} GradableQuestion */
 /** @typedef {{ lessonId: string, answers: number[] }} QuizSubmission */
 /** @typedef {{ score: number, total: number, passed: boolean }} Attempt */
-/** @typedef {{ chosenIndex: number, correctIndex: number, correct: boolean }} QuestionResult */
+/**
+ * Per-question result, returned to the client only after grading. `explanation` comes from
+ * server-side content (null if a question has none); it is never part of the pre-submit page.
+ * @typedef {{ chosenIndex: number, correctIndex: number, correct: boolean, explanation: string | null }} QuestionResult
+ */
 /** @typedef {Attempt & { questions: QuestionResult[] }} GradeResult */
 /** @typedef {{ ok: true, value: QuizSubmission } | { ok: false, error: string }} ParseResult */
 /** @typedef {{ ok: true, value: GradeResult } | { ok: false, error: string }} GradeOutcome */
@@ -69,7 +73,8 @@ export function gradeQuiz(quiz, answers) {
       return { ok: false, error: QUIZ_ERRORS.outOfRange };
     }
     const correctIndex = quiz[i].answerIndex;
-    questions.push({ chosenIndex: chosen, correctIndex, correct: chosen === correctIndex });
+    const explanation = typeof quiz[i].explanation === "string" && quiz[i].explanation !== "" ? /** @type {string} */ (quiz[i].explanation) : null;
+    questions.push({ chosenIndex: chosen, correctIndex, correct: chosen === correctIndex, explanation });
   }
   const score = questions.filter((q) => q.correct).length;
   const total = quiz.length;
@@ -122,3 +127,4 @@ export function gradeSubmission(input, lookupQuiz) {
   if (!graded.ok) return graded;
   return { ok: true, value: { lessonId: parsed.value.lessonId, ...graded.value } };
 }
+

@@ -4,12 +4,9 @@ import { useActionState, useEffect, useState, useTransition, type FormEvent } fr
 import { useRouter } from "next/navigation";
 import { submitQuiz, type QuizState } from "@/lib/quiz/actions";
 import { saveMessage } from "@/lib/progress/logic.mjs";
+import type { PublicQuestion } from "@/lib/quiz/public.mjs";
 
-/** Client-safe question: no answerIndex is ever sent to the browser before submit. */
-export interface PublicQuestion {
-  question: string;
-  options: string[];
-}
+export type { PublicQuestion };
 
 interface Props {
   lessonId: string;
@@ -72,6 +69,12 @@ function QuizAttempt({ lessonId, questions, onRetry }: Props & { onRetry: () => 
                 <span className="visually-hidden">{r.correct ? "(correct)" : "(incorrect)"}</span>
               </p>
               {!r.correct && <p>Correct answer: {questions[i]?.options[r.correctIndex]}</p>}
+              {r.explanation && (
+                <p className="explain">
+                  <span className="explain-label">Why: </span>
+                  {r.explanation}
+                </p>
+              )}
             </li>
           ))}
         </ol>
