@@ -353,3 +353,50 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
 .books li { position: relative; z-index: 0; }
 /* Hover stays subtle so the title keeps >= 4.5:1 at the gradient's lightest stop. */
 .spine:hover { filter: brightness(1.04); }
+
+/* ---------- Levels + achievements (TSK-011) ---------- */
+:root {
+  --locked-bg: #e4e0d8;      /* dimmed card: text stays --ink / --sub (>= 4.5:1, see PR) */
+  --locked-medal: #c9c4b9;
+  --locked-glyph: #4a4740;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --locked-bg: #201f23; --locked-medal: #3a3940; --locked-glyph: #c9c4b9; }
+}
+/* Level band: the spine's top cap becomes a small brass band ("Lv 1"). Same 14px box as
+   the plain cap, so spine chrome and title fit are unchanged. */
+.spine .cap.lv { display: flex; align-items: center; justify-content: center; background: linear-gradient(var(--brass-hi), var(--brass-lo)); color: var(--brass-text); font-family: var(--sans); font-size: 9px; font-weight: 700; letter-spacing: 0.14em; line-height: 1; text-transform: uppercase; border-color: #7c6639; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 1px 1px rgba(0, 0, 0, 0.45); }
+
+/* Topic page level */
+.topic-level-slot { min-height: 46px; margin-top: 18px; }
+.topic-level { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.level-badge { font-size: 11px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--brass-text); background: linear-gradient(var(--brass-hi), var(--brass-lo)); border: 1px solid #7c6639; border-radius: 2px; padding: 6px 12px 5px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), inset 0 -1px 0 rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.25); }
+.level-badge.none { color: var(--sub); background: transparent; border-color: var(--line); box-shadow: none; }
+.level-progress { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--sub); }
+.level-progress progress { appearance: none; -webkit-appearance: none; width: 120px; height: 8px; border: 1px solid var(--edge); border-radius: 1px; background: var(--option); box-shadow: inset 0 1px 2px rgba(30, 25, 15, 0.18); overflow: hidden; }
+.level-progress progress::-webkit-progress-bar { background: transparent; }
+.level-progress progress::-webkit-progress-value { background: linear-gradient(var(--brass-hi), var(--brass-lo)); }
+.level-progress progress::-moz-progress-bar { background: linear-gradient(var(--brass-hi), var(--brass-lo)); }
+.level-text { color: var(--ink); letter-spacing: 0.04em; }
+
+/* Achievements board */
+.board-count { text-align: center; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sub); margin: 0 0 8px; }
+.board { margin-top: 48px; }
+.medals { list-style: none; margin: 18px auto 0; padding: 0; max-width: 980px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.medal { display: flex; gap: 18px; align-items: flex-start; padding: 20px 22px; background: var(--paper); border: 1px solid var(--edge); border-radius: 2px; box-shadow: inset 0 1px 0 var(--bevel-hi), var(--lift); }
+.medal h3 { font-size: 22px; margin: 2px 0 6px; overflow-wrap: anywhere; }
+.medal .req { margin: 0 0 8px; font-size: 14.5px; color: var(--body); }
+.medal-status { margin: 0; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--brass-ink); }
+.medal-progress { letter-spacing: 0.12em; color: var(--sub); }
+.medallion { flex: none; display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%; font-family: var(--serif); font-size: 22px; color: var(--brass-text); background: radial-gradient(circle at 35% 30%, #f1dfae, var(--brass-hi) 35%, var(--brass-lo) 75%, #8d7546); border: 1px solid #7c6639; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -2px 3px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(30, 25, 15, 0.3); }
+/* Locked: dim the card background and the medallion, never the text. */
+.medal.locked { background: var(--locked-bg); box-shadow: inset 0 1px 2px rgba(30, 25, 15, 0.12); }
+.medal.locked .medallion { color: var(--locked-glyph); background: var(--locked-medal); border-color: transparent; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.25); }
+.medal.locked .medal-status { color: var(--sub); }
+@media (max-width: 600px) {
+  .medals { grid-template-columns: 1fr; }
+  .medal { padding: 16px; gap: 14px; }
+  .medal h3 { font-size: 19px; }
+  .medallion { width: 44px; height: 44px; font-size: 19px; }
+  .topic-level { gap: 10px; }
+}
