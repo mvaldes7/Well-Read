@@ -1,6 +1,6 @@
 # Architecture
 
-Stack (as of TSK-004):
+Stack (as of TSK-005):
 
 - **Framework:** Next.js 16.4.0 (App Router, Turbopack), React 19.3.0, source in `src/app/`.
 - **Language:** TypeScript 5.x, `strict: true` (`tsconfig.json`), import alias `@/*` → `src/*`.
@@ -33,6 +33,23 @@ Stack (as of TSK-004):
   Env (`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY`) is optional at build time;
   when it's missing, auth is treated as not configured and every protected page redirects to `/login`.
   `NEXT_PUBLIC_*` values are inlined at build time, so build with the env present for a working login.
+- **Quiz + completion (TSK-005):** the lesson page passes only `{question, options}` to the client `Quiz`
+  component (no `answerIndex`). The `submitQuiz` server action takes `{lessonId, answers}`, re-checks auth with
+  `getClaims()`, looks the lesson up by permanent id, validates and grades on the server
+  (`src/lib/quiz/logic.mjs`; pass = `score*10 >= total*7`), and never accepts a client score.
+  The best attempt is saved to `public.lesson_completions` with the user's session (RLS, no service role):
+  `INSERT … ON CONFLICT DO NOTHING`, then one conditional `UPDATE` that only matches a worse row, so a
+  passed row is never downgraded, even under concurrent submits. If saving fails (e.g. migration not applied),
+  the graded result is still shown with a "couldn't be saved" note.
+  Migration: `supabase/migrations/*_lesson_completions.sql` (applied only with Mike's approval).
+- **Path guard:** only `/_next/static/*`, `/_next/image*`, `/_next/webpack-hmr` (dev), `/favicon.ico` and
+  `/auth/confirm` are public (`PUBLIC_PATHS`/`PUBLIC_PREFIXES` in `src/lib/auth/logic.mjs`, kept in sync
+  with the proxy matcher). A file extension doesn't make a path public. Add any future `public/` files to
+  the allowlist explicitly.
+- **Email confirmation:** `GET /auth/confirm?token_hash&type&next` calls `verifyOtp` and redirects to a safe
+  `next` (or `/`), or to `/login?error=confirm_failed`. It's only used once the Supabase "Confirm signup"
+  email template links to `{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=email&next={{ .RedirectTo }}`.
+  That's a dashboard change needing Mike's approval and hasn't been made.
 - **Tooling outside the app:** `scripts/ledger.mjs` (zero-dependency task ledger CLI) with `node:test` unit tests in `tests/unit/`.
 - **CI:** GitHub Actions, single job `checks` (`.github/workflows/ci.yml`).
 - **Not yet decided/added:** database, auth, hosting/deployment, E2E tests.
