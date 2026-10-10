@@ -105,6 +105,11 @@ Which option is correct: B. One-sentence explanation of why.
   it, so **never change or reuse an id**; when rewriting a lesson keep its id and slug.
 - Slugs are lowercase kebab-case, unique within their scope (discipline, topic, lesson).
 
+**Provenance:**
+
+- Lesson content is drafted by Mike using Perplexity; the original dashboard/sidebar mockup ("The Well-Read") was made in Claude.
+- The TSK-012 seed-lesson rewrites (`les_rr01`, `les_fr01`, `les_fr02`, `les_so01`, `les_st01`, `les_st02`) are agent-drafted from the sources listed in each lesson.
+
 **Adding a discipline:** append it to the array (order = display order: World History, Philosophy, then the
 TSK-012 disciplines) with `slug`, `title`, a one-line `description`, `color` and `topics`. `color` must be one of
 the tokens in `src/content/colors.mjs` (`crimson`, `navy`, `forest`, `amber`, `plum`, `slate`), mapped to CSS
