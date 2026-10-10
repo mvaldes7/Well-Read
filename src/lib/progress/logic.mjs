@@ -123,12 +123,12 @@ export function saveMessage(save, passed) {
 /** Bounds for deterministic spine sizes (px), title font sizes (px) and shades per color family. */
 export const SPINE = /** @type {const} */ ({
   // Measured from mockup C2 (TSK-008 v2): spines are 60-74px wide and 250-286px tall in a
-  // 340px case (0.735-0.841 of the case height). Mobile scales these via CSS (--shelf-scale).
+  // 340px case (0.735-0.841 of the case height). As in C2, mobile keeps the same px in its 310px case.
   caseHeight: 340,
   minWidth: 60, maxWidth: 74, minHeight: 250, maxHeight: 286,
   maxFont: 19, minFont: 13, shades: 3,
-  /** Vertical space taken by the caps, tag and margins (px). */
-  chrome: 92,
+  /** Vertical space outside the title text: caps, tag, margins and the title's own padding (px, measured). */
+  chrome: 105,
   /** Advance per character as a fraction of the font size (measured worst case in C2: 0.62). */
   charEm: 0.62,
 });
