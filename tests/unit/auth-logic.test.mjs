@@ -130,6 +130,13 @@ test('confirm helpers: OTP types and login error codes', async () => {
   assert.equal(loginErrorMessage(null), null);
 });
 
+test('achievements is protected: signed-out redirect keeps next', () => {
+  assert.equal(classifyPath('/achievements'), 'protected');
+  assert.equal(classifyPath('/achievements/'), 'protected');
+  assert.deepEqual(decideAuth({ pathname: '/achievements', authed: false }), { type: 'redirect', location: '/login?next=%2Fachievements' });
+  assert.deepEqual(decideAuth({ pathname: '/achievements', authed: true }), { type: 'next' });
+});
+
 test('account is protected: signed-out redirect keeps next', () => {
   assert.equal(classifyPath('/account'), 'protected');
   assert.equal(classifyPath('/account/'), 'protected');
