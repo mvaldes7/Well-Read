@@ -4,7 +4,7 @@
   "private": true,
   "packageManager": "pnpm@10.33.4",
   "engines": {
-    "node": ">=20.9.0"
+    "node": "24.x"
   },
   "scripts": {
     "dev": "next dev",
@@ -12,7 +12,7 @@
     "start": "next start",
     "lint": "eslint .",
     "typecheck": "next typegen && tsc --noEmit",
-    "test": "node --test tests/unit/"
+    "test": "node --test tests/unit/*.test.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "0.12.7",
@@ -22,7 +22,7 @@
     "react-dom": "19.3.0"
   },
   "devDependencies": {
-    "@types/node": "^20",
+    "@types/node": "^24.19.2",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",

@@ -55,6 +55,15 @@
       "title": "Bookshelf + completed state",
       "role": "Builder",
       "type": "impl",
+      "state": "Release Approved",
+      "agent": "Builder",
+      "attempts": {}
+    },
+    {
+      "id": "TSK-007",
+      "title": "Node 24 upgrade",
+      "role": "Builder",
+      "type": "impl",
       "state": "In Progress",
       "agent": "Builder",
       "attempts": {}
@@ -245,6 +254,42 @@
       "ts": "2026-10-10T07:12:15.159Z",
       "actor": "Builder",
       "taskId": "TSK-006",
+      "action": "start",
+      "from": "Idea",
+      "to": "In Progress",
+      "note": "agent=Builder"
+    },
+    {
+      "ts": "2026-10-10T07:46:14.900Z",
+      "actor": "Builder",
+      "taskId": "TSK-006",
+      "action": "status",
+      "from": "In Progress",
+      "to": "Checks Passed",
+      "note": "PR #6 CI checks passed (run 38034659780)"
+    },
+    {
+      "ts": "2026-10-10T07:46:15.004Z",
+      "actor": "Builder",
+      "taskId": "TSK-006",
+      "action": "status",
+      "from": "Checks Passed",
+      "to": "Release Approved",
+      "note": "PR #6 merged to main as 07fc103, deployed to Vercel"
+    },
+    {
+      "ts": "2026-10-10T07:46:15.104Z",
+      "actor": "Builder",
+      "taskId": "TSK-007",
+      "action": "add",
+      "from": null,
+      "to": "Idea",
+      "note": null
+    },
+    {
+      "ts": "2026-10-10T07:46:15.199Z",
+      "actor": "Builder",
+      "taskId": "TSK-007",
       "action": "start",
       "from": "Idea",
       "to": "In Progress",

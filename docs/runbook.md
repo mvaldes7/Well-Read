@@ -2,7 +2,8 @@
 
 ## Prerequisites
 
-- Node.js >= 20.9.0 (CI uses Node 20)
+- Node.js 24 (`engines.node: 24.x`, `.nvmrc` = `24`; CI and Vercel use Node 24). With `nvm`: `nvm use`.
+  On older Node, pnpm only warns (`Unsupported engine`); the checks are only supported on 24.
 - pnpm 10.33.4 (`corepack enable` picks it up from `packageManager`, or `npm i -g pnpm@10.33.4`)
 
 ## Environment

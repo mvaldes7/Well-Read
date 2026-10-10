@@ -32,13 +32,16 @@ Discipline → Topic → Lesson → Quiz.
 | Task | Scope |
 | --- | --- |
 | TSK-003 | Browse and read lessons from seed files (done) |
-| TSK-004 | Login (Supabase email/password) |
-| TSK-005 | Quiz + lesson completion saved to Supabase |
-| TSK-006 | Bookshelf |
-| TSK-007 | Design pass |
-| TSK-008 | Levels + achievements |
+| TSK-004 | Login (Supabase email/password) (done) |
+| TSK-005 | Quiz + lesson completion saved to Supabase (done) |
+| TSK-006 | Bookshelf (done) |
+| TSK-007 | Node 24 upgrade |
+| TSK-008 | Design pass |
+| TSK-009 | Levels + achievements |
 
-Order updated 2026-10-09: a design pass (TSK-007) was added before levels and achievements (now TSK-008).
+Order updated 2026-10-09: a design pass was added before levels and achievements.
+Order updated 2026-10-10: Node 24 upgrade inserted as TSK-007 (Vercel deprecated Node 20 builds on 2026-10-01);
+design pass is now TSK-008, levels + achievements TSK-009.
 
 ## Tech stack
 
