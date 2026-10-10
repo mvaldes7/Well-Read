@@ -8,8 +8,13 @@ const LINKS = [
   { href: "/bookshelf", label: "Bookshelf", match: (p: string) => p === "/bookshelf" },
 ];
 
+/** Pages where the main nav is hidden (signed-out auth pages). */
+const HIDDEN_ON = new Set(["/login", "/signup"]);
+
+// Client component with no auth data: renders in the static shell (no Suspense needed).
 export default function MainNav() {
   const pathname = usePathname() ?? "";
+  if (HIDDEN_ON.has(pathname)) return null;
   return (
     <nav aria-label="Main" className="main-nav">
       {LINKS.map((l) => (

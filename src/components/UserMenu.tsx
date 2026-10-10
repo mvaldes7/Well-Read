@@ -1,4 +1,3 @@
-import MainNav from "@/components/MainNav";
 import { signOut } from "@/lib/auth/actions";
 import { createClient } from "@/lib/supabase/server";
 
@@ -11,18 +10,15 @@ export default async function UserMenu() {
   if (typeof email !== "string" || !email) return null;
 
   return (
-    <div className="user-menu">
-      <MainNav />
-      <div className="user">
-        <span>
-          Signed in as <strong>{email}</strong>
-        </span>
-        <form action={signOut}>
-          <button type="submit" className="btn-ghost">
-            Sign out
-          </button>
-        </form>
-      </div>
+    <div className="user">
+      <span>
+        Signed in as <strong>{email}</strong>
+      </span>
+      <form action={signOut}>
+        <button type="submit" className="btn-ghost">
+          Sign out
+        </button>
+      </form>
     </div>
   );
 }

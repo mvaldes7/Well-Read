@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
+import MainNav from "@/components/MainNav";
 import UserMenu from "@/components/UserMenu";
 import "./globals.css";
 
@@ -18,8 +19,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <Link href="/" className="logo">
               FoundationLearn<small>A personal collection</small>
             </Link>
-            {/* Sized placeholder while the session streams in, so the header doesn't shift. */}
-            <Suspense fallback={<div className="user-menu user-menu-placeholder" aria-hidden="true" />}>
+            {/* Static shell: the two nav links need no auth data, so they render immediately. */}
+            <MainNav />
+            {/* Only the email + sign-out stream in; a sized placeholder holds their space. */}
+            <Suspense fallback={<div className="user user-placeholder" aria-hidden="true" />}>
               <UserMenu />
             </Suspense>
           </div>
