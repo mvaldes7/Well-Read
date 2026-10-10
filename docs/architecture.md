@@ -17,6 +17,9 @@ Stack (as of TSK-006):
   Focus is always visible (`:focus-visible`), and transitions are disabled under `prefers-reduced-motion`.
   Bookshelf spines get a deterministic width, height, shade and title font size from `spineStyle()` in
   `src/lib/progress/logic.mjs` (FNV-1a hash of `discipline/topic`, title-aware so vertical titles fit).
+  Bounds are measured from mockup C2: 60-74px wide, 250-286px tall in a 340px case (310px on mobile, same px).
+  The header nav is in the static shell (client `MainNav`, no auth data); only the email + sign-out stream in.
+  Focus rings are gold: `--ring` on light surfaces, `--ring-on-dark` on the header, cases and placard.
 - **Next config:** create-next-app 16.4.0 defaults (`cacheComponents`, `partialPrefetching`) plus `agentRules: false` so `next dev` does not generate `AGENTS.md`.
 - **Content (TSK-003):** seed lessons in `src/content/disciplines.json`, types in `src/content/schema.ts`,
   and a loader in `src/content/index.ts` that checks the JSON at runtime and narrows it to those types
