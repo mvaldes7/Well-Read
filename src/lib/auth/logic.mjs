@@ -10,6 +10,16 @@
 export const LOGIN_PATH = "/login";
 export const SIGNUP_PATH = "/signup";
 const AUTH_PAGES = new Set([LOGIN_PATH, SIGNUP_PATH]);
+export const CONFIRM_PATH = "/auth/confirm";
+
+/**
+ * Exact public paths. Only real static files and the email-confirmation endpoint;
+ * keep in sync with files in src/app (favicon.ico) and public/ (none yet).
+ * A file extension alone never makes a path public.
+ */
+export const PUBLIC_PATHS = new Set(["/favicon.ico", CONFIRM_PATH]);
+/** Framework asset prefixes (build output, image optimizer, dev HMR socket). */
+export const PUBLIC_PREFIXES = ["/_next/static/", "/_next/image", "/_next/webpack-hmr"];
 const MAX_NEXT_LENGTH = 512;
 const BASE = "http://internal.invalid";
 
@@ -23,6 +33,7 @@ export const MESSAGES = Object.freeze({
   signupDisabled: "Sign-ups are currently disabled.",
   rateLimited: "Too many attempts. Wait a moment and try again.",
   notConfigured: "Login isn't configured on this server.",
+  confirmFailed: "That confirmation link is invalid or has expired. Try signing in, or sign up again.",
   generic: "Something went wrong. Please try again.",
   checkEmail: "Check your email to confirm your account, then sign in.",
 });
@@ -36,15 +47,15 @@ function normalise(pathname) {
 }
 
 /**
- * Classify a request path. Everything that isn't a framework/static asset or an
- * auth page requires login (the whole app is private).
+ * Classify a request path. Everything that isn't an allow-listed static asset,
+ * framework asset or auth page requires login (the whole app is private).
  * @param {string} pathname
  * @returns {RouteKind}
  */
 export function classifyPath(pathname) {
   const p = normalise(pathname);
   if (AUTH_PAGES.has(p)) return "auth";
-  if (p.startsWith("/_next/") || p === "/favicon.ico" || /\.[a-z0-9]+$/i.test(p)) return "public";
+  if (PUBLIC_PATHS.has(p) || PUBLIC_PREFIXES.some((prefix) => p.startsWith(prefix))) return "public";
   return "protected";
 }
 
@@ -92,6 +103,25 @@ export function decideAuth({ pathname, search = "", authed }) {
   if (kind === "public") return { type: "next" };
   if (kind === "auth") return authed ? { type: "redirect", location: "/" } : { type: "next" };
   return authed ? { type: "next" } : { type: "redirect", location: loginRedirectFor(pathname, search) };
+}
+
+/**
+ * Map a `?error=` code on /login to a message (unknown codes show nothing).
+ * @param {string | null | undefined} code
+ */
+export function loginErrorMessage(code) {
+  return code === "confirm_failed" ? MESSAGES.confirmFailed : null;
+}
+
+/** Email OTP types accepted by /auth/confirm (Supabase EmailOtpType). */
+export const EMAIL_OTP_TYPES = Object.freeze(["signup", "invite", "magiclink", "recovery", "email_change", "email"]);
+
+/**
+ * @param {unknown} value
+ * @returns {value is "signup" | "invite" | "magiclink" | "recovery" | "email_change" | "email"}
+ */
+export function isEmailOtpType(value) {
+  return typeof value === "string" && EMAIL_OTP_TYPES.includes(value);
 }
 
 /**

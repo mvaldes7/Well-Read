@@ -15,6 +15,9 @@ export interface QuizQuestion {
 }
 
 export interface Lesson {
+  /** Permanent id (e.g. `les_rr01`). Never derived from the slug, never reused; completions are keyed on it. */
+  id: string;
+  /** URL segment; may change without affecting saved progress. */
   slug: string;
   title: string;
   sections: LessonSection[];

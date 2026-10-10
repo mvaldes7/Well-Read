@@ -15,7 +15,6 @@ test('classifyPath: auth pages, public assets, everything else protected', () =>
   assert.equal(classifyPath('/signup/'), 'auth');
   assert.equal(classifyPath('/_next/static/chunk.js'), 'public');
   assert.equal(classifyPath('/favicon.ico'), 'public');
-  assert.equal(classifyPath('/logo.png'), 'public');
   for (const p of ['/', '/d/philosophy', '/d/philosophy/stoicism/the-roman-stoics', '/d/nope', '/loginx', '/anything']) {
     assert.equal(classifyPath(p), 'protected', p);
   }
@@ -104,4 +103,29 @@ test('authErrorMessage maps Supabase error codes without revealing accounts on s
   assert.equal(authErrorMessage('not_configured', 'signin'), MESSAGES.notConfigured);
   assert.equal(authErrorMessage('something_new', 'signin'), MESSAGES.generic);
   assert.equal(authErrorMessage(undefined, 'signup'), MESSAGES.generic);
+});
+
+test('path guard: a file extension never makes a path public', () => {
+  for (const p of ['/d/philosophy.png', '/secret.json', '/logo.png', '/d/x/y.ico', '/favicon.ico.json', '/_next/data/x.json', '/.env']) {
+    assert.equal(classifyPath(p), 'protected', p);
+    assert.equal(decideAuth({ pathname: p, authed: false }).type, 'redirect', p);
+  }
+});
+
+test('path guard: only allow-listed assets and framework paths are public', () => {
+  for (const p of ['/favicon.ico', '/_next/static/chunks/main.js', '/_next/image', '/auth/confirm']) {
+    assert.equal(classifyPath(p), 'public', p);
+    assert.deepEqual(decideAuth({ pathname: p, authed: false }), { type: 'next' }, p);
+  }
+});
+
+test('confirm helpers: OTP types and login error codes', async () => {
+  const { isEmailOtpType, loginErrorMessage, MESSAGES: M } = await import('../../src/lib/auth/logic.mjs');
+  assert.equal(isEmailOtpType('email'), true);
+  assert.equal(isEmailOtpType('signup'), true);
+  assert.equal(isEmailOtpType('sms'), false);
+  assert.equal(isEmailOtpType(null), false);
+  assert.equal(loginErrorMessage('confirm_failed'), M.confirmFailed);
+  assert.equal(loginErrorMessage('<script>'), null);
+  assert.equal(loginErrorMessage(null), null);
 });

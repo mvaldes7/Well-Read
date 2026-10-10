@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import Quiz, { type PublicQuestion } from "@/components/Quiz";
 import { disciplines, getDiscipline, getLesson, getTopic } from "@/content";
 
 export function generateStaticParams() {
@@ -17,6 +18,11 @@ export async function generateMetadata({
 }: PageProps<"/d/[discipline]/[topic]/[lesson]">): Promise<Metadata> {
   const { discipline, topic, lesson } = await params;
   return { title: getLesson(discipline, topic, lesson)?.title ?? "Not found" };
+}
+
+// Strip answerIndex: only question text and options may reach the client.
+function toPublicQuestions(quiz: { question: string; options: readonly string[] }[]): PublicQuestion[] {
+  return quiz.map(({ question, options }) => ({ question, options: [...options] }));
 }
 
 export default async function LessonPage({
@@ -54,6 +60,10 @@ export default async function LessonPage({
           ))}
         </ul>
       </aside>
+      <section aria-labelledby="quiz-heading">
+        <h2 id="quiz-heading">Quiz</h2>
+        <Quiz lessonId={lesson.id} questions={toPublicQuestions(lesson.quiz)} />
+      </section>
       <p>
         <Link href={topicHref}>← Back to {topic.title}</Link>
       </p>

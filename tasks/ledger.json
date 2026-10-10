@@ -37,6 +37,15 @@
       "title": "Supabase email/password login",
       "role": "Builder",
       "type": "impl",
+      "state": "Release Approved",
+      "agent": "Builder",
+      "attempts": {}
+    },
+    {
+      "id": "TSK-005",
+      "title": "Quiz + saved lesson completion",
+      "role": "Builder",
+      "type": "impl",
       "state": "In Progress",
       "agent": "Builder",
       "attempts": {}
@@ -155,6 +164,42 @@
       "ts": "2026-10-10T02:46:53.673Z",
       "actor": "Builder",
       "taskId": "TSK-004",
+      "action": "start",
+      "from": "Idea",
+      "to": "In Progress",
+      "note": "agent=Builder"
+    },
+    {
+      "ts": "2026-10-10T03:25:43.794Z",
+      "actor": "Builder",
+      "taskId": "TSK-004",
+      "action": "status",
+      "from": "In Progress",
+      "to": "Checks Passed",
+      "note": "PR #4 CI checks job passed (run 38018610269)"
+    },
+    {
+      "ts": "2026-10-10T03:25:43.892Z",
+      "actor": "Builder",
+      "taskId": "TSK-004",
+      "action": "status",
+      "from": "Checks Passed",
+      "to": "Release Approved",
+      "note": "PR #4 merged to main as fd6ff33"
+    },
+    {
+      "ts": "2026-10-10T03:25:43.997Z",
+      "actor": "Builder",
+      "taskId": "TSK-005",
+      "action": "add",
+      "from": null,
+      "to": "Idea",
+      "note": null
+    },
+    {
+      "ts": "2026-10-10T03:25:44.093Z",
+      "actor": "Builder",
+      "taskId": "TSK-005",
       "action": "start",
       "from": "Idea",
       "to": "In Progress",

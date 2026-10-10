@@ -12,7 +12,10 @@ import { updateSession, withSessionCookies } from "@/lib/supabase/proxy";
 //    With cacheComponents, notFound() inside a streamed page keeps a 200 status,
 //    so the check has to happen here, before rendering.
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)"],
+  // Skip only framework assets and the favicon; every other path (including ones
+  // with a file extension, e.g. /d/x.png) goes through the auth check.
+  // Keep in sync with PUBLIC_PATHS / PUBLIC_PREFIXES in src/lib/auth/logic.mjs.
+  matcher: ["/((?!_next/static/|_next/image|favicon\\.ico$).*)"],
 };
 
 function decode(segment: string): string | null {

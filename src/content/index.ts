@@ -1,4 +1,5 @@
 import raw from "./disciplines.json";
+import { LESSON_ID_PATTERN, lessonIdProblems } from "./ids.mjs";
 import {
   TOPIC_KINDS,
   type Discipline,
@@ -54,7 +55,10 @@ function question(v: unknown, path: string): QuizQuestion {
 
 function lesson(v: unknown, path: string): Lesson {
   if (!isObject(v)) fail(path, "expected object");
+  const id = str(v.id, `${path}.id`);
+  if (!LESSON_ID_PATTERN.test(id)) fail(`${path}.id`, `expected ${LESSON_ID_PATTERN}`);
   return {
+    id,
     slug: str(v.slug, `${path}.slug`),
     title: str(v.title, `${path}.title`),
     sections: arr(v.sections, `${path}.sections`).map((s, i) => {
@@ -84,6 +88,8 @@ function topic(v: unknown, path: string): Topic {
 }
 
 export function parseDisciplines(data: unknown): Discipline[] {
+  const idProblems = lessonIdProblems(data);
+  if (idProblems.length) throw new Error(`Invalid content: ${idProblems.join("; ")}`);
   return uniqueSlugs(
     arr(data, "disciplines").map((d, i) => {
       const path = `disciplines[${i}]`;
@@ -118,6 +124,18 @@ export function getLesson(
   lessonSlug: string,
 ): Lesson | undefined {
   return getTopic(disciplineSlug, topicSlug)?.lessons.find((l) => l.slug === lessonSlug);
+}
+
+const lessonsById = new Map<string, { discipline: Discipline; topic: Topic; lesson: Lesson }>();
+for (const discipline of disciplines) {
+  for (const topic of discipline.topics) {
+    for (const lesson of topic.lessons) lessonsById.set(lesson.id, { discipline, topic, lesson });
+  }
+}
+
+/** Look a lesson up by its permanent id (server-side grading uses this). */
+export function getLessonById(id: string) {
+  return lessonsById.get(id);
 }
 
 export type { Discipline, Lesson, LessonSection, QuizQuestion, Topic, TopicKind } from "./schema";
