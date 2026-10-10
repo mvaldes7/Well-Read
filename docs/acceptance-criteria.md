@@ -9,9 +9,9 @@ Source: approved product brief (Mike, 2026-10-09), `docs/product-brief.md`.
 | AC-1 | Content is organised as discipline → topic → lesson, and each lesson has a quiz. | TSK-003 / TSK-005 |
 | AC-2 | A lesson counts as complete only when its quiz is passed with a score of 70% or higher; a lower score doesn't complete it. | TSK-005 |
 | AC-3 | Completion is saved to Supabase and syncs for the signed-in user. | TSK-005 |
-| AC-4 | Per-topic level: 0 completed lessons = no level; 1-4 = L1; 5-9 = L2; then +1 level per further 5 lessons (level = 1 + floor(completed / 5) for completed >= 1). | TSK-008 |
+| AC-4 | Per-topic level from the topic's count n of distinct passed lessons (ids in content): n = 0 = no level; 1-4 = L1; 5-9 = L2; then +1 level per further 5 lessons (level = 1 + floor(n / 5) for n >= 1), with progress n % 5 of 5 to the next level (n = 0 reads "Pass a lesson to reach Level 1"). Shown on each bookshelf book ("Lv N", also in the link's accessible label) and on the topic page (badge + progress). | TSK-011 |
 | AC-5 | The bookshelf shows one book per topic with at least one passed lesson, grouped by discipline; books in the same discipline share a cover color. | TSK-006 |
-| AC-6 | A separate achievements menu exists (the final achievement list is not yet defined). | TSK-008 |
+| AC-6 | A protected `/achievements` page, linked from the header nav, lists the starter set; earned ones show "Earned by <date>" where derivable, locked ones are dimmed with their requirement (text >= 4.5:1). Starter set: **First Lesson** (pass any lesson); **Perfect Score** (best attempt with score = total on any lesson); **Discipline Explorer** (pass a lesson in every discipline); **<Topic>: Level N**, one per topic (earned at Level 1, shows the current tier; locked: "Pass a lesson in <Topic>"); **Completionist: <Discipline>**, one per discipline (pass every lesson in it). | TSK-011 |
 | AC-7 | Login uses Supabase email/password. Public sign-ups are disabled later, only with Mike's approval. | TSK-004 |
 
 ## TSK-003: Browse and read lessons from seed files

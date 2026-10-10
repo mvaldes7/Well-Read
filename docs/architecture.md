@@ -1,6 +1,6 @@
 # Architecture: Curio
 
-Stack (as of TSK-010). Display name: **Curio**; the repo is github.com/mvaldes7/Curio; the Vercel project keeps its name.
+Stack (as of TSK-011). Display name: **Curio**; the repo is github.com/mvaldes7/Curio; the Vercel project keeps its name.
 
 - **Framework:** Next.js 16.4.0 (App Router, Turbopack), React 19.3.0, source in `src/app/`.
 - **Language:** TypeScript 5.x, `strict: true` (`tsconfig.json`), import alias `@/*` → `src/*`.
@@ -85,6 +85,27 @@ Stack (as of TSK-010). Display name: **Curio**; the repo is github.com/mvaldes7/
   access token is issued, hence the `refreshSession()` after saving; if that refresh failed, the new name would
   appear at the next token refresh. `user_metadata` is user-editable, so names are display only and never used
   for authorization. React escapes them; no `dangerouslySetInnerHTML`.
+- **Levels (TSK-011, AC-4):** `src/lib/progress/levels.mjs` (pure, tested): `levelFor(n)` returns
+  `{level, passed, toward, needed, nextLevel}` (n = 0 -> level null, next step "Pass a lesson to reach Level 1";
+  otherwise level 1 + floor(n/5), `toward` n % 5 of 5). Bad input is clamped (non-numbers, NaN, negatives -> 0;
+  fractions floored). n is `passedInTopic` over the deduped per-lesson lookup, so only distinct passed lessons
+  whose ids exist in content count. Books carry `level`; the bookshelf shows it as a brass band in the spine's top
+  cap (same box as the plain cap, so title fit is unchanged) and in the link label; the topic page streams a
+  badge + `<progress>` + text in a sized slot.
+- **Achievements (TSK-011, AC-6):** defined in ONE file, `src/achievements/definitions.mjs` (JSDoc types).
+  Each definition is `single`, `perTopic` or `perDiscipline` (generated from content) with a pure evaluator over
+  a context built once from the user's rows + content (`bestCompletions`: best attempt per known lesson,
+  with its `completed_at`). `evaluateAchievements(rows, content)` returns results in definition/content order.
+  To add one, append a definition. Nothing is stored; `/achievements` computes the board on the server from
+  `getMyProgress()` (which now also selects `completed_at`, read-only) + `src/content`. Ids for generated
+  achievements use slugs (`topic-level:<discipline>/<topic>`), which is fine because nothing persists them.
+  **Date semantics:** `completed_at` is rewritten whenever a better attempt is saved, so it is the time of the
+  BEST attempt and never earlier than the real pass. Every date is therefore an upper bound and the UI says
+  **"Earned by <date>"**: an achievement needing k passed lessons uses the k-th earliest `completed_at` among
+  qualifying lessons ("any" = earliest, "all of" = latest; a topic's Level N tier uses k = max(1, 5(N-1));
+  Discipline Explorer = latest of each discipline's earliest). Rows without a date are skipped; when fewer than k
+  are dated, the date is omitted ("Earned"). Dates are formatted on the server, en-US, in
+  **America/Los_Angeles** (`formatEarnedDate`), so they don't depend on the server's time zone.
 - **Path guard:** only `/_next/static/*`, `/_next/image*`, `/_next/webpack-hmr` (dev), `/favicon.ico` and
   `/auth/confirm` are public (`PUBLIC_PATHS`/`PUBLIC_PREFIXES` in `src/lib/auth/logic.mjs`, kept in sync
   with the proxy matcher). A file extension doesn't make a path public. Add any future `public/` files to

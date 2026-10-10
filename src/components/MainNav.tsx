@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 const LINKS = [
   { href: "/", label: "Learn", match: (p: string) => p === "/" || p.startsWith("/d/") },
   { href: "/bookshelf", label: "Bookshelf", match: (p: string) => p === "/bookshelf" },
+  { href: "/achievements", label: "Achievements", match: (p: string) => p === "/achievements" },
 ];
 
 /** Pages where the main nav is hidden (signed-out auth pages). */
