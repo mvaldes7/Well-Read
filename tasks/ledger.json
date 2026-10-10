@@ -91,6 +91,15 @@
       "title": "Polish batch: reopen bug, first name, sharper look",
       "role": "Builder",
       "type": "impl",
+      "state": "Release Approved",
+      "agent": "Builder",
+      "attempts": {}
+    },
+    {
+      "id": "TSK-011",
+      "title": "Levels + achievements",
+      "role": "Builder",
+      "type": "impl",
       "state": "In Progress",
       "agent": "Builder",
       "attempts": {}
@@ -425,6 +434,42 @@
       "ts": "2026-10-10T09:06:17.556Z",
       "actor": "Builder",
       "taskId": "TSK-010",
+      "action": "start",
+      "from": "Idea",
+      "to": "In Progress",
+      "note": "agent=Builder"
+    },
+    {
+      "ts": "2026-10-10T16:58:24.279Z",
+      "actor": "Builder",
+      "taskId": "TSK-010",
+      "action": "status",
+      "from": "In Progress",
+      "to": "Checks Passed",
+      "note": "PR #10 CI checks passed on Node 24 (run 38041914852)"
+    },
+    {
+      "ts": "2026-10-10T16:58:24.316Z",
+      "actor": "Builder",
+      "taskId": "TSK-010",
+      "action": "status",
+      "from": "Checks Passed",
+      "to": "Release Approved",
+      "note": "PR #10 squash-merged as 9e65aa6; Architect REV-006 no blockers"
+    },
+    {
+      "ts": "2026-10-10T16:58:24.352Z",
+      "actor": "Builder",
+      "taskId": "TSK-011",
+      "action": "add",
+      "from": null,
+      "to": "Idea",
+      "note": null
+    },
+    {
+      "ts": "2026-10-10T16:58:24.386Z",
+      "actor": "Builder",
+      "taskId": "TSK-011",
       "action": "start",
       "from": "Idea",
       "to": "In Progress",
