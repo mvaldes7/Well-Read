@@ -8,7 +8,7 @@ test('toRoman', () => {
   for (const bad of [0, -1, 4000, 1.5, NaN]) assert.equal(toRoman(bad), String(bad));
 });
 
-test('display name is Curio: no "FoundationLearn" left in app source', async () => {
+test('display name is Curio: the old display name is gone from app source', async () => {
   const { readdirSync, readFileSync, statSync } = await import('node:fs');
   const { join } = await import('node:path');
   const root = new URL('../../src/', import.meta.url).pathname;
