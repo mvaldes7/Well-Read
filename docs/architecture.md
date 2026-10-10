@@ -41,7 +41,9 @@ Stack (as of TSK-006):
   `INSERT … ON CONFLICT DO NOTHING`, then one conditional `UPDATE` that only matches a worse row, so a
   passed row is never downgraded, even under concurrent submits. If saving fails (e.g. migration not applied),
   the graded result is still shown with a "couldn't be saved" note.
-  Migration: `supabase/migrations/*_lesson_completions.sql` (applied only with Mike's approval).
+  Migration: `supabase/migrations/20261010040740_lesson_completions.sql`, applied to the dev project on
+  2026-10-09 with Mike's approval. The file is kept byte-identical to what was applied, so its header still
+  says "UNAPPLIED"; the applied status is tracked here and in the ledger, not by editing the file.
 - **Progress reads (TSK-006):** `getMyProgress()` (`src/lib/progress/data.ts`, React `cache` per request)
   re-checks `getClaims()`, then selects only `lesson_id, score, total, passed` for the user with the cookie
   session (RLS). Errors become a non-leaky message, never a crash. Pure helpers in

@@ -29,6 +29,12 @@ pnpm build              # next build
 node scripts/ledger.mjs validate
 ```
 
+## Database migrations
+
+- Migrations live in `supabase/migrations/<UTC timestamp>_<name>.sql` and are applied only with Mike's approval.
+- **Never edit an applied migration** (not even comments). Keep it byte-identical to what was applied.
+- New schema changes go in **new migration files with new timestamps**.
+
 ## Task ledger
 
 ```sh

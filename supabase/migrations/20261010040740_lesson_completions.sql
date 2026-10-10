@@ -1,8 +1,7 @@
 -- TSK-005: lesson completions (one row per user per lesson, best attempt).
 --
--- STATUS: APPLIED to the dev Supabase project on 2026-10-09 with Mike's
--- approval. Apply to any other project only via the normal migration process
--- and with Mike's approval.
+-- STATUS: UNAPPLIED. Do not run against any Supabase project until Mike has
+-- reviewed and approved it. Apply via the normal migration process only.
 --
 -- Notes:
 -- * Primary key (user_id, lesson_id) replaces a separate unique constraint and
