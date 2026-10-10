@@ -67,12 +67,16 @@ test('duplicate rows are deduped with the best-attempt rule', () => {
   assert.deepEqual(completionLookup(fails, disciplines).get('les_fr01'), { score: 2, total: 4, passed: false });
 });
 
-test('every color token maps to exactly one CSS rule in globals.css', async () => {
+test('every color token maps to exactly one CSS rule (a 3-shade family) in globals.css', async () => {
   const { DISCIPLINE_COLORS } = await import('../../src/content/colors.mjs');
+  const { SPINE } = await import('../../src/lib/progress/logic.mjs');
   const css = readFileSync(new URL('../../src/app/globals.css', import.meta.url), 'utf8');
   for (const c of DISCIPLINE_COLORS) {
-    assert.equal(css.match(new RegExp(`\\.cover-${c} \\{ --cover: #[0-9a-f]{6}; \\}`, 'g'))?.length, 1, c);
+    const rules = [...css.matchAll(new RegExp(`\\.cover-${c}\\s*\\{([^}]*)\\}`, 'g'))];
+    assert.equal(rules.length, 1, `one rule for ${c}`);
+    for (let i = 0; i < SPINE.shades; i++) assert.match(rules[0][1], new RegExp(`--shade-${i}:\\s*#[0-9a-f]{6};`), `${c} shade ${i}`);
   }
+  for (let i = 0; i < SPINE.shades; i++) assert.match(css, new RegExp(`\\.shade-${i}\\s*\\{\\s*--spine:\\s*var\\(--shade-${i}\\);`));
 });
 
 test('malformed rows are dropped', () => {
@@ -107,10 +111,31 @@ test('spineStyle is deterministic and within bounds', async () => {
     assert.ok(Number.isInteger(s.width) && s.width >= SPINE.minWidth && s.width <= SPINE.maxWidth, `width ${k}`);
     assert.ok(Number.isInteger(s.height) && s.height >= SPINE.minHeight && s.height <= SPINE.maxHeight, `height ${k}`);
     assert.ok(Number.isInteger(s.shade) && s.shade >= 0 && s.shade < SPINE.shades, `shade ${k}`);
+    assert.equal(s.fontSize, SPINE.maxFont, `no title -> full font ${k}`);
   }
   // Values actually vary across keys (not a constant).
   const sample = keys.slice(0, 200).map(spineStyle);
   assert.ok(new Set(sample.map((s) => s.width)).size > 5);
   assert.ok(new Set(sample.map((s) => s.height)).size > 10);
   assert.equal(new Set(sample.map((s) => s.shade)).size, SPINE.shades);
+});
+
+test('spineStyle makes room for the title: taller spine, smaller font only when needed', async () => {
+  const { spineStyle, SPINE } = await import('../../src/lib/progress/logic.mjs');
+  const fits = (s, t) => [...t].length * s.fontSize * SPINE.charEm <= s.height - SPINE.chrome;
+  for (const d of disciplines) for (const t of d.topics) {
+    const key = `${d.slug}/${t.slug}`;
+    const s = spineStyle(key, t.title);
+    assert.deepEqual(spineStyle(key, t.title), s);
+    assert.ok(s.height >= spineStyle(key).height, `never shorter with a title: ${t.title}`);
+    assert.ok(s.height <= SPINE.maxHeight && s.fontSize >= SPINE.minFont && s.fontSize <= SPINE.maxFont);
+    assert.ok(fits(s, t.title), `title fits: ${t.title} ${JSON.stringify(s)}`);
+  }
+  assert.equal(spineStyle('k', 'Stoicism').fontSize, SPINE.maxFont);
+  const long = spineStyle('k', 'A Very Long Topic Title That Cannot Fit');
+  assert.equal(long.height, SPINE.maxHeight);
+  assert.equal(long.fontSize, SPINE.minFont); // floor reached; CSS ellipsis covers the rest
+  // Same key + title, same result; width and shade don't depend on the title.
+  assert.equal(spineStyle('k', 'Stoicism').width, spineStyle('k').width);
+  assert.equal(spineStyle('k', 'Stoicism').shade, spineStyle('k').shade);
 });

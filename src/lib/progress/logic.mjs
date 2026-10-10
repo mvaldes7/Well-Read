@@ -117,8 +117,15 @@ export function saveMessage(save, passed) {
   return passed ? "Progress saved." : "Attempt saved.";
 }
 
-/** Bounds for deterministic spine sizes (px) and the number of shades per color family. */
-export const SPINE = /** @type {const} */ ({ minWidth: 56, maxWidth: 76, minHeight: 236, maxHeight: 290, shades: 3 });
+/** Bounds for deterministic spine sizes (px), title font sizes (px) and shades per color family. */
+export const SPINE = /** @type {const} */ ({
+  minWidth: 56, maxWidth: 76, minHeight: 236, maxHeight: 290,
+  maxFont: 19, minFont: 13, shades: 3,
+  /** Vertical space taken by the caps, tag and padding (px). */
+  chrome: 100,
+  /** Approximate advance per character, as a fraction of the font size (serif, 0.08em tracking). */
+  charEm: 0.56,
+});
 
 /**
  * FNV-1a 32-bit hash of a string. Pure and stable across runs and platforms.
@@ -136,18 +143,25 @@ export function hash32(s) {
 
 /**
  * Deterministic spine look for a book key (e.g. "philosophy/stoicism"): width,
- * height and shade index within the discipline's color family. Different bits of
- * the hash drive each value so they vary independently.
+ * height and shade index within the discipline's color family, from different
+ * bits of the hash. With a title, the spine grows (within bounds) so the vertical
+ * title fits, and the font shrinks (to minFont) if it still wouldn't.
  * @param {string} key
- * @returns {{ width: number, height: number, shade: number }}
+ * @param {string} [title]
+ * @returns {{ width: number, height: number, shade: number, fontSize: number }}
  */
-export function spineStyle(key) {
+export function spineStyle(key, title = "") {
   const h = hash32(key);
   const span = (/** @type {number} */ bits, /** @type {number} */ min, /** @type {number} */ max) =>
     min + (bits % (max - min + 1));
+  const chars = typeof title === "string" ? [...title].length : 0;
+  const wanted = SPINE.chrome + Math.ceil(chars * SPINE.maxFont * SPINE.charEm);
+  const height = Math.min(SPINE.maxHeight, Math.max(span((h >>> 8) & 0xffff, SPINE.minHeight, SPINE.maxHeight), wanted));
+  const fit = chars ? Math.floor((height - SPINE.chrome) / (chars * SPINE.charEm)) : SPINE.maxFont;
   return {
     width: span(h & 0xff, SPINE.minWidth, SPINE.maxWidth),
-    height: span((h >>> 8) & 0xffff, SPINE.minHeight, SPINE.maxHeight),
+    height,
     shade: (h >>> 24) % SPINE.shades,
+    fontSize: Math.max(SPINE.minFont, Math.min(SPINE.maxFont, fit)),
   };
 }
