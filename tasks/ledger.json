@@ -19,6 +19,15 @@
       "title": "Next.js + TypeScript scaffold with CI checks",
       "role": "Builder",
       "type": "impl",
+      "state": "Release Approved",
+      "agent": "Builder",
+      "attempts": {}
+    },
+    {
+      "id": "TSK-003",
+      "title": "Approved brief + browse and read lessons from seed files",
+      "role": "Builder",
+      "type": "impl",
       "state": "In Progress",
       "agent": "Builder",
       "attempts": {}
@@ -65,6 +74,42 @@
       "ts": "2026-10-10T01:49:22.097Z",
       "actor": "Builder",
       "taskId": "TSK-002",
+      "action": "start",
+      "from": "Idea",
+      "to": "In Progress",
+      "note": "agent=Builder"
+    },
+    {
+      "ts": "2026-10-10T02:30:08.323Z",
+      "actor": "Builder",
+      "taskId": "TSK-002",
+      "action": "status",
+      "from": "In Progress",
+      "to": "Checks Passed",
+      "note": "PR #2 CI checks job passed (run 38014858383)"
+    },
+    {
+      "ts": "2026-10-10T02:30:08.431Z",
+      "actor": "Builder",
+      "taskId": "TSK-002",
+      "action": "status",
+      "from": "Checks Passed",
+      "to": "Release Approved",
+      "note": "PR #2 merged to main as 52fa510, CI run 38014858383"
+    },
+    {
+      "ts": "2026-10-10T02:30:08.541Z",
+      "actor": "Builder",
+      "taskId": "TSK-003",
+      "action": "add",
+      "from": null,
+      "to": "Idea",
+      "note": null
+    },
+    {
+      "ts": "2026-10-10T02:30:08.647Z",
+      "actor": "Builder",
+      "taskId": "TSK-003",
       "action": "start",
       "from": "Idea",
       "to": "In Progress",
