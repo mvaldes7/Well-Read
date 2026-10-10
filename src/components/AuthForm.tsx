@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useActionState } from "react";
 import { useSearchParams } from "next/navigation";
 import type { AuthFormState } from "@/lib/auth/actions";
+import NameFields from "@/components/NameFields";
 import { loginErrorMessage } from "@/lib/auth/logic.mjs";
 
 interface Props {
@@ -34,6 +35,13 @@ export default function AuthForm({ mode, action }: Props) {
         </p>
       )}
       {isSignIn && <input type="hidden" name="next" value={next} />}
+      {!isSignIn && (
+        <NameFields
+          firstName={state.firstName}
+          lastName={state.lastName}
+          errors={state.fieldErrors}
+        />
+      )}
       <label htmlFor="email">Email</label>
       <input
         id="email"

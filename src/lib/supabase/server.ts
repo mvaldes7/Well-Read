@@ -1,5 +1,6 @@
 import { createServerClient } from "@supabase/ssr";
 import { cookies } from "next/headers";
+import { connection } from "next/server";
 import { getSupabaseEnv } from "./env";
 
 /** Server Components / Server Actions client. Returns null when env is missing. */
@@ -7,6 +8,9 @@ export async function createClient() {
   const env = getSupabaseEnv();
   if (!env) return null;
   const cookieStore = await cookies();
+  // supabase-js reads Date.now() while loading the session. Under cacheComponents that is only
+  // allowed after the render has left the prerender/runtime stage, so wait for the request.
+  await connection();
   return createServerClient(env.url, env.publishableKey, {
     cookies: {
       getAll() {

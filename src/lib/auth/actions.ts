@@ -2,6 +2,7 @@
 
 import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { validateNames } from "@/lib/account/names.mjs";
 import {
   LOGIN_PATH,
   MESSAGES,
@@ -14,6 +15,9 @@ export interface AuthFormState {
   error?: string;
   message?: string;
   email?: string;
+  firstName?: string;
+  lastName?: string;
+  fieldErrors?: { first_name?: string; last_name?: string };
 }
 
 function readForm(formData: FormData) {
@@ -44,14 +48,24 @@ export async function signIn(_prev: AuthFormState, formData: FormData): Promise<
 
 export async function signUp(_prev: AuthFormState, formData: FormData): Promise<AuthFormState> {
   const { email, password } = readForm(formData);
+  const rawFirst = formData.get("first_name");
+  const rawLast = formData.get("last_name");
+  const refill = {
+    email,
+    firstName: typeof rawFirst === "string" ? rawFirst : "",
+    lastName: typeof rawLast === "string" ? rawLast : "",
+  };
+  const names = validateNames(rawFirst, rawLast);
+  if (!names.ok) return { error: "Check the highlighted fields.", fieldErrors: names.errors, ...refill };
   const invalid = validateCredentials(email, password);
-  if (invalid) return { error: invalid, email };
+  if (invalid) return { error: invalid, ...refill };
 
   const supabase = await createClient();
-  if (!supabase) return { error: authErrorMessage("not_configured", "signup"), email };
+  if (!supabase) return { error: authErrorMessage("not_configured", "signup"), ...refill };
 
-  const { data, error } = await supabase.auth.signUp({ email, password });
-  if (error) return { error: authErrorMessage(error.code, "signup", error.status), email };
+  // Names go into user_metadata: display only, never used for authorization.
+  const { data, error } = await supabase.auth.signUp({ email, password, options: { data: names.data } });
+  if (error) return { error: authErrorMessage(error.code, "signup", error.status), ...refill };
 
   // With email confirmation on, Supabase returns no session until the link is clicked.
   if (!data.session) return { message: MESSAGES.checkEmail };

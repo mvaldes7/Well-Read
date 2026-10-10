@@ -145,3 +145,19 @@ test('spineStyle makes room for the title: taller spine, smaller font only when 
   assert.equal(spineStyle('k', 'Stoicism').width, spineStyle('k').width);
   assert.equal(spineStyle('k', 'Stoicism').shade, spineStyle('k').shade);
 });
+
+test('realistic Supabase rows (integer columns arrive as JSON numbers) open completed lessons', () => {
+  // Exact shape of `select lesson_id, score, total, passed` from PostgREST for the QA account.
+  const rows = JSON.parse('[{"lesson_id":"les_st01","score":4,"total":4,"passed":true},{"lesson_id":"les_rr01","score":3,"total":4,"passed":true}]');
+  const lookup = completionLookup(rows, disciplines);
+  assert.deepEqual(lookup.get('les_st01'), { score: 4, total: 4, passed: true });
+  assert.deepEqual(lookup.get('les_rr01'), { score: 3, total: 4, passed: true });
+  // Every book links to a topic that exists in content, and each lesson of a book is addressable.
+  const hrefs = new Set(disciplines.flatMap((d) => d.topics.map((t) => `/d/${d.slug}/${t.slug}`)));
+  const books = buildBookshelf(rows, disciplines).flatMap((g) => g.books);
+  assert.equal(books.length, 2);
+  for (const b of books) assert.ok(hrefs.has(b.href), b.href);
+  // Never throws on what PostgREST can return for an empty or failed read.
+  assert.deepEqual(buildBookshelf([], disciplines), []);
+  assert.equal(completionLookup([], disciplines).size, 0);
+});

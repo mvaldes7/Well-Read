@@ -1,6 +1,6 @@
 # Architecture: Curio
 
-Stack (as of TSK-009). Display name: **Curio**; the repo (github.com/mvaldes7/FoundationLearn) and Vercel project keep their names.
+Stack (as of TSK-010). Display name: **Curio**; the repo is github.com/mvaldes7/Curio; the Vercel project keeps its name.
 
 - **Framework:** Next.js 16.4.0 (App Router, Turbopack), React 19.3.0, source in `src/app/`.
 - **Language:** TypeScript 5.x, `strict: true` (`tsconfig.json`), import alias `@/*` → `src/*`.
@@ -66,6 +66,25 @@ Stack (as of TSK-009). Display name: **Curio**; the repo (github.com/mvaldes7/Fo
   (#efe3c8) >= 4.5:1 even under the spine highlight. Per-user UI (`/bookshelf` shelf, topic-list ✓ markers,
   the lesson "Completed – best X/Y" / "Best attempt so far" line) renders inside `<Suspense>`, so the page
   shells stay prerendered and only the user's part streams in.
+- **Cache Components and per-user state (TSK-010):** Next keeps visited routes mounted inside React
+  `<Activity>` and only hides them on navigation, so client state survives a reopen. `Quiz` starts a fresh
+  attempt in an effect cleanup (Activity runs it on hide), so a reopened lesson always shows the quiz form
+  under the server-rendered "Completed" line; Retake stays available after a pass. The Supabase server client
+  awaits `connection()` before supabase-js loads the session (it calls `Date.now()`, which isn't allowed in the
+  prerender/runtime stage), and catches around Supabase calls call `unstable_rethrow` first so Next's internal
+  aborts are never turned into an error state.
+- **Names and /account (TSK-010):** signup asks for first and last name; `validateNames` in
+  `src/lib/account/names.mjs` (pure, tested) trims, NFC-normalises, allows any script, requires 1–50
+  characters (code points) and rejects control and bidi-override characters. They're stored only in Supabase
+  Auth `user_metadata` (`first_name`, `last_name`) via `signUp({ options: { data } })`; no tables or migrations.
+  `/account` (protected like every non-public path) edits them with the `updateName` server action: validate,
+  re-check `getClaims()`, `auth.updateUser({ data })` with the cookie client, then `refreshSession()` and
+  `refresh()`. The header ("Hi, <first name>" linking to `/account`, email fallback, full name + email in
+  `title`, ellipsis for long values) reads the name from the **verified JWT claims' `user_metadata`** via
+  `getClaims()`, which it already calls: no extra network round trip per page. Claims only change when a new
+  access token is issued, hence the `refreshSession()` after saving; if that refresh failed, the new name would
+  appear at the next token refresh. `user_metadata` is user-editable, so names are display only and never used
+  for authorization. React escapes them; no `dangerouslySetInnerHTML`.
 - **Path guard:** only `/_next/static/*`, `/_next/image*`, `/_next/webpack-hmr` (dev), `/favicon.ico` and
   `/auth/confirm` are public (`PUBLIC_PATHS`/`PUBLIC_PREFIXES` in `src/lib/auth/logic.mjs`, kept in sync
   with the proxy matcher). A file extension doesn't make a path public. Add any future `public/` files to

@@ -40,13 +40,21 @@ Discipline → Topic → Lesson → Quiz.
 | TSK-006 | Bookshelf (done) |
 | TSK-007 | Node 24 upgrade (done) |
 | TSK-008 | Design pass (done) |
-| TSK-009 | Rename display name to Curio |
-| TSK-010 | Levels + achievements |
+| TSK-009 | Rename display name to Curio (done) |
+| TSK-010 | Polish batch: reopen bug, first name, sharper look |
+| TSK-011 | Levels + achievements |
 
 Order updated 2026-10-09: a design pass was added before levels and achievements.
 Order updated 2026-10-10: Node 24 upgrade inserted as TSK-007 (Vercel deprecated Node 20 builds on 2026-10-01);
 design pass is now TSK-008, levels + achievements TSK-009.
 Order updated 2026-10-10: Curio rename inserted as TSK-009; levels + achievements is now TSK-010.
+Order updated 2026-10-10: polish batch inserted as TSK-010; levels + achievements is now TSK-011.
+
+## Roadmap
+
+Not built now; listed so later tasks can plan for it.
+
+- Topic drill-downs: from a topic, explore a sub-topic (e.g. the fall of Rome) and generate a new lesson plan for it. Depends on AI-generated content.
 
 ## Tech stack
 
