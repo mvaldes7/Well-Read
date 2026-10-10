@@ -426,3 +426,7 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
 .sources .ext { color: var(--brass-ink); }
 .sources .note { grid-column: 2; display: block; margin-top: 2px; font-size: 14px; color: var(--sub); }
 
+/* Spine titles: one or two vertical lines (spineLines). In vertical-rl the flex column axis is
+   horizontal, so lines sit side by side; the 180deg turn puts the first line on the left. */
+.spine .t { flex-direction: column; }
+.spine .t .ln { display: block; line-height: 1.15; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }

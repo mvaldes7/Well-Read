@@ -125,7 +125,13 @@ test('spineStyle is deterministic and within bounds', async () => {
 
 test('spineStyle makes room for the title: taller spine, smaller font only when needed', async () => {
   const { spineStyle, SPINE } = await import('../../src/lib/progress/logic.mjs');
-  const fits = (s, t) => [...t].length * s.fontSize * SPINE.charEm <= s.height - SPINE.chrome;
+  // Fit is measured on the longest spine line (long titles wrap onto two lines).
+  const fits = (s, t) => {
+    assert.equal(s.lines.join(' '), t.trim().replace(/\s+/g, ' '), 'lines keep every word');
+    assert.ok(s.lines.length >= 1 && s.lines.length <= 2);
+    const longest = Math.max(...s.lines.map((l) => [...l].length));
+    return longest * s.fontSize * SPINE.charEm <= s.height - SPINE.chrome;
+  };
   for (const d of disciplines) for (const t of d.topics) {
     const key = `${d.slug}/${t.slug}`;
     const s = spineStyle(key, t.title);
@@ -135,6 +141,11 @@ test('spineStyle makes room for the title: taller spine, smaller font only when 
     assert.ok(fits(s, t.title), `title fits: ${t.title} ${JSON.stringify(s)}`);
   }
   assert.equal(spineStyle('k', 'Stoicism').fontSize, SPINE.maxFont);
+  assert.deepEqual(spineStyle('k', 'Stoicism').lines, ['Stoicism']);
+  // Two lines only when one line can't fit at minFont; balanced at a word break.
+  assert.deepEqual(spineStyle('k', 'The Constitutional Convention of 1787').lines, ['The Constitutional', 'Convention of 1787']);
+  assert.deepEqual(spineStyle('k', 'The French Revolution').lines, ['The French Revolution']);
+  assert.deepEqual(spineStyle('k', 'Supercalifragilisticexpialidociousness').lines.length, 1); // one word can't wrap
   // Bounds match C2's measured proportions of the 340px case.
   assert.ok(SPINE.minHeight / SPINE.caseHeight >= 0.73 && SPINE.maxHeight / SPINE.caseHeight <= 0.85);
   const rr = spineStyle('world-history/roman-republic', 'The Roman Republic');

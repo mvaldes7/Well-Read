@@ -179,19 +179,46 @@ export function hash32(s) {
 }
 
 /**
+ * Split a title into at most two lines for the spine: one line when it fits on the tallest
+ * spine at the smallest font, otherwise the word break that minimises the longer line.
+ * @param {string} title
+ * @returns {string[]}
+ */
+export function spineLines(title) {
+  const t = typeof title === "string" ? title.trim().replace(/\s+/g, " ") : "";
+  if (!t) return [];
+  const len = (/** @type {string} */ x) => [...x].length;
+  const oneLineMax = Math.floor((SPINE.maxHeight - SPINE.chrome) / (SPINE.minFont * SPINE.charEm));
+  const words = t.split(" ");
+  if (len(t) <= oneLineMax || words.length < 2) return [t];
+  let best = [t];
+  let bestLen = Infinity;
+  for (let i = 1; i < words.length; i++) {
+    const a = words.slice(0, i).join(" ");
+    const b = words.slice(i).join(" ");
+    const longest = Math.max(len(a), len(b));
+    if (longest < bestLen) [best, bestLen] = [[a, b], longest];
+  }
+  return best;
+}
+
+/**
  * Deterministic spine look for a book key (e.g. "philosophy/stoicism"): width,
  * height and shade index within the discipline's color family, from different
  * bits of the hash. With a title, the spine grows (up to C2's max height) so the
  * vertical title fits, and the font shrinks (to minFont) if it still wouldn't.
+ * Titles too long for one line at minFont wrap onto two lines (see spineLines);
+ * the fit is computed on the longer line.
  * @param {string} key
  * @param {string} [title]
- * @returns {{ width: number, height: number, shade: number, fontSize: number }}
+ * @returns {{ width: number, height: number, shade: number, fontSize: number, lines: string[] }}
  */
 export function spineStyle(key, title = "") {
   const h = hash32(key);
   const span = (/** @type {number} */ bits, /** @type {number} */ min, /** @type {number} */ max) =>
     min + (bits % (max - min + 1));
-  const chars = typeof title === "string" ? [...title].length : 0;
+  const lines = spineLines(title);
+  const chars = lines.reduce((m, l) => Math.max(m, [...l].length), 0);
   const wanted = SPINE.chrome + Math.ceil(chars * SPINE.maxFont * SPINE.charEm);
   const height = Math.min(SPINE.maxHeight, Math.max(span((h >>> 8) & 0xffff, SPINE.minHeight, SPINE.maxHeight), wanted));
   const fit = chars ? Math.floor((height - SPINE.chrome) / (chars * SPINE.charEm)) : SPINE.maxFont;
@@ -200,5 +227,6 @@ export function spineStyle(key, title = "") {
     height,
     shade: (h >>> 24) % SPINE.shades,
     fontSize: Math.max(SPINE.minFont, Math.min(SPINE.maxFont, fit)),
+    lines,
   };
 }
