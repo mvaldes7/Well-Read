@@ -1,4 +1,7 @@
-# Product Brief: FoundationLearn
+# Product Brief: Curio
+
+Display name **Curio** (renamed in TSK-009, Mike's choice). The repository and Vercel project keep their
+original names and URLs.
 
 Status: **Approved** by Mike, 2026-10-09.
 
@@ -35,13 +38,15 @@ Discipline → Topic → Lesson → Quiz.
 | TSK-004 | Login (Supabase email/password) (done) |
 | TSK-005 | Quiz + lesson completion saved to Supabase (done) |
 | TSK-006 | Bookshelf (done) |
-| TSK-007 | Node 24 upgrade |
-| TSK-008 | Design pass |
-| TSK-009 | Levels + achievements |
+| TSK-007 | Node 24 upgrade (done) |
+| TSK-008 | Design pass (done) |
+| TSK-009 | Rename display name to Curio |
+| TSK-010 | Levels + achievements |
 
 Order updated 2026-10-09: a design pass was added before levels and achievements.
 Order updated 2026-10-10: Node 24 upgrade inserted as TSK-007 (Vercel deprecated Node 20 builds on 2026-10-01);
 design pass is now TSK-008, levels + achievements TSK-009.
+Order updated 2026-10-10: Curio rename inserted as TSK-009; levels + achievements is now TSK-010.
 
 ## Tech stack
 

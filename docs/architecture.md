@@ -1,6 +1,6 @@
-# Architecture
+# Architecture: Curio
 
-Stack (as of TSK-006):
+Stack (as of TSK-009). Display name: **Curio**; the repo (github.com/mvaldes7/FoundationLearn) and Vercel project keep their names.
 
 - **Framework:** Next.js 16.4.0 (App Router, Turbopack), React 19.3.0, source in `src/app/`.
 - **Language:** TypeScript 5.x, `strict: true` (`tsconfig.json`), import alias `@/*` → `src/*`.
