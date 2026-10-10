@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useActionState } from "react";
 import { useSearchParams } from "next/navigation";
 import type { AuthFormState } from "@/lib/auth/actions";
+import { loginErrorMessage } from "@/lib/auth/logic.mjs";
 
 interface Props {
   mode: "signin" | "signup";
@@ -12,8 +13,10 @@ interface Props {
 
 export default function AuthForm({ mode, action }: Props) {
   const [state, formAction, pending] = useActionState(action, {});
-  const next = useSearchParams().get("next") ?? "";
+  const params = useSearchParams();
+  const next = params.get("next") ?? "";
   const isSignIn = mode === "signin";
+  const linkError = isSignIn ? loginErrorMessage(params.get("error")) : null;
 
   if (state.message) {
     return (
@@ -25,9 +28,9 @@ export default function AuthForm({ mode, action }: Props) {
 
   return (
     <form action={formAction} className="auth-form">
-      {state.error && (
+      {(state.error ?? linkError) && (
         <p role="alert" className="error">
-          {state.error}
+          {state.error ?? linkError}
         </p>
       )}
       {isSignIn && <input type="hidden" name="next" value={next} />}
