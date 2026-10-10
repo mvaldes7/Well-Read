@@ -1,14 +1,23 @@
 import type { Metadata } from "next";
+import Link from "next/link";
+import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "FoundationLearn",
-  description: "FoundationLearn personal web app",
+  title: { default: "FoundationLearn", template: "%s · FoundationLearn" },
+  description: "Learn foundational subjects: history, philosophy, the arts and poetry.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <header className="site-header">
+          <Link href="/" className="site-title">
+            FoundationLearn
+          </Link>
+        </header>
+        <main>{children}</main>
+      </body>
     </html>
   );
 }
