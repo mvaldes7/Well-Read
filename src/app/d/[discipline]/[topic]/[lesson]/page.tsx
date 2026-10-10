@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { Suspense } from "react";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import { LessonStatus } from "@/components/Progress";
 import Quiz, { type PublicQuestion } from "@/components/Quiz";
 import { disciplines, getDiscipline, getLesson, getTopic } from "@/content";
 
@@ -62,6 +64,9 @@ export default async function LessonPage({
       </aside>
       <section aria-labelledby="quiz-heading">
         <h2 id="quiz-heading">Quiz</h2>
+        <Suspense fallback={null}>
+          <LessonStatus lessonId={lesson.id} />
+        </Suspense>
         <Quiz lessonId={lesson.id} questions={toPublicQuestions(lesson.quiz)} />
       </section>
       <p>
