@@ -100,12 +100,30 @@ Stack (as of TSK-011). Display name: **Curio**; the repo is github.com/mvaldes7/
   `getMyProgress()` (which now also selects `completed_at`, read-only) + `src/content`. Ids for generated
   achievements use slugs (`topic-level:<discipline>/<topic>`), which is fine because nothing persists them.
   **Date semantics:** `completed_at` is rewritten whenever a better attempt is saved, so it is the time of the
-  BEST attempt and never earlier than the real pass. Every date is therefore an upper bound and the UI says
-  **"Earned by <date>"**: an achievement needing k passed lessons uses the k-th earliest `completed_at` among
+  BEST attempt and never earlier than the real pass. Without `first_passed_at` (see TSK-012 below) a date is
+  therefore an upper bound and the UI says **"Earned by <date>"**: an achievement needing k passed lessons uses the k-th earliest `completed_at` among
   qualifying lessons ("any" = earliest, "all of" = latest; a topic's Level N tier uses k = max(1, 5(N-1));
   Discipline Explorer = latest of each discipline's earliest). Rows without a date are skipped; when fewer than k
   are dated, the date is omitted ("Earned"). Dates are formatted on the server, en-US, in
   **America/Los_Angeles** (`formatEarnedDate`), so they don't depend on the server's time zone.
+- **Sources and explanations (TSK-012):** `Lesson.sources?` and the required `QuizQuestion.explanation` are
+  checked by `src/content/sources.mjs` (https-only URLs via `new URL`, required publisher/title, per-lesson URL
+  dedupe, explanations, and a citation-markup scan of every text field), used by both `src/content/index.ts` and
+  `node:test`. Quiz secrets stay on the server: the lesson page passes `toPublicQuestions(quiz)`
+  (`src/lib/quiz/public.mjs`, a whitelist of `question` + `options`) to the client `Quiz`; `gradeQuiz` adds each
+  question's `explanation` to the per-question results that `submitQuiz` returns after grading. Section bodies
+  are plain text with blank-line paragraphs (`paragraphs()` in `src/lib/ui/paragraphs.mjs`).
+- **first_passed_at (TSK-012):** migration `20261010180132_first_passed_at.sql` (UNAPPLIED until Mike approves)
+  adds a nullable `first_passed_at`, backfills passed rows from `completed_at` (so backfilled values are upper
+  bounds), and checks `passed or first_passed_at is null`. `saveBestAttempt` stamps it without a read: the
+  insert includes it when the first attempt passes; for later passing attempts the first update step matches
+  only a NOT-passed row (so it's the first pass) and stamps it, and the second step improves an already-passed
+  row without touching it. Each step is atomic in Postgres, so concurrent passes can't overwrite the stamp. The
+  value uses the app server's clock. Until the migration is applied, `isMissingColumnError` (42703/PGRST204
+  naming the column) makes writes retry without the column and `getMyProgress` re-select without it.
+  Achievements then use `first_passed_at` for exact dates ("Earned <date>") when every qualifying lesson has
+  one, else the `completed_at` upper bound ("Earned by <date>"); Perfect Score always uses `completed_at`
+  (its event is the first perfect attempt, not the first pass).
 - **Path guard:** only `/_next/static/*`, `/_next/image*`, `/_next/webpack-hmr` (dev), `/favicon.ico` and
   `/auth/confirm` are public (`PUBLIC_PATHS`/`PUBLIC_PREFIXES` in `src/lib/auth/logic.mjs`, kept in sync
   with the proxy matcher). A file extension doesn't make a path public. Add any future `public/` files to

@@ -20,6 +20,11 @@ Discipline → Topic → Lesson → Quiz.
 - The bookshelf shows one book per topic with at least one passed lesson, grouped by discipline; books in the same discipline share a cover color.
 - A separate **achievements** menu (starter set in TSK-011: First Lesson, Perfect Score, Discipline Explorer,
   a level achievement per topic, and a Completionist per discipline; see AC-6).
+- **Lessons** have about 3 sections, 5 key facts, a quiz whose questions each carry an explanation (shown
+  after grading), and a list of sources. Content: 6 disciplines (World History, Philosophy, Ancient History,
+  American Civics, Art History, Poetry & Literature) as of TSK-012.
+- Achievement dates are exact once the first pass time is recorded (`first_passed_at`, TSK-012); older
+  records show "Earned by <date>".
 - Progress **syncs via Supabase email/password login**. Public sign-ups will be disabled
   later; that change needs Mike's approval.
 
@@ -43,7 +48,8 @@ Discipline → Topic → Lesson → Quiz.
 | TSK-008 | Design pass (done) |
 | TSK-009 | Rename display name to Curio (done) |
 | TSK-010 | Polish batch: reopen bug, first name, sharper look (done) |
-| TSK-011 | Levels + achievements |
+| TSK-011 | Levels + achievements (done) |
+| TSK-012 | Content batch + sources + explanations + first_passed_at |
 
 Order updated 2026-10-09: a design pass was added before levels and achievements.
 Order updated 2026-10-10: Node 24 upgrade inserted as TSK-007 (Vercel deprecated Node 20 builds on 2026-10-01);
