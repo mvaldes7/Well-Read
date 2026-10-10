@@ -14,7 +14,7 @@ Discipline → Topic → Lesson → Quiz.
 - A lesson counts as **complete only when its quiz is passed with a score of 70% or higher**.
 - **Per-topic levels:** 1 completed lesson = Level 1, 5 completed lessons = Level 2,
   then +1 level for every further 5 completed lessons.
-- A **bookshelf** shows each topic, with every completed lesson shown as a book.
+- The bookshelf shows one book per topic with at least one passed lesson, grouped by discipline; books in the same discipline share a cover color.
 - A separate **achievements** menu.
 - Progress **syncs via Supabase email/password login**. Public sign-ups will be disabled
   later; that change needs Mike's approval.

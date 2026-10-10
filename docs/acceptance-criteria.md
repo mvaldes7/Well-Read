@@ -10,7 +10,7 @@ Source: approved product brief (Mike, 2026-10-09), `docs/product-brief.md`.
 | AC-2 | A lesson counts as complete only when its quiz is passed with a score of 70% or higher; a lower score doesn't complete it. | TSK-005 |
 | AC-3 | Completion is saved to Supabase and syncs for the signed-in user. | TSK-005 |
 | AC-4 | Per-topic level: 0 completed lessons = no level; 1-4 = L1; 5-9 = L2; then +1 level per further 5 lessons (level = 1 + floor(completed / 5) for completed >= 1). | TSK-008 |
-| AC-5 | The bookshelf shows each topic, with each completed lesson shown as a book. | TSK-006 |
+| AC-5 | The bookshelf shows one book per topic with at least one passed lesson, grouped by discipline; books in the same discipline share a cover color. | TSK-006 |
 | AC-6 | A separate achievements menu exists (the final achievement list is not yet defined). | TSK-008 |
 | AC-7 | Login uses Supabase email/password. Public sign-ups are disabled later, only with Mike's approval. | TSK-004 |
 
