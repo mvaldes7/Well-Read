@@ -128,3 +128,69 @@ export function gradeSubmission(input, lookupQuiz) {
   return { ok: true, value: { lessonId: parsed.value.lessonId, ...graded.value } };
 }
 
+// ---------- first_passed_at (TSK-012) ----------
+// first_passed_at is set once, on the first passing attempt, and never changed afterwards.
+// Until the 20261010180132_first_passed_at migration is applied the column doesn't exist, so
+// every read and write must also work without it (see isMissingColumnError).
+
+export const FIRST_PASSED_COLUMN = "first_passed_at";
+
+/**
+ * True when a PostgREST/Postgres error means "that column doesn't exist": 42703
+ * (undefined_column, from Postgres) or PGRST204 (column not in PostgREST's schema cache).
+ * If the error carries a message, it must also name the column, so an unrelated
+ * schema error is never mistaken for the missing first_passed_at column.
+ * @param {{ code?: string | null, message?: string | null } | null | undefined} error
+ * @param {string} [column]
+ */
+export function isMissingColumnError(error, column = FIRST_PASSED_COLUMN) {
+  if (!error || (error.code !== "42703" && error.code !== "PGRST204")) return false;
+  return typeof error.message !== "string" || error.message === "" || error.message.includes(column);
+}
+
+/**
+ * The first-insert row. A passing first attempt records first_passed_at = now;
+ * withFirstPass=false omits the column (pre-migration fallback).
+ * @param {string} userId
+ * @param {string} lessonId
+ * @param {Attempt} attempt
+ * @param {string} nowIso
+ * @param {boolean} withFirstPass
+ */
+export function insertRow(userId, lessonId, attempt, nowIso, withFirstPass) {
+  const row = { user_id: userId, lesson_id: lessonId, score: attempt.score, total: attempt.total, passed: attempt.passed };
+  return withFirstPass && attempt.passed ? { ...row, [FIRST_PASSED_COLUMN]: nowIso } : row;
+}
+
+/**
+ * @typedef {{
+ *   match: { passed?: boolean, scoreBelow?: number },
+ *   patch: Record<string, string | number | boolean>
+ * }} UpdateStep
+ */
+
+/**
+ * The conditional UPDATEs that replace a worse stored row, tried in order until one matches.
+ * Each step's `match` is evaluated by Postgres in the UPDATE's WHERE clause (atomically,
+ * under the row lock), so the rules hold under concurrent submissions:
+ * - failed attempt: one step, stored row not passed AND score < new score (no first_passed_at).
+ * - passed attempt:
+ *   1. stored row NOT passed -> this is the first pass: also set first_passed_at = now.
+ *      (A not-passed row never has first_passed_at, by the check constraint, so nothing is
+ *      overwritten: coalesce(first_passed_at, now()) semantics without a read.)
+ *   2. stored row passed AND score < new score -> improve the score; first_passed_at untouched.
+ * Together the steps match exactly the rows improvementCondition describes.
+ * withFirstPass=false drops the column from every patch (pre-migration fallback).
+ * @param {Attempt} attempt
+ * @param {string} nowIso
+ * @param {boolean} withFirstPass
+ * @returns {UpdateStep[]}
+ */
+export function updateSteps(attempt, nowIso, withFirstPass) {
+  const base = { score: attempt.score, total: attempt.total, passed: attempt.passed, completed_at: nowIso };
+  if (!attempt.passed) return [{ match: { passed: false, scoreBelow: attempt.score }, patch: base }];
+  return [
+    { match: { passed: false }, patch: withFirstPass ? { ...base, [FIRST_PASSED_COLUMN]: nowIso } : base },
+    { match: { passed: true, scoreBelow: attempt.score }, patch: base },
+  ];
+}

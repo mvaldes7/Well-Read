@@ -57,8 +57,32 @@ test('bestCompletions keeps the best row and its completed_at; bad dates become 
     row('les_fr01', 3, 4, true),
     row('les_gone01', 4, 4, true, '2026-10-01T10:00:00Z'),
   ], disciplines);
-  assert.deepEqual(m.get('les_st01'), { score: 3, total: 3, passed: true, completedAt: '2026-10-03T10:00:00.000Z' });
+  assert.deepEqual(m.get('les_st01'), { score: 3, total: 3, passed: true, completedAt: '2026-10-03T10:00:00.000Z', firstPassedAt: null });
   assert.equal(m.get('les_rr01').completedAt, null);
   assert.equal(m.get('les_fr01').completedAt, null);
   assert.equal(m.has('les_gone01'), false);
+});
+
+test('bestCompletions reads first_passed_at on passed rows; earliest across duplicates; ignored on failed rows', () => {
+  const r = (id, score, total, passed, completed_at, first_passed_at) => ({ lesson_id: id, score, total, passed, completed_at, first_passed_at });
+  const m = bestCompletions([
+    r('les_st01', 4, 6, true, '2026-10-04T10:00:00Z', '2026-10-02T10:00:00+00:00'),
+    r('les_st01', 6, 6, true, '2026-10-05T10:00:00Z', '2026-10-03T10:00:00Z'), // better row, later stamp
+    r('les_rr01', 1, 6, false, '2026-10-01T10:00:00Z', '2026-10-01T10:00:00Z'), // failed: ignored
+    r('les_fr01', 5, 6, true, '2026-10-01T10:00:00Z', 'garbage'),
+    { lesson_id: 'les_so01', score: 5, total: 6, passed: true, completed_at: '2026-10-01T10:00:00Z' }, // column missing
+  ], disciplines);
+  assert.deepEqual(m.get('les_st01'), { score: 6, total: 6, passed: true, completedAt: '2026-10-05T10:00:00.000Z', firstPassedAt: '2026-10-02T10:00:00.000Z' });
+  assert.equal(m.get('les_rr01').firstPassedAt, null);
+  assert.equal(m.get('les_fr01').firstPassedAt, null);
+  assert.equal(m.get('les_so01').firstPassedAt, null);
+  // A failed duplicate after a passed one keeps the passed row and its stamp.
+  const k = bestCompletions([r('les_st01', 5, 6, true, '2026-10-02T10:00:00Z', '2026-10-02T10:00:00Z'), r('les_st01', 1, 6, false, '2026-10-09T10:00:00Z', null)], disciplines);
+  assert.equal(k.get('les_st01').firstPassedAt, '2026-10-02T10:00:00.000Z');
+});
+
+test('progressColumns: with and without first_passed_at', async () => {
+  const { progressColumns } = await import('../../src/lib/progress/logic.mjs');
+  assert.equal(progressColumns(true), 'lesson_id, score, total, passed, completed_at, first_passed_at');
+  assert.equal(progressColumns(false), 'lesson_id, score, total, passed, completed_at');
 });

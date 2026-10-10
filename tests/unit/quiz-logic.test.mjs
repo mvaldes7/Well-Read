@@ -128,7 +128,8 @@ test('improvementCondition matches shouldReplace for equal totals', () => {
   }
 });
 
-// ---------- TSK-012: public questions and explanations ----------
+// ---------- TSK-012: public questions, explanations, first_passed_at ----------
+import { FIRST_PASSED_COLUMN, insertRow, isMissingColumnError, updateSteps } from '../../src/lib/quiz/logic.mjs';
 import { toPublicQuestions } from '../../src/lib/quiz/public.mjs';
 
 const allLessons = [...byId.values()];
@@ -162,4 +163,73 @@ test('explanations come back only from grading, one per question', () => {
   assert.deepEqual(Object.keys(bad).sort(), ['error', 'ok']);
   // A question without an explanation yields null (content validation requires one anyway).
   assert.equal(gradeQuiz(quizOf(3), [0, 0, 0]).value.questions[0].explanation, null);
+});
+
+test('isMissingColumnError: 42703 / PGRST204 naming first_passed_at only', () => {
+  assert.equal(isMissingColumnError({ code: '42703', message: 'column lesson_completions.first_passed_at does not exist' }), true);
+  assert.equal(isMissingColumnError({ code: 'PGRST204', message: "Could not find the 'first_passed_at' column of 'lesson_completions' in the schema cache" }), true);
+  assert.equal(isMissingColumnError({ code: '42703' }), true); // no message: trust the code
+  assert.equal(isMissingColumnError({ code: '42703', message: 'column lesson_completions.other does not exist' }), false);
+  assert.equal(isMissingColumnError({ code: '42501', message: 'permission denied first_passed_at' }), false);
+  assert.equal(isMissingColumnError({ code: '23514', message: 'check constraint' }), false);
+  assert.equal(isMissingColumnError(null), false);
+  assert.equal(isMissingColumnError(undefined), false);
+});
+
+test('insertRow: first_passed_at only on a passing first attempt, omitted in fallback', () => {
+  const now = '2026-10-10T18:00:00.000Z';
+  assert.equal(insertRow('u', 'les_rr01', { score: 5, total: 6, passed: true }, now, true)[FIRST_PASSED_COLUMN], now);
+  assert.ok(!(FIRST_PASSED_COLUMN in insertRow('u', 'les_rr01', { score: 2, total: 6, passed: false }, now, true)));
+  assert.ok(!(FIRST_PASSED_COLUMN in insertRow('u', 'les_rr01', { score: 5, total: 6, passed: true }, now, false)));
+  assert.deepEqual(insertRow('u', 'les_rr01', { score: 2, total: 6, passed: false }, now, true), { user_id: 'u', lesson_id: 'les_rr01', score: 2, total: 6, passed: false });
+});
+
+/** Apply the save plan to an in-memory row the way Postgres would (each step atomic). */
+function simulateSave(row, attempt, now, withFirstPass = true) {
+  if (!row) return { row: insertRow('u', 'les_x', attempt, now, withFirstPass), outcome: 'saved' };
+  for (const step of updateSteps(attempt, now, withFirstPass)) {
+    const m = step.match;
+    if (m.passed !== undefined && row.passed !== m.passed) continue;
+    if (m.scoreBelow !== undefined && !(row.score < m.scoreBelow)) continue;
+    return { row: { ...row, ...step.patch }, outcome: 'saved' };
+  }
+  return { row, outcome: 'kept' };
+}
+
+test('updateSteps: same rows match as improvementCondition/shouldReplace (equal totals)', () => {
+  const total = 6;
+  for (let es = 0; es <= total; es++) for (let as = 0; as <= total; as++) {
+    const existing = { score: es, total, passed: isPassing(es, total) };
+    const attempt = { score: as, total, passed: isPassing(as, total) };
+    const { outcome } = simulateSave(existing, attempt, 'T');
+    assert.equal(outcome === 'saved', shouldReplace(existing, attempt), `${es} -> ${as}`);
+  }
+});
+
+test('first_passed_at: set on the first pass only, never changed afterwards', () => {
+  const T = (n) => `2026-10-0${n}T12:00:00.000Z`;
+  let r = simulateSave(null, { score: 2, total: 6, passed: false }, T(1)).row;
+  assert.equal(r[FIRST_PASSED_COLUMN], undefined);                     // failed insert: none
+  r = simulateSave(r, { score: 3, total: 6, passed: false }, T(2)).row;
+  assert.equal(r[FIRST_PASSED_COLUMN], undefined);                     // failed improvement: none
+  r = simulateSave(r, { score: 5, total: 6, passed: true }, T(3)).row;
+  assert.equal(r[FIRST_PASSED_COLUMN], T(3));                          // first pass: stamped
+  r = simulateSave(r, { score: 6, total: 6, passed: true }, T(4)).row;
+  assert.deepEqual([r.score, r.completed_at, r[FIRST_PASSED_COLUMN]], [6, T(4), T(3)]); // improved, stamp kept
+  const kept = simulateSave(r, { score: 1, total: 6, passed: false }, T(5));
+  assert.deepEqual([kept.outcome, kept.row[FIRST_PASSED_COLUMN]], ['kept', T(3)]);     // no downgrade
+  // Passing first attempt (insert) is stamped too.
+  assert.equal(simulateSave(null, { score: 6, total: 6, passed: true }, T(6)).row[FIRST_PASSED_COLUMN], T(6));
+  // Race: two passing attempts against a failed row. The second sees passed = true, so it
+  // can only take the improvement step, which never writes first_passed_at.
+  const failed = { score: 1, total: 6, passed: false };
+  const a = simulateSave(failed, { score: 5, total: 6, passed: true }, T(7)).row;
+  const b = simulateSave(a, { score: 6, total: 6, passed: true }, T(8)).row;
+  assert.deepEqual([b.score, b[FIRST_PASSED_COLUMN]], [6, T(7)]);
+  // Pre-migration fallback: no step ever mentions the column.
+  for (const att of [{ score: 5, total: 6, passed: true }, { score: 2, total: 6, passed: false }]) {
+    for (const step of updateSteps(att, T(9), false)) assert.ok(!(FIRST_PASSED_COLUMN in step.patch));
+  }
+  // The improvement step never carries the column.
+  assert.ok(!(FIRST_PASSED_COLUMN in updateSteps({ score: 6, total: 6, passed: true }, T(9), true)[1].patch));
 });

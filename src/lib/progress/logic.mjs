@@ -9,7 +9,12 @@ import { levelFor, passedInTopic } from "./levels.mjs";
 /** @typedef {{ lesson_id: string, score: number, total: number, passed: boolean }} CompletionRow */
 /** @typedef {{ score: number, total: number, passed: boolean }} Completion */
 /** Best attempt plus when it was stored (ISO string, or null when missing/unparseable). */
-/** @typedef {Completion & { completedAt: string | null }} DatedCompletion */
+/**
+ * completedAt: time of the best attempt (upper bound on the first pass).
+ * firstPassedAt: exact time of the first pass (TSK-012), null when not recorded (column
+ * not migrated yet, row never passed, or written before the migration and not backfilled).
+ * @typedef {Completion & { completedAt: string | null, firstPassedAt: string | null }} DatedCompletion
+ */
 /** @typedef {{ id: string }} ContentLesson */
 /** @typedef {{ slug: string, title: string, lessons: ReadonlyArray<ContentLesson> }} ContentTopic */
 /** @typedef {{ slug: string, title: string, color: string, topics: ReadonlyArray<ContentTopic> }} ContentDiscipline */
@@ -47,7 +52,16 @@ export function isCompletionRow(row) {
 }
 
 /**
- * `completed_at` from a row as a normalised ISO string, or null if missing or unparseable.
+ * Columns read from lesson_completions. first_passed_at only exists once the TSK-012
+ * migration is applied; callers retry with withFirstPass=false on a missing-column error.
+ * @param {boolean} withFirstPass
+ */
+export function progressColumns(withFirstPass) {
+  return withFirstPass ? "lesson_id, score, total, passed, completed_at, first_passed_at" : "lesson_id, score, total, passed, completed_at";
+}
+
+/**
+ * A timestamp column from a row as a normalised ISO string, or null if missing or unparseable.
  * @param {unknown} v
  * @returns {string | null}
  */
@@ -72,8 +86,16 @@ export function bestCompletions(rows, disciplines) {
   for (const row of rows) {
     if (!isCompletionRow(row) || !known.has(row.lesson_id)) continue;
     const attempt = { score: row.score, total: row.total, passed: row.passed };
-    if (shouldReplace(map.get(row.lesson_id), attempt)) {
-      map.set(row.lesson_id, { ...attempt, completedAt: isoOrNull(/** @type {Record<string, unknown>} */ (row).completed_at) });
+    const r = /** @type {Record<string, unknown>} */ (row);
+    const prev = map.get(row.lesson_id);
+    // first_passed_at only counts on a passed row; across defensive duplicates keep the earliest.
+    const ownFirst = attempt.passed ? isoOrNull(r.first_passed_at) : null;
+    const firsts = [ownFirst, prev?.firstPassedAt ?? null].filter((d) => d !== null).sort();
+    const firstPassedAt = attempt.passed || prev?.passed ? (firsts[0] ?? null) : null;
+    if (shouldReplace(prev, attempt)) {
+      map.set(row.lesson_id, { ...attempt, completedAt: isoOrNull(r.completed_at), firstPassedAt });
+    } else if (prev) {
+      map.set(row.lesson_id, { ...prev, firstPassedAt: prev.passed ? firstPassedAt : null });
     }
   }
   return map;
