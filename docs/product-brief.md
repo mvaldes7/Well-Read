@@ -31,11 +31,14 @@ Discipline → Topic → Lesson → Quiz.
 
 | Task | Scope |
 | --- | --- |
-| TSK-003 | Browse and read lessons from seed files |
+| TSK-003 | Browse and read lessons from seed files (done) |
 | TSK-004 | Login (Supabase email/password) |
 | TSK-005 | Quiz + lesson completion saved to Supabase |
 | TSK-006 | Bookshelf |
-| TSK-007 | Levels + achievements |
+| TSK-007 | Design pass |
+| TSK-008 | Levels + achievements |
+
+Order updated 2026-10-09: a design pass (TSK-007) was added before levels and achievements (now TSK-008).
 
 ## Tech stack
 

@@ -28,6 +28,15 @@
       "title": "Approved brief + browse and read lessons from seed files",
       "role": "Builder",
       "type": "impl",
+      "state": "Release Approved",
+      "agent": "Builder",
+      "attempts": {}
+    },
+    {
+      "id": "TSK-004",
+      "title": "Supabase email/password login",
+      "role": "Builder",
+      "type": "impl",
       "state": "In Progress",
       "agent": "Builder",
       "attempts": {}
@@ -110,6 +119,42 @@
       "ts": "2026-10-10T02:30:08.647Z",
       "actor": "Builder",
       "taskId": "TSK-003",
+      "action": "start",
+      "from": "Idea",
+      "to": "In Progress",
+      "note": "agent=Builder"
+    },
+    {
+      "ts": "2026-10-10T02:46:53.313Z",
+      "actor": "Builder",
+      "taskId": "TSK-003",
+      "action": "status",
+      "from": "In Progress",
+      "to": "Checks Passed",
+      "note": "PR #3 CI checks job passed (run 38017530452)"
+    },
+    {
+      "ts": "2026-10-10T02:46:53.436Z",
+      "actor": "Builder",
+      "taskId": "TSK-003",
+      "action": "status",
+      "from": "Checks Passed",
+      "to": "Release Approved",
+      "note": "PR #3 merged to main as 06ebed7"
+    },
+    {
+      "ts": "2026-10-10T02:46:53.564Z",
+      "actor": "Builder",
+      "taskId": "TSK-004",
+      "action": "add",
+      "from": null,
+      "to": "Idea",
+      "note": null
+    },
+    {
+      "ts": "2026-10-10T02:46:53.673Z",
+      "actor": "Builder",
+      "taskId": "TSK-004",
       "action": "start",
       "from": "Idea",
       "to": "In Progress",

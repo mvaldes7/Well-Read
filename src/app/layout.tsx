@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
+import UserMenu from "@/components/UserMenu";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -15,6 +17,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <Link href="/" className="site-title">
             FoundationLearn
           </Link>
+          <Suspense fallback={null}>
+            <UserMenu />
+          </Suspense>
         </header>
         <main>{children}</main>
       </body>

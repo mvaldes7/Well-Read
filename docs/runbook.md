@@ -5,6 +5,12 @@
 - Node.js >= 20.9.0 (CI uses Node 20)
 - pnpm 10.33.4 (`corepack enable` picks it up from `packageManager`, or `npm i -g pnpm@10.33.4`)
 
+## Environment
+
+Copy `.env.example` to `.env.local` and fill in the dev Supabase project's URL and publishable key
+(client-safe values only; never a service-role/secret key). `.env.local` is git-ignored.
+Without it the app builds and runs, but login is unavailable and every page redirects to `/login`.
+
 ## Local development
 
 ```sh
