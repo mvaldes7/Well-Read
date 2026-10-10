@@ -1,6 +1,74 @@
 {
   "version": 1,
-  "limits": { "maxActiveImplementationTasks": 1, "maxRepairAttemptsPerFailure": 2 },
-  "tasks": [],
-  "log": []
+  "limits": {
+    "maxActiveImplementationTasks": 1,
+    "maxRepairAttemptsPerFailure": 2
+  },
+  "tasks": [
+    {
+      "id": "TSK-001",
+      "title": "Task ledger script + baseline CI",
+      "role": "Builder",
+      "type": "impl",
+      "state": "Release Approved",
+      "agent": null,
+      "attempts": {}
+    },
+    {
+      "id": "TSK-002",
+      "title": "Next.js + TypeScript scaffold with CI checks",
+      "role": "Builder",
+      "type": "impl",
+      "state": "In Progress",
+      "agent": "Builder",
+      "attempts": {}
+    }
+  ],
+  "log": [
+    {
+      "ts": "2026-10-10T01:49:21.666Z",
+      "actor": "Builder",
+      "taskId": "TSK-001",
+      "action": "add",
+      "from": null,
+      "to": "Idea",
+      "note": null
+    },
+    {
+      "ts": "2026-10-10T01:49:21.778Z",
+      "actor": "Builder",
+      "taskId": "TSK-001",
+      "action": "status",
+      "from": "Idea",
+      "to": "Checks Passed",
+      "note": "PR #1 CI checks job passed (run 38014236453)"
+    },
+    {
+      "ts": "2026-10-10T01:49:21.885Z",
+      "actor": "Builder",
+      "taskId": "TSK-001",
+      "action": "status",
+      "from": "Checks Passed",
+      "to": "Release Approved",
+      "note": "PR #1 merged to main by Mike as 206fb67"
+    },
+    {
+      "ts": "2026-10-10T01:49:21.989Z",
+      "actor": "Builder",
+      "taskId": "TSK-002",
+      "action": "add",
+      "from": null,
+      "to": "Idea",
+      "note": null
+    },
+    {
+      "ts": "2026-10-10T01:49:22.097Z",
+      "actor": "Builder",
+      "taskId": "TSK-002",
+      "action": "start",
+      "from": "Idea",
+      "to": "In Progress",
+      "note": "agent=Builder"
+    }
+  ]
 }
