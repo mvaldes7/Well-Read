@@ -82,6 +82,15 @@
       "title": "Rename display name to Curio",
       "role": "Builder",
       "type": "impl",
+      "state": "Release Approved",
+      "agent": "Builder",
+      "attempts": {}
+    },
+    {
+      "id": "TSK-010",
+      "title": "Polish batch: reopen bug, first name, sharper look",
+      "role": "Builder",
+      "type": "impl",
       "state": "In Progress",
       "agent": "Builder",
       "attempts": {}
@@ -380,6 +389,42 @@
       "ts": "2026-10-10T08:55:58.719Z",
       "actor": "Builder",
       "taskId": "TSK-009",
+      "action": "start",
+      "from": "Idea",
+      "to": "In Progress",
+      "note": "agent=Builder"
+    },
+    {
+      "ts": "2026-10-10T09:06:17.459Z",
+      "actor": "Builder",
+      "taskId": "TSK-009",
+      "action": "status",
+      "from": "In Progress",
+      "to": "Checks Passed",
+      "note": "PR #9 CI checks passed on Node 24 (run 38039703342)"
+    },
+    {
+      "ts": "2026-10-10T09:06:17.495Z",
+      "actor": "Builder",
+      "taskId": "TSK-009",
+      "action": "status",
+      "from": "Checks Passed",
+      "to": "Release Approved",
+      "note": "PR #9 merged as 6241a18; repo renamed to mvaldes7/Curio"
+    },
+    {
+      "ts": "2026-10-10T09:06:17.525Z",
+      "actor": "Builder",
+      "taskId": "TSK-010",
+      "action": "add",
+      "from": null,
+      "to": "Idea",
+      "note": null
+    },
+    {
+      "ts": "2026-10-10T09:06:17.556Z",
+      "actor": "Builder",
+      "taskId": "TSK-010",
       "action": "start",
       "from": "Idea",
       "to": "In Progress",
