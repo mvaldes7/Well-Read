@@ -1,4 +1,5 @@
 import { cache } from "react";
+import { unstable_rethrow } from "next/navigation";
 import { disciplines } from "@/content";
 import { createClient } from "@/lib/supabase/server";
 import { buildBookshelf, completionLookup, type BookshelfGroup, type Completion } from "./logic.mjs";
@@ -31,7 +32,10 @@ export const getMyProgress = cache(async (): Promise<ProgressResult> => {
     }
     const rows: unknown[] = data ?? [];
     return { status: "ok", lookup: completionLookup(rows, disciplines), groups: buildBookshelf(rows, disciplines) };
-  } catch {
+  } catch (err) {
+    // Let Next's internal control flow through (prerender aborts from cookies()/connection(),
+    // redirects): swallowing them would bake an error state into the prerendered stage.
+    unstable_rethrow(err);
     console.error("lesson_completions read failed (exception)");
     return { status: "error" };
   }

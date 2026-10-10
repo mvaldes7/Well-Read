@@ -1,3 +1,4 @@
+import { unstable_rethrow } from "next/navigation";
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { improvementCondition, type Attempt } from "./logic.mjs";
 
@@ -44,7 +45,8 @@ export async function saveBestAttempt(
     const updated = await update.select("lesson_id");
     if (updated.error) return logFailure(updated.error.code);
     return updated.data.length > 0 ? "saved" : "kept";
-  } catch {
+  } catch (err) {
+    unstable_rethrow(err); // never swallow Next's internal control flow
     return logFailure("exception");
   }
 }
