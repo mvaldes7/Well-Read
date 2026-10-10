@@ -70,13 +70,12 @@ function QuizAttempt({ lessonId, questions, onRetry }: Props & { onRetry: () => 
             </li>
           ))}
         </ol>
-        {!state.passed && (
-          <div className="actions">
-            <button type="button" className="btn" onClick={onRetry}>
-              Retry quiz
-            </button>
-          </div>
-        )}
+        {/* Always offer another attempt; a pass is never downgraded by a retake. */}
+        <div className="actions">
+          <button type="button" className="btn submit" onClick={onRetry}>
+            {state.passed ? "Retake quiz" : "Retry quiz"}
+          </button>
+        </div>
       </div>
     );
   }
@@ -109,8 +108,8 @@ function QuizAttempt({ lessonId, questions, onRetry }: Props & { onRetry: () => 
         </p>
       )}
       <div className="actions">
-        <button type="submit" className="btn" disabled={pending}>
-          {pending ? "Checking…" : "Submit answers"}
+        <button type="submit" className="btn submit" disabled={pending}>
+          {pending ? "Checking…" : "Submit"}
         </button>
       </div>
     </form>
