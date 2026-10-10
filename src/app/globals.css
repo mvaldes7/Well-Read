@@ -375,8 +375,11 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
 .level-progress { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--sub); }
 .level-progress progress { appearance: none; -webkit-appearance: none; width: 120px; height: 8px; border: 1px solid var(--edge); border-radius: 1px; background: var(--option); box-shadow: inset 0 1px 2px rgba(30, 25, 15, 0.18); overflow: hidden; }
 .level-progress progress::-webkit-progress-bar { background: transparent; }
-.level-progress progress::-webkit-progress-value { background: linear-gradient(var(--brass-hi), var(--brass-lo)); }
-.level-progress progress::-moz-progress-bar { background: linear-gradient(var(--brass-hi), var(--brass-lo)); }
+/* Fill keeps >= 3:1 against the track: darker brass on light, standard brass on dark. */
+:root { --progress-fill: linear-gradient(#9a8250, #7a6536); }
+@media (prefers-color-scheme: dark) { :root { --progress-fill: linear-gradient(var(--brass-hi), var(--brass-lo)); } }
+.level-progress progress::-webkit-progress-value { background: var(--progress-fill); }
+.level-progress progress::-moz-progress-bar { background: var(--progress-fill); }
 .level-text { color: var(--ink); letter-spacing: 0.04em; }
 
 /* Achievements board */
@@ -392,7 +395,8 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
 /* Locked: dim the card background and the medallion, never the text. */
 .medal.locked { background: var(--locked-bg); box-shadow: inset 0 1px 2px rgba(30, 25, 15, 0.12); }
 .medal.locked .medallion { color: var(--locked-glyph); background: var(--locked-medal); border-color: transparent; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.25); }
-.medal.locked .medal-status { color: var(--sub); }
+/* Locked status uses --body, not --sub: --sub on --locked-bg is only 4.28:1. */
+.medal.locked .medal-status, .medal.locked .medal-progress { color: var(--body); }
 @media (max-width: 600px) {
   .medals { grid-template-columns: 1fr; }
   .medal { padding: 16px; gap: 14px; }
