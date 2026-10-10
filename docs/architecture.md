@@ -1,6 +1,6 @@
 # Architecture
 
-Stack (as of TSK-005):
+Stack (as of TSK-006):
 
 - **Framework:** Next.js 16.4.0 (App Router, Turbopack), React 19.3.0, source in `src/app/`.
 - **Language:** TypeScript 5.x, `strict: true` (`tsconfig.json`), import alias `@/*` → `src/*`.
@@ -42,6 +42,14 @@ Stack (as of TSK-005):
   passed row is never downgraded, even under concurrent submits. If saving fails (e.g. migration not applied),
   the graded result is still shown with a "couldn't be saved" note.
   Migration: `supabase/migrations/*_lesson_completions.sql` (applied only with Mike's approval).
+- **Progress reads (TSK-006):** `getMyProgress()` (`src/lib/progress/data.ts`, React `cache` per request)
+  re-checks `getClaims()`, then selects only `lesson_id, score, total, passed` for the user with the cookie
+  session (RLS). Errors become a non-leaky message, never a crash. Pure helpers in
+  `src/lib/progress/logic.mjs` drop malformed rows and unknown lesson ids, dedupe duplicates with the
+  best-attempt rule, and build the bookshelf: one book per topic with 1+ passed lessons, **in content order**
+  (discipline, then topic), matching the browse pages. Per-user UI (`/bookshelf` shelf, topic-list ✓ markers,
+  the lesson "Completed – best X/Y" / "Best attempt so far" line) renders inside `<Suspense>`, so the page
+  shells stay prerendered and only the user's part streams in.
 - **Path guard:** only `/_next/static/*`, `/_next/image*`, `/_next/webpack-hmr` (dev), `/favicon.ico` and
   `/auth/confirm` are public (`PUBLIC_PATHS`/`PUBLIC_PREFIXES` in `src/lib/auth/logic.mjs`, kept in sync
   with the proxy matcher). A file extension doesn't make a path public. Add any future `public/` files to
