@@ -43,7 +43,6 @@ export default async function LessonPage({
     <article className="lesson narrow">
       <Breadcrumbs
         items={[
-          { label: "Disciplines", href: "/" },
           { label: discipline.title, href: `/d/${discipline.slug}` },
           { label: topic.title, href: topicHref },
           { label: `Lesson ${toRoman(lessonNo)}` },

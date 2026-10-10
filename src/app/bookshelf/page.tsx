@@ -44,14 +44,15 @@ async function Shelf() {
   }
   return (
     <>
-      {progress.groups.map((group, gi) => {
+      {progress.groups.map((group) => {
         const { slug, title, color } = group.discipline;
         const passed = group.books.reduce((n, b) => n + b.passedCount, 0);
         const volumes = group.books.length;
+        const gallery = `Gallery ${toRoman(group.position)}`;
         return (
           <section key={slug} className="room" aria-labelledby={`shelf-${slug}`}>
             <div className="walltext">
-              <p className="eyebrow brass">Gallery {toRoman(gi + 1)}</p>
+              <p className="eyebrow brass">{gallery}</p>
               <h2 id={`shelf-${slug}`}>{title}</h2>
               <p>{getDiscipline(slug)?.description}</p>
               <p className="count">
@@ -92,7 +93,7 @@ async function Shelf() {
               <div className="ledge">
                 {/* The h2 above names the shelf for assistive tech; the plaque is visual. */}
                 <span className="plaque" aria-hidden="true">
-                  {title}
+                  <small>{gallery} ·</small> {title}
                 </span>
               </div>
             </div>

@@ -29,7 +29,6 @@ export default async function TopicPage({ params }: PageProps<"/d/[discipline]/[
       <header className="page-head">
         <Breadcrumbs
           items={[
-            { label: "Disciplines", href: "/" },
             { label: discipline.title, href: `/d/${discipline.slug}` },
             { label: topic.title },
           ]}

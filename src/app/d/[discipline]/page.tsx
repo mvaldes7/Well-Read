@@ -22,7 +22,7 @@ export default async function DisciplinePage({ params }: PageProps<"/d/[discipli
   return (
     <div className="narrow">
       <header className="page-head">
-        <Breadcrumbs items={[{ label: "Disciplines", href: "/" }, { label: discipline.title }]} motif={discipline.color} />
+        <Breadcrumbs items={[{ label: discipline.title }]} motif={discipline.color} />
         <h1>{discipline.title}</h1>
         <p className="dek">{discipline.description}</p>
         <div className="ornament" aria-hidden="true">◆</div>
