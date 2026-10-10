@@ -1,15 +1,31 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { getDiscipline, getLesson, getTopic } from "@/content";
+import { decideAuth } from "@/lib/auth/logic.mjs";
+import { updateSession, withSessionCookies } from "@/lib/supabase/proxy";
 
-// With cacheComponents, pages for params not returned by generateStaticParams
-// stream from a prerendered shell, so a notFound() inside the page arrives after
-// a 200 status (a "soft 404"). Checking the slugs here, before rendering, lets
-// unknown content URLs return a real 404 (see Next 16 docs: notFound + Proxy).
+// Order of checks:
+// 1. Refresh the Supabase session and verify it with getClaims().
+// 2. Auth redirect: signed-out users on any protected path (including unknown
+//    /d/... slugs) go to /login; signed-in users on /login or /signup go to /.
+//    Signed-out users get no hint about which content URLs exist.
+// 3. Slug check (signed-in only): unknown /d/... content returns a real 404.
+//    With cacheComponents, notFound() inside a streamed page keeps a 200 status,
+//    so the check has to happen here, before rendering.
 export const config = {
-  matcher: "/d/:path*",
+  matcher: ["/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp|ico)$).*)"],
 };
 
-function exists(segments: string[]): boolean {
+function decode(segment: string): string | null {
+  try {
+    return decodeURIComponent(segment);
+  } catch {
+    return null; // malformed percent-encoding
+  }
+}
+
+function contentExists(pathname: string): boolean {
+  const segments = pathname.split("/").slice(2).filter(Boolean).map(decode);
+  if (!segments.every((s): s is string => s !== null)) return false;
   const [d, t, l] = segments;
   switch (segments.length) {
     case 1:
@@ -23,18 +39,19 @@ function exists(segments: string[]): boolean {
   }
 }
 
-function decode(segment: string): string | null {
-  try {
-    return decodeURIComponent(segment);
-  } catch {
-    return null; // malformed percent-encoding
-  }
-}
+export async function proxy(request: NextRequest) {
+  const { response, authed } = await updateSession(request);
+  const { pathname, search } = request.nextUrl;
 
-export function proxy(request: NextRequest) {
-  const segments = request.nextUrl.pathname.split("/").slice(2).filter(Boolean).map(decode);
-  const valid = segments.every((s): s is string => s !== null);
-  if (segments.length === 0 || (valid && exists(segments as string[]))) return NextResponse.next();
-  // No route matches this internal path, so Next renders the app's not-found page with status 404.
-  return NextResponse.rewrite(new URL("/__not-found", request.url));
+  const decision = decideAuth({ pathname, search, authed });
+  if (decision.type === "redirect") {
+    return withSessionCookies(NextResponse.redirect(new URL(decision.location, request.url)), response);
+  }
+
+  if ((pathname === "/d" || pathname.startsWith("/d/")) && !contentExists(pathname)) {
+    // No route matches this internal path, so Next renders the not-found page with a 404.
+    return withSessionCookies(NextResponse.rewrite(new URL("/__not-found", request.url)), response);
+  }
+
+  return response;
 }
