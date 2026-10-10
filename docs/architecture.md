@@ -11,7 +11,12 @@ Stack (as of TSK-006):
   `pnpm-workspace.yaml` leaves the `sharp` and `unrs-resolver` install scripts un-run (`ignoredBuiltDependencies`).
 - **Lint:** ESLint 9 flat config (`eslint.config.mjs`) with `eslint-config-next` (core-web-vitals + typescript).
   `next lint` is not available in Next.js 16, so the ESLint CLI is used directly.
-- **Styling:** none yet (no Tailwind).
+- **Styling:** design C2 ("gallery", TSK-008) in plain CSS, `src/app/globals.css`, no Tailwind/CSS deps.
+  Design tokens are CSS custom properties in `:root` (light) plus a `prefers-color-scheme: dark` override;
+  system font stacks only (no network fonts). Mobile breakpoint at 600px (390px is the target width).
+  Focus is always visible (`:focus-visible`), and transitions are disabled under `prefers-reduced-motion`.
+  Bookshelf spines get a deterministic width, height, shade and title font size from `spineStyle()` in
+  `src/lib/progress/logic.mjs` (FNV-1a hash of `discipline/topic`, title-aware so vertical titles fit).
 - **Next config:** create-next-app 16.4.0 defaults (`cacheComponents`, `partialPrefetching`) plus `agentRules: false` so `next dev` does not generate `AGENTS.md`.
 - **Content (TSK-003):** seed lessons in `src/content/disciplines.json`, types in `src/content/schema.ts`,
   and a loader in `src/content/index.ts` that checks the JSON at runtime and narrows it to those types
@@ -54,7 +59,8 @@ Stack (as of TSK-006):
   per topic with 1+ passed lessons, grouped by discipline, **in content order** (discipline, then topic),
   with no empty groups. Each discipline has a required `color` token (`src/content/colors.mjs`: crimson, navy,
   forest, amber, plum, slate) validated by the loader and the .mjs validator; tokens map to real colors only
-  in `globals.css` (`.cover-<token>`), all dark enough for white text (>= 7:1). Per-user UI (`/bookshelf` shelf, topic-list ✓ markers,
+  in `globals.css` (`.cover-<token>` defines a 3-shade family `--shade-0..2`), all keeping spine titles
+  (#efe3c8) >= 4.5:1 even under the spine highlight. Per-user UI (`/bookshelf` shelf, topic-list ✓ markers,
   the lesson "Completed – best X/Y" / "Best attempt so far" line) renders inside `<Suspense>`, so the page
   shells stay prerendered and only the user's part streams in.
 - **Path guard:** only `/_next/static/*`, `/_next/image*`, `/_next/webpack-hmr` (dev), `/favicon.ico` and
