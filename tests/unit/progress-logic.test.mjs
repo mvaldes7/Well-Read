@@ -17,6 +17,7 @@ test('QA fixture: les_st01 + les_rr01 -> World History [Roman Republic (1)] then
   assert.deepEqual(shelf(groups), [[...WH, ['The Roman Republic (1)']], [...PH, ['Stoicism (1)']]]);
   assert.deepEqual(groups[0].discipline, { slug: 'world-history', title: 'World History', color: 'crimson' });
   assert.deepEqual(groups[1].discipline, { slug: 'philosophy', title: 'Philosophy', color: 'navy' });
+  assert.deepEqual(groups.map((g) => g.position), [1, 2]);
   assert.deepEqual(groups[0].books[0], {
     disciplineSlug: 'world-history',
     disciplineTitle: 'World History',
@@ -51,6 +52,7 @@ test('a discipline with nothing passed is omitted; topics keep content order', (
   const rows = [row('les_st01', 3, 3, true), row('les_so01', 4, 4, true), row('les_fr02', 1, 4, false)];
   const groups = buildBookshelf(rows, disciplines);
   assert.deepEqual(groups.map((g) => g.discipline.slug), ['philosophy']);
+  assert.equal(groups[0].position, 2, 'gallery number follows content order, not group order');
   assert.ok(groups.every((g) => g.books.length > 0));
 });
 
@@ -132,6 +134,10 @@ test('spineStyle makes room for the title: taller spine, smaller font only when 
     assert.ok(fits(s, t.title), `title fits: ${t.title} ${JSON.stringify(s)}`);
   }
   assert.equal(spineStyle('k', 'Stoicism').fontSize, SPINE.maxFont);
+  // Bounds match C2's measured proportions of the 340px case.
+  assert.ok(SPINE.minHeight / SPINE.caseHeight >= 0.73 && SPINE.maxHeight / SPINE.caseHeight <= 0.85);
+  const rr = spineStyle('world-history/roman-republic', 'The Roman Republic');
+  assert.ok(rr.height <= 286 && rr.fontSize < SPINE.maxFont, `long title shrinks the font: ${JSON.stringify(rr)}`);
   const long = spineStyle('k', 'A Very Long Topic Title That Cannot Fit');
   assert.equal(long.height, SPINE.maxHeight);
   assert.equal(long.fontSize, SPINE.minFont); // floor reached; CSS ellipsis covers the rest

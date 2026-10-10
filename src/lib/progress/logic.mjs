@@ -20,6 +20,7 @@ import { shouldReplace } from "../quiz/logic.mjs";
 /**
  * @typedef {{
  *   discipline: { slug: string, title: string, color: string },
+ *   position: number,
  *   books: Book[]
  * }} BookshelfGroup
  */
@@ -65,7 +66,9 @@ export function completionLookup(rows, disciplines) {
  * Bookshelf grouped by discipline: one book per topic with at least one passed
  * lesson. Groups follow discipline content order and books follow topic content
  * order (same as the browse pages). Disciplines with nothing passed are omitted.
- * Every book in a group shares the discipline's cover color token.
+ * Every book in a group shares the discipline's cover color token. `position` is
+ * the discipline's 1-based place in content order (for "Gallery I", "Gallery II"),
+ * so it stays the same whether or not earlier disciplines have books.
  * @param {ReadonlyArray<unknown>} rows
  * @param {ReadonlyArray<ContentDiscipline>} disciplines
  * @returns {BookshelfGroup[]}
@@ -74,7 +77,7 @@ export function buildBookshelf(rows, disciplines) {
   const lookup = completionLookup(rows, disciplines);
   /** @type {BookshelfGroup[]} */
   const groups = [];
-  for (const d of disciplines) {
+  for (const [di, d] of disciplines.entries()) {
     /** @type {Book[]} */
     const books = [];
     for (const t of d.topics) {
@@ -90,7 +93,7 @@ export function buildBookshelf(rows, disciplines) {
         href: `/d/${d.slug}/${t.slug}`,
       });
     }
-    if (books.length) groups.push({ discipline: { slug: d.slug, title: d.title, color: d.color }, books });
+    if (books.length) groups.push({ discipline: { slug: d.slug, title: d.title, color: d.color }, position: di + 1, books });
   }
   return groups;
 }
@@ -119,12 +122,15 @@ export function saveMessage(save, passed) {
 
 /** Bounds for deterministic spine sizes (px), title font sizes (px) and shades per color family. */
 export const SPINE = /** @type {const} */ ({
-  minWidth: 56, maxWidth: 76, minHeight: 236, maxHeight: 290,
+  // Measured from mockup C2 (TSK-008 v2): spines are 60-74px wide and 250-286px tall in a
+  // 340px case (0.735-0.841 of the case height). Mobile scales these via CSS (--shelf-scale).
+  caseHeight: 340,
+  minWidth: 60, maxWidth: 74, minHeight: 250, maxHeight: 286,
   maxFont: 19, minFont: 13, shades: 3,
-  /** Vertical space taken by the caps, tag and padding (px). */
-  chrome: 100,
-  /** Approximate advance per character, as a fraction of the font size (serif, 0.08em tracking). */
-  charEm: 0.56,
+  /** Vertical space taken by the caps, tag and margins (px). */
+  chrome: 92,
+  /** Advance per character as a fraction of the font size (measured worst case in C2: 0.62). */
+  charEm: 0.62,
 });
 
 /**
@@ -144,8 +150,8 @@ export function hash32(s) {
 /**
  * Deterministic spine look for a book key (e.g. "philosophy/stoicism"): width,
  * height and shade index within the discipline's color family, from different
- * bits of the hash. With a title, the spine grows (within bounds) so the vertical
- * title fits, and the font shrinks (to minFont) if it still wouldn't.
+ * bits of the hash. With a title, the spine grows (up to C2's max height) so the
+ * vertical title fits, and the font shrinks (to minFont) if it still wouldn't.
  * @param {string} key
  * @param {string} [title]
  * @returns {{ width: number, height: number, shade: number, fontSize: number }}
