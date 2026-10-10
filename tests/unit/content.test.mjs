@@ -66,3 +66,37 @@ test('every lesson has 3+ quiz questions with exactly 4 options and a valid answ
     });
   }
 });
+
+test('every lesson has a permanent id that is well-formed and globally unique', async () => {
+  const { lessonIdProblems, LESSON_ID_PATTERN } = await import('../../src/content/ids.mjs');
+  assert.deepEqual(lessonIdProblems(disciplines), []);
+  for (const x of lessons) {
+    assert.match(x.l.id, LESSON_ID_PATTERN, where(x));
+    assert.notEqual(x.l.id, x.l.slug, `${where(x)}: id must not equal slug`);
+  }
+});
+
+test('lesson id checks reject missing, duplicate and badly formatted ids', async () => {
+  const { lessonIdProblems } = await import('../../src/content/ids.mjs');
+  const clone = () => JSON.parse(JSON.stringify(disciplines));
+
+  const missing = clone();
+  delete missing[0].topics[0].lessons[0].id;
+  assert.match(lessonIdProblems(missing).join('\n'), /missing id/);
+
+  const dup = clone();
+  // duplicate across different disciplines (global uniqueness)
+  dup[1].topics[0].lessons[0].id = dup[0].topics[0].lessons[0].id;
+  assert.match(lessonIdProblems(dup).join('\n'), /duplicate id "les_rr01"/);
+
+  for (const bad of ['rr01', 'les_', 'LES_RR01', 'les_RR01', 'les_rr-01', 'les_' + 'a'.repeat(13), 42]) {
+    const b = clone();
+    b[0].topics[0].lessons[0].id = bad;
+    assert.match(lessonIdProblems(b).join('\n'), /bad id format/, JSON.stringify(bad));
+  }
+
+  const slugAsId = clone();
+  slugAsId[0].topics[0].lessons[0].id = 'les_abcd';
+  slugAsId[0].topics[0].lessons[0].slug = 'les_abcd';
+  assert.match(lessonIdProblems(slugAsId).join('\n'), /must not equal the slug/);
+});

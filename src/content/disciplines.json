@@ -11,6 +11,7 @@
         "summary": "Rome's period of elected, shared government before the rise of the emperors.",
         "lessons": [
           {
+            "id": "les_rr01",
             "slug": "how-the-republic-was-governed",
             "title": "How the Republic Was Governed",
             "sections": [
@@ -66,6 +67,7 @@
         "summary": "The upheaval of 1789-1799 that overthrew the French monarchy and spread ideas of rights and citizenship.",
         "lessons": [
           {
+            "id": "les_fr01",
             "slug": "1789-the-revolution-begins",
             "title": "1789: The Revolution Begins",
             "sections": [
@@ -113,6 +115,7 @@
             ]
           },
           {
+            "id": "les_fr02",
             "slug": "republic-and-terror",
             "title": "Republic and Terror",
             "sections": [
@@ -175,6 +178,7 @@
         "summary": "The Athenian philosopher who taught by questioning and was put to death for it.",
         "lessons": [
           {
+            "id": "les_so01",
             "slug": "the-examined-life",
             "title": "Socrates and the Examined Life",
             "sections": [
@@ -230,6 +234,7 @@
         "summary": "A school of philosophy, born in Athens and popular in Rome, that teaches virtue and calm acceptance of what we cannot control.",
         "lessons": [
           {
+            "id": "les_st01",
             "slug": "origins-of-stoicism",
             "title": "The Origins of Stoicism",
             "sections": [
@@ -272,6 +277,7 @@
             ]
           },
           {
+            "id": "les_st02",
             "slug": "the-roman-stoics",
             "title": "The Roman Stoics",
             "sections": [

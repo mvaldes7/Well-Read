@@ -14,6 +14,11 @@ Stack (as of TSK-004):
 - **Content (TSK-003):** seed lessons in `src/content/disciplines.json`, types in `src/content/schema.ts`,
   and a loader in `src/content/index.ts` that checks the JSON at runtime and narrows it to those types
   (a bad seed file fails `next build`). The JSON is also read directly by `tests/unit/content.test.mjs`.
+- **Lesson ids (REV-001):** every lesson has a permanent, hand-assigned `id` (`les_` + 4-12 lowercase
+  letters/digits, e.g. `les_rr01`), separate from its URL `slug`. Ids are never derived from the slug and never
+  reused, even if a lesson is deleted. Saved progress (`lesson_completions.lesson_id`) is keyed on this id, so
+  slugs and titles can change freely. `src/content/ids.mjs` rejects missing, malformed or duplicate ids
+  (globally, across all disciplines) when the content loads and in unit tests.
 - **Routes:** `/`, `/d/[discipline]`, `/d/[discipline]/[topic]`, `/d/[discipline]/[topic]/[lesson]`, all
   prerendered via `generateStaticParams`. `src/proxy.ts` (Next 16 Proxy) returns a real 404 for unknown
   `/d/...` slugs, because with Cache Components a `notFound()` in a streamed page keeps a 200 status.
