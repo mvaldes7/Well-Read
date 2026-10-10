@@ -18,14 +18,15 @@ Discipline → Topic → Lesson → Quiz.
 - **Per-topic levels:** 1 completed lesson = Level 1, 5 completed lessons = Level 2,
   then +1 level for every further 5 completed lessons.
 - The bookshelf shows one book per topic with at least one passed lesson, grouped by discipline; books in the same discipline share a cover color.
-- A separate **achievements** menu.
+- A separate **achievements** menu (starter set in TSK-011: First Lesson, Perfect Score, Discipline Explorer,
+  a level achievement per topic, and a Completionist per discipline; see AC-6).
 - Progress **syncs via Supabase email/password login**. Public sign-ups will be disabled
   later; that change needs Mike's approval.
 
 ## Explicit non-goals (for now)
 
 - AI-generated lessons
-- A final achievement list
+- A final achievement list (a starter set ships in TSK-011; more can be added later)
 - Multiple users
 - Social features
 - Mobile apps
@@ -41,7 +42,7 @@ Discipline → Topic → Lesson → Quiz.
 | TSK-007 | Node 24 upgrade (done) |
 | TSK-008 | Design pass (done) |
 | TSK-009 | Rename display name to Curio (done) |
-| TSK-010 | Polish batch: reopen bug, first name, sharper look |
+| TSK-010 | Polish batch: reopen bug, first name, sharper look (done) |
 | TSK-011 | Levels + achievements |
 
 Order updated 2026-10-09: a design pass was added before levels and achievements.
