@@ -51,7 +51,7 @@ export default function AuthForm({ mode, action }: Props) {
         autoComplete={isSignIn ? "current-password" : "new-password"}
         required
       />
-      <button type="submit" disabled={pending}>
+      <button type="submit" className="btn" disabled={pending}>
         {pending ? "Please wait…" : isSignIn ? "Sign in" : "Create account"}
       </button>
     </form>

@@ -20,6 +20,7 @@ import { shouldReplace } from "../quiz/logic.mjs";
 /**
  * @typedef {{
  *   discipline: { slug: string, title: string, color: string },
+ *   position: number,
  *   books: Book[]
  * }} BookshelfGroup
  */
@@ -65,7 +66,9 @@ export function completionLookup(rows, disciplines) {
  * Bookshelf grouped by discipline: one book per topic with at least one passed
  * lesson. Groups follow discipline content order and books follow topic content
  * order (same as the browse pages). Disciplines with nothing passed are omitted.
- * Every book in a group shares the discipline's cover color token.
+ * Every book in a group shares the discipline's cover color token. `position` is
+ * the discipline's 1-based place in content order (for "Gallery I", "Gallery II"),
+ * so it stays the same whether or not earlier disciplines have books.
  * @param {ReadonlyArray<unknown>} rows
  * @param {ReadonlyArray<ContentDiscipline>} disciplines
  * @returns {BookshelfGroup[]}
@@ -74,7 +77,7 @@ export function buildBookshelf(rows, disciplines) {
   const lookup = completionLookup(rows, disciplines);
   /** @type {BookshelfGroup[]} */
   const groups = [];
-  for (const d of disciplines) {
+  for (const [di, d] of disciplines.entries()) {
     /** @type {Book[]} */
     const books = [];
     for (const t of d.topics) {
@@ -90,7 +93,7 @@ export function buildBookshelf(rows, disciplines) {
         href: `/d/${d.slug}/${t.slug}`,
       });
     }
-    if (books.length) groups.push({ discipline: { slug: d.slug, title: d.title, color: d.color }, books });
+    if (books.length) groups.push({ discipline: { slug: d.slug, title: d.title, color: d.color }, position: di + 1, books });
   }
   return groups;
 }
@@ -115,4 +118,56 @@ export function saveMessage(save, passed) {
   }
   if (save === "kept") return "Your earlier best result is kept.";
   return passed ? "Progress saved." : "Attempt saved.";
+}
+
+/** Bounds for deterministic spine sizes (px), title font sizes (px) and shades per color family. */
+export const SPINE = /** @type {const} */ ({
+  // Measured from mockup C2 (TSK-008 v2): spines are 60-74px wide and 250-286px tall in a
+  // 340px case (0.735-0.841 of the case height). As in C2, mobile keeps the same px in its 310px case.
+  caseHeight: 340,
+  minWidth: 60, maxWidth: 74, minHeight: 250, maxHeight: 286,
+  maxFont: 19, minFont: 13, shades: 3,
+  /** Vertical space outside the title text: caps, tag, margins and the title's own padding (px, measured). */
+  chrome: 105,
+  /** Advance per character as a fraction of the font size (measured worst case in C2: 0.62). */
+  charEm: 0.62,
+});
+
+/**
+ * FNV-1a 32-bit hash of a string. Pure and stable across runs and platforms.
+ * @param {string} s
+ * @returns {number} unsigned 32-bit integer
+ */
+export function hash32(s) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 0x01000193) >>> 0;
+  }
+  return h >>> 0;
+}
+
+/**
+ * Deterministic spine look for a book key (e.g. "philosophy/stoicism"): width,
+ * height and shade index within the discipline's color family, from different
+ * bits of the hash. With a title, the spine grows (up to C2's max height) so the
+ * vertical title fits, and the font shrinks (to minFont) if it still wouldn't.
+ * @param {string} key
+ * @param {string} [title]
+ * @returns {{ width: number, height: number, shade: number, fontSize: number }}
+ */
+export function spineStyle(key, title = "") {
+  const h = hash32(key);
+  const span = (/** @type {number} */ bits, /** @type {number} */ min, /** @type {number} */ max) =>
+    min + (bits % (max - min + 1));
+  const chars = typeof title === "string" ? [...title].length : 0;
+  const wanted = SPINE.chrome + Math.ceil(chars * SPINE.maxFont * SPINE.charEm);
+  const height = Math.min(SPINE.maxHeight, Math.max(span((h >>> 8) & 0xffff, SPINE.minHeight, SPINE.maxHeight), wanted));
+  const fit = chars ? Math.floor((height - SPINE.chrome) / (chars * SPINE.charEm)) : SPINE.maxFont;
+  return {
+    width: span(h & 0xff, SPINE.minWidth, SPINE.maxWidth),
+    height,
+    shade: (h >>> 24) % SPINE.shades,
+    fontSize: Math.max(SPINE.minFont, Math.min(SPINE.maxFont, fit)),
+  };
 }

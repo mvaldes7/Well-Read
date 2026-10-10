@@ -64,6 +64,15 @@
       "title": "Node 24 upgrade",
       "role": "Builder",
       "type": "impl",
+      "state": "Release Approved",
+      "agent": "Builder",
+      "attempts": {}
+    },
+    {
+      "id": "TSK-008",
+      "title": "Design pass (C2)",
+      "role": "Builder",
+      "type": "impl",
       "state": "In Progress",
       "agent": "Builder",
       "attempts": {}
@@ -290,6 +299,42 @@
       "ts": "2026-10-10T07:46:15.199Z",
       "actor": "Builder",
       "taskId": "TSK-007",
+      "action": "start",
+      "from": "Idea",
+      "to": "In Progress",
+      "note": "agent=Builder"
+    },
+    {
+      "ts": "2026-10-10T08:11:07.592Z",
+      "actor": "Builder",
+      "taskId": "TSK-007",
+      "action": "status",
+      "from": "In Progress",
+      "to": "Checks Passed",
+      "note": "PR #7 CI checks passed on Node 24 (run 38035741651)"
+    },
+    {
+      "ts": "2026-10-10T08:11:07.637Z",
+      "actor": "Builder",
+      "taskId": "TSK-007",
+      "action": "status",
+      "from": "Checks Passed",
+      "to": "Release Approved",
+      "note": "PR #7 merged to main as 4aa36b1"
+    },
+    {
+      "ts": "2026-10-10T08:11:07.683Z",
+      "actor": "Builder",
+      "taskId": "TSK-008",
+      "action": "add",
+      "from": null,
+      "to": "Idea",
+      "note": null
+    },
+    {
+      "ts": "2026-10-10T08:11:07.719Z",
+      "actor": "Builder",
+      "taskId": "TSK-008",
       "action": "start",
       "from": "Idea",
       "to": "In Progress",

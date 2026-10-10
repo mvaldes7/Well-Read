@@ -48,58 +48,70 @@ function QuizAttempt({ lessonId, questions, onRetry }: Props & { onRetry: () => 
   if (state.status === "graded") {
     return (
       <div className="quiz-result">
-        <p role="status" className={state.passed ? "pass" : "fail"}>
+        <p role="status" className={`score ${state.passed ? "pass" : "fail"}`}>
           <strong>
-            {state.score}/{state.total} – {state.passed ? "Passed" : "Not passed"}
-          </strong>{" "}
-          {state.passed ? "Lesson complete." : "You need 70% to complete this lesson."}
+            {state.score}/{state.total}
+          </strong>
+          {state.passed ? "Passed – lesson complete." : "Not passed – you need 70% to complete this lesson."}
         </p>
-        <p className={state.save === "failed" ? "error" : "muted"}>{saveMessage(state.save, state.passed)}</p>
+        <p className={`save ${state.save === "failed" ? "error" : "muted"}`}>{saveMessage(state.save, state.passed)}</p>
         <ol>
           {state.questions.map((r, i) => (
             <li key={i}>
-              <p>{questions[i]?.question}</p>
-              <p>
-                Your answer: {questions[i]?.options[r.chosenIndex]} {r.correct ? "✓" : "✗"}
+              <p className="q">
+                {i + 1}. {questions[i]?.question}
+              </p>
+              <p className={r.correct ? "right" : "wrong"}>
+                Your answer: {questions[i]?.options[r.chosenIndex]}{" "}
+                <span aria-hidden="true">{r.correct ? "✓" : "✗"}</span>
+                <span className="visually-hidden">{r.correct ? "(correct)" : "(incorrect)"}</span>
               </p>
               {!r.correct && <p>Correct answer: {questions[i]?.options[r.correctIndex]}</p>}
             </li>
           ))}
         </ol>
-        {!state.passed && (
-          <button type="button" onClick={onRetry}>
-            Retry quiz
+        {/* Always offer another attempt; a pass is never downgraded by a retake. */}
+        <div className="actions">
+          <button type="button" className="btn submit" onClick={onRetry}>
+            {state.passed ? "Retake quiz" : "Retry quiz"}
           </button>
-        )}
+        </div>
       </div>
     );
   }
 
   return (
     <form onSubmit={onSubmit} className="quiz-form" aria-describedby="quiz-help">
-      <p id="quiz-help" className="muted">
+      <p id="quiz-help" className="quiz-help">
         Answer all {questions.length} questions. You need 70% to complete the lesson.
       </p>
       {questions.map((q, i) => (
         <fieldset key={i}>
           <legend>
-            {i + 1}. {q.question}
+            <span className="qno">
+              Question {i + 1} of {questions.length}
+            </span>
+            {q.question}
           </legend>
-          {q.options.map((option, j) => (
-            <label key={j}>
-              <input type="radio" name={`q${i}`} value={j} required /> {option}
-            </label>
-          ))}
+          <div className="opts">
+            {q.options.map((option, j) => (
+              <label key={j}>
+                <input type="radio" name={`q${i}`} value={j} required /> {option}
+              </label>
+            ))}
+          </div>
         </fieldset>
       ))}
       {(missing || state.status === "error") && (
-        <p role="alert" className="error">
+        <p role="alert" className="error form-error">
           {missing ? "Answer every question before submitting." : state.status === "error" ? state.error : null}
         </p>
       )}
-      <button type="submit" disabled={pending}>
-        {pending ? "Checking…" : "Submit answers"}
-      </button>
+      <div className="actions">
+        <button type="submit" className="btn submit" disabled={pending}>
+          {pending ? "Checking…" : "Submit"}
+        </button>
+      </div>
     </form>
   );
 }
