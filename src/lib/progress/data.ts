@@ -5,7 +5,7 @@ import { createClient } from "@/lib/supabase/server";
 import { buildBookshelf, completionLookup, type BookshelfGroup, type Completion } from "./logic.mjs";
 
 export type ProgressResult =
-  | { status: "ok"; lookup: Map<string, Completion>; groups: BookshelfGroup[] }
+  | { status: "ok"; rows: unknown[]; lookup: Map<string, Completion>; groups: BookshelfGroup[] }
   | { status: "signedOut" }
   | { status: "error" };
 
@@ -24,14 +24,14 @@ export const getMyProgress = cache(async (): Promise<ProgressResult> => {
 
     const { data, error } = await supabase
       .from("lesson_completions")
-      .select("lesson_id, score, total, passed")
+      .select("lesson_id, score, total, passed, completed_at")
       .eq("user_id", userId);
     if (error) {
       console.error(`lesson_completions read failed (${error.code ?? "unknown"})`);
       return { status: "error" };
     }
     const rows: unknown[] = data ?? [];
-    return { status: "ok", lookup: completionLookup(rows, disciplines), groups: buildBookshelf(rows, disciplines) };
+    return { status: "ok", rows, lookup: completionLookup(rows, disciplines), groups: buildBookshelf(rows, disciplines) };
   } catch (err) {
     // Let Next's internal control flow through (prerender aborts from cookies()/connection(),
     // redirects): swallowing them would bake an error state into the prerendered stage.

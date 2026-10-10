@@ -1,4 +1,6 @@
+import { getTopic } from "@/content";
 import { getMyProgress } from "@/lib/progress/data";
+import { levelFor, levelProgressText, passedInTopic } from "@/lib/progress/levels.mjs";
 
 // Per-user completion UI. Each reads the session, so render inside <Suspense>.
 
@@ -28,5 +30,26 @@ export async function LessonStatus({ lessonId }: { lessonId: string }) {
     <p className="status muted">
       Best attempt so far: {best.score}/{best.total} (not yet passed – you need 70%).
     </p>
+  );
+}
+
+/** Topic level badge + progress to the next level (AC-4). */
+export async function TopicLevel({ disciplineSlug, topicSlug }: { disciplineSlug: string; topicSlug: string }) {
+  const topic = getTopic(disciplineSlug, topicSlug);
+  const progress = await getMyProgress();
+  if (!topic || progress.status === "signedOut") return null;
+  if (progress.status === "error") return <p className="topic-level muted">Your level for this topic couldn&apos;t be loaded.</p>;
+  const info = levelFor(passedInTopic(topic, progress.lookup));
+  const text = levelProgressText(info);
+  return (
+    <div className="topic-level">
+      <span className={`level-badge${info.level === null ? " none" : ""}`}>
+        {info.level === null ? "No level yet" : `Level ${info.level}`}
+      </span>
+      <div className="level-progress">
+        <progress value={info.toward} max={info.needed} aria-label={text} />
+        <span className="level-text">{text}</span>
+      </div>
+    </div>
   );
 }
