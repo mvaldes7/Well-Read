@@ -4,9 +4,12 @@
 // node:test can import it; type-checked by tsc via allowJs.
 
 import { shouldReplace } from "../quiz/logic.mjs";
+import { levelFor, passedInTopic } from "./levels.mjs";
 
 /** @typedef {{ lesson_id: string, score: number, total: number, passed: boolean }} CompletionRow */
 /** @typedef {{ score: number, total: number, passed: boolean }} Completion */
+/** Best attempt plus when it was stored (ISO string, or null when missing/unparseable). */
+/** @typedef {Completion & { completedAt: string | null }} DatedCompletion */
 /** @typedef {{ id: string }} ContentLesson */
 /** @typedef {{ slug: string, title: string, lessons: ReadonlyArray<ContentLesson> }} ContentTopic */
 /** @typedef {{ slug: string, title: string, color: string, topics: ReadonlyArray<ContentTopic> }} ContentDiscipline */
@@ -14,7 +17,8 @@ import { shouldReplace } from "../quiz/logic.mjs";
  * @typedef {{
  *   disciplineSlug: string, disciplineTitle: string,
  *   topicSlug: string, topicTitle: string,
- *   passedCount: number, lessonCount: number, href: string
+ *   passedCount: number, lessonCount: number, href: string,
+ *   level: number
  * }} Book
  */
 /**
@@ -43,22 +47,48 @@ export function isCompletionRow(row) {
 }
 
 /**
+ * `completed_at` from a row as a normalised ISO string, or null if missing or unparseable.
+ * @param {unknown} v
+ * @returns {string | null}
+ */
+function isoOrNull(v) {
+  if (typeof v !== "string" || v === "") return null;
+  const t = Date.parse(v);
+  return Number.isFinite(t) ? new Date(t).toISOString() : null;
+}
+
+/**
+ * Per-lesson best attempt with its `completed_at`, restricted to lesson ids that exist in
+ * content. Duplicate rows for one lesson (shouldn't happen given the PK) are merged
+ * defensively with the same best-attempt rule used when saving; the kept row's date wins.
+ * @param {ReadonlyArray<unknown>} rows
+ * @param {ReadonlyArray<ContentDiscipline>} disciplines
+ * @returns {Map<string, DatedCompletion>}
+ */
+export function bestCompletions(rows, disciplines) {
+  const known = new Set(disciplines.flatMap((d) => d.topics.flatMap((t) => t.lessons.map((l) => l.id))));
+  /** @type {Map<string, DatedCompletion>} */
+  const map = new Map();
+  for (const row of rows) {
+    if (!isCompletionRow(row) || !known.has(row.lesson_id)) continue;
+    const attempt = { score: row.score, total: row.total, passed: row.passed };
+    if (shouldReplace(map.get(row.lesson_id), attempt)) {
+      map.set(row.lesson_id, { ...attempt, completedAt: isoOrNull(/** @type {Record<string, unknown>} */ (row).completed_at) });
+    }
+  }
+  return map;
+}
+
+/**
  * Per-lesson best completion, restricted to lesson ids that exist in content.
- * Duplicate rows for one lesson (shouldn't happen given the PK) are merged
- * defensively with the same best-attempt rule used when saving.
  * @param {ReadonlyArray<unknown>} rows
  * @param {ReadonlyArray<ContentDiscipline>} disciplines
  * @returns {Map<string, Completion>}
  */
 export function completionLookup(rows, disciplines) {
-  const known = new Set(disciplines.flatMap((d) => d.topics.flatMap((t) => t.lessons.map((l) => l.id))));
   /** @type {Map<string, Completion>} */
   const map = new Map();
-  for (const row of rows) {
-    if (!isCompletionRow(row) || !known.has(row.lesson_id)) continue;
-    const attempt = { score: row.score, total: row.total, passed: row.passed };
-    if (shouldReplace(map.get(row.lesson_id), attempt)) map.set(row.lesson_id, attempt);
-  }
+  for (const [id, c] of bestCompletions(rows, disciplines)) map.set(id, { score: c.score, total: c.total, passed: c.passed });
   return map;
 }
 
@@ -81,7 +111,7 @@ export function buildBookshelf(rows, disciplines) {
     /** @type {Book[]} */
     const books = [];
     for (const t of d.topics) {
-      const passedCount = t.lessons.filter((l) => lookup.get(l.id)?.passed === true).length;
+      const passedCount = passedInTopic(t, lookup);
       if (passedCount === 0) continue;
       books.push({
         disciplineSlug: d.slug,
@@ -91,6 +121,7 @@ export function buildBookshelf(rows, disciplines) {
         passedCount,
         lessonCount: t.lessons.length,
         href: `/d/${d.slug}/${t.slug}`,
+        level: /** @type {number} */ (levelFor(passedCount).level),
       });
     }
     if (books.length) groups.push({ discipline: { slug: d.slug, title: d.title, color: d.color }, position: di + 1, books });
@@ -104,7 +135,7 @@ export function buildBookshelf(rows, disciplines) {
  */
 export function bookLabel(book) {
   const n = book.passedCount;
-  return `${book.topicTitle} (${book.disciplineTitle}): ${n} ${n === 1 ? "lesson" : "lessons"} completed`;
+  return `${book.topicTitle} (${book.disciplineTitle}): Level ${book.level}, ${n} ${n === 1 ? "lesson" : "lessons"} completed`;
 }
 
 /**
