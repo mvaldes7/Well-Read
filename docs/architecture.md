@@ -4,7 +4,9 @@ Stack (as of TSK-006):
 
 - **Framework:** Next.js 16.4.0 (App Router, Turbopack), React 19.3.0, source in `src/app/`.
 - **Language:** TypeScript 5.x, `strict: true` (`tsconfig.json`), import alias `@/*` → `src/*`.
-- **Runtime:** Node.js >= 20.9.0 (Next.js engines requirement); CI uses Node 20.
+- **Runtime:** Node.js 24 (`engines.node: "24.x"`, `.nvmrc`). CI uses Node 24; Vercel picks the major from
+  `engines.node` (overriding the project setting). `@types/node` ^24. `pnpm test` passes test files explicitly
+  (`tests/unit/*.test.mjs`) because Node 22+ treats `--test` arguments as globs, not directories.
 - **Package manager:** pnpm 10.33.4 (pinned via `packageManager`), lockfile `pnpm-lock.yaml` committed.
   `pnpm-workspace.yaml` leaves the `sharp` and `unrs-resolver` install scripts un-run (`ignoredBuiltDependencies`).
 - **Lint:** ESLint 9 flat config (`eslint.config.mjs`) with `eslint-config-next` (core-web-vitals + typescript).
