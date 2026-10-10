@@ -6,6 +6,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { LessonStatus } from "@/components/Progress";
 import Quiz, { type PublicQuestion } from "@/components/Quiz";
 import { disciplines, getDiscipline, getLesson, getTopic } from "@/content";
+import { toRoman } from "@/lib/ui/roman.mjs";
 
 export function generateStaticParams() {
   return disciplines.flatMap((d) =>
@@ -37,39 +38,54 @@ export default async function LessonPage({
   if (!discipline || !topic || !lesson) notFound();
 
   const topicHref = `/d/${discipline.slug}/${topic.slug}`;
+  const lessonNo = topic.lessons.findIndex((l) => l.id === lesson.id) + 1;
   return (
-    <article>
+    <article className="lesson narrow">
       <Breadcrumbs
         items={[
           { label: "Disciplines", href: "/" },
           { label: discipline.title, href: `/d/${discipline.slug}` },
           { label: topic.title, href: topicHref },
-          { label: lesson.title },
+          { label: `Lesson ${toRoman(lessonNo)}` },
         ]}
+        motif={discipline.color}
       />
       <h1>{lesson.title}</h1>
-      {lesson.sections.map((s) => (
-        <section key={s.heading}>
-          <h2>{s.heading}</h2>
-          <p>{s.body}</p>
+      <div className="ornament" aria-hidden="true">◆</div>
+      {lesson.sections.map((s, i) => (
+        <section key={s.heading} className="entry" aria-labelledby={`sec-${i}`}>
+          <div className="num" aria-hidden="true">
+            {toRoman(i + 1)}
+          </div>
+          <div>
+            <h2 id={`sec-${i}`}>{s.heading}</h2>
+            <p>{s.body}</p>
+          </div>
         </section>
       ))}
-      <aside className="key-facts" aria-labelledby="key-facts">
-        <h2 id="key-facts">Key facts</h2>
-        <ul>
-          {lesson.keyFacts.map((f) => (
-            <li key={f}>{f}</li>
-          ))}
-        </ul>
+      <aside className="placard" aria-labelledby="key-facts">
+        <div className="in">
+          <h2 id="key-facts">
+            <small>Placard</small>Key facts
+          </h2>
+          <ol>
+            {lesson.keyFacts.map((f) => (
+              <li key={f}>{f}</li>
+            ))}
+          </ol>
+        </div>
       </aside>
-      <section aria-labelledby="quiz-heading">
+      <section aria-labelledby="quiz-heading" className="quiz-frame">
+        <p className="eyebrow center">
+          {lesson.quiz.length} questions · pass at 70%
+        </p>
         <h2 id="quiz-heading">Quiz</h2>
         <Suspense fallback={null}>
           <LessonStatus lessonId={lesson.id} />
         </Suspense>
         <Quiz lessonId={lesson.id} questions={toPublicQuestions(lesson.quiz)} />
       </section>
-      <p>
+      <p className="back-link">
         <Link href={topicHref}>← Back to {topic.title}</Link>
       </p>
     </article>

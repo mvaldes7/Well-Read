@@ -9,12 +9,15 @@ export const metadata: Metadata = { title: "Sign in" };
 export default function LoginPage() {
   return (
     <section aria-labelledby="login-heading" className="auth-page">
-      <h1 id="login-heading">Sign in</h1>
-      {/* AuthForm reads ?next= via useSearchParams, which needs a Suspense boundary. */}
-      <Suspense fallback={<p>Loading…</p>}>
-        <AuthForm mode="signin" action={signIn} />
-      </Suspense>
-      <p>
+      <div className="quiz-frame">
+        <p className="eyebrow center">Members</p>
+        <h1 id="login-heading">Sign in</h1>
+        {/* AuthForm reads ?next= via useSearchParams, which needs a Suspense boundary. */}
+        <Suspense fallback={<p>Loading…</p>}>
+          <AuthForm mode="signin" action={signIn} />
+        </Suspense>
+      </div>
+      <p className="auth-alt">
         No account yet? <Link href="/signup">Create one</Link>
       </p>
     </section>
