@@ -116,3 +116,38 @@ export function saveMessage(save, passed) {
   if (save === "kept") return "Your earlier best result is kept.";
   return passed ? "Progress saved." : "Attempt saved.";
 }
+
+/** Bounds for deterministic spine sizes (px) and the number of shades per color family. */
+export const SPINE = /** @type {const} */ ({ minWidth: 56, maxWidth: 76, minHeight: 236, maxHeight: 290, shades: 3 });
+
+/**
+ * FNV-1a 32-bit hash of a string. Pure and stable across runs and platforms.
+ * @param {string} s
+ * @returns {number} unsigned 32-bit integer
+ */
+export function hash32(s) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < s.length; i++) {
+    h ^= s.charCodeAt(i);
+    h = Math.imul(h, 0x01000193) >>> 0;
+  }
+  return h >>> 0;
+}
+
+/**
+ * Deterministic spine look for a book key (e.g. "philosophy/stoicism"): width,
+ * height and shade index within the discipline's color family. Different bits of
+ * the hash drive each value so they vary independently.
+ * @param {string} key
+ * @returns {{ width: number, height: number, shade: number }}
+ */
+export function spineStyle(key) {
+  const h = hash32(key);
+  const span = (/** @type {number} */ bits, /** @type {number} */ min, /** @type {number} */ max) =>
+    min + (bits % (max - min + 1));
+  return {
+    width: span(h & 0xff, SPINE.minWidth, SPINE.maxWidth),
+    height: span((h >>> 8) & 0xffff, SPINE.minHeight, SPINE.maxHeight),
+    shade: (h >>> 24) % SPINE.shades,
+  };
+}

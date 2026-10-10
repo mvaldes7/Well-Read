@@ -92,3 +92,25 @@ test('book label includes the count; save messages distinguish attempts from pro
   assert.equal(saveMessage('kept', false), 'Your earlier best result is kept.');
   assert.match(saveMessage('failed', true), /couldn't be saved/);
 });
+
+test('spineStyle is deterministic and within bounds', async () => {
+  const { spineStyle, hash32, SPINE } = await import('../../src/lib/progress/logic.mjs');
+  assert.equal(hash32(''), 0x811c9dc5);
+  assert.equal(hash32('a'), 0xe40c292c); // FNV-1a 32 reference value
+  const keys = [];
+  for (const d of disciplines) for (const t of d.topics) keys.push(`${d.slug}/${t.slug}`);
+  for (let i = 0; i < 500; i++) keys.push(`k${i}-${'x'.repeat(i % 37)}`);
+  keys.push('', 'é', '🙂'.repeat(5));
+  for (const k of keys) {
+    const s = spineStyle(k);
+    assert.deepEqual(spineStyle(k), s, `stable for ${k}`);
+    assert.ok(Number.isInteger(s.width) && s.width >= SPINE.minWidth && s.width <= SPINE.maxWidth, `width ${k}`);
+    assert.ok(Number.isInteger(s.height) && s.height >= SPINE.minHeight && s.height <= SPINE.maxHeight, `height ${k}`);
+    assert.ok(Number.isInteger(s.shade) && s.shade >= 0 && s.shade < SPINE.shades, `shade ${k}`);
+  }
+  // Values actually vary across keys (not a constant).
+  const sample = keys.slice(0, 200).map(spineStyle);
+  assert.ok(new Set(sample.map((s) => s.width)).size > 5);
+  assert.ok(new Set(sample.map((s) => s.height)).size > 10);
+  assert.equal(new Set(sample.map((s) => s.shade)).size, SPINE.shades);
+});
