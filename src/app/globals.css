@@ -65,10 +65,16 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--link); outl
 .completed-marker { color: #1a7f37; font-weight: bold; }
 .completed-status { color: #1a7f37; font-weight: bold; }
 .bookshelf { list-style: none; display: flex; flex-wrap: wrap; align-items: flex-end; gap: 0.4rem; padding: 1rem 0.75rem 0; margin: 1rem 0; border-bottom: 10px solid #8a6a43; }
-.book { display: flex; flex-direction: column; justify-content: space-between; width: 4.25rem; height: 12rem; padding: 0.6rem 0.3rem; border-radius: 3px 3px 0 0; background: #6b2f2f; color: #f6efe3; text-decoration: none; text-align: center; box-shadow: inset -4px 0 0 rgba(0,0,0,0.25); }
-.bookshelf li:nth-child(3n+2) .book { background: #2f4f6b; }
-.bookshelf li:nth-child(3n) .book { background: #3d5f3a; }
+.book { display: flex; flex-direction: column; justify-content: space-between; width: 4.25rem; height: 12rem; padding: 0.6rem 0.3rem; border-radius: 3px 3px 0 0; background: var(--cover, #4a4a4a); color: #fff; text-decoration: none; text-align: center; box-shadow: inset -4px 0 0 rgba(0,0,0,0.25); }
 .book-title { writing-mode: vertical-rl; transform: rotate(180deg); font-weight: bold; font-size: 0.95rem; margin: 0 auto; }
-.book-meta { font-size: 0.6rem; line-height: 1.2; }
 .book-count { font-size: 0.85rem; font-weight: bold; }
 .book:focus-visible, .book:hover { outline: 3px solid var(--link); outline-offset: 2px; }
+.shelf-label { font-size: 1.1rem; margin: 1.5rem 0 0; }
+/* Discipline cover colors: the only place tokens map to real colors. All are dark
+   enough for white book text (contrast >= 7:1). Tokens: src/content/colors.mjs. */
+.cover-crimson { --cover: #8b1e2d; }
+.cover-navy { --cover: #1f3a5f; }
+.cover-forest { --cover: #2d5a3a; }
+.cover-amber { --cover: #7a4a00; }
+.cover-plum { --cover: #5b2a5e; }
+.cover-slate { --cover: #3c4650; }

@@ -9,13 +9,19 @@ import { shouldReplace } from "../quiz/logic.mjs";
 /** @typedef {{ score: number, total: number, passed: boolean }} Completion */
 /** @typedef {{ id: string }} ContentLesson */
 /** @typedef {{ slug: string, title: string, lessons: ReadonlyArray<ContentLesson> }} ContentTopic */
-/** @typedef {{ slug: string, title: string, topics: ReadonlyArray<ContentTopic> }} ContentDiscipline */
+/** @typedef {{ slug: string, title: string, color: string, topics: ReadonlyArray<ContentTopic> }} ContentDiscipline */
 /**
  * @typedef {{
  *   disciplineSlug: string, disciplineTitle: string,
  *   topicSlug: string, topicTitle: string,
  *   passedCount: number, lessonCount: number, href: string
  * }} Book
+ */
+/**
+ * @typedef {{
+ *   discipline: { slug: string, title: string, color: string },
+ *   books: Book[]
+ * }} BookshelfGroup
  */
 
 /**
@@ -56,17 +62,21 @@ export function completionLookup(rows, disciplines) {
 }
 
 /**
- * One book per topic with at least one passed lesson. Books follow content order
- * (discipline order, then topic order), the same order as the browse pages.
+ * Bookshelf grouped by discipline: one book per topic with at least one passed
+ * lesson. Groups follow discipline content order and books follow topic content
+ * order (same as the browse pages). Disciplines with nothing passed are omitted.
+ * Every book in a group shares the discipline's cover color token.
  * @param {ReadonlyArray<unknown>} rows
  * @param {ReadonlyArray<ContentDiscipline>} disciplines
- * @returns {Book[]}
+ * @returns {BookshelfGroup[]}
  */
 export function buildBookshelf(rows, disciplines) {
   const lookup = completionLookup(rows, disciplines);
-  /** @type {Book[]} */
-  const books = [];
+  /** @type {BookshelfGroup[]} */
+  const groups = [];
   for (const d of disciplines) {
+    /** @type {Book[]} */
+    const books = [];
     for (const t of d.topics) {
       const passedCount = t.lessons.filter((l) => lookup.get(l.id)?.passed === true).length;
       if (passedCount === 0) continue;
@@ -80,8 +90,9 @@ export function buildBookshelf(rows, disciplines) {
         href: `/d/${d.slug}/${t.slug}`,
       });
     }
+    if (books.length) groups.push({ discipline: { slug: d.slug, title: d.title, color: d.color }, books });
   }
-  return books;
+  return groups;
 }
 
 /**

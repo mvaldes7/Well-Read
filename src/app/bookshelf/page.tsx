@@ -29,7 +29,7 @@ async function Shelf() {
       </p>
     );
   }
-  if (progress.books.length === 0) {
+  if (progress.groups.length === 0) {
     return (
       <p>
         No books yet. <Link href="/">Start learning</Link> and pass a lesson quiz to add your first book.
@@ -37,18 +37,27 @@ async function Shelf() {
     );
   }
   return (
-    <ul className="bookshelf" aria-label="Your books">
-      {progress.books.map((book) => (
-        <li key={`${book.disciplineSlug}/${book.topicSlug}`}>
-          <Link href={book.href} className="book" aria-label={bookLabel(book)}>
-            <span className="book-title">{book.topicTitle}</span>
-            <span className="book-meta">{book.disciplineTitle}</span>
-            <span className="book-count" aria-hidden="true">
-              {book.passedCount}/{book.lessonCount}
-            </span>
-          </Link>
-        </li>
+    <>
+      {progress.groups.map((group) => (
+        <section key={group.discipline.slug} aria-labelledby={`shelf-${group.discipline.slug}`}>
+          <h2 id={`shelf-${group.discipline.slug}`} className="shelf-label">
+            {group.discipline.title}
+          </h2>
+          {/* Cover color comes from the discipline's token; real colors live only in globals.css. */}
+          <ul className={`bookshelf cover-${group.discipline.color}`}>
+            {group.books.map((book) => (
+              <li key={book.topicSlug}>
+                <Link href={book.href} className="book" aria-label={bookLabel(book)}>
+                  <span className="book-title">{book.topicTitle}</span>
+                  <span className="book-count" aria-hidden="true">
+                    {book.passedCount}/{book.lessonCount}
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
       ))}
-    </ul>
+    </>
   );
 }

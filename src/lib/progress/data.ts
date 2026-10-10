@@ -1,10 +1,10 @@
 import { cache } from "react";
 import { disciplines } from "@/content";
 import { createClient } from "@/lib/supabase/server";
-import { buildBookshelf, completionLookup, type Book, type Completion } from "./logic.mjs";
+import { buildBookshelf, completionLookup, type BookshelfGroup, type Completion } from "./logic.mjs";
 
 export type ProgressResult =
-  | { status: "ok"; lookup: Map<string, Completion>; books: Book[] }
+  | { status: "ok"; lookup: Map<string, Completion>; groups: BookshelfGroup[] }
   | { status: "signedOut" }
   | { status: "error" };
 
@@ -30,7 +30,7 @@ export const getMyProgress = cache(async (): Promise<ProgressResult> => {
       return { status: "error" };
     }
     const rows: unknown[] = data ?? [];
-    return { status: "ok", lookup: completionLookup(rows, disciplines), books: buildBookshelf(rows, disciplines) };
+    return { status: "ok", lookup: completionLookup(rows, disciplines), groups: buildBookshelf(rows, disciplines) };
   } catch {
     console.error("lesson_completions read failed (exception)");
     return { status: "error" };
