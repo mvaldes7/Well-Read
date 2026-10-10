@@ -1,7 +1,6 @@
 -- TSK-012: lesson_completions.first_passed_at (when the lesson was FIRST passed).
 --
--- STATUS: UNAPPLIED. Do not run against any Supabase project until Mike has
--- reviewed and approved it. Apply via the normal migration process only.
+-- STATUS: Applied to dev 2026-10-10 as 20261010181930 with Mike's approval.
 -- The app tolerates this column being absent (it falls back to the old select
 -- and writes), so the code can deploy before or after this migration.
 --

@@ -113,7 +113,7 @@ Stack (as of TSK-011). Display name: **Curio**; the repo is github.com/mvaldes7/
   (`src/lib/quiz/public.mjs`, a whitelist of `question` + `options`) to the client `Quiz`; `gradeQuiz` adds each
   question's `explanation` to the per-question results that `submitQuiz` returns after grading. Section bodies
   are plain text with blank-line paragraphs (`paragraphs()` in `src/lib/ui/paragraphs.mjs`).
-- **first_passed_at (TSK-012):** migration `20261010180132_first_passed_at.sql` (UNAPPLIED until Mike approves)
+- **first_passed_at (TSK-012):** migration `20261010181930_first_passed_at.sql` (applied to dev 2026-10-10 with Mike's approval)
   adds a nullable `first_passed_at`, backfills passed rows from `completed_at` (so backfilled values are upper
   bounds), and checks `passed or first_passed_at is null`. `saveBestAttempt` stamps it without a read: the
   insert includes it when the first attempt passes; for later passing attempts the first update step matches

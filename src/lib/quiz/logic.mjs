@@ -130,7 +130,7 @@ export function gradeSubmission(input, lookupQuiz) {
 
 // ---------- first_passed_at (TSK-012) ----------
 // first_passed_at is set once, on the first passing attempt, and never changed afterwards.
-// Until the 20261010180132_first_passed_at migration is applied the column doesn't exist, so
+// Until the 20261010181930_first_passed_at migration is applied the column doesn't exist, so
 // every read and write must also work without it (see isMissingColumnError).
 
 export const FIRST_PASSED_COLUMN = "first_passed_at";

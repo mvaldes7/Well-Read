@@ -36,7 +36,7 @@ node scripts/ledger.mjs validate
 - **Never edit an applied migration** (not even comments). Keep it byte-identical to what was applied.
 - New schema changes go in **new migration files with new timestamps**.
 
-- `20261010180132_first_passed_at.sql` (TSK-012) is **UNAPPLIED** and needs Mike's approval. The app works with
+- `20261010181930_first_passed_at.sql` (TSK-012) was applied to dev on 2026-10-10 with Mike's approval. The app works with
   or without it: reads and writes fall back to the old columns on `42703`/`PGRST204` (unknown column).
 
 ## Content format
