@@ -11,12 +11,25 @@ jobs:
   checks:
     name: checks
     runs-on: ubuntu-latest
+    env:
+      NEXT_TELEMETRY_DISABLED: 1
     steps:
       - uses: actions/checkout@v4
+      # Version comes from "packageManager" in package.json.
+      - uses: pnpm/action-setup@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+          cache: pnpm
+      - name: Install
+        run: pnpm install --frozen-lockfile
+      - name: Lint
+        run: pnpm lint
+      - name: Typecheck
+        run: pnpm typecheck
       - name: Unit tests
-        run: node --test tests/unit/
+        run: pnpm test
+      - name: Build
+        run: pnpm build
       - name: Validate task ledger
         run: node scripts/ledger.mjs validate
