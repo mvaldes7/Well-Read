@@ -73,6 +73,15 @@
       "title": "Design pass (C2)",
       "role": "Builder",
       "type": "impl",
+      "state": "Release Approved",
+      "agent": "Builder",
+      "attempts": {}
+    },
+    {
+      "id": "TSK-009",
+      "title": "Rename display name to Curio",
+      "role": "Builder",
+      "type": "impl",
       "state": "In Progress",
       "agent": "Builder",
       "attempts": {}
@@ -335,6 +344,42 @@
       "ts": "2026-10-10T08:11:07.719Z",
       "actor": "Builder",
       "taskId": "TSK-008",
+      "action": "start",
+      "from": "Idea",
+      "to": "In Progress",
+      "note": "agent=Builder"
+    },
+    {
+      "ts": "2026-10-10T08:55:58.618Z",
+      "actor": "Builder",
+      "taskId": "TSK-008",
+      "action": "status",
+      "from": "In Progress",
+      "to": "Checks Passed",
+      "note": "PR #8 CI checks passed on Node 24 (run 38039283434)"
+    },
+    {
+      "ts": "2026-10-10T08:55:58.656Z",
+      "actor": "Builder",
+      "taskId": "TSK-008",
+      "action": "status",
+      "from": "Checks Passed",
+      "to": "Release Approved",
+      "note": "PR #8 merged to main as c050baf"
+    },
+    {
+      "ts": "2026-10-10T08:55:58.689Z",
+      "actor": "Builder",
+      "taskId": "TSK-009",
+      "action": "add",
+      "from": null,
+      "to": "Idea",
+      "note": null
+    },
+    {
+      "ts": "2026-10-10T08:55:58.719Z",
+      "actor": "Builder",
+      "taskId": "TSK-009",
       "action": "start",
       "from": "Idea",
       "to": "In Progress",
