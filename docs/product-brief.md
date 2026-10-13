@@ -1,7 +1,16 @@
-# Product Brief: Curio
+# Product Brief: Well-Read
 
-Display name **Curio** (renamed in TSK-009, Mike's choice). The repository and Vercel project keep their
-original names and URLs.
+Display name **Well-Read** (TSK-013, Mike's choice). Production: https://well-read-learn.vercel.app.
+
+## Brand
+
+- **Name:** Well-Read, always with the hyphen.
+- **Icon:** option B, "book spines on a shelf" (chosen 2026-10-13). A simplified, pixel-aligned version is
+  used for the 16/32 px tab icon. All options are kept in `docs/design/icons/`.
+- **History:** FoundationLearn (original working name) → Curio (TSK-009) → Well-Read (TSK-013).
+- **Pending renames:** the GitHub repository is still github.com/mvaldes7/Curio, and the vercel.com project
+  links still use `curio`. Mike moved production to https://well-read-learn.vercel.app, and
+  curio-learn.vercel.app redirects there.
 
 Status: **Approved** by Mike, 2026-10-09.
 
@@ -49,7 +58,8 @@ Discipline → Topic → Lesson → Quiz.
 | TSK-009 | Rename display name to Curio (done) |
 | TSK-010 | Polish batch: reopen bug, first name, sharper look (done) |
 | TSK-011 | Levels + achievements (done) |
-| TSK-012 | Content batch + sources + explanations + first_passed_at |
+| TSK-012 | Content batch + sources + explanations + first_passed_at (done) |
+| TSK-013 | Rename to Well-Read + icon |
 
 Order updated 2026-10-09: a design pass was added before levels and achievements.
 Order updated 2026-10-10: Node 24 upgrade inserted as TSK-007 (Vercel deprecated Node 20 builds on 2026-10-01);
