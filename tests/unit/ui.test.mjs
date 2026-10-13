@@ -21,6 +21,12 @@ test('display name is Well-Read: the old display names are gone from app source'
   assert.match(layout, /title: \{ default: "Well-Read", template: "%s · Well-Read" \}/);
   assert.match(layout, /appleWebApp: \{ capable: true, title: "Well-Read"/);
   assert.match(layout, />\s*Well-Read<small>/);
+  // Header icon (TSK-018): inline, decorative only, inside the logo link next to the wordmark.
+  assert.match(layout, /<Link href="\/" className="logo">\s*<LogoMark \/>/);
+  const mark = readFileSync(join(root, 'components/LogoMark.tsx'), 'utf8');
+  assert.match(mark, /<svg[^>]*aria-hidden="true"/);
+  assert.match(mark, /<svg[^>]*focusable="false"/);
+  assert.doesNotMatch(mark, /<title|aria-label|role="img"/);
   assert.match(readFileSync(join(root, 'app/page.tsx'), 'utf8'), /<h1>Well-Read<\/h1>/);
   const pkg = JSON.parse(readFileSync(new URL('../../package.json', import.meta.url), 'utf8'));
   assert.equal(pkg.name, 'well-read');

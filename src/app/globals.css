@@ -94,6 +94,8 @@ p { margin: 0 0 1rem; }
 .site-header { background: var(--header-bg); color: var(--on-char); border-bottom: 1px solid var(--header-border); }
 .site-header .bar { max-width: var(--page); margin: 0 auto; padding: 0 40px; min-height: 70px; display: flex; align-items: center; gap: 44px; }
 .logo { font-family: var(--serif); font-size: 22px; letter-spacing: 0.18em; text-transform: uppercase; color: #f3efe6; text-decoration: none; line-height: 1.2; }
+.logo { display: inline-flex; align-items: center; gap: 12px; }
+.logo-mark { width: 34px; height: 34px; flex: none; display: block; }
 .logo small { display: block; font-family: var(--sans); font-size: 9.5px; letter-spacing: 0.42em; color: var(--tagline); margin-top: 2px; }
 .main-nav { display: flex; gap: 28px; }
 .main-nav a { font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--on-char-sub); text-decoration: none; padding: 6px 0; border-bottom: 1px solid transparent; }
@@ -267,7 +269,8 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
   .btn-ghost { padding: 6px 10px; font-size: 10px; flex: none; }
 }
 @media (max-width: 600px) {
-  .logo { font-size: 19px; }
+  .logo { font-size: 19px; gap: 10px; }
+  .logo-mark { width: 28px; height: 28px; }
   .main-nav a { font-size: 11px; letter-spacing: 0.18em; }
   main { padding: 40px 18px 70px; }
   .hero h1, .page-head h1 { font-size: 44px; }
