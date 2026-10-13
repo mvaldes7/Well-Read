@@ -158,7 +158,7 @@ test('path guard: every icon/manifest path in the allowlist is public signed out
     assert.equal(classifyPath(p), 'public', p);
     assert.deepEqual(decideAuth({ pathname: p, authed: false }), { type: 'next' }, p);
   }
-  assert.deepEqual([...PUBLIC_PATHS].sort(), [...ICON_PATHS, '/auth/confirm'].sort());
+  assert.deepEqual([...PUBLIC_PATHS].sort(), [...ICON_PATHS, '/auth/confirm', '/auth/forgot', '/auth/reset'].sort());
 });
 
 test('path guard: look-alikes, other public/ files and traversal stay protected', () => {
@@ -170,4 +170,22 @@ test('path guard: look-alikes, other public/ files and traversal stay protected'
     assert.equal(classifyPath(p), 'protected', p);
     assert.equal(decideAuth({ pathname: p, authed: false }).type, 'redirect', p);
   }
+});
+
+test('path guard: /auth/forgot and /auth/reset are public by exact path only (TSK-018)', () => {
+  for (const p of ['/auth/forgot', '/auth/reset', '/auth/forgot/', '/auth/reset/']) {
+    assert.equal(classifyPath(p), 'public', p);
+    assert.deepEqual(decideAuth({ pathname: p, authed: false }), { type: 'next' }, p);
+  }
+  for (const p of [
+    '/auth/forgot.png', '/auth/reset/x', '/auth/forgotten', '/auth/resets', '/auth/reset.json', '/auth',
+    '/auth/', '/auth/forgot/../account', '/auth/reset%2F..%2Faccount', '/AUTH/RESET', '/x/auth/forgot',
+  ]) {
+    assert.equal(classifyPath(p), 'protected', p);
+    assert.equal(decideAuth({ pathname: p, authed: false }).type, 'redirect', p);
+  }
+  // Signed-in users aren't bounced off the reset pages by the proxy (the page decides).
+  assert.deepEqual(decideAuth({ pathname: '/auth/reset', authed: true }), { type: 'next' });
+  // Sign-up stays an auth page (unchanged): signed-in users are sent to /.
+  assert.equal(classifyPath('/signup'), 'auth');
 });
