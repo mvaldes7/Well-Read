@@ -16,6 +16,9 @@ export default function LoginPage() {
         <Suspense fallback={<p>Loading…</p>}>
           <AuthForm mode="signin" action={signIn} />
         </Suspense>
+        <p className="forgot">
+          <Link href="/auth/forgot">Forgot password?</Link>
+        </p>
       </div>
       <p className="auth-alt">
         No account yet? <Link href="/signup">Create one</Link>

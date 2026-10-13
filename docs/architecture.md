@@ -124,7 +124,7 @@ Stack (as of TSK-011). Display name: **Well-Read** (TSK-013); the repo is still 
   Achievements then use `first_passed_at` for exact dates ("Earned <date>") when every qualifying lesson has
   one, else the `completed_at` upper bound ("Earned by <date>"); Perfect Score always uses `completed_at`
   (its event is the first perfect attempt, not the first pass).
-- **Path guard:** only `/_next/static/*`, `/_next/image*`, `/_next/webpack-hmr` (dev), `/auth/confirm` and the exact
+- **Path guard:** only `/_next/static/*`, `/_next/image*`, `/_next/webpack-hmr` (dev), `/auth/confirm`, `/auth/forgot`, `/auth/reset` (TSK-018) and the exact
   icon/manifest paths `/favicon.ico`, `/icon.svg`, `/apple-icon.png`, `/manifest.webmanifest`,
   `/icons/well-read-192.png` and `/icons/well-read-512.png` (TSK-013) are public (`PUBLIC_PATHS`/`PUBLIC_PREFIXES` in `src/lib/auth/logic.mjs`, kept in sync
   with the proxy matcher). A file extension doesn't make a path public. Add any future `public/` files to
@@ -132,7 +132,29 @@ Stack (as of TSK-011). Display name: **Well-Read** (TSK-013); the repo is still 
 - **Email confirmation:** `GET /auth/confirm?token_hash&type&next` calls `verifyOtp` and redirects to a safe
   `next` (or `/`), or to `/login?error=confirm_failed`. It's only used once the Supabase "Confirm signup"
   email template links to `{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=email&next={{ .RedirectTo }}`.
-  That's a dashboard change needing Mike's approval and hasn't been made.
+  That's a dashboard change needing Mike's approval and hasn't been made. It also exchanges a PKCE `?code`
+  (`exchangeCodeForSession`) and sends recovery failures to `/auth/reset?error=invalid_link`.
+- **Password reset (TSK-018):**
+  - `/auth/forgot` calls `resetPasswordForEmail` with `redirectTo = <trusted origin>/auth/confirm?next=/auth/reset`.
+    The trusted origin is the request origin only if it's the production URL, this Vercel deployment's
+    `VERCEL_URL`/`VERCEL_BRANCH_URL`/`VERCEL_PROJECT_PRODUCTION_URL`, or localhost off Vercel; otherwise production.
+  - **Anti-enumeration:** the reply is always "If that account exists, we sent a link." (plus a "try again later"
+    hint). The Supabase result is ignored entirely, including rate limits: the per-address limit only hits existing
+    accounts. The action takes at least 1.2 s to blunt timing differences.
+  - Links: the default template (`{{ .ConfirmationURL }}`) works through the PKCE `?code` exchange (same browser
+    only, `amr` = `recovery`). The cross-device option is the token-hash template
+    `{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=recovery&next=/auth/reset` (`amr` = `otp`), a
+    dashboard change needing Mike's approval.
+  - `/auth/reset` shows the form only for a **recovery session**: verified JWT `amr` contains `recovery`, `otp` or
+    `magiclink` (Supabase's own `Session.IsRecovery()` rule) from the last 15 minutes. The server action
+    re-checks this before `updateUser({ password })`, then redirects to `/?notice=password_updated`. A normal
+    signed-in session is sent to `/account`; no session or a failed link shows the invalid-link message.
+  - `/account` → Change password: current + new + confirm. The current password is re-checked with
+    `signInWithPassword` on a throwaway in-memory client, so the user's cookies are untouched. Its extra session
+    is ended at once with `signOut({ scope: "local" })`, never `global`. `current_password` is also passed to
+    `updateUser`, so Supabase enforces it if "require current password" is turned on.
+  - Supabase signs out the user's other sessions after any password change.
+  - Rules: min 8 characters, max 72 bytes (bcrypt), must match.
 - **Tooling outside the app:** `scripts/ledger.mjs` (zero-dependency task ledger CLI) with `node:test` unit tests in `tests/unit/`.
 - **CI:** GitHub Actions, single job `checks` (`.github/workflows/ci.yml`).
 - **Not yet decided/added:** database, auth, hosting/deployment, E2E tests.

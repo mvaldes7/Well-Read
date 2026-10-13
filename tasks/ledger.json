@@ -118,6 +118,15 @@
       "title": "Rename to Well-Read + icon",
       "role": "Builder",
       "type": "impl",
+      "state": "Release Approved",
+      "agent": "Builder",
+      "attempts": {}
+    },
+    {
+      "id": "TSK-018",
+      "title": "Password reset",
+      "role": "Builder",
+      "type": "impl",
       "state": "In Progress",
       "agent": "Builder",
       "attempts": {}
@@ -560,6 +569,42 @@
       "ts": "2026-10-13T17:13:47.244Z",
       "actor": "Builder",
       "taskId": "TSK-013",
+      "action": "start",
+      "from": "Idea",
+      "to": "In Progress",
+      "note": "agent=Builder"
+    },
+    {
+      "ts": "2026-10-13T17:28:51.259Z",
+      "actor": "Builder",
+      "taskId": "TSK-013",
+      "action": "status",
+      "from": "In Progress",
+      "to": "Checks Passed",
+      "note": "PR #13 CI checks passed on Node 24; Vercel preview success"
+    },
+    {
+      "ts": "2026-10-13T17:28:51.305Z",
+      "actor": "Builder",
+      "taskId": "TSK-013",
+      "action": "status",
+      "from": "Checks Passed",
+      "to": "Release Approved",
+      "note": "PR #13 squash-merged as f26c513"
+    },
+    {
+      "ts": "2026-10-13T17:28:51.352Z",
+      "actor": "Builder",
+      "taskId": "TSK-018",
+      "action": "add",
+      "from": null,
+      "to": "Idea",
+      "note": null
+    },
+    {
+      "ts": "2026-10-13T17:28:51.402Z",
+      "actor": "Builder",
+      "taskId": "TSK-018",
       "action": "start",
       "from": "Idea",
       "to": "In Progress",

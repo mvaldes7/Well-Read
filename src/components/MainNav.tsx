@@ -10,7 +10,8 @@ const LINKS = [
 ];
 
 /** Pages where the main nav is hidden (signed-out auth pages). */
-const HIDDEN_ON = new Set(["/login", "/signup"]);
+// Auth pages, including the password-reset pages (TSK-018): no app navigation.
+const HIDDEN_ON = new Set(["/login", "/signup", "/auth/forgot", "/auth/reset"]);
 
 // Client component with no auth data: renders in the static shell (no Suspense needed).
 export default function MainNav() {

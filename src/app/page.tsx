@@ -1,10 +1,15 @@
 import Link from "next/link";
+import { Suspense } from "react";
+import HomeNotice from "@/components/HomeNotice";
 import { disciplines } from "@/content";
 import { toRoman } from "@/lib/ui/roman.mjs";
 
 export default function Home() {
   return (
     <div className="narrow">
+      <Suspense fallback={null}>
+        <HomeNotice />
+      </Suspense>
       <header className="hero">
         <p className="eyebrow">The Collection</p>
         <h1>Well-Read</h1>

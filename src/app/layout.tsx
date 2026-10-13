@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import Link from "next/link";
+import LogoMark from "@/components/LogoMark";
 import { Suspense } from "react";
 import MainNav from "@/components/MainNav";
 import UserMenu from "@/components/UserMenu";
@@ -25,7 +26,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <header className="site-header">
           <div className="bar">
             <Link href="/" className="logo">
-              Well-Read<small>A personal collection</small>
+              <LogoMark />
+              <span className="logo-text">
+                Well-Read<small>A personal collection</small>
+              </span>
             </Link>
             {/* Static shell: the two nav links need no auth data, so they render immediately. */}
             <MainNav />
