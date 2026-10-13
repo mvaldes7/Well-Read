@@ -8,16 +8,20 @@ test('toRoman', () => {
   for (const bad of [0, -1, 4000, 1.5, NaN]) assert.equal(toRoman(bad), String(bad));
 });
 
-test('display name is Curio: the old display name is gone from app source', async () => {
+test('display name is Well-Read: the old display names are gone from app source', async () => {
   const { readdirSync, readFileSync, statSync } = await import('node:fs');
   const { join } = await import('node:path');
   const root = new URL('../../src/', import.meta.url).pathname;
   const files = [];
   const walk = (d) => { for (const f of readdirSync(d)) { const p = join(d, f); statSync(p).isDirectory() ? walk(p) : files.push(p); } };
   walk(root);
-  const hits = files.filter((f) => /\.(tsx?|mjs|css|json)$/.test(f) && /foundation\s*-?learn/i.test(readFileSync(f, 'utf8')));
+  const hits = files.filter((f) => /\.(tsx?|mjs|css|json)$/.test(f) && /foundation\s*-?learn|curio/i.test(readFileSync(f, 'utf8')));
   assert.deepEqual(hits, []);
   const layout = readFileSync(join(root, 'app/layout.tsx'), 'utf8');
-  assert.match(layout, /title: \{ default: "Curio", template: "%s · Curio" \}/);
-  assert.match(readFileSync(join(root, 'app/page.tsx'), 'utf8'), /<h1>Curio<\/h1>/);
+  assert.match(layout, /title: \{ default: "Well-Read", template: "%s · Well-Read" \}/);
+  assert.match(layout, /appleWebApp: \{ capable: true, title: "Well-Read"/);
+  assert.match(layout, />\s*Well-Read<small>/);
+  assert.match(readFileSync(join(root, 'app/page.tsx'), 'utf8'), /<h1>Well-Read<\/h1>/);
+  const pkg = JSON.parse(readFileSync(new URL('../../package.json', import.meta.url), 'utf8'));
+  assert.equal(pkg.name, 'well-read');
 });

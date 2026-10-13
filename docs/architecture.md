@@ -1,6 +1,6 @@
-# Architecture: Curio
+# Architecture: Well-Read
 
-Stack (as of TSK-011). Display name: **Curio**; the repo is github.com/mvaldes7/Curio; the Vercel project keeps its name.
+Stack (as of TSK-011). Display name: **Well-Read** (TSK-013); the repo is still github.com/mvaldes7/Curio (rename pending); production is https://well-read-learn.vercel.app.
 
 - **Framework:** Next.js 16.4.0 (App Router, Turbopack), React 19.3.0, source in `src/app/`.
 - **Language:** TypeScript 5.x, `strict: true` (`tsconfig.json`), import alias `@/*` → `src/*`.
@@ -124,8 +124,9 @@ Stack (as of TSK-011). Display name: **Curio**; the repo is github.com/mvaldes7/
   Achievements then use `first_passed_at` for exact dates ("Earned <date>") when every qualifying lesson has
   one, else the `completed_at` upper bound ("Earned by <date>"); Perfect Score always uses `completed_at`
   (its event is the first perfect attempt, not the first pass).
-- **Path guard:** only `/_next/static/*`, `/_next/image*`, `/_next/webpack-hmr` (dev), `/favicon.ico` and
-  `/auth/confirm` are public (`PUBLIC_PATHS`/`PUBLIC_PREFIXES` in `src/lib/auth/logic.mjs`, kept in sync
+- **Path guard:** only `/_next/static/*`, `/_next/image*`, `/_next/webpack-hmr` (dev), `/auth/confirm` and the exact
+  icon/manifest paths `/favicon.ico`, `/icon.svg`, `/apple-icon.png`, `/manifest.webmanifest`,
+  `/icons/well-read-192.png` and `/icons/well-read-512.png` (TSK-013) are public (`PUBLIC_PATHS`/`PUBLIC_PREFIXES` in `src/lib/auth/logic.mjs`, kept in sync
   with the proxy matcher). A file extension doesn't make a path public. Add any future `public/` files to
   the allowlist explicitly.
 - **Email confirmation:** `GET /auth/confirm?token_hash&type&next` calls `verifyOtp` and redirects to a safe

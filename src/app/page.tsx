@@ -7,7 +7,7 @@ export default function Home() {
     <div className="narrow">
       <header className="hero">
         <p className="eyebrow">The Collection</p>
-        <h1>Curio</h1>
+        <h1>Well-Read</h1>
         <p>Choose a discipline to start learning.</p>
         <hr className="rule" />
       </header>

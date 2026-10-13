@@ -13,8 +13,9 @@ import { updateSession, withSessionCookies } from "@/lib/supabase/proxy";
 //    so the check has to happen here, before rendering.
 export const config = {
   // Skip only framework assets and the favicon; every other path (including ones
-  // with a file extension, e.g. /d/x.png) goes through the auth check.
-  // Keep in sync with PUBLIC_PATHS / PUBLIC_PREFIXES in src/lib/auth/logic.mjs.
+  // with a file extension, e.g. /d/x.png, and every public/ file) goes through the
+  // auth check. The icon/manifest paths still pass through here and are let through
+  // by their EXACT pathname in PUBLIC_PATHS (src/lib/auth/logic.mjs); keep in sync.
   matcher: ["/((?!_next/static/|_next/image|favicon\\.ico$).*)"],
 };
 

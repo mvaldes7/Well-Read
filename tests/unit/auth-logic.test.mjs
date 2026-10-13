@@ -2,6 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
   MESSAGES,
+  PUBLIC_PATHS,
   authErrorMessage,
   classifyPath,
   decideAuth,
@@ -147,4 +148,26 @@ test('account is protected: signed-out redirect keeps next', () => {
 test('bookshelf is protected: signed-out redirect keeps next', () => {
   assert.deepEqual(decideAuth({ pathname: '/bookshelf', authed: false }), { type: 'redirect', location: '/login?next=%2Fbookshelf' });
   assert.deepEqual(decideAuth({ pathname: '/bookshelf', authed: true }), { type: 'next' });
+});
+
+// TSK-013: icons + web manifest are public by EXACT path only.
+const ICON_PATHS = ['/favicon.ico', '/icon.svg', '/apple-icon.png', '/manifest.webmanifest', '/icons/well-read-192.png', '/icons/well-read-512.png'];
+
+test('path guard: every icon/manifest path in the allowlist is public signed out', () => {
+  for (const p of ICON_PATHS) {
+    assert.equal(classifyPath(p), 'public', p);
+    assert.deepEqual(decideAuth({ pathname: p, authed: false }), { type: 'next' }, p);
+  }
+  assert.deepEqual([...PUBLIC_PATHS].sort(), [...ICON_PATHS, '/auth/confirm'].sort());
+});
+
+test('path guard: look-alikes, other public/ files and traversal stay protected', () => {
+  for (const p of [
+    '/d/philosophy.png', '/secret.json', '/icons/other.png', '/icons/', '/icons', '/icons/well-read-192.png.bak',
+    '/icons/well-read-1024.png', '/icon.svg/../bookshelf', '/icon.svg/x', '/icon.svg.map', '/apple-icon-precomposed.png',
+    '/manifest.webmanifest.bak', '/manifest.json', '/x/icon.svg', '/ICON.SVG', '/icon.svg%2F..%2Fbookshelf', '/icon', '/apple-icon',
+  ]) {
+    assert.equal(classifyPath(p), 'protected', p);
+    assert.equal(decideAuth({ pathname: p, authed: false }).type, 'redirect', p);
+  }
 });

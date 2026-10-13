@@ -17,7 +17,21 @@ export const CONFIRM_PATH = "/auth/confirm";
  * keep in sync with files in src/app (favicon.ico) and public/ (none yet).
  * A file extension alone never makes a path public.
  */
-export const PUBLIC_PATHS = new Set(["/favicon.ico", CONFIRM_PATH]);
+/**
+ * Exact public paths: the email-confirm route plus the app's icons and web manifest (so the
+ * browser tab, iPhone "Add to Home Screen" and the manifest work signed out). Matched on the
+ * pathname only (hashed `?<query>` suffixes from the icon file conventions are ignored), with
+ * NO extension or folder rules: other public/ files and any other "*.png" stay protected.
+ */
+export const PUBLIC_PATHS = new Set([
+  "/favicon.ico",
+  "/icon.svg",
+  "/apple-icon.png",
+  "/manifest.webmanifest",
+  "/icons/well-read-192.png",
+  "/icons/well-read-512.png",
+  CONFIRM_PATH,
+]);
 /** Framework asset prefixes (build output, image optimizer, dev HMR socket). */
 export const PUBLIC_PREFIXES = ["/_next/static/", "/_next/image", "/_next/webpack-hmr"];
 const MAX_NEXT_LENGTH = 512;
