@@ -1,4 +1,4 @@
-/* Curio: design C2 ("gallery"). System font stacks only; no network fonts.
+/* Well-Read: design C2 ("gallery"). System font stacks only; no network fonts.
    All colors are tokens here. Contrast ratios are listed in the TSK-008 PR. */
 :root {
   color-scheme: light dark;
