@@ -109,7 +109,7 @@
       "title": "Content batch + sources + explanations + first_passed_at",
       "role": "Builder",
       "type": "impl",
-      "state": "In Progress",
+      "state": "Release Approved",
       "agent": "Builder",
       "attempts": {}
     }
@@ -519,6 +519,24 @@
       "from": "Idea",
       "to": "In Progress",
       "note": "agent=Builder"
+    },
+    {
+      "ts": "2026-10-13T17:13:31.351Z",
+      "actor": "Builder",
+      "taskId": "TSK-012",
+      "action": "status",
+      "from": "In Progress",
+      "to": "Checks Passed",
+      "note": "PR #12 squash-merged as 8407366; first_passed_at migration applied to dev as 20261010181930 with Mike's approval"
+    },
+    {
+      "ts": "2026-10-13T17:13:31.396Z",
+      "actor": "Builder",
+      "taskId": "TSK-012",
+      "action": "status",
+      "from": "Checks Passed",
+      "to": "Release Approved",
+      "note": "PR #12 squash-merged as 8407366; first_passed_at migration applied to dev as 20261010181930 with Mike's approval"
     }
   ]
 }
