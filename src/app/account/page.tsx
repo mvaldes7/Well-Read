@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import AccountForm from "@/components/AccountForm";
+import PasswordForm from "@/components/PasswordForm";
+import { changePassword } from "@/lib/auth/reset-actions";
 import { namesFromMetadata } from "@/lib/account/names.mjs";
 import { createClient } from "@/lib/supabase/server";
 
@@ -21,6 +23,10 @@ async function AccountDetails() {
         Signed in as <strong>{email}</strong>
       </p>
       <AccountForm firstName={firstName ?? ""} lastName={lastName ?? ""} />
+      <section aria-labelledby="password-heading" className="account-section">
+        <h2 id="password-heading">Change password</h2>
+        <PasswordForm mode="change" action={changePassword} />
+      </section>
     </>
   );
 }
