@@ -416,6 +416,175 @@
             ]
           }
         ]
+      },
+      {
+        "slug": "genghis-khan",
+        "title": "Genghis Khan",
+        "kind": "person",
+        "summary": "Genghis Khan united the Mongolian steppe in 1206 and launched conquests that laid the foundations of an enormous Eurasian empire, combining exceptional military organization with devastating violence.",
+        "lessons": [
+          {
+            "id": "les_gk01",
+            "slug": "unification-conquest-and-legacy",
+            "title": "Genghis Khan: Unification, Conquest, and Legacy",
+            "sections": [
+              {
+                "heading": "From Temüjin to Genghis Khan",
+                "body": "Genghis Khan was born Temüjin, probably around 1162, although sources disagree about his birth year. He grew up among the pastoral nomadic peoples of the Mongolian steppe, where herding, alliances, and competition among groups shaped political life.\n\nAfter hardship in his early life, Temüjin built alliances and defeated rivals, using both personal relationships and force to gather followers. He redistributed members of conquered or allied groups among his own units, reducing the influence of older tribal loyalties and directing allegiance toward himself.\n\nIn 1206, an assembly recognized him as ruler, and he took the title Genghis Khan, also written Chinggis Khan. Unifying the steppe mattered because it brought formerly competing groups under a single political and military leadership capable of launching coordinated campaigns beyond Mongolia."
+              },
+              {
+                "heading": "Organization mattered as much as force",
+                "body": "Genghis Khan organized his forces using a decimal structure, with units based on ten, one hundred, one thousand, and ten thousand. Personal loyalty between major commanders and the ruler helped hold these forces together and sustain his authority.\n\nMongol soldiers were skilled horsemen and archers, combining mobility with the ability to attack while mounted. Riders could change horses during long journeys, helping their armies maintain speed and surprise across large distances.\n\nOne important tactic was the feigned withdrawal: soldiers pretended to retreat, encouraging enemies to pursue them into a trap. Mongol success also involved adapting to opponents and learning siege techniques, showing that their armies were more than groups of riders relying on speed alone."
+              },
+              {
+                "heading": "Conquest carried a devastating human cost",
+                "body": "Genghis Khan's campaigns targeted states in northwestern and northern China, including the Xia and Jin, and later the Khwarazmian Empire in Central Asia. Trade disputes and attacks on Mongol diplomatic representatives contributed to these conflicts, although their outcomes involved much more than adjustments to trade.\n\nThe invasion of Central Asia began in 1219 and brought devastating attacks on major urban centers, including Bukhara and Samarkand. Cities were destroyed, civilians were killed, and damage to irrigation systems harmed the conditions needed for settled life and agriculture.\n\nMongol forces used the threat of destruction to pressure other cities into surrender, making terror part of their strategy rather than simply an accidental consequence of fighting. A balanced assessment therefore needs to recognize military effectiveness without treating successful conquest as justification for massacres or the destruction of communities."
+              },
+              {
+                "heading": "His empire continued to grow after his death",
+                "body": "Genghis Khan also pursued measures to govern conquered territories, including adopting a writing system for Mongolian and allowing rulers in some regions to remain as subordinate authorities. His administration accommodated different religions and encouraged trade, but those policies coexisted with the brutality of conquest rather than canceling it out.\n\nHe died in 1227, and his son Ögödei became Great Khan in 1229, overseeing further major expansion. Later descendants extended Mongol rule still farther; his grandson Kublai completed the conquest of the Southern Song in China in 1279, decades after Genghis Khan's death.\n\nThe Mongol Empire ultimately became the largest contiguous land empire in world history, meaning its territories formed a connected landmass rather than primarily an overseas network. Genghis Khan founded that imperial project, but its full extent and its wider influence on Eurasian exchange resulted from developments under several generations of rulers."
+              }
+            ],
+            "keyFacts": [
+              "Genghis Khan was born Temüjin; his birth year is uncertain, often given as about 1162.",
+              "He became ruler of the united Mongolian steppe in 1206.",
+              "Military units were based on ten, one hundred, one thousand, and ten thousand.",
+              "Mounted archery, mobility, and feigned retreats were important advantages.",
+              "His Central Asian campaigns devastated cities and killed civilians.",
+              "He died in 1227, and his successors substantially expanded the empire."
+            ],
+            "quiz": [
+              {
+                "question": "What was Genghis Khan's original name?",
+                "options": [
+                  "Osman.",
+                  "Kublai.",
+                  "Temüjin.",
+                  "Süleyman."
+                ],
+                "answerIndex": 2,
+                "explanation": "Temüjin was his birth name; Genghis Khan was a title adopted after his rise to power."
+              },
+              {
+                "question": "Why was the year 1206 a turning point?",
+                "options": [
+                  "He completed the conquest of the Southern Song.",
+                  "An assembly recognized his rule over the united Mongolian steppe.",
+                  "The Ottoman sultanate was abolished.",
+                  "He died and Ögödei immediately took the throne."
+                ],
+                "answerIndex": 1,
+                "explanation": "The assembly recognized his leadership in 1206, marking the establishment of his rule as Genghis Khan."
+              },
+              {
+                "question": "Which feature best describes the organization of his military forces?",
+                "options": [
+                  "Units based on ten, one hundred, one thousand, and ten thousand.",
+                  "Every soldier acted independently without commanders.",
+                  "Units were organized solely by the city where each soldier was born.",
+                  "Only one permanent unit was permitted."
+                ],
+                "answerIndex": 0,
+                "explanation": "His military organization used a decimal structure."
+              },
+              {
+                "question": "A Mongol force appears to flee, lures an enemy into pursuit, and then attacks with waiting troops. What tactic is this?",
+                "options": [
+                  "A naval blockade.",
+                  "A diplomatic surrender.",
+                  "A siege conducted entirely from a fixed position.",
+                  "A feigned withdrawal."
+                ],
+                "answerIndex": 3,
+                "explanation": "The apparent retreat is a deliberate maneuver intended to draw an enemy into a trap."
+              },
+              {
+                "question": "Which statement best evaluates the relationship between Mongol administrative policies and military violence?",
+                "options": [
+                  "Encouraging trade proves that no civilians were harmed.",
+                  "Religious accommodation meant that conquest was always peaceful.",
+                  "Administrative innovation and religious accommodation coexisted with destructive campaigns and massacres.",
+                  "The existence of massacres means there were no governing institutions."
+                ],
+                "answerIndex": 2,
+                "explanation": "Governing innovations and accommodation do not erase the documented brutality of Mongol conquest."
+              },
+              {
+                "question": "Why is it inaccurate to credit Genghis Khan personally with every Mongol conquest?",
+                "options": [
+                  "He never led military campaigns.",
+                  "His successors expanded the empire after his death in 1227.",
+                  "The Mongol Empire ended before he became ruler.",
+                  "Kublai completed the conquest of the Southern Song before Genghis Khan was born."
+                ],
+                "answerIndex": 1,
+                "explanation": "Later rulers, including Ögödei and Kublai, made major conquests after Genghis Khan's death."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Genghis Khan",
+                "url": "https://www.britannica.com/biography/Genghis-Khan",
+                "note": "Birth name and uncertain birth year, rise to power, and the 1206 assembly."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Mongolia: The rise of Genghis Khan",
+                "url": "https://www.britannica.com/place/Mongolia/The-rise-of-Genghis-Khan",
+                "note": "Steppe society in which Temüjin grew up."
+              },
+              {
+                "publisher": "Asia for Educators (Columbia University)",
+                "title": "Tribal Group vs. Mongol Identity under Chinggis Khan",
+                "url": "https://afe.easia.columbia.edu/mongols/conquests/conquests_2a.htm",
+                "note": "Alliances and redistributing conquered groups to break old tribal loyalties."
+              },
+              {
+                "publisher": "Asia for Educators (Columbia University)",
+                "title": "Chinggis's Mastery of Organization and Military Tactics",
+                "url": "https://afe.easia.columbia.edu/mongols/conquests/conquests_2b.htm",
+                "note": "Decimal military units, personal loyalty, and the feigned withdrawal."
+              },
+              {
+                "publisher": "Asia for Educators (Columbia University)",
+                "title": "The Advantage of the Bow and Horse",
+                "url": "https://afe.easia.columbia.edu/mongols/pop//conquests/cavalry_pop.htm",
+                "note": "Mounted archery."
+              },
+              {
+                "publisher": "Asia for Educators (Columbia University)",
+                "title": "Horses: The Key to the Mongols' Military Strategy",
+                "url": "https://afe.easia.columbia.edu/mongols/pop/conquests/battle_pop.htm",
+                "note": "Changing horses to keep speed and surprise."
+              },
+              {
+                "publisher": "Asia for Educators (Columbia University)",
+                "title": "Three Invasions Led by Chinggis",
+                "url": "https://afe.easia.columbia.edu/mongols/conquests/conquests_2c.htm",
+                "note": "Campaigns against the Xia, Jin and Khwarazm, and the 1219 invasion of Central Asia."
+              },
+              {
+                "publisher": "Asia for Educators (Columbia University)",
+                "title": "Chinggis's Successor and Further Expansion of the Empire",
+                "url": "https://afe.easia.columbia.edu/mongols/conquests/conquests_2d.htm",
+                "note": "Ögödei and expansion after 1227."
+              },
+              {
+                "publisher": "Asia for Educators (Columbia University)",
+                "title": "The Mongols' Mark on Global History",
+                "url": "https://afe.easia.columbia.edu/mongols/history/history.htm",
+                "note": "Largest contiguous land empire; weighing achievement against brutality."
+              },
+              {
+                "publisher": "World History Encyclopedia",
+                "title": "Genghis Khan",
+                "url": "https://www.worldhistory.org/Genghis_Khan/",
+                "note": "Siege techniques, the destruction of Central Asian cities, administration, and successors."
+              }
+            ]
+          }
+        ]
       }
     ]
   },

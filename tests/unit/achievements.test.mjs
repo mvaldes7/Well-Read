@@ -85,7 +85,9 @@ test('Completionist: all lessons in a discipline; date = latest; missing date ->
   assert.equal(a['completionist:philosophy'].earned, true);
   assert.equal(a['completionist:philosophy'].earnedAt, iso(D4));
   assert.equal(a['completionist:world-history'].earned, false);
-  assert.equal(a['completionist:world-history'].progress, '0/3 lessons');
+  // Derived from content so adding lessons doesn't break the test.
+  const whCount = disciplines.find((d) => d.slug === 'world-history').topics.reduce((n, t) => n + t.lessons.length, 0);
+  assert.equal(a['completionist:world-history'].progress, `0/${whCount} lessons`);
   const noDate = byId([row('les_so01', 3, 4, true, D1), row('les_st01', 3, 3, true, null), row('les_st02', 3, 4, true, D2)]);
   assert.deepEqual([noDate['completionist:philosophy'].earned, noDate['completionist:philosophy'].earnedAt], [true, null]);
   // One failed lesson keeps it locked.
