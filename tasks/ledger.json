@@ -112,6 +112,15 @@
       "state": "Release Approved",
       "agent": "Builder",
       "attempts": {}
+    },
+    {
+      "id": "TSK-013",
+      "title": "Rename to Well-Read + icon",
+      "role": "Builder",
+      "type": "impl",
+      "state": "In Progress",
+      "agent": "Builder",
+      "attempts": {}
     }
   ],
   "log": [
@@ -537,6 +546,24 @@
       "from": "Checks Passed",
       "to": "Release Approved",
       "note": "PR #12 squash-merged as 8407366; first_passed_at migration applied to dev as 20261010181930 with Mike's approval"
+    },
+    {
+      "ts": "2026-10-13T17:13:47.205Z",
+      "actor": "Builder",
+      "taskId": "TSK-013",
+      "action": "add",
+      "from": null,
+      "to": "Idea",
+      "note": null
+    },
+    {
+      "ts": "2026-10-13T17:13:47.244Z",
+      "actor": "Builder",
+      "taskId": "TSK-013",
+      "action": "start",
+      "from": "Idea",
+      "to": "In Progress",
+      "note": "agent=Builder"
     }
   ]
 }
