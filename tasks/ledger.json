@@ -127,6 +127,15 @@
       "title": "Password reset",
       "role": "Builder",
       "type": "impl",
+      "state": "Release Approved",
+      "agent": "Builder",
+      "attempts": {}
+    },
+    {
+      "id": "TSK-014",
+      "title": "Lessons batch",
+      "role": "Builder",
+      "type": "impl",
       "state": "In Progress",
       "agent": "Builder",
       "attempts": {}
@@ -605,6 +614,42 @@
       "ts": "2026-10-13T17:28:51.402Z",
       "actor": "Builder",
       "taskId": "TSK-018",
+      "action": "start",
+      "from": "Idea",
+      "to": "In Progress",
+      "note": "agent=Builder"
+    },
+    {
+      "ts": "2026-10-13T18:11:04.505Z",
+      "actor": "Builder",
+      "taskId": "TSK-018",
+      "action": "status",
+      "from": "In Progress",
+      "to": "Checks Passed",
+      "note": "PR #14 CI checks passed on Node 24; Vercel preview success"
+    },
+    {
+      "ts": "2026-10-13T18:11:04.553Z",
+      "actor": "Builder",
+      "taskId": "TSK-018",
+      "action": "status",
+      "from": "Checks Passed",
+      "to": "Release Approved",
+      "note": "PR #14 squash-merged as 1603bf4; reset email template stays default (links work in the same browser only)"
+    },
+    {
+      "ts": "2026-10-13T18:11:09.223Z",
+      "actor": "Builder",
+      "taskId": "TSK-014",
+      "action": "add",
+      "from": null,
+      "to": "Idea",
+      "note": null
+    },
+    {
+      "ts": "2026-10-13T18:11:09.263Z",
+      "actor": "Builder",
+      "taskId": "TSK-014",
       "action": "start",
       "from": "Idea",
       "to": "In Progress",
