@@ -12,6 +12,15 @@ Copy `.env.example` to `.env.local` and fill in the dev Supabase project's URL a
 (client-safe values only; never a service-role/secret key). `.env.local` is git-ignored.
 Without it the app builds and runs, but login is unavailable and every page redirects to `/login`.
 
+### Supabase email templates (dashboard, Mike only)
+
+- **Reset password** works with the default template (`{{ .ConfirmationURL }}`) through the PKCE code exchange,
+  but only in the browser that requested it. For links that work on any device, set the template's link to
+  `{{ .SiteURL }}/auth/confirm?token_hash={{ .TokenHash }}&type=recovery&next=/auth/reset`.
+- **Redirect URLs:** a reset link only returns to an origin Supabase accepts (the Site URL host or the Redirect
+  URLs allowlist). Otherwise Supabase uses the Site URL. Site URL should be https://well-read-learn.vercel.app.
+- Never trigger real reset emails against real accounts in testing. Use unit tests or a localhost stub.
+
 ## Local development
 
 ```sh
