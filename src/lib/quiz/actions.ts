@@ -4,6 +4,7 @@ import { getLessonById } from "@/content";
 import { createClient } from "@/lib/supabase/server";
 import { QUIZ_ERRORS, gradeSubmission, type QuestionResult } from "./logic.mjs";
 import { saveBestAttempt, type SaveOutcome } from "./save";
+import { logActivity } from "@/lib/streaks/log";
 
 export type QuizState =
   | { status: "idle" }
@@ -34,5 +35,8 @@ export async function submitQuiz(_prev: QuizState, payload: unknown): Promise<Qu
 
   const { lessonId, score, total, passed, questions } = graded.value;
   const save = await saveBestAttempt(supabase, userId, lessonId, { score, total, passed });
+  // Streak activity (TSK-016): one quiz_attempt per graded submission. Never throws and its
+  // outcome is ignored, so a missing table or failed insert can't affect the quiz result.
+  await logActivity(supabase, userId, "quiz_attempt", lessonId);
   return { status: "graded", score, total, passed, questions, save };
 }

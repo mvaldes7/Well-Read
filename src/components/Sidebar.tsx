@@ -21,9 +21,10 @@ function Logo() {
 /**
  * App sidebar (TSK-015): replaces the top nav. Hidden on the signed-out auth pages (logo only).
  * Below 820px (the globals.css breakpoint) it collapses behind a Menu button (aria-expanded; Esc closes and returns focus).
- * `user` is the streamed server UserMenu (name -> /account, Sign out).
+ * `user` is the streamed server UserMenu (name -> /account, Sign out); `streak` the streamed
+ * SidebarStreak (TSK-016).
  */
-export default function Sidebar({ user }: { user: ReactNode }) {
+export default function Sidebar({ user, streak }: { user: ReactNode; streak: ReactNode }) {
   const pathname = usePathname() ?? "";
   // Open state is tied to the path it was opened on, so navigating closes the menu.
   const [openOn, setOpenOn] = useState<string | null>(null);
@@ -79,6 +80,7 @@ export default function Sidebar({ user }: { user: ReactNode }) {
             ))}
           </ul>
         </nav>
+        <div className="sidebar-streak">{streak}</div>
         <div className="sidebar-user">{user}</div>
       </div>
     </aside>
