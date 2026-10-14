@@ -1,6 +1,6 @@
 // @ts-check
 // Sidebar navigation (TSK-015). Pure, so the link set and active-state rules are unit-tested.
-// Deliberately NOT included (Mike, TSK-015): Ledger, Search, Reading List.
+// Deliberately NOT included (Mike, TSK-015): Ledger, Search. Reading List added in TSK-017.
 
 /** @typedef {{ href: string, label: string, icon: string, match: (p: string) => boolean }} NavLink */
 
@@ -9,6 +9,7 @@ export const SIDEBAR_LINKS = Object.freeze([
   { href: "/", label: "Dashboard", icon: "home", match: (p) => p === "/" },
   { href: "/learn", label: "Learn", icon: "book", match: (p) => p === "/learn" || p === "/d" || p.startsWith("/d/") },
   { href: "/bookshelf", label: "Library Wall", icon: "shelf", match: (p) => p === "/bookshelf" },
+  { href: "/reading-list", label: "Reading List", icon: "list", match: (p) => p === "/reading-list" },
   { href: "/progress", label: "Progress", icon: "chart", match: (p) => p === "/progress" },
   { href: "/achievements", label: "Badges", icon: "badge", match: (p) => p === "/achievements" },
   { href: "/account", label: "Settings", icon: "gear", match: (p) => p === "/account" },
