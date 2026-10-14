@@ -154,8 +154,8 @@
       "title": "Sidebar, dashboard, progress",
       "role": "Builder",
       "type": "impl",
-      "state": "Idea",
-      "agent": null,
+      "state": "In Progress",
+      "agent": "Builder",
       "attempts": {}
     }
   ],
@@ -744,6 +744,15 @@
       "from": null,
       "to": "Idea",
       "note": null
+    },
+    {
+      "ts": "2026-10-14T23:19:13.327Z",
+      "actor": "Builder",
+      "taskId": "TSK-015",
+      "action": "start",
+      "from": "Idea",
+      "to": "In Progress",
+      "note": "agent=Builder"
     }
   ]
 }
