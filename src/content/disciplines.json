@@ -1346,6 +1346,167 @@
                 "note": "Overview of rights and amendment meanings."
               }
             ]
+          },
+          {
+            "id": "les_br02",
+            "slug": "when-rights-apply",
+            "title": "The Constitution in Everyday Life: When Rights Apply",
+            "sections": [
+              {
+                "heading": "First ask who is taking action",
+                "body": "Before deciding whether a constitutional right has been violated, identify who is responsible for the challenged action. The First Amendment generally limits government action, not independent decisions by private people or businesses, so a disagreement with a private organization is not automatically a constitutional free-speech dispute.\n\nFor example, imagine a privately operated online platform independently removes a post under its own rules, without government involvement. Merely providing a place for other people's speech does not make a private organization a government actor, so the First Amendment does not ordinarily require it to host that post.\n\nThe boundary is not absolute: a private entity's action can sometimes be treated as government action, including when government compels the action or acts jointly with the entity. Constitutional speech protections also apply against state and local government through the Fourteenth Amendment, so the relevant government actor might be a city official rather than a federal agency."
+              },
+              {
+                "heading": "Protecting a message does not eliminate every rule",
+                "body": "The First Amendment ordinarily prohibits government from restricting speech because officials dislike the speaker's viewpoint. Streets and public parks are traditional settings for expression, where officials may not favor one viewpoint over another when regulating people's speech.\n\nHowever, government may impose certain content-neutral restrictions on the time, place, or manner of expression, such as rules addressing traffic or blocked entrances. Such restrictions must be narrowly tailored to a significant government interest and leave ample alternative ways to communicate; calling a rule “neutral” does not automatically make it valid.\n\nConsider two invented rules for a demonstration in a public park: one addresses late-night amplified noise regardless of the message, while the other forbids criticism of the mayor. The first could qualify as a time, place, or manner restriction if it satisfies the applicable safeguards, while the second targets a viewpoint and raises a fundamentally different constitutional problem."
+              },
+              {
+                "heading": "Privacy protections depend on the search",
+                "body": "The Fourth Amendment protects against unreasonable searches and seizures; it does not prohibit every search or guarantee that a warrant is required in every situation. When a search warrant is issued, it must rest on probable cause and particularly describe the place to be searched and the people or things to be seized, rather than authorize an unlimited search for anything.\n\nExceptions to the warrant requirement depend on the circumstances, including emergencies that create a compelling need for immediate action. For example, officers may enter a home to provide emergency aid when they have an objectively reasonable basis to believe someone inside needs immediate assistance; the mere label “emergency” is not enough.\n\nDigital information illustrates why the object of a search matters: police generally need a warrant to search a phone's stored digital contents merely because its owner has been arrested. That general rule does not eliminate separate exceptions, such as genuine emergency circumstances, but an arrest alone does not automatically authorize browsing the person's messages and photos."
+              },
+              {
+                "heading": "A fair process is different from a guaranteed result",
+                "body": "Procedural due process concerns how government makes decisions that deprive people of protected interests in life, liberty, or property. Its basic safeguards include notice and a meaningful opportunity to be heard before an impartial decision-maker, with the precise requirements depending on the situation.\n\nAn invented example can illustrate the issue: suppose an agency plans to stop a person's existing benefits because its records say their income exceeds the eligibility limit, but the person believes the records are wrong. Courts have recognized due-process protections in benefits disputes, although the type and timing of the required hearing differ between programs and circumstances.\n\nDue process does not guarantee that the person will keep the benefit or win the dispute; it guards against mistaken or unjustified deprivation by allowing an appropriate opportunity to contest the basis for the decision. Nor does it always require a full courtroom trial before any action: the required procedures depend on the affected interest, the risk of error, and the government's interests."
+              }
+            ],
+            "keyFacts": [
+              "The First Amendment generally restricts government, not independent private decisions.",
+              "Government ordinarily cannot restrict speech because officials oppose its viewpoint.",
+              "Content-neutral time, place, or manner restrictions must satisfy constitutional safeguards.",
+              "Warrants require probable cause and particular descriptions, but recognized exceptions permit some warrantless searches.",
+              "An arrest alone generally does not authorize a warrantless search of stored digital contents.",
+              "Fair procedures protect against mistaken deprivation without guaranteeing a favorable outcome."
+            ],
+            "quiz": [
+              {
+                "question": "A private online platform independently removes a post, without government involvement. What is the best initial constitutional analysis?",
+                "options": [
+                  "Every removal automatically violates the First Amendment.",
+                  "The First Amendment ordinarily does not require a private platform to host the post.",
+                  "Any company used by the public is automatically a government actor.",
+                  "Only posts written by elected officials receive constitutional protection."
+                ],
+                "answerIndex": 1,
+                "explanation": "Hosting other people's speech does not by itself turn a private organization into a government actor."
+              },
+              {
+                "question": "A city allows demonstrations in its public park but bans signs criticizing the mayor. What is the central constitutional concern?",
+                "options": [
+                  "Viewpoint discrimination by government.",
+                  "A neutral rule addressing traffic.",
+                  "A warrantless search.",
+                  "A private business choosing its customers."
+                ],
+                "answerIndex": 0,
+                "explanation": "The rule targets the speaker's position on the mayor rather than a neutral logistical concern."
+              },
+              {
+                "question": "A public park's amplified-noise rule applies regardless of the speaker's message. What else matters when evaluating it?",
+                "options": [
+                  "Nothing; any message-neutral rule is automatically constitutional.",
+                  "Whether officials personally like the event's organizers.",
+                  "Whether the speaker agrees with every city policy.",
+                  "Whether the rule is narrowly tailored to a significant interest and leaves ample alternative communication channels."
+                ],
+                "answerIndex": 3,
+                "explanation": "Content neutrality is necessary for this kind of regulation but does not replace the other safeguards."
+              },
+              {
+                "question": "Officers have an objectively reasonable basis to believe someone inside a home needs immediate emergency aid. Which statement is most accurate?",
+                "options": [
+                  "The Fourth Amendment forbids entry in every case without a warrant.",
+                  "An emergency means constitutional limits no longer exist.",
+                  "A genuine emergency may justify warrantless entry, depending on the circumstances.",
+                  "Emergency entry requires permission from the person's employer."
+                ],
+                "answerIndex": 2,
+                "explanation": "Emergency aid is a recognized exception, assessed using the circumstances and an objectively reasonable basis for immediate assistance."
+              },
+              {
+                "question": "Police arrest someone and want to browse the stored messages on their phone. Assume no consent or separate emergency exception. What is the general rule?",
+                "options": [
+                  "Police generally need a warrant; the arrest alone is insufficient.",
+                  "An arrest automatically permits every search of digital data.",
+                  "A phone receives no constitutional protection because it is portable.",
+                  "The person's mobile carrier can eliminate the warrant requirement by advertising its service."
+                ],
+                "answerIndex": 0,
+                "explanation": "Searching digital data on a phone generally requires a warrant rather than relying solely on the arrest."
+              },
+              {
+                "question": "A person receives the notice and hearing required for a protected benefits dispute but ultimately loses because the agency proves they are ineligible. Which statement best describes procedural due process?",
+                "options": [
+                  "It was necessarily violated because the person lost.",
+                  "It guarantees an appropriate decision-making process, not a favorable result.",
+                  "It requires every benefits dispute to be tried before a jury.",
+                  "It prohibits the government from ever ending benefits."
+                ],
+                "answerIndex": 1,
+                "explanation": "Procedural due process addresses fair procedures and protection against mistaken or unjustified deprivation, not a guaranteed victory."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Library of Congress, Constitution Annotated",
+                "title": "Constitution Annotated essay Amdt1.7.2.4",
+                "url": "https://constitution.congress.gov/browse/essay/amdt1-7-2-4/ALDE_00013541/",
+                "note": "Government action: the First Amendment limits government, not independent private decisions, with exceptions."
+              },
+              {
+                "publisher": "Library of Congress, Constitution Annotated",
+                "title": "Constitution Annotated essay Amdt1.7.4.1",
+                "url": "https://constitution.congress.gov/browse/essay/amdt1-7-4-1/ALDE_00013118/",
+                "note": "Viewpoint discrimination."
+              },
+              {
+                "publisher": "Library of Congress, Constitution Annotated",
+                "title": "Constitution Annotated essay Amdt1.7.7.1",
+                "url": "https://constitution.congress.gov/browse/essay/amdt1-7-7-1/ALDE_00013542/",
+                "note": "Public forums and content-neutral time, place, or manner restrictions."
+              },
+              {
+                "publisher": "Library of Congress, Constitution Annotated",
+                "title": "Constitution Annotated essay Amdt14.S1.4.2",
+                "url": "https://constitution.congress.gov/browse/essay/amdt14-S1-4-2/ALDE_00013745/",
+                "note": "Incorporation: Bill of Rights protections applied to the states."
+              },
+              {
+                "publisher": "Library of Congress, Constitution Annotated",
+                "title": "Fourth Amendment (text)",
+                "url": "https://constitution.congress.gov/constitution/amendment-4/",
+                "note": "Warrants: probable cause and particular description."
+              },
+              {
+                "publisher": "Library of Congress, Constitution Annotated",
+                "title": "Constitution Annotated essay Amdt4.3.1",
+                "url": "https://constitution.congress.gov/browse/essay/amdt4-3-1/ALDE_00013715/",
+                "note": "Unreasonable searches and seizures."
+              },
+              {
+                "publisher": "Library of Congress, Constitution Annotated",
+                "title": "Constitution Annotated essay Amdt4.6.3",
+                "url": "https://constitution.congress.gov/browse/essay/amdt4-6-3/ALDE_00013720/",
+                "note": "Emergency (exigent-circumstances) exception to the warrant requirement."
+              },
+              {
+                "publisher": "Library of Congress, Constitution Annotated",
+                "title": "Constitution Annotated essay Amdt4.6.4.1",
+                "url": "https://constitution.congress.gov/browse/essay/amdt4-6-4-1/ALDE_00000793/",
+                "note": "Searches incident to arrest, including phones' digital contents."
+              },
+              {
+                "publisher": "Library of Congress, Constitution Annotated",
+                "title": "Constitution Annotated essay Amdt14.S1.5.4.1",
+                "url": "https://constitution.congress.gov/browse/essay/amdt14-S1-5-4-1/ALDE_00013750/",
+                "note": "Procedural due process: notice and a meaningful opportunity to be heard."
+              },
+              {
+                "publisher": "Library of Congress, Constitution Annotated",
+                "title": "Constitution Annotated essay Amdt14.S1.5.4.2",
+                "url": "https://constitution.congress.gov/browse/essay/amdt14-S1-5-4-2/ALDE_00013751/",
+                "note": "Mathews v. Eldridge and benefits disputes."
+              }
+            ]
           }
         ]
       }
