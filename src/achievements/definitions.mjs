@@ -4,8 +4,8 @@
 // Nothing is stored: achievements are recomputed on the server for every request.
 //
 // To add one: append a definition to ACHIEVEMENTS (kind "single"), or a generator over
-// topics/disciplines (kind "perTopic" / "perDiscipline"). Ids must stay unique.
-// Ids are UI-only keys derived from content slugs (e.g. "mastery:art-history"); they are never
+// disciplines (kind "perDiscipline"). Ids must stay unique.
+// Ids are UI-only keys derived from content slugs (e.g. "mastery:art-history", "completionist:art-history"); they are never
 // stored or sent to the database (REV-007).
 //
 // Mastery (TSK-019): one achievement per discipline, at its current tier (see
@@ -31,7 +31,6 @@ import { MASTERY_TIERS, masteryFor, nextTierText, passedInDiscipline } from "../
 
 /** @typedef {import("../lib/progress/logic.mjs").ContentDiscipline} ContentDiscipline */
 /** @typedef {import("../lib/progress/logic.mjs").DatedCompletion} DatedCompletion */
-/** @typedef {ContentDiscipline["topics"][number]} ContentTopic */
 
 /**
  * Evaluation context, built once per request by evaluateAchievements.
@@ -57,7 +56,6 @@ import { MASTERY_TIERS, masteryFor, nextTierText, passedInDiscipline } from "../
 
 /**
  * @typedef {{ kind: "single", id: string, group: AchievementResult["group"], evaluate: (ctx: Ctx) => Omit<AchievementResult, "id" | "group"> }
- *   | { kind: "perTopic", id: (d: ContentDiscipline, t: ContentTopic) => string, group: AchievementResult["group"], evaluate: (ctx: Ctx, d: ContentDiscipline, t: ContentTopic) => Omit<AchievementResult, "id" | "group"> }
  *   | { kind: "perDiscipline", id: (d: ContentDiscipline) => string, group: AchievementResult["group"], evaluate: (ctx: Ctx, d: ContentDiscipline) => Omit<AchievementResult, "id" | "group"> }
  * } AchievementDef
  */
@@ -209,12 +207,6 @@ export const ACHIEVEMENTS = Object.freeze([
     },
   },
   {
-    kind: "perTopic",
-    id: (d, t) => `completionist:${d.slug}/${t.slug}`,
-    group: "completionist",
-    evaluate: (ctx, _d, t) => completionist(ctx, t.lessons, t.title),
-  },
-  {
     kind: "perDiscipline",
     id: (d) => `completionist:${d.slug}`,
     group: "completionist",
@@ -237,11 +229,7 @@ export function evaluateAchievements(rows, disciplines, defs = ACHIEVEMENTS) {
   const out = [];
   for (const def of defs) {
     if (def.kind === "single") out.push({ id: def.id, group: def.group, ...def.evaluate(ctx) });
-    else if (def.kind === "perTopic") {
-      for (const d of disciplines) for (const t of d.topics) out.push({ id: def.id(d, t), group: def.group, ...def.evaluate(ctx, d, t) });
-    } else {
-      for (const d of disciplines) out.push({ id: def.id(d), group: def.group, ...def.evaluate(ctx, d) });
-    }
+    else for (const d of disciplines) out.push({ id: def.id(d), group: def.group, ...def.evaluate(ctx, d) });
   }
   return out;
 }

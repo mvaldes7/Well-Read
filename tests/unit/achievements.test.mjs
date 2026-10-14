@@ -11,18 +11,19 @@ const iso = (d) => new Date(d).toISOString();
 const frow = (lesson_id, score, total, passed, completed_at, first_passed_at) => ({ lesson_id, score, total, passed, completed_at, first_passed_at });
 const ALL = disciplines.flatMap((d) => d.topics.flatMap((t) => t.lessons.map((l) => l.id)));
 
-test('starter set: ids unique, mastery per discipline, completionist per topic and discipline, content order', () => {
+test('starter set: ids unique, mastery + completionist per discipline, content order', () => {
   const a = evaluateAchievements([], disciplines);
   const ids = a.map((x) => x.id);
   assert.equal(new Set(ids).size, ids.length);
-  const topics = disciplines.flatMap((d) => d.topics.map((t) => `completionist:${d.slug}/${t.slug}`));
   assert.deepEqual(ids, [
     'first-lesson', 'perfect-score', 'discipline-explorer',
     ...disciplines.map((d) => `mastery:${d.slug}`),
-    ...topics,
     ...disciplines.map((d) => `completionist:${d.slug}`),
   ]);
-  assert.equal(ACHIEVEMENTS.length, 6);
+  assert.equal(ACHIEVEMENTS.length, 5);
+  assert.equal(a.length, 3 + 2 * disciplines.length); // 15 with today's 6 disciplines
+  // Mike's call: no per-topic completionist badges.
+  assert.ok(!ids.some((id) => /^completionist:.+\//.test(id)));
   // TSK-019: the topic-level "Level X" achievements are gone.
   assert.ok(!ids.some((id) => id.startsWith('topic-level:')));
   assert.ok(!a.some((x) => /Level \d/.test(x.title)));
@@ -35,7 +36,7 @@ test('nothing earned with no rows; locked ones carry requirement text', () => {
   assert.equal(a['mastery:philosophy'].requirement, 'Pass a lesson in Philosophy.');
   assert.equal(a['mastery:philosophy'].title, 'Philosophy: Novice');
   assert.equal(a['mastery:philosophy'].progress, '0/1 to Novice');
-  assert.equal(a['completionist:philosophy/stoicism'].progress, '0/2 lessons');
+  assert.equal(a['completionist:philosophy'].progress, '0/3 lessons');
   assert.equal(a['completionist:philosophy'].progress, '0/3 lessons');
   assert.equal(a['discipline-explorer'].progress, `0/${disciplines.length} disciplines`);
 });
@@ -111,17 +112,13 @@ test('Mastery tiers and first-earned dates: the Nth first pass in the discipline
   assert.deepEqual([m5.tier, m5.earnedAt, m5.earnedExact], [2, day(4), false]);
 });
 
-test('Completionist per topic and per discipline (fixture)', () => {
+test('Completionist per discipline spans its topics (fixture)', () => {
   const rows = (ids) => ids.map((l, i) => row(l.id, 4, 4, true, day(i)));
-  const a7 = byId(rows(fxLessons.slice(0, 7)), fx);
-  assert.deepEqual([a7['completionist:fx/a'].earned, a7['completionist:fx/a'].earnedAt], [true, day(6)]);
-  assert.deepEqual([a7['completionist:fx/b'].earned, a7['completionist:fx/b'].progress], [false, '0/18 lessons']);
-  assert.equal(a7['completionist:fx'].earned, false);
+  const a7 = byId(rows(fxLessons.slice(0, 7)), fx); // all of Topic A, none of Topic B
+  assert.deepEqual([a7['completionist:fx'].earned, a7['completionist:fx'].progress], [false, '7/25 lessons']);
+  assert.equal(a7['completionist:fx/a'], undefined);
   const all = byId(rows(fxLessons), fx);
-  assert.deepEqual([all['completionist:fx/b'].earned, all['completionist:fx'].earned, all['completionist:fx'].earnedAt], [true, true, day(24)]);
-  // Real content: Stoicism done, Philosophy not (Socrates missing).
-  const ph = byId([row('les_st01', 3, 3, true, D1), row('les_st02', 3, 4, true, D2)]);
-  assert.deepEqual([ph['completionist:philosophy/stoicism'].earned, ph['completionist:philosophy/stoicism'].earnedAt, ph['completionist:philosophy'].earned], [true, iso(D2), false]);
+  assert.deepEqual([all['completionist:fx'].earned, all['completionist:fx'].earnedAt], [true, day(24)]);
 });
 
 test('Completionist: all lessons in a discipline; date = latest; missing date -> no date', () => {
