@@ -1749,6 +1749,145 @@
             ]
           }
         ]
+      },
+      {
+        "slug": "perspective",
+        "title": "Perspective",
+        "kind": "technique",
+        "summary": "Perspective creates the illusion of three-dimensional space on a flat surface, using lines, proportions, and changes in color or clarity to suggest distance.",
+        "lessons": [
+          {
+            "id": "les_pe01",
+            "slug": "how-paintings-create-depth",
+            "title": "Perspective: How Paintings Create Depth",
+            "sections": [
+              {
+                "heading": "A flat surface can suggest a deep space",
+                "body": "A painting is a flat surface, but it can make us feel that we are looking into a room, down a street, or across a landscape. Perspective is a means of creating that impression of three-dimensional space, rather than physically adding depth to the canvas or wall.\n\nLinear perspective uses lines to construct the illusion, while atmospheric perspective, also called aerial perspective, primarily uses tone and color. The two can work together: a landscape might use converging lines in the foreground and increasingly indistinct, bluish hills in the distance.\n\nIn early fifteenth-century Florence, Filippo Brunelleschi demonstrated a systematic approach to linear perspective, and Leon Battista Alberti explained it for artists in On Painting in 1435. These developments gave painters a mathematical framework for constructing convincing spaces, rather than simply placing smaller objects behind larger ones."
+              },
+              {
+                "heading": "Three clues in one-point perspective",
+                "body": "In one-point perspective, the horizon line represents eye level, and the principal vanishing point lies on that line. The vanishing point does not have to be a visible object: it is the location where a particular set of lines appears to meet as it recedes into the depicted space.\n\nReceding lines, often called orthogonals in this system, guide the eye toward the vanishing point. Imagine looking straight down a tiled hallway: the edges of the floor and the depth-directed tile lines can suggest convergence, while the horizontal divisions across the floor remain horizontal and become more closely spaced farther away.\n\nThat distinction matters: one-point perspective does not mean that every line in a painting must converge at one point. In the hallway example, it is the parallel lines running into depth that converge, and the progressively compressed floor divisions help make equal real-world distances appear correctly spaced in the image."
+              },
+              {
+                "heading": "Reading the illusion in a real painting",
+                "body": "Masaccio's Holy Trinity, a fresco in the church of Santa Maria Novella in Florence, uses perspective to make a solid wall appear to open into a chapel. Its painted architecture invites the viewer to experience the religious scene as if it occupies a space extending behind the wall.\n\nThe edges of the recessed squares, or coffers, in the painted ceiling provide useful orthogonals to follow. Extend those receding edges mentally and they lead toward the vanishing point on the ledge where the donors kneel, positioned at the viewer's eye level.\n\nThis alignment connects the depicted space to the viewer's position in front of the wall. As a looking exercise, first locate the strongest receding edges, then imagine extending them until they meet; use that meeting place to estimate the painting's eye level."
+              },
+              {
+                "heading": "Distance can also emerge through color",
+                "body": "Atmospheric perspective offers a different way to suggest depth, particularly in landscapes. In Cima da Conegliano's David and Jonathan, distant features become more indistinct, and far-off hills appear blue even though the landscape is understood to be green.\n\nThe painting also uses a road and a river that converge toward a vanishing point, combining linear and atmospheric methods. A convincing space therefore need not depend on a clearly visible grid; lines, relative scale, and changes in clarity can reinforce one another.\n\nAccurate perspective is an artistic option, not a universal requirement: Van Gogh deliberately flattened the space in The Bedroom and did not apply perspective consistently. Understanding the rules helps you recognize both convincing illusions and purposeful departures from them, rather than treating every unusual space as a mistake."
+              }
+            ],
+            "keyFacts": [
+              "Perspective suggests three-dimensional space on a two-dimensional surface.",
+              "In one-point perspective, the horizon line represents eye level.",
+              "Depth-directed orthogonals converge at a point on the horizon.",
+              "On Painting, published in 1435, explained a systematic approach to perspective.",
+              "Changes in tone, color, and clarity can suggest distance.",
+              "Artists can deliberately flatten or alter pictorial space."
+            ],
+            "quiz": [
+              {
+                "question": "What does perspective create in a painting?",
+                "options": [
+                  "A physically hollow space behind the canvas.",
+                  "The illusion of three-dimensional space on a flat surface.",
+                  "A requirement that every painting depict architecture.",
+                  "A method for removing all signs of distance."
+                ],
+                "answerIndex": 1,
+                "explanation": "Perspective constructs an impression of depth on a two-dimensional surface."
+              },
+              {
+                "question": "In one-point perspective, what does the horizon line represent?",
+                "options": [
+                  "The bottom edge of the frame.",
+                  "The tallest object in the picture.",
+                  "The boundary between warm and cool colors.",
+                  "Eye level."
+                ],
+                "answerIndex": 3,
+                "explanation": "The horizon line corresponds to eye level and contains the vanishing point."
+              },
+              {
+                "question": "In a straight-on view of a tiled hallway, which lines converge toward the principal vanishing point?",
+                "options": [
+                  "The parallel lines running into the hallway's depth.",
+                  "Every line, including the vertical sides of the door.",
+                  "Only the horizontal lines crossing the front of the hallway.",
+                  "Only the outlines of people."
+                ],
+                "answerIndex": 0,
+                "explanation": "In this one-point arrangement, depth-directed lines converge while the crosswise floor divisions remain horizontal."
+              },
+              {
+                "question": "Distant hills in a painting are bluer and less distinct than nearby trees. Which method is most directly responsible?",
+                "options": [
+                  "A rule that all landscape objects must have equal size.",
+                  "The complete elimination of color.",
+                  "Atmospheric perspective.",
+                  "Printmaking."
+                ],
+                "answerIndex": 2,
+                "explanation": "Atmospheric perspective uses changes in color and clarity to suggest distance."
+              },
+              {
+                "question": "What illusion does perspective create in Masaccio's Holy Trinity?",
+                "options": [
+                  "A solid wall appears to open into a chapel.",
+                  "The painting appears to contain no architecture.",
+                  "Every figure appears to stand on the same flat foreground line.",
+                  "The ceiling appears to be a real hole cut into the church roof."
+                ],
+                "answerIndex": 0,
+                "explanation": "The painted architecture creates an illusion of a chapel extending behind the wall."
+              },
+              {
+                "question": "A painting does not consistently follow accurate linear perspective. What is the most reasonable initial response?",
+                "options": [
+                  "Conclude that its artist could not draw.",
+                  "Assume that no painting can create convincing depth.",
+                  "Reject it as incapable of artistic meaning.",
+                  "Consider whether the artist intentionally altered space for another effect."
+                ],
+                "answerIndex": 3,
+                "explanation": "Van Gogh's The Bedroom provides an example of deliberately flattened space rather than simple inability."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "National Gallery, London",
+                "title": "Linear perspective (Glossary)",
+                "url": "https://www.nationalgallery.org.uk/paintings/glossary/linear-perspective",
+                "note": "What perspective is; linear versus atmospheric (aerial) perspective."
+              },
+              {
+                "publisher": "Smarthistory",
+                "title": "How one-point linear perspective works",
+                "url": "https://smarthistory.org/how-one-point-linear-perspective-works/",
+                "note": "Brunelleschi, Alberti's On Painting (1435), horizon line, vanishing point and orthogonals."
+              },
+              {
+                "publisher": "Smarthistory",
+                "title": "Masaccio, Holy Trinity",
+                "url": "https://smarthistory.org/masaccio-holy-trinity/",
+                "note": "The painted chapel illusion, the coffer orthogonals and the vanishing point at the viewer's eye level."
+              },
+              {
+                "publisher": "National Gallery, London",
+                "title": "Giovanni Battista Cima da Conegliano, David and Jonathan",
+                "url": "https://www.nationalgallery.org.uk/paintings/giovanni-battista-cima-da-conegliano-david-and-jonathan",
+                "note": "Atmospheric perspective combined with converging road and river."
+              },
+              {
+                "publisher": "Van Gogh Museum",
+                "title": "Vincent van Gogh, The Bedroom",
+                "url": "https://www.vangoghmuseum.nl/en/collection/s0047V1962",
+                "note": "Deliberately flattened space and inconsistent perspective."
+              }
+            ]
+          }
+        ]
       }
     ]
   },
