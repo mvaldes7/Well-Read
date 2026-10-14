@@ -1505,6 +1505,133 @@
         ]
       },
       {
+        "slug": "northern-renaissance",
+        "title": "The Northern Renaissance",
+        "kind": "era",
+        "summary": "The Northern Renaissance was a flourishing of fifteenth- and sixteenth-century art north of the Alps, distinguished by finely observed oil painting, expanding print culture, and responses to religious change.",
+        "lessons": [
+          {
+            "id": "les_nr01",
+            "slug": "detail-symbols-and-printed-images",
+            "title": "Northern Renaissance: Detail, Symbols, and Printed Images",
+            "sections": [
+              {
+                "heading": "The Renaissance was not only Italian",
+                "body": "“Northern Renaissance” is a convenient term for artistic developments north of the Alps during the fifteenth and sixteenth centuries, especially in regions such as the Netherlands and Germany. These developments took place alongside the Italian Renaissance, but Northern art should not be treated simply as a delayed imitation of Italy.\n\nNorthern artists became celebrated for close observation, minute detail, and the convincing depiction of textures such as fabric, skin, and metal. Their achievement was not merely making pictures look “real”: religious feeling, symbolic meaning, and the material presence of everyday things were also important.\n\nArtists and ideas traveled between northern and southern Europe, and Albrecht Dürer, for example, visited Venice and admired Italian art. The distinction between “Northern” and “Italian” is useful for comparison, but it should not imply that the two regions were isolated or that every artist within a region worked alike."
+              },
+              {
+                "heading": "Oil paint made detail luminous",
+                "body": "Jan van Eyck helped demonstrate the expressive possibilities of oil paint, but he did not invent the medium. Building up layers, including thin layers called glazes, allowed artists to create rich surfaces and compelling impressions of different materials.\n\nVan Eyck's Arnolfini Portrait rewards slow looking at clothing, furnishings, and small objects in a domestic interior. These details can suggest social position and invite symbolic interpretations, although scholars disagree about the event represented and the meanings of particular objects.\n\nMerchants became important patrons, commissioning pictures for domestic settings as well as participating in religious patronage. At the same time, elaborate multipanel altarpieces, such as the Ghent Altarpiece, show that highly detailed oil painting also served public religious devotion rather than belonging only to private homes."
+              },
+              {
+                "heading": "Prints let images travel",
+                "body": "A commissioned painting is a single object, whereas printmaking allows multiple impressions of an image to be produced from a prepared surface. Woodcuts and engravings helped images circulate among wider audiences and across geographical boundaries, changing who could encounter art and visual information.\n\nDürer was a major artist in both media, producing works such as the woodcut The Four Horsemen of the Apocalypse and the engraving Adam and Eve. These examples demonstrate that a reproducible image could still be an ambitious work of art, combining intricate detail with complex ideas.\n\nThe expansion of print culture also encouraged exchanges between northern Europe and Italy, giving people access to images and ideas from distant places. This was a major development in European visual culture, but printing itself was not a worldwide invention of Renaissance Europe: print technologies had earlier histories in Asia."
+              },
+              {
+                "heading": "Religious change reshaped what art could do",
+                "body": "The Protestant Reformation, initiated by Martin Luther in 1517, challenged Catholic authority and intensified debates about religious belief and practice. Printed pamphlets and images helped spread reforming ideas, so visual art became part of an argument about how people should understand religion.\n\nSome reformers questioned sacred images as potential objects of idolatry, while other approaches retained images as aids to teaching. Lucas Cranach the Elder's Law and Gospel, for example, used imagery to communicate Lutheran ideas, demonstrating that religious reform did not produce one uniform rejection of all art.\n\nThe period's artworks therefore offer several different viewing tasks: examining materials, identifying possible symbols, and asking whether an image was intended for devotion, domestic display, or teaching. When looking at a work, separate what you can directly observe from what you infer; an object's presence may be clear even when its symbolic meaning remains disputed."
+              }
+            ],
+            "keyFacts": [
+              "Northern Renaissance art flourished north of the Alps in the fifteenth and sixteenth centuries.",
+              "He developed oil painting's possibilities rather than inventing oil paint.",
+              "Layered oil paint helped depict rich surfaces and varied textures.",
+              "Merchants supported art made for domestic display.",
+              "His woodcuts and engravings exemplify ambitious art made in reproducible form.",
+              "Religious controversy changed the roles and acceptability of sacred images."
+            ],
+            "quiz": [
+              {
+                "question": "What does “Northern Renaissance” refer to?",
+                "options": [
+                  "Ancient art produced only in northern Italy.",
+                  "A nineteenth-century movement centered in Paris.",
+                  "Artistic developments north of the Alps, especially in the fifteenth and sixteenth centuries.",
+                  "A style that had no contact with Italian art."
+                ],
+                "answerIndex": 2,
+                "explanation": "The term describes a flourishing of art north of the Alps during those centuries."
+              },
+              {
+                "question": "Which statement about Jan van Eyck is accurate?",
+                "options": [
+                  "He used oil paint with remarkable effectiveness but did not invent it.",
+                  "He invented every type of printmaking.",
+                  "He painted only large outdoor frescoes.",
+                  "He rejected close observation of material objects."
+                ],
+                "answerIndex": 0,
+                "explanation": "His achievement lay in developing the medium's possibilities, not inventing oil paint."
+              },
+              {
+                "question": "Why were woodcuts and engravings important to European visual culture?",
+                "options": [
+                  "They prevented images from crossing regional boundaries.",
+                  "They required every copy to be painted separately.",
+                  "They eliminated all religious subjects from art.",
+                  "They allowed multiple impressions of images to circulate widely."
+                ],
+                "answerIndex": 3,
+                "explanation": "Reproducible prints expanded the circulation of pictures and ideas."
+              },
+              {
+                "question": "Which artist is especially associated with The Four Horsemen of the Apocalypse and Adam and Eve as prints?",
+                "options": [
+                  "Claude Monet.",
+                  "Albrecht Dürer.",
+                  "Vincent van Gogh.",
+                  "Masaccio."
+                ],
+                "answerIndex": 1,
+                "explanation": "Dürer made the former as a woodcut and the latter as an engraving."
+              },
+              {
+                "question": "How did the Protestant Reformation affect religious images?",
+                "options": [
+                  "It produced complete agreement about the role of all images.",
+                  "It made printmaking impossible.",
+                  "It prompted disputes, including rejection of some sacred imagery and use of other images for teaching.",
+                  "It required every artist to stop making religious works."
+                ],
+                "answerIndex": 2,
+                "explanation": "Responses varied, and Cranach's teaching images show one way art served reforming ideas."
+              },
+              {
+                "question": "You notice a small object in the Arnolfini Portrait and encounter two different explanations of its meaning. What is the best approach?",
+                "options": [
+                  "Distinguish the visible object from interpretations and recognize that its symbolism may be disputed.",
+                  "Assume every object has exactly one universally agreed meaning.",
+                  "Conclude that the object cannot matter because interpretations differ.",
+                  "Treat the first interpretation you read as a direct statement by the artist."
+                ],
+                "answerIndex": 0,
+                "explanation": "The painting's event and symbolic meanings are subjects of scholarly disagreement."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Smarthistory",
+                "title": "Printing and painting in Northern Renaissance art",
+                "url": "https://smarthistory.org/reframing-art-history/printing-painting-northern-renaissance-art/",
+                "note": "The term itself, oil paint and glazes, prints by Dürer, and the Reformation's effect on images."
+              },
+              {
+                "publisher": "Smarthistory",
+                "title": "The Northern Renaissance, a brief introduction",
+                "url": "https://smarthistory.org/an-introduction-to-the-northern-renaissance-in-the-fifteenth-century/",
+                "note": "Setting, merchant patrons, and the debated symbolism of the Arnolfini Portrait."
+              },
+              {
+                "publisher": "The Metropolitan Museum of Art",
+                "title": "The Metropolitan Museum of Art, Vol. 5: The Renaissance in the North",
+                "url": "https://www.metmuseum.org/met-publications/the-metropolitan-museum-of-art-vol-5-the-renaissance-in-the-north",
+                "note": "Overview of Northern art and its links with Italy."
+              }
+            ]
+          }
+        ]
+      },
+      {
         "slug": "impressionism",
         "title": "Impressionism",
         "kind": "style",
