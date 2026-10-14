@@ -12,7 +12,7 @@ export default function NotFound() {
       <h1>Not found</h1>
       <p className="muted">That page doesn&apos;t exist.</p>
       <p className="back-link">
-        <Link href="/">Back to all disciplines</Link>
+        <Link href="/learn">Back to all disciplines</Link>
       </p>
     </div>
   );

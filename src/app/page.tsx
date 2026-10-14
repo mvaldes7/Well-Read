@@ -2,39 +2,110 @@ import Link from "next/link";
 import { Suspense } from "react";
 import HomeNotice from "@/components/HomeNotice";
 import { disciplines } from "@/content";
-import { toRoman } from "@/lib/ui/roman.mjs";
+import { PROGRESS_ERROR, getMyProgress } from "@/lib/progress/data";
+import { dashboardData } from "@/lib/progress/dashboard.mjs";
+import { nextTierText } from "@/lib/progress/mastery.mjs";
 
-export default function Home() {
+// Dashboard (TSK-015). Layout after Mike's dashboard mockup, in C2 styling.
+export default function Dashboard() {
   return (
-    <div className="narrow">
+    <>
       <Suspense fallback={null}>
         <HomeNotice />
       </Suspense>
       <header className="hero">
-        <p className="eyebrow">The Collection</p>
-        <h1>Well-Read</h1>
-        <p>Choose a discipline to start learning.</p>
+        <p className="eyebrow">The Reading Room</p>
+        <h1>Dashboard</h1>
         <hr className="rule" />
       </header>
-      <ul className="entries">
-        {disciplines.map((d, i) => (
-          <li key={d.slug} className="entry">
-            <div className="num" aria-hidden="true">
-              {toRoman(i + 1)}
-              <small>Gallery</small>
-            </div>
-            <div>
-              <h2>
-                <Link href={`/d/${d.slug}`}>{d.title}</Link>
-              </h2>
-              <p className="meta">
-                {d.topics.length} {d.topics.length === 1 ? "topic" : "topics"}
-              </p>
-              <p>{d.description}</p>
-            </div>
+      {/* Reads the session cookie, so it streams in behind Suspense (cacheComponents). */}
+      <Suspense fallback={<p className="empty-shelf muted">Loading your dashboard…</p>}>
+        <DashboardBody />
+      </Suspense>
+    </>
+  );
+}
+
+async function DashboardBody() {
+  const progress = await getMyProgress();
+  if (progress.status === "error") return <p role="alert" className="empty-shelf error">{PROGRESS_ERROR}</p>;
+  if (progress.status === "signedOut") {
+    return (
+      <p className="empty-shelf">
+        <Link href="/login">Sign in</Link> to see your dashboard.
+      </p>
+    );
+  }
+  const data = dashboardData(progress.rows, disciplines);
+  return (
+    <>
+      <section aria-labelledby="dash-stats">
+        <h2 id="dash-stats" className="visually-hidden">
+          Your numbers
+        </h2>
+        <ul className="stats">
+          <Stat value={`${data.lessons.passed}`} of={data.lessons.total} label="Lessons passed" />
+          <Stat value={`${data.badges.earned}`} of={data.badges.total} label="Badges earned" />
+          <Stat value={`${data.disciplines.started}`} of={data.disciplines.total} label="Disciplines started" />
+          {/* Streaks are TSK-016: a placeholder, never a made-up number. */}
+          <li className="stat stat-soon">
+            <span className="stat-value">Coming soon</span>
+            <span className="stat-label">Day streak</span>
           </li>
-        ))}
-      </ul>
-    </div>
+        </ul>
+      </section>
+      <section className="board" aria-labelledby="dash-disciplines">
+        <h2 id="dash-disciplines" className="section-title">
+          Your disciplines
+        </h2>
+        <ul className="subjects">
+          {data.perDiscipline.map((d) => {
+            const { mastery: m, next } = d;
+            const pct = m.next ? Math.round((m.toward / m.needed) * 100) : 100;
+            return (
+              <li key={d.slug} className={`subject cover-${d.color}${m.tier ? "" : " not-started"}`}>
+                <h3>
+                  <span className="mastery-dot" aria-hidden="true" />
+                  <Link href={`/d/${d.slug}`}>{d.title}</Link>
+                </h3>
+                <p className="subject-meta">
+                  <span className="subject-tier">{m.tier ?? "Not started"}</span>
+                  <span>
+                    {d.passed} of {d.total} {d.total === 1 ? "lesson" : "lessons"}
+                  </span>
+                </p>
+                <div className="subject-bar" aria-hidden="true">
+                  <span style={{ width: `${pct}%` }} />
+                </div>
+                <p className="subject-next muted">{nextTierText(m)}</p>
+                <p className="subject-cta">
+                  {next.kind === "review" ? (
+                    <Link href={next.href}>
+                      Review {d.title} <span aria-hidden="true">→</span>
+                    </Link>
+                  ) : (
+                    <Link href={next.href}>
+                      {next.kind === "start" ? "Start" : "Continue"}: {next.lessonTitle} <span aria-hidden="true">→</span>
+                    </Link>
+                  )}
+                </p>
+              </li>
+            );
+          })}
+        </ul>
+      </section>
+    </>
+  );
+}
+
+function Stat({ value, of, label }: { value: string; of: number; label: string }) {
+  return (
+    <li className="stat">
+      <span className="stat-value">
+        {value}
+        <small> / {of}</small>
+      </span>
+      <span className="stat-label">{label}</span>
+    </li>
   );
 }

@@ -38,7 +38,7 @@ async function Shelf() {
   if (progress.groups.length === 0) {
     return (
       <p className="empty-shelf">
-        No books yet. <Link href="/">Start learning</Link> and pass a lesson quiz to add your first book.
+        No books yet. <Link href="/learn">Start learning</Link> and pass a lesson quiz to add your first book.
       </p>
     );
   }
