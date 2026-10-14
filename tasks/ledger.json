@@ -148,6 +148,15 @@
       "state": "In Progress",
       "agent": "Builder",
       "attempts": {}
+    },
+    {
+      "id": "TSK-015",
+      "title": "Sidebar, dashboard, progress",
+      "role": "Builder",
+      "type": "impl",
+      "state": "Idea",
+      "agent": null,
+      "attempts": {}
     }
   ],
   "log": [
@@ -708,6 +717,15 @@
       "from": "Idea",
       "to": "In Progress",
       "note": "agent=Builder"
+    },
+    {
+      "ts": "2026-10-14T22:54:04.318Z",
+      "actor": "Builder",
+      "taskId": "TSK-015",
+      "action": "add",
+      "from": null,
+      "to": "Idea",
+      "note": null
     }
   ]
 }
