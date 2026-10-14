@@ -416,6 +416,344 @@
             ]
           }
         ]
+      },
+      {
+        "slug": "genghis-khan",
+        "title": "Genghis Khan",
+        "kind": "person",
+        "summary": "Genghis Khan united the Mongolian steppe in 1206 and launched conquests that laid the foundations of an enormous Eurasian empire, combining exceptional military organization with devastating violence.",
+        "lessons": [
+          {
+            "id": "les_gk01",
+            "slug": "unification-conquest-and-legacy",
+            "title": "Genghis Khan: Unification, Conquest, and Legacy",
+            "sections": [
+              {
+                "heading": "From Temüjin to Genghis Khan",
+                "body": "Genghis Khan was born Temüjin, probably around 1162, although sources disagree about his birth year. He grew up among the pastoral nomadic peoples of the Mongolian steppe, where herding, alliances, and competition among groups shaped political life.\n\nAfter hardship in his early life, Temüjin built alliances and defeated rivals, using both personal relationships and force to gather followers. He redistributed members of conquered or allied groups among his own units, reducing the influence of older tribal loyalties and directing allegiance toward himself.\n\nIn 1206, an assembly recognized him as ruler, and he took the title Genghis Khan, also written Chinggis Khan. Unifying the steppe mattered because it brought formerly competing groups under a single political and military leadership capable of launching coordinated campaigns beyond Mongolia."
+              },
+              {
+                "heading": "Organization mattered as much as force",
+                "body": "Genghis Khan organized his forces using a decimal structure, with units based on ten, one hundred, one thousand, and ten thousand. Personal loyalty between major commanders and the ruler helped hold these forces together and sustain his authority.\n\nMongol soldiers were skilled horsemen and archers, combining mobility with the ability to attack while mounted. Riders could change horses during long journeys, helping their armies maintain speed and surprise across large distances.\n\nOne important tactic was the feigned withdrawal: soldiers pretended to retreat, encouraging enemies to pursue them into a trap. Mongol success also involved adapting to opponents and learning siege techniques, showing that their armies were more than groups of riders relying on speed alone."
+              },
+              {
+                "heading": "Conquest carried a devastating human cost",
+                "body": "Genghis Khan's campaigns targeted states in northwestern and northern China, including the Xia and Jin, and later the Khwarazmian Empire in Central Asia. Trade disputes and attacks on Mongol diplomatic representatives contributed to these conflicts, although their outcomes involved much more than adjustments to trade.\n\nThe invasion of Central Asia began in 1219 and brought devastating attacks on major urban centers, including Bukhara and Samarkand. Cities were destroyed, civilians were killed, and damage to irrigation systems harmed the conditions needed for settled life and agriculture.\n\nMongol forces used the threat of destruction to pressure other cities into surrender, making terror part of their strategy rather than simply an accidental consequence of fighting. A balanced assessment therefore needs to recognize military effectiveness without treating successful conquest as justification for massacres or the destruction of communities."
+              },
+              {
+                "heading": "His empire continued to grow after his death",
+                "body": "Genghis Khan also pursued measures to govern conquered territories, including adopting a writing system for Mongolian and allowing rulers in some regions to remain as subordinate authorities. His administration accommodated different religions and encouraged trade, but those policies coexisted with the brutality of conquest rather than canceling it out.\n\nHe died in 1227, and his son Ögödei became Great Khan in 1229, overseeing further major expansion. Later descendants extended Mongol rule still farther; his grandson Kublai completed the conquest of the Southern Song in China in 1279, decades after Genghis Khan's death.\n\nThe Mongol Empire ultimately became the largest contiguous land empire in world history, meaning its territories formed a connected landmass rather than primarily an overseas network. Genghis Khan founded that imperial project, but its full extent and its wider influence on Eurasian exchange resulted from developments under several generations of rulers."
+              }
+            ],
+            "keyFacts": [
+              "Genghis Khan was born Temüjin; his birth year is uncertain, often given as about 1162.",
+              "He became ruler of the united Mongolian steppe in 1206.",
+              "Military units were based on ten, one hundred, one thousand, and ten thousand.",
+              "Mounted archery, mobility, and feigned retreats were important advantages.",
+              "His Central Asian campaigns devastated cities and killed civilians.",
+              "He died in 1227, and his successors substantially expanded the empire."
+            ],
+            "quiz": [
+              {
+                "question": "What was Genghis Khan's original name?",
+                "options": [
+                  "Osman.",
+                  "Kublai.",
+                  "Temüjin.",
+                  "Süleyman."
+                ],
+                "answerIndex": 2,
+                "explanation": "Temüjin was his birth name; Genghis Khan was a title adopted after his rise to power."
+              },
+              {
+                "question": "Why was the year 1206 a turning point?",
+                "options": [
+                  "He completed the conquest of the Southern Song.",
+                  "An assembly recognized his rule over the united Mongolian steppe.",
+                  "The Ottoman sultanate was abolished.",
+                  "He died and Ögödei immediately took the throne."
+                ],
+                "answerIndex": 1,
+                "explanation": "The assembly recognized his leadership in 1206, marking the establishment of his rule as Genghis Khan."
+              },
+              {
+                "question": "Which feature best describes the organization of his military forces?",
+                "options": [
+                  "Units based on ten, one hundred, one thousand, and ten thousand.",
+                  "Every soldier acted independently without commanders.",
+                  "Units were organized solely by the city where each soldier was born.",
+                  "Only one permanent unit was permitted."
+                ],
+                "answerIndex": 0,
+                "explanation": "His military organization used a decimal structure."
+              },
+              {
+                "question": "A Mongol force appears to flee, lures an enemy into pursuit, and then attacks with waiting troops. What tactic is this?",
+                "options": [
+                  "A naval blockade.",
+                  "A diplomatic surrender.",
+                  "A siege conducted entirely from a fixed position.",
+                  "A feigned withdrawal."
+                ],
+                "answerIndex": 3,
+                "explanation": "The apparent retreat is a deliberate maneuver intended to draw an enemy into a trap."
+              },
+              {
+                "question": "Which statement best evaluates the relationship between Mongol administrative policies and military violence?",
+                "options": [
+                  "Encouraging trade proves that no civilians were harmed.",
+                  "Religious accommodation meant that conquest was always peaceful.",
+                  "Administrative innovation and religious accommodation coexisted with destructive campaigns and massacres.",
+                  "The existence of massacres means there were no governing institutions."
+                ],
+                "answerIndex": 2,
+                "explanation": "Governing innovations and accommodation do not erase the documented brutality of Mongol conquest."
+              },
+              {
+                "question": "Why is it inaccurate to credit Genghis Khan personally with every Mongol conquest?",
+                "options": [
+                  "He never led military campaigns.",
+                  "His successors expanded the empire after his death in 1227.",
+                  "The Mongol Empire ended before he became ruler.",
+                  "Kublai completed the conquest of the Southern Song before Genghis Khan was born."
+                ],
+                "answerIndex": 1,
+                "explanation": "Later rulers, including Ögödei and Kublai, made major conquests after Genghis Khan's death."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Genghis Khan",
+                "url": "https://www.britannica.com/biography/Genghis-Khan",
+                "note": "Birth name and uncertain birth year, rise to power, and the 1206 assembly."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Mongolia: The rise of Genghis Khan",
+                "url": "https://www.britannica.com/place/Mongolia/The-rise-of-Genghis-Khan",
+                "note": "Steppe society in which Temüjin grew up."
+              },
+              {
+                "publisher": "Asia for Educators (Columbia University)",
+                "title": "Tribal Group vs. Mongol Identity under Chinggis Khan",
+                "url": "https://afe.easia.columbia.edu/mongols/conquests/conquests_2a.htm",
+                "note": "Alliances and redistributing conquered groups to break old tribal loyalties."
+              },
+              {
+                "publisher": "Asia for Educators (Columbia University)",
+                "title": "Chinggis's Mastery of Organization and Military Tactics",
+                "url": "https://afe.easia.columbia.edu/mongols/conquests/conquests_2b.htm",
+                "note": "Decimal military units, personal loyalty, and the feigned withdrawal."
+              },
+              {
+                "publisher": "Asia for Educators (Columbia University)",
+                "title": "The Advantage of the Bow and Horse",
+                "url": "https://afe.easia.columbia.edu/mongols/pop//conquests/cavalry_pop.htm",
+                "note": "Mounted archery."
+              },
+              {
+                "publisher": "Asia for Educators (Columbia University)",
+                "title": "Horses: The Key to the Mongols' Military Strategy",
+                "url": "https://afe.easia.columbia.edu/mongols/pop/conquests/battle_pop.htm",
+                "note": "Changing horses to keep speed and surprise."
+              },
+              {
+                "publisher": "Asia for Educators (Columbia University)",
+                "title": "Three Invasions Led by Chinggis",
+                "url": "https://afe.easia.columbia.edu/mongols/conquests/conquests_2c.htm",
+                "note": "Campaigns against the Xia, Jin and Khwarazm, and the 1219 invasion of Central Asia."
+              },
+              {
+                "publisher": "Asia for Educators (Columbia University)",
+                "title": "Chinggis's Successor and Further Expansion of the Empire",
+                "url": "https://afe.easia.columbia.edu/mongols/conquests/conquests_2d.htm",
+                "note": "Ögödei and expansion after 1227."
+              },
+              {
+                "publisher": "Asia for Educators (Columbia University)",
+                "title": "The Mongols' Mark on Global History",
+                "url": "https://afe.easia.columbia.edu/mongols/history/history.htm",
+                "note": "Largest contiguous land empire; weighing achievement against brutality."
+              },
+              {
+                "publisher": "World History Encyclopedia",
+                "title": "Genghis Khan",
+                "url": "https://www.worldhistory.org/Genghis_Khan/",
+                "note": "Siege techniques, the destruction of Central Asian cities, administration, and successors."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "ottoman-empire",
+        "title": "The Ottoman Empire",
+        "kind": "era",
+        "summary": "The Ottoman Empire grew from a small state in Anatolia around 1300 into a major power across southeastern Europe, the Middle East, and North Africa before its imperial rule ended in 1922.",
+        "lessons": [
+          {
+            "id": "les_ot01",
+            "slug": "governing-across-three-continents",
+            "title": "The Ottoman Empire: Governing Across Three Continents",
+            "sections": [
+              {
+                "heading": "From a frontier state to an empire",
+                "body": "The Ottoman state began in northwestern Anatolia, the Asian part of present-day Turkey, around 1300. Its name comes from Osman I, the founder of its ruling dynasty, whose followers expanded into neighboring territories as older regional powers weakened.\n\nThe Ottomans expanded into both Anatolia and the Balkans, the region of southeastern Europe across the water from their original territory. In 1453, Sultan Mehmed II captured Constantinople, ending the Byzantine Empire and making the city a center of Ottoman power.\n\nLater conquests brought Syria and Egypt under Ottoman rule, and the empire reached a high point of political power during Süleyman the Magnificent's reign, from 1520 to 1566. Its territories extended across parts of Europe, Asia, and Africa, so understanding it requires thinking beyond the borders of modern Turkey."
+              },
+              {
+                "heading": "Governing people with different identities",
+                "body": "The empire was ruled by a sultan from the Ottoman dynasty, supported by administrators and a military establishment. Farmers, merchants, and craftspeople produced wealth and paid taxes that supported the ruling institutions.\n\nOttoman society included Muslims, Christians, and Jews, with religious communities exercising varying degrees of control over their own affairs. Arrangements commonly described as the millet system allowed religious leaders to oversee matters such as worship, education, and some legal disputes, but non-Muslims faced legal disadvantages and additional taxation; communal autonomy did not mean equal citizenship.\n\nAnother institution, the devşirme, periodically took Christian boys from their families, converted them to Islam, and trained them for service in the military or imperial administration. Some recruits rose to powerful positions, but those opportunities do not erase the system's coercion, forced conversion, and family separation."
+              },
+              {
+                "heading": "Art and architecture expressed imperial power",
+                "body": "Ottoman rulers supported architecture, calligraphy, manuscript painting, textiles, and ceramics, creating a distinctive visual culture from several artistic traditions. Conquest and court patronage brought artists and ideas from Byzantine, Persian, and Arab cultural worlds into Ottoman artistic production.\n\nThe architect Sinan designed celebrated mosques and religious complexes during the sixteenth century, including the age of Süleyman. Ottoman mosque complexes could combine religious, educational, social, and commercial functions, making them important urban institutions rather than merely places for prayer.\n\nArtistic production also flourished outside the capital: Iznik became known for ceramics, while Bursa was an important center for silk textiles. Domed mosques, slender minarets, and related artistic traditions spread across Ottoman territories, leaving a cultural legacy visible well beyond modern Turkey."
+              },
+              {
+                "heading": "Reform, war, and the end of imperial rule",
+                "body": "In the nineteenth century, Ottoman rulers confronted territorial losses, nationalist movements, financial pressures, and the growing influence of European powers. The Tanzimat reforms, associated with the period 1839–1876, attempted to strengthen the state through changes in administration, education, law, and other institutions, including promises of greater equality that were not consistently implemented.\n\nThe empire fought alongside Germany in World War I and suffered defeat. During the war, Ottoman authorities carried out the Armenian genocide, using deportations, massacres, and systematic persecution to destroy Armenian communities, particularly in 1915–1916.\n\nAfter the war, a Turkish nationalist movement led by Mustafa Kemal, later known as Atatürk, challenged the postwar settlement and the old imperial order. The sultanate was abolished in 1922, and Turkey was proclaimed a republic in 1923: these were related but distinct events, and the republic did not inherit the empire's full territory."
+              }
+            ],
+            "keyFacts": [
+              "The empire began in Anatolia around 1300 and took its name from Osman I.",
+              "Mehmed II captured the city in 1453.",
+              "Ottoman territories spanned parts of Europe, Asia, and Africa.",
+              "His reign, 1520–1566, was a high point of political power and artistic patronage.",
+              "Ottoman authorities carried out mass deportations and killings, particularly in 1915–1916.",
+              "The sultanate ended in 1922; Turkey became a republic in 1923."
+            ],
+            "quiz": [
+              {
+                "question": "Where did the Ottoman state originate?",
+                "options": [
+                  "The Arabian Peninsula.",
+                  "Northwestern Anatolia.",
+                  "The British Isles.",
+                  "Northern India."
+                ],
+                "answerIndex": 1,
+                "explanation": "The Ottoman state began in northwestern Anatolia, in present-day Turkey."
+              },
+              {
+                "question": "Why was the conquest of Constantinople in 1453 a major turning point?",
+                "options": [
+                  "It ended the Byzantine Empire and gave the Ottomans an important imperial center.",
+                  "It immediately created the Republic of Turkey.",
+                  "It ended Ottoman expansion into Europe.",
+                  "It abolished the position of sultan."
+                ],
+                "answerIndex": 0,
+                "explanation": "Mehmed II's conquest ended Byzantine rule and established Constantinople as an Ottoman imperial center."
+              },
+              {
+                "question": "Which statement best describes religious communities under Ottoman rule?",
+                "options": [
+                  "Everyone had to practice the same religion.",
+                  "Religious communities had no role in education or law.",
+                  "Every subject always possessed identical legal rights.",
+                  "Some communities managed internal affairs, but their autonomy did not guarantee equal legal status."
+                ],
+                "answerIndex": 3,
+                "explanation": "Religious communities could exercise internal autonomy while non-Muslims faced disadvantages and additional taxation."
+              },
+              {
+                "question": "What was the devşirme?",
+                "options": [
+                  "A voluntary university exchange program.",
+                  "A tax paid only by foreign merchants.",
+                  "A levy taking Christian boys for conversion and training in imperial service.",
+                  "A law abolishing the Ottoman military."
+                ],
+                "answerIndex": 2,
+                "explanation": "Christian boys were taken from their families, converted to Islam, and trained for military or administrative service."
+              },
+              {
+                "question": "Which description best captures the purpose of the Tanzimat reforms?",
+                "options": [
+                  "Strengthening the state through institutional changes, including reforms in law and education.",
+                  "Restoring the Byzantine Empire.",
+                  "Ending all state involvement in administration.",
+                  "Replacing the empire with a republic in 1839."
+                ],
+                "answerIndex": 0,
+                "explanation": "The reforms sought to preserve and strengthen the Ottoman state through institutional modernization."
+              },
+              {
+                "question": "Which sequence correctly describes the end of Ottoman imperial rule and the founding of modern Turkey?",
+                "options": [
+                  "Republic proclaimed in 1922; sultanate abolished in 1923.",
+                  "Sultanate abolished in 1922; republic proclaimed in 1923.",
+                  "Sultanate abolished in 1453; republic proclaimed in 1520.",
+                  "Sultanate abolished and republic proclaimed in 1839."
+                ],
+                "answerIndex": 1,
+                "explanation": "Abolition of the sultanate preceded proclamation of the republic by one year."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Ottoman Empire",
+                "url": "https://www.britannica.com/place/Ottoman-Empire",
+                "note": "Origins in Anatolia, Osman I, territory across three continents, end of imperial rule."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Ottoman Empire summary",
+                "url": "https://www.britannica.com/summary/Ottoman-Empire",
+                "note": "The 1453 conquest of Constantinople."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Ottoman Empire timeline",
+                "url": "https://www.britannica.com/summary/Ottoman-Empire-Timeline",
+                "note": "Key dates from Constantinople and Süleyman to 1922–1923."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Ottoman Empire: Classical Ottoman society and administration",
+                "url": "https://www.britannica.com/place/Ottoman-Empire/Classical-Ottoman-society-and-administration",
+                "note": "Sultan, administrators and taxpayers; religious communities."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Greece: Greece under Ottoman rule",
+                "url": "https://www.britannica.com/place/Greece/Greece-under-Ottoman-rule",
+                "note": "Communal autonomy and the legal disadvantages of non-Muslims."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Devşirme",
+                "url": "https://www.britannica.com/topic/devsirme",
+                "note": "The levy of Christian boys for conversion and imperial service."
+              },
+              {
+                "publisher": "The Metropolitan Museum of Art",
+                "title": "The Art of the Ottomans before 1600",
+                "url": "https://www.metmuseum.org/essays/the-art-of-the-ottomans-before-1600",
+                "note": "Court patronage, Sinan, Iznik ceramics and Bursa silks."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Decline of the Ottoman Empire summary",
+                "url": "https://www.britannica.com/summary/Decline-of-the-Ottoman-Empire",
+                "note": "Nineteenth-century pressures and the Turkish nationalist movement."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Ottoman Empire: The Tanzimat reforms, 1839–76",
+                "url": "https://www.britannica.com/place/Ottoman-Empire/The-Tanzimat-reforms-1839-76",
+                "note": "Institutional reform and unevenly kept promises of equality."
+              },
+              {
+                "publisher": "United States Holocaust Memorial Museum",
+                "title": "The Armenian Genocide (1915-16): Overview",
+                "url": "https://encyclopedia.ushmm.org/content/en/article/the-armenian-genocide-1915-16-overview",
+                "note": "Deportations, massacres and the destruction of Armenian communities."
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -935,10 +1273,10 @@
     "color": "slate",
     "topics": [
       {
-        "slug": "constitutional-convention",
-        "title": "The Constitutional Convention of 1787",
-        "kind": "event",
-        "summary": "The Constitutional Convention created a new framework for American government by strengthening national authority while dividing power among institutions and making consequential compromises over representation and slavery.",
+        "slug": "constitution-bill-of-rights",
+        "title": "The Constitution & Bill of Rights",
+        "kind": "era",
+        "summary": "How the Constitution was drafted in 1787 and amended by the Bill of Rights in 1791, and how those protections apply to government action today.",
         "lessons": [
           {
             "id": "les_cc01",
@@ -1065,15 +1403,7 @@
                 "url": "https://constitutioncenter.org/media/files/Article_VII__Ratification_Debates_-_Briefing_Document.pdf"
               }
             ]
-          }
-        ]
-      },
-      {
-        "slug": "bill-of-rights",
-        "title": "The Adoption of the Bill of Rights",
-        "kind": "event",
-        "summary": "Ratified in 1791, the Bill of Rights added ten amendments to the U.S. Constitution to protect liberties and place explicit limits on government power.",
-        "lessons": [
+          },
           {
             "id": "les_br01",
             "slug": "why-the-constitution-needed-a-bill-of-rights",
@@ -1175,6 +1505,167 @@
                 "title": "The Bill of Rights: What Does it Say?",
                 "url": "https://www.archives.gov/founding-docs/bill-of-rights/what-does-it-say",
                 "note": "Overview of rights and amendment meanings."
+              }
+            ]
+          },
+          {
+            "id": "les_br02",
+            "slug": "when-rights-apply",
+            "title": "The Constitution in Everyday Life: When Rights Apply",
+            "sections": [
+              {
+                "heading": "First ask who is taking action",
+                "body": "Before deciding whether a constitutional right has been violated, identify who is responsible for the challenged action. The First Amendment generally limits government action, not independent decisions by private people or businesses, so a disagreement with a private organization is not automatically a constitutional free-speech dispute.\n\nFor example, imagine a privately operated online platform independently removes a post under its own rules, without government involvement. Merely providing a place for other people's speech does not make a private organization a government actor, so the First Amendment does not ordinarily require it to host that post.\n\nThe boundary is not absolute: a private entity's action can sometimes be treated as government action, including when government compels the action or acts jointly with the entity. Constitutional speech protections also apply against state and local government through the Fourteenth Amendment, so the relevant government actor might be a city official rather than a federal agency."
+              },
+              {
+                "heading": "Protecting a message does not eliminate every rule",
+                "body": "The First Amendment ordinarily prohibits government from restricting speech because officials dislike the speaker's viewpoint. Streets and public parks are traditional settings for expression, where officials may not favor one viewpoint over another when regulating people's speech.\n\nHowever, government may impose certain content-neutral restrictions on the time, place, or manner of expression, such as rules addressing traffic or blocked entrances. Such restrictions must be narrowly tailored to a significant government interest and leave ample alternative ways to communicate; calling a rule “neutral” does not automatically make it valid.\n\nConsider two invented rules for a demonstration in a public park: one addresses late-night amplified noise regardless of the message, while the other forbids criticism of the mayor. The first could qualify as a time, place, or manner restriction if it satisfies the applicable safeguards, while the second targets a viewpoint and raises a fundamentally different constitutional problem."
+              },
+              {
+                "heading": "Privacy protections depend on the search",
+                "body": "The Fourth Amendment protects against unreasonable searches and seizures; it does not prohibit every search or guarantee that a warrant is required in every situation. When a search warrant is issued, it must rest on probable cause and particularly describe the place to be searched and the people or things to be seized, rather than authorize an unlimited search for anything.\n\nExceptions to the warrant requirement depend on the circumstances, including emergencies that create a compelling need for immediate action. For example, officers may enter a home to provide emergency aid when they have an objectively reasonable basis to believe someone inside needs immediate assistance; the mere label “emergency” is not enough.\n\nDigital information illustrates why the object of a search matters: police generally need a warrant to search a phone's stored digital contents merely because its owner has been arrested. That general rule does not eliminate separate exceptions, such as genuine emergency circumstances, but an arrest alone does not automatically authorize browsing the person's messages and photos."
+              },
+              {
+                "heading": "A fair process is different from a guaranteed result",
+                "body": "Procedural due process concerns how government makes decisions that deprive people of protected interests in life, liberty, or property. Its basic safeguards include notice and a meaningful opportunity to be heard before an impartial decision-maker, with the precise requirements depending on the situation.\n\nAn invented example can illustrate the issue: suppose an agency plans to stop a person's existing benefits because its records say their income exceeds the eligibility limit, but the person believes the records are wrong. Courts have recognized due-process protections in benefits disputes, although the type and timing of the required hearing differ between programs and circumstances.\n\nDue process does not guarantee that the person will keep the benefit or win the dispute; it guards against mistaken or unjustified deprivation by allowing an appropriate opportunity to contest the basis for the decision. Nor does it always require a full courtroom trial before any action: the required procedures depend on the affected interest, the risk of error, and the government's interests."
+              }
+            ],
+            "keyFacts": [
+              "The First Amendment generally restricts government, not independent private decisions.",
+              "Government ordinarily cannot restrict speech because officials oppose its viewpoint.",
+              "Content-neutral time, place, or manner restrictions must satisfy constitutional safeguards.",
+              "Warrants require probable cause and particular descriptions, but recognized exceptions permit some warrantless searches.",
+              "An arrest alone generally does not authorize a warrantless search of stored digital contents.",
+              "Fair procedures protect against mistaken deprivation without guaranteeing a favorable outcome."
+            ],
+            "quiz": [
+              {
+                "question": "A private online platform independently removes a post, without government involvement. What is the best initial constitutional analysis?",
+                "options": [
+                  "Every removal automatically violates the First Amendment.",
+                  "The First Amendment ordinarily does not require a private platform to host the post.",
+                  "Any company used by the public is automatically a government actor.",
+                  "Only posts written by elected officials receive constitutional protection."
+                ],
+                "answerIndex": 1,
+                "explanation": "Hosting other people's speech does not by itself turn a private organization into a government actor."
+              },
+              {
+                "question": "A city allows demonstrations in its public park but bans signs criticizing the mayor. What is the central constitutional concern?",
+                "options": [
+                  "Viewpoint discrimination by government.",
+                  "A neutral rule addressing traffic.",
+                  "A warrantless search.",
+                  "A private business choosing its customers."
+                ],
+                "answerIndex": 0,
+                "explanation": "The rule targets the speaker's position on the mayor rather than a neutral logistical concern."
+              },
+              {
+                "question": "A public park's amplified-noise rule applies regardless of the speaker's message. What else matters when evaluating it?",
+                "options": [
+                  "Nothing; any message-neutral rule is automatically constitutional.",
+                  "Whether officials personally like the event's organizers.",
+                  "Whether the speaker agrees with every city policy.",
+                  "Whether the rule is narrowly tailored to a significant interest and leaves ample alternative communication channels."
+                ],
+                "answerIndex": 3,
+                "explanation": "Content neutrality is necessary for this kind of regulation but does not replace the other safeguards."
+              },
+              {
+                "question": "Officers have an objectively reasonable basis to believe someone inside a home needs immediate emergency aid. Which statement is most accurate?",
+                "options": [
+                  "The Fourth Amendment forbids entry in every case without a warrant.",
+                  "An emergency means constitutional limits no longer exist.",
+                  "A genuine emergency may justify warrantless entry, depending on the circumstances.",
+                  "Emergency entry requires permission from the person's employer."
+                ],
+                "answerIndex": 2,
+                "explanation": "Emergency aid is a recognized exception, assessed using the circumstances and an objectively reasonable basis for immediate assistance."
+              },
+              {
+                "question": "Police arrest someone and want to browse the stored messages on their phone. Assume no consent or separate emergency exception. What is the general rule?",
+                "options": [
+                  "Police generally need a warrant; the arrest alone is insufficient.",
+                  "An arrest automatically permits every search of digital data.",
+                  "A phone receives no constitutional protection because it is portable.",
+                  "The person's mobile carrier can eliminate the warrant requirement by advertising its service."
+                ],
+                "answerIndex": 0,
+                "explanation": "Searching digital data on a phone generally requires a warrant rather than relying solely on the arrest."
+              },
+              {
+                "question": "A person receives the notice and hearing required for a protected benefits dispute but ultimately loses because the agency proves they are ineligible. Which statement best describes procedural due process?",
+                "options": [
+                  "It was necessarily violated because the person lost.",
+                  "It guarantees an appropriate decision-making process, not a favorable result.",
+                  "It requires every benefits dispute to be tried before a jury.",
+                  "It prohibits the government from ever ending benefits."
+                ],
+                "answerIndex": 1,
+                "explanation": "Procedural due process addresses fair procedures and protection against mistaken or unjustified deprivation, not a guaranteed victory."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Library of Congress, Constitution Annotated",
+                "title": "Constitution Annotated essay Amdt1.7.2.4",
+                "url": "https://constitution.congress.gov/browse/essay/amdt1-7-2-4/ALDE_00013541/",
+                "note": "Government action: the First Amendment limits government, not independent private decisions, with exceptions."
+              },
+              {
+                "publisher": "Library of Congress, Constitution Annotated",
+                "title": "Constitution Annotated essay Amdt1.7.4.1",
+                "url": "https://constitution.congress.gov/browse/essay/amdt1-7-4-1/ALDE_00013118/",
+                "note": "Viewpoint discrimination."
+              },
+              {
+                "publisher": "Library of Congress, Constitution Annotated",
+                "title": "Constitution Annotated essay Amdt1.7.7.1",
+                "url": "https://constitution.congress.gov/browse/essay/amdt1-7-7-1/ALDE_00013542/",
+                "note": "Public forums and content-neutral time, place, or manner restrictions."
+              },
+              {
+                "publisher": "Library of Congress, Constitution Annotated",
+                "title": "Constitution Annotated essay Amdt14.S1.4.2",
+                "url": "https://constitution.congress.gov/browse/essay/amdt14-S1-4-2/ALDE_00013745/",
+                "note": "Incorporation: Bill of Rights protections applied to the states."
+              },
+              {
+                "publisher": "Library of Congress, Constitution Annotated",
+                "title": "Fourth Amendment (text)",
+                "url": "https://constitution.congress.gov/constitution/amendment-4/",
+                "note": "Warrants: probable cause and particular description."
+              },
+              {
+                "publisher": "Library of Congress, Constitution Annotated",
+                "title": "Constitution Annotated essay Amdt4.3.1",
+                "url": "https://constitution.congress.gov/browse/essay/amdt4-3-1/ALDE_00013715/",
+                "note": "Unreasonable searches and seizures."
+              },
+              {
+                "publisher": "Library of Congress, Constitution Annotated",
+                "title": "Constitution Annotated essay Amdt4.6.3",
+                "url": "https://constitution.congress.gov/browse/essay/amdt4-6-3/ALDE_00013720/",
+                "note": "Emergency (exigent-circumstances) exception to the warrant requirement."
+              },
+              {
+                "publisher": "Library of Congress, Constitution Annotated",
+                "title": "Constitution Annotated essay Amdt4.6.4.1",
+                "url": "https://constitution.congress.gov/browse/essay/amdt4-6-4-1/ALDE_00000793/",
+                "note": "Searches incident to arrest, including phones' digital contents."
+              },
+              {
+                "publisher": "Library of Congress, Constitution Annotated",
+                "title": "Constitution Annotated essay Amdt14.S1.5.4.1",
+                "url": "https://constitution.congress.gov/browse/essay/amdt14-S1-5-4-1/ALDE_00013750/",
+                "note": "Procedural due process: notice and a meaningful opportunity to be heard."
+              },
+              {
+                "publisher": "Library of Congress, Constitution Annotated",
+                "title": "Constitution Annotated essay Amdt14.S1.5.4.2",
+                "url": "https://constitution.congress.gov/browse/essay/amdt14-S1-5-4-2/ALDE_00013751/",
+                "note": "Mathews v. Eldridge and benefits disputes."
               }
             ]
           }
@@ -1336,6 +1827,133 @@
         ]
       },
       {
+        "slug": "northern-renaissance",
+        "title": "The Northern Renaissance",
+        "kind": "era",
+        "summary": "The Northern Renaissance was a flourishing of fifteenth- and sixteenth-century art north of the Alps, distinguished by finely observed oil painting, expanding print culture, and responses to religious change.",
+        "lessons": [
+          {
+            "id": "les_nr01",
+            "slug": "detail-symbols-and-printed-images",
+            "title": "Northern Renaissance: Detail, Symbols, and Printed Images",
+            "sections": [
+              {
+                "heading": "The Renaissance was not only Italian",
+                "body": "“Northern Renaissance” is a convenient term for artistic developments north of the Alps during the fifteenth and sixteenth centuries, especially in regions such as the Netherlands and Germany. These developments took place alongside the Italian Renaissance, but Northern art should not be treated simply as a delayed imitation of Italy.\n\nNorthern artists became celebrated for close observation, minute detail, and the convincing depiction of textures such as fabric, skin, and metal. Their achievement was not merely making pictures look “real”: religious feeling, symbolic meaning, and the material presence of everyday things were also important.\n\nArtists and ideas traveled between northern and southern Europe, and Albrecht Dürer, for example, visited Venice and admired Italian art. The distinction between “Northern” and “Italian” is useful for comparison, but it should not imply that the two regions were isolated or that every artist within a region worked alike."
+              },
+              {
+                "heading": "Oil paint made detail luminous",
+                "body": "Jan van Eyck helped demonstrate the expressive possibilities of oil paint, but he did not invent the medium. Building up layers, including thin layers called glazes, allowed artists to create rich surfaces and compelling impressions of different materials.\n\nVan Eyck's Arnolfini Portrait rewards slow looking at clothing, furnishings, and small objects in a domestic interior. These details can suggest social position and invite symbolic interpretations, although scholars disagree about the event represented and the meanings of particular objects.\n\nMerchants became important patrons, commissioning pictures for domestic settings as well as participating in religious patronage. At the same time, elaborate multipanel altarpieces, such as the Ghent Altarpiece, show that highly detailed oil painting also served public religious devotion rather than belonging only to private homes."
+              },
+              {
+                "heading": "Prints let images travel",
+                "body": "A commissioned painting is a single object, whereas printmaking allows multiple impressions of an image to be produced from a prepared surface. Woodcuts and engravings helped images circulate among wider audiences and across geographical boundaries, changing who could encounter art and visual information.\n\nDürer was a major artist in both media, producing works such as the woodcut The Four Horsemen of the Apocalypse and the engraving Adam and Eve. These examples demonstrate that a reproducible image could still be an ambitious work of art, combining intricate detail with complex ideas.\n\nThe expansion of print culture also encouraged exchanges between northern Europe and Italy, giving people access to images and ideas from distant places. This was a major development in European visual culture, but printing itself was not a worldwide invention of Renaissance Europe: print technologies had earlier histories in Asia."
+              },
+              {
+                "heading": "Religious change reshaped what art could do",
+                "body": "The Protestant Reformation, initiated by Martin Luther in 1517, challenged Catholic authority and intensified debates about religious belief and practice. Printed pamphlets and images helped spread reforming ideas, so visual art became part of an argument about how people should understand religion.\n\nSome reformers questioned sacred images as potential objects of idolatry, while other approaches retained images as aids to teaching. Lucas Cranach the Elder's Law and Gospel, for example, used imagery to communicate Lutheran ideas, demonstrating that religious reform did not produce one uniform rejection of all art.\n\nThe period's artworks therefore offer several different viewing tasks: examining materials, identifying possible symbols, and asking whether an image was intended for devotion, domestic display, or teaching. When looking at a work, separate what you can directly observe from what you infer; an object's presence may be clear even when its symbolic meaning remains disputed."
+              }
+            ],
+            "keyFacts": [
+              "Northern Renaissance art flourished north of the Alps in the fifteenth and sixteenth centuries.",
+              "He developed oil painting's possibilities rather than inventing oil paint.",
+              "Layered oil paint helped depict rich surfaces and varied textures.",
+              "Merchants supported art made for domestic display.",
+              "His woodcuts and engravings exemplify ambitious art made in reproducible form.",
+              "Religious controversy changed the roles and acceptability of sacred images."
+            ],
+            "quiz": [
+              {
+                "question": "What does “Northern Renaissance” refer to?",
+                "options": [
+                  "Ancient art produced only in northern Italy.",
+                  "A nineteenth-century movement centered in Paris.",
+                  "Artistic developments north of the Alps, especially in the fifteenth and sixteenth centuries.",
+                  "A style that had no contact with Italian art."
+                ],
+                "answerIndex": 2,
+                "explanation": "The term describes a flourishing of art north of the Alps during those centuries."
+              },
+              {
+                "question": "Which statement about Jan van Eyck is accurate?",
+                "options": [
+                  "He used oil paint with remarkable effectiveness but did not invent it.",
+                  "He invented every type of printmaking.",
+                  "He painted only large outdoor frescoes.",
+                  "He rejected close observation of material objects."
+                ],
+                "answerIndex": 0,
+                "explanation": "His achievement lay in developing the medium's possibilities, not inventing oil paint."
+              },
+              {
+                "question": "Why were woodcuts and engravings important to European visual culture?",
+                "options": [
+                  "They prevented images from crossing regional boundaries.",
+                  "They required every copy to be painted separately.",
+                  "They eliminated all religious subjects from art.",
+                  "They allowed multiple impressions of images to circulate widely."
+                ],
+                "answerIndex": 3,
+                "explanation": "Reproducible prints expanded the circulation of pictures and ideas."
+              },
+              {
+                "question": "Which artist is especially associated with The Four Horsemen of the Apocalypse and Adam and Eve as prints?",
+                "options": [
+                  "Claude Monet.",
+                  "Albrecht Dürer.",
+                  "Vincent van Gogh.",
+                  "Masaccio."
+                ],
+                "answerIndex": 1,
+                "explanation": "Dürer made the former as a woodcut and the latter as an engraving."
+              },
+              {
+                "question": "How did the Protestant Reformation affect religious images?",
+                "options": [
+                  "It produced complete agreement about the role of all images.",
+                  "It made printmaking impossible.",
+                  "It prompted disputes, including rejection of some sacred imagery and use of other images for teaching.",
+                  "It required every artist to stop making religious works."
+                ],
+                "answerIndex": 2,
+                "explanation": "Responses varied, and Cranach's teaching images show one way art served reforming ideas."
+              },
+              {
+                "question": "You notice a small object in the Arnolfini Portrait and encounter two different explanations of its meaning. What is the best approach?",
+                "options": [
+                  "Distinguish the visible object from interpretations and recognize that its symbolism may be disputed.",
+                  "Assume every object has exactly one universally agreed meaning.",
+                  "Conclude that the object cannot matter because interpretations differ.",
+                  "Treat the first interpretation you read as a direct statement by the artist."
+                ],
+                "answerIndex": 0,
+                "explanation": "The painting's event and symbolic meanings are subjects of scholarly disagreement."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Smarthistory",
+                "title": "Printing and painting in Northern Renaissance art",
+                "url": "https://smarthistory.org/reframing-art-history/printing-painting-northern-renaissance-art/",
+                "note": "The term itself, oil paint and glazes, prints by Dürer, and the Reformation's effect on images."
+              },
+              {
+                "publisher": "Smarthistory",
+                "title": "The Northern Renaissance, a brief introduction",
+                "url": "https://smarthistory.org/an-introduction-to-the-northern-renaissance-in-the-fifteenth-century/",
+                "note": "Setting, merchant patrons, and the debated symbolism of the Arnolfini Portrait."
+              },
+              {
+                "publisher": "The Metropolitan Museum of Art",
+                "title": "The Metropolitan Museum of Art, Vol. 5: The Renaissance in the North",
+                "url": "https://www.metmuseum.org/met-publications/the-metropolitan-museum-of-art-vol-5-the-renaissance-in-the-north",
+                "note": "Overview of Northern art and its links with Italy."
+              }
+            ]
+          }
+        ]
+      },
+      {
         "slug": "impressionism",
         "title": "Impressionism",
         "kind": "style",
@@ -1449,6 +2067,276 @@
                 "publisher": "National Gallery of Art",
                 "title": "What Is Impressionism? 4 Things to Know",
                 "url": "https://www.nga.gov/stories/articles/what-impressionism-4-things-know"
+              }
+            ]
+          },
+          {
+            "id": "les_im02",
+            "slug": "color-and-brushwork-as-expression",
+            "title": "Vincent van Gogh: Color and Brushwork as Expression",
+            "sections": [
+              {
+                "heading": "An artist who learned and changed",
+                "body": "Vincent van Gogh lived from 1853 to 1890 and decided to become an artist at the age of twenty-seven. His career was relatively short, but it involved sustained experimentation rather than a single unchanging style.\n\nThe Potato Eaters, completed in 1885, depicts five people around a table in dim light, using earthy colors quite different from the bright palette of many later works. His brother Theo encouraged him to make his paintings lighter and more colorful, helping introduce him to Impressionist art.\n\nAfter moving to Paris in 1886, Van Gogh encountered Impressionist paintings in person and gradually experimented with their brighter colors and short brushstrokes. He also changed subjects, painting cafés, boulevards, flower still lifes, and landscapes along the Seine, while developing an approach that never became purely Impressionist."
+              },
+              {
+                "heading": "Color could do more than describe an object",
+                "body": "Van Gogh increasingly used color and brushwork to communicate moods and emotions, not simply to record a fleeting visual impression. When considering a painting, this suggests asking both “What color is the object?” and “What effect does this arrangement of colors create?”\n\nIn Apples, painted in Paris in 1887, the background combines blues and greens with strokes of yellow, orange, red, and pink. The apples reverse that sequence, beginning with warm tones and adding cool green and blue accents, so the same color combinations help unify foreground and background.\n\nColor's emotional purpose also appears in The Bedroom, which Van Gogh painted in Arles in October 1888 with the intention of expressing repose or sleep. Its walls and doors were originally purple rather than the blue they appear today, reminding us that aging materials can change a painting's visual effect."
+              },
+              {
+                "heading": "Space and brushwork were deliberate choices",
+                "body": "Visible brushstrokes were part of Van Gogh's developing visual language, combining influences from Impressionism with his own expressive aims. In Apples, for example, contrasting strokes organize the relationship between the fruit and its surroundings, rather than merely disguising the painting's material surface.\n\nThe Bedroom offers a useful case study in how an artist can depart from realistic perspective intentionally. Van Gogh explained to Theo that he had flattened the interior and omitted shadows so the work would resemble a Japanese print; meanwhile, the unusual angle of its rear wall reflected a genuinely skewed room.\n\nThose details caution against assuming that every odd-looking angle is a drawing error or that expressive painting happens without planning. As a looking exercise, compare the painting's space with an imagined photograph of the room, then consider what flattening and simplified shadows contribute to your experience."
+              },
+              {
+                "heading": "Look beyond the famous biography",
+                "body": "Van Gogh spent a year in the hospital at Saint-Rémy-de-Provence during 1889–1890 and continued making a large body of paintings there. The Starry Night dates to June 1889 in Saint-Rémy, placing it within this later phase of his career.\n\nHis personal circumstances matter, but his own explanations of works such as The Bedroom also provide evidence of intentional choices about color, space, and the mood he wanted to convey. A productive introduction should therefore examine what the paintings do, rather than use every visual feature as a supposed symptom of the artist's illness.\n\nVan Gogh's development shows how an artist can absorb an existing style without simply remaining within it: Impressionism helped him find an individual approach to color and brushwork. To practice looking, choose a painting and describe three visible decisions before offering an interpretation: the dominant colors, the treatment of space, and the marks that draw your attention."
+              }
+            ],
+            "keyFacts": [
+              "Van Gogh lived from 1853 to 1890 and chose an artistic career at twenty-seven.",
+              "The Potato Eaters, completed in 1885, uses earthy colors and dim light.",
+              "Impressionist art encouraged brighter colors and new kinds of brushwork after his arrival in 1886.",
+              "Color and brushwork increasingly conveyed emotions and moods.",
+              "Its flattened space was deliberate, and its colors have changed with age.",
+              "Van Gogh painted it in Saint-Rémy in June 1889."
+            ],
+            "quiz": [
+              {
+                "question": "Which description best fits The Potato Eaters?",
+                "options": [
+                  "A bright city boulevard painted with a vivid late-career palette.",
+                  "A print made by cutting a design into wood.",
+                  "Five people around a table in dim light, painted in earthy colors.",
+                  "An abstract arrangement with no recognizable figures."
+                ],
+                "answerIndex": 2,
+                "explanation": "The 1885 painting uses earthy tones to depict figures at a table in low light."
+              },
+              {
+                "question": "How did Impressionism influence Van Gogh?",
+                "options": [
+                  "It encouraged brighter colors and short brushstrokes that he adapted into his own style.",
+                  "It made him abandon color entirely.",
+                  "It required him to stop painting outdoors.",
+                  "It prevented him from developing an individual approach."
+                ],
+                "answerIndex": 0,
+                "explanation": "He learned from Impressionism but combined influences rather than becoming a pure Impressionist."
+              },
+              {
+                "question": "What did Van Gogh intend the colors of The Bedroom to express?",
+                "options": [
+                  "The precise market value of its furniture.",
+                  "The history of the Italian Renaissance.",
+                  "A military victory.",
+                  "Repose or sleep."
+                ],
+                "answerIndex": 3,
+                "explanation": "He chose its colors to express rest, though their appearance has changed over time."
+              },
+              {
+                "question": "Why is it misleading to treat The Bedroom's unusual space simply as evidence that Van Gogh could not draw?",
+                "options": [
+                  "The work contains no room or furniture.",
+                  "He deliberately flattened the space, and the real room also had a skewed corner.",
+                  "Every line follows perfectly accurate perspective.",
+                  "The painting was produced by a camera."
+                ],
+                "answerIndex": 1,
+                "explanation": "Both intentional stylization and the room's actual shape help explain its appearance."
+              },
+              {
+                "question": "The walls of The Bedroom look blue today but were originally purple. What does this illustrate?",
+                "options": [
+                  "Paintings never change after completion.",
+                  "Artists cannot make intentional color choices.",
+                  "Changes in materials over time can alter how we see an artwork.",
+                  "Every blue surface conceals an earlier purple one."
+                ],
+                "answerIndex": 2,
+                "explanation": "Discoloration has changed the painting's original color relationships."
+              },
+              {
+                "question": "Which approach best reflects this lesson's way of studying Van Gogh?",
+                "options": [
+                  "Examine visible choices in color, brushwork, and space, using biography as context rather than a complete explanation.",
+                  "Explain every mark as an automatic result of illness.",
+                  "Focus only on dates and ignore how the paintings look.",
+                  "Assume he painted exactly like every Impressionist."
+                ],
+                "answerIndex": 0,
+                "explanation": "His documented intentions and development support examining artistic choices alongside his circumstances."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Van Gogh Museum",
+                "title": "The Life of Vincent van Gogh, 1853-1890",
+                "url": "https://www.vangoghmuseum.nl/en/art-and-stories/vincents-life-1853-1890",
+                "note": "Dates, the late start, and the year at Saint-Rémy."
+              },
+              {
+                "publisher": "Van Gogh Museum",
+                "title": "Vincent van Gogh and Impressionism",
+                "url": "https://www.vangoghmuseum.nl/en/impressionism-special/vincent-and-impressionism",
+                "note": "The Potato Eaters, Theo, Paris from 1886, and expressive color."
+              },
+              {
+                "publisher": "Van Gogh Museum",
+                "title": "Vincent van Gogh, Apples",
+                "url": "https://www.vangoghmuseum.nl/en/collection/s0131V1962",
+                "note": "Warm and cool color sequences unifying fruit and background."
+              },
+              {
+                "publisher": "Van Gogh Museum",
+                "title": "Vincent van Gogh, The Bedroom",
+                "url": "https://www.vangoghmuseum.nl/en/collection/s0047V1962",
+                "note": "Colors meant to express rest, faded purple walls, and deliberately flattened space."
+              },
+              {
+                "publisher": "The Museum of Modern Art",
+                "title": "Vincent van Gogh, The Starry Night",
+                "url": "https://www.moma.org/collection/works/79802",
+                "note": "Painted in Saint-Rémy, June 1889."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "perspective",
+        "title": "Perspective",
+        "kind": "technique",
+        "summary": "Perspective creates the illusion of three-dimensional space on a flat surface, using lines, proportions, and changes in color or clarity to suggest distance.",
+        "lessons": [
+          {
+            "id": "les_pe01",
+            "slug": "how-paintings-create-depth",
+            "title": "Perspective: How Paintings Create Depth",
+            "sections": [
+              {
+                "heading": "A flat surface can suggest a deep space",
+                "body": "A painting is a flat surface, but it can make us feel that we are looking into a room, down a street, or across a landscape. Perspective is a means of creating that impression of three-dimensional space, rather than physically adding depth to the canvas or wall.\n\nLinear perspective uses lines to construct the illusion, while atmospheric perspective, also called aerial perspective, primarily uses tone and color. The two can work together: a landscape might use converging lines in the foreground and increasingly indistinct, bluish hills in the distance.\n\nIn early fifteenth-century Florence, Filippo Brunelleschi demonstrated a systematic approach to linear perspective, and Leon Battista Alberti explained it for artists in On Painting in 1435. These developments gave painters a mathematical framework for constructing convincing spaces, rather than simply placing smaller objects behind larger ones."
+              },
+              {
+                "heading": "Three clues in one-point perspective",
+                "body": "In one-point perspective, the horizon line represents eye level, and the principal vanishing point lies on that line. The vanishing point does not have to be a visible object: it is the location where a particular set of lines appears to meet as it recedes into the depicted space.\n\nReceding lines, often called orthogonals in this system, guide the eye toward the vanishing point. Imagine looking straight down a tiled hallway: the edges of the floor and the depth-directed tile lines can suggest convergence, while the horizontal divisions across the floor remain horizontal and become more closely spaced farther away.\n\nThat distinction matters: one-point perspective does not mean that every line in a painting must converge at one point. In the hallway example, it is the parallel lines running into depth that converge, and the progressively compressed floor divisions help make equal real-world distances appear correctly spaced in the image."
+              },
+              {
+                "heading": "Reading the illusion in a real painting",
+                "body": "Masaccio's Holy Trinity, a fresco in the church of Santa Maria Novella in Florence, uses perspective to make a solid wall appear to open into a chapel. Its painted architecture invites the viewer to experience the religious scene as if it occupies a space extending behind the wall.\n\nThe edges of the recessed squares, or coffers, in the painted ceiling provide useful orthogonals to follow. Extend those receding edges mentally and they lead toward the vanishing point on the ledge where the donors kneel, positioned at the viewer's eye level.\n\nThis alignment connects the depicted space to the viewer's position in front of the wall. As a looking exercise, first locate the strongest receding edges, then imagine extending them until they meet; use that meeting place to estimate the painting's eye level."
+              },
+              {
+                "heading": "Distance can also emerge through color",
+                "body": "Atmospheric perspective offers a different way to suggest depth, particularly in landscapes. In Cima da Conegliano's David and Jonathan, distant features become more indistinct, and far-off hills appear blue even though the landscape is understood to be green.\n\nThe painting also uses a road and a river that converge toward a vanishing point, combining linear and atmospheric methods. A convincing space therefore need not depend on a clearly visible grid; lines, relative scale, and changes in clarity can reinforce one another.\n\nAccurate perspective is an artistic option, not a universal requirement: Van Gogh deliberately flattened the space in The Bedroom and did not apply perspective consistently. Understanding the rules helps you recognize both convincing illusions and purposeful departures from them, rather than treating every unusual space as a mistake."
+              }
+            ],
+            "keyFacts": [
+              "Perspective suggests three-dimensional space on a two-dimensional surface.",
+              "In one-point perspective, the horizon line represents eye level.",
+              "Depth-directed orthogonals converge at a point on the horizon.",
+              "On Painting, published in 1435, explained a systematic approach to perspective.",
+              "Changes in tone, color, and clarity can suggest distance.",
+              "Artists can deliberately flatten or alter pictorial space."
+            ],
+            "quiz": [
+              {
+                "question": "What does perspective create in a painting?",
+                "options": [
+                  "A physically hollow space behind the canvas.",
+                  "The illusion of three-dimensional space on a flat surface.",
+                  "A requirement that every painting depict architecture.",
+                  "A method for removing all signs of distance."
+                ],
+                "answerIndex": 1,
+                "explanation": "Perspective constructs an impression of depth on a two-dimensional surface."
+              },
+              {
+                "question": "In one-point perspective, what does the horizon line represent?",
+                "options": [
+                  "The bottom edge of the frame.",
+                  "The tallest object in the picture.",
+                  "The boundary between warm and cool colors.",
+                  "Eye level."
+                ],
+                "answerIndex": 3,
+                "explanation": "The horizon line corresponds to eye level and contains the vanishing point."
+              },
+              {
+                "question": "In a straight-on view of a tiled hallway, which lines converge toward the principal vanishing point?",
+                "options": [
+                  "The parallel lines running into the hallway's depth.",
+                  "Every line, including the vertical sides of the door.",
+                  "Only the horizontal lines crossing the front of the hallway.",
+                  "Only the outlines of people."
+                ],
+                "answerIndex": 0,
+                "explanation": "In this one-point arrangement, depth-directed lines converge while the crosswise floor divisions remain horizontal."
+              },
+              {
+                "question": "Distant hills in a painting are bluer and less distinct than nearby trees. Which method is most directly responsible?",
+                "options": [
+                  "A rule that all landscape objects must have equal size.",
+                  "The complete elimination of color.",
+                  "Atmospheric perspective.",
+                  "Printmaking."
+                ],
+                "answerIndex": 2,
+                "explanation": "Atmospheric perspective uses changes in color and clarity to suggest distance."
+              },
+              {
+                "question": "What illusion does perspective create in Masaccio's Holy Trinity?",
+                "options": [
+                  "A solid wall appears to open into a chapel.",
+                  "The painting appears to contain no architecture.",
+                  "Every figure appears to stand on the same flat foreground line.",
+                  "The ceiling appears to be a real hole cut into the church roof."
+                ],
+                "answerIndex": 0,
+                "explanation": "The painted architecture creates an illusion of a chapel extending behind the wall."
+              },
+              {
+                "question": "A painting does not consistently follow accurate linear perspective. What is the most reasonable initial response?",
+                "options": [
+                  "Conclude that its artist could not draw.",
+                  "Assume that no painting can create convincing depth.",
+                  "Reject it as incapable of artistic meaning.",
+                  "Consider whether the artist intentionally altered space for another effect."
+                ],
+                "answerIndex": 3,
+                "explanation": "Van Gogh's The Bedroom provides an example of deliberately flattened space rather than simple inability."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "National Gallery, London",
+                "title": "Linear perspective (Glossary)",
+                "url": "https://www.nationalgallery.org.uk/paintings/glossary/linear-perspective",
+                "note": "What perspective is; linear versus atmospheric (aerial) perspective."
+              },
+              {
+                "publisher": "Smarthistory",
+                "title": "How one-point linear perspective works",
+                "url": "https://smarthistory.org/how-one-point-linear-perspective-works/",
+                "note": "Brunelleschi, Alberti's On Painting (1435), horizon line, vanishing point and orthogonals."
+              },
+              {
+                "publisher": "Smarthistory",
+                "title": "Masaccio, Holy Trinity",
+                "url": "https://smarthistory.org/masaccio-holy-trinity/",
+                "note": "The painted chapel illusion, the coffer orthogonals and the vanishing point at the viewer's eye level."
+              },
+              {
+                "publisher": "National Gallery, London",
+                "title": "Giovanni Battista Cima da Conegliano, David and Jonathan",
+                "url": "https://www.nationalgallery.org.uk/paintings/giovanni-battista-cima-da-conegliano-david-and-jonathan",
+                "note": "Atmospheric perspective combined with converging road and river."
+              },
+              {
+                "publisher": "Van Gogh Museum",
+                "title": "Vincent van Gogh, The Bedroom",
+                "url": "https://www.vangoghmuseum.nl/en/collection/s0047V1962",
+                "note": "Deliberately flattened space and inconsistent perspective."
               }
             ]
           }

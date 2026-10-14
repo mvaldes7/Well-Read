@@ -1,6 +1,6 @@
 # Architecture: Well-Read
 
-Stack (as of TSK-011). Display name: **Well-Read** (TSK-013); the repo is still github.com/mvaldes7/Curio (rename pending); production is https://well-read-learn.vercel.app.
+Stack (as of TSK-011). Display name: **Well-Read** (TSK-013); the repo is github.com/mvaldes7/Well-Read and the Vercel project is `well-read`; production is https://well-read-learn.vercel.app.
 
 - **Framework:** Next.js 16.4.0 (App Router, Turbopack), React 19.3.0, source in `src/app/`.
 - **Language:** TypeScript 5.x, `strict: true` (`tsconfig.json`), import alias `@/*` → `src/*`.

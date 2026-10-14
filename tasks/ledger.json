@@ -127,8 +127,26 @@
       "title": "Password reset",
       "role": "Builder",
       "type": "impl",
+      "state": "Release Approved",
+      "agent": "Builder",
+      "attempts": {}
+    },
+    {
+      "id": "TSK-014",
+      "title": "Lessons batch",
+      "role": "Builder",
+      "type": "impl",
       "state": "In Progress",
       "agent": "Builder",
+      "attempts": {}
+    },
+    {
+      "id": "TSK-019",
+      "title": "Per-discipline levels",
+      "role": "Builder",
+      "type": "impl",
+      "state": "Idea",
+      "agent": null,
       "attempts": {}
     }
   ],
@@ -609,6 +627,60 @@
       "from": "Idea",
       "to": "In Progress",
       "note": "agent=Builder"
+    },
+    {
+      "ts": "2026-10-13T18:11:04.505Z",
+      "actor": "Builder",
+      "taskId": "TSK-018",
+      "action": "status",
+      "from": "In Progress",
+      "to": "Checks Passed",
+      "note": "PR #14 CI checks passed on Node 24; Vercel preview success"
+    },
+    {
+      "ts": "2026-10-13T18:11:04.553Z",
+      "actor": "Builder",
+      "taskId": "TSK-018",
+      "action": "status",
+      "from": "Checks Passed",
+      "to": "Release Approved",
+      "note": "PR #14 squash-merged as 1603bf4; reset email template stays default (links work in the same browser only)"
+    },
+    {
+      "ts": "2026-10-13T18:11:09.223Z",
+      "actor": "Builder",
+      "taskId": "TSK-014",
+      "action": "add",
+      "from": null,
+      "to": "Idea",
+      "note": null
+    },
+    {
+      "ts": "2026-10-13T18:11:09.263Z",
+      "actor": "Builder",
+      "taskId": "TSK-014",
+      "action": "start",
+      "from": "Idea",
+      "to": "In Progress",
+      "note": "agent=Builder"
+    },
+    {
+      "ts": "2026-10-14T00:57:17.428Z",
+      "actor": "Builder",
+      "taskId": "TSK-019",
+      "action": "add",
+      "from": null,
+      "to": "Idea",
+      "note": "Backlog (not started). Rework achievements so levels count per discipline: each passed lesson is one tick toward that discipline's level. Keep the completionist badges."
+    },
+    {
+      "ts": "2026-10-14T01:11:18.929Z",
+      "actor": "Builder",
+      "taskId": "TSK-019",
+      "action": "status",
+      "from": "Idea",
+      "to": "Idea",
+      "note": "Note addition: TSK-019 also includes removing the 'Lvl X' label from the book spines. Still backlog, not started."
     }
   ]
 }

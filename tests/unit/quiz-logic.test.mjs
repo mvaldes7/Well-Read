@@ -144,7 +144,8 @@ test('toPublicQuestions strips answerIndex and explanation (whitelist: question,
       assert.deepEqual(q.options, l.quiz[i].options);
     });
     const json = JSON.stringify(pub);
-    assert.ok(!json.includes('answerIndex') && !json.includes('explanation'), l.id);
+    // Match JSON keys, not words: question text may use "explanation" (e.g. les_nr01).
+    assert.ok(!json.includes('"answerIndex":') && !json.includes('"explanation":'), l.id);
     for (const q of l.quiz) assert.ok(!json.includes(q.explanation), `${l.id}: explanation text leaked`);
   }
   // Unknown extra fields never pass through either; options are copied, not shared.
