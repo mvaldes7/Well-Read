@@ -1,7 +1,8 @@
 import { cache } from "react";
 import { unstable_rethrow } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { ACTIVITY_TABLE, computeStreaks, isMissingTableError } from "./streaks.mjs";
+import { isMissingTableError } from "@/lib/supabase/errors.mjs";
+import { ACTIVITY_TABLE, computeStreaks } from "./streaks.mjs";
 
 export type StreakResult =
   | { status: "ok"; current: number; best: number; activeToday: boolean }
@@ -30,7 +31,7 @@ export const getMyStreak = cache(async (): Promise<StreakResult> => {
       .order("occurred_at", { ascending: false })
       .limit(MAX_ROWS);
     if (error) {
-      if (!isMissingTableError(error)) console.error(`activity_log read failed (${error.code ?? "unknown"})`);
+      if (!isMissingTableError(error, ACTIVITY_TABLE)) console.error(`activity_log read failed (${error.code ?? "unknown"})`);
       return { status: "unavailable" };
     }
     const instants = (data ?? []).map((r: { occurred_at?: unknown }) => (typeof r.occurred_at === "string" ? r.occurred_at : null));

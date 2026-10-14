@@ -3,7 +3,8 @@
 import { refresh } from "next/cache";
 import { unstable_rethrow } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { MESSAGES, READING_LIST_TABLE, isMissingTableError, isStatus, parseItemId, validateNewItem } from "./logic.mjs";
+import { isMissingTableError } from "@/lib/supabase/errors.mjs";
+import { MESSAGES, READING_LIST_TABLE, isStatus, parseItemId, validateNewItem } from "./logic.mjs";
 
 export interface AddItemState {
   status: "idle" | "added" | "error";
@@ -36,7 +37,7 @@ async function sessionClient() {
 }
 
 const writeError = (error: { code?: string | null; message?: string | null }, what: string) => {
-  if (isMissingTableError(error)) return MESSAGES.unavailable;
+  if (isMissingTableError(error, READING_LIST_TABLE)) return MESSAGES.unavailable;
   console.error(`reading_list_items ${what} failed (${error.code ?? "unknown"})`);
   return MESSAGES.saveFailed;
 };
