@@ -145,7 +145,7 @@
       "title": "Per-discipline levels",
       "role": "Builder",
       "type": "impl",
-      "state": "In Progress",
+      "state": "Release Approved",
       "agent": "Builder",
       "attempts": {}
     }
@@ -708,6 +708,24 @@
       "from": "Idea",
       "to": "In Progress",
       "note": "agent=Builder"
+    },
+    {
+      "ts": "2026-10-14T22:49:55.830Z",
+      "actor": "Builder",
+      "taskId": "TSK-019",
+      "action": "status",
+      "from": "In Progress",
+      "to": "Checks Passed",
+      "note": "PR #16 CI checks + Vercel preview green at 02a40b1"
+    },
+    {
+      "ts": "2026-10-14T22:49:55.867Z",
+      "actor": "Builder",
+      "taskId": "TSK-019",
+      "action": "status",
+      "from": "Checks Passed",
+      "to": "Release Approved",
+      "note": "PR #16 squash-merged as ec6abd8"
     }
   ]
 }
