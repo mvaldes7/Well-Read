@@ -24,11 +24,12 @@ world history and poets.
 Discipline → Topic → Lesson → Quiz.
 
 - A lesson counts as **complete only when its quiz is passed with a score of 70% or higher**.
-- **Per-topic levels:** 1 completed lesson = Level 1, 5 completed lessons = Level 2,
-  then +1 level for every further 5 completed lessons.
+- **Per-discipline mastery (TSK-019, replaced per-topic levels):** tiers by passed lessons in the discipline:
+  Novice 1, Apprentice 5, Scholar 10, Luminary 20.
 - The bookshelf shows one book per topic with at least one passed lesson, grouped by discipline; books in the same discipline share a cover color.
 - A separate **achievements** menu (starter set in TSK-011: First Lesson, Perfect Score, Discipline Explorer,
-  a level achievement per topic, and a Completionist per discipline; see AC-6).
+  a level achievement per topic, and a Completionist per discipline; since TSK-019 the topic levels are replaced by
+  one mastery-tier achievement per discipline; see AC-6).
 - **Lessons** have about 3 sections, 5 key facts, a quiz whose questions each carry an explanation (shown
   after grading), and a list of sources. Content: 6 disciplines (World History, Philosophy, Ancient History,
   American Civics, Art History, Poetry & Literature) as of TSK-012.

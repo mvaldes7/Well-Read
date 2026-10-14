@@ -85,24 +85,27 @@ Stack (as of TSK-011). Display name: **Well-Read** (TSK-013); the repo is github
   access token is issued, hence the `refreshSession()` after saving; if that refresh failed, the new name would
   appear at the next token refresh. `user_metadata` is user-editable, so names are display only and never used
   for authorization. React escapes them; no `dangerouslySetInnerHTML`.
-- **Levels (TSK-011, AC-4):** `src/lib/progress/levels.mjs` (pure, tested): `levelFor(n)` returns
-  `{level, passed, toward, needed, nextLevel}` (n = 0 -> level null, next step "Pass a lesson to reach Level 1";
-  otherwise level 1 + floor(n/5), `toward` n % 5 of 5). Bad input is clamped (non-numbers, NaN, negatives -> 0;
-  fractions floored). n is `passedInTopic` over the deduped per-lesson lookup, so only distinct passed lessons
-  whose ids exist in content count. Books carry `level`; the bookshelf shows it as a brass band in the spine's top
-  cap (same box as the plain cap, so title fit is unchanged) and in the link label; the topic page streams a
-  badge + `<progress>` + text in a sized slot.
+- **Mastery (TSK-019, AC-4; replaces the TSK-011 per-topic levels):** `src/lib/progress/mastery.mjs` (pure,
+  tested). Per-discipline tiers from n = the discipline's count of distinct passed lessons across all its topics
+  (`passedInDiscipline` over the deduped per-lesson lookup, so only ids in content count): **Novice 1, Apprentice
+  5, Scholar 10, Luminary 20**; n = 0 is "Not started". `masteryFor(n)` returns `{passed, tier, tierIndex, next,
+  toward, needed, remaining}`; bad input is clamped (non-numbers, NaN, negatives -> 0; fractions floored).
+  `masteryLine` gives "N lessons · Tier", `nextTierText` "3/5 to Apprentice" / "Highest tier reached". Computed
+  per request from content + completions, so new lessons count automatically; nothing is stored. Shown as
+  mastery cards (4-step tier track) on `/achievements` and as a tier badge + `<progress>` on the topic page.
+  Bookshelf spines carry no level; the per-topic brass-tag count uses `passedInTopic` in `logic.mjs`.
 - **Achievements (TSK-011, AC-6):** defined in ONE file, `src/achievements/definitions.mjs` (JSDoc types).
-  Each definition is `single`, `perTopic` or `perDiscipline` (generated from content) with a pure evaluator over
+  Each definition is `single` or `perDiscipline` (generated from content) with a pure evaluator over
   a context built once from the user's rows + content (`bestCompletions`: best attempt per known lesson,
   with its `completed_at`). `evaluateAchievements(rows, content)` returns results in definition/content order.
   To add one, append a definition. Nothing is stored; `/achievements` computes the board on the server from
   `getMyProgress()` (which now also selects `completed_at`, read-only) + `src/content`. Ids for generated
-  achievements use slugs (`topic-level:<discipline>/<topic>`), which is fine because nothing persists them.
+  achievements use slugs (`mastery:<discipline>`, `completionist:<discipline>`), UI-only and never stored (REV-007).
+  Set (TSK-019): 3 milestones + per discipline one mastery achievement (current tier) and one Completionist.
   **Date semantics:** `completed_at` is rewritten whenever a better attempt is saved, so it is the time of the
   BEST attempt and never earlier than the real pass. Without `first_passed_at` (see TSK-012 below) a date is
   therefore an upper bound and the UI says **"Earned by <date>"**: an achievement needing k passed lessons uses the k-th earliest `completed_at` among
-  qualifying lessons ("any" = earliest, "all of" = latest; a topic's Level N tier uses k = max(1, 5(N-1));
+  qualifying lessons ("any" = earliest, "all of" = latest; a discipline's mastery tier uses k = the tier threshold 1/5/10/20, i.e. the date of the k-th lesson first passed in it;
   Discipline Explorer = latest of each discipline's earliest). Rows without a date are skipped; when fewer than k
   are dated, the date is omitted ("Earned"). Dates are formatted on the server, en-US, in
   **America/Los_Angeles** (`formatEarnedDate`), so they don't depend on the server's time zone.
