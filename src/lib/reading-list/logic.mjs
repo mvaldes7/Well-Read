@@ -135,16 +135,6 @@ export function safeHref(url) {
   return r.ok && r.value ? r.value : null;
 }
 
-/**
- * PostgREST/Postgres "table doesn't exist": PGRST205 (not in the schema cache) or 42P01
- * (undefined_table). If a message is present it must name this table.
- * @param {{ code?: string | null, message?: string | null } | null | undefined} error
- * @param {string} [table]
- */
-export function isMissingTableError(error, table = READING_LIST_TABLE) {
-  if (!error || (error.code !== "PGRST205" && error.code !== "42P01")) return false;
-  return typeof error.message === "string" && error.message ? error.message.includes(table) : true;
-}
 
 /**
  * @typedef {{ id: string, title: string, kind: Kind, url: string | null, status: Status,
@@ -176,9 +166,12 @@ export function groupItems(rows) {
     });
   }
   const t = (/** @type {string | null} */ s) => (s ? Date.parse(s) || 0 : 0);
-  out.to_read.sort((a, b) => t(a.created_at) - t(b.created_at));
-  out.in_progress.sort((a, b) => t(a.created_at) - t(b.created_at));
-  out.completed.sort((a, b) => t(b.completed_at ?? b.created_at) - t(a.completed_at ?? a.created_at));
+  // Ties break on id, so the result never depends on the order rows arrived in.
+  const byId = (/** @type {Item} */ a, /** @type {Item} */ b) => Number(a.id) - Number(b.id);
+  const oldest = (/** @type {Item} */ a, /** @type {Item} */ b) => t(a.created_at) - t(b.created_at) || byId(a, b);
+  out.to_read.sort(oldest);
+  out.in_progress.sort(oldest);
+  out.completed.sort((a, b) => t(b.completed_at ?? b.created_at) - t(a.completed_at ?? a.created_at) || byId(b, a));
   return out;
 }
 
