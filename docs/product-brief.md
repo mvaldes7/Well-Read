@@ -8,8 +8,8 @@ Display name **Well-Read** (TSK-013, Mike's choice). Production: https://well-re
 - **Icon:** option B, "book spines on a shelf" (chosen 2026-10-13). A simplified, pixel-aligned version is
   used for the 16/32 px tab icon. All options are kept in `docs/design/icons/`.
 - **History:** FoundationLearn (original working name) → Curio (TSK-009) → Well-Read (TSK-013).
-- **Pending renames:** the GitHub repository is still github.com/mvaldes7/Curio, and the vercel.com project
-  links still use `curio`. Mike moved production to https://well-read-learn.vercel.app, and
+- **Renames done:** the GitHub repository is github.com/mvaldes7/Well-Read and the Vercel project is
+  `well-read` (vercel.com/michaelvaldes07-8585/well-read). Production is https://well-read-learn.vercel.app;
   curio-learn.vercel.app redirects there.
 
 Status: **Approved** by Mike, 2026-10-09.
