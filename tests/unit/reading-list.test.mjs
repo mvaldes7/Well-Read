@@ -3,8 +3,10 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import {
   KINDS, STATUSES, MESSAGES, TITLE_MAX, URL_MAX, validateNewItem, validateUrl, parseItemId, moveTargets,
-  completedAtAfter, safeHref, isMissingTableError, groupItems, kindLabel,
+  completedAtAfter, safeHref, groupItems, kindLabel, READING_LIST_TABLE,
 } from '../../src/lib/reading-list/logic.mjs';
+import { isMissingTableError as missing } from '../../src/lib/supabase/errors.mjs';
+const isMissingTableError = (e) => missing(e, READING_LIST_TABLE);
 import { PUBLIC_PATHS, classifyPath, decideAuth } from '../../src/lib/auth/logic.mjs';
 
 const read = (p) => readFileSync(new URL(`../../${p}`, import.meta.url), 'utf8');
@@ -132,7 +134,7 @@ test('wiring: session client only, getClaims re-check, server validation, id-sco
   assert.doesNotMatch(code(actions), /completed_at/);
   assert.match(actions, /\.update\(\{ status: to \}\)\.eq\("id", id\)/);
   assert.match(actions, /\.delete\(\)\.eq\("id", id\)/);
-  assert.match(data, /isMissingTableError\(error\)\) return \{ status: "unavailable" \}/);
+  assert.match(data, /isMissingTableError\(error, READING_LIST_TABLE\)\) return \{ status: "unavailable" \}/);
   const page = read('src/app/reading-list/page.tsx');
   assert.match(page, /list\.status === "unavailable"/);
   assert.match(page, /MESSAGES\.unavailable/);
@@ -169,10 +171,43 @@ test('migration SQL: table, checks, trigger with search_path, RLS own-row CRUD, 
   assert.match(s, /before insert or update on public\.reading_list_items for each row execute function public\.reading_list_items_touch\(\)/);
   assert.match(s, /enable row level security/);
   assert.match(s, /revoke all on table public\.reading_list_items from anon, authenticated/);
-  assert.match(s, /grant select, insert, update, delete on table public\.reading_list_items to authenticated/);
+  assert.match(s, /grant select, insert, delete on table public\.reading_list_items to authenticated;/);
+  assert.match(s, /grant update \(title, kind, url, status\) on table public\.reading_list_items to authenticated;/);
+  assert.doesNotMatch(s, /grant [^;]*\bupdate\b(?! \(title, kind, url, status\))[^;]*;/);
+  assert.equal((s.match(/\bgrant\b/g) ?? []).length, 2);
   assert.doesNotMatch(s, /to anon|grant [^;]* anon/);
   for (const op of ['select', 'insert', 'update', 'delete']) assert.match(s, new RegExp(`"reading_list_items_${op}_own" on public\\.reading_list_items for ${op} to authenticated`), op);
   assert.match(s, /for update to authenticated using \(user_id = \(select auth\.uid\(\)\)\) with check \(user_id = \(select auth\.uid\(\)\)\)/);
   assert.equal((s.match(/\(select auth\.uid\(\)\)/g) ?? []).length, 5);
   assert.doesNotMatch(s, /using \(user_id = auth\.uid\(\)\)|security definer/);
+});
+
+test('every app UPDATE writes only columns in the UPDATE grant (title, kind, url, status)', () => {
+  const sql = read('supabase/migrations/20261014234000_reading_list_items.sql');
+  const granted = sql.match(/grant update \(([^)]*)\) on table public\.reading_list_items/)[1].split(',').map((c) => c.trim());
+  const actions = read('src/lib/reading-list/actions.ts');
+  const updates = [...actions.matchAll(/\.update\(\{([^}]*)\}\)/g)].map((m) => m[1]);
+  assert.ok(updates.length >= 1);
+  for (const body of updates) {
+    for (const col of body.split(',').map((kv) => kv.split(':')[0].trim()).filter(Boolean)) assert.ok(granted.includes(col), col);
+  }
+  // No other module touches the table.
+  for (const f of ['src/lib/reading-list/data.ts', 'src/app/reading-list/page.tsx', 'src/components/ReadingListItem.tsx', 'src/components/ReadingListAddForm.tsx']) {
+    assert.doesNotMatch(read(f), /\.update\(/, f);
+  }
+});
+
+test('read: deterministic order (created_at desc, id desc) before the 1000-row limit', () => {
+  const data = read('src/lib/reading-list/data.ts').replace(/\s+/g, ' ');
+  assert.match(data, /\.eq\("user_id", userId\) \.order\("created_at", \{ ascending: false \}\) \.order\("id", \{ ascending: false \}\) \.limit\(READ_LIMIT\)/);
+  assert.match(data, /export const READ_LIMIT = 1000;/);
+});
+
+test('groupItems is independent of input order, ties broken by id', () => {
+  const same = '2026-10-01T00:00:00Z';
+  const rows = [5, 3, 9, 1, 7].map((id, i) => ({ id, title: `T${id}`, kind: 'book', url: null, status: i % 2 ? 'to_read' : 'completed', created_at: same, completed_at: i % 2 ? null : same }));
+  const a = groupItems(rows), b = groupItems([...rows].reverse());
+  assert.deepEqual(a, b);
+  assert.deepEqual(a.to_read.map((i) => i.id), ['1', '3']);
+  assert.deepEqual(a.completed.map((i) => i.id), ['9', '7', '5']);
 });

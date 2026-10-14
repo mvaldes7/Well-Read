@@ -8,7 +8,8 @@
 --
 -- Notes:
 -- * Identity id (same style as activity_log): inserts need no sequence privilege.
--- * Owner-only CRUD for authenticated users; anon gets nothing. The update policy
+-- * Owner-only CRUD for authenticated users; anon gets nothing. UPDATE is granted
+--   only on (title, kind, url, status). The update policy
 --   has both USING and WITH CHECK, so a row can't be moved to another user_id.
 -- * url is rendered as a link: only http(s), at most 2048 chars (the app also
 --   validates with the URL parser and adds rel="noopener noreferrer").
@@ -72,7 +73,12 @@ alter table public.reading_list_items enable row level security;
 
 -- Only signed-in users, only their own rows. No anon access at all.
 revoke all on table public.reading_list_items from anon, authenticated;
-grant select, insert, update, delete on table public.reading_list_items to authenticated;
+grant select, insert, delete on table public.reading_list_items to authenticated;
+-- UPDATE only on the user-editable columns. id, user_id, created_at, updated_at and
+-- completed_at can't be named in a client UPDATE. Column privileges are checked against
+-- the columns in the statement's SET list, not against what a BEFORE trigger assigns to
+-- NEW, so the trigger still maintains updated_at and completed_at.
+grant update (title, kind, url, status) on table public.reading_list_items to authenticated;
 
 create policy "reading_list_items_select_own"
   on public.reading_list_items for select
