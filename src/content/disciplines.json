@@ -585,6 +585,175 @@
             ]
           }
         ]
+      },
+      {
+        "slug": "ottoman-empire",
+        "title": "The Ottoman Empire",
+        "kind": "era",
+        "summary": "The Ottoman Empire grew from a small state in Anatolia around 1300 into a major power across southeastern Europe, the Middle East, and North Africa before its imperial rule ended in 1922.",
+        "lessons": [
+          {
+            "id": "les_ot01",
+            "slug": "governing-across-three-continents",
+            "title": "The Ottoman Empire: Governing Across Three Continents",
+            "sections": [
+              {
+                "heading": "From a frontier state to an empire",
+                "body": "The Ottoman state began in northwestern Anatolia, the Asian part of present-day Turkey, around 1300. Its name comes from Osman I, the founder of its ruling dynasty, whose followers expanded into neighboring territories as older regional powers weakened.\n\nThe Ottomans expanded into both Anatolia and the Balkans, the region of southeastern Europe across the water from their original territory. In 1453, Sultan Mehmed II captured Constantinople, ending the Byzantine Empire and making the city a center of Ottoman power.\n\nLater conquests brought Syria and Egypt under Ottoman rule, and the empire reached a high point of political power during Süleyman the Magnificent's reign, from 1520 to 1566. Its territories extended across parts of Europe, Asia, and Africa, so understanding it requires thinking beyond the borders of modern Turkey."
+              },
+              {
+                "heading": "Governing people with different identities",
+                "body": "The empire was ruled by a sultan from the Ottoman dynasty, supported by administrators and a military establishment. Farmers, merchants, and craftspeople produced wealth and paid taxes that supported the ruling institutions.\n\nOttoman society included Muslims, Christians, and Jews, with religious communities exercising varying degrees of control over their own affairs. Arrangements commonly described as the millet system allowed religious leaders to oversee matters such as worship, education, and some legal disputes, but non-Muslims faced legal disadvantages and additional taxation; communal autonomy did not mean equal citizenship.\n\nAnother institution, the devşirme, periodically took Christian boys from their families, converted them to Islam, and trained them for service in the military or imperial administration. Some recruits rose to powerful positions, but those opportunities do not erase the system's coercion, forced conversion, and family separation."
+              },
+              {
+                "heading": "Art and architecture expressed imperial power",
+                "body": "Ottoman rulers supported architecture, calligraphy, manuscript painting, textiles, and ceramics, creating a distinctive visual culture from several artistic traditions. Conquest and court patronage brought artists and ideas from Byzantine, Persian, and Arab cultural worlds into Ottoman artistic production.\n\nThe architect Sinan designed celebrated mosques and religious complexes during the sixteenth century, including the age of Süleyman. Ottoman mosque complexes could combine religious, educational, social, and commercial functions, making them important urban institutions rather than merely places for prayer.\n\nArtistic production also flourished outside the capital: Iznik became known for ceramics, while Bursa was an important center for silk textiles. Domed mosques, slender minarets, and related artistic traditions spread across Ottoman territories, leaving a cultural legacy visible well beyond modern Turkey."
+              },
+              {
+                "heading": "Reform, war, and the end of imperial rule",
+                "body": "In the nineteenth century, Ottoman rulers confronted territorial losses, nationalist movements, financial pressures, and the growing influence of European powers. The Tanzimat reforms, associated with the period 1839–1876, attempted to strengthen the state through changes in administration, education, law, and other institutions, including promises of greater equality that were not consistently implemented.\n\nThe empire fought alongside Germany in World War I and suffered defeat. During the war, Ottoman authorities carried out the Armenian genocide, using deportations, massacres, and systematic persecution to destroy Armenian communities, particularly in 1915–1916.\n\nAfter the war, a Turkish nationalist movement led by Mustafa Kemal, later known as Atatürk, challenged the postwar settlement and the old imperial order. The sultanate was abolished in 1922, and Turkey was proclaimed a republic in 1923: these were related but distinct events, and the republic did not inherit the empire's full territory."
+              }
+            ],
+            "keyFacts": [
+              "The empire began in Anatolia around 1300 and took its name from Osman I.",
+              "Mehmed II captured the city in 1453.",
+              "Ottoman territories spanned parts of Europe, Asia, and Africa.",
+              "His reign, 1520–1566, was a high point of political power and artistic patronage.",
+              "Ottoman authorities carried out mass deportations and killings, particularly in 1915–1916.",
+              "The sultanate ended in 1922; Turkey became a republic in 1923."
+            ],
+            "quiz": [
+              {
+                "question": "Where did the Ottoman state originate?",
+                "options": [
+                  "The Arabian Peninsula.",
+                  "Northwestern Anatolia.",
+                  "The British Isles.",
+                  "Northern India."
+                ],
+                "answerIndex": 1,
+                "explanation": "The Ottoman state began in northwestern Anatolia, in present-day Turkey."
+              },
+              {
+                "question": "Why was the conquest of Constantinople in 1453 a major turning point?",
+                "options": [
+                  "It ended the Byzantine Empire and gave the Ottomans an important imperial center.",
+                  "It immediately created the Republic of Turkey.",
+                  "It ended Ottoman expansion into Europe.",
+                  "It abolished the position of sultan."
+                ],
+                "answerIndex": 0,
+                "explanation": "Mehmed II's conquest ended Byzantine rule and established Constantinople as an Ottoman imperial center."
+              },
+              {
+                "question": "Which statement best describes religious communities under Ottoman rule?",
+                "options": [
+                  "Everyone had to practice the same religion.",
+                  "Religious communities had no role in education or law.",
+                  "Every subject always possessed identical legal rights.",
+                  "Some communities managed internal affairs, but their autonomy did not guarantee equal legal status."
+                ],
+                "answerIndex": 3,
+                "explanation": "Religious communities could exercise internal autonomy while non-Muslims faced disadvantages and additional taxation."
+              },
+              {
+                "question": "What was the devşirme?",
+                "options": [
+                  "A voluntary university exchange program.",
+                  "A tax paid only by foreign merchants.",
+                  "A levy taking Christian boys for conversion and training in imperial service.",
+                  "A law abolishing the Ottoman military."
+                ],
+                "answerIndex": 2,
+                "explanation": "Christian boys were taken from their families, converted to Islam, and trained for military or administrative service."
+              },
+              {
+                "question": "Which description best captures the purpose of the Tanzimat reforms?",
+                "options": [
+                  "Strengthening the state through institutional changes, including reforms in law and education.",
+                  "Restoring the Byzantine Empire.",
+                  "Ending all state involvement in administration.",
+                  "Replacing the empire with a republic in 1839."
+                ],
+                "answerIndex": 0,
+                "explanation": "The reforms sought to preserve and strengthen the Ottoman state through institutional modernization."
+              },
+              {
+                "question": "Which sequence correctly describes the end of Ottoman imperial rule and the founding of modern Turkey?",
+                "options": [
+                  "Republic proclaimed in 1922; sultanate abolished in 1923.",
+                  "Sultanate abolished in 1922; republic proclaimed in 1923.",
+                  "Sultanate abolished in 1453; republic proclaimed in 1520.",
+                  "Sultanate abolished and republic proclaimed in 1839."
+                ],
+                "answerIndex": 1,
+                "explanation": "Abolition of the sultanate preceded proclamation of the republic by one year."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Ottoman Empire",
+                "url": "https://www.britannica.com/place/Ottoman-Empire",
+                "note": "Origins in Anatolia, Osman I, territory across three continents, end of imperial rule."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Ottoman Empire summary",
+                "url": "https://www.britannica.com/summary/Ottoman-Empire",
+                "note": "The 1453 conquest of Constantinople."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Ottoman Empire timeline",
+                "url": "https://www.britannica.com/summary/Ottoman-Empire-Timeline",
+                "note": "Key dates from Constantinople and Süleyman to 1922–1923."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Ottoman Empire: Classical Ottoman society and administration",
+                "url": "https://www.britannica.com/place/Ottoman-Empire/Classical-Ottoman-society-and-administration",
+                "note": "Sultan, administrators and taxpayers; religious communities."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Greece: Greece under Ottoman rule",
+                "url": "https://www.britannica.com/place/Greece/Greece-under-Ottoman-rule",
+                "note": "Communal autonomy and the legal disadvantages of non-Muslims."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Devşirme",
+                "url": "https://www.britannica.com/topic/devsirme",
+                "note": "The levy of Christian boys for conversion and imperial service."
+              },
+              {
+                "publisher": "The Metropolitan Museum of Art",
+                "title": "The Art of the Ottomans before 1600",
+                "url": "https://www.metmuseum.org/essays/the-art-of-the-ottomans-before-1600",
+                "note": "Court patronage, Sinan, Iznik ceramics and Bursa silks."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Decline of the Ottoman Empire summary",
+                "url": "https://www.britannica.com/summary/Decline-of-the-Ottoman-Empire",
+                "note": "Nineteenth-century pressures and the Turkish nationalist movement."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Ottoman Empire: The Tanzimat reforms, 1839–76",
+                "url": "https://www.britannica.com/place/Ottoman-Empire/The-Tanzimat-reforms-1839-76",
+                "note": "Institutional reform and unevenly kept promises of equality."
+              },
+              {
+                "publisher": "United States Holocaust Memorial Museum",
+                "title": "The Armenian Genocide (1915-16): Overview",
+                "url": "https://encyclopedia.ushmm.org/content/en/article/the-armenian-genocide-1915-16-overview",
+                "note": "Deportations, massacres and the destruction of Armenian communities."
+              }
+            ]
+          }
+        ]
       }
     ]
   },
