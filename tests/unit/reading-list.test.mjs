@@ -148,7 +148,7 @@ test('wiring: session client only, getClaims re-check, server validation, id-sco
 test('migration SQL: table, checks, trigger with search_path, RLS own-row CRUD, grants, index', () => {
   const name = '20261014234000_reading_list_items.sql';
   const sql = read(`supabase/migrations/${name}`);
-  assert.ok(name.slice(0, 14) > '20261014232500', 'version after TSK-016 activity_log');
+  assert.ok(name.slice(0, 14) > '20261014233800', 'version after TSK-016 activity_log (applied as 20261014233800)');
   assert.match(sql, new RegExp(`version ${name.slice(0, 14)}`));
   const s = sql.replace(/--[^\n]*/g, '').replace(/\s+/g, ' ');
   assert.match(s, /create table public\.reading_list_items \(/);

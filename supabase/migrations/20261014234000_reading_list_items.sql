@@ -2,7 +2,7 @@
 --
 -- STATUS: UNAPPLIED. Do not run against any Supabase project until Mike has
 -- reviewed and approved it. Apply via the normal migration process only, as
--- version 20261014234000 (must match this filename; after 20261014232500).
+-- version 20261014234000 (must match this filename; after 20261014233800, activity_log as applied).
 -- The app tolerates this table being absent: /reading-list shows "Not available
 -- yet", so the code can deploy before or after this migration.
 --
