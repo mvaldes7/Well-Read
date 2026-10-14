@@ -20,7 +20,7 @@ function Logo() {
 
 /**
  * App sidebar (TSK-015): replaces the top nav. Hidden on the signed-out auth pages (logo only).
- * Below 860px it collapses behind a Menu button (aria-expanded; Esc closes and returns focus).
+ * Below 820px (the globals.css breakpoint) it collapses behind a Menu button (aria-expanded; Esc closes and returns focus).
  * `user` is the streamed server UserMenu (name -> /account, Sign out).
  */
 export default function Sidebar({ user }: { user: ReactNode }) {
