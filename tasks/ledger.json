@@ -672,6 +672,15 @@
       "from": null,
       "to": "Idea",
       "note": "Backlog (not started). Rework achievements so levels count per discipline: each passed lesson is one tick toward that discipline's level. Keep the completionist badges."
+    },
+    {
+      "ts": "2026-10-14T01:11:18.929Z",
+      "actor": "Builder",
+      "taskId": "TSK-019",
+      "action": "status",
+      "from": "Idea",
+      "to": "Idea",
+      "note": "Note addition: TSK-019 also includes removing the 'Lvl X' label from the book spines. Still backlog, not started."
     }
   ]
 }
