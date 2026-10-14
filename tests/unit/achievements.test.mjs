@@ -8,23 +8,35 @@ const row = (lesson_id, score, total, passed, completed_at = null) => ({ lesson_
 const byId = (rows, ds = disciplines) => Object.fromEntries(evaluateAchievements(rows, ds).map((a) => [a.id, a]));
 const D1 = '2026-10-01T17:00:00Z', D2 = '2026-10-02T17:00:00Z', D3 = '2026-10-03T17:00:00Z', D4 = '2026-10-04T17:00:00Z', D5 = '2026-10-05T17:00:00Z', D6 = '2026-10-06T17:00:00Z';
 const iso = (d) => new Date(d).toISOString();
+const frow = (lesson_id, score, total, passed, completed_at, first_passed_at) => ({ lesson_id, score, total, passed, completed_at, first_passed_at });
 const ALL = disciplines.flatMap((d) => d.topics.flatMap((t) => t.lessons.map((l) => l.id)));
 
-test('starter set: ids unique, one per topic and per discipline, content order', () => {
+test('starter set: ids unique, mastery + completionist per discipline, content order', () => {
   const a = evaluateAchievements([], disciplines);
   const ids = a.map((x) => x.id);
   assert.equal(new Set(ids).size, ids.length);
-  const topics = disciplines.flatMap((d) => d.topics.map((t) => `topic-level:${d.slug}/${t.slug}`));
-  assert.deepEqual(ids, ['first-lesson', 'perfect-score', 'discipline-explorer', ...topics, ...disciplines.map((d) => `completionist:${d.slug}`)]);
+  assert.deepEqual(ids, [
+    'first-lesson', 'perfect-score', 'discipline-explorer',
+    ...disciplines.map((d) => `mastery:${d.slug}`),
+    ...disciplines.map((d) => `completionist:${d.slug}`),
+  ]);
   assert.equal(ACHIEVEMENTS.length, 5);
+  assert.equal(a.length, 3 + 2 * disciplines.length); // 15 with today's 6 disciplines
+  // Mike's call: no per-topic completionist badges.
+  assert.ok(!ids.some((id) => /^completionist:.+\//.test(id)));
+  // TSK-019: the topic-level "Level X" achievements are gone.
+  assert.ok(!ids.some((id) => id.startsWith('topic-level:')));
+  assert.ok(!a.some((x) => /Level \d/.test(x.title)));
 });
 
 test('nothing earned with no rows; locked ones carry requirement text', () => {
   const a = byId([]);
   for (const x of Object.values(a)) { assert.equal(x.earned, false, x.id); assert.equal(x.earnedAt, null); assert.ok(x.requirement.length > 0); }
   assert.equal(a['first-lesson'].requirement, 'Pass any lesson.');
-  assert.equal(a['topic-level:philosophy/stoicism'].requirement, 'Pass a lesson in Stoicism');
-  assert.equal(a['topic-level:philosophy/stoicism'].title, 'Stoicism: Level 1');
+  assert.equal(a['mastery:philosophy'].requirement, 'Pass a lesson in Philosophy.');
+  assert.equal(a['mastery:philosophy'].title, 'Philosophy: Novice');
+  assert.equal(a['mastery:philosophy'].progress, '0/1 to Novice');
+  assert.equal(a['completionist:philosophy'].progress, '0/3 lessons');
   assert.equal(a['completionist:philosophy'].progress, '0/3 lessons');
   assert.equal(a['discipline-explorer'].progress, `0/${disciplines.length} disciplines`);
 });
@@ -56,27 +68,57 @@ test('Discipline Explorer: every discipline; date = latest of each discipline\'s
   assert.equal(a['discipline-explorer'].progress, null);
 });
 
-test('Topic level: earned at Level 1, current tier, locked text; distinct passed only', () => {
-  const a = byId([row('les_st01', 3, 3, true, D2), row('les_st01', 3, 3, true, D1), row('les_st02', 1, 4, false, D3)]);
-  const s = a['topic-level:philosophy/stoicism'];
-  assert.deepEqual([s.earned, s.tier, s.title, s.progress], [true, 1, 'Stoicism: Level 1', '1/5 to Level 2']);
-  assert.equal(a['topic-level:philosophy/socrates'].earned, false);
-  assert.equal(a['topic-level:philosophy/socrates'].tier, null);
+test('Mastery: counts distinct passed lessons across every topic of the discipline', () => {
+  // Philosophy: socrates (so01) + stoicism (st01, st02). Duplicate and failed rows don't count.
+  const a = byId([row('les_st01', 3, 3, true, D2), row('les_st01', 3, 3, true, D1), row('les_so01', 3, 4, true, D3), row('les_st02', 1, 4, false, D4)]);
+  const m = a['mastery:philosophy'];
+  assert.deepEqual([m.earned, m.tier, m.title, m.requirement, m.progress], [true, 1, 'Philosophy: Novice', 'Pass 1 lesson in Philosophy.', '2/5 to Apprentice']);
+  assert.equal(m.earnedAt, iso(D2)); // Novice = 1st lesson passed in the discipline (best row of st01)
+  assert.equal(a['mastery:world-history'].earned, false);
+  assert.equal(a['mastery:world-history'].tier, null);
 });
 
-test('Topic level tiers and dates with a larger fixture topic (Level 3 at 10 lessons)', () => {
-  const lessons = Array.from({ length: 12 }, (_, i) => ({ id: `les_fx${String(i).padStart(2, '0')}` }));
-  const ds = [{ slug: 'fx', title: 'Fixture', color: 'slate', topics: [{ slug: 'big', title: 'Big Topic', lessons }] }];
-  const day = (i) => `2026-09-${String(i + 1).padStart(2, '0')}T12:00:00Z`;
-  const rows = (n) => lessons.slice(0, n).map((l, i) => row(l.id, 4, 4, true, day(i)));
-  const at = (n) => byId(rows(n), ds)['topic-level:fx/big'];
-  assert.deepEqual([at(4).tier, at(4).earnedAt], [1, iso(day(0))]);              // Level 1: 1st pass
-  assert.deepEqual([at(5).tier, at(5).earnedAt, at(5).title], [2, iso(day(4)), 'Big Topic: Level 2']); // 5th pass
-  assert.deepEqual([at(10).tier, at(10).earnedAt, at(10).progress], [3, iso(day(9)), '0/5 to Level 4']);
-  assert.deepEqual([at(12).tier, at(12).earnedAt], [3, iso(day(9))]);
-  // Completionist in the fixture discipline needs all 12.
-  assert.equal(byId(rows(11), ds)['completionist:fx'].earned, false);
-  assert.equal(byId(rows(12), ds)['completionist:fx'].earnedAt, iso(day(11)));
+// Fixture discipline with 25 lessons split across two topics: tiers ignore topic boundaries.
+const fxLessons = Array.from({ length: 25 }, (_, i) => ({ id: `les_fx${String(i).padStart(2, '0')}` }));
+const fx = [{ slug: 'fx', title: 'Fixture', color: 'slate', topics: [{ slug: 'a', title: 'Topic A', lessons: fxLessons.slice(0, 7) }, { slug: 'b', title: 'Topic B', lessons: fxLessons.slice(7) }] }];
+const day = (i) => new Date(Date.UTC(2026, 8, 1 + i, 19)).toISOString();
+
+test('Mastery tiers and first-earned dates: the Nth first pass in the discipline is the tier date', () => {
+  // Pass lessons in a shuffled order so the date order differs from content/topic order.
+  const order = [24, 3, 11, 0, 18, 7, 2, 20, 9, 15, 1, 22, 5, 13, 8, 19, 4, 23, 10, 16, 6, 21, 12, 17, 14];
+  const rows = (n) => order.slice(0, n).map((li, k) => frow(fxLessons[li].id, 4, 4, true, day(30 + k), day(k)));
+  const at = (n) => byId(rows(n), fx)['mastery:fx'];
+  const cases = [
+    [1, 1, 'Fixture: Novice', 0, '1/5 to Apprentice'],
+    [4, 1, 'Fixture: Novice', 0, '4/5 to Apprentice'],
+    [5, 2, 'Fixture: Apprentice', 4, '5/10 to Scholar'],
+    [9, 2, 'Fixture: Apprentice', 4, '9/10 to Scholar'],
+    [10, 3, 'Fixture: Scholar', 9, '10/20 to Luminary'],
+    [19, 3, 'Fixture: Scholar', 9, '19/20 to Luminary'],
+    [20, 4, 'Fixture: Luminary', 19, 'Highest tier reached'],
+    [25, 4, 'Fixture: Luminary', 19, 'Highest tier reached'],
+  ];
+  for (const [n, tier, title, k, progress] of cases) {
+    const m = at(n);
+    // Tier date = first_passed_at of the k-th (0-based) lesson first passed, NOT completed_at.
+    assert.deepEqual([m.earned, m.tier, m.title, m.earnedAt, m.earnedExact, m.progress], [true, tier, title, day(k), true, progress], `n=${n}`);
+  }
+  assert.equal(byId([], fx)['mastery:fx'].earned, false);
+  // Rows arriving in any order give the same dates (sorted by first_passed_at).
+  assert.equal(byId(rows(10).reverse(), fx)['mastery:fx'].earnedAt, day(9));
+  // One undated-exact row among the qualifying ones makes the date an upper bound ("Earned by").
+  const mixed = rows(5); mixed[2] = row(mixed[2].lesson_id, 4, 4, true, day(2));
+  const m5 = byId(mixed, fx)['mastery:fx'];
+  assert.deepEqual([m5.tier, m5.earnedAt, m5.earnedExact], [2, day(4), false]);
+});
+
+test('Completionist per discipline spans its topics (fixture)', () => {
+  const rows = (ids) => ids.map((l, i) => row(l.id, 4, 4, true, day(i)));
+  const a7 = byId(rows(fxLessons.slice(0, 7)), fx); // all of Topic A, none of Topic B
+  assert.deepEqual([a7['completionist:fx'].earned, a7['completionist:fx'].progress], [false, '7/25 lessons']);
+  assert.equal(a7['completionist:fx/a'], undefined);
+  const all = byId(rows(fxLessons), fx);
+  assert.deepEqual([all['completionist:fx'].earned, all['completionist:fx'].earnedAt], [true, day(24)]);
 });
 
 test('Completionist: all lessons in a discipline; date = latest; missing date -> no date', () => {
@@ -98,7 +140,7 @@ test('unknown ids, malformed rows and missing dates are handled', () => {
   const a = byId([row('les_gone01', 4, 4, true, D1), { lesson_id: 'les_st01', score: '3', total: 3, passed: true }, null, row('les_rr01', 4, 4, true)]);
   assert.equal(a['first-lesson'].earned, true);
   assert.equal(a['first-lesson'].earnedAt, null); // the only valid passed row has no date
-  assert.equal(a['topic-level:philosophy/stoicism'].earned, false);
+  assert.equal(a['mastery:philosophy'].earned, false);
   // Everything passed: all earned.
   const all = evaluateAchievements(ALL.map((id) => row(id, 4, 4, true, D6)), disciplines);
   assert.ok(all.every((x) => x.earned), all.filter((x) => !x.earned).map((x) => x.id).join());
@@ -117,14 +159,13 @@ test('kthEarliest and formatEarnedDate', () => {
 });
 
 // ---------- TSK-012: first_passed_at gives exact dates ----------
-const frow = (lesson_id, score, total, passed, completed_at, first_passed_at) => ({ lesson_id, score, total, passed, completed_at, first_passed_at });
 
 test('first_passed_at present: exact "Earned <date>" from the first pass, not the best attempt', () => {
   // Passed first on D1, improved on D4: completed_at = D4, first_passed_at = D1.
   const a = byId([frow('les_st01', 4, 6, true, D4, D1)]);
   assert.deepEqual([a['first-lesson'].earnedAt, a['first-lesson'].earnedExact], [iso(D1), true]);
   assert.equal(earnedLabel(a['first-lesson']), 'Earned Oct 1, 2026');
-  const t = a['topic-level:philosophy/stoicism'];
+  const t = a['mastery:philosophy'];
   assert.deepEqual([t.earnedAt, t.earnedExact], [iso(D1), true]);
   // Perfect Score keeps completed_at (the event is the first perfect attempt) as an upper bound.
   const p = byId([frow('les_st01', 6, 6, true, D4, D1)])['perfect-score'];

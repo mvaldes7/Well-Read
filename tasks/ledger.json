@@ -136,7 +136,7 @@
       "title": "Lessons batch",
       "role": "Builder",
       "type": "impl",
-      "state": "In Progress",
+      "state": "Release Approved",
       "agent": "Builder",
       "attempts": {}
     },
@@ -145,8 +145,8 @@
       "title": "Per-discipline levels",
       "role": "Builder",
       "type": "impl",
-      "state": "Idea",
-      "agent": null,
+      "state": "In Progress",
+      "agent": "Builder",
       "attempts": {}
     }
   ],
@@ -681,6 +681,33 @@
       "from": "Idea",
       "to": "Idea",
       "note": "Note addition: TSK-019 also includes removing the 'Lvl X' label from the book spines. Still backlog, not started."
+    },
+    {
+      "ts": "2026-10-14T22:16:45.106Z",
+      "actor": "Builder",
+      "taskId": "TSK-014",
+      "action": "status",
+      "from": "In Progress",
+      "to": "Checks Passed",
+      "note": "PR #15 CI checks + Vercel preview green at 24054df"
+    },
+    {
+      "ts": "2026-10-14T22:16:45.146Z",
+      "actor": "Builder",
+      "taskId": "TSK-014",
+      "action": "status",
+      "from": "Checks Passed",
+      "to": "Release Approved",
+      "note": "PR #15 squash-merged as 673c30a"
+    },
+    {
+      "ts": "2026-10-14T22:16:45.181Z",
+      "actor": "Builder",
+      "taskId": "TSK-019",
+      "action": "start",
+      "from": "Idea",
+      "to": "In Progress",
+      "note": "agent=Builder"
     }
   ]
 }

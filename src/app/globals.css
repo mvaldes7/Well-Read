@@ -364,7 +364,7 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
 /* Hover stays subtle so the title keeps >= 4.5:1 at the gradient's lightest stop. */
 .spine:hover { filter: brightness(1.04); }
 
-/* ---------- Levels + achievements (TSK-011) ---------- */
+/* ---------- Mastery + achievements (TSK-011, TSK-019) ---------- */
 :root {
   --locked-bg: #e4e0d8;      /* dimmed card: text stays --ink / --sub (>= 4.5:1, see PR) */
   --locked-medal: #c9c4b9;
@@ -373,29 +373,48 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
 @media (prefers-color-scheme: dark) {
   :root { --locked-bg: #201f23; --locked-medal: #3a3940; --locked-glyph: #c9c4b9; }
 }
-/* Level band: the spine's top cap becomes a small brass band ("Lv 1"). Same 14px box as
-   the plain cap, so spine chrome and title fit are unchanged. */
-.spine .cap.lv { display: flex; align-items: center; justify-content: center; background: linear-gradient(var(--brass-hi), var(--brass-lo)); color: var(--brass-text); font-family: var(--sans); font-size: 9px; font-weight: 700; letter-spacing: 0.14em; line-height: 1; text-transform: uppercase; border-color: #7c6639; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), 0 1px 1px rgba(0, 0, 0, 0.45); }
 
-/* Topic page level */
-.topic-level-slot { min-height: 46px; margin-top: 18px; }
-.topic-level { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
-.level-badge { font-size: 11px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--brass-text); background: linear-gradient(var(--brass-hi), var(--brass-lo)); border: 1px solid #7c6639; border-radius: 2px; padding: 6px 12px 5px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), inset 0 -1px 0 rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.25); }
-.level-badge.none { color: var(--sub); background: transparent; border-color: var(--line); box-shadow: none; }
-.level-progress { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--sub); }
-.level-progress progress { appearance: none; -webkit-appearance: none; width: 120px; height: 8px; border: 1px solid var(--edge); border-radius: 1px; background: var(--option); box-shadow: inset 0 1px 2px rgba(30, 25, 15, 0.18); overflow: hidden; }
-.level-progress progress::-webkit-progress-bar { background: transparent; }
+/* Topic page: the discipline's mastery tier (TSK-019) */
+.topic-mastery-slot { min-height: 46px; margin-top: 18px; }
+.topic-mastery { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.tier-badge { font-size: 11px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--brass-text); background: linear-gradient(var(--brass-hi), var(--brass-lo)); border: 1px solid #7c6639; border-radius: 2px; padding: 6px 12px 5px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), inset 0 -1px 0 rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.25); }
+.tier-badge.none { color: var(--sub); background: transparent; border-color: var(--line); box-shadow: none; }
+.tier-progress { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--sub); }
+.tier-progress progress { appearance: none; -webkit-appearance: none; width: 120px; height: 8px; border: 1px solid var(--edge); border-radius: 1px; background: var(--option); box-shadow: inset 0 1px 2px rgba(30, 25, 15, 0.18); overflow: hidden; }
+.tier-progress progress::-webkit-progress-bar { background: transparent; }
 /* Fill keeps >= 3:1 against the track: darker brass on light, standard brass on dark. */
 :root { --progress-fill: linear-gradient(#9a8250, #7a6536); }
 @media (prefers-color-scheme: dark) { :root { --progress-fill: linear-gradient(var(--brass-hi), var(--brass-lo)); } }
-.level-progress progress::-webkit-progress-value { background: var(--progress-fill); }
-.level-progress progress::-moz-progress-bar { background: var(--progress-fill); }
-.level-text { color: var(--ink); letter-spacing: 0.04em; }
+.tier-progress progress::-webkit-progress-value { background: var(--progress-fill); }
+.tier-progress progress::-moz-progress-bar { background: var(--progress-fill); }
+.tier-text { color: var(--ink); letter-spacing: 0.04em; }
+.mastery-count { font-size: 13px; letter-spacing: 0.04em; color: var(--sub); }
 
 /* Achievements board */
 .board-count { text-align: center; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sub); margin: 0 0 8px; }
 .board { margin-top: 48px; }
 .medals { list-style: none; margin: 18px auto 0; padding: 0; max-width: 980px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+/* Mastery cards (TSK-019): one per discipline; the accent is the discipline's cover token
+   (.cover-<color> sets --shade-*). Layout after the mockup's "Mastery Levels" cards. */
+.mastery { list-style: none; margin: 18px auto 0; padding: 0; max-width: 980px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.mastery-card { --accent: var(--shade-1); padding: 20px 22px 18px; background: var(--paper); border: 1px solid var(--edge); border-radius: 2px; box-shadow: inset 0 1px 0 var(--bevel-hi), var(--lift); }
+.mastery-card h3 { display: flex; align-items: center; gap: 10px; font-size: 22px; margin: 2px 0 16px; overflow-wrap: anywhere; }
+.mastery-dot { flex: none; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35), 0 0 0 2px var(--paper), 0 0 0 3px var(--accent); }
+.tier-track { list-style: none; margin: 0 0 14px; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); position: relative; }
+.tier-track::before { content: ""; position: absolute; left: 12.5%; right: 12.5%; top: 6px; border-top: 1px solid var(--line); }
+.tier { position: relative; display: flex; flex-direction: column; align-items: center; gap: 6px; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--sub); text-align: center; }
+.tier-pip { width: 13px; height: 13px; border-radius: 50%; background: var(--paper); border: 1px solid var(--line); box-sizing: border-box; }
+.tier.reached .tier-pip { background: var(--accent); border-color: var(--accent); }
+.tier.current .tier-pip { box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 28%, transparent); }
+.tier.reached .tier-name { color: var(--ink); }
+.tier.current .tier-name { font-weight: 700; color: var(--accent); }
+.mastery-line { margin: 0 0 6px; text-align: center; font-family: var(--serif); font-size: 17px; color: var(--ink); }
+.mastery-card .medal-status { text-align: center; }
+.mastery-card.not-started { background: var(--locked-bg); box-shadow: inset 0 1px 2px rgba(30, 25, 15, 0.12); }
+.mastery-card.not-started .medal-status, .mastery-card.not-started .medal-progress { color: var(--body); }
+@media (prefers-color-scheme: dark) {
+  .mastery-card { --accent: color-mix(in srgb, var(--shade-1) 45%, #e8dcc0); }
+}
 .medal { display: flex; gap: 18px; align-items: flex-start; padding: 20px 22px; background: var(--paper); border: 1px solid var(--edge); border-radius: 2px; box-shadow: inset 0 1px 0 var(--bevel-hi), var(--lift); }
 .medal h3 { font-size: 22px; margin: 2px 0 6px; overflow-wrap: anywhere; }
 .medal .req { margin: 0 0 8px; font-size: 14.5px; color: var(--body); }
@@ -408,11 +427,14 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
 /* Locked status uses --body, not --sub: --sub on --locked-bg is only 4.28:1. */
 .medal.locked .medal-status, .medal.locked .medal-progress { color: var(--body); }
 @media (max-width: 600px) {
-  .medals { grid-template-columns: 1fr; }
+  .medals, .mastery { grid-template-columns: 1fr; }
+  .mastery-card { padding: 16px; }
+  .mastery-card h3 { font-size: 19px; }
+  .tier { font-size: 10px; letter-spacing: 0.04em; }
   .medal { padding: 16px; gap: 14px; }
   .medal h3 { font-size: 19px; }
   .medallion { width: 44px; height: 44px; font-size: 19px; }
-  .topic-level { gap: 10px; }
+  .topic-mastery { gap: 10px; }
 }
 
 /* ---------- TSK-012: multi-paragraph sections, explanations, sources ---------- */

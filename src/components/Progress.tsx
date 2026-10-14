@@ -1,6 +1,6 @@
-import { getTopic } from "@/content";
+import { getDiscipline } from "@/content";
 import { getMyProgress } from "@/lib/progress/data";
-import { levelFor, levelProgressText, passedInTopic } from "@/lib/progress/levels.mjs";
+import { NOT_STARTED, masteryFor, nextTierText, passedInDiscipline } from "@/lib/progress/mastery.mjs";
 
 // Per-user completion UI. Each reads the session, so render inside <Suspense>.
 
@@ -33,22 +33,24 @@ export async function LessonStatus({ lessonId }: { lessonId: string }) {
   );
 }
 
-/** Topic level badge + progress to the next level (AC-4). */
-export async function TopicLevel({ disciplineSlug, topicSlug }: { disciplineSlug: string; topicSlug: string }) {
-  const topic = getTopic(disciplineSlug, topicSlug);
+/** The topic's discipline mastery tier + progress to the next tier (TSK-019). */
+export async function DisciplineMastery({ disciplineSlug }: { disciplineSlug: string }) {
+  const discipline = getDiscipline(disciplineSlug);
   const progress = await getMyProgress();
-  if (!topic || progress.status === "signedOut") return null;
-  if (progress.status === "error") return <p className="topic-level muted">Your level for this topic couldn&apos;t be loaded.</p>;
-  const info = levelFor(passedInTopic(topic, progress.lookup));
-  const text = levelProgressText(info);
+  if (!discipline || progress.status === "signedOut") return null;
+  if (progress.status === "error") return <p className="topic-mastery muted">Your mastery for this discipline couldn&apos;t be loaded.</p>;
+  const info = masteryFor(passedInDiscipline(discipline, progress.lookup));
+  const n = info.passed;
+  const hint = nextTierText(info);
   return (
-    <div className="topic-level">
-      <span className={`level-badge${info.level === null ? " none" : ""}`}>
-        {info.level === null ? "No level yet" : `Level ${info.level}`}
+    <div className={`topic-mastery cover-${discipline.color}`}>
+      <span className={`tier-badge${info.tier === null ? " none" : ""}`}>{info.tier ?? NOT_STARTED}</span>
+      <span className="mastery-count">
+        {n} {n === 1 ? "lesson" : "lessons"} in {discipline.title}
       </span>
-      <div className="level-progress">
-        <progress value={info.toward} max={info.needed} aria-label={text} />
-        <span className="level-text">{text}</span>
+      <div className="tier-progress">
+        {info.next && <progress value={info.toward} max={info.needed} aria-label={hint} />}
+        <span className="tier-text">{hint}</span>
       </div>
     </div>
   );

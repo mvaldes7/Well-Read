@@ -4,7 +4,13 @@
 // Nothing is stored: achievements are recomputed on the server for every request.
 //
 // To add one: append a definition to ACHIEVEMENTS (kind "single"), or a generator over
-// topics/disciplines (kind "perTopic" / "perDiscipline"). Ids must stay unique.
+// disciplines (kind "perDiscipline"). Ids must stay unique.
+// Ids are UI-only keys derived from content slugs (e.g. "mastery:art-history", "completionist:art-history"); they are never
+// stored or sent to the database (REV-007).
+//
+// Mastery (TSK-019): one achievement per discipline, at its current tier (see
+// lib/progress/mastery.mjs). Its date is the date of the Nth lesson first passed in that
+// discipline, N = the tier's threshold (Novice 1st, Apprentice 5th, Scholar 10th, Luminary 20th).
 //
 // Dates. Each passed lesson is dated by:
 // - first_passed_at when present: the EXACT time of the first pass (TSK-012), or else
@@ -21,11 +27,10 @@
 // the server in America/Los_Angeles.
 
 import { bestCompletions } from "../lib/progress/logic.mjs";
-import { levelFor, passedInTopic } from "../lib/progress/levels.mjs";
+import { MASTERY_TIERS, masteryFor, nextTierText, passedInDiscipline } from "../lib/progress/mastery.mjs";
 
 /** @typedef {import("../lib/progress/logic.mjs").ContentDiscipline} ContentDiscipline */
 /** @typedef {import("../lib/progress/logic.mjs").DatedCompletion} DatedCompletion */
-/** @typedef {ContentDiscipline["topics"][number]} ContentTopic */
 
 /**
  * Evaluation context, built once per request by evaluateAchievements.
@@ -38,20 +43,19 @@ import { levelFor, passedInTopic } from "../lib/progress/levels.mjs";
 /**
  * @typedef {{
  *   id: string,
- *   group: "milestones" | "topics" | "disciplines",
+ *   group: "milestones" | "mastery" | "completionist",
  *   title: string,
  *   requirement: string,
  *   earned: boolean,
  *   earnedAt: string | null,  // ISO date (see top of file), or null when not derivable
  *   earnedExact: boolean,     // true: exact moment ("Earned"); false: upper bound ("Earned by")
- *   tier: number | null,      // current tier for tiered achievements (topic level)
+ *   tier: number | null,      // mastery: current tier index 1..4 (Novice..Luminary); else null
  *   progress: string | null   // short progress hint for locked or tiered ones
  * }} AchievementResult
  */
 
 /**
  * @typedef {{ kind: "single", id: string, group: AchievementResult["group"], evaluate: (ctx: Ctx) => Omit<AchievementResult, "id" | "group"> }
- *   | { kind: "perTopic", id: (d: ContentDiscipline, t: ContentTopic) => string, group: AchievementResult["group"], evaluate: (ctx: Ctx, d: ContentDiscipline, t: ContentTopic) => Omit<AchievementResult, "id" | "group"> }
  *   | { kind: "perDiscipline", id: (d: ContentDiscipline) => string, group: AchievementResult["group"], evaluate: (ctx: Ctx, d: ContentDiscipline) => Omit<AchievementResult, "id" | "group"> }
  * } AchievementDef
  */
@@ -130,6 +134,22 @@ const result = (earned, date, title, requirement, progress = null) => ({
   progress,
 });
 
+/** @param {number} tierIndex 1-based @param {string} title */
+function tierRequirement(tierIndex, title) {
+  const n = MASTERY_TIERS[tierIndex - 1].min;
+  return `Pass ${n} ${n === 1 ? "lesson" : "lessons"} in ${title}.`;
+}
+
+/**
+ * Completionist: every lesson in the set passed; date = latest pass (no date if any is undated).
+ * @param {Ctx} ctx @param {ReadonlyArray<{ id: string }>} lessons @param {string} title
+ */
+function completionist(ctx, lessons, title) {
+  const passed = passedAmong(ctx, lessons);
+  const earned = lessons.length > 0 && passed.length === lessons.length;
+  return result(earned, latestOf(passed.map(passDate)), `Completionist: ${title}`, `Pass every lesson in ${title}.`, earned ? null : `${passed.length}/${lessons.length} lessons`);
+}
+
 // ---------- definitions ----------
 
 /** @type {ReadonlyArray<AchievementDef>} */
@@ -168,37 +188,29 @@ export const ACHIEVEMENTS = Object.freeze([
     },
   },
   {
-    kind: "perTopic",
-    id: (d, t) => `topic-level:${d.slug}/${t.slug}`,
-    group: "topics",
-    evaluate: (ctx, _d, t) => {
-      const passed = passedAmong(ctx, t.lessons);
-      const info = levelFor(passedInTopic(t, ctx.best));
-      if (info.level === null) return { ...result(false, NO_DATE, `${t.title}: Level 1`, `Pass a lesson in ${t.title}`), progress: `0/${t.lessons.length} lessons` };
-      // The current tier needed max(1, 5 * (level - 1)) passed lessons.
-      const k = Math.max(1, 5 * (info.level - 1));
-      const date = kthEarliest(passed, k);
+    kind: "perDiscipline",
+    id: (d) => `mastery:${d.slug}`,
+    group: "mastery",
+    evaluate: (ctx, d) => {
+      const passed = passedAmong(ctx, lessonsOf(d));
+      const info = masteryFor(passedInDiscipline(d, ctx.best));
+      const first = MASTERY_TIERS[0].name;
+      if (info.tier === null) {
+        return result(false, NO_DATE, `${d.title}: ${first}`, `Pass a lesson in ${d.title}.`, nextTierText(info));
+      }
+      // Tier date: the Nth earliest first pass in the discipline, N = the tier's threshold.
+      const date = kthEarliest(passed, MASTERY_TIERS[info.tierIndex - 1].min);
       return {
-        earned: true,
-        earnedAt: date.at,
-        earnedExact: date.at !== null && date.exact,
-        title: `${t.title}: Level ${info.level}`,
-        requirement: `Pass a lesson in ${t.title}`,
-        tier: info.level,
-        progress: `${info.toward}/${info.needed} to Level ${info.nextLevel}`,
+        ...result(true, date, `${d.title}: ${info.tier}`, tierRequirement(info.tierIndex, d.title), nextTierText(info)),
+        tier: info.tierIndex,
       };
     },
   },
   {
     kind: "perDiscipline",
     id: (d) => `completionist:${d.slug}`,
-    group: "disciplines",
-    evaluate: (ctx, d) => {
-      const lessons = lessonsOf(d);
-      const passed = passedAmong(ctx, lessons);
-      const earned = lessons.length > 0 && passed.length === lessons.length;
-      return result(earned, latestOf(passed.map(passDate)), `Completionist: ${d.title}`, `Pass every lesson in ${d.title}.`, earned ? null : `${passed.length}/${lessons.length} lessons`);
-    },
+    group: "completionist",
+    evaluate: (ctx, d) => completionist(ctx, lessonsOf(d), d.title),
   },
 ]);
 
@@ -217,11 +229,7 @@ export function evaluateAchievements(rows, disciplines, defs = ACHIEVEMENTS) {
   const out = [];
   for (const def of defs) {
     if (def.kind === "single") out.push({ id: def.id, group: def.group, ...def.evaluate(ctx) });
-    else if (def.kind === "perTopic") {
-      for (const d of disciplines) for (const t of d.topics) out.push({ id: def.id(d, t), group: def.group, ...def.evaluate(ctx, d, t) });
-    } else {
-      for (const d of disciplines) out.push({ id: def.id(d), group: def.group, ...def.evaluate(ctx, d) });
-    }
+    else for (const d of disciplines) out.push({ id: def.id(d), group: def.group, ...def.evaluate(ctx, d) });
   }
   return out;
 }

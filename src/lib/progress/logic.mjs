@@ -4,7 +4,6 @@
 // node:test can import it; type-checked by tsc via allowJs.
 
 import { shouldReplace } from "../quiz/logic.mjs";
-import { levelFor, passedInTopic } from "./levels.mjs";
 
 /** @typedef {{ lesson_id: string, score: number, total: number, passed: boolean }} CompletionRow */
 /** @typedef {{ score: number, total: number, passed: boolean }} Completion */
@@ -22,8 +21,7 @@ import { levelFor, passedInTopic } from "./levels.mjs";
  * @typedef {{
  *   disciplineSlug: string, disciplineTitle: string,
  *   topicSlug: string, topicTitle: string,
- *   passedCount: number, lessonCount: number, href: string,
- *   level: number
+ *   passedCount: number, lessonCount: number, href: string
  * }} Book
  */
 /**
@@ -115,6 +113,16 @@ export function completionLookup(rows, disciplines) {
 }
 
 /**
+ * Distinct passed lessons of one topic (the bookshelf's brass-tag count), counting only the
+ * topic's content lessons.
+ * @param {{ lessons: ReadonlyArray<{ id: string }> }} topic
+ * @param {ReadonlyMap<string, { passed: boolean }>} lookup per-lesson best (completionLookup)
+ */
+export function passedInTopic(topic, lookup) {
+  return topic.lessons.filter((l) => lookup.get(l.id)?.passed === true).length;
+}
+
+/**
  * Bookshelf grouped by discipline: one book per topic with at least one passed
  * lesson. Groups follow discipline content order and books follow topic content
  * order (same as the browse pages). Disciplines with nothing passed are omitted.
@@ -143,7 +151,6 @@ export function buildBookshelf(rows, disciplines) {
         passedCount,
         lessonCount: t.lessons.length,
         href: `/d/${d.slug}/${t.slug}`,
-        level: /** @type {number} */ (levelFor(passedCount).level),
       });
     }
     if (books.length) groups.push({ discipline: { slug: d.slug, title: d.title, color: d.color }, position: di + 1, books });
@@ -157,7 +164,7 @@ export function buildBookshelf(rows, disciplines) {
  */
 export function bookLabel(book) {
   const n = book.passedCount;
-  return `${book.topicTitle} (${book.disciplineTitle}): Level ${book.level}, ${n} ${n === 1 ? "lesson" : "lessons"} completed`;
+  return `${book.topicTitle} (${book.disciplineTitle}): ${n} ${n === 1 ? "lesson" : "lessons"} completed`;
 }
 
 /**

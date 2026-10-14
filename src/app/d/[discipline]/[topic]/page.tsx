@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { LessonMarker, TopicLevel } from "@/components/Progress";
+import { LessonMarker, DisciplineMastery } from "@/components/Progress";
 import { disciplines, getDiscipline, getTopic } from "@/content";
 import { toRoman } from "@/lib/ui/roman.mjs";
 
@@ -37,10 +37,10 @@ export default async function TopicPage({ params }: PageProps<"/d/[discipline]/[
         <h1>{topic.title}</h1>
         <p className="dek">{topic.summary}</p>
         <div className="ornament" aria-hidden="true">◆</div>
-        {/* Per-user level streams in; a sized slot keeps the list from shifting. */}
-        <div className="topic-level-slot">
+        {/* Per-user discipline mastery streams in; a sized slot keeps the list from shifting. */}
+        <div className="topic-mastery-slot">
           <Suspense fallback={null}>
-            <TopicLevel disciplineSlug={discipline.slug} topicSlug={topic.slug} />
+            <DisciplineMastery disciplineSlug={discipline.slug} />
           </Suspense>
         </div>
       </header>
