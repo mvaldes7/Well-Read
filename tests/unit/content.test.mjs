@@ -242,3 +242,10 @@ test('paragraphs() splits section bodies on blank lines', async () => {
   assert.deepEqual(paragraphs('  a\nb  \n \n c '), ['a b', 'c']);
   assert.deepEqual(paragraphs(''), []);
 });
+
+test('American Civics: one merged Constitution & Bill of Rights topic; lesson ids unchanged, chronological (TSK-014)', () => {
+  const ac = disciplines.find((d) => d.slug === 'american-civics');
+  assert.deepEqual(ac.topics.map((t) => t.slug), ['constitution-bill-of-rights']);
+  assert.equal(ac.topics[0].title, 'The Constitution & Bill of Rights');
+  assert.deepEqual(ac.topics[0].lessons.map((l) => l.id), ['les_cc01', 'les_br01', 'les_br02']);
+});

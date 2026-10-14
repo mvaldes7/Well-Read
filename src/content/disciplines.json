@@ -1104,10 +1104,10 @@
     "color": "slate",
     "topics": [
       {
-        "slug": "constitutional-convention",
-        "title": "The Constitutional Convention of 1787",
-        "kind": "event",
-        "summary": "The Constitutional Convention created a new framework for American government by strengthening national authority while dividing power among institutions and making consequential compromises over representation and slavery.",
+        "slug": "constitution-bill-of-rights",
+        "title": "The Constitution & Bill of Rights",
+        "kind": "era",
+        "summary": "How the Constitution was drafted in 1787 and amended by the Bill of Rights in 1791, and how those protections apply to government action today.",
         "lessons": [
           {
             "id": "les_cc01",
@@ -1234,15 +1234,7 @@
                 "url": "https://constitutioncenter.org/media/files/Article_VII__Ratification_Debates_-_Briefing_Document.pdf"
               }
             ]
-          }
-        ]
-      },
-      {
-        "slug": "bill-of-rights",
-        "title": "The Adoption of the Bill of Rights",
-        "kind": "event",
-        "summary": "Ratified in 1791, the Bill of Rights added ten amendments to the U.S. Constitution to protect liberties and place explicit limits on government power.",
-        "lessons": [
+          },
           {
             "id": "les_br01",
             "slug": "why-the-constitution-needed-a-bill-of-rights",
