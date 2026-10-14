@@ -33,7 +33,7 @@ test('logActivity: other errors and exceptions -> "failed", logged by code only,
 });
 
 test('migration: append-only RLS, own rows, index, idempotent single-row-per-completion backfill', () => {
-  const sql = readFileSync(new URL('../../supabase/migrations/20261014232500_activity_log.sql', import.meta.url), 'utf8');
+  const sql = readFileSync(new URL('../../supabase/migrations/20261014233800_activity_log.sql', import.meta.url), 'utf8');
   assert.match(sql, /create table public\.activity_log/);
   assert.match(sql, /alter table public\.activity_log enable row level security;/);
   assert.match(sql, /revoke all on table public\.activity_log from anon, authenticated;/);
