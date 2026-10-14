@@ -15,7 +15,6 @@ export default async function SidebarStreak() {
         <dt>Streak</dt>
         <dd>
           <b>{s.current}</b> {s.current === 1 ? "day" : "days"}
-          <span className="visually-hidden">{` (${daysLabel(s.current)})`}</span>
         </dd>
       </div>
       <div>
