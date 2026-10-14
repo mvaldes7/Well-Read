@@ -1,8 +1,8 @@
 -- TSK-016: activity_log (append-only per-user activity, for day streaks).
 --
--- STATUS: UNAPPLIED. Do not run against any Supabase project until Mike has
+-- STATUS: APPLIED to pjiuquekewnkctpkhiow on 2026-10-14 with Mike's approval.
 -- reviewed and approved it. Apply via the normal migration process only, as
--- version 20261014232500 (must match this filename).
+-- version 20261014233800 (must match this filename).
 -- The app tolerates this table being absent: streaks show as unavailable and quiz
 -- submission is unaffected, so the code can deploy before or after this migration.
 --
