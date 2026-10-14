@@ -4,7 +4,7 @@
 // node:test can import it; type-checked by tsc via allowJs.
 
 import { shouldReplace } from "../quiz/logic.mjs";
-import { levelFor, passedInTopic } from "./levels.mjs";
+import { passedInTopic } from "./levels.mjs";
 
 /** @typedef {{ lesson_id: string, score: number, total: number, passed: boolean }} CompletionRow */
 /** @typedef {{ score: number, total: number, passed: boolean }} Completion */
@@ -22,8 +22,7 @@ import { levelFor, passedInTopic } from "./levels.mjs";
  * @typedef {{
  *   disciplineSlug: string, disciplineTitle: string,
  *   topicSlug: string, topicTitle: string,
- *   passedCount: number, lessonCount: number, href: string,
- *   level: number
+ *   passedCount: number, lessonCount: number, href: string
  * }} Book
  */
 /**
@@ -143,7 +142,6 @@ export function buildBookshelf(rows, disciplines) {
         passedCount,
         lessonCount: t.lessons.length,
         href: `/d/${d.slug}/${t.slug}`,
-        level: /** @type {number} */ (levelFor(passedCount).level),
       });
     }
     if (books.length) groups.push({ discipline: { slug: d.slug, title: d.title, color: d.color }, position: di + 1, books });
@@ -157,7 +155,7 @@ export function buildBookshelf(rows, disciplines) {
  */
 export function bookLabel(book) {
   const n = book.passedCount;
-  return `${book.topicTitle} (${book.disciplineTitle}): Level ${book.level}, ${n} ${n === 1 ? "lesson" : "lessons"} completed`;
+  return `${book.topicTitle} (${book.disciplineTitle}): ${n} ${n === 1 ? "lesson" : "lessons"} completed`;
 }
 
 /**

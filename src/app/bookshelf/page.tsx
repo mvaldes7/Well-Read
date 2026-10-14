@@ -73,10 +73,7 @@ async function Shelf() {
                           aria-label={bookLabel(book)}
                           style={{ "--w": `${s.width}px`, "--h": `${s.height}px`, "--fs": `${s.fontSize}px` } as React.CSSProperties}
                         >
-                          {/* Level band; the level is also in the link's accessible label. */}
-                          <span className="cap lv" aria-hidden="true">
-                            Lv {book.level}
-                          </span>
+                          <span className="cap" aria-hidden="true" />
                           <span className="t" aria-hidden="true">
                             {s.lines.map((line) => (
                               <span key={line} className="ln">

@@ -26,7 +26,6 @@ test('QA fixture: les_st01 + les_rr01 -> World History [Roman Republic (1)] then
     passedCount: 1,
     lessonCount: 1,
     href: '/d/world-history/roman-republic',
-    level: 1,
   });
   assert.equal(groups[1].books[0].href, '/d/philosophy/stoicism');
 });
@@ -91,9 +90,9 @@ test('malformed rows are dropped', () => {
 
 test('book label includes the count; save messages distinguish attempts from progress', () => {
   const [book] = buildBookshelf([row('les_st01', 3, 3, true), row('les_st02', 4, 4, true)], disciplines)[0].books;
-  assert.equal(bookLabel(book), 'Stoicism (Philosophy): Level 1, 2 lessons completed');
+  assert.equal(bookLabel(book), 'Stoicism (Philosophy): 2 lessons completed');
   const [one] = buildBookshelf([row('les_rr01', 4, 4, true)], disciplines)[0].books;
-  assert.equal(bookLabel(one), 'The Roman Republic (World History): Level 1, 1 lesson completed');
+  assert.equal(bookLabel(one), 'The Roman Republic (World History): 1 lesson completed');
   assert.equal(saveMessage('saved', false), 'Attempt saved.');
   assert.equal(saveMessage('saved', true), 'Progress saved.');
   assert.equal(saveMessage('kept', false), 'Your earlier best result is kept.');
