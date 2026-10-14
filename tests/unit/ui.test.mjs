@@ -20,14 +20,18 @@ test('display name is Well-Read: the old display names are gone from app source'
   const layout = readFileSync(join(root, 'app/layout.tsx'), 'utf8');
   assert.match(layout, /title: \{ default: "Well-Read", template: "%s · Well-Read" \}/);
   assert.match(layout, /appleWebApp: \{ capable: true, title: "Well-Read"/);
-  assert.match(layout, />\s*Well-Read<small>/);
-  // Header icon (TSK-018): inline, decorative only, inside the logo link next to the wordmark.
-  assert.match(layout, /<Link href="\/" className="logo">\s*<LogoMark \/>/);
+  // TSK-015: the logo (icon + wordmark) moved from the layout header into the Sidebar.
+  const sidebar = readFileSync(join(root, 'components/Sidebar.tsx'), 'utf8');
+  assert.match(sidebar, />\s*Well-Read<small>/);
+  // Logo icon (TSK-018): inline, decorative only, inside the logo link next to the wordmark.
+  assert.match(sidebar, /<Link href="\/" className="logo">\s*<LogoMark \/>/);
+  assert.match(layout, /<Sidebar\b/);
   const mark = readFileSync(join(root, 'components/LogoMark.tsx'), 'utf8');
   assert.match(mark, /<svg[^>]*aria-hidden="true"/);
   assert.match(mark, /<svg[^>]*focusable="false"/);
   assert.doesNotMatch(mark, /<title|aria-label|role="img"/);
-  assert.match(readFileSync(join(root, 'app/page.tsx'), 'utf8'), /<h1>Well-Read<\/h1>/);
+  assert.match(readFileSync(join(root, 'app/page.tsx'), 'utf8'), /<h1>Dashboard<\/h1>/);
+  assert.match(readFileSync(join(root, 'app/learn/page.tsx'), 'utf8'), /<h1>Learn<\/h1>/);
   const pkg = JSON.parse(readFileSync(new URL('../../package.json', import.meta.url), 'utf8'));
   assert.equal(pkg.name, 'well-read');
 });

@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import Link from "next/link";
-import LogoMark from "@/components/LogoMark";
 import { Suspense } from "react";
-import MainNav from "@/components/MainNav";
+import Sidebar from "@/components/Sidebar";
 import UserMenu from "@/components/UserMenu";
 import "./globals.css";
 
@@ -16,30 +14,24 @@ export const metadata: Metadata = {
   appleWebApp: { capable: true, title: "Well-Read", statusBarStyle: "black" },
 };
 
-// Matches the charcoal header band (--char) so the browser/OS chrome blends in.
+// Matches the charcoal sidebar (--char) so the browser/OS chrome blends in.
 export const viewport: Viewport = { themeColor: "#232326" };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en">
       <body>
-        <header className="site-header">
-          <div className="bar">
-            <Link href="/" className="logo">
-              <LogoMark />
-              <span className="logo-text">
-                Well-Read<small>A personal collection</small>
-              </span>
-            </Link>
-            {/* Static shell: the two nav links need no auth data, so they render immediately. */}
-            <MainNav />
-            {/* Only the email + sign-out stream in; a sized placeholder holds their space. */}
-            <Suspense fallback={<div className="user user-placeholder" aria-hidden="true" />}>
-              <UserMenu />
-            </Suspense>
-          </div>
-        </header>
-        <main>{children}</main>
+        <div className="shell">
+          {/* Sidebar (TSK-015). Only the name + sign-out stream in; a sized placeholder holds their space. */}
+          <Sidebar
+            user={
+              <Suspense fallback={<div className="user user-placeholder" aria-hidden="true" />}>
+                <UserMenu />
+              </Suspense>
+            }
+          />
+          <main>{children}</main>
+        </div>
       </body>
     </html>
   );

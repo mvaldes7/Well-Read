@@ -148,6 +148,15 @@
       "state": "Release Approved",
       "agent": "Builder",
       "attempts": {}
+    },
+    {
+      "id": "TSK-015",
+      "title": "Sidebar, dashboard, progress",
+      "role": "Builder",
+      "type": "impl",
+      "state": "In Progress",
+      "agent": "Builder",
+      "attempts": {}
     }
   ],
   "log": [
@@ -726,6 +735,24 @@
       "from": "Checks Passed",
       "to": "Release Approved",
       "note": "PR #16 squash-merged as ec6abd8"
+    },
+    {
+      "ts": "2026-10-14T22:54:04.318Z",
+      "actor": "Builder",
+      "taskId": "TSK-015",
+      "action": "add",
+      "from": null,
+      "to": "Idea",
+      "note": null
+    },
+    {
+      "ts": "2026-10-14T23:19:13.327Z",
+      "actor": "Builder",
+      "taskId": "TSK-015",
+      "action": "start",
+      "from": "Idea",
+      "to": "In Progress",
+      "note": "agent=Builder"
     }
   ]
 }
