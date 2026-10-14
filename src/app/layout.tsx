@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Suspense } from "react";
 import Sidebar from "@/components/Sidebar";
 import UserMenu from "@/components/UserMenu";
+import SidebarStreak from "@/components/SidebarStreak";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -24,6 +25,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <div className="shell">
           {/* Sidebar (TSK-015). Only the name + sign-out stream in; a sized placeholder holds their space. */}
           <Sidebar
+            streak={
+              <Suspense fallback={<div className="streak-placeholder" aria-hidden="true" />}>
+                <SidebarStreak />
+              </Suspense>
+            }
             user={
               <Suspense fallback={<div className="user user-placeholder" aria-hidden="true" />}>
                 <UserMenu />

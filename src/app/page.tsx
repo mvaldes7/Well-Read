@@ -5,6 +5,8 @@ import { disciplines } from "@/content";
 import { PROGRESS_ERROR, getMyProgress } from "@/lib/progress/data";
 import { dashboardData } from "@/lib/progress/dashboard.mjs";
 import { nextTierText } from "@/lib/progress/mastery.mjs";
+import { STREAK_UNAVAILABLE, getMyStreak } from "@/lib/streaks/data";
+import { daysLabel } from "@/lib/streaks/streaks.mjs";
 
 // Dashboard (TSK-015). Layout after Mike's dashboard mockup, in C2 styling.
 export default function Dashboard() {
@@ -37,6 +39,7 @@ async function DashboardBody() {
     );
   }
   const data = dashboardData(progress.rows, disciplines);
+  const streak = await getMyStreak();
   return (
     <>
       <section aria-labelledby="dash-stats">
@@ -47,11 +50,9 @@ async function DashboardBody() {
           <Stat value={`${data.lessons.passed}`} of={data.lessons.total} label="Lessons passed" />
           <Stat value={`${data.badges.earned}`} of={data.badges.total} label="Badges earned" />
           <Stat value={`${data.disciplines.started}`} of={data.disciplines.total} label="Disciplines started" />
-          {/* Streaks are TSK-016: a placeholder, never a made-up number. */}
-          <li className="stat stat-soon">
-            <span className="stat-value">Coming soon</span>
-            <span className="stat-label">Day streak</span>
-          </li>
+          {/* Streaks (TSK-016). Before the activity_log migration: "Not available yet", never a made-up number. */}
+          <StreakStat value={streak.status === "ok" ? streak.current : null} label="Day streak" />
+          <StreakStat value={streak.status === "ok" ? streak.best : null} label="Best streak" />
         </ul>
       </section>
       <section className="board" aria-labelledby="dash-disciplines">
@@ -104,6 +105,26 @@ function Stat({ value, of, label }: { value: string; of: number; label: string }
       <span className="stat-value">
         {value}
         <small> / {of}</small>
+      </span>
+      <span className="stat-label">{label}</span>
+    </li>
+  );
+}
+
+function StreakStat({ value, label }: { value: number | null; label: string }) {
+  if (value === null) {
+    return (
+      <li className="stat stat-soon">
+        <span className="stat-value">{STREAK_UNAVAILABLE}</span>
+        <span className="stat-label">{label}</span>
+      </li>
+    );
+  }
+  return (
+    <li className="stat">
+      <span className="stat-value" aria-label={daysLabel(value)}>
+        {value}
+        <small>d</small>
       </span>
       <span className="stat-label">{label}</span>
     </li>

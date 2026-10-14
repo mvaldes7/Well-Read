@@ -154,6 +154,15 @@
       "title": "Sidebar, dashboard, progress",
       "role": "Builder",
       "type": "impl",
+      "state": "Release Approved",
+      "agent": "Builder",
+      "attempts": {}
+    },
+    {
+      "id": "TSK-016",
+      "title": "Streaks",
+      "role": "Builder",
+      "type": "impl",
       "state": "In Progress",
       "agent": "Builder",
       "attempts": {}
@@ -749,6 +758,42 @@
       "ts": "2026-10-14T23:19:13.327Z",
       "actor": "Builder",
       "taskId": "TSK-015",
+      "action": "start",
+      "from": "Idea",
+      "to": "In Progress",
+      "note": "agent=Builder"
+    },
+    {
+      "ts": "2026-10-14T23:22:46.047Z",
+      "actor": "Builder",
+      "taskId": "TSK-015",
+      "action": "status",
+      "from": "In Progress",
+      "to": "Checks Passed",
+      "note": "PR #18 CI checks + Vercel preview green"
+    },
+    {
+      "ts": "2026-10-14T23:22:46.080Z",
+      "actor": "Builder",
+      "taskId": "TSK-015",
+      "action": "status",
+      "from": "Checks Passed",
+      "to": "Release Approved",
+      "note": "PR #18 squash-merged as a7657fb"
+    },
+    {
+      "ts": "2026-10-14T23:22:46.112Z",
+      "actor": "Builder",
+      "taskId": "TSK-016",
+      "action": "add",
+      "from": null,
+      "to": "Idea",
+      "note": null
+    },
+    {
+      "ts": "2026-10-14T23:22:46.147Z",
+      "actor": "Builder",
+      "taskId": "TSK-016",
       "action": "start",
       "from": "Idea",
       "to": "In Progress",
