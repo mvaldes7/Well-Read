@@ -94,7 +94,9 @@ function Chart({ id, title, caption, head, bars }: { id: string; title: string; 
           </div>
         ))}
       </div>
-      <table className="visually-hidden">
+      {/* Wrapped: a table ignores the 1px width of .visually-hidden and would widen the page. */}
+      <div className="visually-hidden">
+      <table>
         <caption>{caption}</caption>
         <thead>
           <tr>
@@ -114,6 +116,7 @@ function Chart({ id, title, caption, head, bars }: { id: string; title: string; 
           ))}
         </tbody>
       </table>
+      </div>
     </section>
   );
 }
