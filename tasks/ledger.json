@@ -139,6 +139,15 @@
       "state": "In Progress",
       "agent": "Builder",
       "attempts": {}
+    },
+    {
+      "id": "TSK-019",
+      "title": "Per-discipline levels",
+      "role": "Builder",
+      "type": "impl",
+      "state": "Idea",
+      "agent": null,
+      "attempts": {}
     }
   ],
   "log": [
@@ -654,6 +663,15 @@
       "from": "Idea",
       "to": "In Progress",
       "note": "agent=Builder"
+    },
+    {
+      "ts": "2026-10-14T00:57:17.428Z",
+      "actor": "Builder",
+      "taskId": "TSK-019",
+      "action": "add",
+      "from": null,
+      "to": "Idea",
+      "note": "Backlog (not started). Rework achievements so levels count per discipline: each passed lesson is one tick toward that discipline's level. Keep the completionist badges."
     }
   ]
 }
