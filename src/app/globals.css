@@ -364,7 +364,7 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
 /* Hover stays subtle so the title keeps >= 4.5:1 at the gradient's lightest stop. */
 .spine:hover { filter: brightness(1.04); }
 
-/* ---------- Levels + achievements (TSK-011) ---------- */
+/* ---------- Mastery + achievements (TSK-011, TSK-019) ---------- */
 :root {
   --locked-bg: #e4e0d8;      /* dimmed card: text stays --ink / --sub (>= 4.5:1, see PR) */
   --locked-medal: #c9c4b9;
@@ -374,20 +374,21 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
   :root { --locked-bg: #201f23; --locked-medal: #3a3940; --locked-glyph: #c9c4b9; }
 }
 
-/* Topic page level */
-.topic-level-slot { min-height: 46px; margin-top: 18px; }
-.topic-level { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
-.level-badge { font-size: 11px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--brass-text); background: linear-gradient(var(--brass-hi), var(--brass-lo)); border: 1px solid #7c6639; border-radius: 2px; padding: 6px 12px 5px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), inset 0 -1px 0 rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.25); }
-.level-badge.none { color: var(--sub); background: transparent; border-color: var(--line); box-shadow: none; }
-.level-progress { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--sub); }
-.level-progress progress { appearance: none; -webkit-appearance: none; width: 120px; height: 8px; border: 1px solid var(--edge); border-radius: 1px; background: var(--option); box-shadow: inset 0 1px 2px rgba(30, 25, 15, 0.18); overflow: hidden; }
-.level-progress progress::-webkit-progress-bar { background: transparent; }
+/* Topic page: the discipline's mastery tier (TSK-019) */
+.topic-mastery-slot { min-height: 46px; margin-top: 18px; }
+.topic-mastery { display: flex; align-items: center; justify-content: center; gap: 16px; flex-wrap: wrap; }
+.tier-badge { font-size: 11px; font-weight: 600; letter-spacing: 0.24em; text-transform: uppercase; color: var(--brass-text); background: linear-gradient(var(--brass-hi), var(--brass-lo)); border: 1px solid #7c6639; border-radius: 2px; padding: 6px 12px 5px; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.55), inset 0 -1px 0 rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.25); }
+.tier-badge.none { color: var(--sub); background: transparent; border-color: var(--line); box-shadow: none; }
+.tier-progress { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--sub); }
+.tier-progress progress { appearance: none; -webkit-appearance: none; width: 120px; height: 8px; border: 1px solid var(--edge); border-radius: 1px; background: var(--option); box-shadow: inset 0 1px 2px rgba(30, 25, 15, 0.18); overflow: hidden; }
+.tier-progress progress::-webkit-progress-bar { background: transparent; }
 /* Fill keeps >= 3:1 against the track: darker brass on light, standard brass on dark. */
 :root { --progress-fill: linear-gradient(#9a8250, #7a6536); }
 @media (prefers-color-scheme: dark) { :root { --progress-fill: linear-gradient(var(--brass-hi), var(--brass-lo)); } }
-.level-progress progress::-webkit-progress-value { background: var(--progress-fill); }
-.level-progress progress::-moz-progress-bar { background: var(--progress-fill); }
-.level-text { color: var(--ink); letter-spacing: 0.04em; }
+.tier-progress progress::-webkit-progress-value { background: var(--progress-fill); }
+.tier-progress progress::-moz-progress-bar { background: var(--progress-fill); }
+.tier-text { color: var(--ink); letter-spacing: 0.04em; }
+.mastery-count { font-size: 13px; letter-spacing: 0.04em; color: var(--sub); }
 
 /* Achievements board */
 .board-count { text-align: center; font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sub); margin: 0 0 8px; }
@@ -433,7 +434,7 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
   .medal { padding: 16px; gap: 14px; }
   .medal h3 { font-size: 19px; }
   .medallion { width: 44px; height: 44px; font-size: 19px; }
-  .topic-level { gap: 10px; }
+  .topic-mastery { gap: 10px; }
 }
 
 /* ---------- TSK-012: multi-paragraph sections, explanations, sources ---------- */

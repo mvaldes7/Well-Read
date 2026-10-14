@@ -4,7 +4,6 @@
 // node:test can import it; type-checked by tsc via allowJs.
 
 import { shouldReplace } from "../quiz/logic.mjs";
-import { passedInTopic } from "./levels.mjs";
 
 /** @typedef {{ lesson_id: string, score: number, total: number, passed: boolean }} CompletionRow */
 /** @typedef {{ score: number, total: number, passed: boolean }} Completion */
@@ -111,6 +110,16 @@ export function completionLookup(rows, disciplines) {
   const map = new Map();
   for (const [id, c] of bestCompletions(rows, disciplines)) map.set(id, { score: c.score, total: c.total, passed: c.passed });
   return map;
+}
+
+/**
+ * Distinct passed lessons of one topic (the bookshelf's brass-tag count), counting only the
+ * topic's content lessons.
+ * @param {{ lessons: ReadonlyArray<{ id: string }> }} topic
+ * @param {ReadonlyMap<string, { passed: boolean }>} lookup per-lesson best (completionLookup)
+ */
+export function passedInTopic(topic, lookup) {
+  return topic.lessons.filter((l) => lookup.get(l.id)?.passed === true).length;
 }
 
 /**

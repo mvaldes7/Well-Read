@@ -1,40 +1,10 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { LESSONS_PER_LEVEL, levelFor, levelProgressText, passedInTopic } from '../../src/lib/progress/levels.mjs';
-import { buildBookshelf, completionLookup } from '../../src/lib/progress/logic.mjs';
+import { buildBookshelf, completionLookup, passedInTopic } from '../../src/lib/progress/logic.mjs';
 
 const disciplines = JSON.parse(readFileSync(new URL('../../src/content/disciplines.json', import.meta.url), 'utf8'));
 const row = (lesson_id, score, total, passed, completed_at) => ({ lesson_id, score, total, passed, ...(completed_at === undefined ? {} : { completed_at }) });
-
-test('levelFor at the AC-4 boundaries', () => {
-  const cases = [
-    [0, null, 0, 1, 1, 'Pass a lesson to reach Level 1'],
-    [1, 1, 1, 5, 2, '1/5 to Level 2'],
-    [3, 1, 3, 5, 2, '3/5 to Level 2'],
-    [4, 1, 4, 5, 2, '4/5 to Level 2'],
-    [5, 2, 0, 5, 3, '0/5 to Level 3'],
-    [9, 2, 4, 5, 3, '4/5 to Level 3'],
-    [10, 3, 0, 5, 4, '0/5 to Level 4'],
-    [15, 4, 0, 5, 5, '0/5 to Level 5'],
-  ];
-  for (const [n, level, toward, needed, nextLevel, text] of cases) {
-    const info = levelFor(n);
-    assert.deepEqual(info, { level, passed: n, toward, needed, nextLevel }, `n=${n}`);
-    assert.equal(levelProgressText(info), text, `n=${n}`);
-  }
-  assert.equal(LESSONS_PER_LEVEL, 5);
-});
-
-test('levelFor clamps bad input instead of throwing', () => {
-  for (const bad of [-1, -5, -0.5, NaN, Infinity, -Infinity, '3', null, undefined, {}, [3]]) {
-    assert.deepEqual(levelFor(bad), { level: null, passed: 0, toward: 0, needed: 1, nextLevel: 1 }, String(bad));
-  }
-  assert.equal(levelFor(4.9).level, 1);
-  assert.equal(levelFor(4.9).passed, 4);
-  assert.equal(levelFor(5.2).level, 2);
-  assert.equal(levelFor(0.7).level, null);
-});
 
 test('passedInTopic counts distinct passed lessons that exist in the topic', () => {
   const stoicism = disciplines.find((d) => d.slug === 'philosophy').topics.find((t) => t.slug === 'stoicism');
@@ -53,4 +23,17 @@ test('TSK-019: books carry no level and spines render no Lv/Lvl label', () => {
   assert.doesNotMatch(page, /\bLvl?\b|book\.level|cap lv/);
   const css = readFileSync(new URL('../../src/app/globals.css', import.meta.url), 'utf8');
   assert.doesNotMatch(css, /\.cap\.lv/);
+});
+
+test('TSK-019: the topic page shows discipline mastery, with no Level text and no topic-levels code', () => {
+  const src = (f) => readFileSync(new URL(`../../src/${f}`, import.meta.url), 'utf8');
+  const page = src('app/d/[discipline]/[topic]/page.tsx');
+  const progress = src('components/Progress.tsx');
+  assert.match(page, /<DisciplineMastery /);
+  for (const [name, text] of [['topic page', page], ['Progress.tsx', progress]]) {
+    assert.doesNotMatch(text, /\bLevel\b|\blevel\b|levels\.mjs|TopicLevel|levelFor/, name);
+  }
+  assert.match(progress, /mastery\.mjs/);
+  assert.doesNotMatch(src('app/globals.css'), /\.topic-level|\.level-badge|\.level-progress|\.level-text/);
+  assert.throws(() => src('lib/progress/levels.mjs'), /ENOENT/);
 });
