@@ -15,7 +15,7 @@ test('sidebar link set: exactly Dashboard, Learn, Library Wall, Reading List, Pr
   assert.match(sidebar, /<nav aria-label="Main">/);
   assert.match(sidebar, /aria-expanded=\{open\}/);
   assert.match(sidebar, /aria-controls="sidebar-panel"/);
-  assert.match(sidebar, /e\.key !== "Escape"/);
+  assert.match(sidebar, /e\.key === "Escape"/);
   assert.match(readFileSync(new URL('../../src/components/UserMenu.tsx', import.meta.url), 'utf8'), /Sign out/);
 });
 

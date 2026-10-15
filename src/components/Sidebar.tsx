@@ -5,7 +5,9 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import LogoMark from "@/components/LogoMark";
 import NavIcon from "@/components/NavIcon";
-import { SIDEBAR_LINKS, activeHref, showSidebar } from "@/lib/ui/nav.mjs";
+import { SIDEBAR_LINKS, activeHref, escReturnsFocus, showSidebar, trapTab } from "@/lib/ui/nav.mjs";
+
+const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
 function Logo() {
   return (
@@ -20,7 +22,9 @@ function Logo() {
 
 /**
  * App sidebar (TSK-015): replaces the top nav. Hidden on the signed-out auth pages (logo only).
- * Below 820px (the globals.css breakpoint) it collapses behind a Menu button (aria-expanded; Esc closes and returns focus).
+ * Below 820px (the globals.css breakpoint) it collapses behind a Menu button (aria-expanded).
+ * While open (TSK-020), Tab / Shift+Tab cycle through the Close button and the panel's controls,
+ * and Esc closes it, returning focus to the toggle only if focus was inside the menu.
  * `user` is the streamed server UserMenu (name -> /account, Sign out); `streak` the streamed
  * SidebarStreak (TSK-016).
  */
@@ -30,13 +34,28 @@ export default function Sidebar({ user, streak }: { user: ReactNode; streak: Rea
   const [openOn, setOpenOn] = useState<string | null>(null);
   const open = openOn === pathname;
   const button = useRef<HTMLButtonElement>(null);
+  const panel = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (!open) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key !== "Escape") return;
-      setOpenOn(null);
-      button.current?.focus();
+      const toggle = button.current;
+      const box = panel.current;
+      // Desktop layout (toggle hidden, e.g. after a resize): no trap, Esc does nothing.
+      if (!toggle || !box || toggle.offsetParent === null) return;
+      const focused = document.activeElement;
+      const inside = focused === toggle || box.contains(focused);
+      if (e.key === "Escape") {
+        setOpenOn(null);
+        if (escReturnsFocus(inside)) toggle.focus();
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const items = [toggle, ...box.querySelectorAll<HTMLElement>(FOCUSABLE)].filter((el) => el.getClientRects().length > 0);
+      const next = trapTab(items.length, items.indexOf(focused as HTMLElement), e.shiftKey);
+      if (next === null) return;
+      e.preventDefault();
+      items[next].focus();
     };
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
@@ -52,7 +71,7 @@ export default function Sidebar({ user, streak }: { user: ReactNode; streak: Rea
 
   const active = activeHref(pathname);
   return (
-    <aside className={`sidebar${open ? " open" : ""}`} aria-label="Sidebar">
+    <div className={`sidebar${open ? " open" : ""}`}>
       <div className="sidebar-top">
         <Logo />
         <button
@@ -67,7 +86,7 @@ export default function Sidebar({ user, streak }: { user: ReactNode; streak: Rea
           {open ? "Close" : "Menu"}
         </button>
       </div>
-      <div id="sidebar-panel" className="sidebar-panel">
+      <div id="sidebar-panel" className="sidebar-panel" ref={panel}>
         <nav aria-label="Main">
           <ul>
             {SIDEBAR_LINKS.map((l) => (
@@ -83,6 +102,6 @@ export default function Sidebar({ user, streak }: { user: ReactNode; streak: Rea
         <div className="sidebar-streak">{streak}</div>
         <div className="sidebar-user">{user}</div>
       </div>
-    </aside>
+    </div>
   );
 }
