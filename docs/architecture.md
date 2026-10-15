@@ -51,6 +51,8 @@ Stack (as of TSK-011). Display name: **Well-Read** (TSK-013); the repo is github
   `INSERT … ON CONFLICT DO NOTHING`, then one conditional `UPDATE` that only matches a worse row, so a
   passed row is never downgraded, even under concurrent submits. If saving fails (e.g. migration not applied),
   the graded result is still shown with a "couldn't be saved" note.
+  Applied migrations and their versions: see `supabase/README.md`. The `STATUS:` headers inside
+  migration files are historical and may be stale.
   Migration: `supabase/migrations/20261010040740_lesson_completions.sql`, applied to the dev project on
   2026-10-09 with Mike's approval. The file is kept byte-identical to what was applied, so its header still
   says "UNAPPLIED"; the applied status is tracked here and in the ledger, not by editing the file.
