@@ -1,7 +1,9 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { computeStreaks, daysLabel, isMissingTableError } from '../../src/lib/streaks/streaks.mjs';
+import { computeStreaks, daysLabel } from '../../src/lib/streaks/streaks.mjs';
+import { isMissingTableError as missing } from '../../src/lib/supabase/errors.mjs';
+const isMissingTableError = (e) => missing(e, 'activity_log');
 
 // Fixed "now": Wed Oct 14 2026, 15:00 PDT.
 const NOW = Date.parse('2026-10-14T22:00:00Z');
@@ -71,7 +73,8 @@ test('isMissingTableError: PGRST205 / 42P01 naming activity_log only', () => {
 test('before the migration: logging and reading degrade, never crash (wiring)', () => {
   const src = (f) => readFileSync(new URL(`../../src/${f}`, import.meta.url), 'utf8');
   const data = src('lib/streaks/data.ts');
-  assert.match(data, /isMissingTableError\(error\)/);
+  assert.match(data, /isMissingTableError\(error, ACTIVITY_TABLE\)/);
+  assert.match(data, /from "@\/lib\/supabase\/errors.mjs"/);
   assert.match(data, /return \{ status: "unavailable" \}/);
   assert.doesNotMatch(data, /service_role|SERVICE_ROLE/);
   const actions = src('lib/quiz/actions.ts');

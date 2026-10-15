@@ -1,4 +1,5 @@
 // @ts-check
+import { isMissingTableError } from "../supabase/errors.mjs";
 // Day streaks (TSK-016). Pure. Activity instants are bucketed into calendar days in the fixed
 // America/Los_Angeles zone (laDayKey, the same zone as achievement dates and the 7-day chart),
 // on the server. Day arithmetic is done on the "YYYY-MM-DD" key in UTC, so DST never shifts it.
@@ -45,17 +46,6 @@ export function computeStreaks(instants, now = Date.now()) {
   return { current, best, activeToday };
 }
 
-/**
- * True when a PostgREST/Postgres error means "this table doesn't exist" (migration not applied):
- * PGRST205 (table not in PostgREST's schema cache) or 42P01 (undefined_table). When the error
- * has a message it must name the table, so unrelated errors aren't mistaken for it.
- * @param {{ code?: string | null, message?: string | null } | null | undefined} error
- * @param {string} [table]
- */
-export function isMissingTableError(error, table = ACTIVITY_TABLE) {
-  if (!error || (error.code !== "PGRST205" && error.code !== "42P01")) return false;
-  return typeof error.message !== "string" || error.message === "" || error.message.includes(table);
-}
 
 /** @param {number} n */
 export const daysLabel = (n) => `${n} ${n === 1 ? "day" : "days"}`;
@@ -76,7 +66,7 @@ export async function insertActivity(supabase, userId, kind, ref, rethrow = () =
   try {
     const { error } = await supabase.from(ACTIVITY_TABLE).insert({ user_id: userId, kind, ref });
     if (!error) return "logged";
-    if (isMissingTableError(error)) return "unavailable";
+    if (isMissingTableError(error, ACTIVITY_TABLE)) return "unavailable";
     console.error(`activity_log insert failed (${error.code ?? "unknown"})`);
     return "failed";
   } catch (err) {
