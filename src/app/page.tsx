@@ -29,7 +29,8 @@ export default function Dashboard() {
 }
 
 async function DashboardBody() {
-  const progress = await getMyProgress();
+  // Independent reads (each already never throws): fetch them in parallel.
+  const [progress, streak] = await Promise.all([getMyProgress(), getMyStreak()]);
   if (progress.status === "error") return <p role="alert" className="empty-shelf error">{PROGRESS_ERROR}</p>;
   if (progress.status === "signedOut") {
     return (
@@ -39,7 +40,6 @@ async function DashboardBody() {
     );
   }
   const data = dashboardData(progress.rows, disciplines);
-  const streak = await getMyStreak();
   return (
     <>
       <section aria-labelledby="dash-stats">
