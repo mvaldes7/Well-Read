@@ -9,12 +9,14 @@ export default async function SidebarStreak() {
   if (s.status === "unavailable") {
     return <p className="streak-line muted-on-dark">Streak: {STREAK_UNAVAILABLE.toLowerCase()}</p>;
   }
+  // Same wording as daysLabel ("1 day", "6 days"), with the number emphasised.
+  const [current, unit] = daysLabel(s.current).split(" ");
   return (
     <dl className="streak-list">
       <div>
         <dt>Streak</dt>
         <dd>
-          <b>{s.current}</b> {s.current === 1 ? "day" : "days"}
+          <b>{current}</b> {unit}
         </dd>
       </div>
       <div>

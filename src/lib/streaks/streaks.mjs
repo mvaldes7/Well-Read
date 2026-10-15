@@ -57,7 +57,7 @@ export const daysLabel = (n) => `${n} ${n === 1 ? "day" : "days"}`;
  * re-throw Next's internal control-flow errors (unstable_rethrow) before swallowing.
  * @param {{ from: (table: string) => { insert: (row: object) => PromiseLike<{ error: { code?: string | null, message?: string | null } | null }> } }} supabase
  * @param {string} userId
- * @param {"lesson_passed" | "quiz_attempt"} kind
+ * @param {"quiz_attempt"} kind the only kind the app logs (see log.ts)
  * @param {string} ref permanent lesson id
  * @param {(err: unknown) => void} [rethrow]
  * @returns {Promise<"logged" | "unavailable" | "failed">}

@@ -34,3 +34,27 @@ export function activeHref(pathname) {
   const p = normalise(pathname);
   return SIDEBAR_LINKS.find((l) => l.match(p))?.href ?? null;
 }
+
+/**
+ * Focus trap for the open mobile menu (TSK-020). Given the trap's focusable elements in order
+ * and the index of the focused one (-1 when focus is outside the trap), returns the index to
+ * move focus to, or null to let the browser handle Tab normally (moving within the trap).
+ * @param {number} count
+ * @param {number} current
+ * @param {boolean} shift
+ * @returns {number | null}
+ */
+export function trapTab(count, current, shift) {
+  if (count <= 0) return null;
+  if (current < 0) return shift ? count - 1 : 0;
+  if (shift && current === 0) return count - 1;
+  if (!shift && current === count - 1) return 0;
+  return null;
+}
+
+/**
+ * Esc on the open menu: return focus to the toggle only when focus was inside the menu
+ * (panel or the toggle itself); otherwise leave it where the user put it.
+ * @param {boolean} focusInsideMenu
+ */
+export const escReturnsFocus = (focusInsideMenu) => focusInsideMenu;

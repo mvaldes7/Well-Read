@@ -101,8 +101,11 @@ p { margin: 0 0 1rem; }
 .sidebar-panel { flex: 1; display: flex; flex-direction: column; }
 .sidebar nav ul { list-style: none; margin: 0; padding: 18px 12px; display: grid; gap: 4px; }
 .sidebar nav a { display: flex; align-items: center; gap: 12px; padding: 11px 14px; border-left: 2px solid transparent; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--on-char-sub); text-decoration: none; }
-.sidebar nav a:hover { color: #f3efe6; background: rgba(255, 255, 255, 0.04); }
-.sidebar nav a[aria-current="page"] { color: #f3efe6; border-left-color: var(--brass); background: rgba(168, 145, 95, 0.16); }
+/* Hover vs active (TSK-020) must read differently: hover is a neutral grey tint with a faint grey
+   edge; active is brass text on a brass tint with a solid brass edge and heavier weight. */
+.sidebar nav a:hover { color: var(--on-char); background: rgba(255, 255, 255, 0.07); border-left-color: rgba(255, 255, 255, 0.22); }
+.sidebar nav a[aria-current="page"] { color: var(--brass-hi); font-weight: 600; border-left-color: var(--brass); background: rgba(168, 145, 95, 0.24); }
+.sidebar nav a[aria-current="page"]:hover { color: var(--brass-hi); border-left-color: var(--brass); background: rgba(168, 145, 95, 0.3); }
 .nav-icon { width: 18px; height: 18px; flex: none; }
 .sidebar-streak { margin-top: auto; padding: 16px 22px 0; border-top: 1px solid var(--char-line); font-size: 12.5px; color: var(--on-char-sub); }
 .streak-list { margin: 0; display: grid; gap: 4px; }
