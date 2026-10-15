@@ -148,7 +148,7 @@ test('wiring: session client only, getClaims re-check, server validation, id-sco
 });
 
 test('migration SQL: table, checks, trigger with search_path, RLS own-row CRUD, grants, index', () => {
-  const name = '20261014234000_reading_list_items.sql';
+  const name = '20261015023134_reading_list_items.sql';
   const sql = read(`supabase/migrations/${name}`);
   assert.ok(name.slice(0, 14) > '20261014233800', 'version after TSK-016 activity_log (applied as 20261014233800)');
   assert.match(sql, new RegExp(`version ${name.slice(0, 14)}`));
@@ -183,7 +183,7 @@ test('migration SQL: table, checks, trigger with search_path, RLS own-row CRUD, 
 });
 
 test('every app UPDATE writes only columns in the UPDATE grant (title, kind, url, status)', () => {
-  const sql = read('supabase/migrations/20261014234000_reading_list_items.sql');
+  const sql = read('supabase/migrations/20261015023134_reading_list_items.sql');
   const granted = sql.match(/grant update \(([^)]*)\) on table public\.reading_list_items/)[1].split(',').map((c) => c.trim());
   const actions = read('src/lib/reading-list/actions.ts');
   const updates = [...actions.matchAll(/\.update\(\{([^}]*)\}\)/g)].map((m) => m[1]);
