@@ -3039,6 +3039,139 @@
             ]
           }
         ]
+      },
+      {
+        "slug": "homer",
+        "title": "Homer",
+        "kind": "person",
+        "summary": "The ancient Greek epics traditionally attributed to Homer explore anger, loss, ingenuity, and homecoming through stories shaped by generations of oral performance.",
+        "lessons": [
+          {
+            "id": "les_hm01",
+            "slug": "war-homecoming-and-the-making-of-an-epic",
+            "title": "Homer: War, Homecoming, and the Making of an Epic",
+            "sections": [
+              {
+                "heading": "A famous name with an uncertain life",
+                "body": "What makes someone a hero: winning a battle, surviving a disaster, or recognizing another person’s suffering? The Iliad and the Odyssey, traditionally attributed to Homer, turn such questions into stories. These ancient Greek epic poems helped shape later literature, but their author is much harder to pin down than their characters.\n\nWe have no securely established biography of Homer. Ancient traditions describe him as a wandering, blind singer, but these details are not verified facts. Scholars debate whether the two poems reflect one principal poet, different poets, or a more complicated history of composition and transmission.\n\nThat uncertainty does not make the poems anonymous accidents. It changes the question from “What did one writer invent?” to “How did inherited stories become these particular works?” Homer is the traditional authorial name attached to a remarkably influential poetic achievement."
+              },
+              {
+                "heading": "Poetry before the printed page",
+                "body": "An epic is an extended narrative poem about consequential deeds and adventures. These epics developed from an oral tradition: singers inherited stories, familiar phrases, and recurring scenes, then shaped them in performance. Their art involved composition as well as remembering.\n\nRepeated descriptions of heroes and familiar scenes involving feasts, journeys, or battles were resources for this tradition. To a modern reader, repetition may seem unnecessary. In performance, it could provide recognizable patterns and support the unfolding story. Repetition belongs to the poems’ technique, not simply to a failure of originality.\n\nWriting eventually helped preserve comparatively stable texts, but scholars dispute exactly how that happened. These are not straightforward records of a single performance or untouched transcripts from a known author’s desk. Oral creativity and written transmission both belong to their history."
+              },
+              {
+                "heading": "The Iliad asks what anger costs",
+                "body": "The Iliad concerns a limited period near the end of the Trojan War, not the whole conflict. Its central thread is the anger of Achilles, the Greeks’ greatest warrior, after a dispute with their leader, Agamemnon. Achilles withdraws from battle, with devastating consequences.\n\nThe death of his companion Patroclus brings Achilles back to fighting, and he kills the Trojan defender Hector. Yet military victory does not resolve his grief. The story connects the pursuit of honor with losses that heroic power cannot repair.\n\nA crucial encounter comes when Hector’s father, Priam, seeks his son’s body from Achilles. Their shared experience of loss opens space for compassion across enemy lines. The poem ends with Hector’s funeral, not the wooden horse or the destruction of Troy."
+              },
+              {
+                "heading": "The Odyssey asks what returning home requires",
+                "body": "The Odyssey follows Odysseus’s struggle to return to Ithaca after the war. Alongside encounters with monsters and divine powers, it follows the dangers confronting his wife, Penelope, and son, Telemachus. Homecoming involves a household as well as an individual traveler.\n\nOdysseus depends on endurance, disguise, persuasive speech, and cunning. These qualities complicate the idea that heroism means physical strength alone. His stories also raise questions about identity: how do others recognize someone who has been absent and repeatedly conceals who he is?\n\nRead the epics together as contrasting investigations, not a simple lesson in admirable behavior. Achilles confronts the limits of martial glory; Odysseus struggles to recover his place at home. Both poems make heroic achievement inseparable from vulnerability, relationships, and loss."
+              }
+            ],
+            "keyFacts": [
+              "Homer is the traditional author of the Iliad and the Odyssey, but his biography and precise role remain uncertain.",
+              "Both works are epic poems, not novels or verified historical reports.",
+              "Oral tradition supplied inherited phrases, scenes, and stories that singers could reshape in performance.",
+              "The Iliad centers on Achilles’s anger during a limited part of the Trojan War.",
+              "The Iliad ends with Hector’s funeral, not the fall of Troy.",
+              "The Odyssey explores Odysseus’s homecoming and the struggles of his household."
+            ],
+            "quiz": [
+              {
+                "question": "Which statement about Homer is most historically careful?",
+                "options": [
+                  "His complete autobiography survives.",
+                  "His blindness has been independently verified.",
+                  "He is the traditional author of the epics, but his life and precise contribution remain uncertain.",
+                  "Scholars have proved that every line was composed at a single performance."
+                ],
+                "answerIndex": 2,
+                "explanation": "Ancient biographical traditions are not secure evidence, and the composition of the poems remains debated."
+              },
+              {
+                "question": "What does oral tradition mean in the context of these epics?",
+                "options": [
+                  "Singers worked with inherited material and shaped stories through performance.",
+                  "Every singer read aloud from an identical printed edition.",
+                  "No performer could change any wording.",
+                  "The poems began as modern novels."
+                ],
+                "answerIndex": 0,
+                "explanation": "Oral composition draws on familiar phrases, scenes, and plots while permitting creative shaping."
+              },
+              {
+                "question": "Which description best captures the Iliad’s scope?",
+                "options": [
+                  "It narrates every event from the origins of Troy to its destruction.",
+                  "It follows Odysseus’s entire voyage home.",
+                  "It is a biography of Homer.",
+                  "It focuses on Achilles’s anger and its consequences during part of the Trojan War."
+                ],
+                "answerIndex": 3,
+                "explanation": "The poem assumes a larger Trojan War tradition but concentrates on a limited span of events."
+              },
+              {
+                "question": "Why does Priam’s encounter with Achilles matter?",
+                "options": [
+                  "It proves the Trojans have won the war.",
+                  "It brings grief and compassion into an encounter between enemies.",
+                  "It introduces the wooden horse.",
+                  "It restores Patroclus to life."
+                ],
+                "answerIndex": 1,
+                "explanation": "Priam’s request for Hector’s body prompts recognition of shared suffering; military opposition does not erase their humanity."
+              },
+              {
+                "question": "Which qualities are especially important to Odysseus’s heroism?",
+                "options": [
+                  "An inability to disguise himself or tell stories.",
+                  "Physical strength without any need for judgment.",
+                  "Endurance, cunning, persuasive speech, and adaptability.",
+                  "Complete independence from his household or relationships."
+                ],
+                "answerIndex": 2,
+                "explanation": "The Odyssey makes resourcefulness and identity central to its account of surviving and returning home."
+              },
+              {
+                "question": "Which comparison best distinguishes the two epics?",
+                "options": [
+                  "The Iliad explores anger and the costs of martial honor; the Odyssey explores homecoming and recovering one’s place in a household.",
+                  "Both are complete historical accounts of the Trojan War.",
+                  "The Iliad is a novel, while the Odyssey is a play.",
+                  "Neither poem connects heroism with suffering."
+                ],
+                "answerIndex": 0,
+                "explanation": "The poems share a legendary world but organize their narratives around different central struggles."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Homer",
+                "url": "https://www.britannica.com/biography/Homer-Greek-poet",
+                "note": "Supports the uncertainty about biography and authorship, the oral tradition, formulaic composition, and the interaction between performance and writing."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Iliad",
+                "url": "https://www.britannica.com/topic/Iliad-epic-poem-by-Homer",
+                "note": "Supports the poem’s genre, limited narrative scope, principal characters, plot, Priam’s encounter with Achilles, and conclusion."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Odyssey",
+                "url": "https://www.britannica.com/topic/Odyssey-epic-by-Homer",
+                "note": "Supports the poem’s genre, oral-performance background, homecoming plot, household narrative, and themes of resourcefulness and identity."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Homer: Stabilizing the Text",
+                "url": "https://www.britannica.com/biography/Homer-Greek-poet/Stabilizing-the-text",
+                "note": "Supports the discussion of transmission theories and the Iliad’s examination of Achilles’s anger and the contradictions of heroic ideals."
+              }
+            ]
+          }
+        ]
       }
     ]
   }
