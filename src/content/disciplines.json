@@ -2900,6 +2900,145 @@
             ]
           }
         ]
+      },
+      {
+        "slug": "langston-hughes",
+        "title": "Langston Hughes",
+        "kind": "person",
+        "summary": "Langston Hughes brought Black everyday speech, blues, and jazz into influential poetry about ordinary lives, cultural pride, and the consequences of unequal opportunity.",
+        "lessons": [
+          {
+            "id": "les_lh01",
+            "slug": "poetry-with-the-rhythm-of-everyday-life",
+            "title": "Langston Hughes: Poetry with the Rhythm of Everyday Life",
+            "sections": [
+              {
+                "heading": "Whose life belongs in a poem?",
+                "body": "Imagine opening a poetry book and hearing the voices of a neighborhood: music from a club, a conversation on the street, someone worrying about work. Langston Hughes made such experiences central to literature. His subjects included the humor, disappointments, creativity, and ambitions of ordinary Black Americans.\n\nHughes became a leading figure in the Harlem Renaissance, a flowering of Black artistic and intellectual life during the 1920s. Harlem, a neighborhood in New York City, was a major center, but the movement was not confined to one place or one writer.\n\nHis first poetry collection, The Weary Blues, appeared in 1926. He also wrote fiction, plays, and essays. What connects much of this work is his determination to portray Black life without reducing it either to idealized respectability or to degrading stereotypes."
+              },
+              {
+                "heading": "Making the page sound like music",
+                "body": "For Hughes, blues and jazz were not merely subjects to mention. Their rhythms and expressive possibilities helped shape the writing itself. Repetition, variations in phrasing, and the rhythms of speech let a printed poem suggest a performance rather than a formally delivered speech.\n\nIn the poem “The Weary Blues,” a speaker describes hearing a Black pianist sing. The poem moves between the listener’s account and the musician’s lyrics. Repeated phrases and descriptions of swaying make music something the reader experiences through language, not just something the speaker reports.\n\nNotice the distinction between poet, observing speaker, and performing musician. Their perspectives are connected, but they are not interchangeable. Reading aloud helps reveal how repeated sounds and changes in voice give the scene its movement and melancholy. This is a reading exercise grounded in the poem’s structure."
+              },
+              {
+                "heading": "What happens when hope must wait?",
+                "body": "Hughes’s 1951 collection Montage of a Dream Deferred explores Black life in Harlem through an interrelated sequence of poems. Its musical shifts reflect a community’s varied voices and experiences. The famous poem “Harlem” belongs to this larger work, rather than standing entirely alone.\n\n“Harlem” considers the consequences of postponing a dream. Its comparisons turn an abstract frustration into physical experiences: drying fruit, an untreated wound, spoiled food, and an exhausting burden. These images make delay seem active and damaging rather than a harmless period of waiting.\n\nThe ending shifts toward the possibility of explosion. One plausible interpretation is accumulated social anger, but the poem does not offer a simple prediction. Its racial and historical context matters: reading it only as advice about personal ambition overlooks the barriers faced by the community it addresses."
+              },
+              {
+                "heading": "Cultural pride without a polished mask",
+                "body": "In his 1926 essay “The Negro Artist and the Racial Mountain,” Hughes defended artistic freedom rooted in Black experience. He challenged the pressure to treat white cultural standards as the measure of artistic achievement or to suppress Black identity to gain approval.\n\nThat position also left room for ordinary people’s imperfections. A literature worthy of its subjects could include hardship, pleasure, humor, and contradiction. Cultural pride did not require every character to become an exemplary spokesperson or every poem to become an uplifting public message.\n\nHughes offers a way to connect literary technique with social meaning. Ask not only what a poem says about equality, but whose voice it makes audible and how it sounds. His influence rests partly on bringing those questions together through language readers can hear."
+              }
+            ],
+            "keyFacts": [
+              "Hughes was a leading writer of the Harlem Renaissance, not its sole creator.",
+              "His first poetry collection, The Weary Blues, was published in 1926.",
+              "Blues, jazz, and everyday speech shaped his poetic techniques as well as his subjects.",
+              "The poem “The Weary Blues” distinguishes an observing speaker from a performing musician.",
+              "“Harlem” appears in Montage of a Dream Deferred, published in 1951.",
+              "Hughes defended the freedom to represent Black culture without submitting to white approval or idealizing every subject."
+            ],
+            "quiz": [
+              {
+                "question": "Which description best places Hughes within the Harlem Renaissance?",
+                "options": [
+                  "He single-handedly created a movement limited entirely to poetry.",
+                  "He opposed writing about contemporary Black life.",
+                  "He was a leading participant in a broader flowering of Black arts and intellectual life.",
+                  "He belonged to a movement devoted exclusively to ancient literature."
+                ],
+                "answerIndex": 2,
+                "explanation": "The Harlem Renaissance involved many writers and artists, with Harlem as a major center rather than the movement’s only location."
+              },
+              {
+                "question": "How did blues and jazz influence Hughes’s poetry?",
+                "options": [
+                  "They helped shape rhythm, repetition, voice, and phrasing, not just subject matter.",
+                  "They required every poem to use the same rhyme scheme.",
+                  "They prevented him from writing about social concerns.",
+                  "They appeared only in the titles of his books."
+                ],
+                "answerIndex": 0,
+                "explanation": "Musical traditions helped organize how his poems sound and move, alongside providing subjects and settings."
+              },
+              {
+                "question": "In “The Weary Blues,” why distinguish the speaker from the musician?",
+                "options": [
+                  "Because the musician never sings.",
+                  "Because poems cannot contain more than one voice.",
+                  "Because the speaker must be a newspaper reporter.",
+                  "Because the poem includes both an observer’s account and the performer’s lyrics."
+                ],
+                "answerIndex": 3,
+                "explanation": "Identifying these voices helps readers follow the structure without assuming every utterance comes directly from Hughes himself."
+              },
+              {
+                "question": "What do the physical comparisons in “Harlem” contribute?",
+                "options": [
+                  "They establish that delayed dreams always disappear harmlessly.",
+                  "They make the possible damage of postponed hope tangible through sensory experiences.",
+                  "They prove that the poem is a guide to food storage.",
+                  "They remove any connection to historical inequality."
+                ],
+                "answerIndex": 1,
+                "explanation": "Images of decay, injury, and burden give concrete form to the consequences of deferral."
+              },
+              {
+                "question": "Which statement best reflects Hughes’s position in “The Negro Artist and the Racial Mountain”?",
+                "options": [
+                  "Black artists should suppress their cultural identity to gain acceptance.",
+                  "Every Black character must be morally flawless.",
+                  "Black artists should be free to draw on their own culture without making white approval their governing standard.",
+                  "Music has no place in serious literature."
+                ],
+                "answerIndex": 2,
+                "explanation": "The essay defends creative freedom and Black cultural expression against pressures to conform or produce only respectable images."
+              },
+              {
+                "question": "Which reading approach best fits this lesson?",
+                "options": [
+                  "Connect voice, sound, and imagery with the social experiences the poem represents.",
+                  "Assume accessible language cannot carry complex ideas.",
+                  "Treat every speaker as an exact portrait of Hughes.",
+                  "Read “Harlem” only as motivational advice, ignoring its setting and larger sequence."
+                ],
+                "answerIndex": 0,
+                "explanation": "Hughes’s work rewards attention both to how language operates and to the Black lives and historical circumstances it presents."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Academy of American Poets",
+                "title": "About Langston Hughes",
+                "url": "https://poets.org/poet/langston-hughes",
+                "note": "Supports the overview of Hughes’s writing, first collection, musical influences, and the 1951 publication of Montage of a Dream Deferred."
+              },
+              {
+                "publisher": "Poetry Foundation",
+                "title": "Langston Hughes",
+                "url": "https://www.poetryfoundation.org/poets/langston-hughes",
+                "note": "Supports the Harlem Renaissance context and his portrayal of working-class Black lives without idealization or negative stereotyping."
+              },
+              {
+                "publisher": "Poetry Foundation",
+                "title": "Langston Hughes, “The Weary Blues”",
+                "url": "https://www.poetryfoundation.org/poems/47347/the-weary-blues",
+                "note": "Primary text supporting the discussion of speaker, musician, repetition, movement, and melancholy. The lesson’s account of these effects is close reading, not a claim about a documented real-life performance."
+              },
+              {
+                "publisher": "Poetry Foundation",
+                "title": "Langston Hughes: ‘Harlem’",
+                "url": "https://www.poetryfoundation.org/articles/150907/langston-hughes-harlem",
+                "note": "Provides the 1951 poem’s text, its place within Montage of a Dream Deferred, and analysis of imagery, musical structure, historical context, and possible meanings of its ending. Hughes also wrote a different poem titled “Harlem”; this lesson discusses the 1951 poem about a deferred dream."
+              },
+              {
+                "publisher": "Poetry Foundation",
+                "title": "Langston Hughes, “The Negro Artist and the Racial Mountain”",
+                "url": "https://www.poetryfoundation.org/articles/69395/the-negro-artist-and-the-racial-mountain",
+                "note": "Supports the discussion of his 1926 essay, artistic independence, cultural identity, and resistance to respectability pressures. Its historical title is reproduced for identification."
+              }
+            ]
+          }
+        ]
       }
     ]
   }

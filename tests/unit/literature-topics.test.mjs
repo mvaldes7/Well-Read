@@ -11,11 +11,11 @@ const disciplines = JSON.parse(readFileSync(new URL('../../src/content/disciplin
 const lit = disciplines.find((d) => d.slug === 'poetry-and-literature');
 const row = (lesson_id, passed = true, at = '2026-10-10T17:00:00Z') => ({ lesson_id, score: passed ? 6 : 1, total: 6, passed, completed_at: at, first_passed_at: passed ? at : null });
 
-test('existing Poetry & Literature discipline (not duplicated) gains Reading Poetry with les_rp01', () => {
+test('existing Poetry & Literature discipline (not duplicated) gains Reading Poetry (les_rp01) and Langston Hughes (les_lh01)', () => {
   assert.equal(disciplines.filter((d) => /literature/i.test(d.slug + d.title)).length, 1);
   assert.equal(lit.title, 'Poetry & Literature');
   assert.deepEqual(lit.topics.map((t) => [t.slug, t.kind, t.lessons.map((l) => l.id)]), [
-    ['classic-novels', 'style', ['les_cn01']], ['reading-poetry', 'technique', ['les_rp01']],
+    ['classic-novels', 'style', ['les_cn01']], ['reading-poetry', 'technique', ['les_rp01']], ['langston-hughes', 'person', ['les_lh01']],
   ]);
   const l = lit.topics[1].lessons[0];
   assert.equal(l.title, 'How to Read a Poem: Sound, Images, and Line Breaks');
@@ -30,10 +30,33 @@ test('mastery, totals, Library Wall and completionist include les_rp01', () => {
   assert.equal(passedInDiscipline(lit, lk(['les_cn01', 'les_rp01'])), 2);
   assert.equal(masteryFor(passedInDiscipline(lit, lk(['les_rp01']))).tier, 'Novice');
   const p = dashboardData([row('les_rp01')], disciplines).perDiscipline.find((x) => x.slug === 'poetry-and-literature');
-  assert.deepEqual([p.passed, p.total], [1, 2]);
+  assert.deepEqual([p.passed, p.total], [1, 3]);
   const g = buildBookshelf([row('les_cn01'), row('les_rp01')], disciplines).find((x) => x.discipline.slug === 'poetry-and-literature');
   assert.deepEqual(g.books.map((b) => b.topicSlug), ['classic-novels', 'reading-poetry']);
   const by = (ids) => Object.fromEntries(evaluateAchievements(ids.map((id) => row(id)), disciplines).map((a) => [a.id, a]));
-  assert.equal(by(['les_cn01'])['completionist:poetry-and-literature'].progress, '1/2 lessons');
-  assert.equal(by(['les_cn01', 'les_rp01'])['completionist:poetry-and-literature'].earned, true);
+  assert.equal(by(['les_cn01'])['completionist:poetry-and-literature'].progress, '1/3 lessons');
+  assert.equal(by(['les_cn01', 'les_rp01'])['completionist:poetry-and-literature'].earned, false);
+  assert.equal(by(['les_cn01', 'les_rp01', 'les_lh01'])['completionist:poetry-and-literature'].earned, true);
+});
+
+test('lesson 4: Langston Hughes (les_lh01) shape, Library Wall volume, mastery', () => {
+  const t = lit.topics[2];
+  assert.deepEqual([t.slug, t.title, t.kind], ['langston-hughes', 'Langston Hughes', 'person']);
+  const l = t.lessons[0];
+  assert.equal(l.title, 'Langston Hughes: Poetry with the Rhythm of Everyday Life');
+  assert.deepEqual([l.sections.length, l.keyFacts.length, l.quiz.length, l.sources.length], [4, 6, 6, 5]);
+  assert.deepEqual(l.quiz.map((q) => q.answerIndex), [2, 0, 3, 1, 2, 0]);
+  assert.ok(l.quiz.every((q) => q.explanation.length > 0));
+  assert.equal(new Set(l.sources.map((s) => s.url)).size, l.sources.length);
+  const g = buildBookshelf(['les_cn01', 'les_rp01', 'les_lh01'].map((id) => row(id)), disciplines).find((x) => x.discipline.slug === 'poetry-and-literature');
+  assert.deepEqual(g.books.map((b) => [b.topicSlug, b.passedCount]), [['classic-novels', 1], ['reading-poetry', 1], ['langston-hughes', 1]]);
+  const lk = completionLookup(['les_cn01', 'les_rp01', 'les_lh01'].map((id) => row(id)), disciplines);
+  assert.equal(passedInDiscipline(lit, lk), 3);
+});
+
+test('curly quotes: titles that carry them still render on spines (sideways orientation for every glyph)', () => {
+  const curly = disciplines.flatMap((d) => d.topics).filter((t) => /[‘’“”]/.test(t.title)).map((t) => t.slug);
+  assert.ok(curly.includes('aristotle-virtue-ethics'));
+  const css = readFileSync(new URL('../../src/app/globals.css', import.meta.url), 'utf8');
+  assert.match(css, /\.spine \.t \{[^}]*text-orientation: sideways;/);
 });
