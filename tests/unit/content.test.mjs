@@ -7,7 +7,7 @@ import { readFileSync } from 'node:fs';
 const disciplines = JSON.parse(
   readFileSync(new URL('../../src/content/disciplines.json', import.meta.url), 'utf8'),
 );
-const KINDS = ['person', 'event', 'era', 'style', 'technique', 'process'];
+const KINDS = ['person', 'event', 'era', 'style', 'technique', 'process', 'concept'];
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const topics = disciplines.flatMap((d) => d.topics.map((t) => ({ d, t })));
 const lessons = topics.flatMap(({ d, t }) => t.lessons.map((l) => ({ d, t, l })));

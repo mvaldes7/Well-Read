@@ -1138,6 +1138,133 @@
             ]
           }
         ]
+      },
+      {
+        "slug": "aristotle-virtue-ethics",
+        "title": "Aristotle’s Virtue Ethics",
+        "kind": "concept",
+        "summary": "Aristotle’s virtue ethics connects living well with developing good character through practice, deliberate choice, and practical wisdom.",
+        "lessons": [
+          {
+            "id": "les_ar01",
+            "slug": "becoming-the-kind-of-person-who-acts-well",
+            "title": "Aristotle: Becoming the Kind of Person Who Acts Well",
+            "sections": [
+              {
+                "heading": "A good mood is not the same as a good life",
+                "body": "Imagine someone who gets everything they want today but repeatedly cheats friends and avoids responsibilities. Are they living well, or merely enjoying themselves? Aristotle’s ethics asks us to evaluate a life, not just a pleasant moment. His central question is what it means for a human being to flourish.\n\nThe Greek word eudaimonia is often translated as “happiness,” but “flourishing” helps avoid confusing it with a cheerful mood. Aristotle connects it with excellent rational activity across a complete life. Living well is something people do, not simply something they feel or possess.\n\nThis does not mean circumstances never matter. Aristotle recognizes that friendship, resources, and good fortune affect a life. His account is not the comforting promise that having a good attitude makes suffering irrelevant. Character matters enormously, but it does not give us complete control over our circumstances."
+              },
+              {
+                "heading": "Character grows through practice",
+                "body": "A virtue is an excellence of character, such as courage or generosity. Rather than focusing only on isolated decisions, Aristotle asks what stable dispositions allow someone to act and feel appropriately. One generous donation does not, by itself, establish a generous character.\n\nWe develop character partly through repeated action. Practicing fair dealing can help us become fair, just as practicing a skill develops competence. But this is not mindless repetition: genuine virtue involves understanding what we are doing and choosing the action for its own sake.\n\nConsider an invented example: someone returns a lost wallet only because a camera is watching. The action helps its owner, but it does not yet demonstrate the same character as knowingly returning it because doing so is right. Outward behavior and the reasons behind it both matter."
+              },
+              {
+                "heading": "The mean is not splitting the difference",
+                "body": "Aristotle describes many virtues as a mean between excess and deficiency. Courage, for example, avoids both cowardice and rashness. The courageous person does not ignore danger or flee every risk; they respond appropriately to what deserves fear and what is worth facing.\n\nThis mean is not an arithmetic midpoint. Imagine noticing a dangerous situation: refusing all help may be cowardly, while rushing in without the necessary skills may be reckless. Seeking trained assistance can be the courageous response. The example illustrates judgment, not a universal emergency rule.\n\nNor does the doctrine mean every action becomes acceptable in moderation. Aristotle explicitly rejects that idea for actions he regards as inherently wrong. The point is appropriate feeling and action—not automatic compromise, mildness, or finding halfway ground between any two positions."
+              },
+              {
+                "heading": "Good intentions need practical wisdom",
+                "body": "How do you recognize the appropriate response? Aristotle calls the relevant capacity phronesis, or practical wisdom. It combines deliberation with sensitivity to the details of a situation. General principles help, but they cannot mechanically settle every decision.\n\nImagine a friend asks for an honest opinion after a disappointment. Practical wisdom involves recognizing what is true, what matters now, and how to speak helpfully. Honesty need not mean careless bluntness, while kindness need not mean saying whatever is easiest. This is an illustrative application, not Aristotle’s own example.\n\nThe resulting question is larger than “Did I follow a rule?” It is also “What am I learning to notice, value, and choose?” Aristotle’s answer links ethical growth to practice guided by reflection: becoming someone who can recognize good reasons and reliably act on them."
+              }
+            ],
+            "keyFacts": [
+              "Eudaimonia concerns flourishing across a life, not merely feeling happy.",
+              "Virtues are stable excellences of character, not isolated good deeds.",
+              "Repeated action helps develop character, but virtue also requires understanding and deliberate choice.",
+              "The mean is an appropriate response between excess and deficiency, not a mathematical midpoint.",
+              "Some actions are not made right by performing them “in moderation.”",
+              "Practical wisdom applies ethical understanding to particular circumstances."
+            ],
+            "quiz": [
+              {
+                "question": "Which example best captures the distinction between a pleasant mood and eudaimonia?",
+                "options": [
+                  "Someone feels cheerful for an afternoon, so their entire life must be flourishing.",
+                  "Someone evaluates how well they live and act over time, not only how they feel today.",
+                  "Someone assumes money guarantees excellent character.",
+                  "Someone treats every uncomfortable experience as proof of a bad life."
+                ],
+                "answerIndex": 1,
+                "explanation": "Eudaimonia concerns living well across a life, rather than a temporary emotional state."
+              },
+              {
+                "question": "Someone returns a wallet only because they fear being recorded. What is the best Aristotelian assessment?",
+                "options": [
+                  "Their action automatically proves a fully virtuous character.",
+                  "The owner receives no benefit from the return.",
+                  "Motives never matter when evaluating character.",
+                  "The action may be right, but it does not by itself demonstrate acting virtuously for the right reason."
+                ],
+                "answerIndex": 3,
+                "explanation": "Aristotle distinguishes doing an outwardly appropriate act from acting with knowledge, deliberate choice, and a stable virtuous disposition."
+              },
+              {
+                "question": "What does courage as a mean involve?",
+                "options": [
+                  "Responding appropriately to danger rather than being cowardly or rash.",
+                  "Taking exactly half the risks available.",
+                  "Never experiencing fear.",
+                  "Always choosing the most dangerous option."
+                ],
+                "answerIndex": 0,
+                "explanation": "The mean concerns an appropriate response to the situation, not a numerical average or the elimination of emotion."
+              },
+              {
+                "question": "Why is “Everything is good in moderation” an inaccurate summary of Aristotle’s position?",
+                "options": [
+                  "He thinks every decision must be extreme.",
+                  "He denies that character matters.",
+                  "He holds that some actions are wrong in themselves and cannot be corrected by choosing a moderate amount.",
+                  "He thinks every disagreement should end in a compromise."
+                ],
+                "answerIndex": 2,
+                "explanation": "The doctrine of the mean is not a blanket permission to perform any kind of act in a limited quantity."
+              },
+              {
+                "question": "A person wants to help a friend but struggles to judge what the friend actually needs. Which capacity is especially relevant?",
+                "options": [
+                  "The ability to ignore circumstances.",
+                  "Practical wisdom: discerning how to act well in this particular situation.",
+                  "The habit of choosing whichever response is easiest.",
+                  "The belief that good intentions guarantee good judgment."
+                ],
+                "answerIndex": 1,
+                "explanation": "Practical wisdom connects ethical aims with deliberation and perception of relevant particulars."
+              },
+              {
+                "question": "Which practice best fits Aristotle’s account of ethical development?",
+                "options": [
+                  "Memorizing a definition of generosity without ever acting generously.",
+                  "Repeating actions mechanically while refusing to examine their purpose.",
+                  "Treating one good deed as proof that no further growth is needed.",
+                  "Repeatedly acting well while reflecting on reasons, motives, and circumstances."
+                ],
+                "answerIndex": 3,
+                "explanation": "Habituation supports ethical development, but mature virtue also involves understanding, deliberate choice, and practical wisdom."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Stanford Encyclopedia of Philosophy",
+                "title": "Aristotle’s Ethics",
+                "url": "https://plato.stanford.edu/entries/aristotle-ethics/",
+                "note": "Supports the explanations of eudaimonia, external goods, habituation, virtuous choice, the mean, actions not admitting a mean, and practical wisdom."
+              },
+              {
+                "publisher": "Internet Encyclopedia of Philosophy",
+                "title": "Aristotle: Ethics",
+                "url": "https://iep.utm.edu/aristotle-ethics/",
+                "note": "Supports the distinction between passive habit and an active, stable character disposition, and the importance of choosing virtuous action knowingly and for its own sake."
+              },
+              {
+                "publisher": "Internet Encyclopedia of Philosophy",
+                "title": "Virtue Ethics",
+                "url": "https://iep.utm.edu/virtue/",
+                "note": "Supports the introductory account of character-centered ethics and the relationship between habituation, understanding, and practical judgment."
+              }
+            ]
+          }
+        ]
       }
     ]
   },
