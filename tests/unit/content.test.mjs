@@ -7,7 +7,7 @@ import { readFileSync } from 'node:fs';
 const disciplines = JSON.parse(
   readFileSync(new URL('../../src/content/disciplines.json', import.meta.url), 'utf8'),
 );
-const KINDS = ['person', 'event', 'era', 'style', 'technique'];
+const KINDS = ['person', 'event', 'era', 'style', 'technique', 'process', 'concept'];
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const topics = disciplines.flatMap((d) => d.topics.map((t) => ({ d, t })));
 const lessons = topics.flatMap(({ d, t }) => t.lessons.map((l) => ({ d, t, l })));
@@ -243,9 +243,9 @@ test('paragraphs() splits section bodies on blank lines', async () => {
   assert.deepEqual(paragraphs(''), []);
 });
 
-test('American Civics: one merged Constitution & Bill of Rights topic; lesson ids unchanged, chronological (TSK-014)', () => {
+test('American Civics: one merged Constitution & Bill of Rights topic; lesson ids unchanged, chronological (TSK-014); TSK-022 adds federal-legislative-process after it', () => {
   const ac = disciplines.find((d) => d.slug === 'american-civics');
-  assert.deepEqual(ac.topics.map((t) => t.slug), ['constitution-bill-of-rights']);
+  assert.deepEqual(ac.topics.map((t) => t.slug), ['constitution-bill-of-rights', 'federal-legislative-process']);
   assert.equal(ac.topics[0].title, 'The Constitution & Bill of Rights');
   assert.deepEqual(ac.topics[0].lessons.map((l) => l.id), ['les_cc01', 'les_br01', 'les_br02']);
 });

@@ -181,6 +181,15 @@
       "title": "Polish",
       "role": "Builder",
       "type": "impl",
+      "state": "Release Approved",
+      "agent": "Builder",
+      "attempts": {}
+    },
+    {
+      "id": "TSK-022",
+      "title": "Lesson: How an Idea Becomes Federal Law (new Civics topic)",
+      "role": "Builder",
+      "type": "impl",
       "state": "In Progress",
       "agent": "Builder",
       "attempts": {}
@@ -884,6 +893,42 @@
       "ts": "2026-10-15T02:34:17.803Z",
       "actor": "Builder",
       "taskId": "TSK-020",
+      "action": "start",
+      "from": "Idea",
+      "to": "In Progress",
+      "note": "agent=Builder"
+    },
+    {
+      "ts": "2026-10-18T01:30:20.430Z",
+      "actor": "Builder",
+      "taskId": "TSK-020",
+      "action": "status",
+      "from": "In Progress",
+      "to": "Checks Passed",
+      "note": "PR #21 CI checks + Vercel preview green; squash-merged as b32ab58"
+    },
+    {
+      "ts": "2026-10-18T01:30:20.541Z",
+      "actor": "Builder",
+      "taskId": "TSK-020",
+      "action": "status",
+      "from": "Checks Passed",
+      "to": "Release Approved",
+      "note": "PR #21 squash-merged as b32ab58"
+    },
+    {
+      "ts": "2026-10-18T01:30:20.641Z",
+      "actor": "Builder",
+      "taskId": "TSK-022",
+      "action": "add",
+      "from": null,
+      "to": "Idea",
+      "note": null
+    },
+    {
+      "ts": "2026-10-18T01:30:20.750Z",
+      "actor": "Builder",
+      "taskId": "TSK-022",
       "action": "start",
       "from": "Idea",
       "to": "In Progress",

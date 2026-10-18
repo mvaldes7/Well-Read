@@ -1138,6 +1138,133 @@
             ]
           }
         ]
+      },
+      {
+        "slug": "aristotle-virtue-ethics",
+        "title": "Aristotle’s Virtue Ethics",
+        "kind": "concept",
+        "summary": "Aristotle’s virtue ethics connects living well with developing good character through practice, deliberate choice, and practical wisdom.",
+        "lessons": [
+          {
+            "id": "les_ar01",
+            "slug": "becoming-the-kind-of-person-who-acts-well",
+            "title": "Aristotle: Becoming the Kind of Person Who Acts Well",
+            "sections": [
+              {
+                "heading": "A good mood is not the same as a good life",
+                "body": "Imagine someone who gets everything they want today but repeatedly cheats friends and avoids responsibilities. Are they living well, or merely enjoying themselves? Aristotle’s ethics asks us to evaluate a life, not just a pleasant moment. His central question is what it means for a human being to flourish.\n\nThe Greek word eudaimonia is often translated as “happiness,” but “flourishing” helps avoid confusing it with a cheerful mood. Aristotle connects it with excellent rational activity across a complete life. Living well is something people do, not simply something they feel or possess.\n\nThis does not mean circumstances never matter. Aristotle recognizes that friendship, resources, and good fortune affect a life. His account is not the comforting promise that having a good attitude makes suffering irrelevant. Character matters enormously, but it does not give us complete control over our circumstances."
+              },
+              {
+                "heading": "Character grows through practice",
+                "body": "A virtue is an excellence of character, such as courage or generosity. Rather than focusing only on isolated decisions, Aristotle asks what stable dispositions allow someone to act and feel appropriately. One generous donation does not, by itself, establish a generous character.\n\nWe develop character partly through repeated action. Practicing fair dealing can help us become fair, just as practicing a skill develops competence. But this is not mindless repetition: genuine virtue involves understanding what we are doing and choosing the action for its own sake.\n\nConsider an invented example: someone returns a lost wallet only because a camera is watching. The action helps its owner, but it does not yet demonstrate the same character as knowingly returning it because doing so is right. Outward behavior and the reasons behind it both matter."
+              },
+              {
+                "heading": "The mean is not splitting the difference",
+                "body": "Aristotle describes many virtues as a mean between excess and deficiency. Courage, for example, avoids both cowardice and rashness. The courageous person does not ignore danger or flee every risk; they respond appropriately to what deserves fear and what is worth facing.\n\nThis mean is not an arithmetic midpoint. Imagine noticing a dangerous situation: refusing all help may be cowardly, while rushing in without the necessary skills may be reckless. Seeking trained assistance can be the courageous response. The example illustrates judgment, not a universal emergency rule.\n\nNor does the doctrine mean every action becomes acceptable in moderation. Aristotle explicitly rejects that idea for actions he regards as inherently wrong. The point is appropriate feeling and action—not automatic compromise, mildness, or finding halfway ground between any two positions."
+              },
+              {
+                "heading": "Good intentions need practical wisdom",
+                "body": "How do you recognize the appropriate response? Aristotle calls the relevant capacity phronesis, or practical wisdom. It combines deliberation with sensitivity to the details of a situation. General principles help, but they cannot mechanically settle every decision.\n\nImagine a friend asks for an honest opinion after a disappointment. Practical wisdom involves recognizing what is true, what matters now, and how to speak helpfully. Honesty need not mean careless bluntness, while kindness need not mean saying whatever is easiest. This is an illustrative application, not Aristotle’s own example.\n\nThe resulting question is larger than “Did I follow a rule?” It is also “What am I learning to notice, value, and choose?” Aristotle’s answer links ethical growth to practice guided by reflection: becoming someone who can recognize good reasons and reliably act on them."
+              }
+            ],
+            "keyFacts": [
+              "Eudaimonia concerns flourishing across a life, not merely feeling happy.",
+              "Virtues are stable excellences of character, not isolated good deeds.",
+              "Repeated action helps develop character, but virtue also requires understanding and deliberate choice.",
+              "The mean is an appropriate response between excess and deficiency, not a mathematical midpoint.",
+              "Some actions are not made right by performing them “in moderation.”",
+              "Practical wisdom applies ethical understanding to particular circumstances."
+            ],
+            "quiz": [
+              {
+                "question": "Which example best captures the distinction between a pleasant mood and eudaimonia?",
+                "options": [
+                  "Someone feels cheerful for an afternoon, so their entire life must be flourishing.",
+                  "Someone evaluates how well they live and act over time, not only how they feel today.",
+                  "Someone assumes money guarantees excellent character.",
+                  "Someone treats every uncomfortable experience as proof of a bad life."
+                ],
+                "answerIndex": 1,
+                "explanation": "Eudaimonia concerns living well across a life, rather than a temporary emotional state."
+              },
+              {
+                "question": "Someone returns a wallet only because they fear being recorded. What is the best Aristotelian assessment?",
+                "options": [
+                  "Their action automatically proves a fully virtuous character.",
+                  "The owner receives no benefit from the return.",
+                  "Motives never matter when evaluating character.",
+                  "The action may be right, but it does not by itself demonstrate acting virtuously for the right reason."
+                ],
+                "answerIndex": 3,
+                "explanation": "Aristotle distinguishes doing an outwardly appropriate act from acting with knowledge, deliberate choice, and a stable virtuous disposition."
+              },
+              {
+                "question": "What does courage as a mean involve?",
+                "options": [
+                  "Responding appropriately to danger rather than being cowardly or rash.",
+                  "Taking exactly half the risks available.",
+                  "Never experiencing fear.",
+                  "Always choosing the most dangerous option."
+                ],
+                "answerIndex": 0,
+                "explanation": "The mean concerns an appropriate response to the situation, not a numerical average or the elimination of emotion."
+              },
+              {
+                "question": "Why is “Everything is good in moderation” an inaccurate summary of Aristotle’s position?",
+                "options": [
+                  "He thinks every decision must be extreme.",
+                  "He denies that character matters.",
+                  "He holds that some actions are wrong in themselves and cannot be corrected by choosing a moderate amount.",
+                  "He thinks every disagreement should end in a compromise."
+                ],
+                "answerIndex": 2,
+                "explanation": "The doctrine of the mean is not a blanket permission to perform any kind of act in a limited quantity."
+              },
+              {
+                "question": "A person wants to help a friend but struggles to judge what the friend actually needs. Which capacity is especially relevant?",
+                "options": [
+                  "The ability to ignore circumstances.",
+                  "Practical wisdom: discerning how to act well in this particular situation.",
+                  "The habit of choosing whichever response is easiest.",
+                  "The belief that good intentions guarantee good judgment."
+                ],
+                "answerIndex": 1,
+                "explanation": "Practical wisdom connects ethical aims with deliberation and perception of relevant particulars."
+              },
+              {
+                "question": "Which practice best fits Aristotle’s account of ethical development?",
+                "options": [
+                  "Memorizing a definition of generosity without ever acting generously.",
+                  "Repeating actions mechanically while refusing to examine their purpose.",
+                  "Treating one good deed as proof that no further growth is needed.",
+                  "Repeatedly acting well while reflecting on reasons, motives, and circumstances."
+                ],
+                "answerIndex": 3,
+                "explanation": "Habituation supports ethical development, but mature virtue also involves understanding, deliberate choice, and practical wisdom."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Stanford Encyclopedia of Philosophy",
+                "title": "Aristotle’s Ethics",
+                "url": "https://plato.stanford.edu/entries/aristotle-ethics/",
+                "note": "Supports the explanations of eudaimonia, external goods, habituation, virtuous choice, the mean, actions not admitting a mean, and practical wisdom."
+              },
+              {
+                "publisher": "Internet Encyclopedia of Philosophy",
+                "title": "Aristotle: Ethics",
+                "url": "https://iep.utm.edu/aristotle-ethics/",
+                "note": "Supports the distinction between passive habit and an active, stable character disposition, and the importance of choosing virtuous action knowingly and for its own sake."
+              },
+              {
+                "publisher": "Internet Encyclopedia of Philosophy",
+                "title": "Virtue Ethics",
+                "url": "https://iep.utm.edu/virtue/",
+                "note": "Supports the introductory account of character-centered ethics and the relationship between habituation, understanding, and practical judgment."
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -1666,6 +1793,145 @@
                 "title": "Constitution Annotated essay Amdt14.S1.5.4.2",
                 "url": "https://constitution.congress.gov/browse/essay/amdt14-S1-5-4-2/ALDE_00013751/",
                 "note": "Mathews v. Eldridge and benefits disputes."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "federal-legislative-process",
+        "title": "The Federal Legislative Process",
+        "kind": "process",
+        "summary": "Federal lawmaking turns proposals into binding law through committee work, decisions in both chambers of Congress, and presidential action, with several points where a proposal can change or stall.",
+        "lessons": [
+          {
+            "id": "les_lp01",
+            "slug": "how-an-idea-becomes-federal-law",
+            "title": "How an Idea Becomes Federal Law",
+            "sections": [
+              {
+                "heading": "An announcement is not a law",
+                "body": "Imagine a headline announces a plan to improve drinking-water systems. Has anything legally changed? Not necessarily. A campaign promise, a presidential request, and an introduced bill are different from an enacted law. Following the proposal’s stage matters more than the excitement surrounding its announcement.\n\nA bill is proposed legislation. Ideas can come from constituents, advocacy groups, officials, or other sources, but only members of Congress can formally introduce legislation in their respective chambers. A member who introduces a bill is its sponsor.\n\nBills receive identifiers: H.R. indicates a House bill, while S. indicates a Senate bill. These labels tell you where a proposal originated—not whether it passed. Similar proposals can move separately through the two chambers."
+              },
+              {
+                "heading": "Committees shape what moves forward",
+                "body": "An introduced bill is usually referred to a committee responsible for its subject. Committees let lawmakers concentrate on particular policy areas rather than requiring the entire chamber to investigate every proposal from scratch. A drinking-water bill might go to a committee responsible for the relevant infrastructure or environmental issues.\n\nCommittees can hold hearings to gather testimony and examine a proposal. During a markup, members consider changes, called amendments, and decide whether to report legislation to the full chamber. Introducing a bill does not guarantee that any of these steps will happen.\n\nThat makes inaction important. A proposal can stall without ever receiving a final floor vote. Asking “Who voted against it?” may miss the real story: the bill may never have advanced far enough for that vote."
+              },
+              {
+                "heading": "Two chambers must agree on the actual words",
+                "body": "A bill reaching the House or Senate floor may face debate, amendments, and procedural votes. Final passage of ordinary legislation generally requires a simple majority of members voting, with a quorum present. But reaching that final vote can involve additional hurdles.\n\nIn the Senate, a filibuster can delay or block action. Cloture, the procedure for limiting debate, generally requires three-fifths of senators duly chosen and sworn—normally 60—for ordinary legislation. That is different from the final passage threshold; some procedures, including budget reconciliation, limit debate without this usual cloture hurdle.\n\nBoth chambers must approve the same bill in identical form. If the Senate changes the House’s drinking-water bill, their earlier votes are not enough. They must resolve the differences, sometimes through exchanging amendments or a conference committee, and approve matching text."
+              },
+              {
+                "heading": "The president has choices—and limits",
+                "body": "The agreed bill goes to the president. Signing it makes it law. A veto returns it to Congress with objections, but Congress can override the veto with a two-thirds vote in each chamber. The president therefore has substantial influence, not an absolute final say.\n\nThe president has ten days, excluding Sundays, to act. Taking no action normally allows the bill to become law without a signature. However, if Congress’s adjournment prevents its return, the unsigned bill does not become law—a pocket veto.\n\nNow revisit the headline. “Introduced,” “passed the House,” “passed both chambers in identical form,” and “became law” describe different achievements. Recognizing these stages helps you distinguish a political proposal from a legal change and identify where the next decision lies."
+              }
+            ],
+            "keyFacts": [
+              "A bill is a proposal, not an enacted law.",
+              "Only members of Congress formally introduce legislation in their respective chambers.",
+              "Committees can investigate, amend, advance, or leave proposals without action.",
+              "Both chambers must approve identical text before a bill goes to the president.",
+              "Senate cloture and final passage are different decisions with different voting thresholds.",
+              "Congress can override a presidential veto with a two-thirds vote in each chamber."
+            ],
+            "quiz": [
+              {
+                "question": "A president announces support for a new drinking-water program. What does that announcement alone establish?",
+                "options": [
+                  "The program has become federal law.",
+                  "Congress has approved its funding.",
+                  "The president supports the proposal, but the announcement does not enact legislation.",
+                  "Both chambers must vote on it within ten days."
+                ],
+                "answerIndex": 2,
+                "explanation": "A presidential request or announcement is not the same as a bill completing the legislative process."
+              },
+              {
+                "question": "What does the label H.R. tell you about a bill?",
+                "options": [
+                  "It originated in the House of Representatives.",
+                  "It has already passed both chambers.",
+                  "It requires a constitutional amendment.",
+                  "It has received the president’s signature."
+                ],
+                "answerIndex": 0,
+                "explanation": "H.R. identifies a House-originated bill; it does not establish how far the bill has advanced."
+              },
+              {
+                "question": "A bill receives no committee action and never reaches a floor vote. Which conclusion is best supported?",
+                "options": [
+                  "The president vetoed it.",
+                  "The Supreme Court rejected it.",
+                  "Every member of Congress voted against it.",
+                  "It stalled before a final chamber vote."
+                ],
+                "answerIndex": 3,
+                "explanation": "Bills can fail to advance through inaction rather than an explicit vote against final passage."
+              },
+              {
+                "question": "The House approves a bill, and the Senate approves an amended version. What must happen before it can go to the president?",
+                "options": [
+                  "The Senate’s version automatically replaces the House’s version.",
+                  "Both chambers must agree to identical text of the same bill.",
+                  "The president must choose which version is better.",
+                  "Voters must choose a version in a national referendum."
+                ],
+                "answerIndex": 1,
+                "explanation": "Agreement on the general goal is insufficient; both chambers must approve the same legislative text."
+              },
+              {
+                "question": "Why can saying “Every Senate bill needs 60 votes to pass” be misleading?",
+                "options": [
+                  "The Senate cannot vote on legislation.",
+                  "Sixty votes are required only in the House.",
+                  "The usual 60-vote cloture threshold concerns limiting debate, not final passage, and some procedures avoid that hurdle.",
+                  "Every Senate decision requires unanimous agreement."
+                ],
+                "answerIndex": 2,
+                "explanation": "Final passage generally requires a simple majority, while ordinary legislative cloture generally requires three-fifths of senators duly chosen and sworn. Special procedures can limit debate differently."
+              },
+              {
+                "question": "A president vetoes a bill. Which action can still make that bill law?",
+                "options": [
+                  "A two-thirds override vote in each chamber of Congress.",
+                  "A simple-majority override vote in the House alone.",
+                  "Approval by a congressional committee alone.",
+                  "A public petition automatically canceling the veto."
+                ],
+                "answerIndex": 0,
+                "explanation": "The Constitution provides for a veto override by a two-thirds vote in each chamber."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Congressional Research Service",
+                "title": "Introduction to the Legislative Process in the U.S. Congress",
+                "url": "https://www.congress.gov/crs-product/R42843"
+              },
+              {
+                "publisher": "Congress.gov",
+                "title": "The Legislative Process: Introduction and Referral of Bills",
+                "url": "https://www.congress.gov/legislative-process/introduction-and-referral-of-bills"
+              },
+              {
+                "publisher": "U.S. Senate",
+                "title": "About Filibusters and Cloture",
+                "url": "https://www.senate.gov/about/powers-procedures/filibusters-cloture.htm"
+              },
+              {
+                "publisher": "Congressional Research Service",
+                "title": "The Legislative Process on the House Floor: An Introduction",
+                "url": "https://www.congress.gov/crs-product/95-563"
+              },
+              {
+                "publisher": "Congress.gov",
+                "title": "The Legislative Process: Presidential Actions",
+                "url": "https://www.congress.gov/legislative-process/presidential-action"
+              },
+              {
+                "publisher": "Constitution Annotated",
+                "title": "Overview of Presidential Approval or Veto of Bills",
+                "url": "https://constitution.congress.gov/browse/essay/artI-S7-C2-1/ALDE_00013644/"
               }
             ]
           }
@@ -2485,6 +2751,423 @@
                 "title": "Chinua Achebe",
                 "url": "https://www.britannica.com/biography/Chinua-Achebe",
                 "note": "Background on Achebe and the novel’s portrayal of traditional Igbo life during the arrival of missionaries and colonial government."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "reading-poetry",
+        "title": "Reading Poetry",
+        "kind": "technique",
+        "summary": "Reading poetry involves noticing how a speaker’s words, sensory details, comparisons, sounds, and line breaks work together to create meaning.",
+        "lessons": [
+          {
+            "id": "les_rp01",
+            "slug": "how-to-read-a-poem",
+            "title": "How to Read a Poem: Sound, Images, and Line Breaks",
+            "sections": [
+              {
+                "heading": "Start with a voice, not a secret code",
+                "body": "Have you ever finished a poem and wondered whether you missed a hidden answer? Try starting somewhere simpler: who seems to be speaking, what is happening, and which words catch your attention? Before decoding symbols, establish what the poem actually says. The speaker is its voice, comparable to a narrator in fiction.\n\nDo not automatically identify that speaker with the poet. A writer can invent a voice, adopt a perspective, or create distance from personal experience. Ask what the speaker notices and how they address someone else; those choices help establish the situation.\n\nRead once for the overall impression, then again more slowly. As a practical exercise, describe the literal situation in one sentence before proposing a larger meaning. This gives your interpretation something concrete to explain rather than treating every word as a puzzle with an unrelated solution."
+              },
+              {
+                "heading": "Images make ideas tangible",
+                "body": "Imagery is language that evokes sensory experience: sights, sounds, smells, tastes, or touch. Instead of announcing “the room felt lonely,” a poem might show two cups on a table and one untouched chair. Physical details can give readers an experience from which an emotion emerges.\n\nA metaphor connects unlike things without explicitly marking the comparison with “like” or “as.” In the invented phrase “grief is a locked room,” an emotion becomes a space. A simile would make the comparison explicit: “grief is like a locked room.”\n\nDo more than name the device. Ask what the comparison makes available: isolation, confinement, or difficulty finding a way out. Then test those possibilities against the surrounding words. A convincing interpretation explains particular details rather than assuming every room or door must symbolize the same thing."
+              },
+              {
+                "heading": "Listen to the poem’s movement",
+                "body": "Poetry does not need to rhyme. Free verse does not follow a predetermined metrical pattern, but it can still have carefully shaped rhythms and sound. Reading aloud helps you notice emphasis and cadence—the movement of a speaking voice—rather than looking only for matching line endings.\n\nLine breaks also affect how information arrives. Enjambment occurs when a sentence or phrase continues across a line break. An end-stopped line reaches a grammatical or punctuated stopping point. These choices can create momentum, hesitation, surprise, or a sense of completion.\n\nCompare the invented lines “I thought you would stay / until morning” with the unbroken sentence “I thought you would stay until morning.” The break briefly leaves “stay” exposed before qualifying it. That is a possible effect, not an instruction to insert an identical pause at every line ending."
+              },
+              {
+                "heading": "Build an interpretation from evidence",
+                "body": "Try this original miniature poem: “Your coat still hangs / beside the door. / Rain taps the window; / I leave the light on.” First notice the objects and actions: a coat, rain, and a light someone deliberately keeps burning.\n\nOne plausible reading is that the speaker awaits someone absent. The coat suggests a continuing connection, and the light may suggest welcome or expectation. But the poem does not establish whether the person is late, has left permanently, or has died. Those possibilities are not equally proven facts.\n\nNow connect observation to meaning: “The ordinary household details suggest absence and continued expectation.” That claim explains the language without inventing a biography. The goal of this exercise is not unrestricted guessing, but an interpretation you can support, qualify, and revise."
+              }
+            ],
+            "keyFacts": [
+              "The speaker is the poem’s voice and should not automatically be identified with its author.",
+              "Imagery evokes sensory experiences, not only visual pictures.",
+              "Metaphor and simile create comparisons; explaining their effect matters more than simply labeling them.",
+              "Free verse can have rhythm without following a predetermined metrical pattern.",
+              "Enjambment carries a sentence or phrase across a line break.",
+              "An interpretation should distinguish what the text establishes from what the reader infers."
+            ],
+            "quiz": [
+              {
+                "question": "A poem begins, “I sailed away before my children woke.” What can you safely conclude from this line alone?",
+                "options": [
+                  "The poet personally abandoned their children.",
+                  "The poem’s speaker describes leaving before their children woke.",
+                  "Every event in the poem is historically documented.",
+                  "The speaker and the poet must be different people."
+                ],
+                "answerIndex": 1,
+                "explanation": "The line establishes something about the speaker. It does not establish whether that speaker is autobiographical or invented."
+              },
+              {
+                "question": "Which phrase most clearly uses sensory imagery?",
+                "options": [
+                  "“Life contains many uncertainties.”",
+                  "“Justice matters.”",
+                  "“The future is difficult to predict.”",
+                  "“Cold rain slipped beneath my collar.”"
+                ],
+                "answerIndex": 3,
+                "explanation": "The phrase evokes touch and temperature through a concrete physical experience."
+              },
+              {
+                "question": "What distinguishes “grief is a locked room” from “grief is like a locked room”?",
+                "options": [
+                  "The first is a metaphor; the second is a simile.",
+                  "The first is literal; the second contains no comparison.",
+                  "The first must rhyme; the second must not.",
+                  "The first describes a speaker; the second identifies the author."
+                ],
+                "answerIndex": 0,
+                "explanation": "Both compare unlike things, but the simile explicitly signals the comparison with “like.”"
+              },
+              {
+                "question": "A poem does not rhyme or follow a fixed meter. Which statement is most accurate?",
+                "options": [
+                  "It cannot be poetry.",
+                  "Its line breaks cannot affect meaning.",
+                  "It may be free verse and still use deliberate rhythm and sound.",
+                  "It must have been written without planning."
+                ],
+                "answerIndex": 2,
+                "explanation": "Free verse is not governed by a predetermined metrical pattern, but it can still be carefully shaped through rhythm, sound, and lineation."
+              },
+              {
+                "question": "What happens in the invented lines “I thought you would stay / until morning”?",
+                "options": [
+                  "The sentence ends permanently after “stay.”",
+                  "The sentence continues across a line break, creating enjambment.",
+                  "The word “morning” guarantees a cheerful mood.",
+                  "The two lines form a rhyme."
+                ],
+                "answerIndex": 1,
+                "explanation": "The syntax continues across the break. Temporarily isolating “stay” may affect how the reader experiences the following qualification."
+              },
+              {
+                "question": "Which reading of the miniature poem is best supported by its actual words?",
+                "options": [
+                  "The absent person definitely died at sea.",
+                  "The speaker has forgotten the absent person completely.",
+                  "The coat proves the poem takes place in winter.",
+                  "The household details suggest absence and continuing expectation, without establishing exactly why someone is gone."
+                ],
+                "answerIndex": 3,
+                "explanation": "The coat and the light support this inference, while the poem leaves the cause of the absence unstated. The other answers invent or contradict details."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Academy of American Poets",
+                "title": "Glossary of Poetic Terms",
+                "url": "https://poets.org/glossary",
+                "note": "Supports the definitions of speaker, line, enjambment, and end-stopped line."
+              },
+              {
+                "publisher": "Poetry at Harvard",
+                "title": "Guide to Poetic Terms",
+                "url": "https://poetry.harvard.edu/guide-poetic-terms",
+                "note": "Supports the explanations of speaker as a possible persona and imagery as visual or other sensory description."
+              },
+              {
+                "publisher": "Poetry Foundation",
+                "title": "Learning Image and Description",
+                "url": "https://www.poetryfoundation.org/articles/70212/learning-image-and-description",
+                "note": "Supports the relationship between physical description, sensory experience, emotion, and figurative language."
+              },
+              {
+                "publisher": "Poetry Foundation",
+                "title": "Learning about Figurative Language",
+                "url": "https://www.poetryfoundation.org/articles/70215/learning-about-figurative-language",
+                "note": "Supports the distinction between metaphor and simile and the importance of examining what a comparison reveals."
+              },
+              {
+                "publisher": "Academy of American Poets",
+                "title": "Free Verse",
+                "url": "https://poets.org/glossary/free-verse",
+                "note": "Supports the explanation of free verse, speech cadence, visual form, and the reader’s experience of rhythm."
+              },
+              {
+                "publisher": "Poetry Foundation",
+                "title": "Learning the Poetic Line",
+                "url": "https://www.poetryfoundation.org/articles/70144/learning-the-poetic-line",
+                "note": "Supports the discussion of line breaks, enjambment, end-stopping, and the gradual release of information."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "langston-hughes",
+        "title": "Langston Hughes",
+        "kind": "person",
+        "summary": "Langston Hughes brought Black everyday speech, blues, and jazz into influential poetry about ordinary lives, cultural pride, and the consequences of unequal opportunity.",
+        "lessons": [
+          {
+            "id": "les_lh01",
+            "slug": "poetry-with-the-rhythm-of-everyday-life",
+            "title": "Langston Hughes: Poetry with the Rhythm of Everyday Life",
+            "sections": [
+              {
+                "heading": "Whose life belongs in a poem?",
+                "body": "Imagine opening a poetry book and hearing the voices of a neighborhood: music from a club, a conversation on the street, someone worrying about work. Langston Hughes made such experiences central to literature. His subjects included the humor, disappointments, creativity, and ambitions of ordinary Black Americans.\n\nHughes became a leading figure in the Harlem Renaissance, a flowering of Black artistic and intellectual life during the 1920s. Harlem, a neighborhood in New York City, was a major center, but the movement was not confined to one place or one writer.\n\nHis first poetry collection, The Weary Blues, appeared in 1926. He also wrote fiction, plays, and essays. What connects much of this work is his determination to portray Black life without reducing it either to idealized respectability or to degrading stereotypes."
+              },
+              {
+                "heading": "Making the page sound like music",
+                "body": "For Hughes, blues and jazz were not merely subjects to mention. Their rhythms and expressive possibilities helped shape the writing itself. Repetition, variations in phrasing, and the rhythms of speech let a printed poem suggest a performance rather than a formally delivered speech.\n\nIn the poem “The Weary Blues,” a speaker describes hearing a Black pianist sing. The poem moves between the listener’s account and the musician’s lyrics. Repeated phrases and descriptions of swaying make music something the reader experiences through language, not just something the speaker reports.\n\nNotice the distinction between poet, observing speaker, and performing musician. Their perspectives are connected, but they are not interchangeable. Reading aloud helps reveal how repeated sounds and changes in voice give the scene its movement and melancholy. This is a reading exercise grounded in the poem’s structure."
+              },
+              {
+                "heading": "What happens when hope must wait?",
+                "body": "Hughes’s 1951 collection Montage of a Dream Deferred explores Black life in Harlem through an interrelated sequence of poems. Its musical shifts reflect a community’s varied voices and experiences. The famous poem “Harlem” belongs to this larger work, rather than standing entirely alone.\n\n“Harlem” considers the consequences of postponing a dream. Its comparisons turn an abstract frustration into physical experiences: drying fruit, an untreated wound, spoiled food, and an exhausting burden. These images make delay seem active and damaging rather than a harmless period of waiting.\n\nThe ending shifts toward the possibility of explosion. One plausible interpretation is accumulated social anger, but the poem does not offer a simple prediction. Its racial and historical context matters: reading it only as advice about personal ambition overlooks the barriers faced by the community it addresses."
+              },
+              {
+                "heading": "Cultural pride without a polished mask",
+                "body": "In his 1926 essay “The Negro Artist and the Racial Mountain,” Hughes defended artistic freedom rooted in Black experience. He challenged the pressure to treat white cultural standards as the measure of artistic achievement or to suppress Black identity to gain approval.\n\nThat position also left room for ordinary people’s imperfections. A literature worthy of its subjects could include hardship, pleasure, humor, and contradiction. Cultural pride did not require every character to become an exemplary spokesperson or every poem to become an uplifting public message.\n\nHughes offers a way to connect literary technique with social meaning. Ask not only what a poem says about equality, but whose voice it makes audible and how it sounds. His influence rests partly on bringing those questions together through language readers can hear."
+              }
+            ],
+            "keyFacts": [
+              "Hughes was a leading writer of the Harlem Renaissance, not its sole creator.",
+              "His first poetry collection, The Weary Blues, was published in 1926.",
+              "Blues, jazz, and everyday speech shaped his poetic techniques as well as his subjects.",
+              "The poem “The Weary Blues” distinguishes an observing speaker from a performing musician.",
+              "“Harlem” appears in Montage of a Dream Deferred, published in 1951.",
+              "Hughes defended the freedom to represent Black culture without submitting to white approval or idealizing every subject."
+            ],
+            "quiz": [
+              {
+                "question": "Which description best places Hughes within the Harlem Renaissance?",
+                "options": [
+                  "He single-handedly created a movement limited entirely to poetry.",
+                  "He opposed writing about contemporary Black life.",
+                  "He was a leading participant in a broader flowering of Black arts and intellectual life.",
+                  "He belonged to a movement devoted exclusively to ancient literature."
+                ],
+                "answerIndex": 2,
+                "explanation": "The Harlem Renaissance involved many writers and artists, with Harlem as a major center rather than the movement’s only location."
+              },
+              {
+                "question": "How did blues and jazz influence Hughes’s poetry?",
+                "options": [
+                  "They helped shape rhythm, repetition, voice, and phrasing, not just subject matter.",
+                  "They required every poem to use the same rhyme scheme.",
+                  "They prevented him from writing about social concerns.",
+                  "They appeared only in the titles of his books."
+                ],
+                "answerIndex": 0,
+                "explanation": "Musical traditions helped organize how his poems sound and move, alongside providing subjects and settings."
+              },
+              {
+                "question": "In “The Weary Blues,” why distinguish the speaker from the musician?",
+                "options": [
+                  "Because the musician never sings.",
+                  "Because poems cannot contain more than one voice.",
+                  "Because the speaker must be a newspaper reporter.",
+                  "Because the poem includes both an observer’s account and the performer’s lyrics."
+                ],
+                "answerIndex": 3,
+                "explanation": "Identifying these voices helps readers follow the structure without assuming every utterance comes directly from Hughes himself."
+              },
+              {
+                "question": "What do the physical comparisons in “Harlem” contribute?",
+                "options": [
+                  "They establish that delayed dreams always disappear harmlessly.",
+                  "They make the possible damage of postponed hope tangible through sensory experiences.",
+                  "They prove that the poem is a guide to food storage.",
+                  "They remove any connection to historical inequality."
+                ],
+                "answerIndex": 1,
+                "explanation": "Images of decay, injury, and burden give concrete form to the consequences of deferral."
+              },
+              {
+                "question": "Which statement best reflects Hughes’s position in “The Negro Artist and the Racial Mountain”?",
+                "options": [
+                  "Black artists should suppress their cultural identity to gain acceptance.",
+                  "Every Black character must be morally flawless.",
+                  "Black artists should be free to draw on their own culture without making white approval their governing standard.",
+                  "Music has no place in serious literature."
+                ],
+                "answerIndex": 2,
+                "explanation": "The essay defends creative freedom and Black cultural expression against pressures to conform or produce only respectable images."
+              },
+              {
+                "question": "Which reading approach best fits this lesson?",
+                "options": [
+                  "Connect voice, sound, and imagery with the social experiences the poem represents.",
+                  "Assume accessible language cannot carry complex ideas.",
+                  "Treat every speaker as an exact portrait of Hughes.",
+                  "Read “Harlem” only as motivational advice, ignoring its setting and larger sequence."
+                ],
+                "answerIndex": 0,
+                "explanation": "Hughes’s work rewards attention both to how language operates and to the Black lives and historical circumstances it presents."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Academy of American Poets",
+                "title": "About Langston Hughes",
+                "url": "https://poets.org/poet/langston-hughes",
+                "note": "Supports the overview of Hughes’s writing, first collection, musical influences, and the 1951 publication of Montage of a Dream Deferred."
+              },
+              {
+                "publisher": "Poetry Foundation",
+                "title": "Langston Hughes",
+                "url": "https://www.poetryfoundation.org/poets/langston-hughes",
+                "note": "Supports the Harlem Renaissance context and his portrayal of working-class Black lives without idealization or negative stereotyping."
+              },
+              {
+                "publisher": "Poetry Foundation",
+                "title": "Langston Hughes, “The Weary Blues”",
+                "url": "https://www.poetryfoundation.org/poems/47347/the-weary-blues",
+                "note": "Primary text supporting the discussion of speaker, musician, repetition, movement, and melancholy. The lesson’s account of these effects is close reading, not a claim about a documented real-life performance."
+              },
+              {
+                "publisher": "Poetry Foundation",
+                "title": "Langston Hughes: ‘Harlem’",
+                "url": "https://www.poetryfoundation.org/articles/150907/langston-hughes-harlem",
+                "note": "Provides the 1951 poem’s text, its place within Montage of a Dream Deferred, and analysis of imagery, musical structure, historical context, and possible meanings of its ending. Hughes also wrote a different poem titled “Harlem”; this lesson discusses the 1951 poem about a deferred dream."
+              },
+              {
+                "publisher": "Poetry Foundation",
+                "title": "Langston Hughes, “The Negro Artist and the Racial Mountain”",
+                "url": "https://www.poetryfoundation.org/articles/69395/the-negro-artist-and-the-racial-mountain",
+                "note": "Supports the discussion of his 1926 essay, artistic independence, cultural identity, and resistance to respectability pressures. Its historical title is reproduced for identification."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "homer",
+        "title": "Homer",
+        "kind": "person",
+        "summary": "The ancient Greek epics traditionally attributed to Homer explore anger, loss, ingenuity, and homecoming through stories shaped by generations of oral performance.",
+        "lessons": [
+          {
+            "id": "les_hm01",
+            "slug": "war-homecoming-and-the-making-of-an-epic",
+            "title": "Homer: War, Homecoming, and the Making of an Epic",
+            "sections": [
+              {
+                "heading": "A famous name with an uncertain life",
+                "body": "What makes someone a hero: winning a battle, surviving a disaster, or recognizing another person’s suffering? The Iliad and the Odyssey, traditionally attributed to Homer, turn such questions into stories. These ancient Greek epic poems helped shape later literature, but their author is much harder to pin down than their characters.\n\nWe have no securely established biography of Homer. Ancient traditions describe him as a wandering, blind singer, but these details are not verified facts. Scholars debate whether the two poems reflect one principal poet, different poets, or a more complicated history of composition and transmission.\n\nThat uncertainty does not make the poems anonymous accidents. It changes the question from “What did one writer invent?” to “How did inherited stories become these particular works?” Homer is the traditional authorial name attached to a remarkably influential poetic achievement."
+              },
+              {
+                "heading": "Poetry before the printed page",
+                "body": "An epic is an extended narrative poem about consequential deeds and adventures. These epics developed from an oral tradition: singers inherited stories, familiar phrases, and recurring scenes, then shaped them in performance. Their art involved composition as well as remembering.\n\nRepeated descriptions of heroes and familiar scenes involving feasts, journeys, or battles were resources for this tradition. To a modern reader, repetition may seem unnecessary. In performance, it could provide recognizable patterns and support the unfolding story. Repetition belongs to the poems’ technique, not simply to a failure of originality.\n\nWriting eventually helped preserve comparatively stable texts, but scholars dispute exactly how that happened. These are not straightforward records of a single performance or untouched transcripts from a known author’s desk. Oral creativity and written transmission both belong to their history."
+              },
+              {
+                "heading": "The Iliad asks what anger costs",
+                "body": "The Iliad concerns a limited period near the end of the Trojan War, not the whole conflict. Its central thread is the anger of Achilles, the Greeks’ greatest warrior, after a dispute with their leader, Agamemnon. Achilles withdraws from battle, with devastating consequences.\n\nThe death of his companion Patroclus brings Achilles back to fighting, and he kills the Trojan defender Hector. Yet military victory does not resolve his grief. The story connects the pursuit of honor with losses that heroic power cannot repair.\n\nA crucial encounter comes when Hector’s father, Priam, seeks his son’s body from Achilles. Their shared experience of loss opens space for compassion across enemy lines. The poem ends with Hector’s funeral, not the wooden horse or the destruction of Troy."
+              },
+              {
+                "heading": "The Odyssey asks what returning home requires",
+                "body": "The Odyssey follows Odysseus’s struggle to return to Ithaca after the war. Alongside encounters with monsters and divine powers, it follows the dangers confronting his wife, Penelope, and son, Telemachus. Homecoming involves a household as well as an individual traveler.\n\nOdysseus depends on endurance, disguise, persuasive speech, and cunning. These qualities complicate the idea that heroism means physical strength alone. His stories also raise questions about identity: how do others recognize someone who has been absent and repeatedly conceals who he is?\n\nRead the epics together as contrasting investigations, not a simple lesson in admirable behavior. Achilles confronts the limits of martial glory; Odysseus struggles to recover his place at home. Both poems make heroic achievement inseparable from vulnerability, relationships, and loss."
+              }
+            ],
+            "keyFacts": [
+              "Homer is the traditional author of the Iliad and the Odyssey, but his biography and precise role remain uncertain.",
+              "Both works are epic poems, not novels or verified historical reports.",
+              "Oral tradition supplied inherited phrases, scenes, and stories that singers could reshape in performance.",
+              "The Iliad centers on Achilles’s anger during a limited part of the Trojan War.",
+              "The Iliad ends with Hector’s funeral, not the fall of Troy.",
+              "The Odyssey explores Odysseus’s homecoming and the struggles of his household."
+            ],
+            "quiz": [
+              {
+                "question": "Which statement about Homer is most historically careful?",
+                "options": [
+                  "His complete autobiography survives.",
+                  "His blindness has been independently verified.",
+                  "He is the traditional author of the epics, but his life and precise contribution remain uncertain.",
+                  "Scholars have proved that every line was composed at a single performance."
+                ],
+                "answerIndex": 2,
+                "explanation": "Ancient biographical traditions are not secure evidence, and the composition of the poems remains debated."
+              },
+              {
+                "question": "What does oral tradition mean in the context of these epics?",
+                "options": [
+                  "Singers worked with inherited material and shaped stories through performance.",
+                  "Every singer read aloud from an identical printed edition.",
+                  "No performer could change any wording.",
+                  "The poems began as modern novels."
+                ],
+                "answerIndex": 0,
+                "explanation": "Oral composition draws on familiar phrases, scenes, and plots while permitting creative shaping."
+              },
+              {
+                "question": "Which description best captures the Iliad’s scope?",
+                "options": [
+                  "It narrates every event from the origins of Troy to its destruction.",
+                  "It follows Odysseus’s entire voyage home.",
+                  "It is a biography of Homer.",
+                  "It focuses on Achilles’s anger and its consequences during part of the Trojan War."
+                ],
+                "answerIndex": 3,
+                "explanation": "The poem assumes a larger Trojan War tradition but concentrates on a limited span of events."
+              },
+              {
+                "question": "Why does Priam’s encounter with Achilles matter?",
+                "options": [
+                  "It proves the Trojans have won the war.",
+                  "It brings grief and compassion into an encounter between enemies.",
+                  "It introduces the wooden horse.",
+                  "It restores Patroclus to life."
+                ],
+                "answerIndex": 1,
+                "explanation": "Priam’s request for Hector’s body prompts recognition of shared suffering; military opposition does not erase their humanity."
+              },
+              {
+                "question": "Which qualities are especially important to Odysseus’s heroism?",
+                "options": [
+                  "An inability to disguise himself or tell stories.",
+                  "Physical strength without any need for judgment.",
+                  "Endurance, cunning, persuasive speech, and adaptability.",
+                  "Complete independence from his household or relationships."
+                ],
+                "answerIndex": 2,
+                "explanation": "The Odyssey makes resourcefulness and identity central to its account of surviving and returning home."
+              },
+              {
+                "question": "Which comparison best distinguishes the two epics?",
+                "options": [
+                  "The Iliad explores anger and the costs of martial honor; the Odyssey explores homecoming and recovering one’s place in a household.",
+                  "Both are complete historical accounts of the Trojan War.",
+                  "The Iliad is a novel, while the Odyssey is a play.",
+                  "Neither poem connects heroism with suffering."
+                ],
+                "answerIndex": 0,
+                "explanation": "The poems share a legendary world but organize their narratives around different central struggles."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Homer",
+                "url": "https://www.britannica.com/biography/Homer-Greek-poet",
+                "note": "Supports the uncertainty about biography and authorship, the oral tradition, formulaic composition, and the interaction between performance and writing."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Iliad",
+                "url": "https://www.britannica.com/topic/Iliad-epic-poem-by-Homer",
+                "note": "Supports the poem’s genre, limited narrative scope, principal characters, plot, Priam’s encounter with Achilles, and conclusion."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Odyssey",
+                "url": "https://www.britannica.com/topic/Odyssey-epic-by-Homer",
+                "note": "Supports the poem’s genre, oral-performance background, homecoming plot, household narrative, and themes of resourcefulness and identity."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Homer: Stabilizing the Text",
+                "url": "https://www.britannica.com/biography/Homer-Greek-poet/Stabilizing-the-text",
+                "note": "Supports the discussion of transmission theories and the Iliad’s examination of Achilles’s anger and the contradictions of heroic ideals."
               }
             ]
           }

@@ -36,8 +36,8 @@ test('nothing earned with no rows; locked ones carry requirement text', () => {
   assert.equal(a['mastery:philosophy'].requirement, 'Pass a lesson in Philosophy.');
   assert.equal(a['mastery:philosophy'].title, 'Philosophy: Novice');
   assert.equal(a['mastery:philosophy'].progress, '0/1 to Novice');
-  assert.equal(a['completionist:philosophy'].progress, '0/3 lessons');
-  assert.equal(a['completionist:philosophy'].progress, '0/3 lessons');
+  assert.equal(a['completionist:philosophy'].progress, '0/4 lessons');
+  assert.equal(a['completionist:philosophy'].progress, '0/4 lessons');
   assert.equal(a['discipline-explorer'].progress, `0/${disciplines.length} disciplines`);
 });
 
@@ -69,7 +69,7 @@ test('Discipline Explorer: every discipline; date = latest of each discipline\'s
 });
 
 test('Mastery: counts distinct passed lessons across every topic of the discipline', () => {
-  // Philosophy: socrates (so01) + stoicism (st01, st02). Duplicate and failed rows don't count.
+  // Philosophy: socrates (so01) + stoicism (st01, st02) + aristotle (ar01, TSK-022). Duplicate and failed rows don't count.
   const a = byId([row('les_st01', 3, 3, true, D2), row('les_st01', 3, 3, true, D1), row('les_so01', 3, 4, true, D3), row('les_st02', 1, 4, false, D4)]);
   const m = a['mastery:philosophy'];
   assert.deepEqual([m.earned, m.tier, m.title, m.requirement, m.progress], [true, 1, 'Philosophy: Novice', 'Pass 1 lesson in Philosophy.', '2/5 to Apprentice']);
@@ -122,7 +122,7 @@ test('Completionist per discipline spans its topics (fixture)', () => {
 });
 
 test('Completionist: all lessons in a discipline; date = latest; missing date -> no date', () => {
-  const ph = [row('les_so01', 3, 4, true, D1), row('les_st01', 3, 3, true, D4), row('les_st02', 3, 4, true, D2)];
+  const ph = [row('les_so01', 3, 4, true, D1), row('les_st01', 3, 3, true, D4), row('les_st02', 3, 4, true, D2), row('les_ar01', 3, 6, true, D3)]; // TSK-022: + aristotle (ar01)
   const a = byId(ph);
   assert.equal(a['completionist:philosophy'].earned, true);
   assert.equal(a['completionist:philosophy'].earnedAt, iso(D4));
@@ -130,7 +130,7 @@ test('Completionist: all lessons in a discipline; date = latest; missing date ->
   // Derived from content so adding lessons doesn't break the test.
   const whCount = disciplines.find((d) => d.slug === 'world-history').topics.reduce((n, t) => n + t.lessons.length, 0);
   assert.equal(a['completionist:world-history'].progress, `0/${whCount} lessons`);
-  const noDate = byId([row('les_so01', 3, 4, true, D1), row('les_st01', 3, 3, true, null), row('les_st02', 3, 4, true, D2)]);
+  const noDate = byId([row('les_so01', 3, 4, true, D1), row('les_st01', 3, 3, true, null), row('les_st02', 3, 4, true, D2), row('les_ar01', 3, 6, true, D3)]);
   assert.deepEqual([noDate['completionist:philosophy'].earned, noDate['completionist:philosophy'].earnedAt], [true, null]);
   // One failed lesson keeps it locked.
   assert.equal(byId([...ph.slice(0, 2), row('les_st02', 1, 4, false, D2)])['completionist:philosophy'].earned, false);
@@ -182,10 +182,10 @@ test('first_passed_at absent (column not migrated): falls back to "Earned by <co
 });
 
 test('mixed rows: exact only when every qualifying lesson has first_passed_at', () => {
-  const ph = [frow('les_so01', 4, 6, true, D2, D1), frow('les_st01', 4, 6, true, D5, D3), frow('les_st02', 4, 6, true, D6, null)];
+  const ph = [frow('les_so01', 4, 6, true, D2, D1), frow('les_st01', 4, 6, true, D5, D3), frow('les_st02', 4, 6, true, D6, null), frow('les_ar01', 4, 6, true, D3, D2)];
   const c = byId(ph)['completionist:philosophy'];
   assert.deepEqual([c.earnedAt, c.earnedExact], [iso(D6), false]); // st02 has only an upper bound
-  const exact = byId([ph[0], ph[1], frow('les_st02', 4, 6, true, D6, D4)])['completionist:philosophy'];
+  const exact = byId([ph[0], ph[1], frow('les_st02', 4, 6, true, D6, D4), ph[3]])['completionist:philosophy'];
   assert.deepEqual([exact.earnedAt, exact.earnedExact], [iso(D4), true]); // latest first pass, not D6
   assert.equal(earnedLabel(exact), 'Earned Oct 4, 2026');
   // first_passed_at on a failed row is ignored (can't happen with the check constraint).
