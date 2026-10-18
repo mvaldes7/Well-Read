@@ -1670,6 +1670,145 @@
             ]
           }
         ]
+      },
+      {
+        "slug": "federal-legislative-process",
+        "title": "The Federal Legislative Process",
+        "kind": "process",
+        "summary": "Federal lawmaking turns proposals into binding law through committee work, decisions in both chambers of Congress, and presidential action, with several points where a proposal can change or stall.",
+        "lessons": [
+          {
+            "id": "les_lp01",
+            "slug": "how-an-idea-becomes-federal-law",
+            "title": "How an Idea Becomes Federal Law",
+            "sections": [
+              {
+                "heading": "An announcement is not a law",
+                "body": "Imagine a headline announces a plan to improve drinking-water systems. Has anything legally changed? Not necessarily. A campaign promise, a presidential request, and an introduced bill are different from an enacted law. Following the proposal’s stage matters more than the excitement surrounding its announcement.\n\nA bill is proposed legislation. Ideas can come from constituents, advocacy groups, officials, or other sources, but only members of Congress can formally introduce legislation in their respective chambers. A member who introduces a bill is its sponsor.\n\nBills receive identifiers: H.R. indicates a House bill, while S. indicates a Senate bill. These labels tell you where a proposal originated—not whether it passed. Similar proposals can move separately through the two chambers."
+              },
+              {
+                "heading": "Committees shape what moves forward",
+                "body": "An introduced bill is usually referred to a committee responsible for its subject. Committees let lawmakers concentrate on particular policy areas rather than requiring the entire chamber to investigate every proposal from scratch. A drinking-water bill might go to a committee responsible for the relevant infrastructure or environmental issues.\n\nCommittees can hold hearings to gather testimony and examine a proposal. During a markup, members consider changes, called amendments, and decide whether to report legislation to the full chamber. Introducing a bill does not guarantee that any of these steps will happen.\n\nThat makes inaction important. A proposal can stall without ever receiving a final floor vote. Asking “Who voted against it?” may miss the real story: the bill may never have advanced far enough for that vote."
+              },
+              {
+                "heading": "Two chambers must agree on the actual words",
+                "body": "A bill reaching the House or Senate floor may face debate, amendments, and procedural votes. Final passage of ordinary legislation generally requires a simple majority of members voting, with a quorum present. But reaching that final vote can involve additional hurdles.\n\nIn the Senate, a filibuster can delay or block action. Cloture, the procedure for limiting debate, generally requires three-fifths of senators duly chosen and sworn—normally 60—for ordinary legislation. That is different from the final passage threshold; some procedures, including budget reconciliation, limit debate without this usual cloture hurdle.\n\nBoth chambers must approve the same bill in identical form. If the Senate changes the House’s drinking-water bill, their earlier votes are not enough. They must resolve the differences, sometimes through exchanging amendments or a conference committee, and approve matching text."
+              },
+              {
+                "heading": "The president has choices—and limits",
+                "body": "The agreed bill goes to the president. Signing it makes it law. A veto returns it to Congress with objections, but Congress can override the veto with a two-thirds vote in each chamber. The president therefore has substantial influence, not an absolute final say.\n\nThe president has ten days, excluding Sundays, to act. Taking no action normally allows the bill to become law without a signature. However, if Congress’s adjournment prevents its return, the unsigned bill does not become law—a pocket veto.\n\nNow revisit the headline. “Introduced,” “passed the House,” “passed both chambers in identical form,” and “became law” describe different achievements. Recognizing these stages helps you distinguish a political proposal from a legal change and identify where the next decision lies."
+              }
+            ],
+            "keyFacts": [
+              "A bill is a proposal, not an enacted law.",
+              "Only members of Congress formally introduce legislation in their respective chambers.",
+              "Committees can investigate, amend, advance, or leave proposals without action.",
+              "Both chambers must approve identical text before a bill goes to the president.",
+              "Senate cloture and final passage are different decisions with different voting thresholds.",
+              "Congress can override a presidential veto with a two-thirds vote in each chamber."
+            ],
+            "quiz": [
+              {
+                "question": "A president announces support for a new drinking-water program. What does that announcement alone establish?",
+                "options": [
+                  "The program has become federal law.",
+                  "Congress has approved its funding.",
+                  "The president supports the proposal, but the announcement does not enact legislation.",
+                  "Both chambers must vote on it within ten days."
+                ],
+                "answerIndex": 2,
+                "explanation": "A presidential request or announcement is not the same as a bill completing the legislative process."
+              },
+              {
+                "question": "What does the label H.R. tell you about a bill?",
+                "options": [
+                  "It originated in the House of Representatives.",
+                  "It has already passed both chambers.",
+                  "It requires a constitutional amendment.",
+                  "It has received the president’s signature."
+                ],
+                "answerIndex": 0,
+                "explanation": "H.R. identifies a House-originated bill; it does not establish how far the bill has advanced."
+              },
+              {
+                "question": "A bill receives no committee action and never reaches a floor vote. Which conclusion is best supported?",
+                "options": [
+                  "The president vetoed it.",
+                  "The Supreme Court rejected it.",
+                  "Every member of Congress voted against it.",
+                  "It stalled before a final chamber vote."
+                ],
+                "answerIndex": 3,
+                "explanation": "Bills can fail to advance through inaction rather than an explicit vote against final passage."
+              },
+              {
+                "question": "The House approves a bill, and the Senate approves an amended version. What must happen before it can go to the president?",
+                "options": [
+                  "The Senate’s version automatically replaces the House’s version.",
+                  "Both chambers must agree to identical text of the same bill.",
+                  "The president must choose which version is better.",
+                  "Voters must choose a version in a national referendum."
+                ],
+                "answerIndex": 1,
+                "explanation": "Agreement on the general goal is insufficient; both chambers must approve the same legislative text."
+              },
+              {
+                "question": "Why can saying “Every Senate bill needs 60 votes to pass” be misleading?",
+                "options": [
+                  "The Senate cannot vote on legislation.",
+                  "Sixty votes are required only in the House.",
+                  "The usual 60-vote cloture threshold concerns limiting debate, not final passage, and some procedures avoid that hurdle.",
+                  "Every Senate decision requires unanimous agreement."
+                ],
+                "answerIndex": 2,
+                "explanation": "Final passage generally requires a simple majority, while ordinary legislative cloture generally requires three-fifths of senators duly chosen and sworn. Special procedures can limit debate differently."
+              },
+              {
+                "question": "A president vetoes a bill. Which action can still make that bill law?",
+                "options": [
+                  "A two-thirds override vote in each chamber of Congress.",
+                  "A simple-majority override vote in the House alone.",
+                  "Approval by a congressional committee alone.",
+                  "A public petition automatically canceling the veto."
+                ],
+                "answerIndex": 0,
+                "explanation": "The Constitution provides for a veto override by a two-thirds vote in each chamber."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Congressional Research Service",
+                "title": "Introduction to the Legislative Process in the U.S. Congress",
+                "url": "https://www.congress.gov/crs-product/R42843"
+              },
+              {
+                "publisher": "Congress.gov",
+                "title": "The Legislative Process: Introduction and Referral of Bills",
+                "url": "https://www.congress.gov/legislative-process/introduction-and-referral-of-bills"
+              },
+              {
+                "publisher": "U.S. Senate",
+                "title": "About Filibusters and Cloture",
+                "url": "https://www.senate.gov/about/powers-procedures/filibusters-cloture.htm"
+              },
+              {
+                "publisher": "Congressional Research Service",
+                "title": "The Legislative Process on the House Floor: An Introduction",
+                "url": "https://www.congress.gov/crs-product/95-563"
+              },
+              {
+                "publisher": "Congress.gov",
+                "title": "The Legislative Process: Presidential Actions",
+                "url": "https://www.congress.gov/legislative-process/presidential-action"
+              },
+              {
+                "publisher": "Constitution Annotated",
+                "title": "Overview of Presidential Approval or Veto of Bills",
+                "url": "https://constitution.congress.gov/browse/essay/artI-S7-C2-1/ALDE_00013644/"
+              }
+            ]
+          }
+        ]
       }
     ]
   },

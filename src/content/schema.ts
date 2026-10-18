@@ -1,6 +1,6 @@
 import { DISCIPLINE_COLORS } from "./colors.mjs";
 
-export const TOPIC_KINDS = ["person", "event", "era", "style", "technique"] as const;
+export const TOPIC_KINDS = ["person", "event", "era", "style", "technique", "process"] as const;
 export type TopicKind = (typeof TOPIC_KINDS)[number];
 
 export interface LessonSection {
