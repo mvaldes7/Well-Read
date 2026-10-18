@@ -2755,6 +2755,151 @@
             ]
           }
         ]
+      },
+      {
+        "slug": "reading-poetry",
+        "title": "Reading Poetry",
+        "kind": "technique",
+        "summary": "Reading poetry involves noticing how a speaker’s words, sensory details, comparisons, sounds, and line breaks work together to create meaning.",
+        "lessons": [
+          {
+            "id": "les_rp01",
+            "slug": "how-to-read-a-poem",
+            "title": "How to Read a Poem: Sound, Images, and Line Breaks",
+            "sections": [
+              {
+                "heading": "Start with a voice, not a secret code",
+                "body": "Have you ever finished a poem and wondered whether you missed a hidden answer? Try starting somewhere simpler: who seems to be speaking, what is happening, and which words catch your attention? Before decoding symbols, establish what the poem actually says. The speaker is its voice, comparable to a narrator in fiction.\n\nDo not automatically identify that speaker with the poet. A writer can invent a voice, adopt a perspective, or create distance from personal experience. Ask what the speaker notices and how they address someone else; those choices help establish the situation.\n\nRead once for the overall impression, then again more slowly. As a practical exercise, describe the literal situation in one sentence before proposing a larger meaning. This gives your interpretation something concrete to explain rather than treating every word as a puzzle with an unrelated solution."
+              },
+              {
+                "heading": "Images make ideas tangible",
+                "body": "Imagery is language that evokes sensory experience: sights, sounds, smells, tastes, or touch. Instead of announcing “the room felt lonely,” a poem might show two cups on a table and one untouched chair. Physical details can give readers an experience from which an emotion emerges.\n\nA metaphor connects unlike things without explicitly marking the comparison with “like” or “as.” In the invented phrase “grief is a locked room,” an emotion becomes a space. A simile would make the comparison explicit: “grief is like a locked room.”\n\nDo more than name the device. Ask what the comparison makes available: isolation, confinement, or difficulty finding a way out. Then test those possibilities against the surrounding words. A convincing interpretation explains particular details rather than assuming every room or door must symbolize the same thing."
+              },
+              {
+                "heading": "Listen to the poem’s movement",
+                "body": "Poetry does not need to rhyme. Free verse does not follow a predetermined metrical pattern, but it can still have carefully shaped rhythms and sound. Reading aloud helps you notice emphasis and cadence—the movement of a speaking voice—rather than looking only for matching line endings.\n\nLine breaks also affect how information arrives. Enjambment occurs when a sentence or phrase continues across a line break. An end-stopped line reaches a grammatical or punctuated stopping point. These choices can create momentum, hesitation, surprise, or a sense of completion.\n\nCompare the invented lines “I thought you would stay / until morning” with the unbroken sentence “I thought you would stay until morning.” The break briefly leaves “stay” exposed before qualifying it. That is a possible effect, not an instruction to insert an identical pause at every line ending."
+              },
+              {
+                "heading": "Build an interpretation from evidence",
+                "body": "Try this original miniature poem: “Your coat still hangs / beside the door. / Rain taps the window; / I leave the light on.” First notice the objects and actions: a coat, rain, and a light someone deliberately keeps burning.\n\nOne plausible reading is that the speaker awaits someone absent. The coat suggests a continuing connection, and the light may suggest welcome or expectation. But the poem does not establish whether the person is late, has left permanently, or has died. Those possibilities are not equally proven facts.\n\nNow connect observation to meaning: “The ordinary household details suggest absence and continued expectation.” That claim explains the language without inventing a biography. The goal of this exercise is not unrestricted guessing, but an interpretation you can support, qualify, and revise."
+              }
+            ],
+            "keyFacts": [
+              "The speaker is the poem’s voice and should not automatically be identified with its author.",
+              "Imagery evokes sensory experiences, not only visual pictures.",
+              "Metaphor and simile create comparisons; explaining their effect matters more than simply labeling them.",
+              "Free verse can have rhythm without following a predetermined metrical pattern.",
+              "Enjambment carries a sentence or phrase across a line break.",
+              "An interpretation should distinguish what the text establishes from what the reader infers."
+            ],
+            "quiz": [
+              {
+                "question": "A poem begins, “I sailed away before my children woke.” What can you safely conclude from this line alone?",
+                "options": [
+                  "The poet personally abandoned their children.",
+                  "The poem’s speaker describes leaving before their children woke.",
+                  "Every event in the poem is historically documented.",
+                  "The speaker and the poet must be different people."
+                ],
+                "answerIndex": 1,
+                "explanation": "The line establishes something about the speaker. It does not establish whether that speaker is autobiographical or invented."
+              },
+              {
+                "question": "Which phrase most clearly uses sensory imagery?",
+                "options": [
+                  "“Life contains many uncertainties.”",
+                  "“Justice matters.”",
+                  "“The future is difficult to predict.”",
+                  "“Cold rain slipped beneath my collar.”"
+                ],
+                "answerIndex": 3,
+                "explanation": "The phrase evokes touch and temperature through a concrete physical experience."
+              },
+              {
+                "question": "What distinguishes “grief is a locked room” from “grief is like a locked room”?",
+                "options": [
+                  "The first is a metaphor; the second is a simile.",
+                  "The first is literal; the second contains no comparison.",
+                  "The first must rhyme; the second must not.",
+                  "The first describes a speaker; the second identifies the author."
+                ],
+                "answerIndex": 0,
+                "explanation": "Both compare unlike things, but the simile explicitly signals the comparison with “like.”"
+              },
+              {
+                "question": "A poem does not rhyme or follow a fixed meter. Which statement is most accurate?",
+                "options": [
+                  "It cannot be poetry.",
+                  "Its line breaks cannot affect meaning.",
+                  "It may be free verse and still use deliberate rhythm and sound.",
+                  "It must have been written without planning."
+                ],
+                "answerIndex": 2,
+                "explanation": "Free verse is not governed by a predetermined metrical pattern, but it can still be carefully shaped through rhythm, sound, and lineation."
+              },
+              {
+                "question": "What happens in the invented lines “I thought you would stay / until morning”?",
+                "options": [
+                  "The sentence ends permanently after “stay.”",
+                  "The sentence continues across a line break, creating enjambment.",
+                  "The word “morning” guarantees a cheerful mood.",
+                  "The two lines form a rhyme."
+                ],
+                "answerIndex": 1,
+                "explanation": "The syntax continues across the break. Temporarily isolating “stay” may affect how the reader experiences the following qualification."
+              },
+              {
+                "question": "Which reading of the miniature poem is best supported by its actual words?",
+                "options": [
+                  "The absent person definitely died at sea.",
+                  "The speaker has forgotten the absent person completely.",
+                  "The coat proves the poem takes place in winter.",
+                  "The household details suggest absence and continuing expectation, without establishing exactly why someone is gone."
+                ],
+                "answerIndex": 3,
+                "explanation": "The coat and the light support this inference, while the poem leaves the cause of the absence unstated. The other answers invent or contradict details."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Academy of American Poets",
+                "title": "Glossary of Poetic Terms",
+                "url": "https://poets.org/glossary",
+                "note": "Supports the definitions of speaker, line, enjambment, and end-stopped line."
+              },
+              {
+                "publisher": "Poetry at Harvard",
+                "title": "Guide to Poetic Terms",
+                "url": "https://poetry.harvard.edu/guide-poetic-terms",
+                "note": "Supports the explanations of speaker as a possible persona and imagery as visual or other sensory description."
+              },
+              {
+                "publisher": "Poetry Foundation",
+                "title": "Learning Image and Description",
+                "url": "https://www.poetryfoundation.org/articles/70212/learning-image-and-description",
+                "note": "Supports the relationship between physical description, sensory experience, emotion, and figurative language."
+              },
+              {
+                "publisher": "Poetry Foundation",
+                "title": "Learning about Figurative Language",
+                "url": "https://www.poetryfoundation.org/articles/70215/learning-about-figurative-language",
+                "note": "Supports the distinction between metaphor and simile and the importance of examining what a comparison reveals."
+              },
+              {
+                "publisher": "Academy of American Poets",
+                "title": "Free Verse",
+                "url": "https://poets.org/glossary/free-verse",
+                "note": "Supports the explanation of free verse, speech cadence, visual form, and the reader’s experience of rhythm."
+              },
+              {
+                "publisher": "Poetry Foundation",
+                "title": "Learning the Poetic Line",
+                "url": "https://www.poetryfoundation.org/articles/70144/learning-the-poetic-line",
+                "note": "Supports the discussion of line breaks, enjambment, end-stopping, and the gradual release of information."
+              }
+            ]
+          }
+        ]
       }
     ]
   }
