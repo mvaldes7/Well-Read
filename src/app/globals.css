@@ -62,6 +62,7 @@
 .cover-amber   { --shade-0: #6a4b1e; --shade-1: #5c4019; --shade-2: #654820; }
 .cover-plum    { --shade-0: #4e2d4a; --shade-1: #603b5a; --shade-2: #57334f; }
 .cover-slate   { --shade-0: #383e46; --shade-1: #4a5159; --shade-2: #41474f; }
+.cover-teal    { --shade-0: #1f4a4c; --shade-1: #2b5557; --shade-2: #275255; }
 .shade-0 { --spine: var(--shade-0); }
 .shade-1 { --spine: var(--shade-1); }
 .shade-2 { --spine: var(--shade-2); }

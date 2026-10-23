@@ -226,7 +226,7 @@ test('seed lessons keep their permanent ids AND slugs (saved passes stay valid)'
 });
 
 test('imported lessons and discipline order', () => {
-  assert.deepEqual(disciplines.map((d) => d.slug), ['world-history', 'philosophy', 'ancient-history', 'american-civics', 'art-history', 'poetry-and-literature']);
+  assert.deepEqual(disciplines.map((d) => d.slug), ['world-history', 'philosophy', 'ancient-history', 'american-civics', 'art-history', 'poetry-and-literature', 'religious-studies']);
   const counts = Object.fromEntries(lessons.map((x) => [x.l.id, x.l.quiz.length]));
   assert.deepEqual(
     { les_ch01: counts.les_ch01, les_cc01: counts.les_cc01, les_br01: counts.les_br01, les_ir01: counts.les_ir01, les_im01: counts.les_im01, les_cn01: counts.les_cn01 },
