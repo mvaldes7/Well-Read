@@ -2,7 +2,7 @@
 // Discipline cover colors (REV-002). Content names a token from this small set;
 // the actual colors live in one place: the `.cover-<token>` rules in globals.css.
 
-export const DISCIPLINE_COLORS = /** @type {const} */ (["crimson", "navy", "forest", "amber", "plum", "slate"]);
+export const DISCIPLINE_COLORS = /** @type {const} */ (["crimson", "navy", "forest", "amber", "plum", "slate", "teal"]);
 
 /**
  * Check every discipline has a `color` from DISCIPLINE_COLORS.

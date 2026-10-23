@@ -24,8 +24,8 @@ test('Philosophy topics in order; Aristotle topic holds les_ar01 with the long-l
   assert.deepEqual(l.quiz.map((q) => q.answerIndex), [1, 3, 0, 2, 1, 3]);
   assert.ok(l.quiz.every((q) => q.explanation.length > 0));
   assert.equal(new Set(l.sources.map((s) => s.url)).size, l.sources.length);
-  // still six disciplines: no new discipline was created
-  assert.equal(disciplines.length, 6);
+  // Philosophy is still a single discipline (TSK-022 added a topic, not a discipline)
+  assert.equal(disciplines.filter((d) => d.slug === 'philosophy').length, 1);
 });
 
 test('mastery, dashboard and progress counts include les_ar01', () => {

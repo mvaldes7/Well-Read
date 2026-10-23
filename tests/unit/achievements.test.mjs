@@ -21,7 +21,7 @@ test('starter set: ids unique, mastery + completionist per discipline, content o
     ...disciplines.map((d) => `completionist:${d.slug}`),
   ]);
   assert.equal(ACHIEVEMENTS.length, 5);
-  assert.equal(a.length, 3 + 2 * disciplines.length); // 15 with today's 6 disciplines
+  assert.equal(a.length, 3 + 2 * disciplines.length); // 17 with today's 7 disciplines
   // Mike's call: no per-topic completionist badges.
   assert.ok(!ids.some((id) => /^completionist:.+\//.test(id)));
   // TSK-019: the topic-level "Level X" achievements are gone.

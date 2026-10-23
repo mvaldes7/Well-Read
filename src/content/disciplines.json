@@ -3174,5 +3174,388 @@
         ]
       }
     ]
+  },
+  {
+    "slug": "religious-studies",
+    "title": "Religious Studies",
+    "description": "Major religious traditions, their core teachings, and the movements that reshaped them.",
+    "color": "teal",
+    "topics": [
+      {
+        "slug": "four-noble-truths",
+        "title": "The Four Noble Truths",
+        "kind": "concept",
+        "summary": "The Four Noble Truths connect suffering and dissatisfaction with craving, the possibility of liberation, and a practical path of ethical conduct, mental training, and wisdom.",
+        "lessons": [
+          {
+            "id": "les_nt01",
+            "slug": "understanding-the-four-noble-truths",
+            "title": "Buddhism: Understanding the Four Noble Truths",
+            "sections": [
+              {
+                "heading": "A teaching organized around a problem",
+                "body": "Imagine finally getting something you wanted, enjoying it, and then discovering that the satisfaction does not last. The Buddhist concept of dukkha includes this kind of instability alongside more obvious suffering. It is broader than physical pain and is often explained through words such as uneasiness or dissatisfaction.\n\nThe Four Noble Truths organize a foundational Buddhist teaching around suffering, its origin, its cessation, and a path toward that cessation. Buddhist tradition associates them with the Buddha's first sermon after enlightenment. They are accepted across Buddhist schools, although this short lesson cannot cover the full range of interpretation.\n\nA useful learning analogy is a diagnosis: identify a problem, investigate its cause, recognize that relief is possible, and describe a treatment. This analogy explains the structure, not a claim that Buddhist teaching is medical treatment or a substitute for it."
+              },
+              {
+                "heading": "The first two truths: dissatisfaction and craving",
+                "body": "The first truth identifies dukkha as a feature of existence within samsara, the cycle of rebirth. Examples include aging, sickness, death, separation from what is pleasant, encountering what is unpleasant, and not obtaining what one wants. The teaching therefore operates within a religious account of existence, not only a modern discussion of stress.\n\nThe second truth identifies craving, or tanha, as the origin of suffering. Often translated literally as “thirst,” craving leads to attachment and helps perpetuate the cycle of rebirth. Other Buddhist explanations connect suffering with ignorance, hatred, and harmful actions as well.\n\nFor a simple illustration, consider enjoying an achievement versus demanding that it permanently guarantee your happiness. The latter expectation tries to secure lasting satisfaction from something changeable. This invented example helps explain attachment, but it should not replace the teaching's wider religious context."
+              },
+              {
+                "heading": "The third truth: liberation is possible",
+                "body": "The third truth concerns cessation: the ending of suffering and its causes, associated with nirvana. This makes the teaching more than a catalogue of unpleasant experiences. Its structure includes the possibility of liberation rather than presenting dissatisfaction as a problem with no answer.\n\nNirvana is not simply another name for a relaxing afternoon or temporary pleasure. Within the teaching, it concerns release from the conditions that sustain suffering and rebirth. The tradition also recognizes limits to ordinary language when describing it.\n\nWhen studying a religion from the outside, the task is to understand what its concepts mean within their own framework. You do not have to affirm a claim about rebirth to understand why the difference between temporary comfort and liberation matters to this teaching."
+              },
+              {
+                "heading": "The fourth truth: a path, not just an idea",
+                "body": "The fourth truth identifies the Eightfold Path: right view, intention, speech, action, livelihood, effort, mindfulness, and concentration. “Right” here names the forms of understanding and conduct associated with the path. Remembering only meditation would leave out much of the teaching.\n\nThe eight factors are commonly grouped into wisdom, ethical conduct, and concentration or mental training. Speech, action, and livelihood belong to ethical conduct; effort, mindfulness, and concentration concern mental training; view and intention belong to wisdom. The path connects how people understand, act, and cultivate the mind.\n\nThe Eightfold Path is described as a middle way between self-indulgence and self-torture. Rather than treating suffering as a reason either to pursue every pleasure or to harm the body, the teaching presents a disciplined route toward liberation. Read the four truths together: problem, cause, cessation, and path form one connected account."
+              }
+            ],
+            "keyFacts": [
+              "Dukkha includes suffering, uneasiness, and dissatisfaction.",
+              "Samsara refers to the cycle of rebirth.",
+              "The second truth identifies craving, or tanha, as the origin of suffering.",
+              "The third truth concerns cessation, associated with nirvana.",
+              "The fourth truth identifies the Eightfold Path.",
+              "The path integrates wisdom, ethical conduct, and mental training."
+            ],
+            "quiz": [
+              {
+                "question": "Why is “physical pain” too narrow a translation of dukkha?",
+                "options": [
+                  "It also includes uneasiness and dissatisfaction",
+                  "It means only wealth",
+                  "It refers only to meditation",
+                  "It excludes all suffering"
+                ],
+                "answerIndex": 0,
+                "explanation": "Dukkha includes a wider range of unsatisfactory experience."
+              },
+              {
+                "question": "What does the second truth identify as the origin of suffering?",
+                "options": [
+                  "Historical research",
+                  "All physical movement",
+                  "Every form of learning",
+                  "Craving, or tanha"
+                ],
+                "answerIndex": 3,
+                "explanation": "The teaching links craving with attachment and continuing rebirth."
+              },
+              {
+                "question": "What does the third truth add to the teaching?",
+                "options": [
+                  "A denial that suffering exists",
+                  "The possibility of cessation or liberation",
+                  "A new system of taxation",
+                  "A rule against ethical conduct"
+                ],
+                "answerIndex": 1,
+                "explanation": "Cessation makes liberation central to the four-part structure."
+              },
+              {
+                "question": "Which list contains only factors of the Eightfold Path?",
+                "options": [
+                  "Wealth, fame, and comfort",
+                  "Birth, aging, and death",
+                  "Right speech, right action, and right livelihood",
+                  "Painting, sculpture, and architecture"
+                ],
+                "answerIndex": 2,
+                "explanation": "These three factors form the ethical-conduct grouping."
+              },
+              {
+                "question": "Why is describing the path as “meditation only” misleading?",
+                "options": [
+                  "It also includes ethical conduct and wisdom",
+                  "It has no mental-training elements",
+                  "It prohibits right intention",
+                  "It is only a list of historical dates"
+                ],
+                "answerIndex": 0,
+                "explanation": "The eight factors integrate understanding, conduct, and mental cultivation."
+              },
+              {
+                "question": "Which sequence best represents the Four Noble Truths?",
+                "options": [
+                  "Promise, covenant, law, festival",
+                  "Problem, cause, cessation, path",
+                  "Church, king, council, treaty",
+                  "Pleasure, wealth, victory, fame"
+                ],
+                "answerIndex": 1,
+                "explanation": "The sequence is a learning summary of suffering, its origin, its cessation, and the path."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Four Noble Truths",
+                "url": "https://www.britannica.com/topic/Four-Noble-Truths",
+                "note": "By Donald S. Lopez Jr. The four truths, dukkha, craving, samsara, nirvana, and the religious context."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Eightfold Path",
+                "url": "https://www.britannica.com/topic/Eightfold-Path",
+                "note": "The eight factors, three trainings, and middle way."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "covenant-in-judaism",
+        "title": "Covenant in Judaism",
+        "kind": "concept",
+        "summary": "Jewish covenant traditions connect the stories of Abraham and Moses with collective identity, divine promises, and responsibilities expressed through teaching and commandments.",
+        "lessons": [
+          {
+            "id": "les_cv01",
+            "slug": "what-it-means-to-live-in-covenant",
+            "title": "Judaism: What It Means to Live in Covenant",
+            "sections": [
+              {
+                "heading": "An agreement that shapes a people",
+                "body": "What makes a community more than a collection of individuals? In Jewish religious tradition, one important answer is covenant: a binding relationship between God and a people, involving promises and responsibilities. This is not simply a statement that God exists; it describes how a community understands its relationship with God.\n\nThe biblical narratives associate covenant with Abraham and later with Moses and the Israelites at Mount Sinai. These stories connect ancestry, collective memory, divine commitment, and obligations. They offer a framework for understanding why religious belonging can involve a shared way of life rather than belief alone.\n\nThroughout this lesson, descriptions such as “God promised” refer to what the biblical narratives and Jewish tradition teach. Reporting a tradition's account does not mean claiming that every event in it has been independently established by historical research. Keep those different kinds of claims separate."
+              },
+              {
+                "heading": "Abraham and the promise of a future",
+                "body": "In the Abraham narrative, God promises that Abraham will become the father of a great nation. Abraham is a foundational ancestral figure in Jewish tradition, and the covenant links the future of his descendants to a relationship with God.\n\nThis makes covenant larger than a private agreement between two individuals. Its scope extends across generations: a story about one ancestor becomes a story about a people and its future. Later narratives about Moses are understood in relation to the earlier promise rather than as an entirely unrelated beginning.\n\nFor a useful comparison, think about the difference between joining a club for a single activity and inheriting a family story that carries expectations. The comparison is imperfect, but it highlights the lesson's central distinction: covenant combines belonging with responsibility. It is not merely a membership label."
+              },
+              {
+                "heading": "Moses: freedom followed by responsibility",
+                "body": "According to Exodus, Moses leads the Israelites out of slavery in Egypt. The escape is remembered in the festival of Passover. At Mount Sinai, the narrative moves from liberation to covenant: the people are to live in relationship with the God who has delivered them.\n\nMoses receives teaching and commandments on behalf of the people. The Ten Commandments are the best-known part, but they are not the entire body of Jewish religious obligation. The Hebrew term mitzvot refers to commandments, while Torah can mean teaching or instruction, not merely “law” in a modern legal sense.\n\nThis sequence matters. Freedom is not presented simply as the absence of restraint; it makes possible a life governed by responsibilities. Commands concerning worship and conduct toward other people belong within the same account of communal life."
+              },
+              {
+                "heading": "Teaching, conduct, and collective memory",
+                "body": "The covenant framework helps connect stories with practices. A narrative about liberation can be remembered through a festival, while a narrative about Sinai can orient a community toward study and conduct. Religious memory is therefore something people do as well as something they describe.\n\nThe Ten Commandments include obligations concerning God, parents, killing, theft, and false testimony. That mixture challenges the assumption that religion concerns only worship while ethics belongs to a separate sphere. Within the covenant narrative, relationships with God and with other people are connected.\n\nCovenant is an introductory lens, not a complete description of every Jewish person's identity or practice. For this lesson, the key interpretive question is narrower: how does a story about promises become a framework for responsibility? Answering that question helps explain the relationship between Abraham, Moses, Torah, and collective memory without collapsing them into one event."
+              }
+            ],
+            "keyFacts": [
+              "A covenant is an agreement or binding relationship involving promises and responsibilities.",
+              "The Abraham narrative includes a promise that he will become the father of a great nation.",
+              "The Sinai covenant is associated with Moses and the Israelites.",
+              "Passover commemorates the escape from slavery in Egypt.",
+              "Torah can mean teaching, instruction, or guidance.",
+              "The Ten Commandments are not the whole body of Jewish commandments."
+            ],
+            "quiz": [
+              {
+                "question": "Which description best fits covenant in this lesson?",
+                "options": [
+                  "A style of synagogue architecture",
+                  "A binding relationship involving promises and responsibilities",
+                  "A word meaning all ancient history",
+                  "A festival held every week"
+                ],
+                "answerIndex": 1,
+                "explanation": "Covenant describes a relationship, not merely an object or a ceremony."
+              },
+              {
+                "question": "Which figure is associated with the promise of becoming the father of a great nation?",
+                "options": [
+                  "Luther",
+                  "Calvin",
+                  "Abraham",
+                  "The Buddha"
+                ],
+                "answerIndex": 2,
+                "explanation": "The promise appears in the Abraham narrative."
+              },
+              {
+                "question": "What role does Moses have in the Sinai narrative?",
+                "options": [
+                  "He receives teaching and commandments on behalf of the Israelites",
+                  "He writes the Ninety-five Theses",
+                  "He abolishes every obligation",
+                  "He establishes the Eightfold Path"
+                ],
+                "answerIndex": 0,
+                "explanation": "Moses mediates the covenant and receives instruction for the people."
+              },
+              {
+                "question": "Why is translating Torah only as modern legal “law” incomplete?",
+                "options": [
+                  "Torah means a building",
+                  "Torah excludes instruction",
+                  "Torah refers only to one commandment",
+                  "Torah can mean teaching, instruction, or guidance"
+                ],
+                "answerIndex": 3,
+                "explanation": "The broader meanings help explain its religious role."
+              },
+              {
+                "question": "Which statement correctly distinguishes the Ten Commandments from mitzvot more broadly?",
+                "options": [
+                  "They are unrelated to Jewish teaching",
+                  "They are well-known commandments but not the entire body of obligations",
+                  "They were written by Luther",
+                  "They refer only to festivals"
+                ],
+                "answerIndex": 1,
+                "explanation": "The Ten Commandments belong within a broader body of commandments."
+              },
+              {
+                "question": "How should a religious-studies lesson describe the Exodus narrative?",
+                "options": [
+                  "Treat every detail as independently proven",
+                  "Avoid explaining its religious meaning",
+                  "Identify it as a scriptural and traditional account while distinguishing historical evidence",
+                  "Assume all Jews interpret it identically"
+                ],
+                "answerIndex": 2,
+                "explanation": "The lesson separates describing a tradition from independently establishing all its events."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "BBC Bitesize",
+                "title": "The call of Abraham and Moses",
+                "url": "https://www.bbc.co.uk/bitesize/guides/zrs7y9q/revision/1",
+                "note": "Abrahamic promise and the relationship between Abraham and Sinai."
+              },
+              {
+                "publisher": "BBC Bitesize",
+                "title": "The Torah and the Ten Commandments",
+                "url": "https://www.bbc.co.uk/bitesize/guides/z4shsrd/revision/4",
+                "note": "Covenant, mitzvot, and commandments."
+              },
+              {
+                "publisher": "BBC Religions",
+                "title": "Moses",
+                "url": "https://www.bbc.co.uk/religion/religions/judaism/history/moses_1.shtml",
+                "note": "The Exodus and Sinai narratives, Torah, Passover, and discussion of historical evidence. The lesson uses this source for traditional accounts without adopting its speculative historical reconstructions."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "protestant-reformation",
+        "title": "The Protestant Reformation",
+        "kind": "event",
+        "summary": "A sixteenth-century movement to reform Western Christianity produced new Protestant traditions and reshaped debates about salvation, religious authority, and political power.",
+        "lessons": [
+          {
+            "id": "les_pr01",
+            "slug": "why-western-christianity-split",
+            "title": "The Protestant Reformation: Why Western Christianity Split",
+            "sections": [
+              {
+                "heading": "A dispute inside an existing church",
+                "body": "Imagine a disagreement about religious fundraising growing into a rupture that changes the institutions of an entire continent. The Protestant Reformation began within the Western church, not as a plan to create all the denominations familiar today. Earlier Christians had also demanded reform, and many people continued to find spiritual meaning in Catholic worship.\n\nIn 1517, Martin Luther, a German pastor and university professor, wrote the Ninety-five Theses, propositions intended for debate about indulgences. Their use had become closely associated with raising money, and Luther challenged claims made about their spiritual benefits. He sent the theses to Archbishop Albert of Mainz.\n\nThe famous image of Luther nailing the theses to a church door is traditionally associated with the movement's beginning. The firmer starting point for this lesson is the documented controversy and circulation of his arguments: an internal criticism soon developed into a much larger confrontation."
+              },
+              {
+                "heading": "The deeper questions: salvation and authority",
+                "body": "The controversy was about more than money. Luther questioned how human beings become right with God, a theological question called justification. He emphasized faith rather than works as the basis of justification and treated salvation as God's gift, not something a person could purchase or earn.\n\nHe also argued for the overriding authority of Scripture, commonly summarized as sola scriptura, meaning “Scripture alone.” This challenged the authority claimed for church traditions and papal judgments. Understanding the dispute therefore requires distinguishing objections to institutional abuses from disagreements about religious teaching.\n\nLuther did not initially intend to break with the Catholic Church, but conflict escalated. He was excommunicated in 1521, meaning formally excluded from the church's communion. What had begun as an effort at reform became a lasting institutional fracture."
+              },
+              {
+                "heading": "Not one reformer and not one outcome",
+                "body": "Protestantism did not become a single united church. Huldrych Zwingli developed a reform movement in Zürich, and John Calvin became a leading figure in the next generation. Reformers could agree in rejecting papal authority while disagreeing about worship, religious government, and the meaning of Communion.\n\nSome reformers, known as Anabaptists, insisted on baptism following a profession of faith rather than infant baptism. Their position separated them from both Catholic authorities and many other Protestants, and they faced persecution. Disagreement ran within the reform movements as well as between them and Rome.\n\nEngland followed another route. Henry VIII's conflict with the pope over the annulment of his marriage helped bring about the rejection of papal authority and royal supremacy over the English church in 1534. Political leadership and theological change were intertwined rather than identical."
+              },
+              {
+                "heading": "A transformation, not the beginning of all Christian diversity",
+                "body": "The Catholic Church also pursued reform. The Council of Trent, meeting between 1545 and 1563, clarified teaching on indulgences and eliminated abuses connected with them. Catholic renewal did not mean accepting Luther's entire theological program.\n\nThe Reformation divided Western Christendom between Catholic and new Protestant traditions, with major political and social consequences. This wording matters: the movement transformed Western Christianity; it was not the origin of every Christian tradition or every earlier disagreement.\n\nWhen examining a religious conflict, ask three separate questions: What beliefs were disputed? Who claimed authority? Which political actors benefited or lost power? The Reformation becomes clearer when those questions are connected without reducing sincere religious convictions to politics alone."
+              }
+            ],
+            "keyFacts": [
+              "Luther wrote the Ninety-five Theses in 1517 to debate indulgences.",
+              "Justification concerns how people become right with God.",
+              "Luther emphasized justification by faith and the overriding authority of Scripture.",
+              "Luther was excommunicated in 1521.",
+              "Protestant reformers disagreed among themselves, including over Communion and baptism.",
+              "The Council of Trent met between 1545 and 1563."
+            ],
+            "quiz": [
+              {
+                "question": "What was the immediate subject of the Ninety-five Theses?",
+                "options": [
+                  "The boundaries of England",
+                  "Indulgences and their use",
+                  "The founding of Buddhism",
+                  "A new calendar"
+                ],
+                "answerIndex": 1,
+                "explanation": "The theses proposed debate about indulgences, increasingly associated with fundraising."
+              },
+              {
+                "question": "What does justification refer to in this lesson?",
+                "options": [
+                  "How someone becomes right with God",
+                  "How a king collects taxes",
+                  "How an artist uses perspective",
+                  "How a university awards degrees"
+                ],
+                "answerIndex": 0,
+                "explanation": "Justification was a central theological question beneath the controversy."
+              },
+              {
+                "question": "Which statement best describes Luther’s initial position?",
+                "options": [
+                  "He already led every Protestant church",
+                  "He rejected every Christian text",
+                  "He intended no reform at all",
+                  "He sought reform before the conflict became a lasting break"
+                ],
+                "answerIndex": 3,
+                "explanation": "Luther did not initially intend to leave the Catholic Church."
+              },
+              {
+                "question": "Why is it misleading to describe Protestantism as one unified reform movement?",
+                "options": [
+                  "It never spread beyond one town",
+                  "All reformers accepted papal authority",
+                  "Reformers disagreed about matters such as Communion and baptism",
+                  "It had no religious teachings"
+                ],
+                "answerIndex": 2,
+                "explanation": "Shared opposition to Rome did not eliminate internal disagreements."
+              },
+              {
+                "question": "What helped shape England’s break with papal authority?",
+                "options": [
+                  "Henry VIII’s marriage-annulment dispute",
+                  "The Council of Trent appointing Henry pope",
+                  "An agreement to end all monarchy",
+                  "Luther becoming king of England"
+                ],
+                "answerIndex": 0,
+                "explanation": "The annulment conflict helped produce royal supremacy over the English church."
+              },
+              {
+                "question": "Which interpretation best fits the lesson?",
+                "options": [
+                  "The dispute was only about money",
+                  "Religious beliefs, institutional authority, and politics interacted",
+                  "All Christian diversity began in 1517",
+                  "Catholic reform meant accepting all Protestant teaching"
+                ],
+                "answerIndex": 1,
+                "explanation": "The movement combined theological disputes with institutional and political change."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Reformation",
+                "url": "https://www.britannica.com/event/Reformation",
+                "note": "Overview, theology, reformers, England, and consequences."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Ninety-five Theses",
+                "url": "https://www.britannica.com/event/Ninety-five-Theses",
+                "note": "The 1517 propositions, indulgences, and the Council of Trent."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Martin Luther: The indulgences controversy",
+                "url": "https://www.britannica.com/biography/Martin-Luther/The-indulgences-controversy",
+                "note": "Luther’s communication with Albert of Mainz and the controversy’s beginnings."
+              }
+            ]
+          }
+        ]
+      }
+    ]
   }
 ]
