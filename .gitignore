@@ -42,3 +42,6 @@ next-env.d.ts
 
 # allow committing the env template (names only, no values)
 !.env.example
+
+# drill-downs P1b prototype output (never commit generated lessons)
+/.drilldowns-out/
