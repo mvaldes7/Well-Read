@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // @ts-check
 // Drill-downs P1b offline prototype (docs/plans/topic-drilldowns.md, section 9). NOT used by the app.
-// Usage: GEMINI_API_KEY=... node scripts/drilldown-prototype.mjs <lessonId> <choiceId> [--model <id>] [--out <dir>]
+// Usage: GEMINI_API_KEY=... node scripts/drilldown-prototype.mjs <lessonId> <choiceId> [--model <id>] [--out <dir>] [--candidates <file.json>]
 // - Builds a prompt from the lesson's own content and one stored Dig deeper choice (no free text).
 // - Calls the Gemini free-tier REST API with a JSON response schema. The key goes ONLY in the x-goog-api-key header.
 // - Validates with the generated-lesson validator, checks sources (candidate allowlist + HTTPS fetch + title/terms),
@@ -12,7 +12,8 @@ import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { randomBytes } from "node:crypto";
 import { parseArgs } from "node:util";
-import { DRILLDOWN_CAPS } from "../src/lib/drilldowns/config.mjs";
+import { DRILLDOWN_CAPS, factCheckOutcome } from "../src/lib/drilldowns/config.mjs";
+import { classifySourceUrl, sourceTierProblems } from "../src/lib/drilldowns/sources.mjs";
 import { generatedLessonProblems } from "../src/lib/drilldowns/validate.mjs";
 import { isHttpsUrl } from "../src/content/sources.mjs";
 
@@ -25,6 +26,8 @@ const DENYLIST = [/\bkill yourself\b/i, /\bnazi propaganda\b/i, /\bslur\b/i]; //
 
 export class QuotaError extends Error {}
 export class CallBudgetError extends Error {}
+/** 5xx / overloaded: fail gracefully, never auto-retry in a loop. */
+export class ProviderUnavailableError extends Error {}
 
 /** Find lesson + topic + discipline + stored choice. Only stored ids are accepted. */
 export function findLessonChoice(disciplines, lessonId, choiceId) {
@@ -60,9 +63,9 @@ export const FACTCHECK_SCHEMA = {
 };
 
 /** Prompt built only from public lesson content and the stored choice (plan section 2: nothing user-typed). */
-export function buildPrompt({ discipline, topic, lesson, choice }) {
+export function buildPrompt({ discipline, topic, lesson, choice }, extra = []) {
   const text = lesson.sections.map((/** @type {any} */ s) => `## ${s.heading}\n${s.body}`).join("\n\n");
-  const cands = lesson.sources.map((/** @type {any} */ s) => `- ${s.url} (${s.publisher}: ${s.title})`).join("\n");
+  const cands = [...lesson.sources, ...extra].map((/** @type {any} */ s) => `- ${s.url} (${s.publisher}: ${s.title})`).join("\n");
   const system = [
     "You write short, accurate introductory lessons for curious adult learners.",
     "Describe neutrally; never ask the reader to affirm a religious, political or civic position.",
@@ -99,6 +102,7 @@ export async function callGemini({ fetchImpl, apiKey, model, system, user, schem
   const body = await res.json().catch(() => ({}));
   const status = body?.error?.status;
   if (res.status === 429 || status === "RESOURCE_EXHAUSTED") throw new QuotaError(`quota/rate limit: HTTP ${res.status} ${status ?? ""} ${body?.error?.message ?? ""}`.trim());
+  if (res.status >= 500 || status === "UNAVAILABLE") throw new ProviderUnavailableError(`provider unavailable: HTTP ${res.status} ${status ?? ""}`.trim());
   if (!res.ok) throw new Error(`Gemini HTTP ${res.status} ${status ?? ""}: ${body?.error?.message ?? "error"}`);
   const text = body?.candidates?.[0]?.content?.parts?.map((/** @type {any} */ p) => p.text ?? "").join("") ?? "";
   let json;
@@ -107,9 +111,9 @@ export async function callGemini({ fetchImpl, apiKey, model, system, user, schem
 }
 
 /** Assign our own id; force source metadata to the curated candidate (the model only picks URLs). */
-export function normalizeLesson(raw, lesson) {
+export function normalizeLesson(raw, lesson, extra = []) {
   if (!raw || typeof raw !== "object") return raw;
-  const byUrl = new Map(lesson.sources.map((/** @type {any} */ s) => [s.url, s]));
+  const byUrl = new Map([...lesson.sources, ...extra].map((/** @type {any} */ s) => [s.url, s]));
   const sources = Array.isArray(raw.sources) ? raw.sources.map((/** @type {any} */ s) => byUrl.get(s?.url) ?? { publisher: "?", title: "?", url: String(s?.url ?? "") }) : raw.sources;
   const seen = new Set();
   return { id: `gen_${randomBytes(6).toString("hex")}`, slug: raw.slug, title: raw.title, sections: raw.sections, keyFacts: raw.keyFacts, quiz: raw.quiz,
@@ -126,9 +130,11 @@ export function pageText(html) {
 const words = (/** @type {string} */ s) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").match(/[a-z0-9]{4,}/g) ?? [];
 
 /** Source checks (plan section 3): curated candidate URL, HTTPS, fetch 200, title match, choice terms present. */
-export async function checkSources({ fetchImpl, generated, lesson, choice }) {
-  const allowed = new Set(lesson.sources.map((/** @type {any} */ s) => s.url));
-  const allowedHosts = new Set(lesson.sources.map((/** @type {any} */ s) => new URL(s.url).hostname));
+export async function checkSources({ fetchImpl, generated, lesson, choice, extra = [] }) {
+  const curated = new Set(lesson.sources.map((/** @type {any} */ s) => s.url));
+  // Extra candidates must be on the trusted-source allowlist; the model may only cite listed URLs, never invent one.
+  const allowed = new Set([...curated, ...extra.filter((s) => classifySourceUrl(s.url)).map((s) => s.url)]);
+  const allowedHosts = new Set([...allowed].map((u) => new URL(u).hostname));
   const results = [];
   for (const s of generated.sources ?? []) {
     const r = { url: s.url, problems: /** @type {string[]} */ ([]), status: 0, text: "" };
@@ -156,6 +162,7 @@ export async function checkSources({ fetchImpl, generated, lesson, choice }) {
   const terms = words(choice.label).filter((w) => !["the", "and", "with"].includes(w));
   const termHits = terms.filter((w) => words(allText).includes(w));
   const problems = results.flatMap((r) => r.problems.map((p) => `${r.url}: ${p}`));
+  problems.push(...sourceTierProblems(results.filter((r) => r.problems.length === 0).map((r) => ({ url: r.url, curated: curated.has(r.url) }))));
   if (results.length && terms.length && termHits.length === 0) problems.push(`no fetched source mentions "${choice.label}"`);
   return { problems, results, allText };
 }
@@ -180,51 +187,93 @@ export function buildFactCheckPrompt(generated, sourceText) {
   };
 }
 
-/** Full prototype run for one lesson/choice. Returns a report object (also written to disk by main()). */
-export async function runPrototype({ disciplines, lessonId, choiceId, apiKey, model = DEFAULT_MODEL, fetchImpl = fetch, log = () => {} }) {
+/** Load extra candidate sources (hand-picked, allowlisted URLs with publisher + title). Non-allowlisted entries are dropped. */
+export function extraCandidates(list) {
+  if (!Array.isArray(list)) return [];
+  return list.filter((s) => s && typeof s.url === "string" && typeof s.title === "string" && typeof s.publisher === "string" && classifySourceUrl(s.url))
+    .map((s) => ({ publisher: s.publisher, title: s.title, url: s.url }));
+}
+
+/**
+ * Full prototype run for one lesson/choice. Returns a report object (also written to disk by main()).
+ * Each attempt = generate (+ one schema retry if budget allows) -> local + source checks -> fact check.
+ * Fact-check rule (config.factCheckOutcome): 0 unconfirmed = pass; 1 = pass, flagged for Mike's review; 2+ = reject and
+ * regenerate only if a full attempt (generate + fact check) still fits in callsPerLessonMax; otherwise fail gracefully.
+ */
+export async function runPrototype({ disciplines, lessonId, choiceId, apiKey, model = DEFAULT_MODEL, fetchImpl = fetch, log = () => {}, extra = [] }) {
   const ctx = findLessonChoice(disciplines, lessonId, choiceId);
+  const cands = extraCandidates(extra);
   const budget = { used: 0, max: DRILLDOWN_CAPS.callsPerLessonMax };
   const report = { lessonId, choiceId, model, promptVersion: PROMPT_VERSION, at: new Date().toISOString(), calls: /** @type {any[]} */ ([]),
-    generated: /** @type {any} */ (null), schemaProblems: /** @type {string[]} */ ([]), sourceProblems: /** @type {string[]} */ ([]),
-    contentProblems: /** @type {string[]} */ ([]), factCheck: /** @type {any} */ (null), verdict: "rejected", stoppedOn: /** @type {string|null} */ (null) };
-  const { system, user } = buildPrompt(ctx);
+    attempts: /** @type {any[]} */ ([]), generated: /** @type {any} */ (null), verdict: "rejected", flag: /** @type {any} */ (null),
+    stoppedOn: /** @type {string|null} */ (null) };
+  const { system, user } = buildPrompt(ctx, cands);
+  const left = () => budget.max - budget.used;
   try {
-    // Generate; regenerate on schema failure while leaving one call for the fact check.
-    while (budget.used < budget.max - 1) {
-      const r = await callGemini({ fetchImpl, apiKey, model, system, user, schema: LESSON_SCHEMA, budget });
-      report.calls.push({ kind: "generate", ms: r.ms, usage: r.usage, finishReason: r.finishReason, modelVersion: r.modelVersion });
-      report.generated = normalizeLesson(r.json, ctx.lesson);
-      report.schemaProblems = generatedLessonProblems(report.generated);
-      log(`generate #${budget.used}: ${r.ms} ms, ${report.schemaProblems.length} schema problem(s)`);
-      if (report.schemaProblems.length === 0) break;
+    while (left() >= 2) {
+      const at = { schemaProblems: /** @type {string[]} */ ([]), sourceProblems: /** @type {string[]} */ ([]), contentProblems: /** @type {string[]} */ ([]),
+        factCheck: /** @type {any} */ (null), outcome: "reject" };
+      report.attempts.push(at);
+      let generated = null;
+      // Generate; retry once on schema failure only while a fact-check call still fits.
+      while (left() >= 2) {
+        const r = await callGemini({ fetchImpl, apiKey, model, system, user, schema: LESSON_SCHEMA, budget });
+        report.calls.push({ kind: "generate", ms: r.ms, usage: r.usage, finishReason: r.finishReason, modelVersion: r.modelVersion });
+        generated = normalizeLesson(r.json, ctx.lesson, cands);
+        at.schemaProblems = generatedLessonProblems(generated);
+        log(`generate #${budget.used}: ${r.ms} ms, ${at.schemaProblems.length} schema problem(s)`);
+        if (at.schemaProblems.length === 0) break;
+      }
+      if (at.schemaProblems.length) break;
+      report.generated = generated;
+      at.contentProblems = localContentProblems(generated, ctx.choice);
+      const src = await checkSources({ fetchImpl, generated, lesson: ctx.lesson, choice: ctx.choice, extra: cands });
+      at.sourceProblems = src.problems;
+      log(`sources: ${src.results.map((r) => `${r.status || "-"} ${r.url}`).join(", ")}`);
+      if (at.sourceProblems.length || at.contentProblems.length || !src.allText) { at.factCheck = { skipped: "source/content checks failed" }; continue; }
+      const fc = buildFactCheckPrompt(generated, src.allText);
+      const r = await callGemini({ fetchImpl, apiKey, model, system: fc.system, user: fc.user, schema: FACTCHECK_SCHEMA, budget });
+      report.calls.push({ kind: "factcheck", ms: r.ms, usage: r.usage, finishReason: r.finishReason, modelVersion: r.modelVersion });
+      const items = Array.isArray(r.json?.items) ? r.json.items : [];
+      const unconfirmed = items.filter((/** @type {any} */ i) => !i.supported);
+      const complete = items.length === 12;
+      at.factCheck = { items, unconfirmed: unconfirmed.map((/** @type {any} */ i) => i.ref), complete };
+      at.outcome = complete ? factCheckOutcome(unconfirmed.length) : "reject";
+      log(`fact check: ${unconfirmed.length} unconfirmed -> ${at.outcome}`);
+      if (at.outcome === "pass") { report.verdict = "passed (private until Mike approves)"; break; }
+      if (at.outcome === "pass_flagged") {
+        report.verdict = "passed with 1 unconfirmed claim (delivered privately with AI-generated label; flagged for Mike's review)";
+        report.flag = { ref: unconfirmed[0].ref, claim: claimText(generated, unconfirmed[0].ref), reason: unconfirmed[0].note ?? "not confirmed by fetched sources" };
+        break;
+      }
     }
-    if (report.schemaProblems.length) return report;
-    report.contentProblems = localContentProblems(report.generated, ctx.choice);
-    const src = await checkSources({ fetchImpl, generated: report.generated, lesson: ctx.lesson, choice: ctx.choice });
-    report.sourceProblems = src.problems;
-    log(`sources: ${src.results.map((r) => `${r.status || "-"} ${r.url}`).join(", ")}`);
-    if (!src.allText) { report.factCheck = { skipped: "no fetched source text" }; return report; }
-    const fc = buildFactCheckPrompt(report.generated, src.allText);
-    const r = await callGemini({ fetchImpl, apiKey, model, system: fc.system, user: fc.user, schema: FACTCHECK_SCHEMA, budget });
-    report.calls.push({ kind: "factcheck", ms: r.ms, usage: r.usage, finishReason: r.finishReason, modelVersion: r.modelVersion });
-    const items = Array.isArray(r.json?.items) ? r.json.items : [];
-    report.factCheck = { items, unsupported: items.filter((/** @type {any} */ i) => !i.supported).map((/** @type {any} */ i) => i.ref), complete: items.length === 12 };
-    if (report.sourceProblems.length === 0 && report.contentProblems.length === 0 && report.factCheck.complete && report.factCheck.unsupported.length === 0) report.verdict = "passed (would be private, pending Mike's approval)";
+    if (report.verdict === "rejected" && left() < 2) report.stoppedOn = `call cap reached (${budget.used}/${budget.max}); failing gracefully`;
   } catch (e) {
-    if (e instanceof QuotaError || e instanceof CallBudgetError) report.stoppedOn = e.message;
+    if (e instanceof QuotaError || e instanceof CallBudgetError || e instanceof ProviderUnavailableError) report.stoppedOn = e.message;
     else throw e;
   }
   return report;
 }
 
+/** Text of a fact-check ref ("fact3" / "quiz2") for the review flag. */
+export function claimText(generated, ref) {
+  const m = /^(fact|quiz)(\d+)$/.exec(String(ref));
+  if (!m) return null;
+  const i = Number(m[2]) - 1;
+  if (m[1] === "fact") return generated.keyFacts?.[i] ?? null;
+  const q = generated.quiz?.[i];
+  return q ? `${q.question} -> ${q.options?.[q.answerIndex]}` : null;
+}
+
 async function main() {
-  const { values, positionals } = parseArgs({ allowPositionals: true, options: { model: { type: "string" }, out: { type: "string" } } });
+  const { values, positionals } = parseArgs({ allowPositionals: true, options: { model: { type: "string" }, out: { type: "string" }, candidates: { type: "string" } } });
   const [lessonId, choiceId] = positionals;
   if (!lessonId || !choiceId) { console.error("usage: node scripts/drilldown-prototype.mjs <lessonId> <choiceId> [--model id] [--out dir]"); process.exit(2); }
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) { console.error("GEMINI_API_KEY is not set"); process.exit(2); }
   const disciplines = JSON.parse(readFileSync(resolve(ROOT, "src/content/disciplines.json"), "utf8"));
-  const report = await runPrototype({ disciplines, lessonId, choiceId, apiKey, model: values.model ?? DEFAULT_MODEL, log: (m) => console.error(m) });
+  const extra = values.candidates ? JSON.parse(readFileSync(resolve(values.candidates), "utf8")) : [];
+  const report = await runPrototype({ disciplines, lessonId, choiceId, apiKey, model: values.model ?? DEFAULT_MODEL, log: (m) => console.error(m), extra });
   const dir = resolve(ROOT, values.out ?? ".drilldowns-out");
   mkdirSync(dir, { recursive: true });
   const file = resolve(dir, `${lessonId}--${choiceId}.json`);

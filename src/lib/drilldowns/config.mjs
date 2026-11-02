@@ -44,3 +44,22 @@ export const AI_GENERATED_LABEL = "AI-generated";
 
 /** Lifecycle (plan section 4.6): only Mike moves a lesson to "published". */
 export const GENERATED_STATUSES = Object.freeze(["private", "published", "rejected", "flagged"]);
+
+/**
+ * Fact-check pass rule (plan section 4.3), decided by Mike 2026-11-02:
+ * - 0 unconfirmed key facts / quiz answers: "pass".
+ * - exactly 1 unconfirmed: "pass_flagged": delivered to the requesting user (private, AI-generated label) and
+ *   flagged for Mike's review, recording which claim and why.
+ * - 2 or more: "reject": regenerate only within callsPerLessonMax, otherwise fail gracefully.
+ */
+export const FACTCHECK_RULE = Object.freeze({ maxUnconfirmedToDeliver: 1 });
+
+/**
+ * @param {number} unconfirmed count of unconfirmed items (an incomplete fact check counts as rejected by the caller)
+ * @returns {"pass" | "pass_flagged" | "reject"}
+ */
+export function factCheckOutcome(unconfirmed) {
+  if (!Number.isInteger(unconfirmed) || unconfirmed < 0) return "reject";
+  if (unconfirmed === 0) return "pass";
+  return unconfirmed <= FACTCHECK_RULE.maxUnconfirmedToDeliver ? "pass_flagged" : "reject";
+}

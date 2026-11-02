@@ -59,17 +59,78 @@ No API key exists yet. Creating a Google AI Studio project/key is a **new accoun
 - **Quiz secrecy (REV-007):** the client only ever gets `toPublicQuestions()` (`src/lib/quiz/public.mjs`), meaning question + options.
   `answerIndex` and `explanation` stay in the DB/server and come back only from the grading server action, as `submitQuiz` does today
   (`src/lib/quiz/actions.ts`).
-- **Real, verified sources:** the model may cite only from an allowlisted candidate set that the server supplies. Candidates come from
-  (a) the topic's existing hand-curated `sources` and (b) optional search grounding restricted to allowlisted domains (britannica.com,
-  plato.stanford.edu, metmuseum.org, uscourts.gov, loc.gov, archives.gov, smarthistory.org, ...). After generation, the server fetches each
-  URL (HTTPS only, `isHttpsUrl`). It must return 200 and its page title must match. It must also contain key terms from the claims cited to it.
-  If any source fails, the lesson is rejected or regenerated. URLs are never invented and never rendered unchecked.
+- **Real, verified sources:** the model may cite only from a candidate set that the server supplies; URLs are never invented and never
+  rendered unchecked. Candidates come from (a) the topic's existing hand-curated `sources` (trusted as reviewed) and (b) extra
+  candidate URLs on the trusted-source allowlist below. Search grounding isn't available on the 3.x free tier, so (b) is a hand-picked or
+  server-built list. After generation, the server fetches each URL (HTTPS only). It must return 200 and its page title must match. The fetched
+  text must also mention the chosen item. If any source fails, the lesson is rejected or regenerated within the caps.
+
+### 3a. Trusted-source allowlist (`src/lib/drilldowns/sources.mjs`)
+Matching rules: HTTPS only, no credentials or explicit port, no IP literals, no punycode (`xn--`) labels. A host matches only if it is
+exactly the domain or a subdomain on a `.` boundary, so `evilhistory.com`, `history.com.evil.net` and `notwikipedia.org` never match.
+`.org` is **not** wildcarded.
+
+| Tier | Domains |
+| --- | --- |
+| trusted | history.com, nationalgeographic.com, every `.gov` host (loc.gov, archives.gov, nps.gov, ...), every `.edu` host (university pages), si.edu (and subdomains such as americanhistory.si.edu), smithsonianmag.com, khanacademy.org, plato.stanford.edu, iep.utm.edu, worldhistory.org, pbs.org |
+| trusted, scholarly (named, no wildcard) | jstor.org (only `/stable/` pages), plos.org, doaj.org, gutenberg.org (primary texts) |
+| supplementary | wikipedia.org. It can be cited, but **never as a lesson's only source**: at least one curated or trusted source must also pass the fetch check. |
+
+Judgment calls:
+- **Wikipedia is lower-trust.** It is fetchable and broad, but its pages are edited openly, so it can only support a trusted source, never stand alone.
+- **JSTOR** is limited to `/stable/` pages, because checking open access needs more than a URL check.
+- **`.edu`** is a whole-TLD rule like `.gov`, as approved. Some `.edu` pages are student or personal, so the fetch-and-fact check still applies.
+- **"Smithsonian .org domains":** I couldn't confirm any official Smithsonian `.org` hosts, so none are listed. The Smithsonian uses si.edu and smithsonianmag.com.
+
+### 3b. Fetchability (plain script fetch, measured 2026-11-02)
+The fetch sent an honest User-Agent, `Well-Read source check (+https://github.com/mvaldes7/Well-Read)`. There was no evasion, proxy or
+header spoofing, and requests went about 4 s apart, one or two pages per domain. "Readable" means a 200 response with more than 1,500
+characters of extracted text.
+
+| Domain | Page tried | HTTP | Readable text |
+| --- | --- | --- | --- |
+| history.com | /articles/french-revolution; /articles/genghis-khan | 200; 200 | yes (16.5k chars); yes (11.3k chars) |
+| nationalgeographic.com | /history/article/silk-road (redirected) | 200 | yes (9k chars). A guessed /culture/article/genghis-khan URL returned 404 (bad URL, not a block). |
+| loc.gov | Constitutional Convention essay | 200 | yes (4.9k chars) |
+| archives.gov | /founding-docs/bill-of-rights-transcript | 200 | yes (12k chars) |
+| nps.gov | /inde/.../places-independencehall.htm; /subjects/womenshistory/ | 200; 200 | yes (2.7k chars); yes (2.5k chars). A first, guessed URL returned 404. |
+| plato.stanford.edu | /entries/seneca/ | 200 | yes (111k chars) |
+| iep.utm.edu | /seneca/ | 200 | yes (64k chars) |
+| worldhistory.org | /Genghis_Khan/; /Maximilien_Robespierre/ | 200; 200 | yes (26k chars); yes (30k chars) |
+| pbs.org | /wnet/religionandethics/; /empires/thegreeks/background/ | 200; 403 | yes; no. The result is mixed across subsites. |
+| wikipedia.org | Georges_Braque; Maximilien_Robespierre | 200; 200 | yes (33k chars); yes (228k chars) |
+| .edu | avalon.law.yale.edu Federalist 51; afe.easia.columbia.edu page | 200; 404 | yes (12.7k chars); no (bad URL) |
+| plos.org | journals.plos.org PLOS ONE article | 200 | yes (54k chars) |
+| gutenberg.org | /ebooks/1497; Federalist HTML | 200; 200 | yes (3.2k chars); yes (1.15M chars) |
+| khanacademy.org | linear-perspective article | 200 | **no.** The page is rendered by JavaScript, so a plain fetch gets 12 characters. |
+| jstor.org | /stable/j.ctt1287k16 | 200 | **no.** A "Client Challenge" bot page came back. |
+| si.edu | /spotlight/buddhism | 403 | **no.** A "Smithsonian request verification" page came back. |
+| smithsonianmag.com | Genghis Khan article | 403 | **no.** A Cloudflare "Just a moment..." challenge came back. |
+| doaj.org | journal TOC | 403 | **no.** A Cloudflare challenge came back. |
+| britannica.com (curated) | Robespierre | 403 | **no.** A Cloudflare challenge came back. |
+| metmuseum.org (curated) | /essays/cubism | 429 | **no.** A "Vercel Security Checkpoint" came back. |
+
+**Blocked or unreadable with an honest plain fetch (for Mike to decide):** si.edu, smithsonianmag.com, doaj.org, jstor.org,
+khanacademy.org (JavaScript-rendered), parts of pbs.org, and the already-curated britannica.com and metmuseum.org. The options are:
+- keep them as human-curated sources that are trusted without a fetch;
+- drop them as candidates for generated lessons;
+- ask the site owners for access.
+
+We do **not** bypass bot checks.
 
 ## 4. Quality and safety checks
 1. Schema validation (above). On failure, regenerate up to 2 times, then show "couldn't generate".
 2. Source checks (above), plus a deduplication check.
-3. Fact check: a second cheap model call checks that each key fact and each quiz answer is supported by the fetched source text. Unsupported
-   items get flagged, and the lesson is rejected. Also check `answerIndex` against the explanation.
+3. Fact check: a second cheap model call checks that each key fact and each quiz answer (12 items) is supported by the fetched source text.
+   Each fetched source gets an equal share of the text budget. **Pass rule (decided by Mike, 2026-11-02; `factCheckOutcome` in
+   `src/lib/drilldowns/config.mjs`):**
+   - 0 unconfirmed items: **pass**.
+   - Exactly 1 unconfirmed: **pass, flagged**. The lesson is delivered to the requesting user (private, with the AI-generated label) and
+     flagged for Mike's review, recording which claim and why.
+   - 2 or more, or an incomplete fact check: **reject**. Regenerate only if a full attempt (generate + fact check) still fits in the
+     3-calls-per-lesson cap. Otherwise fail gracefully ("couldn't generate this one").
+   With a cap of 3, a fact-check reject after one attempt (2 calls) cannot be retried. Only a schema retry fits. Raising the cap to 4
+     would allow one real regeneration; that needs Mike's approval.
 4. Content filters: there is no user text to filter, because the input is a stored choice id. Use the provider's safety settings plus a local check (small
    denylist, topic-relevance check) on the **output**. No second provider/account is used. Treat user text as data, not instructions (prompt-injection guard). Limit it to the current
    topic's subject, with a length cap (for example 200 characters).
@@ -140,7 +201,7 @@ These defaults live in code (P0: `src/lib/drilldowns/config.mjs`). Lowering them
   the 5 newest lessons, and the pure server-side gate (stored choice id only, and completion required), all with tests. No provider calls, no UI, no
   keys, no migration.
 - [ ] **P1, choices for every lesson:** add reviewed `digDeeper` choices to the remaining lessons (content PR). *(Mike approval)*
-- [ ] **P1b, offline prototype:** a script that generates a lesson for one topic into a local JSON file and runs the validator, source
+- [x] **P1b, offline prototype** (PR #30, `scripts/drilldown-prototype.mjs`; trusted-source allowlist and fetchability in section 3a/3b): a script that generates a lesson for one topic into a local JSON file and runs the validator, source
   fetch-check and fact check. Free-tier key only. *(Mike approval: create the Google AI Studio project/key)*
 - [ ] **P2, migration draft:** tables, RLS, report trigger and usage counters (section 6), tested in a throwaway local Postgres. **Not
   applied.** *(Mike approval to write; separate approval to apply)*
