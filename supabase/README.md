@@ -16,6 +16,14 @@ All of these are applied to the Well-Read project (`pjiuquekewnkctpkhiow`):
 | `20261014233800` | `migrations/20261014233800_activity_log.sql`        | TSK-016 | `activity_log` (append-only, for day streaks) + backfill |
 | `20261015023134` | `migrations/20261015023134_reading_list_items.sql`  | TSK-017 | `reading_list_items` (own-row CRUD, `completed_at`/`updated_at` trigger) |
 
+## Unapplied migrations
+
+In the repo but **not** applied to any Supabase project yet. Apply only with Mike's approval, then move the row up.
+
+| Version          | File                                                   | Task    | Adds |
+| ---------------- | ------------------------------------------------------ | ------- | ---- |
+| `20261102210548` | `migrations/20261102210548_activity_log_rate_limit.sql` | REV-011 | `activity_log` per-user insert rate limit (20/min, 300/h; trigger, SQLSTATE `WR429`) |
+
 ## The `STATUS:` header comments are historical
 
 Each migration's header comment describes its state **when it was written**. Some applied

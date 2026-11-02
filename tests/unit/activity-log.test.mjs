@@ -44,3 +44,24 @@ test('migration: append-only RLS, own rows, index, idempotent single-row-per-com
   assert.match(sql, /check \(kind in \('lesson_passed', 'quiz_attempt'\)\)/);
   assert.match(sql, /where not exists/);
 });
+
+test('logActivity: rate-limited insert (WR429, REV-011) -> "rate_limited", no error log, no throw', async () => {
+  const [out, logs] = await quiet(() => logActivity(fake({ error: { code: 'WR429', message: 'activity_log rate limit exceeded' } }), 'u1', 'quiz_attempt', 'les_st01'));
+  assert.equal(out, 'rate_limited');
+  assert.deepEqual(logs, []);
+});
+
+test('migration: activity_log rate limit is a new, invoker, pinned-search_path BEFORE INSERT trigger', () => {
+  const sql = readFileSync(new URL('../../supabase/migrations/20261102210548_activity_log_rate_limit.sql', import.meta.url), 'utf8');
+  assert.match(sql, /STATUS: UNAPPLIED/);
+  assert.match(sql, /security invoker\s+set search_path = ''/);
+  assert.match(sql, /before insert on public\.activity_log\s+for each row execute function public\.activity_log_rate_limit\(\)/);
+  assert.match(sql, /revoke all on function public\.activity_log_rate_limit\(\) from public, anon, authenticated;/);
+  assert.match(sql, /errcode = 'WR429'/);
+  assert.match(sql, /per_minute >= 20 or per_hour >= 300/);
+  assert.match(sql, /pg_advisory_xact_lock/);
+  const code = sql.split('\n').filter((l) => !l.trim().startsWith('--')).join('\n');
+  assert.doesNotMatch(code, /security definer|grant |create policy|drop /i);
+  const readme = readFileSync(new URL('../../supabase/README.md', import.meta.url), 'utf8');
+  assert.match(readme, /## Unapplied migrations[\s\S]*20261102210548_activity_log_rate_limit\.sql/);
+});
