@@ -28,7 +28,9 @@ Its header still says `STATUS: UNAPPLIED`; that is historical, as described belo
 
 In the repo but **not** applied to any Supabase project yet. Apply only with Mike's approval, then move the row up.
 
-None.
+| Version          | File                                       | Task | Adds |
+| ---------------- | ------------------------------------------ | ---- | ---- |
+| `20261102231600` | `migrations/20261102231600_drilldowns.sql` | Drill-downs P2 | `generated_lessons`, `generated_quiz_keys`, `lesson_reports`, `drilldown_usage_user`/`_global`, `generated_lesson_completions`, `drilldown_reserve()`, role `drilldown_admin`. Tested only on a local throwaway Postgres (`pnpm test:db`). Introduces the first **service_role** grants (server-only, P3), see the file header. |
 
 ## The `STATUS:` header comments are historical
 

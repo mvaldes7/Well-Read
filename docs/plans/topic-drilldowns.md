@@ -198,30 +198,42 @@ Before grounding (3c), all three were rejected at 4/4 calls. No billing or paid-
   without a migration. Store generated-lesson progress in a separate `generated_lesson_completions` table with the same own-row RLS. Mastery/achievement math (`src/lib/progress/*`, `src/achievements/definitions.mjs`) currently counts
   only static content. Decide whether generated lessons count (recommendation: no, at first).
 
-## 6. DB changes (future migration; NOT written, needs Mike's approval)
-Follow the repo's existing patterns from `supabase/migrations/*` and the REV-011/REV-012 reviews: `user_id uuid default auth.uid()
-references auth.users on delete cascade`, check constraints, policies `to authenticated` using `(select auth.uid())`, `revoke all ... from
-anon`, minimal column-level grants (REV-012 nit 2), trigger functions with `set search_path = ''` and EXECUTE revoked. No service role in app code
-(supabase/README.md). Keep the app tolerant of absent tables (the "Not available yet" pattern used for reading_list), so code can deploy before the migration.
-Also follow REV-007: answers stay server-side.
-- `generated_lessons` (id text pk `gen_…`, cache_key unique, discipline/topic slugs, lesson jsonb, status, model, prompt_version,
-  created_by, created_at). RLS: select only where `status = 'published'` or (`created_by = (select auth.uid())` and status in ('private','flagged')). No policy
-  lets any client role set `status = 'published'`; only Mike (dashboard SQL/owner role, or a future admin RPC gated on his user id) can. **No** insert/update grant for
-  `authenticated`. Writes go through a `security definer` RPC with a pinned search_path that validates and rate-limits, or through Mike-run
-  review. Because quiz answers are inside `lesson`, clients must not select that column directly. Either expose a view/RPC that strips
-  `answerIndex`/`explanation`, or store the quiz key in a separate table with no client select grant.
-- `generated_quiz_keys` (lesson_id, answers jsonb, explanations jsonb). No client grants at all. It is read only by the grading RPC.
-- `drilldown_requests` (id, user_id default auth.uid(), source_lesson_id text, choice_id text, generated_lesson_id, created_at).
-  `choice_id` is checked against the slug format. The app validates that it belongs to the lesson, because content lives in JSON, not the DB.
-  Insert policy (the completion gate in SQL):
-  `with check (user_id = (select auth.uid()) and exists (select 1 from public.lesson_completions c where c.user_id = (select auth.uid()) and c.lesson_id = source_lesson_id))`.
-- `lesson_reports` (id, lesson_id, user_id default auth.uid(), reason text check length<=500, created_at). Own-row insert/select only;
-  one open report per user per lesson (unique). Insert trigger sets the lesson to `flagged` (security definer, `search_path=''`, EXECUTE revoked).
-- `generation_usage` (user_id, day, calls). Used for caps. Own-row select only. Writes happen inside the RPC.
+## 6. DB changes (P2 draft: `supabase/migrations/20261102231600_drilldowns.sql`, UNAPPLIED)
+Approved by Mike to **write** (2026-11-02). It still needs separate approval to apply. So far it has been tested only on a throwaway local Postgres
+(`pnpm test:db`: `scripts/test-db-local.sh` + `tests/db/*.sql`, with a stub for Supabase's roles and `auth.uid()`). It follows the earlier
+migrations: `user_id default auth.uid()`, policies `to authenticated` using `(select auth.uid())`, `revoke all` and then minimal
+column grants, and functions that are SECURITY INVOKER with `set search_path = ''` and EXECUTE revoked (REV-011/012). Answers stay
+server-side (REV-007).
 
-Open question: generation needs a server-side LLM key, and writes to a shared cache need a privilege above `authenticated`. The cleanest
-no-service-role design is a SECURITY DEFINER RPC that accepts already-validated JSON from the server action. That still trusts the
-caller, though, so the review flow (status = pending_review) is the real safeguard. This needs an architect review.
+| Table | Users (authenticated) | Server (service_role) | Mike (drilldown_admin / owner SQL) |
+| --- | --- | --- | --- |
+| `generated_lessons` (gen_ id, created_by, parent_lesson_id, choice_id, prompt_version, model, `ai_generated` always true, `review_status` pending/flagged/published/rejected, public `lesson` jsonb with no answers, `sources`, `citations`, `unconfirmed_claims` with 0 or 1 entries, reviewed_at, published_at) | select own pending/flagged + all published; **no writes** | insert (not as published); update only `review_status` and `unconfirmed_claims`; **cannot publish** | full |
+| `generated_quiz_keys` (answers, explanations) | **nothing** | select, insert | full |
+| `lesson_reports` (lesson_id, user_id, reason of 1-500 chars, resolved_at; one per user per lesson) | insert own on a lesson they can see; select own | select | select, resolve |
+| `drilldown_usage_user` (user, LA day, lessons 2 or fewer, calls 8 or fewer) | select own; **no writes** | via `drilldown_reserve()` | full |
+| `drilldown_usage_global` (LA day, lessons 25 or fewer, calls 100 or fewer) | **nothing** | via `drilldown_reserve()` | full |
+| `generated_lesson_completions` (same rules as `lesson_completions`) | own select/insert/update, only on a lesson they can see | none | none |
+
+**Visibility (Mike's intent):**
+- `pending` (0 unconfirmed claims) and `flagged` (exactly 1, delivered with the AI-generated label) are visible **only to the generating user**.
+- `published` is visible to **every signed-in user**. anon still gets nothing.
+- `rejected` is visible to nobody but Mike.
+- A report is handled by the server (P3), which moves a published lesson back to `flagged` and so hides it from everyone else.
+
+**Publish path:** a BEFORE trigger refuses `review_status = 'published'` (SQLSTATE `WR403`) unless the current role is a member of the
+NOLOGIN role `drilldown_admin`. The owner (postgres) role in the dashboard SQL editor qualifies. Lesson content is immutable to everyone
+except the admin. There is no user-facing or app-facing publish. Runbook (P4):
+`update public.generated_lessons set review_status = 'published' where id = 'gen_…';`. `published_at` and `reviewed_at` are set by the trigger.
+
+**Caps:** `drilldown_reserve(user, calls, new_lesson)` is called by the server before provider calls. It takes a per-day advisory lock, checks
+2 lessons and 8 calls per user and 25 lessons and 100 calls globally (`America/Los_Angeles` day), then increments. It raises `WR429` and changes nothing
+when a cap would be exceeded. CHECK constraints on the counter tables are a backstop that no writer, the server included, can exceed.
+Users have no write grant on either table and no EXECUTE on the function.
+
+**Why service_role:** a shared cache that one user writes and others read needs a privilege above `authenticated`. The plan's earlier
+idea was a SECURITY DEFINER RPC, but every function here stays SECURITY INVOKER. Instead the server-only generation action (P3) uses
+service_role, with grants limited to these tables and no publish right. This is the app's first service-role use (supabase/README.md),
+so it needs Mike's explicit approval in P3. The key must stay server-only and never use a `NEXT_PUBLIC_` prefix.
 
 ## 7. UI entry point
 - Lesson page, after the quiz result: a "Dig deeper" button, shown only when signed in, the lesson's quiz is completed and the flag is on.
@@ -252,7 +264,7 @@ These defaults live in code (P0: `src/lib/drilldowns/config.mjs`). Lowering them
 - [ ] **P1, choices for every lesson:** add reviewed `digDeeper` choices to the remaining lessons (content PR). *(Mike approval)*
 - [x] **P1b, offline prototype** (PR #30, `scripts/drilldown-prototype.mjs`; trusted-source allowlist and fetchability in section 3a/3b): a script that generates a lesson for one topic into a local JSON file and runs the validator, source
   fetch-check and fact check. Free-tier key only. *(Mike approval: create the Google AI Studio project/key)*
-- [ ] **P2, migration draft:** tables, RLS, report trigger and usage counters (section 6), tested in a throwaway local Postgres. **Not
+- [x] **P2, migration draft** (PR: feat/drilldowns-p2-schema, `20261102231600_drilldowns.sql`, local tests only, NOT applied): tables, RLS, admin-only publish trigger and usage counters (section 6; report -> flagged is done by the P3 server, not a trigger), tested in a throwaway local Postgres. **Not
   applied.** *(Mike approval to write; separate approval to apply)*
 - [ ] **P3, server + UI behind the flag:** the "Dig deeper" panel and server action (using the P0 gate), private lessons with the AI-generated label, the Report button, caps and
   the hard stop. Preview only. *(Mike approval)*
