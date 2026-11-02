@@ -6,12 +6,13 @@
 /** Free-tier caps (plan section 8). Lowering these is free; raising them needs Mike's approval. */
 export const DRILLDOWN_CAPS = Object.freeze({
   perUserLessonsPerDay: 2,
-  globalLessonsPerDay: 30,
+  /** 25 lessons x 4 calls = 100, so the lesson cap never outruns the call hard stop. */
+  globalLessonsPerDay: 25,
   /** Hard stop on provider calls per LA day: 20% of the assumed 500 RPD free quota. */
   globalCallsPerDayHardStop: 100,
   globalCallsPerMinute: 4,
-  /** Worst-case calls per lesson: generate + fact-check + one retry. */
-  callsPerLessonMax: 3,
+  /** Worst-case calls per lesson (Mike, 2026-11-02): generate + fact-check, then one full regenerate + fact-check after a reject. */
+  callsPerLessonMax: 4,
   maxPromptChars: 200,
 });
 
@@ -44,3 +45,22 @@ export const AI_GENERATED_LABEL = "AI-generated";
 
 /** Lifecycle (plan section 4.6): only Mike moves a lesson to "published". */
 export const GENERATED_STATUSES = Object.freeze(["private", "published", "rejected", "flagged"]);
+
+/**
+ * Fact-check pass rule (plan section 4.3), decided by Mike 2026-11-02:
+ * - 0 unconfirmed key facts / quiz answers: "pass".
+ * - exactly 1 unconfirmed: "pass_flagged": delivered to the requesting user (private, AI-generated label) and
+ *   flagged for Mike's review, recording which claim and why.
+ * - 2 or more: "reject": regenerate only within callsPerLessonMax, otherwise fail gracefully.
+ */
+export const FACTCHECK_RULE = Object.freeze({ maxUnconfirmedToDeliver: 1 });
+
+/**
+ * @param {number} unconfirmed count of unconfirmed items (an incomplete fact check counts as rejected by the caller)
+ * @returns {"pass" | "pass_flagged" | "reject"}
+ */
+export function factCheckOutcome(unconfirmed) {
+  if (!Number.isInteger(unconfirmed) || unconfirmed < 0) return "reject";
+  if (unconfirmed === 0) return "pass";
+  return unconfirmed <= FACTCHECK_RULE.maxUnconfirmedToDeliver ? "pass_flagged" : "reject";
+}
