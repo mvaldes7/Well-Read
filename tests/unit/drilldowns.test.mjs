@@ -21,6 +21,8 @@ test('feature flag is off unless WELL_READ_DRILLDOWNS is exactly "1"', () => {
 test('caps are conservative: hard stop at 20% of a 500/day free quota, global cap fits under it', () => {
   const c = DRILLDOWN_CAPS;
   assert.ok(c.globalCallsPerDayHardStop <= 100);
+  assert.equal(c.globalCallsPerDayHardStop, 100);
+  assert.equal(c.callsPerLessonMax, 4); // Mike, 2026-11-02: lets a fact-check reject regenerate once
   assert.ok(c.globalLessonsPerDay * c.callsPerLessonMax <= c.globalCallsPerDayHardStop);
   assert.ok(c.perUserLessonsPerDay <= 2);
   assert.ok(c.globalCallsPerMinute < 10);
@@ -31,7 +33,7 @@ test('canGenerateLesson: graceful reasons, provider quota and hard stop win', ()
   const base = { userLessonsToday: 0, globalLessonsToday: 0, globalCallsToday: 0, globalCallsThisMinute: 0 };
   assert.deepEqual(canGenerateLesson(base), { ok: true });
   assert.equal(canGenerateLesson({ ...base, userLessonsToday: 2 }).reason, 'user_cap');
-  assert.equal(canGenerateLesson({ ...base, globalLessonsToday: 30 }).reason, 'global_cap');
+  assert.equal(canGenerateLesson({ ...base, globalLessonsToday: 25 }).reason, 'global_cap');
   assert.equal(canGenerateLesson({ ...base, globalCallsToday: 98 }).reason, 'hard_stop');
   assert.equal(canGenerateLesson({ ...base, globalCallsThisMinute: 2 }).reason, 'per_minute');
   assert.equal(canGenerateLesson({ ...base, providerQuotaHit: true }).reason, 'provider_quota');

@@ -13,12 +13,14 @@ import { fileURLToPath } from "node:url";
 import { randomBytes } from "node:crypto";
 import { parseArgs } from "node:util";
 import { DRILLDOWN_CAPS, factCheckOutcome } from "../src/lib/drilldowns/config.mjs";
-import { classifySourceUrl, sourceTierProblems } from "../src/lib/drilldowns/sources.mjs";
+import { classifySourceUrl, isBlockedSource, sourceTierProblems } from "../src/lib/drilldowns/sources.mjs";
 import { generatedLessonProblems } from "../src/lib/drilldowns/validate.mjs";
 import { isHttpsUrl } from "../src/content/sources.mjs";
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 export const DEFAULT_MODEL = "gemini-3.1-flash-lite";
+/** Free-tier fallback, used only when the primary returns 503 / high demand (Mike, 2026-11-02). Never a paid model. */
+export const FALLBACK_MODEL = "gemini-3.5-flash-lite";
 export const PROMPT_VERSION = "p1b-1";
 export const FACTCHECK_SOURCE_CHARS = 24000;
 const API = "https://generativelanguage.googleapis.com/v1beta/models";
@@ -28,6 +30,9 @@ export class QuotaError extends Error {}
 export class CallBudgetError extends Error {}
 /** 5xx / overloaded: fail gracefully, never auto-retry in a loop. */
 export class ProviderUnavailableError extends Error {}
+/** Any sign that the request needs billing / a paid tier: stop immediately, never retry or fall back. */
+export class BillingError extends Error {}
+const BILLING_RE = /billing|paid tier|paid plan|upgrade your plan|payment|prepay|credits? (?:exhausted|depleted)/i;
 
 /** Find lesson + topic + discipline + stored choice. Only stored ids are accepted. */
 export function findLessonChoice(disciplines, lessonId, choiceId) {
@@ -101,8 +106,10 @@ export async function callGemini({ fetchImpl, apiKey, model, system, user, schem
   const ms = Date.now() - t0;
   const body = await res.json().catch(() => ({}));
   const status = body?.error?.status;
+  const msg = String(body?.error?.message ?? "");
+  if (res.status === 402 || BILLING_RE.test(msg) || BILLING_RE.test(JSON.stringify(body?.error?.details ?? ""))) throw new BillingError(`billing/paid requirement: HTTP ${res.status} ${status ?? ""} ${msg}`.trim());
   if (res.status === 429 || status === "RESOURCE_EXHAUSTED") throw new QuotaError(`quota/rate limit: HTTP ${res.status} ${status ?? ""} ${body?.error?.message ?? ""}`.trim());
-  if (res.status >= 500 || status === "UNAVAILABLE") throw new ProviderUnavailableError(`provider unavailable: HTTP ${res.status} ${status ?? ""}`.trim());
+  if (res.status >= 500 || status === "UNAVAILABLE" || /high demand|overloaded/i.test(msg)) throw new ProviderUnavailableError(`provider unavailable: HTTP ${res.status} ${status ?? ""}`.trim());
   if (!res.ok) throw new Error(`Gemini HTTP ${res.status} ${status ?? ""}: ${body?.error?.message ?? "error"}`);
   const text = body?.candidates?.[0]?.content?.parts?.map((/** @type {any} */ p) => p.text ?? "").join("") ?? "";
   let json;
@@ -135,10 +142,18 @@ export async function checkSources({ fetchImpl, generated, lesson, choice, extra
   // Extra candidates must be on the trusted-source allowlist; the model may only cite listed URLs, never invent one.
   const allowed = new Set([...curated, ...extra.filter((s) => classifySourceUrl(s.url)).map((s) => s.url)]);
   const allowedHosts = new Set([...allowed].map((u) => new URL(u).hostname));
+  /** @type {{ url: string, problems: string[], status: number, text: string, blocked: boolean }[]} */
   const results = [];
   for (const s of generated.sources ?? []) {
-    const r = { url: s.url, problems: /** @type {string[]} */ ([]), status: 0, text: "" };
+    const r = { url: s.url, problems: /** @type {string[]} */ ([]), status: 0, text: "", blocked: false };
     if (!isHttpsUrl(s.url)) r.problems.push("not https");
+    else if (isBlockedSource(s.url)) {
+      // Blocked site: may be cited (if allowed) but is never fetched and never confirms a claim.
+      r.blocked = true;
+      if (!allowed.has(s.url)) r.problems.push("blocked site and not a curated candidate URL");
+      results.push(r);
+      continue;
+    }
     else if (!allowed.has(s.url)) r.problems.push(allowedHosts.has(new URL(s.url).hostname) ? "allowlisted domain but not a curated candidate URL" : "domain not allowlisted");
     if (r.problems.length === 0) {
       try {
@@ -156,13 +171,13 @@ export async function checkSources({ fetchImpl, generated, lesson, choice, extra
     results.push(r);
   }
   // Give every fetched source an equal share of the fact-check budget, so one long page can't crowd out the others.
-  const fetched = results.filter((r) => r.text);
+  const fetched = results.filter((r) => r.text && !r.blocked);
   const share = fetched.length ? Math.floor(FACTCHECK_SOURCE_CHARS / fetched.length) : 0;
   const allText = fetched.map((r) => `[${r.url}]\n${r.text.slice(0, share)}`).join("\n\n");
   const terms = words(choice.label).filter((w) => !["the", "and", "with"].includes(w));
   const termHits = terms.filter((w) => words(allText).includes(w));
   const problems = results.flatMap((r) => r.problems.map((p) => `${r.url}: ${p}`));
-  problems.push(...sourceTierProblems(results.filter((r) => r.problems.length === 0).map((r) => ({ url: r.url, curated: curated.has(r.url) }))));
+  problems.push(...sourceTierProblems(results.filter((r) => r.problems.length === 0 && !r.blocked).map((r) => ({ url: r.url, curated: curated.has(r.url) }))));
   if (results.length && terms.length && termHits.length === 0) problems.push(`no fetched source mentions "${choice.label}"`);
   return { problems, results, allText };
 }
@@ -206,9 +221,22 @@ export async function runPrototype({ disciplines, lessonId, choiceId, apiKey, mo
   const budget = { used: 0, max: DRILLDOWN_CAPS.callsPerLessonMax };
   const report = { lessonId, choiceId, model, promptVersion: PROMPT_VERSION, at: new Date().toISOString(), calls: /** @type {any[]} */ ([]),
     attempts: /** @type {any[]} */ ([]), generated: /** @type {any} */ (null), verdict: "rejected", flag: /** @type {any} */ (null),
-    stoppedOn: /** @type {string|null} */ (null) };
+    stoppedOn: /** @type {string|null} */ (null), fallback: /** @type {any} */ (null), billingStop: false };
   const { system, user } = buildPrompt(ctx, cands);
   const left = () => budget.max - budget.used;
+  const state = { model };
+  /** Call the current model; on 503 / high demand from the primary, switch once to the free-tier fallback (counts against the cap). */
+  const call = async (/** @type {any} */ args) => {
+    try { return await callGemini({ ...args, model: state.model }); }
+    catch (e) {
+      if (!(e instanceof ProviderUnavailableError) || state.model !== DEFAULT_MODEL || left() < 1) throw e;
+      log(`${state.model} unavailable (${e.message}); falling back to ${FALLBACK_MODEL}`);
+      report.fallback = { from: state.model, to: FALLBACK_MODEL, reason: e.message };
+      state.model = FALLBACK_MODEL;
+      report.model = FALLBACK_MODEL;
+      return await callGemini({ ...args, model: state.model });
+    }
+  };
   try {
     while (left() >= 2) {
       const at = { schemaProblems: /** @type {string[]} */ ([]), sourceProblems: /** @type {string[]} */ ([]), contentProblems: /** @type {string[]} */ ([]),
@@ -217,8 +245,8 @@ export async function runPrototype({ disciplines, lessonId, choiceId, apiKey, mo
       let generated = null;
       // Generate; retry once on schema failure only while a fact-check call still fits.
       while (left() >= 2) {
-        const r = await callGemini({ fetchImpl, apiKey, model, system, user, schema: LESSON_SCHEMA, budget });
-        report.calls.push({ kind: "generate", ms: r.ms, usage: r.usage, finishReason: r.finishReason, modelVersion: r.modelVersion });
+        const r = await call({ fetchImpl, apiKey, system, user, schema: LESSON_SCHEMA, budget });
+        report.calls.push({ kind: "generate", model: state.model, ms: r.ms, usage: r.usage, finishReason: r.finishReason, modelVersion: r.modelVersion });
         generated = normalizeLesson(r.json, ctx.lesson, cands);
         at.schemaProblems = generatedLessonProblems(generated);
         log(`generate #${budget.used}: ${r.ms} ms, ${at.schemaProblems.length} schema problem(s)`);
@@ -232,8 +260,8 @@ export async function runPrototype({ disciplines, lessonId, choiceId, apiKey, mo
       log(`sources: ${src.results.map((r) => `${r.status || "-"} ${r.url}`).join(", ")}`);
       if (at.sourceProblems.length || at.contentProblems.length || !src.allText) { at.factCheck = { skipped: "source/content checks failed" }; continue; }
       const fc = buildFactCheckPrompt(generated, src.allText);
-      const r = await callGemini({ fetchImpl, apiKey, model, system: fc.system, user: fc.user, schema: FACTCHECK_SCHEMA, budget });
-      report.calls.push({ kind: "factcheck", ms: r.ms, usage: r.usage, finishReason: r.finishReason, modelVersion: r.modelVersion });
+      const r = await call({ fetchImpl, apiKey, system: fc.system, user: fc.user, schema: FACTCHECK_SCHEMA, budget });
+      report.calls.push({ kind: "factcheck", model: state.model, ms: r.ms, usage: r.usage, finishReason: r.finishReason, modelVersion: r.modelVersion });
       const items = Array.isArray(r.json?.items) ? r.json.items : [];
       const unconfirmed = items.filter((/** @type {any} */ i) => !i.supported);
       const complete = items.length === 12;
@@ -249,7 +277,8 @@ export async function runPrototype({ disciplines, lessonId, choiceId, apiKey, mo
     }
     if (report.verdict === "rejected" && left() < 2) report.stoppedOn = `call cap reached (${budget.used}/${budget.max}); failing gracefully`;
   } catch (e) {
-    if (e instanceof QuotaError || e instanceof CallBudgetError || e instanceof ProviderUnavailableError) report.stoppedOn = e.message;
+    if (e instanceof BillingError) { report.stoppedOn = e.message; report.billingStop = true; }
+    else if (e instanceof QuotaError || e instanceof CallBudgetError || e instanceof ProviderUnavailableError) report.stoppedOn = e.message;
     else throw e;
   }
   return report;
@@ -279,6 +308,7 @@ async function main() {
   const file = resolve(dir, `${lessonId}--${choiceId}.json`);
   writeFileSync(file, JSON.stringify(report, null, 2) + "\n");
   console.error(`verdict: ${report.verdict}${report.stoppedOn ? ` (stopped: ${report.stoppedOn})` : ""} -> ${file}`);
+  if (report.billingStop) { console.error("STOP: a billing/paid requirement was reported; do not run again"); process.exit(4); }
   if (report.stoppedOn?.startsWith("quota")) process.exit(3);
 }
 

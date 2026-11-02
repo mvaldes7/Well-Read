@@ -6,12 +6,13 @@
 /** Free-tier caps (plan section 8). Lowering these is free; raising them needs Mike's approval. */
 export const DRILLDOWN_CAPS = Object.freeze({
   perUserLessonsPerDay: 2,
-  globalLessonsPerDay: 30,
+  /** 25 lessons x 4 calls = 100, so the lesson cap never outruns the call hard stop. */
+  globalLessonsPerDay: 25,
   /** Hard stop on provider calls per LA day: 20% of the assumed 500 RPD free quota. */
   globalCallsPerDayHardStop: 100,
   globalCallsPerMinute: 4,
-  /** Worst-case calls per lesson: generate + fact-check + one retry. */
-  callsPerLessonMax: 3,
+  /** Worst-case calls per lesson (Mike, 2026-11-02): generate + fact-check, then one full regenerate + fact-check after a reject. */
+  callsPerLessonMax: 4,
   maxPromptChars: 200,
 });
 

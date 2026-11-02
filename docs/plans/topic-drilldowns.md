@@ -33,6 +33,10 @@ or `gemini-2.5-flash-lite`). Input and output are "Free of charge" on the free t
 summary (https://www.scriptbyai.com/gemini-api-free-tier-limits/, NOT an official source; check it in AI Studio before relying on it) lists
 10 RPM and 500 requests/day for the Flash-Lite models. Google Search grounding is **not available** on the free tier for Gemini 3.x
 Flash-Lite, so sources come only from our curated allowlist (section 3).
+
+**Fallback model (Mike, 2026-11-02):** when `gemini-3.1-flash-lite` returns HTTP 503 / UNAVAILABLE or a "high demand" error, switch once to
+`gemini-3.5-flash-lite` (also free tier). The fallback call counts against the same per-lesson and daily caps. **Free tier only:** if any
+response mentions billing, a paid tier or payment (or returns HTTP 402), stop immediately, never retry or fall back, and report it to Mike.
 Cost: $0 per lesson and $0 per month, by construction. Our caps (section 8) keep usage well under the free quota.
 
 **Data-use tradeoff:** the pricing page marks the free tier "Used to improve our products: Yes". Google may use prompts and outputs to
@@ -118,6 +122,25 @@ khanacademy.org (JavaScript-rendered), parts of pbs.org, and the already-curated
 
 We do **not** bypass bot checks.
 
+**Decision (Mike, 2026-11-02), enforced in code (`BLOCKED_SOURCES` / `isBlockedSource` in `src/lib/drilldowns/sources.mjs`):** the blocked
+sites are si.edu, smithsonianmag.com, jstor.org, khanacademy.org, britannica.com, metmuseum.org, doaj.org and pbs.org/empires (subdomains
+included; on pbs.org only the `/empires` path). A generated lesson may cite them **only alongside at least one fetchable trusted or curated
+source** that passes the fetch check. They **never count toward the fact check**: they are not fetched, their text is never given to the fact
+checker, and they never satisfy the tier rule, even when hand-curated on the parent lesson.
+
+### 3c. Prototype rerun with the 4-call cap and blocked-site rule (2026-11-02)
+Three lessons, 12 Gemini calls total, at most 4 calls/minute (about 65 s between lessons). No 503, so the fallback model was never used, and
+no billing or paid-tier message appeared. All three were **rejected** after 4/4 calls and failed gracefully:
+
+| Lesson / choice | Model | Calls | Unconfirmed (attempt 1 / 2) | Outcome | Sources cited |
+| --- | --- | --- | --- | --- | --- |
+| les_fr02 / robespierre | gemini-3.1-flash-lite | 4 | 3 / 3 | rejected | britannica.com x2 (blocked, not fetched), revolution.chnm.org (fetched, only fact-check text) |
+| les_gk01 / temujin-early-life | gemini-3.1-flash-lite | 4 | 8 / 5 | rejected | britannica.com x2 (blocked, not fetched), worldhistory.org (fetched, only fact-check text) |
+| les_st02 / seneca | gemini-3.1-flash-lite | 4 | 9 / 9 | rejected | plato.stanford.edu x2, iep.utm.edu (all fetched) |
+
+Takeaway: the generator writes facts beyond what one fetched page says. Before P2 the prompt should give the generator the same fetched
+source text the fact checker sees, rather than only the parent lesson (not done here; P1b stays prototype-only).
+
 ## 4. Quality and safety checks
 1. Schema validation (above). On failure, regenerate up to 2 times, then show "couldn't generate".
 2. Source checks (above), plus a deduplication check.
@@ -184,9 +207,11 @@ caller, though, so the review flow (status = pending_review) is the real safegua
 - Generation runs in a server action with a loading state. The 20-60 s path should stream or poll, not block.
 
 ## 8. Caps and the hard stop (conservative, free tier)
-Counted in **provider calls**, not lessons. Calls per item: lesson = 1 generate + 1 fact-check + at most 1 retry, so 3 calls in the worst case.
-- **Per user per day:** 2 generated lessons, so at most 6 calls. A cached published lesson costs 0 calls and doesn't count.
-- **Global per day:** 30 lessons, so at most 90 calls, with a **hard stop at 100 calls/day**. That is 20% of the assumed 500 RPD free quota,
+Counted in **provider calls**, not lessons. Calls per item (raised from 3 to 4 by Mike, 2026-11-02): lesson = 1 generate + 1 fact-check,
+and after a fact-check reject one full regenerate + fact-check, so **4 calls in the worst case**. A schema retry or a 503 fallback also uses one
+of the 4; a new attempt starts only if a generate + fact-check pair still fits, otherwise the lesson fails gracefully.
+- **Per user per day:** 2 generated lessons, so at most 8 calls. A cached published lesson costs 0 calls and doesn't count.
+- **Global per day:** 25 lessons (lowered from 30 so 25 x 4 = 100 fits the hard stop), with the **hard stop unchanged at 100 calls/day**. That is 20% of the assumed 500 RPD free quota,
   which leaves wide headroom if Google lowers it.
 - **Per minute:** no more than 4 calls/minute globally, below the assumed 10 RPM.
 - **Hard stop / graceful disable:** before each call, check the global counter. At the cap, or on any provider 429/quota error, the

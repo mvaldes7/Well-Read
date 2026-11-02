@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { classifySourceUrl, hostMatches, sourceTierProblems, SOURCE_ALLOWLIST } from '../../src/lib/drilldowns/sources.mjs';
+import { classifySourceUrl, hostMatches, isBlockedSource, BLOCKED_SOURCES, sourceTierProblems, SOURCE_ALLOWLIST } from '../../src/lib/drilldowns/sources.mjs';
 import { factCheckOutcome, FACTCHECK_RULE } from '../../src/lib/drilldowns/config.mjs';
 
 const tier = (u) => classifySourceUrl(u)?.tier ?? null;
@@ -42,8 +42,8 @@ test('tier rule: Wikipedia cannot be the only passing source; curated or trusted
   const w = { url: 'https://en.wikipedia.org/wiki/X' };
   assert.equal(sourceTierProblems([w]).length, 1);
   assert.deepEqual(sourceTierProblems([w, { url: 'https://www.loc.gov/x' }]), []);
-  assert.deepEqual(sourceTierProblems([w, { url: 'https://www.britannica.com/x', curated: true }]), []);
-  assert.deepEqual(sourceTierProblems([]), ['no source passed the fetch check']);
+  assert.deepEqual(sourceTierProblems([w, { url: 'https://www.worldhistory.org/x', curated: true }]), []);
+  assert.equal(sourceTierProblems([]).length, 1);
 });
 
 test('fact-check rule (Mike, 2026-11-02): 0 = pass, 1 = pass flagged for review, 2+ = reject', () => {
@@ -54,4 +54,22 @@ test('fact-check rule (Mike, 2026-11-02): 0 = pass, 1 = pass flagged for review,
   assert.equal(factCheckOutcome(12), 'reject');
   assert.equal(factCheckOutcome(-1), 'reject');
   assert.equal(factCheckOutcome(Number.NaN), 'reject');
+});
+
+test('blocked sites (Mike, 2026-11-02): exact list, subdomains, pbs.org only under /empires', () => {
+  assert.deepEqual(BLOCKED_SOURCES.map((b) => b.domain + (b.pathPrefix ?? '')).sort(),
+    ['britannica.com', 'doaj.org', 'jstor.org', 'khanacademy.org', 'metmuseum.org', 'pbs.org/empires', 'si.edu', 'smithsonianmag.com']);
+  for (const u of ['https://www.si.edu/x', 'https://americanhistory.si.edu/x', 'https://www.smithsonianmag.com/x', 'https://www.jstor.org/stable/1',
+    'https://www.khanacademy.org/x', 'https://www.britannica.com/biography/X', 'https://www.metmuseum.org/essays/cubism', 'https://doaj.org/a',
+    'https://www.pbs.org/empires/thegreeks/', 'https://www.pbs.org/empires']) assert.equal(isBlockedSource(u), true, u);
+  for (const u of ['https://www.pbs.org/wgbh/x', 'https://www.pbs.org/empiresx', 'https://notbritannica.com/x', 'https://www.history.com/x', 'nope', null])
+    assert.equal(isBlockedSource(u), false, String(u));
+});
+
+test('blocked sites never count toward the tier rule, even when curated', () => {
+  const brit = { url: 'https://www.britannica.com/x', curated: true };
+  assert.equal(sourceTierProblems([brit]).length, 1);
+  assert.equal(sourceTierProblems([brit, { url: 'https://www.si.edu/x' }]).length, 1);
+  assert.deepEqual(sourceTierProblems([brit, { url: 'https://www.loc.gov/x' }]), []);
+  assert.equal(sourceTierProblems([brit, { url: 'https://en.wikipedia.org/wiki/X' }]).length, 1);
 });
