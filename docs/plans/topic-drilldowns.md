@@ -141,6 +141,30 @@ no billing or paid-tier message appeared. All three were **rejected** after 4/4 
 Takeaway: the generator writes facts beyond what one fetched page says. Before P2 the prompt should give the generator the same fetched
 source text the fact checker sees, rather than only the parent lesson (not done here; P1b stays prototype-only).
 
+### 3d. Grounded generation (approved by Mike, 2026-11-02; prototype prompt `p1b-2-grounded`)
+1. **Fetch first.** Before any model call, fetch every allowed candidate: the curated lesson sources and any allowlisted extras. Blocked
+   sites (3b) are skipped and never fetched. Each fetch must return HTTP 200 and match the page title. If no usable source passes the tier
+   rule, the run stops with **0 model calls**.
+2. **Generate from fetched text only.** The generator gets relevant excerpts of the fetched pages, labelled S1..Sn (24k characters split
+   across sources, chosen by overlap with the choice label and the lesson title), plus the parent lesson as context only. It is told to
+   write claims only from the excerpts and to return `factSources` / `quizSources`: the id of the fetched source that supports each key
+   fact and each quiz answer. An unknown id is a source problem and triggers a regenerate within the cap. The lesson's `sources` are
+   exactly the fetched sources it cites, so a blocked site can never be a source.
+3. **Fairer fact-check text.** Instead of an even head-of-page split, each of the 12 items gets up to 2,000 characters of the excerpts from
+   **its own cited source** most relevant to that claim. Excerpts are deduplicated, grouped by source and capped at 24k characters in total.
+   Each item also carries its cited URL. Blocked-site text never appears.
+4. The caps are unchanged: 4 calls per lesson, a 100 calls/day hard stop, 25 lessons/day. The same fallback and billing stop apply.
+
+**Rerun (2026-11-02), 3 lessons, 7 Gemini calls, 4 calls or fewer per minute:**
+
+| Lesson / choice | Model | Calls | Unconfirmed per try | Outcome | Sources cited (all fetched) |
+| --- | --- | --- | --- | --- | --- |
+| les_fr02 / robespierre | gemini-3.1-flash-lite | 2 | 0 | pass | revolution.chnm.org: Paris and the Politics of Rebellion; War, Terror, and Resistance |
+| les_gk01 / temujin-early-life | gemini-3.1-flash-lite for generate; **gemini-3.5-flash-lite** for the fact check after a 503 | 3 (one was the 503) | 0 | pass | afe.easia.columbia.edu conquests_2a; worldhistory.org/Genghis_Khan |
+| les_st02 / seneca | gemini-3.1-flash-lite | 2 | 0 | pass | iep.utm.edu/seneca; plato.stanford.edu/entries/seneca; plato.stanford.edu/entries/marcus-aurelius |
+
+Before grounding (3c), all three were rejected at 4/4 calls. No billing or paid-tier message appeared. Britannica was blocked and not fetched.
+
 ## 4. Quality and safety checks
 1. Schema validation (above). On failure, regenerate up to 2 times, then show "couldn't generate".
 2. Source checks (above), plus a deduplication check.
