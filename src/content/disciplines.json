@@ -754,6 +754,125 @@
             ]
           }
         ]
+      },
+      {
+        "slug": "silk-roads",
+        "title": "The Silk Roads",
+        "kind": "network",
+        "summary": "Overlapping land and maritime routes carried goods, travelers, religious traditions, and knowledge between connected societies.",
+        "lessons": [
+          {
+            "id": "les_sr01",
+            "slug": "how-trade-connected-worlds",
+            "title": "The Silk Roads: How Trade Connected Worlds",
+            "sections": [
+              {
+                "heading": "Why the plural matters",
+                "body": "A name like “the Silk Road” can suggest one continuous highway with a clear beginning and end. A better starting image is a network: routes branch, intersect, and change, linking communities through overlapping journeys. UNESCO uses the plural “Silk Roads” to emphasize this wider pattern of connection.\n\nThe network included routes over land and sea, linking regions across Eurasia and beyond. Silk was an important commodity, but the name should not make every other kind of exchange disappear. Travelers and traders carried many kinds of goods, and commercial movement also brought people into contact.\n\nThink of a modern package passing through several distribution centers. This analogy is not an exact historical comparison, but it helps explain how objects can cross great distances without one person traveling the whole route. A network works through connected segments rather than requiring a single uninterrupted journey."
+              },
+              {
+                "heading": "Places between destinations",
+                "body": "Cities, ports, and stopping places were part of the network's structure, not empty spaces between its endpoints. Trade depended on places where people could exchange goods, rest, gather information, and arrange further travel. Movement across a map required functioning communities along the way.\n\nCaravans were important to overland trade. Groups of travelers and pack animals moved goods between trading centers, and large caravans contributed to the growth and wealth of Central Asian cities. The routes therefore shaped settlements as well as connecting them.\n\nThis changes the question we ask about trade. Instead of only asking where a luxury object began and ended, ask who handled it, which towns benefited, and what relationships made its movement possible. Intermediary communities were active participants, not merely a backdrop to exchanges between distant civilizations."
+              },
+              {
+                "heading": "Religions and knowledge traveled too",
+                "body": "Goods were only one part of the story. UNESCO highlights the circulation of religious traditions, skills, and knowledge through these routes. A trading network could also become a setting for translation, learning, and encounters between different ways of living.\n\nBuddhism provides a clear example. Buddhist sites and artistic traditions developed across widely separated regions connected with the routes. Chinese Buddhist monks traveled to India to obtain sacred texts, and their accounts became valuable historical sources. Religious travel could both use existing connections and contribute to further exchange.\n\nThis does not mean ideas moved unchanged like sealed containers. When studying a religious image or text in a new setting, ask what was translated, adapted, or reinterpreted. The network provides a framework for investigating those changes, rather than a guarantee that every encounter produced the same result."
+              },
+              {
+                "heading": "Connection without one unified world",
+                "body": "The Silk Roads were not one country, one empire, or a single organization. Their coherence comes from relationships among routes and communities. Different political authorities and local conditions shaped the circumstances of travel, so it is misleading to imagine a permanently unified system.\n\nThe routes also developed over long periods rather than appearing fully formed at one moment. A useful historical map should therefore prompt questions about time: which route, in which period, carrying what? The phrase “Silk Roads” is a broad organizing label, not a substitute for a specific chronology.\n\nAs an exercise, follow one object, religious tradition, or traveler through three connected places. Record what the evidence establishes and where your reconstruction becomes uncertain. The strongest lesson of the network is that societies develop through contact as well as through local choices, without losing their distinctive histories."
+              }
+            ],
+            "keyFacts": [
+              "The Silk Roads were a network rather than one continuous highway.",
+              "The network included maritime and overland routes.",
+              "Silk was not the only commodity exchanged.",
+              "Caravans contributed to the growth of Central Asian trading cities.",
+              "Buddhism spread through connections associated with the routes.",
+              "Chinese Buddhist pilgrims brought back texts and left historical accounts."
+            ],
+            "quiz": [
+              {
+                "question": "Why use the plural “Silk Roads”?",
+                "options": [
+                  "There were only two roads",
+                  "It describes an interconnected network",
+                  "Every road carried only silk",
+                  "All routes had one ruler"
+                ],
+                "answerIndex": 1,
+                "explanation": "The plural helps avoid the image of a single highway."
+              },
+              {
+                "question": "Which routes belonged to this broader network?",
+                "options": [
+                  "Only modern railways",
+                  "Only one desert trail",
+                  "Land and maritime routes",
+                  "Only roads inside China"
+                ],
+                "answerIndex": 2,
+                "explanation": "Connections included travel across land and sea."
+              },
+              {
+                "question": "Why do intermediary cities matter?",
+                "options": [
+                  "They supported trade and exchanges along the routes",
+                  "They never interacted with travelers",
+                  "They were always ruled by one empire",
+                  "They made further travel unnecessary"
+                ],
+                "answerIndex": 0,
+                "explanation": "Trading places were active parts of the network."
+              },
+              {
+                "question": "Which religion is a major example of transmission along the routes?",
+                "options": [
+                  "Only modern secularism",
+                  "No religion traveled",
+                  "Only local cults with no movement",
+                  "Buddhism"
+                ],
+                "answerIndex": 3,
+                "explanation": "UNESCO highlights Buddhist transmission and pilgrimage."
+              },
+              {
+                "question": "Why are pilgrims’ travel accounts useful?",
+                "options": [
+                  "They prove every legend literally",
+                  "They provide historical evidence about journeys and encounters",
+                  "They eliminate the need for interpretation",
+                  "They are commercial price lists only"
+                ],
+                "answerIndex": 1,
+                "explanation": "Travel accounts can preserve information about connected regions."
+              },
+              {
+                "question": "What question improves a broad map of the Silk Roads?",
+                "options": [
+                  "Why was every society identical?",
+                  "Where was the single capital?",
+                  "Which route and period does it represent?",
+                  "Why did only silk move?"
+                ],
+                "answerIndex": 2,
+                "explanation": "A network label must be made specific through chronology and geography."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "UNESCO",
+                "title": "About the Silk Roads",
+                "url": "https://www.unesco.org/en/silk-roads/about-silk-roads"
+              },
+              {
+                "publisher": "Britannica Students",
+                "title": "Caravan",
+                "url": "https://kids.britannica.com/students/article/caravan/605276"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -1134,6 +1253,122 @@
                 "title": "Aurelius, Marcus",
                 "url": "https://iep.utm.edu/marcus/",
                 "note": "Co-rule with Lucius Verus, the Meditations as a personal notebook (c. 171–175 CE), its title, and his reading of Epictetus."
+              }
+            ]
+          },
+          {
+            "id": "les_st03",
+            "slug": "what-is-actually-up-to-you",
+            "title": "Stoicism: What Is Actually Up to You?",
+            "sections": [
+              {
+                "heading": "More than keeping a straight face",
+                "body": "Imagine preparing carefully for an important meeting and then discovering that it has been canceled. You can influence your preparation, but you cannot guarantee another person's decision. This invented situation introduces a Stoic distinction between your own use of judgment and events that do not depend entirely on you.\n\nStoicism is an ancient philosophical tradition whose ethical aim is virtue: an excellent condition of reason and character. In this framework, philosophy is not merely a collection of interesting opinions. It should transform how a person judges, chooses, and lives.\n\nEveryday language sometimes uses “stoic” to mean silent endurance. That is too narrow for the philosophy. Stoic thinkers developed accounts of reasoning, nature, emotion, and social conduct. Their question is not simply how to appear calm, but what makes a life genuinely good."
+              },
+              {
+                "heading": "Character and external circumstances",
+                "body": "The Stoics maintain that virtue is the only good in the strict sense, while vice is bad. Wealth, health, and reputation do not themselves establish whether someone lives well. A dishonest wealthy person is not made virtuous by success, and misfortune does not automatically destroy good character.\n\nThis does not mean that health and illness are interchangeable in ordinary decisions. Stoics distinguish preferred from dispreferred “indifferents”: circumstances worth selecting or avoiding that nevertheless do not determine moral goodness. The word indifferent concerns their status relative to virtue, not an instruction to stop caring.\n\nThat distinction separates trying from guaranteeing. You can seek health, prepare for work, or help a friend while recognizing that outcomes depend partly on circumstances. The ethical question concerns how you pursue those aims, not only whether events turn out as you hoped."
+              },
+              {
+                "heading": "An impression is not yet a settled judgment",
+                "body": "Epictetus emphasizes integrity, self-management, and freedom. A central part of this project is examining impressions rather than automatically accepting their apparent meaning. Something happens; you interpret it; that interpretation helps shape your response.\n\nSuppose a colleague does not reply to your message. “There is no reply yet” is different from “They deliberately disrespected me.” This is an invented example of how an interpretation can add a claim not established by the event itself. Questioning the interpretation does not prove the colleague has good intentions; it keeps uncertainty visible.\n\nStoic accounts connect disruptive passions with evaluative judgments. They do not require treating every immediate reaction as a chosen failure. The larger aim is to cultivate more accurate judgment and appropriate responses, rather than merely hiding emotion from other people."
+              },
+              {
+                "heading": "Responsibility without guaranteed success",
+                "body": "Stoicism is not a permission slip for neglecting others. Its ethics treats human beings as rational and social, and its account of appropriate action includes responsibilities within relationships. Attention to your own judgment should support responsible conduct, not become an excuse for withdrawal.\n\nMarcus Aurelius's Meditations records reminders associated with his own moral improvement. These writings connect attention to character with patience toward other people. Their practical quality makes sense within Stoicism's broader view that philosophy should shape a person's daily life.\n\nFor a study exercise, divide one frustrating situation into your judgment, your possible actions, and the outcome you cannot guarantee. Then ask which action best expresses honesty, fairness, or courage. This is a learning exercise inspired by the philosophy, not a claim that every hardship can be solved by changing your attitude."
+              }
+            ],
+            "keyFacts": [
+              "Stoicism treats virtue as the only good in the strict sense.",
+              "External advantages do not by themselves establish good character.",
+              "Preferred indifferents can be worth pursuing without constituting virtue.",
+              "Epictetus emphasizes judgment, integrity, and self-management.",
+              "Stoic ethics includes responsibilities to others.",
+              "Marcus Aurelius used philosophical reminders for moral improvement."
+            ],
+            "quiz": [
+              {
+                "question": "What is central to Stoic ethics?",
+                "options": [
+                  "Fame",
+                  "Virtue",
+                  "Luxury",
+                  "Avoiding every responsibility"
+                ],
+                "answerIndex": 1,
+                "explanation": "The good life is grounded in excellent reason and character."
+              },
+              {
+                "question": "What does “preferred indifferent” mean?",
+                "options": [
+                  "Something nobody should care about",
+                  "Something inherently immoral",
+                  "A circumstance worth selecting that does not itself constitute virtue",
+                  "A guaranteed outcome"
+                ],
+                "answerIndex": 2,
+                "explanation": "Health can be preferred without being the basis of moral goodness."
+              },
+              {
+                "question": "Which claim adds an interpretation to an observation?",
+                "options": [
+                  "They have not replied yet",
+                  "The message was sent yesterday",
+                  "There is no response on the screen",
+                  "They are deliberately insulting me"
+                ],
+                "answerIndex": 3,
+                "explanation": "The claim about intention goes beyond the observed lack of a reply."
+              },
+              {
+                "question": "What does examining impressions involve?",
+                "options": [
+                  "Testing an apparent interpretation before accepting it",
+                  "Suppressing all thought",
+                  "Assuming every first impression is true",
+                  "Refusing all action"
+                ],
+                "answerIndex": 0,
+                "explanation": "Epictetus emphasizes disciplined judgment rather than automatic acceptance."
+              },
+              {
+                "question": "How does Stoicism relate to social responsibility?",
+                "options": [
+                  "It rejects all relationships",
+                  "It includes duties toward others",
+                  "It values reputation above character",
+                  "It guarantees political success"
+                ],
+                "answerIndex": 1,
+                "explanation": "Human social nature matters within Stoic ethics."
+              },
+              {
+                "question": "Which response best fits the lesson?",
+                "options": [
+                  "Only act when success is certain",
+                  "Ignore every difficult feeling",
+                  "Choose an honest action while recognizing uncertainty about its outcome",
+                  "Treat failure as proof of vice"
+                ],
+                "answerIndex": 2,
+                "explanation": "The distinction separates responsible action from complete control of results."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Stanford Encyclopedia of Philosophy",
+                "title": "Stoicism",
+                "url": "https://plato.stanford.edu/entries/stoicism/"
+              },
+              {
+                "publisher": "Stanford Encyclopedia of Philosophy",
+                "title": "Epictetus",
+                "url": "https://plato.stanford.edu/entries/epictetus/"
+              },
+              {
+                "publisher": "Stanford Encyclopedia of Philosophy",
+                "title": "Marcus Aurelius",
+                "url": "https://plato.stanford.edu/archives/win2010/entries/marcus-aurelius/"
               }
             ]
           }
@@ -1936,6 +2171,130 @@
             ]
           }
         ]
+      },
+      {
+        "slug": "marbury-v-madison",
+        "title": "Marbury v. Madison and judicial review",
+        "kind": "concept",
+        "summary": "Judicial review allows courts to assess government action against the Constitution, with Marbury v. Madison establishing a landmark application in 1803.",
+        "lessons": [
+          {
+            "id": "les_jr01",
+            "slug": "judicial-review-when-courts-say-a-law-cannot-stand",
+            "title": "Judicial Review: When Courts Say a Law Cannot Stand",
+            "sections": [
+              {
+                "heading": "What happens when legal rules conflict?",
+                "body": "Imagine that a legislature passes a law and a person argues that it violates the Constitution. Counting votes tells us that the law passed, but it does not settle whether the legislature had constitutional authority to enact it. Judicial review concerns that second question.\n\nThe federal judiciary describes judicial review as the authority to interpret the Constitution and declare legislative or executive action unconstitutional. It is a major part of the relationship among the branches of government: courts can determine that an otherwise official act cannot operate as valid law.\n\nThat does not make a constitutional dispute identical to an argument about good policy. “This rule is unwise” and “This rule violates the Constitution” are different claims. The first concerns desirability; the second requires an argument about higher legal authority."
+              },
+              {
+                "heading": "The conflict in Marbury v. Madison",
+                "body": "Marbury v. Madison, decided in 1803, became the landmark Supreme Court case establishing judicial review. William Marbury sought delivery of his commission, an official document associated with his appointment, and asked the Supreme Court to order James Madison to provide it.\n\nThe requested order was a writ of mandamus: a legal command directing an official to perform a duty. The case raised a crucial preliminary issue. Could the Supreme Court issue that order in a case brought directly before it, rather than through an appeal?\n\nThat question concerned jurisdiction, meaning a court's legal authority to hear and decide a matter. Before a court can provide a remedy, it must have authority to act. Recognizing that distinction helps explain why a case can turn on the court's powers rather than only on the claimant's grievance."
+              },
+              {
+                "heading": "A statute could not enlarge the Constitution",
+                "body": "The Court read a provision of the Judiciary Act of 1789 as authorizing the requested exercise of original jurisdiction. Original jurisdiction concerns cases beginning in a court; appellate jurisdiction concerns review of decisions from other courts. These are different routes by which a dispute can reach a court.\n\nThe justices concluded that the Constitution did not permit original jurisdiction in this matter. Congress could not use an ordinary statute to enlarge the Supreme Court's constitutionally defined original jurisdiction. The conflict therefore was not solved by treating the newer statute as superior.\n\nChief Justice John Marshall's opinion treated the Constitution as higher law. When a congressional enactment conflicted with it, the Constitution controlled. The Court did not issue the requested order, and it struck down the conflicting statutory provision rather than invalidating the entire Judiciary Act."
+              },
+              {
+                "heading": "Power exercised through a limit",
+                "body": "The result has an important tension: the Court asserted a powerful constitutional role while declining to exercise the specific authority Marbury requested. It announced a principle about judicial power through a decision that limited its jurisdiction in the immediate case.\n\nThe federal judiciary identifies Marbury as the first Supreme Court decision striking down an act of Congress as unconstitutional. This does not mean the Constitution lists the modern doctrine in a single explicit sentence. The case explained how constitutional supremacy and judicial decision-making fit together.\n\nWhen reading another judicial-review dispute, separate three questions: What government action is challenged? What constitutional rule is said to control? What authority does the court have to decide the case and provide a remedy? Keeping those questions distinct makes institutional power easier to understand than treating every ruling as merely agreement or disagreement with a policy."
+              }
+            ],
+            "keyFacts": [
+              "Judicial review assesses government action against the Constitution.",
+              "Marbury v. Madison was decided in 1803.",
+              "John Marshall delivered the Court’s opinion.",
+              "A writ of mandamus orders an official to perform a duty.",
+              "Original and appellate jurisdiction are distinct.",
+              "The Court held that a conflicting statutory provision could not override the Constitution."
+            ],
+            "quiz": [
+              {
+                "question": "What does judicial review concern?",
+                "options": [
+                  "Whether every policy is popular",
+                  "Whether government action complies with the Constitution",
+                  "Whether judges can write any law they wish",
+                  "Whether elections should be abolished"
+                ],
+                "answerIndex": 1,
+                "explanation": "It is constitutional assessment, not simply policy preference."
+              },
+              {
+                "question": "Which case is the landmark studied here?",
+                "options": [
+                  "Brown v. Board of Education",
+                  "Dred Scott v. Sandford",
+                  "Marbury v. Madison",
+                  "Plessy v. Ferguson"
+                ],
+                "answerIndex": 2,
+                "explanation": "Marbury was decided in 1803."
+              },
+              {
+                "question": "What is a writ of mandamus?",
+                "options": [
+                  "An order directing an official to perform a duty",
+                  "An automatic constitutional amendment",
+                  "A presidential election ballot",
+                  "A treaty with another country"
+                ],
+                "answerIndex": 0,
+                "explanation": "Marbury requested an order requiring delivery of his commission."
+              },
+              {
+                "question": "What does original jurisdiction describe?",
+                "options": [
+                  "Reviewing a lower court’s decision",
+                  "Changing a statute’s wording",
+                  "Serving as a legislature",
+                  "Hearing a case that begins in that court"
+                ],
+                "answerIndex": 3,
+                "explanation": "Original jurisdiction differs from appellate review."
+              },
+              {
+                "question": "Which rule controlled when the statute conflicted with the Constitution?",
+                "options": [
+                  "The newer statute automatically prevailed",
+                  "The Constitution was superior",
+                  "The Court ignored both",
+                  "Madison could decide without legal constraints"
+                ],
+                "answerIndex": 1,
+                "explanation": "An ordinary statute could not enlarge constitutionally defined original jurisdiction."
+              },
+              {
+                "question": "Why is the result institutionally significant?",
+                "options": [
+                  "The Court abolished Congress",
+                  "The Court issued every order requested",
+                  "The Court asserted judicial review while denying the requested exercise of jurisdiction",
+                  "The Court declared all legislation invalid"
+                ],
+                "answerIndex": 2,
+                "explanation": "The decision combined constitutional authority with a limit on the Court’s immediate action."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "United States Courts",
+                "title": "Marbury v. Madison",
+                "url": "https://www.uscourts.gov/educational-resources/educational-activities/marbury-v-madison"
+              },
+              {
+                "publisher": "United States Courts",
+                "title": "About the Supreme Court",
+                "url": "https://www.uscourts.gov/about-federal-courts/educational-resources/educational-outreach/activity-resources/about"
+              },
+              {
+                "publisher": "United States Courts",
+                "title": "The Enduring Legacy of Marbury v. Madison (1803)",
+                "url": "https://www.uscourts.gov/file/judicial-reviewpdf-0"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -2603,6 +2962,125 @@
                 "title": "Vincent van Gogh, The Bedroom",
                 "url": "https://www.vangoghmuseum.nl/en/collection/s0047V1962",
                 "note": "Deliberately flattened space and inconsistent perspective."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "cubism",
+        "title": "Cubism",
+        "kind": "style",
+        "summary": "Picasso and Braque challenged traditional pictorial illusion by fragmenting forms, combining viewpoints, and incorporating everyday materials.",
+        "lessons": [
+          {
+            "id": "les_cu01",
+            "slug": "why-artists-broke-the-picture-apart",
+            "title": "Cubism: Why Artists Broke the Picture Apart",
+            "sections": [
+              {
+                "heading": "A picture does not have to be a window",
+                "body": "Imagine drawing a guitar without trying to make it look like a photograph. You might show its rounded body, strings, and sound hole as separate clues, arranged so the viewer reconstructs the instrument. This invented example introduces a central Cubist question: must a picture imitate the appearance of an object from one fixed position?\n\nPablo Picasso and Georges Braque developed Cubism in Paris between 1907 and 1914. Rather than treating the canvas as an invisible window onto deep space, they emphasized its flat surface. They fractured objects into geometric forms and rearranged those forms within shallow pictorial space.\n\nThis was not simply an inability to draw realistically. It was a deliberate challenge to inherited techniques of perspective, modeling, and foreshortening. Knowing those conventions helps explain why abandoning them could become a significant artistic decision."
+              },
+              {
+                "heading": "Several viewpoints, one surface",
+                "body": "Traditional perspective usually organizes a scene around a coherent viewing position. Cubists instead used multiple or contrasting vantage points. A painting could combine information that would not fit a single uninterrupted view, asking the viewer to relate fragments rather than accept a seamless illusion.\n\nDuring Analytic Cubism, especially from 1910 to 1912, Picasso and Braque broke forms into overlapping planes and facets. Browns, grays, and blacks often dominated. With fewer bright color differences competing for attention, the relationships among edges, planes, and surrounding space became especially prominent.\n\nThe subject did not necessarily disappear. A bottle, instrument, or figure could remain present through partial clues. Looking becomes a process of recognition: first notice a curve or an edge, then test how it relates to neighboring shapes. Difficulty identifying an object is not evidence that the picture has no structure."
+              },
+              {
+                "heading": "When actual paper enters the painting",
+                "body": "Cubist experimentation also changed what a picture could contain. In papier collé, or pasted paper, actual paper becomes part of the artwork. Instead of only painting the appearance of a surface, an artist can place a material surface directly into the composition.\n\nPicasso's Bottle and Wine Glass on a Table, made in 1912, incorporates newsprint and colored paper. It is an early example of Synthetic Cubism, associated with assembling and combining shapes rather than only breaking forms into small facets.\n\nThis does not make the image a random collection of scraps. Materials still establish relationships of shape, texture, and meaning. A piece of newspaper can act both as a physical object on the surface and as part of the representation. The viewer must hold those roles together."
+              },
+              {
+                "heading": "How to look without solving every fragment",
+                "body": "Begin by identifying the picture's materials and dominant forms. Is it painted, pasted, or both? Does its space feel deep or shallow? Are some shapes recognizable while others remain ambiguous? These questions describe what the work does before deciding what it means.\n\nThen look for clues that suggest a subject: lettering, strings, a bottle neck, or the rim of a glass. Picasso's Still Life with a Bottle of Rum, painted in 1911, offers an example of Analytic Cubism's fragmentation of three-dimensional forms on a flat surface.\n\nFinally, compare the work with the idea of a picture as a transparent window. Cubism makes the constructed nature of representation difficult to ignore. Its importance lies not in a rule that every artist must fragment objects, but in expanding the choices available for connecting real objects, pictorial space, and physical materials."
+              }
+            ],
+            "keyFacts": [
+              "Picasso and Braque developed Cubism in Paris between 1907 and 1914.",
+              "Cubists emphasized the flatness of the canvas.",
+              "Multiple or contrasting viewpoints could appear in one image.",
+              "Analytic Cubism often used fractured planes and restrained colors.",
+              "Papier collé means pasted paper.",
+              "Synthetic Cubism incorporated assembled shapes and materials."
+            ],
+            "quiz": [
+              {
+                "question": "Who developed Cubism together?",
+                "options": [
+                  "Monet and Renoir",
+                  "Picasso and Braque",
+                  "Luther and Calvin",
+                  "Homer and Virgil"
+                ],
+                "answerIndex": 1,
+                "explanation": "Picasso and Braque developed the movement in Paris."
+              },
+              {
+                "question": "Which feature challenges traditional perspective?",
+                "options": [
+                  "A single consistent view",
+                  "Perfectly hidden brushwork",
+                  "Multiple or contrasting viewpoints",
+                  "Only distant landscapes"
+                ],
+                "answerIndex": 2,
+                "explanation": "Cubism could combine different views rather than preserve one position."
+              },
+              {
+                "question": "Which palette is associated with Analytic Cubism?",
+                "options": [
+                  "Near-monochromatic browns, grays, and blacks",
+                  "Only fluorescent colors",
+                  "Only gold leaf",
+                  "No visible marks"
+                ],
+                "answerIndex": 0,
+                "explanation": "Restrained colors accompanied overlapping facets."
+              },
+              {
+                "question": "What is papier collé?",
+                "options": [
+                  "A method of carving stone",
+                  "A kind of fresco plaster",
+                  "A religious ceremony",
+                  "Pasted-paper construction"
+                ],
+                "answerIndex": 3,
+                "explanation": "Actual paper becomes part of the work."
+              },
+              {
+                "question": "Which work includes newsprint and colored paper?",
+                "options": [
+                  "The Starry Night",
+                  "Bottle and Wine Glass on a Table",
+                  "The School of Athens",
+                  "The Birth of Venus"
+                ],
+                "answerIndex": 1,
+                "explanation": "Picasso made this early Synthetic Cubist work in 1912."
+              },
+              {
+                "question": "What is a useful first response to an unfamiliar Cubist work?",
+                "options": [
+                  "Assume it has no structure",
+                  "Demand a photographic likeness",
+                  "Describe materials, planes, and recognizable clues",
+                  "Ignore its surface"
+                ],
+                "answerIndex": 2,
+                "explanation": "Observation provides a basis for interpretation rather than a premature judgment."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "The Metropolitan Museum of Art",
+                "title": "Cubism",
+                "url": "https://www.metmuseum.org/essays/cubism"
+              },
+              {
+                "publisher": "The Metropolitan Museum of Art",
+                "title": "Pablo Picasso (1881–1973)",
+                "url": "https://www.metmuseum.org/essays/pablo-picasso-1881-1973"
               }
             ]
           }
@@ -3551,6 +4029,120 @@
                 "title": "Martin Luther: The indulgences controversy",
                 "url": "https://www.britannica.com/biography/Martin-Luther/The-indulgences-controversy",
                 "note": "Luther’s communication with Albert of Mainz and the controversy’s beginnings."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "five-pillars-of-islam",
+        "title": "The Five Pillars of Islam",
+        "kind": "concept",
+        "summary": "The Five Pillars connect belief with recurring practices of prayer, giving, fasting, and pilgrimage.",
+        "lessons": [
+          {
+            "id": "les_fp01",
+            "slug": "how-the-five-pillars-shape-religious-life",
+            "title": "Islam: How the Five Pillars Shape Religious Life",
+            "sections": [
+              {
+                "heading": "Belief expressed through practice",
+                "body": "How does a religious commitment become part of daily life? The Five Pillars provide an introductory framework for answering that question in Islam. They connect a profession of faith with actions organized around the day, the year, the community, and a believer's lifetime.\n\nThe five are shahada, the profession of faith; salat, ritual prayer; zakat, obligatory almsgiving; sawm, fasting during Ramadan; and hajj, pilgrimage to Mecca. Learning the names is useful, but understanding the different rhythms and responsibilities matters more than memorizing a list.\n\nThis lesson describes religious teachings rather than asking the reader to affirm them. It also treats the pillars as an introduction, not a complete portrait of every Muslim's life. A shared framework does not mean that all individuals have identical experiences or circumstances."
+              },
+              {
+                "heading": "Profession of faith and daily prayer",
+                "body": "The shahada affirms that there is no god but God and that Muhammad is God's messenger. This connects monotheism, belief in one God, with recognition of Muhammad's prophetic role. The phrase also appears in Islamic calligraphy, buildings, and objects.\n\nSalat refers to the prescribed prayers performed five times daily, facing Mecca. Prayer may take place individually or in a congregation. A mosque is important as a place of communal worship, but the practice is not restricted to a mosque building.\n\nThe direction of prayer is called the qibla. It relates the local act of praying to Mecca and the Ka'ba there. Notice the relationship between words, bodily action, time, and place: religious practice is not only a set of abstract propositions."
+              },
+              {
+                "heading": "Giving and fasting connect self and community",
+                "body": "Zakat is obligatory almsgiving, connecting religious duty with material support for people in need. It should not be reduced to generosity as a passing feeling. The pillar places giving within a framework of responsibility, although this introductory lesson does not attempt to explain its detailed rules of assessment.\n\nSawm is fasting during the daylight hours of Ramadan, the ninth month of the Islamic calendar. It includes abstention from food and drink. The obligation is described for healthy adults; the framework recognizes that circumstances matter, rather than assuming every person is required to fast regardless of condition.\n\nThe Metropolitan Museum's educational account connects Ramadan fasting with gratitude for God's provisions and awareness of people in need. Fasting and giving therefore have a social dimension as well as a personal one: bodily discipline is linked with attention to others."
+              },
+              {
+                "heading": "Pilgrimage and the limits of a checklist",
+                "body": "Hajj is pilgrimage to Mecca, required at least once for Muslims whose health and finances permit it. The qualification matters. Describing the duty without the condition would turn an account of religious obligation into a misleading claim that everyone must travel regardless of ability.\n\nThe Ka'ba stands at the center of the sanctuary in Mecca. Muslim tradition associates it with Abraham, known in Arabic as Ibrahim. It is the focal point toward which Muslims pray, connecting daily salat with the sacred geography encountered during pilgrimage.\n\nRead the five pillars together rather than as unrelated tasks: profession identifies commitment, prayer organizes daily worship, almsgiving addresses communal responsibility, fasting shapes a sacred month, and pilgrimage connects eligible believers with a shared holy place. As a study exercise, explain each pillar in terms of both its action and its role."
+              }
+            ],
+            "keyFacts": [
+              "Shahada is the profession of faith.",
+              "Salat is prescribed prayer five times daily.",
+              "Qibla is the direction of prayer toward Mecca.",
+              "Zakat concerns obligatory almsgiving.",
+              "Sawm includes daylight fasting during Ramadan.",
+              "Hajj is required once for those whose health and finances permit it."
+            ],
+            "quiz": [
+              {
+                "question": "Which pillar is the profession of faith?",
+                "options": [
+                  "Zakat",
+                  "Hajj",
+                  "Shahada",
+                  "Sawm"
+                ],
+                "answerIndex": 2,
+                "explanation": "Shahada affirms one God and Muhammad as messenger."
+              },
+              {
+                "question": "What is salat?",
+                "options": [
+                  "Prescribed daily prayer",
+                  "Only pilgrimage",
+                  "A style of painting",
+                  "A tax on international trade"
+                ],
+                "answerIndex": 0,
+                "explanation": "Salat refers to prayers performed five times daily."
+              },
+              {
+                "question": "What does qibla refer to?",
+                "options": [
+                  "The month of fasting",
+                  "A type of manuscript",
+                  "The name of every mosque",
+                  "The direction of prayer"
+                ],
+                "answerIndex": 3,
+                "explanation": "Prayer is directed toward Mecca and the Ka’ba."
+              },
+              {
+                "question": "What responsibility does zakat express?",
+                "options": [
+                  "Only travel",
+                  "Obligatory almsgiving",
+                  "Only private meditation",
+                  "The writing of historical chronicles"
+                ],
+                "answerIndex": 1,
+                "explanation": "It connects religious duty with support for those in need."
+              },
+              {
+                "question": "When does Ramadan fasting apply during the day?",
+                "options": [
+                  "Only after sunset",
+                  "Only while in a mosque",
+                  "During daylight hours",
+                  "Only during pilgrimage"
+                ],
+                "answerIndex": 2,
+                "explanation": "The fast includes abstaining from food and drink during daylight."
+              },
+              {
+                "question": "Which qualification is essential when describing hajj?",
+                "options": [
+                  "Health and finances must permit the journey",
+                  "It must happen every week",
+                  "It is required only of rulers",
+                  "It replaces all daily prayer"
+                ],
+                "answerIndex": 0,
+                "explanation": "The lifetime obligation is conditional on ability."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "The Metropolitan Museum of Art",
+                "title": "The Five Pillars of Islam",
+                "url": "https://www.metmuseum.org/learn/educators/curriculum-resources/art-of-the-islamic-world/unit-one/the-five-pillars-of-islam"
               }
             ]
           }
