@@ -7,6 +7,8 @@ import { isMissingTableError } from "../supabase/errors.mjs";
 import { laDayKey } from "../progress/dashboard.mjs";
 
 export const ACTIVITY_TABLE = "activity_log";
+/** SQLSTATE raised by the activity_log_rate_limit trigger (REV-011). */
+export const ACTIVITY_RATE_LIMIT_CODE = "WR429";
 
 /** @param {string} key "YYYY-MM-DD" @returns {number} days since the epoch */
 const dayNumber = (key) => {
@@ -60,13 +62,16 @@ export const daysLabel = (n) => `${n} ${n === 1 ? "day" : "days"}`;
  * @param {"quiz_attempt"} kind the only kind the app logs (see log.ts)
  * @param {string} ref permanent lesson id
  * @param {(err: unknown) => void} [rethrow]
- * @returns {Promise<"logged" | "unavailable" | "failed">}
+ * A rate-limited insert (SQLSTATE WR429 from the activity_log_rate_limit trigger, REV-011)
+ * returns "rate_limited" without logging: the user is already active today, so no streak is lost.
+ * @returns {Promise<"logged" | "unavailable" | "rate_limited" | "failed">}
  */
 export async function insertActivity(supabase, userId, kind, ref, rethrow = () => {}) {
   try {
     const { error } = await supabase.from(ACTIVITY_TABLE).insert({ user_id: userId, kind, ref });
     if (!error) return "logged";
     if (isMissingTableError(error, ACTIVITY_TABLE)) return "unavailable";
+    if (error.code === ACTIVITY_RATE_LIMIT_CODE) return "rate_limited";
     console.error(`activity_log insert failed (${error.code ?? "unknown"})`);
     return "failed";
   } catch (err) {
