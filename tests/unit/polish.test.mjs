@@ -83,12 +83,15 @@ test('supabase/README.md lists every migration file with its version and marks h
   const files = readdirSync(new URL('../../supabase/migrations/', import.meta.url)).filter((f) => f.endsWith('.sql'));
   assert.ok(files.length >= 4);
   for (const f of files) {
-    const version = f.slice(0, 14);
+    // Applied migrations whose recorded version differs from the filename (documented in the README).
+    const RECORDED = { '20261102210548': '20261102212005' };
+    const version = RECORDED[f.slice(0, 14)] ?? f.slice(0, 14);
     assert.match(f, /^\d{14}_[a-z0-9_]+\.sql$/);
     // One table row per file: its version cell and its file cell.
     assert.match(readme, new RegExp(`\\| \`${version}\` +\\| \`migrations/${f.replace('.', '\\.')}\` +\\|`), f);
   }
   assert.match(readme, /historical/i);
+  assert.match(readme, /Version mismatch[\s\S]*20261102212005[\s\S]*20261102210548/);
   assert.match(readme, /STATUS: UNAPPLIED/);
   assert.match(read('docs/architecture.md'), /supabase\/README\.md/);
 });

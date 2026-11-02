@@ -1,6 +1,7 @@
 import raw from "./disciplines.json";
 import { DISCIPLINE_COLORS, disciplineColorProblems } from "./colors.mjs";
 import { LESSON_ID_PATTERN, lessonIdProblems } from "./ids.mjs";
+import { digDeeperProblems } from "./digdeeper.mjs";
 import { citationMarkerProblems, explanationProblems, isHttpsUrl, sourceProblems } from "./sources.mjs";
 import {
   TOPIC_KINDS,
@@ -87,6 +88,8 @@ function lesson(v: unknown, path: string): Lesson {
     ...(v.sources === undefined
       ? {}
       : { sources: arr(v.sources, `${path}.sources`, 0).map((s, i) => source(s, `${path}.sources[${i}]`)) }),
+    // Shape already checked by digDeeperProblems in parseDisciplines.
+    ...(v.digDeeper === undefined ? {} : { digDeeper: v.digDeeper as Lesson["digDeeper"] }),
   };
 }
 
@@ -121,6 +124,7 @@ export function parseDisciplines(data: unknown): Discipline[] {
     ...sourceProblems(data),
     ...explanationProblems(data),
     ...citationMarkerProblems(data),
+    ...digDeeperProblems(data),
   ];
   if (idProblems.length) throw new Error(`Invalid content: ${idProblems.join("; ")}`);
   return uniqueSlugs(

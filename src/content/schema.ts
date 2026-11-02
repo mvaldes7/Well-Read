@@ -27,6 +27,13 @@ export interface LessonSource {
   note?: string;
 }
 
+/** A precomputed "Dig deeper" choice (drill-downs P0); the server accepts only these ids. */
+export interface DigDeeperChoice {
+  id: string;
+  label: string;
+  kind: "person" | "place" | "event" | "idea" | "subtopic";
+}
+
 export interface Lesson {
   /** Permanent id (e.g. `les_rr01`). Never derived from the slug, never reused; completions are keyed on it. */
   id: string;
@@ -38,6 +45,8 @@ export interface Lesson {
   quiz: QuizQuestion[];
   /** Optional, ordered; rendered as the lesson's "Sources" list. */
   sources?: LessonSource[];
+  /** 3-4 Dig deeper choices drawn from this lesson's content (optional). */
+  digDeeper?: DigDeeperChoice[];
 }
 
 export interface Topic {

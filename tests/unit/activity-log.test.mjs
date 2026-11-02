@@ -63,5 +63,6 @@ test('migration: activity_log rate limit is a new, invoker, pinned-search_path B
   const code = sql.split('\n').filter((l) => !l.trim().startsWith('--')).join('\n');
   assert.doesNotMatch(code, /security definer|grant |create policy|drop /i);
   const readme = readFileSync(new URL('../../supabase/README.md', import.meta.url), 'utf8');
-  assert.match(readme, /## Unapplied migrations[\s\S]*20261102210548_activity_log_rate_limit\.sql/);
+  // Applied to prod as recorded version 20261102212005 (filename keeps 20261102210548).
+  assert.match(readme, /\| `20261102212005` \| `migrations\/20261102210548_activity_log_rate_limit\.sql`/);
 });
