@@ -70,7 +70,7 @@ const done = (id) => [{ lesson_id: id, score: 6, total: 6, passed: true }];
 test('content: every digDeeper list is valid (3-4 choices, slug ids, known kinds)', () => {
   assert.deepEqual(digDeeperProblems(disciplines), []);
   const withChoices = disciplines.flatMap((d) => d.topics.flatMap((t) => t.lessons)).filter((l) => l.digDeeper);
-  assert.deepEqual(withChoices.map((l) => l.id).sort(), ['les_cu01', 'les_fp01', 'les_jr01', 'les_sr01', 'les_st03']);
+  assert.equal(withChoices.length, disciplines.flatMap((d) => d.topics.flatMap((t) => t.lessons)).length); // P1: every lesson
   assert.ok(lessonDigDeeperProblems([{ id: 'a', label: 'A', kind: 'idea' }], 'x').length > 0); // too few
   assert.ok(lessonDigDeeperProblems([1, 2, 3].map(() => ({ id: 'a', label: 'A', kind: 'idea' })), 'x').some((p) => p.includes('duplicate')));
   assert.ok(lessonDigDeeperProblems(['a', 'b', 'c'].map((id) => ({ id, label: 'A', kind: 'vibe' })), 'x').some((p) => p.includes('kind')));
@@ -101,5 +101,20 @@ test('gate: free text and unknown ids are rejected, never passed through', () =>
   assert.equal(checkDigDeeperRequest(disciplines, { lessonId: 'les_cu01', choiceId: 7 }, c).reason, 'bad_request');
   assert.equal(checkDigDeeperRequest(disciplines, 'les_cu01 georges-braque', c).reason, 'bad_request');
   assert.equal(checkDigDeeperRequest(disciplines, { lessonId: 'les_nope01', choiceId: 'x' }, c).reason, 'unknown_lesson');
-  assert.equal(checkDigDeeperRequest(disciplines, { lessonId: 'les_rr01', choiceId: 'x' }, done('les_rr01')).reason, 'no_choices');
+  // A lesson without choices (none in content since P1, so strip one from a copy) is refused.
+  const stripped = structuredClone(disciplines);
+  for (const d of stripped) for (const t of d.topics) for (const l of t.lessons) if (l.id === 'les_rr01') delete l.digDeeper;
+  assert.equal(checkDigDeeperRequest(stripped, { lessonId: 'les_rr01', choiceId: 'cicero' }, done('les_rr01')).reason, 'no_choices');
+});
+
+test('content: EVERY lesson has 3-4 valid Dig deeper choices, unique ids, at least two kinds (P1)', () => {
+  const lessons = disciplines.flatMap((d) => d.topics.flatMap((t) => t.lessons));
+  assert.ok(lessons.length >= 31);
+  for (const l of lessons) {
+    assert.ok(Array.isArray(l.digDeeper), `${l.id}: missing digDeeper`);
+    assert.ok(l.digDeeper.length >= 3 && l.digDeeper.length <= 4, `${l.id}: expected 3-4 choices`);
+    assert.deepEqual(lessonDigDeeperProblems(l.digDeeper, l.id), [], l.id);
+    assert.equal(new Set(l.digDeeper.map((c) => c.id)).size, l.digDeeper.length, l.id);
+    assert.ok(new Set(l.digDeeper.map((c) => c.kind)).size >= 2, `${l.id}: mix kinds`);
+  }
 });

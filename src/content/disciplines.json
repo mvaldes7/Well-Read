@@ -141,6 +141,28 @@
                 "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/6*.html",
                 "note": "Primary source (Loeb translation) on the mixed constitution, the Senate’s control of the treasury, and the tribunes’ power to block the Senate."
               }
+            ],
+            "digDeeper": [
+              {
+                "id": "cicero",
+                "label": "Cicero",
+                "kind": "person"
+              },
+              {
+                "id": "consuls-and-dictators",
+                "label": "Consuls and dictators",
+                "kind": "idea"
+              },
+              {
+                "id": "cursus-honorum",
+                "label": "The cursus honorum",
+                "kind": "idea"
+              },
+              {
+                "id": "centuriate-assembly",
+                "label": "The centuriate assembly",
+                "kind": "subtopic"
+              }
             ]
           }
         ]
@@ -287,6 +309,28 @@
                 "url": "https://avalon.law.yale.edu/18th_century/rightsof.asp",
                 "note": "Text of the Declaration and its August 26, 1789 approval date."
               }
+            ],
+            "digDeeper": [
+              {
+                "id": "estates-general-1789",
+                "label": "The Estates-General of 1789",
+                "kind": "event"
+              },
+              {
+                "id": "sieyes",
+                "label": "Sieyès",
+                "kind": "person"
+              },
+              {
+                "id": "storming-of-the-bastille",
+                "label": "Storming of the Bastille",
+                "kind": "event"
+              },
+              {
+                "id": "rights-of-man",
+                "label": "Declaration of the Rights of Man",
+                "kind": "idea"
+              }
             ]
           },
           {
@@ -412,6 +456,28 @@
                 "title": "Maximilien Robespierre",
                 "url": "https://www.britannica.com/biography/Maximilien-Robespierre",
                 "note": "Birth in Arras in 1758, election to the Estates-General, joining the Committee on July 27, 1793, arrest on July 27, 1794, and death on July 28, 1794."
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "robespierre",
+                "label": "Robespierre",
+                "kind": "person"
+              },
+              {
+                "id": "committee-of-public-safety",
+                "label": "Committee of Public Safety",
+                "kind": "subtopic"
+              },
+              {
+                "id": "execution-of-louis-xvi",
+                "label": "Execution of Louis XVI",
+                "kind": "event"
+              },
+              {
+                "id": "reign-of-terror",
+                "label": "The Reign of Terror",
+                "kind": "event"
               }
             ]
           }
@@ -582,6 +648,28 @@
                 "url": "https://www.worldhistory.org/Genghis_Khan/",
                 "note": "Siege techniques, the destruction of Central Asian cities, administration, and successors."
               }
+            ],
+            "digDeeper": [
+              {
+                "id": "temujin-early-life",
+                "label": "Temüjin's early life",
+                "kind": "person"
+              },
+              {
+                "id": "decimal-military-units",
+                "label": "Decimal military units",
+                "kind": "idea"
+              },
+              {
+                "id": "mounted-archery",
+                "label": "Mounted archery and feigned retreats",
+                "kind": "idea"
+              },
+              {
+                "id": "central-asian-campaigns",
+                "label": "Central Asian campaigns",
+                "kind": "event"
+              }
             ]
           }
         ]
@@ -750,6 +838,28 @@
                 "title": "The Armenian Genocide (1915-16): Overview",
                 "url": "https://encyclopedia.ushmm.org/content/en/article/the-armenian-genocide-1915-16-overview",
                 "note": "Deportations, massacres and the destruction of Armenian communities."
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "osman-i",
+                "label": "Osman I",
+                "kind": "person"
+              },
+              {
+                "id": "fall-of-constantinople",
+                "label": "Mehmed II and 1453",
+                "kind": "event"
+              },
+              {
+                "id": "suleyman-the-magnificent",
+                "label": "Süleyman the Magnificent",
+                "kind": "person"
+              },
+              {
+                "id": "end-of-the-sultanate",
+                "label": "End of the sultanate",
+                "kind": "event"
               }
             ]
           }
@@ -1016,6 +1126,28 @@
                 "url": "https://iep.utm.edu/socrates/",
                 "note": "Life and trial, the formal charges, the amnesty and political context, the oracle and Socratic ignorance, Euthyphro’s five definitions, the elenchus debate, the gadfly, and Apology 38a."
               }
+            ],
+            "digDeeper": [
+              {
+                "id": "elenchus",
+                "label": "The elenchus",
+                "kind": "idea"
+              },
+              {
+                "id": "platos-apology",
+                "label": "Plato's Apology",
+                "kind": "subtopic"
+              },
+              {
+                "id": "trial-of-socrates",
+                "label": "The trial of Socrates",
+                "kind": "event"
+              },
+              {
+                "id": "xenophon-and-aristophanes",
+                "label": "Xenophon and Aristophanes",
+                "kind": "subtopic"
+              }
             ]
           }
         ]
@@ -1137,6 +1269,28 @@
                 "title": "Zeno of Citium",
                 "url": "https://www.britannica.com/biography/Zeno-of-Citium",
                 "note": "Zeno’s dates, arrival in Athens, teachers, and teaching in the Painted Colonnade."
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "zeno-of-citium",
+                "label": "Zeno of Citium",
+                "kind": "person"
+              },
+              {
+                "id": "stoa-poikile",
+                "label": "The Stoa Poikile",
+                "kind": "place"
+              },
+              {
+                "id": "chrysippus",
+                "label": "Chrysippus",
+                "kind": "person"
+              },
+              {
+                "id": "living-in-agreement-with-nature",
+                "label": "Living in agreement with nature",
+                "kind": "idea"
               }
             ]
           },
@@ -1275,6 +1429,28 @@
                 "title": "Aurelius, Marcus",
                 "url": "https://iep.utm.edu/marcus/",
                 "note": "Co-rule with Lucius Verus, the Meditations as a personal notebook (c. 171–175 CE), its title, and his reading of Epictetus."
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "seneca",
+                "label": "Seneca",
+                "kind": "person"
+              },
+              {
+                "id": "pisonian-conspiracy",
+                "label": "The Pisonian conspiracy",
+                "kind": "event"
+              },
+              {
+                "id": "nicopolis",
+                "label": "Nicopolis",
+                "kind": "place"
+              },
+              {
+                "id": "meditations",
+                "label": "The Meditations",
+                "kind": "subtopic"
               }
             ]
           },
@@ -1541,6 +1717,28 @@
                 "url": "https://iep.utm.edu/virtue/",
                 "note": "Supports the introductory account of character-centered ethics and the relationship between habituation, understanding, and practical judgment."
               }
+            ],
+            "digDeeper": [
+              {
+                "id": "eudaimonia",
+                "label": "Eudaimonia",
+                "kind": "idea"
+              },
+              {
+                "id": "doctrine-of-the-mean",
+                "label": "The doctrine of the mean",
+                "kind": "idea"
+              },
+              {
+                "id": "practical-wisdom",
+                "label": "Practical wisdom",
+                "kind": "idea"
+              },
+              {
+                "id": "virtue-and-habit",
+                "label": "Virtue and habit",
+                "kind": "subtopic"
+              }
             ]
           }
         ]
@@ -1665,6 +1863,28 @@
                 "title": "Code of Hammurabi",
                 "url": "https://kids.britannica.com/students/article/Code-of-Hammurabi/319940",
                 "note": "Social class, enslavement, and severity of punishment."
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "hammurabi",
+                "label": "Hammurabi",
+                "kind": "person"
+              },
+              {
+                "id": "babylon",
+                "label": "Babylon",
+                "kind": "place"
+              },
+              {
+                "id": "status-and-punishment",
+                "label": "Punishment and social status",
+                "kind": "idea"
+              },
+              {
+                "id": "stele-at-susa",
+                "label": "The stele found at Susa",
+                "kind": "event"
               }
             ]
           }
@@ -1808,6 +2028,28 @@
                 "title": "Article VII: Ratification Debates - Briefing Document",
                 "url": "https://constitutioncenter.org/media/files/Article_VII__Ratification_Debates_-_Briefing_Document.pdf"
               }
+            ],
+            "digDeeper": [
+              {
+                "id": "philadelphia-convention",
+                "label": "The Philadelphia Convention",
+                "kind": "event"
+              },
+              {
+                "id": "great-compromise",
+                "label": "The Great Compromise",
+                "kind": "event"
+              },
+              {
+                "id": "three-fifths-compromise",
+                "label": "The Three-Fifths Compromise",
+                "kind": "event"
+              },
+              {
+                "id": "federalism",
+                "label": "Federalism",
+                "kind": "idea"
+              }
             ]
           },
           {
@@ -1911,6 +2153,28 @@
                 "title": "The Bill of Rights: What Does it Say?",
                 "url": "https://www.archives.gov/founding-docs/bill-of-rights/what-does-it-say",
                 "note": "Overview of rights and amendment meanings."
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "first-amendment",
+                "label": "The First Amendment",
+                "kind": "subtopic"
+              },
+              {
+                "id": "fourth-amendment",
+                "label": "The Fourth Amendment",
+                "kind": "subtopic"
+              },
+              {
+                "id": "ninth-and-tenth",
+                "label": "The Ninth and Tenth Amendments",
+                "kind": "idea"
+              },
+              {
+                "id": "ratification-1791",
+                "label": "Ratification in 1791",
+                "kind": "event"
               }
             ]
           },
@@ -2073,6 +2337,28 @@
                 "url": "https://constitution.congress.gov/browse/essay/amdt14-S1-5-4-2/ALDE_00013751/",
                 "note": "Mathews v. Eldridge and benefits disputes."
               }
+            ],
+            "digDeeper": [
+              {
+                "id": "state-action",
+                "label": "Government vs. private action",
+                "kind": "idea"
+              },
+              {
+                "id": "viewpoint-discrimination",
+                "label": "Viewpoint discrimination",
+                "kind": "idea"
+              },
+              {
+                "id": "time-place-manner",
+                "label": "Time, place, or manner rules",
+                "kind": "subtopic"
+              },
+              {
+                "id": "warrants-and-phones",
+                "label": "Warrants and digital searches",
+                "kind": "subtopic"
+              }
             ]
           }
         ]
@@ -2211,6 +2497,28 @@
                 "publisher": "Constitution Annotated",
                 "title": "Overview of Presidential Approval or Veto of Bills",
                 "url": "https://constitution.congress.gov/browse/essay/artI-S7-C2-1/ALDE_00013644/"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "committees",
+                "label": "Congressional committees",
+                "kind": "subtopic"
+              },
+              {
+                "id": "senate-cloture",
+                "label": "Senate cloture",
+                "kind": "idea"
+              },
+              {
+                "id": "veto-override",
+                "label": "Veto override",
+                "kind": "event"
+              },
+              {
+                "id": "identical-text",
+                "label": "Passing identical text",
+                "kind": "idea"
               }
             ]
           }
@@ -2513,6 +2821,28 @@
                 "url": "https://www.nact.jp/english/exhibition_special/2022/met/index.html",
                 "note": "The meaning of Renaissance and the renewed interest in classical culture."
               }
+            ],
+            "digDeeper": [
+              {
+                "id": "masaccio",
+                "label": "Masaccio",
+                "kind": "person"
+              },
+              {
+                "id": "linear-perspective",
+                "label": "Linear perspective",
+                "kind": "idea"
+              },
+              {
+                "id": "foreshortening",
+                "label": "Foreshortening",
+                "kind": "idea"
+              },
+              {
+                "id": "classical-revival",
+                "label": "Revival of Greek and Roman culture",
+                "kind": "subtopic"
+              }
             ]
           }
         ]
@@ -2640,6 +2970,28 @@
                 "url": "https://www.metmuseum.org/met-publications/the-metropolitan-museum-of-art-vol-5-the-renaissance-in-the-north",
                 "note": "Overview of Northern art and its links with Italy."
               }
+            ],
+            "digDeeper": [
+              {
+                "id": "jan-van-eyck",
+                "label": "Jan van Eyck and oil paint",
+                "kind": "person"
+              },
+              {
+                "id": "albrecht-durer",
+                "label": "Albrecht Dürer",
+                "kind": "person"
+              },
+              {
+                "id": "woodcuts-and-engravings",
+                "label": "Woodcuts and engravings",
+                "kind": "subtopic"
+              },
+              {
+                "id": "reformation-and-images",
+                "label": "Religious images and controversy",
+                "kind": "event"
+              }
             ]
           }
         ]
@@ -2758,6 +3110,28 @@
                 "publisher": "National Gallery of Art",
                 "title": "What Is Impressionism? 4 Things to Know",
                 "url": "https://www.nga.gov/stories/articles/what-impressionism-4-things-know"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "claude-monet",
+                "label": "Claude Monet",
+                "kind": "person"
+              },
+              {
+                "id": "impression-sunrise",
+                "label": "Impression, Sunrise",
+                "kind": "subtopic"
+              },
+              {
+                "id": "exhibition-of-1874",
+                "label": "The 1874 exhibition",
+                "kind": "event"
+              },
+              {
+                "id": "en-plein-air",
+                "label": "Painting en plein air",
+                "kind": "idea"
               }
             ]
           },
@@ -2889,6 +3263,28 @@
                 "title": "Vincent van Gogh, The Starry Night",
                 "url": "https://www.moma.org/collection/works/79802",
                 "note": "Painted in Saint-Rémy, June 1889."
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "the-potato-eaters",
+                "label": "The Potato Eaters",
+                "kind": "subtopic"
+              },
+              {
+                "id": "the-bedroom",
+                "label": "The Bedroom in Arles",
+                "kind": "subtopic"
+              },
+              {
+                "id": "saint-remy",
+                "label": "Saint-Rémy",
+                "kind": "place"
+              },
+              {
+                "id": "paris-1886",
+                "label": "Arrival in Paris, 1886",
+                "kind": "event"
               }
             ]
           }
@@ -3028,6 +3424,28 @@
                 "title": "Vincent van Gogh, The Bedroom",
                 "url": "https://www.vangoghmuseum.nl/en/collection/s0047V1962",
                 "note": "Deliberately flattened space and inconsistent perspective."
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "one-point-perspective",
+                "label": "One-point perspective",
+                "kind": "idea"
+              },
+              {
+                "id": "on-painting-1435",
+                "label": "On Painting (1435)",
+                "kind": "subtopic"
+              },
+              {
+                "id": "atmospheric-perspective",
+                "label": "Atmospheric perspective",
+                "kind": "idea"
+              },
+              {
+                "id": "flattened-space",
+                "label": "Flattened space",
+                "kind": "idea"
               }
             ]
           }
@@ -3318,6 +3736,23 @@
                 "url": "https://www.britannica.com/biography/Chinua-Achebe",
                 "note": "Background on Achebe and the novel’s portrayal of traditional Igbo life during the arrival of missionaries and colonial government."
               }
+            ],
+            "digDeeper": [
+              {
+                "id": "things-fall-apart",
+                "label": "Things Fall Apart",
+                "kind": "subtopic"
+              },
+              {
+                "id": "the-literary-canon",
+                "label": "The literary canon",
+                "kind": "idea"
+              },
+              {
+                "id": "who-shapes-classics",
+                "label": "Who decides what survives",
+                "kind": "idea"
+              }
             ]
           }
         ]
@@ -3463,6 +3898,28 @@
                 "url": "https://www.poetryfoundation.org/articles/70144/learning-the-poetic-line",
                 "note": "Supports the discussion of line breaks, enjambment, end-stopping, and the gradual release of information."
               }
+            ],
+            "digDeeper": [
+              {
+                "id": "the-speaker",
+                "label": "The speaker",
+                "kind": "idea"
+              },
+              {
+                "id": "imagery",
+                "label": "Imagery",
+                "kind": "idea"
+              },
+              {
+                "id": "enjambment",
+                "label": "Enjambment",
+                "kind": "idea"
+              },
+              {
+                "id": "free-verse",
+                "label": "Free verse",
+                "kind": "subtopic"
+              }
             ]
           }
         ]
@@ -3602,6 +4059,28 @@
                 "url": "https://www.poetryfoundation.org/articles/69395/the-negro-artist-and-the-racial-mountain",
                 "note": "Supports the discussion of his 1926 essay, artistic independence, cultural identity, and resistance to respectability pressures. Its historical title is reproduced for identification."
               }
+            ],
+            "digDeeper": [
+              {
+                "id": "harlem-renaissance",
+                "label": "The Harlem Renaissance",
+                "kind": "event"
+              },
+              {
+                "id": "the-weary-blues",
+                "label": "The Weary Blues",
+                "kind": "subtopic"
+              },
+              {
+                "id": "montage-of-a-dream-deferred",
+                "label": "Montage of a Dream Deferred",
+                "kind": "subtopic"
+              },
+              {
+                "id": "blues-and-jazz",
+                "label": "Blues and jazz in poetry",
+                "kind": "idea"
+              }
             ]
           }
         ]
@@ -3735,6 +4214,28 @@
                 "url": "https://www.britannica.com/biography/Homer-Greek-poet/Stabilizing-the-text",
                 "note": "Supports the discussion of transmission theories and the Iliad’s examination of Achilles’s anger and the contradictions of heroic ideals."
               }
+            ],
+            "digDeeper": [
+              {
+                "id": "achilles",
+                "label": "Achilles",
+                "kind": "person"
+              },
+              {
+                "id": "odysseus",
+                "label": "Odysseus",
+                "kind": "person"
+              },
+              {
+                "id": "oral-tradition",
+                "label": "Oral tradition",
+                "kind": "idea"
+              },
+              {
+                "id": "trojan-war",
+                "label": "The Trojan War",
+                "kind": "event"
+              }
             ]
           }
         ]
@@ -3864,6 +4365,28 @@
                 "url": "https://www.britannica.com/topic/Eightfold-Path",
                 "note": "The eight factors, three trainings, and middle way."
               }
+            ],
+            "digDeeper": [
+              {
+                "id": "dukkha",
+                "label": "Dukkha",
+                "kind": "idea"
+              },
+              {
+                "id": "samsara",
+                "label": "Samsara",
+                "kind": "idea"
+              },
+              {
+                "id": "nirvana",
+                "label": "Nirvana",
+                "kind": "idea"
+              },
+              {
+                "id": "eightfold-path",
+                "label": "The Eightfold Path",
+                "kind": "subtopic"
+              }
             ]
           }
         ]
@@ -3991,6 +4514,28 @@
                 "url": "https://www.bbc.co.uk/religion/religions/judaism/history/moses_1.shtml",
                 "note": "The Exodus and Sinai narratives, Torah, Passover, and discussion of historical evidence. The lesson uses this source for traditional accounts without adopting its speculative historical reconstructions."
               }
+            ],
+            "digDeeper": [
+              {
+                "id": "abraham",
+                "label": "Abraham",
+                "kind": "person"
+              },
+              {
+                "id": "moses-and-sinai",
+                "label": "Moses and Sinai",
+                "kind": "event"
+              },
+              {
+                "id": "passover",
+                "label": "Passover",
+                "kind": "event"
+              },
+              {
+                "id": "torah",
+                "label": "Torah",
+                "kind": "idea"
+              }
             ]
           }
         ]
@@ -4117,6 +4662,28 @@
                 "title": "Martin Luther: The indulgences controversy",
                 "url": "https://www.britannica.com/biography/Martin-Luther/The-indulgences-controversy",
                 "note": "Luther’s communication with Albert of Mainz and the controversy’s beginnings."
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "martin-luther",
+                "label": "Martin Luther",
+                "kind": "person"
+              },
+              {
+                "id": "ninety-five-theses",
+                "label": "The Ninety-five Theses",
+                "kind": "event"
+              },
+              {
+                "id": "justification-by-faith",
+                "label": "Justification by faith",
+                "kind": "idea"
+              },
+              {
+                "id": "council-of-trent",
+                "label": "The Council of Trent",
+                "kind": "event"
               }
             ]
           }
