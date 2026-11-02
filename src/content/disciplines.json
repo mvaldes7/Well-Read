@@ -870,6 +870,28 @@
                 "title": "Caravan",
                 "url": "https://kids.britannica.com/students/article/caravan/605276"
               }
+            ],
+            "digDeeper": [
+              {
+                "id": "maritime-routes",
+                "label": "Maritime routes",
+                "kind": "subtopic"
+              },
+              {
+                "id": "intermediary-cities",
+                "label": "Intermediary cities",
+                "kind": "place"
+              },
+              {
+                "id": "spread-of-buddhism",
+                "label": "The spread of Buddhism",
+                "kind": "event"
+              },
+              {
+                "id": "pilgrim-travel-accounts",
+                "label": "Pilgrims’ travel accounts",
+                "kind": "idea"
+              }
             ]
           }
         ]
@@ -1369,6 +1391,28 @@
                 "publisher": "Stanford Encyclopedia of Philosophy",
                 "title": "Marcus Aurelius",
                 "url": "https://plato.stanford.edu/archives/win2010/entries/marcus-aurelius/"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "epictetus",
+                "label": "Epictetus",
+                "kind": "person"
+              },
+              {
+                "id": "marcus-aurelius",
+                "label": "Marcus Aurelius",
+                "kind": "person"
+              },
+              {
+                "id": "preferred-indifferents",
+                "label": "Preferred indifferents",
+                "kind": "idea"
+              },
+              {
+                "id": "examining-impressions",
+                "label": "Examining impressions",
+                "kind": "subtopic"
               }
             ]
           }
@@ -2292,6 +2336,28 @@
                 "title": "The Enduring Legacy of Marbury v. Madison (1803)",
                 "url": "https://www.uscourts.gov/file/judicial-reviewpdf-0"
               }
+            ],
+            "digDeeper": [
+              {
+                "id": "john-marshall",
+                "label": "John Marshall",
+                "kind": "person"
+              },
+              {
+                "id": "judiciary-act-of-1789",
+                "label": "The Judiciary Act of 1789",
+                "kind": "event"
+              },
+              {
+                "id": "constitutional-supremacy",
+                "label": "Constitutional supremacy",
+                "kind": "idea"
+              },
+              {
+                "id": "original-vs-appellate-jurisdiction",
+                "label": "Original vs. appellate jurisdiction",
+                "kind": "subtopic"
+              }
             ]
           }
         ]
@@ -3081,6 +3147,28 @@
                 "publisher": "The Metropolitan Museum of Art",
                 "title": "Pablo Picasso (1881–1973)",
                 "url": "https://www.metmuseum.org/essays/pablo-picasso-1881-1973"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "georges-braque",
+                "label": "Georges Braque",
+                "kind": "person"
+              },
+              {
+                "id": "analytic-cubism",
+                "label": "Analytic Cubism",
+                "kind": "subtopic"
+              },
+              {
+                "id": "papier-colle",
+                "label": "Papier collé and Synthetic Cubism",
+                "kind": "idea"
+              },
+              {
+                "id": "paris-1907-1914",
+                "label": "Paris, 1907–1914",
+                "kind": "place"
               }
             ]
           }
@@ -4143,6 +4231,28 @@
                 "publisher": "The Metropolitan Museum of Art",
                 "title": "The Five Pillars of Islam",
                 "url": "https://www.metmuseum.org/learn/educators/curriculum-resources/art-of-the-islamic-world/unit-one/the-five-pillars-of-islam"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "hajj-and-mecca",
+                "label": "Hajj and Mecca",
+                "kind": "place"
+              },
+              {
+                "id": "ramadan",
+                "label": "Ramadan and sawm",
+                "kind": "event"
+              },
+              {
+                "id": "zakat",
+                "label": "Zakat and community",
+                "kind": "idea"
+              },
+              {
+                "id": "salat-and-qibla",
+                "label": "Salat and the qibla",
+                "kind": "subtopic"
               }
             ]
           }
