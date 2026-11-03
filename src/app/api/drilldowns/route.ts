@@ -6,7 +6,7 @@ import { NextResponse } from "next/server";
 import { disciplines } from "@/content";
 import { createClient } from "@/lib/supabase/server";
 import { drilldownsEnabled } from "@/lib/drilldowns/config.mjs";
-import { failure } from "@/lib/drilldowns/messages.mjs";
+import { failure, isSameOriginRequest } from "@/lib/drilldowns/messages.mjs";
 import { PROMPT_VERSION, runGeneration } from "@/lib/drilldowns/generate.mjs";
 import { createMinuteLimiter, handleDigDeeper } from "@/lib/drilldowns/service.mjs";
 import { drilldownDbConfigured, reserve, saveLesson } from "@/lib/drilldowns/server-db.mjs";
@@ -19,8 +19,7 @@ export async function POST(request: Request) {
   const enabled = drilldownsEnabled(process.env);
   if (!enabled) return reply(failure("disabled"));
   // Same-origin only (route handlers have no built-in CSRF check, unlike server actions).
-  const origin = request.headers.get("origin");
-  if (!origin || new URL(origin).host !== new URL(request.url).host) return reply(failure("bad_request"));
+  if (!isSameOriginRequest(request.headers, request.url)) return reply(failure("forbidden"));
   const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey || !drilldownDbConfigured()) return reply(failure("unavailable"));
   let body: unknown;

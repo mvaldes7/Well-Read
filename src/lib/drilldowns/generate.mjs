@@ -30,7 +30,9 @@ export class CallBudgetError extends Error {}
 export class ProviderUnavailableError extends Error {}
 /** Any sign that the request needs billing / a paid tier: stop immediately, never retry or fall back. */
 export class BillingError extends Error {}
-const BILLING_RE = /billing|paid tier|paid plan|upgrade your plan|payment|prepay|credits? (?:exhausted|depleted)/i;
+// Real billing signals only. Free-tier 429 / RESOURCE_EXHAUSTED bodies often say "check your plan and billing
+// details": those are quota (retry later), not a billing stop (REV-016).
+const BILLING_RE = /billing (?:is )?(?:not enabled|disabled|required|account)|enable billing|requires billing|payment required|paid tier only|available on the paid tier|upgrade to (?:a )?paid|prepay|credits? (?:exhausted|depleted)/i;
 
 /** Find lesson + topic + discipline + stored choice. Only stored ids are accepted. */
 export function findLessonChoice(disciplines, lessonId, choiceId) {
@@ -146,8 +148,9 @@ export async function callGemini({ fetchImpl, apiKey, model, system, user, schem
   const body = await res.json().catch(() => ({}));
   const status = body?.error?.status;
   const msg = String(body?.error?.message ?? "");
-  if (res.status === 402 || BILLING_RE.test(msg) || BILLING_RE.test(JSON.stringify(body?.error?.details ?? ""))) throw new BillingError(`billing/paid requirement: HTTP ${res.status} ${status ?? ""} ${msg}`.trim());
-  if (res.status === 429 || status === "RESOURCE_EXHAUSTED") throw new QuotaError(`quota/rate limit: HTTP ${res.status} ${status ?? ""} ${body?.error?.message ?? ""}`.trim());
+  const quota = res.status === 429 || status === "RESOURCE_EXHAUSTED";
+  if (res.status === 402 || status === "PAYMENT_REQUIRED" || (!quota && (BILLING_RE.test(msg) || BILLING_RE.test(JSON.stringify(body?.error?.details ?? ""))))) throw new BillingError(`billing/paid requirement: HTTP ${res.status} ${status ?? ""} ${msg}`.trim());
+  if (quota) throw new QuotaError(`quota/rate limit: HTTP ${res.status} ${status ?? ""} ${body?.error?.message ?? ""}`.trim());
   if (res.status >= 500 || status === "UNAVAILABLE" || /high demand|overloaded/i.test(msg)) throw new ProviderUnavailableError(`provider unavailable: HTTP ${res.status} ${status ?? ""}`.trim());
   if (!res.ok) throw new Error(`Gemini HTTP ${res.status} ${status ?? ""}: ${body?.error?.message ?? "error"}`);
   const text = body?.candidates?.[0]?.content?.parts?.map((/** @type {any} */ p) => p.text ?? "").join("") ?? "";
@@ -206,10 +209,10 @@ export async function fetchCandidateSources({ fetchImpl, lesson, extra = [] }) {
     if (isBlockedSource(s.url)) { r.blocked = true; continue; } // never fetched, never fact-check text
     if (!curated.has(s.url) && !classifySourceUrl(s.url)) { r.problems.push("domain not allowlisted"); continue; }
     try {
-      const res = await fetchImpl(s.url, { redirect: "follow", headers: { "user-agent": "Mozilla/5.0 (Well-Read source check)", accept: "text/html" } });
-      r.status = res.status;
-      if (res.status !== 200) { r.problems.push(`HTTP ${res.status}`); continue; }
-      const page = pageText(await res.text());
+      const got = await fetchSourcePage(fetchImpl, s.url, curated.has(s.url));
+      r.status = got.status;
+      if (got.problem) { r.problems.push(got.problem); continue; }
+      const page = pageText(got.body);
       const tw = words(s.title), pw = new Set(words(`${page.title} ${page.text.slice(0, 4000)}`));
       if (tw.length && tw.filter((w) => pw.has(w)).length / tw.length < 0.5) { r.problems.push(`page title mismatch ("${page.title.slice(0, 80)}")`); continue; }
       r.chars = page.text.length;
@@ -218,6 +221,64 @@ export async function fetchCandidateSources({ fetchImpl, lesson, extra = [] }) {
   }
   const problems = sourceTierProblems(fetched.map((f) => ({ url: f.url, curated: f.curated })));
   return { fetched, results, problems };
+}
+
+export const SOURCE_FETCH_LIMITS = Object.freeze({ timeoutMs: 10_000, maxBytes: 2_000_000, maxHops: 3 });
+const SOURCE_TYPES = /^(text\/html|text\/plain)\s*(;|$)/i;
+
+/** May a redirect hop go to `next`? https only, never a blocked site, and same host as the original or allowlisted. */
+export function redirectHopAllowed(original, next) {
+  if (!isHttpsUrl(next) || isBlockedSource(next)) return false;
+  try { if (new URL(next).host === new URL(original).host) return true; } catch { return false; }
+  return Boolean(classifySourceUrl(next));
+}
+
+/** Read at most maxBytes of a response body; returns null when it is larger. */
+async function readCapped(res, maxBytes) {
+  const len = Number(res.headers?.get?.("content-length") ?? NaN);
+  if (Number.isFinite(len) && len > maxBytes) return null;
+  const reader = res.body?.getReader?.();
+  if (!reader) { const t = await res.text(); return Buffer.byteLength(t) > maxBytes ? null : t; }
+  const chunks = []; let n = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    n += value.byteLength;
+    if (n > maxBytes) { await reader.cancel().catch(() => {}); return null; }
+    chunks.push(value);
+  }
+  return Buffer.concat(chunks.map((c) => Buffer.from(c))).toString("utf8");
+}
+
+/**
+ * Fetch one source page: timeout, byte cap, text/html or text/plain only, manual redirects re-checked on every hop
+ * (https, not blocked, same host or allowlisted) with a hop limit. Never throws for HTTP-level problems.
+ * @returns {Promise<{ status: number, body: string, problem: string | null }>}
+ */
+export async function fetchSourcePage(fetchImpl, url, _curated, limits = SOURCE_FETCH_LIMITS) {
+  let current = url;
+  for (let hop = 0; ; hop++) {
+    const res = await fetchImpl(current, {
+      redirect: "manual", signal: AbortSignal.timeout(limits.timeoutMs),
+      headers: { "user-agent": "Mozilla/5.0 (Well-Read source check)", accept: "text/html, text/plain" },
+    });
+    if (res.status >= 300 && res.status < 400) {
+      const loc = res.headers?.get?.("location");
+      if (!loc) return { status: res.status, body: "", problem: `HTTP ${res.status} without location` };
+      if (hop + 1 > limits.maxHops) return { status: res.status, body: "", problem: "too many redirects" };
+      let next;
+      try { next = new URL(loc, current).toString(); } catch { return { status: res.status, body: "", problem: "bad redirect" }; }
+      if (!redirectHopAllowed(url, next)) return { status: res.status, body: "", problem: `redirect to disallowed URL ${next.slice(0, 120)}` };
+      current = next;
+      continue;
+    }
+    if (res.status !== 200) return { status: res.status, body: "", problem: `HTTP ${res.status}` };
+    const type = String(res.headers?.get?.("content-type") ?? "");
+    if (!SOURCE_TYPES.test(type)) return { status: res.status, body: "", problem: `unsupported content-type "${type.slice(0, 60)}"` };
+    const body = await readCapped(res, limits.maxBytes);
+    if (body === null) return { status: res.status, body: "", problem: "page too large" };
+    return { status: res.status, body, problem: null };
+  }
 }
 
 /** Post-generation source checks: citations must point at fetched sources, the tier rule holds, the choice is covered. */

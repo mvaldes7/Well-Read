@@ -11,6 +11,7 @@ import { findLessonChoice } from '../../src/lib/drilldowns/generate.mjs';
 
 const disciplines = JSON.parse(readFileSync(new URL('../../src/content/disciplines.json', import.meta.url), 'utf8'));
 const ctx = findLessonChoice(disciplines, 'les_fr02', 'robespierre');
+const HTML = new Headers({ 'content-type': 'text/html; charset=utf-8' });
 const GEM = 'https://generativelanguage.googleapis.com/';
 const USER = '11111111-1111-4111-8111-111111111111';
 const fakeLesson = () => ({
@@ -21,7 +22,7 @@ const fakeLesson = () => ({
   factSources: Array(6).fill('S1'), quizSources: Array(6).fill('S1'),
 });
 const gem = (obj) => ({ status: 200, ok: true, json: async () => ({ candidates: [{ content: { parts: [{ text: JSON.stringify(obj) }] }, finishReason: 'STOP' }], usageMetadata: { totalTokenCount: 30 } }) });
-const pageFor = (s) => ({ status: 200, ok: true, text: async () => `<html><head><title>${s.title}</title></head><body>Robespierre and the Jacobins ran the Terror. ${s.title}</body></html>` });
+const pageFor = (s) => ({ status: 200, ok: true, headers: HTML, text: async () => `<html><head><title>${s.title}</title></head><body>Robespierre and the Jacobins ran the Terror. ${s.title}</body></html>` });
 const allSupported = { items: [...Array(6)].map((_, i) => ({ ref: `fact${i + 1}`, supported: true })).concat([...Array(6)].map((_, i) => ({ ref: `quiz${i + 1}`, supported: true }))) };
 const fc = (n) => { const x = structuredClone(allSupported); for (let i = 0; i < n; i++) { x.items[i].supported = false; x.items[i].note = `not in source ${i}`; } return x; };
 const e503 = { status: 503, ok: false, json: async () => ({ error: { status: 'UNAVAILABLE', message: 'high demand' } }) };
@@ -217,4 +218,38 @@ test('route and page: flag checked first, session claims, explicit columns', () 
   assert.match(quiz, /<DigDeeper/);
   const dd = readFileSync(join(SRC, 'components/DigDeeper.tsx'), 'utf8');
   assert.doesNotMatch(dd, /<textarea|type="text"/);
+});
+
+// REV-016 follow-ups.
+import { isSameOriginRequest } from '../../src/lib/drilldowns/messages.mjs';
+test('origin check: null / unparseable / cross-site / other host are refused without throwing', () => {
+  const U = 'https://well-read.example/api/drilldowns';
+  const h = (o) => new Headers(o);
+  assert.equal(isSameOriginRequest(h({ origin: 'https://well-read.example' }), U), true);
+  assert.equal(isSameOriginRequest(h({ origin: 'https://well-read.example', 'sec-fetch-site': 'same-origin' }), U), true);
+  for (const o of [{}, { origin: 'null' }, { origin: 'not a url' }, { origin: '::::' }, { origin: 'https://evil.example' },
+    { origin: 'https://well-read.example', 'sec-fetch-site': 'cross-site' }, { origin: 'file://well-read.example' }]) {
+    assert.doesNotThrow(() => isSameOriginRequest(h(o), U));
+    assert.equal(isSameOriginRequest(h(o), U), false, JSON.stringify(o));
+  }
+  const route = readFileSync(join(SRC, 'app/api/drilldowns/route.ts'), 'utf8');
+  assert.match(route, /isSameOriginRequest\(request\.headers, request\.url\)\) return reply\(failure\("forbidden"\)\)/);
+  assert.doesNotMatch(route, /new URL\(/);
+  assert.equal(DRILLDOWN_MESSAGES.forbidden.length > 0, true);
+});
+
+test('free-tier quota 429 is provider_busy, not a billing stop; a real billing signal still stops this instance', async () => {
+  const quota = { status: 429, ok: false, json: async () => ({ error: { status: 'RESOURCE_EXHAUSTED', message: 'You exceeded your current quota, please check your plan and billing details.' } }) };
+  const state = { stopped: false };
+  const r = await setup({ gemQueue: [quota], billingState: state }).run();
+  assert.equal(r.body.code, 'provider_busy'); assert.equal(state.stopped, false);
+  const pay = { status: 402, ok: false, json: async () => ({ error: { status: 'PAYMENT_REQUIRED', message: 'Payment required' } }) };
+  assert.equal((await setup({ gemQueue: [pay], billingState: state }).run()).body.code, 'billing_stop');
+  assert.equal(state.stopped, true);
+});
+
+test('server-db binds jsonb with sql.json, never JSON.stringify (REV-016 double-encoding)', () => {
+  const t = code(readFileSync(join(SRC, 'lib/drilldowns/server-db.mjs'), 'utf8'));
+  assert.doesNotMatch(t, /JSON\.stringify|::jsonb/);
+  assert.match(t, /s\.json\(/);
 });

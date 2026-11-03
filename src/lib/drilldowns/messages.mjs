@@ -5,6 +5,7 @@
 export const DRILLDOWN_MESSAGES = Object.freeze({
   disabled: "Dig deeper isn't available yet.",
   signed_out: "Sign in to dig deeper.",
+  forbidden: "That request wasn't allowed. Reload the page and try again.",
   bad_request: "That request wasn't valid. Reload the page and try again.",
   not_completed: "Finish this lesson's quiz first, then dig deeper.",
   email_unverified: "Confirm your email address to use Dig deeper. Check your inbox for the link.",
@@ -19,7 +20,7 @@ export const DRILLDOWN_MESSAGES = Object.freeze({
 
 /** HTTP status per code (the route's response status). */
 export const DRILLDOWN_STATUS = Object.freeze({
-  disabled: 404, signed_out: 401, bad_request: 400, not_completed: 403, email_unverified: 403,
+  disabled: 404, signed_out: 401, forbidden: 403, bad_request: 400, not_completed: 403, email_unverified: 403,
   user_cap: 429, global_cap: 429, per_minute: 429, provider_busy: 503, billing_stop: 503,
   generation_failed: 422, unavailable: 503,
 });
@@ -42,4 +43,21 @@ export function dbErrorCode(e) {
 /** @param {keyof typeof DRILLDOWN_MESSAGES} code */
 export function failure(code) {
   return { status: DRILLDOWN_STATUS[code], body: { ok: false, code, message: DRILLDOWN_MESSAGES[code] } };
+}
+
+/**
+ * Same-origin check for the route handler (no built-in CSRF check there). Never throws: a missing, "null" or
+ * unparseable Origin, or Sec-Fetch-Site: cross-site, is simply not allowed (403).
+ * @param {{ get: (name: string) => string | null }} headers @param {string} requestUrl
+ */
+export function isSameOriginRequest(headers, requestUrl) {
+  if (headers.get("sec-fetch-site") === "cross-site") return false;
+  const origin = headers.get("origin");
+  if (!origin || origin === "null") return false;
+  try {
+    const o = new URL(origin), r = new URL(requestUrl);
+    return (o.protocol === "https:" || o.protocol === "http:") && o.host === r.host;
+  } catch {
+    return false;
+  }
 }

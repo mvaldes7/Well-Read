@@ -17,4 +17,6 @@ PSQL=(psql -X -q -t -A -v ON_ERROR_STOP=1 -h "$TMP" -U postgres -d postgres)
 for m in "$ROOT"/supabase/migrations/*.sql; do "${PSQL[@]}" -f "$m"; done
 for t in "$ROOT"/tests/db/*.test.sql; do echo "== $(basename "$t")"; "${PSQL[@]}" -f "$t"; done
 echo "== race.sh"; "$ROOT/tests/db/race.sh" "${PSQL[@]}"
+echo "== server-db.node.mjs"
+(cd "$ROOT" && WR_TEST_PG_SOCKET="$TMP" node --conditions=react-server tests/db/server-db.node.mjs)
 echo "local DB tests: OK"

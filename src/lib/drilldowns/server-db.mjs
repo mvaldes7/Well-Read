@@ -34,21 +34,35 @@ export function drilldownDbConfigured() {
   return Boolean(process.env[DRILLDOWN_DB_ENV]);
 }
 
-/** @param {string} userId @param {number} calls @param {boolean} newLesson */
-export async function reserve(userId, calls, newLesson) {
-  const s = db();
-  await s`select public.drilldown_reserve(${userId}::uuid, ${calls}::integer, ${newLesson}::boolean)`;
+/**
+ * Bind the two SECURITY DEFINER calls to a postgres.js client. jsonb parameters go through sql.json(): binding
+ * JSON.stringify(v) as ::jsonb double-encodes it (Postgres gets a jsonb *string*, the check constraints fail, REV-016).
+ * Exported for the test:db Node test, which passes a client connected as drilldown_server to the throwaway cluster.
+ * @param {import("postgres").Sql} s
+ */
+export function drilldownDbFor(s) {
+  /** @param {unknown} v */
+  const j = (v) => s.json(/** @type {any} */ (v));
+  return {
+    /** @param {string} userId @param {number} calls @param {boolean} newLesson */
+    async reserve(userId, calls, newLesson) {
+      await s`select public.drilldown_reserve(${userId}::uuid, ${calls}::integer, ${newLesson}::boolean)`;
+    },
+    /**
+     * @param {{ userId: string, id: string, parentLessonId: string, choiceId: string, promptVersion: string, model: string,
+     *   reviewStatus: "pending" | "flagged" | "rejected", lesson: unknown, sources: unknown, citations: unknown,
+     *   unconfirmedClaims: unknown, answers: unknown, explanations: unknown }} p
+     */
+    async saveLesson(p) {
+      await s`select public.drilldown_save_lesson(${p.userId}::uuid, ${p.id}, ${p.parentLessonId}, ${p.choiceId}, ${p.promptVersion},
+        ${p.model}, ${p.reviewStatus}, ${j(p.lesson)}, ${j(p.sources)}, ${j(p.citations)},
+        ${j(p.unconfirmedClaims)}, ${j(p.answers)}, ${j(p.explanations)})`;
+    },
+  };
 }
 
-/**
- * @param {{ userId: string, id: string, parentLessonId: string, choiceId: string, promptVersion: string, model: string,
- *   reviewStatus: "pending" | "flagged" | "rejected", lesson: unknown, sources: unknown, citations: unknown,
- *   unconfirmedClaims: unknown, answers: unknown, explanations: unknown }} p
- */
-export async function saveLesson(p) {
-  const s = db();
-  const j = (/** @type {unknown} */ v) => JSON.stringify(v);
-  await s`select public.drilldown_save_lesson(${p.userId}::uuid, ${p.id}, ${p.parentLessonId}, ${p.choiceId}, ${p.promptVersion},
-    ${p.model}, ${p.reviewStatus}, ${j(p.lesson)}::jsonb, ${j(p.sources)}::jsonb, ${j(p.citations)}::jsonb,
-    ${j(p.unconfirmedClaims)}::jsonb, ${j(p.answers)}::jsonb, ${j(p.explanations)}::jsonb)`;
-}
+/** @param {string} userId @param {number} calls @param {boolean} newLesson */
+export const reserve = (userId, calls, newLesson) => drilldownDbFor(db()).reserve(userId, calls, newLesson);
+
+/** @param {Parameters<ReturnType<typeof drilldownDbFor>["saveLesson"]>[0]} p */
+export const saveLesson = (p) => drilldownDbFor(db()).saveLesson(p);
