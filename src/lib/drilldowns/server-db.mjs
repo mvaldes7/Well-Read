@@ -1,7 +1,7 @@
 // SERVER-ONLY. The single module allowed to read DRILLDOWN_DB_URL (a Postgres URL for the narrow
 // `drilldown_server` role, see supabase/migrations/20261102231600_drilldowns.sql). Never import it from a client
-// component; never rename the env var with a NEXT_PUBLIC_ prefix. The repo does not use the `server-only`
-// package, so this guards at runtime instead, and tests/unit/client-bundle.test.mjs scans .next/static.
+// component (`import "server-only"` makes that a build error); never rename the env var with a NEXT_PUBLIC_ prefix.
+// Second layer: CI's `pnpm check:bundle` scans .next/static.
 //
 // P3 STUB: nothing calls this yet and the feature flag (WELL_READ_DRILLDOWNS, config.mjs) stays off. The P3 server
 // action must, in this order:
@@ -12,6 +12,8 @@
 //   4. write: select public.drilldown_save_lesson(user_id, ...)       (pending / flagged / rejected only);
 //   5. grade later via public.drilldown_quiz_key(user_id, lesson_id).
 // Users read lessons with their own session (RLS + column grants), never through this connection.
+
+import "server-only";
 
 export const DRILLDOWN_DB_ENV = "DRILLDOWN_DB_URL";
 

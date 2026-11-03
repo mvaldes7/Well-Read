@@ -26,7 +26,7 @@
 --
 -- Conventions as in earlier migrations: user_id default auth.uid() references auth.users on delete cascade;
 -- policies "to authenticated" with (select auth.uid()); revoke all, then minimal (column-level) grants. Every
--- function sets search_path = '' and fully qualifies names; EXECUTE revoked from public/anon/authenticated
+-- function sets search_path = '' and fully qualifies names; EXECUTE revoked from public/anon/authenticated/service_role
 -- (except the read-only drilldown_my_lessons(), granted to authenticated and scoped to auth.uid()).
 -- SECURITY DEFINER functions run as the migration owner (postgres), which owns these tables, so RLS (not FORCEd)
 -- does not apply inside them; each one checks its own inputs. Quiz answers stay server-side (REV-007).
@@ -35,7 +35,7 @@
 do $$
 begin
   if not exists (select 1 from pg_catalog.pg_roles where rolname = 'drilldown_server') then
-    create role drilldown_server login noinherit nobypassrls nocreatedb nocreaterole;
+    create role drilldown_server login noinherit nobypassrls nocreatedb nocreaterole connection limit 5;
   end if;
 end;
 $$;
@@ -99,7 +99,7 @@ begin
 end;
 $$;
 
-revoke all on function public.generated_lessons_timestamps() from public, anon, authenticated;
+revoke all on function public.generated_lessons_timestamps() from public, anon, authenticated, service_role;
 
 create trigger generated_lessons_timestamps
   before insert or update on public.generated_lessons
@@ -153,6 +153,8 @@ alter table public.lesson_reports enable row level security;
 revoke all on table public.lesson_reports from public, anon, authenticated, service_role;
 grant select (id, lesson_id, reason, created_at, resolved_at) on table public.lesson_reports to authenticated;
 grant insert (lesson_id, reason) on table public.lesson_reports to authenticated;
+-- Hosted default privileges grant rwU on new sequences to anon/authenticated/service_role; nobody needs the identity sequence.
+revoke all on sequence public.lesson_reports_id_seq from public, anon, authenticated, service_role;
 
 create policy "lesson_reports_select_own"
   on public.lesson_reports for select
@@ -214,7 +216,7 @@ begin
 end;
 $$;
 
-revoke all on function public.drilldown_require_verified(uuid) from public, anon, authenticated;
+revoke all on function public.drilldown_require_verified(uuid) from public, anon, authenticated, service_role;
 
 -- SECURITY DEFINER, drilldown_server only. Atomically reserve usage before provider calls; p_user must come from
 -- the verified session. p_new_lesson counts one lesson toward the per-user and global
@@ -249,7 +251,7 @@ begin
 end;
 $$;
 
-revoke all on function public.drilldown_reserve(uuid, integer, boolean) from public, anon, authenticated;
+revoke all on function public.drilldown_reserve(uuid, integer, boolean) from public, anon, authenticated, service_role;
 grant execute on function public.drilldown_reserve(uuid, integer, boolean) to drilldown_server;
 
 -- ---------------------------------------------------------------- generated_lesson_completions (progress)
@@ -329,7 +331,7 @@ begin
 end;
 $$;
 
-revoke all on function public.drilldown_save_lesson(uuid, text, text, text, text, text, text, jsonb, jsonb, jsonb, jsonb, jsonb, jsonb) from public, anon, authenticated;
+revoke all on function public.drilldown_save_lesson(uuid, text, text, text, text, text, text, jsonb, jsonb, jsonb, jsonb, jsonb, jsonb) from public, anon, authenticated, service_role;
 grant execute on function public.drilldown_save_lesson(uuid, text, text, text, text, text, text, jsonb, jsonb, jsonb, jsonb, jsonb, jsonb) to drilldown_server;
 
 -- Quiz key for grading, only for a lesson p_user may see (published, or own pending/flagged).
@@ -347,7 +349,7 @@ as $$
     and (g.review_status = 'published' or (g.created_by = p_user and g.review_status in ('pending', 'flagged')));
 $$;
 
-revoke all on function public.drilldown_quiz_key(uuid, text) from public, anon, authenticated;
+revoke all on function public.drilldown_quiz_key(uuid, text) from public, anon, authenticated, service_role;
 grant execute on function public.drilldown_quiz_key(uuid, text) to drilldown_server;
 
 -- Owners read their own lessons' unconfirmed claim (the column is not client-selectable). Read-only, scoped to
@@ -365,7 +367,7 @@ as $$
   order by g.created_at desc;
 $$;
 
-revoke all on function public.drilldown_my_lessons() from public, anon, authenticated;
+revoke all on function public.drilldown_my_lessons() from public, anon, authenticated, service_role;
 grant execute on function public.drilldown_my_lessons() to authenticated;
 
 grant usage on schema public to drilldown_server;

@@ -208,9 +208,21 @@ select t.eq((select string_agg(p.proname || ':' || r.rolname, ',' order by p.pro
   cross join (values ('public'), ('anon'), ('authenticated'), ('service_role'), ('drilldown_server')) r(rolname)
   where n.nspname = 'public' and (p.proname like 'drilldown\_%' or p.proname like 'generated\_lessons\_%')
     and has_function_privilege(case when r.rolname = 'public' then 'anon' else r.rolname end, p.oid, 'execute')
-    and not (r.rolname = 'service_role' and false)),
+    ),
   'drilldown_my_lessons:authenticated,drilldown_quiz_key:drilldown_server,drilldown_reserve:drilldown_server,drilldown_save_lesson:drilldown_server',
   'EXECUTE: server-only functions only for drilldown_server');
+-- hosted default privileges grant EXECUTE on new functions to service_role; the migration must revoke it (REV-014)
+begin;
+set local role service_role;
+select t.expect_error($$select public.drilldown_reserve('00000000-0000-0000-0000-00000000000a', 1, false)$$, '42501');
+select t.expect_error($$select public.drilldown_save_lesson('00000000-0000-0000-0000-00000000000a', 'gen_ssssssss01', 'les_fr02', 'x', 'v', 'm', 'pending', '{}', '[{"url":"https://a.edu"}]', '{}', '[]', '[1,1,1,1,1,1]', '["e","e","e","e","e","e"]')$$, '42501');
+select t.expect_error($$select * from public.drilldown_quiz_key('00000000-0000-0000-0000-00000000000a', 'gen_aaaaaaaa01')$$, '42501');
+select t.expect_error($$select public.drilldown_my_lessons()$$, '42501');
+select t.expect_error($$select public.drilldown_require_verified('00000000-0000-0000-0000-00000000000a')$$, '42501');
+commit;
+-- the lesson_reports identity sequence has no client grants
+select t.eq((select bool_or(has_sequence_privilege(r, 'public.lesson_reports_id_seq', p)) from unnest(array['anon', 'authenticated', 'service_role', 'drilldown_server']) r
+  cross join unnest(array['usage', 'select', 'update']) p), false, 'no sequence privileges');
 select t.eq((select count(*) from pg_roles where rolname = 'drilldown_admin'), 0::bigint, 'no drilldown_admin role');
-select t.eq((select rolcanlogin and not rolbypassrls and not rolsuper and rolpassword is null from pg_authid where rolname = 'drilldown_server'), true, 'server role: login, no password, no bypass');
+select t.eq((select rolcanlogin and not rolbypassrls and not rolsuper and rolpassword is null and rolconnlimit = 5 from pg_authid where rolname = 'drilldown_server'), true, 'server role: login, no password, no bypass');
 select 'drilldowns.test.sql: all assertions passed' as result;

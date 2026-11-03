@@ -12,4 +12,5 @@ grant usage on schema auth, public to anon, authenticated, service_role;
 grant execute on function auth.uid() to public;
 -- Supabase's default privileges give API roles table access in public; migrations revoke what they don't want.
 alter default privileges in schema public grant all on tables to anon, authenticated, service_role;
-alter default privileges in schema public grant all on sequences to anon, authenticated, service_role;
+alter default privileges in schema public grant usage, select, update on sequences to anon, authenticated, service_role;
+alter default privileges in schema public grant execute on functions to anon, authenticated, service_role;

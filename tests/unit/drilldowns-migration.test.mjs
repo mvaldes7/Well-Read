@@ -20,7 +20,7 @@ test('functions pin search_path; definer ones are server-only except drilldown_m
   for (const [body, name] of fns) {
     assert.match(body, /security (invoker|definer)\s+set search_path = ''/, name);
     if (/security definer/.test(body)) definer.push(name);
-    assert.match(sql, new RegExp(`revoke all on function ${name.replace('.', '\\.')}\\([^)]*\\) from public, anon, authenticated;`), name);
+    assert.match(sql, new RegExp(`revoke all on function ${name.replace('.', '\\.')}\\([^)]*\\) from public, anon, authenticated, service_role;`), name);
   }
   assert.deepEqual(definer.sort(), ['public.drilldown_my_lessons', 'public.drilldown_quiz_key', 'public.drilldown_require_verified', 'public.drilldown_reserve', 'public.drilldown_save_lesson']);
   const grants = [...sql.matchAll(/grant execute on function (public\.\w+)\([^)]*\) to (\w+);/g)].map((m) => `${m[1]}:${m[2]}`).sort();

@@ -34,12 +34,23 @@ In the repo but **not** applied to any Supabase project yet. Apply only with Mik
 
 ## `drilldown_server` (after 20261102231600 is applied)
 
-The drill-down server uses this narrow role, **not** the service role, which stays forbidden. The migration creates it without a password. Mike:
+The drill-down server uses this narrow role, **not** the service role, which stays forbidden. The migration creates it as LOGIN, with
+`connection limit 5` and **no password**. Mike:
 
-1. In the SQL editor, sets a password with `alter role drilldown_server with password '<long random>';`. Generate it locally and never commit it or paste it in chat.
-2. Builds a connection URL for `drilldown_server` from the project's connection string, using the pooler (session mode) or the direct host.
-3. Stores it as the server-only env var `DRILLDOWN_DB_URL`, Sensitive, in Vercel. It must never have a `NEXT_PUBLIC_` prefix. Only `src/lib/drilldowns/server-db.mjs` reads it.
-4. Rotates it by running `alter role` again, or disables it with `alter role drilldown_server nologin;`.
+1. **Sets the password without sending it as plaintext SQL.** Never run `alter role ... password '<plain>'` in the dashboard SQL editor, because editor history and statement logs keep it. Use either:
+   - a local `psql` connected as `postgres`, running `\password drilldown_server`, which sends a SCRAM verifier computed on the client; or
+   - `alter role drilldown_server password 'SCRAM-SHA-256$4096:...'` with a verifier generated locally.
+   Hosted requires SCRAM.
+2. **Builds the URL for Supavisor.** The username is **`drilldown_server.<project-ref>`**.
+   - Session mode uses port **5432**.
+   - Transaction mode uses port **6543** and needs prepared statements turned off in the driver.
+3. **Stores it only as the Vercel env var `DRILLDOWN_DB_URL`, type Sensitive.** It must never have a `NEXT_PUBLIC_` prefix. Only `src/lib/drilldowns/server-db.mjs` reads it, and that module imports `server-only`. Keep the server's pool at about **5** to match the role's connection limit.
+4. **Rotates or disables it.** Repeat step 1 to rotate, or run `alter role drilldown_server nologin;` to disable.
+
+Behaviour P3 must respect:
+- **Midnight:** a reservation made before America/Los_Angeles midnight can't be used by a save after midnight. Both use the LA day, so the user loses that one attempt. This is accepted.
+- **No wildcard reads:** `generated_lessons` and `lesson_reports` have column-level grants. P3 must not call supabase-js `.select()` with no columns, `select('*')`, or `.insert(...).select()` on `lesson_reports`; all of them fail with "permission denied". A unit test (`tests/unit/client-bundle.test.mjs`) greps `src` for these patterns.
+- **Function defaults:** hosted default privileges grant EXECUTE on new functions to anon, authenticated **and service_role**. So every function revoke in this migration includes service_role, and so does the revoke on the `lesson_reports` identity sequence (REV-014).
 
 ## The `STATUS:` header comments are historical
 

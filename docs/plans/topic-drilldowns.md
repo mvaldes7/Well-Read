@@ -203,14 +203,14 @@ Approved by Mike to **write** (2026-11-02); revised the same day (no service rol
 on a throwaway local Postgres (`pnpm test:db`: `scripts/test-db-local.sh` + `tests/db/*`, with a stub for Supabase's roles, `auth.users`
 and `auth.uid()`, plus a concurrency test `tests/db/race.sh`). Conventions as before: `user_id default auth.uid()`, policies
 `to authenticated` using `(select auth.uid())`, `revoke all` then minimal column grants, `set search_path = ''` with fully qualified names,
-EXECUTE revoked from public/anon/authenticated. Answers stay server-side (REV-007).
+EXECUTE revoked from public/anon/authenticated/service_role. Hosted default privileges grant EXECUTE on new functions to service_role, and the `lesson_reports` sequence is revoked too (REV-014). A reservation made before LA midnight can't be used by a save after it. P3 must not use `.select()`, `select('*')` or `.insert().select()` on the column-granted tables. Answers stay server-side (REV-007).
 
 **No service role.** supabase/README.md still forbids the service-role key. Instead:
 
 - **`drilldown_server`** — a LOGIN role (NOINHERIT, NOBYPASSRLS), created **without a password**. It has **no table privileges**,
   only EXECUTE on three SECURITY DEFINER functions: `drilldown_reserve()`, `drilldown_save_lesson()`, `drilldown_quiz_key()`.
 - The P3 server reaches it through the server-only env var **`DRILLDOWN_DB_URL`** (never `NEXT_PUBLIC_`), read only by
-  `src/lib/drilldowns/server-db.mjs` (a P3 stub with a runtime browser guard; the repo does not use the `server-only` package).
+  `src/lib/drilldowns/server-db.mjs` (a P3 stub that imports `server-only`).
   CI runs `pnpm check:bundle` after the build and fails if `DRILLDOWN_DB_URL`, `SERVICE_ROLE_KEY`, `service_role`, `GEMINI_API_KEY`
   or `drilldown_server` appears in `.next/static`.
 
@@ -247,8 +247,8 @@ SQL editor as the table owner, and a trigger sets `published_at`/`reviewed_at`. 
 - `tests/db/race.sh` checks two concurrent cases: 40 parallel reservations yield exactly 25 lessons and 100 calls, and 6 parallel reservations for one user yield exactly 2.
 
 **Mike's setup (only once the migration is approved and applied; nothing here changes Vercel):**
-1. In the Supabase SQL editor, run `alter role drilldown_server with password '<long random>';`. Generate the password locally and never paste it in chat or commit it.
-2. Build the URL for that role from the dashboard connection string. Use the pooler (session mode) or the direct host, with `drilldown_server` in place of `postgres`.
+1. Set the password with `\password drilldown_server` in a local psql, or with a SCRAM verifier generated locally. Never send a plaintext password through the dashboard SQL editor (see supabase/README.md).
+2. Build the Supavisor URL. The user is `drilldown_server.<project-ref>`. Session mode uses port 5432; transaction mode uses port 6543 and needs prepared statements off. Keep the pool at about 5, matching the role's connection limit.
 3. Add it to Vercel as **`DRILLDOWN_DB_URL`**: Production (and Preview only if wanted), type Sensitive. It must never be named `NEXT_PUBLIC_…`.
 4. To rotate, run `alter role … password` again and update the env var. To revoke, run `alter role drilldown_server nologin;`.
 
