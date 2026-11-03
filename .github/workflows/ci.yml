@@ -33,5 +33,7 @@ jobs:
         run: pnpm test
       - name: Build
         run: pnpm build
+      - name: Client bundle scan (no server-only names)
+        run: pnpm check:bundle
       - name: Validate task ledger
         run: node scripts/ledger.mjs validate
