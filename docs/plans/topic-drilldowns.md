@@ -292,3 +292,24 @@ These defaults live in code (P0: `src/lib/drilldowns/config.mjs`). Lowering them
 ## Not verified
 - Free-tier RPM/RPD numbers come from a third-party summary. Confirm them in AI Studio before P3.
 - Confirmed from the migration that `lesson_completions` rejects non-`les_` ids, so a separate progress table is planned.
+
+## P3: Dig deeper in the app (behind WELL_READ_DRILLDOWNS, OFF)
+
+Implemented, **not enabled**. The flag is exactly `"1"` to turn on and is currently unset everywhere.
+
+- After any graded quiz (pass or fail) the lesson shows its 3-4 stored Dig deeper choices (`DigDeeper.tsx`). No free text.
+  The lesson page is static, so the flag is read at **build time** there: redeploy after changing it.
+- `POST /api/drilldowns` (`route.ts` -> `service.mjs`): flag (404) -> same-origin check -> session via `getClaims()`
+  (user_id only from the session) -> stored-choice gate (body exactly `{ lessonId, choiceId }`, quiz completed) ->
+  `drilldown_reserve(user, 0, true)` -> grounded generation (`generate.mjs`, moved from the P1b script: sources fetched
+  first, at most 4 calls, gemini-3.1-flash-lite with gemini-3.5-flash-lite fallback on 503, stop on billing). Before
+  every model call: in-process 4/minute limiter, then `drilldown_reserve(user, 1, false)`. Fact check: 0 unconfirmed ->
+  pending, 1 -> flagged, 2+ -> regenerate within the cap, then saved as rejected. Save via `drilldown_save_lesson()`
+  with answers/explanations split out of the public body.
+- `/dig?id=gen_…` reads the lesson with the user's own session and explicit columns, shows the AI-generated label and
+  a Report button (insert into `lesson_reports`, no select afterwards).
+- Deferred: grading the generated lesson's quiz (`drilldown_quiz_key`) and Mike's review/publish UI.
+
+Before enabling (none of this is done): apply the P2 migration to the target DB; set a password for
+`drilldown_server`; set server-only Sensitive env vars `GEMINI_API_KEY` and `DRILLDOWN_DB_URL` (drilldown_server, pooler
+URL, sslmode=require); then `WELL_READ_DRILLDOWNS=1` and redeploy.

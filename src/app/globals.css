@@ -593,3 +593,12 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
   .rl-add { grid-column: 1 / -1; }
   .rl-item { padding: 12px 14px; }
 }
+
+/* Dig deeper (drill-downs P3, behind WELL_READ_DRILLDOWNS) */
+.dig-deeper { margin-top: 32px; border-top: 1px solid var(--rule, #d8d2c4); padding-top: 20px; }
+.dig-choices { display: flex; flex-wrap: wrap; gap: 10px; margin: 12px 0; }
+.dig-choice { color: inherit; border-color: var(--sub); }
+.ai-label .badge { display: inline-block; border: 1px solid currentColor; padding: 2px 8px; letter-spacing: 0.2em; }
+.report-form { display: grid; gap: 10px; margin-top: 24px; }
+.report-form textarea { font: inherit; width: 100%; }
+.report-open { color: inherit; border-color: var(--sub); margin-top: 24px; }
