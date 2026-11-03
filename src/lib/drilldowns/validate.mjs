@@ -25,10 +25,10 @@ export function generatedLessonProblems(l) {
   if (typeof l.slug !== "string" || !SLUG.test(l.slug)) p.push(`${where}.slug: bad slug`);
   if (!str(l.title)) p.push(`${where}.title: expected non-empty string`);
   if (!Array.isArray(l.sections) || l.sections.length !== 4) p.push(`${where}.sections: expected exactly 4`);
-  else l.sections.forEach((s, i) => { if (!s || !str(s.heading) || !str(s.body)) p.push(`${where}.sections[${i}]: heading and body required`); });
+  else l.sections.forEach((/** @type {any} */ s, /** @type {number} */ i) => { if (!s || !str(s.heading) || !str(s.body)) p.push(`${where}.sections[${i}]: heading and body required`); });
   if (!Array.isArray(l.keyFacts) || l.keyFacts.length !== 6 || !l.keyFacts.every(str)) p.push(`${where}.keyFacts: expected exactly 6 non-empty strings`);
   if (!Array.isArray(l.quiz) || l.quiz.length !== 6) p.push(`${where}.quiz: expected exactly 6 questions`);
-  else l.quiz.forEach((q, i) => {
+  else l.quiz.forEach((/** @type {any} */ q, /** @type {number} */ i) => {
     const at = `${where}.quiz[${i}]`;
     if (!q || !str(q.question)) p.push(`${at}.question: required`);
     if (!q || !Array.isArray(q.options) || q.options.length !== 4 || !q.options.every(str)) p.push(`${at}.options: expected 4 non-empty strings`);
@@ -39,8 +39,8 @@ export function generatedLessonProblems(l) {
   p.push(...lessonSourceProblems(l.sources, where));
   // Reuse the seed-content checks by wrapping the lesson in a one-lesson fixture.
   const fx = [{ slug: "d", topics: [{ slug: "t", lessons: [l] }] }];
-  if (Array.isArray(l.quiz) && l.quiz.every((q) => q && typeof q === "object")) p.push(...explanationProblems(fx));
-  if (Array.isArray(l.sections) && l.sections.every((s) => s && typeof s === "object")) p.push(...citationMarkerProblems(fx));
+  if (Array.isArray(l.quiz) && l.quiz.every((/** @type {any} */ q) => q && typeof q === "object")) p.push(...explanationProblems(fx));
+  if (Array.isArray(l.sections) && l.sections.every((/** @type {any} */ s) => s && typeof s === "object")) p.push(...citationMarkerProblems(fx));
   // Models often emit numeric markers like [1]; seed content had them stripped by hand.
   for (const [at, v] of textFields(fx)) if (typeof v === "string" && /\[\d+\]/.test(v)) p.push(`${at}: numeric citation marker`);
   return p;

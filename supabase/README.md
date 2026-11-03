@@ -63,3 +63,9 @@ migration is never edited, comments included, so the file stays exactly as it wa
 
 When a new migration is applied, add its row here (in the same PR as the code or a
 follow-up). Don't touch the migration file itself.
+
+### Drill-downs P3 app wiring
+
+The app calls `drilldown_reserve` and `drilldown_save_lesson` only from `src/lib/drilldowns/server-db.mjs`
+(`import "server-only"`, `DRILLDOWN_DB_URL`, `max: 1`, `prepare: false`). Users read `generated_lessons` and insert
+`lesson_reports` with their own session and explicit columns. The migration is still not applied anywhere.

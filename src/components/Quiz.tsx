@@ -5,12 +5,15 @@ import { useRouter } from "next/navigation";
 import { submitQuiz, type QuizState } from "@/lib/quiz/actions";
 import { saveMessage } from "@/lib/progress/logic.mjs";
 import type { PublicQuestion } from "@/lib/quiz/public.mjs";
+import DigDeeper, { type DigDeeperOption } from "./DigDeeper";
 
 export type { PublicQuestion };
 
 interface Props {
   lessonId: string;
   questions: PublicQuestion[];
+  /** Stored Dig deeper choices; passed only when the WELL_READ_DRILLDOWNS flag is on. */
+  digDeeper?: DigDeeperOption[];
 }
 
 export default function Quiz(props: Props) {
@@ -23,7 +26,7 @@ export default function Quiz(props: Props) {
   return <QuizAttempt key={attempt} {...props} onRetry={() => setAttempt((a) => a + 1)} />;
 }
 
-function QuizAttempt({ lessonId, questions, onRetry }: Props & { onRetry: () => void }) {
+function QuizAttempt({ lessonId, questions, digDeeper, onRetry }: Props & { onRetry: () => void }) {
   const [state, dispatch, pending] = useActionState<QuizState, unknown>(submitQuiz, { status: "idle" });
   const [, startTransition] = useTransition();
   const [missing, setMissing] = useState(false);
@@ -84,6 +87,8 @@ function QuizAttempt({ lessonId, questions, onRetry }: Props & { onRetry: () => 
             {state.passed ? "Retake quiz" : "Retry quiz"}
           </button>
         </div>
+        {/* Dig deeper after any graded attempt, pass or fail. */}
+        {digDeeper && digDeeper.length > 0 && <DigDeeper lessonId={lessonId} choices={digDeeper} />}
       </div>
     );
   }

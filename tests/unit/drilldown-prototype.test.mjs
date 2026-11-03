@@ -14,6 +14,7 @@ const FETCHABLE = ctx.lesson.sources.filter((s) => !s.url.includes('britannica.c
 const BLOCKED = ctx.lesson.sources.filter((s) => s.url.includes('britannica.com'));
 const SRC = FETCHABLE[0];
 const KEY = 'test-key-not-real';
+const HTML = new Headers({ 'content-type': 'text/html; charset=utf-8' });
 const GEM = 'https://generativelanguage.googleapis.com/';
 
 const fakeLesson = (overrides = {}) => ({
@@ -26,7 +27,7 @@ const fakeLesson = (overrides = {}) => ({
 const gem = (obj) => ({
   status: 200, ok: true, json: async () => ({ candidates: [{ content: { parts: [{ text: JSON.stringify(obj) }] }, finishReason: 'STOP' }], usageMetadata: { totalTokenCount: 30 } }),
 });
-const pageFor = (s, body = 'Robespierre and the Jacobins ran the Terror.') => ({ status: 200, ok: true, text: async () => `<html><head><title>${s.title}</title></head><body>${body} ${s.title}</body></html>` });
+const pageFor = (s, body = 'Robespierre and the Jacobins ran the Terror.') => ({ status: 200, ok: true, headers: HTML, text: async () => `<html><head><title>${s.title}</title></head><body>${body} ${s.title}</body></html>` });
 const allSupported = { items: [...Array(6)].map((_, i) => ({ ref: `fact${i + 1}`, supported: true })).concat([...Array(6)].map((_, i) => ({ ref: `quiz${i + 1}`, supported: true }))) };
 const fc = (n) => { const x = structuredClone(allSupported); for (let i = 0; i < n; i++) { x.items[i].supported = false; x.items[i].note = `not in source ${i}`; } return x; };
 
@@ -229,9 +230,9 @@ test('any billing / paid requirement stops immediately: no retry, no fallback', 
 test('fetchCandidateSources: HTTP errors, title mismatch, non-allowlisted extras dropped; Wikipedia alone is not enough', async () => {
   const pages = {
     [FETCHABLE[0].url]: { status: 404, ok: false, text: async () => '' },
-    [FETCHABLE[1].url]: { status: 200, ok: true, text: async () => '<title>Totally unrelated</title>nothing' },
+    [FETCHABLE[1].url]: { status: 200, ok: true, headers: HTML, text: async () => '<title>Totally unrelated</title>nothing' },
     [FETCHABLE[2].url]: { status: 404, ok: false, text: async () => '' },
-    'https://en.wikipedia.org/wiki/Maximilien_Robespierre': { status: 200, ok: true, text: async () => '<title>Maximilien Robespierre - Wikipedia</title>Robespierre Jacobin' },
+    'https://en.wikipedia.org/wiki/Maximilien_Robespierre': { status: 200, ok: true, headers: HTML, text: async () => '<title>Maximilien Robespierre - Wikipedia</title>Robespierre Jacobin' },
   };
   const wiki = { publisher: 'Wikipedia', title: 'Maximilien Robespierre', url: 'https://en.wikipedia.org/wiki/Maximilien_Robespierre' };
   const r = await fetchCandidateSources({ fetchImpl: mockFetch([], pages), lesson: ctx.lesson, extra: [wiki] });
@@ -250,4 +251,74 @@ test('helpers: pageText strips markup; normalizeLesson drops model ids/extra fie
   assert.equal(n.lesson.factSources, undefined);
   assert.deepEqual(n.lesson.sources, [{ publisher: SRC.publisher, title: SRC.title, url: SRC.url }]);
   assert.deepEqual(n.citationProblems, []);
+});
+
+// REV-016: source fetcher hardening.
+import { fetchSourcePage, redirectHopAllowed, SOURCE_FETCH_LIMITS } from '../../src/lib/drilldowns/generate.mjs';
+const resp = (status, headers = {}, body = '') => ({ status, ok: status < 300, headers: new Headers(headers), text: async () => body });
+const seq = (list) => { const seen = []; const fn = async (url, init) => { seen.push({ url, init }); const r = list.shift(); if (!r) throw new Error('unexpected'); return r; }; fn.seen = seen; return fn; };
+
+test('fetcher: manual redirects, timeout signal, accepted content types', async () => {
+  const f = seq([resp(200, { 'content-type': 'text/plain' }, 'hello')]);
+  const r = await fetchSourcePage(f, SRC.url, true);
+  assert.equal(r.problem, null); assert.equal(r.body, 'hello');
+  assert.equal(f.seen[0].init.redirect, 'manual');
+  assert.ok(f.seen[0].init.signal instanceof AbortSignal);
+  for (const t of ['application/pdf', 'application/json', '', 'text/htmlx']) {
+    const x = await fetchSourcePage(seq([resp(200, t ? { 'content-type': t } : {}, 'x')]), SRC.url, true);
+    assert.match(x.problem, /unsupported content-type/, t);
+  }
+});
+
+test('fetcher: every redirect hop is re-checked, with a hop limit', async () => {
+  const host = new URL(SRC.url).origin;
+  const ok = seq([resp(301, { location: '/moved' }), resp(200, { 'content-type': 'text/html' }, '<title>x</title>')]);
+  assert.equal((await fetchSourcePage(ok, SRC.url, true)).problem, null);
+  assert.equal(ok.seen[1].url, `${host}/moved`);
+  for (const loc of ['https://evil.example.com/x', 'http://' + new URL(SRC.url).host + '/x', BLOCKED[0].url, 'javascript:alert(1)']) {
+    const f = seq([resp(302, { location: loc })]);
+    const r = await fetchSourcePage(f, SRC.url, true);
+    assert.match(r.problem, /redirect to disallowed|bad redirect/, loc); assert.equal(f.seen.length, 1);
+  }
+  const loop = seq([...Array(SOURCE_FETCH_LIMITS.maxHops + 1)].map((_, i) => resp(302, { location: `/r${i}` })));
+  assert.equal((await fetchSourcePage(loop, SRC.url, true)).problem, 'too many redirects');
+  assert.equal(loop.seen.length, SOURCE_FETCH_LIMITS.maxHops + 1);
+  assert.equal(redirectHopAllowed(SRC.url, 'https://en.wikipedia.org/wiki/X'), true);
+  assert.equal(redirectHopAllowed(SRC.url, 'https://evil.example.com/'), false);
+});
+
+test('fetcher: body size cap (content-length and streamed)', async () => {
+  const big = await fetchSourcePage(seq([resp(200, { 'content-type': 'text/html', 'content-length': String(SOURCE_FETCH_LIMITS.maxBytes + 1) }, 'x')]), SRC.url, true);
+  assert.equal(big.problem, 'page too large');
+  const stream = new Response('a'.repeat(50), { status: 200, headers: { 'content-type': 'text/html' } });
+  const r = await fetchSourcePage(async () => stream, SRC.url, true, { ...SOURCE_FETCH_LIMITS, maxBytes: 10 });
+  assert.equal(r.problem, 'page too large');
+  const small = new Response('<title>x</title>', { status: 200, headers: { 'content-type': 'text/html' } });
+  assert.equal((await fetchSourcePage(async () => small, SRC.url, true)).body, '<title>x</title>');
+});
+
+test('fetcher: a timeout becomes a source problem, not a crash', async () => {
+  const f = async (_u, init) => new Promise((_, rej) => init.signal.addEventListener('abort', () => rej(init.signal.reason)));
+  await assert.rejects(fetchSourcePage(f, SRC.url, true, { ...SOURCE_FETCH_LIMITS, timeoutMs: 20 }), /timeout|abort/i);
+  const res = await fetchCandidateSources({ fetchImpl: async () => { throw new DOMException('The operation was aborted due to timeout', 'TimeoutError'); }, lesson: ctx.lesson, extra: [] });
+  assert.ok(res.results.filter((x) => !x.blocked).every((x) => /fetch failed/.test(x.problems[0])));
+});
+
+test('billing vs quota: free-tier 429 / RESOURCE_EXHAUSTED is quota, real billing signals stop', async () => {
+  const call = (status, error) => callGemini({ fetchImpl: mockFetch([{ status, ok: false, json: async () => ({ error }) }]), apiKey: KEY, model: 'm', system: '', user: '', schema: {}, budget: { used: 0, max: 4 } });
+  for (const [st, err] of [
+    [429, { status: 'RESOURCE_EXHAUSTED', message: 'You exceeded your current quota, please check your plan and billing details.' }],
+    [429, { status: 'RESOURCE_EXHAUSTED', message: 'Quota exceeded for free tier. Upgrade your plan or check billing.' }],
+    [400, { status: 'RESOURCE_EXHAUSTED', message: 'quota; see billing' }],
+    [429, { message: 'Too many requests' }],
+  ]) await assert.rejects(call(st, err), QuotaError, err.message);
+  for (const [st, err] of [
+    [402, { message: 'x' }],
+    [400, { status: 'FAILED_PRECONDITION', message: 'Billing is not enabled for this project.' }],
+    [400, { message: 'Payment required.' }],
+    [403, { message: 'Please upgrade to a paid plan to use this model.' }],
+    [403, { message: 'Available on the paid tier only.' }],
+  ]) await assert.rejects(call(st, err), BillingError, err.message);
+  const r = await run(mockFetch([{ status: 429, ok: false, json: async () => ({ error: { status: 'RESOURCE_EXHAUSTED', message: 'check your plan and billing details' } }) }]));
+  assert.equal(r.billingStop, false);
 });

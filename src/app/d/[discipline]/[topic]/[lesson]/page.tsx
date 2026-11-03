@@ -7,6 +7,7 @@ import { LessonStatus } from "@/components/Progress";
 import Quiz from "@/components/Quiz";
 import { disciplines, getDiscipline, getLesson, getTopic } from "@/content";
 import { toPublicQuestions } from "@/lib/quiz/public.mjs";
+import { drilldownsEnabled } from "@/lib/drilldowns/config.mjs";
 import { paragraphs } from "@/lib/ui/paragraphs.mjs";
 import { toRoman } from "@/lib/ui/roman.mjs";
 
@@ -82,7 +83,11 @@ export default async function LessonPage({
           <LessonStatus lessonId={lesson.id} />
         </Suspense>
         {/* Only question text and options reach the client; answers and explanations stay server-side. */}
-        <Quiz lessonId={lesson.id} questions={toPublicQuestions(lesson.quiz)} />
+        <Quiz
+          lessonId={lesson.id}
+          questions={toPublicQuestions(lesson.quiz)}
+          digDeeper={drilldownsEnabled(process.env) ? lesson.digDeeper?.map((c) => ({ id: c.id, label: c.label })) : undefined}
+        />
       </section>
       {lesson.sources && lesson.sources.length > 0 && (
         <section className="sources" aria-labelledby="sources-heading">

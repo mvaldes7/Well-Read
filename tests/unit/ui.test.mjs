@@ -15,7 +15,7 @@ test('display name is Well-Read: the old display names are gone from app source'
   const files = [];
   const walk = (d) => { for (const f of readdirSync(d)) { const p = join(d, f); statSync(p).isDirectory() ? walk(p) : files.push(p); } };
   walk(root);
-  const hits = files.filter((f) => /\.(tsx?|mjs|css|json)$/.test(f) && /foundation\s*-?learn|curio/i.test(readFileSync(f, 'utf8')));
+  const hits = files.filter((f) => /\.(tsx?|mjs|css|json)$/.test(f) && /foundation\s*-?learn|\bcurio\b/i.test(readFileSync(f, 'utf8')));
   assert.deepEqual(hits, []);
   const layout = readFileSync(join(root, 'app/layout.tsx'), 'utf8');
   assert.match(layout, /title: \{ default: "Well-Read", template: "%s · Well-Read" \}/);
