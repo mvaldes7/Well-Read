@@ -13,32 +13,47 @@ test('drilldowns migration is new, last, and marked unapplied', () => {
   assert.match(raw, /STATUS: UNAPPLIED/);
 });
 
-test('every function is SECURITY INVOKER with search_path pinned and EXECUTE revoked from clients', () => {
+test('functions pin search_path; definer ones are server-only except drilldown_my_lessons', () => {
   const fns = [...sql.matchAll(/create function (public\.\w+)\(([^)]*)\)[\s\S]*?\$\$;/g)];
-  assert.equal(fns.length, 2);
+  assert.equal(fns.length, 6);
+  const definer = [];
   for (const [body, name] of fns) {
-    assert.match(body, /security invoker\s+set search_path = ''/, name);
-    assert.doesNotMatch(body, /security definer/i, name);
+    assert.match(body, /security (invoker|definer)\s+set search_path = ''/, name);
+    if (/security definer/.test(body)) definer.push(name);
     assert.match(sql, new RegExp(`revoke all on function ${name.replace('.', '\\.')}\\([^)]*\\) from public, anon, authenticated;`), name);
   }
-  assert.doesNotMatch(sql, /security definer/i);
+  assert.deepEqual(definer.sort(), ['public.drilldown_my_lessons', 'public.drilldown_quiz_key', 'public.drilldown_require_verified', 'public.drilldown_reserve', 'public.drilldown_save_lesson']);
+  const grants = [...sql.matchAll(/grant execute on function (public\.\w+)\([^)]*\) to (\w+);/g)].map((m) => `${m[1]}:${m[2]}`).sort();
+  assert.deepEqual(grants, ['public.drilldown_my_lessons:authenticated', 'public.drilldown_quiz_key:drilldown_server', 'public.drilldown_reserve:drilldown_server', 'public.drilldown_save_lesson:drilldown_server']);
 });
 
-test('RLS on every table; users get no write on lessons, keys or counters; user_id defaults to auth.uid()', () => {
+test('no service_role grants, no drilldown_admin, server role has no table grants or password', () => {
+  assert.doesNotMatch(sql, /to [^;]*service_role/);
+  assert.doesNotMatch(raw, /drilldown_admin/);
+  assert.doesNotMatch(sql, /on table [^;]* to [^;]*drilldown_server/);
+  assert.doesNotMatch(sql, /password/i);
+  assert.match(sql, /create role drilldown_server login noinherit nobypassrls/);
+  assert.match(sql, /email_confirmed_at is not null/);
+});
+
+test('RLS on every table; column-level select on lessons; user_id defaults to auth.uid()', () => {
   for (const t of ['generated_lessons', 'generated_quiz_keys', 'lesson_reports', 'drilldown_usage_user', 'drilldown_usage_global', 'generated_lesson_completions'])
     assert.match(sql, new RegExp(`alter table public\\.${t} enable row level security;`), t);
   for (const t of ['generated_lessons', 'generated_quiz_keys', 'drilldown_usage_user', 'drilldown_usage_global'])
     assert.doesNotMatch(sql, new RegExp(`grant [^;]*(insert|update|delete)[^;]*on table public\\.${t}[^;]* to authenticated;`), t);
-  assert.doesNotMatch(sql, /on table public\.generated_quiz_keys to authenticated/);
+  assert.doesNotMatch(sql, /grant select on table public\.generated_lessons/);
+  const cols = sql.match(/grant select \(([^)]*)\)\s+on table public\.generated_lessons to authenticated;/);
+  assert.ok(cols);
+  assert.doesNotMatch(cols[1], /created_by|unconfirmed_claims/);
   assert.equal((sql.match(/default auth\.uid\(\)/g) ?? []).length, 3);
   assert.doesNotMatch(sql, /to anon;|to anon,/);
-  assert.match(sql, /using \(review_status = 'published'\s+or \(created_by = \(select auth\.uid\(\)\) and review_status in \('pending', 'flagged'\)\)\)/);
+  assert.match(sql, /revoke all on table public\.generated_lesson_completions from public, anon, authenticated, service_role;/);
 });
 
-test('publish is admin-only (trigger), caps are CHECK constraints at 2 / 25 / 100', () => {
-  assert.match(sql, /pg_has_role\(current_user, 'drilldown_admin', 'MEMBER'\)/);
-  assert.match(sql, /errcode = 'WR403'/);
+test('publish is owner-SQL only; caps are CHECK constraints at 2 / 8 / 25 / 100', () => {
+  assert.match(sql, /not in \('pending', 'flagged', 'rejected'\)/);
   assert.match(sql, /check \(lessons between 0 and 2\)/);
+  assert.match(sql, /check \(calls between 0 and 8\)/);
   assert.match(sql, /check \(lessons between 0 and 25\)/);
   assert.match(sql, /check \(calls between 0 and 100\)/);
   assert.match(sql, /errcode = 'WR429'/);

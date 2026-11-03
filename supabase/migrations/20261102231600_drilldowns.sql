@@ -4,37 +4,38 @@
 -- STATUS: UNAPPLIED. Do not run against any Supabase project until Mike has
 -- reviewed and approved it. Apply via the normal migration process only, as
 -- version 20261102231600 (must match this filename; after 20261102210548 / recorded 20261102212005).
--- Tested only against a throwaway local Postgres (scripts/test-db-local.sh, tests/db/drilldowns.sql).
+-- Tested only against a throwaway local Postgres (scripts/test-db-local.sh, tests/db/*.test.sql).
 --
--- Who can write what (the core decision):
--- * authenticated (end users, own session): READ their own private lessons and every published lesson; write
---   ONLY their own reports (lesson_id, reason) and their own drill-down progress. They have NO insert/update on
---   generated_lessons, generated_quiz_keys or the usage counters, so they cannot publish, edit a lesson, or reset
---   or skip a cap. Counter rows are owner-readable (to show "1 of 2 left today") but never client-writable.
--- * service_role (server-only, used ONLY by the P3 generation server action, never shipped to the browser):
---   inserts generated lessons as 'pending'/'flagged'/'rejected', inserts quiz keys, and reserves cap usage through
---   public.drilldown_reserve(). This would be the app's first service-role use (supabase/README.md says app code
---   never uses it), which is why it is confined to these tables and needs Mike's approval in P3. A shared cache
---   that one user writes and others read needs a privilege above authenticated; the alternative, a SECURITY
---   DEFINER RPC, was rejected to keep every function SECURITY INVOKER with a pinned search_path (REV-011/012).
--- * drilldown_admin (NOLOGIN role; Mike, via dashboard SQL as the owner/postgres role or a role granted
---   drilldown_admin): the ONLY path to 'published'. Enforced by a BEFORE trigger, so even service_role cannot
---   publish. There is no user-facing or app-facing publish.
+-- Who can write what (the core decision). No service_role anywhere (supabase/README.md still forbids it):
+-- * authenticated (end users, own session): column-level SELECT on generated_lessons (never created_by or
+--   unconfirmed_claims), rows = their own pending/flagged lessons + every published lesson; their own flagged
+--   claim via public.drilldown_my_lessons(); write ONLY their own reports and drill-down progress. No write on
+--   lessons, quiz keys or usage counters, so they cannot publish, edit a lesson, or reset/skip a cap.
+-- * drilldown_server (LOGIN role, NO password here; Mike sets one out of band, see supabase/README.md): the P3
+--   generation server action connects as it via the server-only env var DRILLDOWN_DB_URL. It has NO table
+--   privileges at all, only EXECUTE on the SECURITY DEFINER functions drilldown_reserve(), drilldown_save_lesson()
+--   and drilldown_quiz_key(). Those take user_id as an argument that the server must take from the verified
+--   session (getClaims/getUser), refuse users whose email is not confirmed, enforce the caps, and can never
+--   write 'published'.
+-- * Publishing: owner SQL only (Mike in the dashboard SQL editor as the table owner, postgres). No role, function,
+--   or app path can publish.
 --
--- Caps (config.mjs DRILLDOWN_CAPS): 2 lessons per user per LA day, 25 lessons globally, 100 provider calls
--- globally (hard stop). Enforced by CHECK constraints on the counter tables (a backstop no writer can exceed)
--- and atomically by drilldown_reserve() (advisory lock per day, raises SQLSTATE 'WR429').
+-- Caps (config.mjs DRILLDOWN_CAPS): per user per LA day 2 lessons / 8 calls; global 25 lessons / 100 calls (hard
+-- stop). Enforced atomically by drilldown_reserve() (advisory lock per day, raises SQLSTATE 'WR429') with CHECK
+-- constraints on the counter tables as a backstop; drilldown_save_lesson() also needs an unused lesson reservation.
 --
 -- Conventions as in earlier migrations: user_id default auth.uid() references auth.users on delete cascade;
--- policies "to authenticated" with (select auth.uid()); revoke all from anon/authenticated, then minimal
--- (column-level) grants; functions SECURITY INVOKER, set search_path = '', fully qualified; EXECUTE revoked
--- from public/anon/authenticated (triggers don't check it). Quiz answers stay server-side (REV-007).
+-- policies "to authenticated" with (select auth.uid()); revoke all, then minimal (column-level) grants. Every
+-- function sets search_path = '' and fully qualifies names; EXECUTE revoked from public/anon/authenticated
+-- (except the read-only drilldown_my_lessons(), granted to authenticated and scoped to auth.uid()).
+-- SECURITY DEFINER functions run as the migration owner (postgres), which owns these tables, so RLS (not FORCEd)
+-- does not apply inside them; each one checks its own inputs. Quiz answers stay server-side (REV-007).
 
--- ---------------------------------------------------------------- admin role
+-- ---------------------------------------------------------------- server role
 do $$
 begin
-  if not exists (select 1 from pg_catalog.pg_roles where rolname = 'drilldown_admin') then
-    create role drilldown_admin nologin;
+  if not exists (select 1 from pg_catalog.pg_roles where rolname = 'drilldown_server') then
+    create role drilldown_server login noinherit nobypassrls nocreatedb nocreaterole;
   end if;
 end;
 $$;
@@ -82,30 +83,15 @@ comment on table public.generated_lessons is
 create index generated_lessons_created_by_idx on public.generated_lessons (created_by);
 create index generated_lessons_cache_idx on public.generated_lessons (parent_lesson_id, choice_id, prompt_version, model) where review_status = 'published';
 
-create function public.generated_lessons_guard()
+create function public.generated_lessons_timestamps()
 returns trigger
 language plpgsql
 security invoker
 set search_path = ''
 as $$
-declare
-  is_admin boolean := pg_catalog.pg_has_role(current_user, 'drilldown_admin', 'MEMBER');
 begin
-  if tg_op = 'INSERT' then
-    if new.review_status = 'published' and not is_admin then
-      raise exception 'only an admin can publish a generated lesson' using errcode = 'WR403';
-    end if;
-  else
-    if new.review_status is distinct from old.review_status and new.review_status = 'published' and not is_admin then
-      raise exception 'only an admin can publish a generated lesson' using errcode = 'WR403';
-    end if;
-    if not is_admin and (new.id, new.created_by, new.parent_lesson_id, new.choice_id, new.prompt_version, new.model, new.lesson, new.sources, new.citations, new.created_at)
-        is distinct from (old.id, old.created_by, old.parent_lesson_id, old.choice_id, old.prompt_version, old.model, old.lesson, old.sources, old.citations, old.created_at) then
-      raise exception 'generated lesson content is immutable' using errcode = 'WR403';
-    end if;
-    if new.review_status is distinct from old.review_status then
-      new.reviewed_at := pg_catalog.now();
-    end if;
+  if tg_op = 'UPDATE' and new.review_status is distinct from old.review_status then
+    new.reviewed_at := pg_catalog.now();
   end if;
   new.published_at := case when new.review_status = 'published'
     then coalesce(case when tg_op = 'UPDATE' then old.published_at end, pg_catalog.now()) end;
@@ -113,21 +99,19 @@ begin
 end;
 $$;
 
-revoke all on function public.generated_lessons_guard() from public, anon, authenticated;
+revoke all on function public.generated_lessons_timestamps() from public, anon, authenticated;
 
-create trigger generated_lessons_guard
+create trigger generated_lessons_timestamps
   before insert or update on public.generated_lessons
-  for each row execute function public.generated_lessons_guard();
+  for each row execute function public.generated_lessons_timestamps();
 
 alter table public.generated_lessons enable row level security;
 
-revoke all on table public.generated_lessons from anon, authenticated, service_role;
-grant select on table public.generated_lessons to authenticated;
-grant select, insert on table public.generated_lessons to service_role;
--- service_role may only move review_status (e.g. pending -> rejected, published -> flagged on a report) and
--- record the unconfirmed claim; the trigger still blocks 'published'.
-grant update (review_status, unconfirmed_claims) on table public.generated_lessons to service_role;
-grant select, insert, update, delete on table public.generated_lessons to drilldown_admin;
+revoke all on table public.generated_lessons from public, anon, authenticated, service_role;
+-- Column-level: never created_by or unconfirmed_claims (REV-013). Clients must list columns (no select *).
+grant select (id, parent_lesson_id, choice_id, prompt_version, model, ai_generated, review_status, lesson, sources,
+              citations, created_at, reviewed_at, published_at)
+  on table public.generated_lessons to authenticated;
 
 create policy "generated_lessons_select_own_or_published"
   on public.generated_lessons for select
@@ -147,10 +131,8 @@ create table public.generated_quiz_keys (
 comment on table public.generated_quiz_keys is 'Answer keys for generated quizzes. No client access; read only server-side for grading.';
 
 alter table public.generated_quiz_keys enable row level security;
-revoke all on table public.generated_quiz_keys from anon, authenticated, service_role;
-grant select, insert on table public.generated_quiz_keys to service_role;
-grant select, insert, update, delete on table public.generated_quiz_keys to drilldown_admin;
--- No policies: authenticated has no grant at all.
+revoke all on table public.generated_quiz_keys from public, anon, authenticated, service_role;
+-- No grants, no policies: read only through drilldown_quiz_key() (drilldown_server).
 
 -- ---------------------------------------------------------------- lesson_reports
 create table public.lesson_reports (
@@ -165,14 +147,12 @@ create table public.lesson_reports (
 );
 
 comment on table public.lesson_reports is
-  'A user flags a generated lesson. The server (service_role) moves a published lesson back to flagged; Mike resolves.';
+  'A user flags a generated lesson. Mike reviews reports and, by owner SQL, unpublishes or rejects.';
 
 alter table public.lesson_reports enable row level security;
-revoke all on table public.lesson_reports from anon, authenticated, service_role;
-grant select on table public.lesson_reports to authenticated;
+revoke all on table public.lesson_reports from public, anon, authenticated, service_role;
+grant select (id, lesson_id, reason, created_at, resolved_at) on table public.lesson_reports to authenticated;
 grant insert (lesson_id, reason) on table public.lesson_reports to authenticated;
-grant select on table public.lesson_reports to service_role;
-grant select, update (resolved_at) on table public.lesson_reports to drilldown_admin;
 
 create policy "lesson_reports_select_own"
   on public.lesson_reports for select
@@ -210,12 +190,9 @@ comment on table public.drilldown_usage_global is 'Global daily drill-down usage
 
 alter table public.drilldown_usage_user enable row level security;
 alter table public.drilldown_usage_global enable row level security;
-revoke all on table public.drilldown_usage_user from anon, authenticated, service_role;
-revoke all on table public.drilldown_usage_global from anon, authenticated, service_role;
+revoke all on table public.drilldown_usage_user from public, anon, authenticated, service_role;
+revoke all on table public.drilldown_usage_global from public, anon, authenticated, service_role;
 grant select on table public.drilldown_usage_user to authenticated;
-grant select, insert, update on table public.drilldown_usage_user to service_role;
-grant select, insert, update on table public.drilldown_usage_global to service_role;
-grant select, insert, update, delete on table public.drilldown_usage_user, public.drilldown_usage_global to drilldown_admin;
 
 create policy "drilldown_usage_user_select_own"
   on public.drilldown_usage_user for select
@@ -223,12 +200,29 @@ create policy "drilldown_usage_user_select_own"
   using (user_id = (select auth.uid()));
 -- drilldown_usage_global: no authenticated grant or policy.
 
--- Atomically reserve usage before provider calls. p_new_lesson counts one lesson toward the per-user and global
+-- Generation needs a confirmed email (auth.users.email_confirmed_at). Raises WR403 otherwise. Internal helper.
+create function public.drilldown_require_verified(p_user uuid)
+returns void
+language plpgsql
+security definer
+set search_path = ''
+as $$
+begin
+  if not exists (select 1 from auth.users u where u.id = p_user and u.email_confirmed_at is not null) then
+    raise exception 'drilldown: email not verified' using errcode = 'WR403';
+  end if;
+end;
+$$;
+
+revoke all on function public.drilldown_require_verified(uuid) from public, anon, authenticated;
+
+-- SECURITY DEFINER, drilldown_server only. Atomically reserve usage before provider calls; p_user must come from
+-- the verified session. p_new_lesson counts one lesson toward the per-user and global
 -- lesson caps; p_calls counts provider calls. Raises WR429 (cap name in the message) and changes nothing on a cap.
 create function public.drilldown_reserve(p_user uuid, p_calls integer, p_new_lesson boolean)
 returns void
 language plpgsql
-security invoker
+security definer
 set search_path = ''
 as $$
 declare
@@ -240,6 +234,7 @@ begin
   if p_user is null or p_calls is null or p_calls < 0 or p_calls > 4 then
     raise exception 'bad reservation' using errcode = '22023';
   end if;
+  perform public.drilldown_require_verified(p_user);
   perform pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended('drilldown_usage:' || d::text, 0));
   insert into public.drilldown_usage_global (day) values (d) on conflict (day) do nothing;
   insert into public.drilldown_usage_user (user_id, day) values (p_user, d) on conflict (user_id, day) do nothing;
@@ -255,7 +250,7 @@ end;
 $$;
 
 revoke all on function public.drilldown_reserve(uuid, integer, boolean) from public, anon, authenticated;
-grant execute on function public.drilldown_reserve(uuid, integer, boolean) to service_role, drilldown_admin;
+grant execute on function public.drilldown_reserve(uuid, integer, boolean) to drilldown_server;
 
 -- ---------------------------------------------------------------- generated_lesson_completions (progress)
 create table public.generated_lesson_completions (
@@ -275,7 +270,7 @@ comment on table public.generated_lesson_completions is
   'Best quiz attempt per user and generated lesson (same rules as lesson_completions). Not counted toward mastery.';
 
 alter table public.generated_lesson_completions enable row level security;
-revoke all on table public.generated_lesson_completions from anon, authenticated;
+revoke all on table public.generated_lesson_completions from public, anon, authenticated, service_role;
 grant select, insert on table public.generated_lesson_completions to authenticated;
 grant update (score, total, passed, completed_at) on table public.generated_lesson_completions to authenticated;
 
@@ -296,11 +291,81 @@ create policy "generated_lesson_completions_update_own"
   using (user_id = (select auth.uid()))
   with check (user_id = (select auth.uid()));
 
--- ---------------------------------------------------------------- admin review policies
--- drilldown_admin is not BYPASSRLS, so it gets explicit full-access policies. The owner role Mike uses in the
--- dashboard SQL editor owns these tables and is not subject to RLS (no FORCE ROW LEVEL SECURITY).
-create policy "generated_lessons_admin_all" on public.generated_lessons for all to drilldown_admin using (true) with check (true);
-create policy "generated_quiz_keys_admin_all" on public.generated_quiz_keys for all to drilldown_admin using (true) with check (true);
-create policy "lesson_reports_admin_all" on public.lesson_reports for all to drilldown_admin using (true) with check (true);
-create policy "drilldown_usage_user_admin_all" on public.drilldown_usage_user for all to drilldown_admin using (true) with check (true);
-create policy "drilldown_usage_global_admin_all" on public.drilldown_usage_global for all to drilldown_admin using (true) with check (true);
+
+-- ---------------------------------------------------------------- server write/read path (drilldown_server only)
+-- Store one generated lesson + its quiz key. Status is pending/flagged/rejected only (never published). Needs an
+-- unused lesson reservation for p_user today (drilldown_reserve(..., true)), so writes can't outrun the caps.
+create function public.drilldown_save_lesson(
+  p_user uuid, p_id text, p_parent_lesson_id text, p_choice_id text, p_prompt_version text, p_model text,
+  p_review_status text, p_lesson jsonb, p_sources jsonb, p_citations jsonb, p_unconfirmed_claims jsonb,
+  p_answers jsonb, p_explanations jsonb)
+returns void
+language plpgsql
+security definer
+set search_path = ''
+as $$
+declare
+  d date := (pg_catalog.now() at time zone 'America/Los_Angeles')::date;
+  reserved integer;
+  used integer;
+begin
+  if p_user is null then raise exception 'bad lesson' using errcode = '22023'; end if;
+  if p_review_status is null or p_review_status not in ('pending', 'flagged', 'rejected') then
+    raise exception 'drilldown: server cannot write status %', p_review_status using errcode = 'WR403';
+  end if;
+  perform public.drilldown_require_verified(p_user);
+  perform pg_catalog.pg_advisory_xact_lock(pg_catalog.hashtextextended('drilldown_usage:' || d::text, 0));
+  select u.lessons into reserved from public.drilldown_usage_user u where u.user_id = p_user and u.day = d;
+  select pg_catalog.count(*) into used from public.generated_lessons g
+    where g.created_by = p_user and (g.created_at at time zone 'America/Los_Angeles')::date = d;
+  if coalesce(reserved, 0) <= used then
+    raise exception 'drilldown cap: no reservation' using errcode = 'WR429';
+  end if;
+  insert into public.generated_lessons (id, created_by, parent_lesson_id, choice_id, prompt_version, model,
+      ai_generated, review_status, lesson, sources, citations, unconfirmed_claims)
+    values (p_id, p_user, p_parent_lesson_id, p_choice_id, p_prompt_version, p_model,
+      true, p_review_status, p_lesson, p_sources, coalesce(p_citations, '{}'::jsonb), coalesce(p_unconfirmed_claims, '[]'::jsonb));
+  insert into public.generated_quiz_keys (lesson_id, answers, explanations) values (p_id, p_answers, p_explanations);
+end;
+$$;
+
+revoke all on function public.drilldown_save_lesson(uuid, text, text, text, text, text, text, jsonb, jsonb, jsonb, jsonb, jsonb, jsonb) from public, anon, authenticated;
+grant execute on function public.drilldown_save_lesson(uuid, text, text, text, text, text, text, jsonb, jsonb, jsonb, jsonb, jsonb, jsonb) to drilldown_server;
+
+-- Quiz key for grading, only for a lesson p_user may see (published, or own pending/flagged).
+create function public.drilldown_quiz_key(p_user uuid, p_lesson_id text)
+returns table (answers jsonb, explanations jsonb)
+language sql
+stable
+security definer
+set search_path = ''
+as $$
+  select k.answers, k.explanations
+  from public.generated_quiz_keys k
+  join public.generated_lessons g on g.id = k.lesson_id
+  where k.lesson_id = p_lesson_id
+    and (g.review_status = 'published' or (g.created_by = p_user and g.review_status in ('pending', 'flagged')));
+$$;
+
+revoke all on function public.drilldown_quiz_key(uuid, text) from public, anon, authenticated;
+grant execute on function public.drilldown_quiz_key(uuid, text) to drilldown_server;
+
+-- Owners read their own lessons' unconfirmed claim (the column is not client-selectable). Read-only, scoped to
+-- auth.uid(), returns nothing for anon. The one definer function granted to authenticated.
+create function public.drilldown_my_lessons()
+returns table (id text, review_status text, unconfirmed_claims jsonb, created_at timestamptz)
+language sql
+stable
+security definer
+set search_path = ''
+as $$
+  select g.id, g.review_status, g.unconfirmed_claims, g.created_at
+  from public.generated_lessons g
+  where g.created_by = (select auth.uid()) and g.review_status in ('pending', 'flagged')
+  order by g.created_at desc;
+$$;
+
+revoke all on function public.drilldown_my_lessons() from public, anon, authenticated;
+grant execute on function public.drilldown_my_lessons() to authenticated;
+
+grant usage on schema public to drilldown_server;

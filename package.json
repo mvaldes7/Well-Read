@@ -13,7 +13,8 @@
     "lint": "eslint .",
     "typecheck": "next typegen && tsc --noEmit",
     "test": "node --test tests/unit/*.test.mjs",
-    "test:db": "scripts/test-db-local.sh"
+    "test:db": "scripts/test-db-local.sh",
+    "check:bundle": "node scripts/check-client-bundle.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "0.12.7",

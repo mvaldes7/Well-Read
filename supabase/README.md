@@ -30,7 +30,16 @@ In the repo but **not** applied to any Supabase project yet. Apply only with Mik
 
 | Version          | File                                       | Task | Adds |
 | ---------------- | ------------------------------------------ | ---- | ---- |
-| `20261102231600` | `migrations/20261102231600_drilldowns.sql` | Drill-downs P2 | `generated_lessons`, `generated_quiz_keys`, `lesson_reports`, `drilldown_usage_user`/`_global`, `generated_lesson_completions`, `drilldown_reserve()`, role `drilldown_admin`. Tested only on a local throwaway Postgres (`pnpm test:db`). Introduces the first **service_role** grants (server-only, P3), see the file header. |
+| `20261102231600` | `migrations/20261102231600_drilldowns.sql` | Drill-downs P2 | `generated_lessons`, `generated_quiz_keys`, `lesson_reports`, `drilldown_usage_user`/`_global`, `generated_lesson_completions`, SECURITY DEFINER `drilldown_reserve()`/`drilldown_save_lesson()`/`drilldown_quiz_key()`/`drilldown_my_lessons()`, LOGIN role `drilldown_server` (no password; no table privileges). Tested only on a local throwaway Postgres (`pnpm test:db`). No service_role. Password and env setup: see below. |
+
+## `drilldown_server` (after 20261102231600 is applied)
+
+The drill-down server uses this narrow role, **not** the service role, which stays forbidden. The migration creates it without a password. Mike:
+
+1. In the SQL editor, sets a password with `alter role drilldown_server with password '<long random>';`. Generate it locally and never commit it or paste it in chat.
+2. Builds a connection URL for `drilldown_server` from the project's connection string, using the pooler (session mode) or the direct host.
+3. Stores it as the server-only env var `DRILLDOWN_DB_URL`, Sensitive, in Vercel. It must never have a `NEXT_PUBLIC_` prefix. Only `src/lib/drilldowns/server-db.mjs` reads it.
+4. Rotates it by running `alter role` again, or disables it with `alter role drilldown_server nologin;`.
 
 ## The `STATUS:` header comments are historical
 
