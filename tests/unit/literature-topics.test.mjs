@@ -67,7 +67,7 @@ test('lesson 5: Homer (les_hm01) shape, Library Wall volume, mastery across 4 to
   assert.deepEqual([t.slug, t.title, t.kind], ['homer', 'Homer', 'person']);
   const l = t.lessons[0];
   assert.equal(l.title, 'Homer: War, Homecoming, and the Making of an Epic');
-  assert.deepEqual([l.sections.length, l.keyFacts.length, l.quiz.length, l.sources.length], [4, 6, 6, 4]);
+  assert.deepEqual([l.sections.length, l.keyFacts.length, l.quiz.length, l.sources.length], [4, 6, 6, 6]);
   assert.deepEqual(l.quiz.map((q) => q.answerIndex), [2, 0, 3, 1, 2, 0]);
   assert.ok(l.quiz.every((q) => q.explanation.length > 0));
   assert.equal(new Set(l.sources.map((s) => s.url)).size, l.sources.length);

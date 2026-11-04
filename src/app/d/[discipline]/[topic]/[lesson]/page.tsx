@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import Breadcrumbs from "@/components/Breadcrumbs";
-import { LessonStatus } from "@/components/Progress";
+import { LessonStatus, QuizWithProgress } from "@/components/Progress";
 import Quiz from "@/components/Quiz";
 import { disciplines, getDiscipline, getLesson, getTopic } from "@/content";
 import { lessonHasFetchableSource } from "@/lib/drilldowns/sources.mjs";
@@ -38,6 +38,11 @@ export default async function LessonPage({
 
   const topicHref = `/d/${discipline.slug}/${topic.slug}`;
   const lessonNo = topic.lessons.findIndex((l) => l.id === lesson.id) + 1;
+  const quizProps = {
+    lessonId: lesson.id,
+    questions: toPublicQuestions(lesson.quiz),
+    digDeeper: drilldownsEnabled(process.env) && lessonHasFetchableSource(lesson) ? lesson.digDeeper?.map((c) => ({ id: c.id, label: c.label })) : undefined,
+  };
   return (
     <article className="lesson narrow">
       <Breadcrumbs
@@ -84,11 +89,10 @@ export default async function LessonPage({
           <LessonStatus lessonId={lesson.id} />
         </Suspense>
         {/* Only question text and options reach the client; answers and explanations stay server-side. */}
-        <Quiz
-          lessonId={lesson.id}
-          questions={toPublicQuestions(lesson.quiz)}
-          digDeeper={drilldownsEnabled(process.env) && lessonHasFetchableSource(lesson) ? lesson.digDeeper?.map((c) => ({ id: c.id, label: c.label })) : undefined}
-        />
+        {/* Dig deeper is shown on revisit too once this user has any recorded attempt (read inside Suspense). */}
+        <Suspense fallback={<Quiz {...quizProps} />}>
+          <QuizWithProgress {...quizProps} />
+        </Suspense>
       </section>
       {lesson.sources && lesson.sources.length > 0 && (
         <section className="sources" aria-labelledby="sources-heading">

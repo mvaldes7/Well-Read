@@ -1,5 +1,8 @@
 import { getDiscipline } from "@/content";
 import { getMyProgress } from "@/lib/progress/data";
+import { digDeeperUnlocked } from "@/lib/drilldowns/gate.mjs";
+import Quiz from "./Quiz";
+import type { ComponentProps } from "react";
 import { NOT_STARTED, masteryFor, nextTierText, passedInDiscipline } from "@/lib/progress/mastery.mjs";
 
 // Per-user completion UI. Each reads the session, so render inside <Suspense>.
@@ -54,4 +57,14 @@ export async function DisciplineMastery({ disciplineSlug }: { disciplineSlug: st
       </div>
     </div>
   );
+}
+
+/**
+ * The lesson quiz, told whether Dig deeper is already unlocked for this user (any recorded attempt for this lesson),
+ * so the choices also show on a revisit, not only on the result screen right after grading.
+ */
+export async function QuizWithProgress(props: Omit<ComponentProps<typeof Quiz>, "unlocked">) {
+  if (!props.digDeeper?.length) return <Quiz {...props} />;
+  const progress = await getMyProgress();
+  return <Quiz {...props} unlocked={progress.status === "ok" && digDeeperUnlocked(progress.lookup, props.lessonId)} />;
 }
