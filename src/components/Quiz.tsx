@@ -14,6 +14,8 @@ interface Props {
   questions: PublicQuestion[];
   /** Stored Dig deeper choices; passed only when the WELL_READ_DRILLDOWNS flag is on. */
   digDeeper?: DigDeeperOption[];
+  /** True when the user already has a recorded attempt for this lesson: show Dig deeper on the quiz form too (revisit). */
+  unlocked?: boolean;
 }
 
 export default function Quiz(props: Props) {
@@ -26,7 +28,7 @@ export default function Quiz(props: Props) {
   return <QuizAttempt key={attempt} {...props} onRetry={() => setAttempt((a) => a + 1)} />;
 }
 
-function QuizAttempt({ lessonId, questions, digDeeper, onRetry }: Props & { onRetry: () => void }) {
+function QuizAttempt({ lessonId, questions, digDeeper, unlocked, onRetry }: Props & { onRetry: () => void }) {
   const [state, dispatch, pending] = useActionState<QuizState, unknown>(submitQuiz, { status: "idle" });
   const [, startTransition] = useTransition();
   const [missing, setMissing] = useState(false);
@@ -125,6 +127,8 @@ function QuizAttempt({ lessonId, questions, digDeeper, onRetry }: Props & { onRe
           {pending ? "Checking…" : "Submit"}
         </button>
       </div>
+      {/* Revisit: already attempted, so Dig deeper stays unlocked without retaking the quiz. */}
+      {unlocked && digDeeper && digDeeper.length > 0 && <DigDeeper lessonId={lessonId} choices={digDeeper} />}
     </form>
   );
 }

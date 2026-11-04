@@ -63,3 +63,24 @@ test('describeReport names the failing step and per-URL results without secrets'
   assert.match(g, /step=generate\/factcheck calls=4/);
   assert.match(g, /unconfirmed \[fact2,quiz5\] -> reject/);
 });
+
+// QA retest (PR #34): no Dig deeper button on revisit of an already completed lesson.
+import { digDeeperUnlocked } from '../../src/lib/drilldowns/gate.mjs';
+test('digDeeperUnlocked: any recorded attempt for THIS lesson unlocks it on revisit', () => {
+  assert.equal(digDeeperUnlocked(new Map([['les_ch01', { passed: true }]]), 'les_ch01'), true);
+  assert.equal(digDeeperUnlocked(new Map([['les_ch01', { passed: false }]]), 'les_ch01'), true);
+  assert.equal(digDeeperUnlocked(new Map([['les_fr02', { passed: true }]]), 'les_ch01'), false);
+  assert.equal(digDeeperUnlocked(new Map(), 'les_ch01'), false);
+  assert.equal(digDeeperUnlocked(null, 'les_ch01'), false);
+});
+
+test('revisit wiring: page uses QuizWithProgress; Quiz form renders DigDeeper when unlocked', () => {
+  const page = readFileSync(new URL('../../src/app/d/[discipline]/[topic]/[lesson]/page.tsx', import.meta.url), 'utf8');
+  assert.match(page, /<QuizWithProgress \{\.\.\.quizProps\} \/>/);
+  const progress = readFileSync(new URL('../../src/components/Progress.tsx', import.meta.url), 'utf8');
+  assert.match(progress, /digDeeperUnlocked\(progress\.lookup, props\.lessonId\)/);
+  const quiz = readFileSync(new URL('../../src/components/Quiz.tsx', import.meta.url), 'utf8');
+  const form = quiz.slice(quiz.indexOf('<form'));
+  assert.match(form, /unlocked && digDeeper && digDeeper\.length > 0 && <DigDeeper/);
+  assert.equal((quiz.match(/<DigDeeper /g) ?? []).length, 2); // result screen + revisit (form), never both at once
+});

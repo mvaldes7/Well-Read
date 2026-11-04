@@ -28,6 +28,16 @@ export function hasCompletedLesson(rows, lessonId) {
 }
 
 /**
+ * Is Dig deeper unlocked on (re)visit? Any recorded graded attempt for this lesson counts (Mike's rule: it unlocks
+ * after ANY completed quiz, pass or fail), matching hasCompletedLesson on the server.
+ * @param {{ has: (id: string) => boolean } | null | undefined} lookup the signed-in user's completion lookup (by lesson id)
+ * @param {string} lessonId
+ */
+export function digDeeperUnlocked(lookup, lessonId) {
+  return Boolean(lookup && typeof lookup.has === "function" && lookup.has(lessonId));
+}
+
+/**
  * Validate a Dig deeper request.
  * @param {ReadonlyArray<any>} disciplines parsed content
  * @param {unknown} input raw request body / form values
