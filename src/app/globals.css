@@ -606,5 +606,20 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
 /* P4 owner review screen */
 .review-filters { display: flex; gap: 16px; flex-wrap: wrap; margin: 8px 0 24px; }
 .review-filters [aria-current="page"] { font-weight: 600; text-decoration: underline; }
-.review-item { border-top: 1px solid var(--char-line); padding-top: 18px; }
+.review-item { border-top: 1px solid var(--line); padding: 22px 0 18px; min-width: 0; }
+.review-item h2 { font-size: 26px; margin: 10px 0 2px; overflow-wrap: anywhere; }
+/* Meta row: full width, normal case, small muted text that wraps naturally (not .eyebrow / .entry). */
+.review-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; font-size: 13px; line-height: 1.4; color: var(--sub); letter-spacing: normal; text-transform: none; }
+.pill { display: inline-block; padding: 1px 9px; border-radius: 999px; border: 1px solid var(--line); font-size: 12px; line-height: 1.6; text-transform: capitalize; color: var(--body); }
+.pill-flagged, .pill-reported { border-color: var(--brass); color: var(--brass-ink); }
+.review-from { margin: 0; color: var(--sub); font-size: 15px; }
+.review-gen-title { margin: 6px 0 0; font-size: 14px; color: var(--body); }
+.review-details { margin: 8px 0 4px; font-size: 13px; color: var(--sub); }
+.review-details summary { cursor: pointer; }
+.review-details dl { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; margin: 6px 0 0; }
+.review-details dd { margin: 0; overflow-wrap: anywhere; }
 .review-actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 16px 0 8px; }
+/* .btn-ghost is styled for dark surfaces (header); on the light review page its label was invisible. */
+.review-actions .btn-ghost { color: var(--ink); border-color: var(--line); }
+.review-actions .btn-ghost:hover { border-color: var(--brass); }
+.pill-reported { text-transform: none; }
