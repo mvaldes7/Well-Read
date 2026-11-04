@@ -313,3 +313,72 @@ Implemented, **not enabled**. The flag is exactly `"1"` to turn on and is curren
 Before enabling (none of this is done): apply the P2 migration to the target DB; set a password for
 `drilldown_server`; set server-only Sensitive env vars `GEMINI_API_KEY` and `DRILLDOWN_DB_URL` (drilldown_server, pooler
 URL, sslmode=require); then `WELL_READ_DRILLDOWNS=1` and redeploy.
+
+## P4: Owner review and publish (behind WELL_READ_DRILLDOWNS)
+
+Branch `feat/drilldowns-p4-review`. Screen `/review` (filters `?filter=pending|flagged|reported`), actions via
+`POST /api/drilldowns/review` with body exactly `{ lessonId, action }`, where action is `publish`, `reject`, `unpublish`
+or `clear_report`.
+
+**What the current schema has (20261102231600):**
+- `generated_lessons` has the lesson body, sources, citations, `review_status` and `unconfirmed_claims`. That is the
+  single flagged claim `{ref, claim, reason}`, or `[]`.
+- `lesson_reports` has `reason` and `resolved_at`.
+- **Per-claim fact-check results are NOT stored.** The 12 `{ref, supported, note}` items exist only in the generation
+  report in memory, and only the flagged one is saved.
+- No role or function can publish. `drilldown_server` has no table access. Authenticated users can't read
+  `unconfirmed_claims`.
+
+**Plan (draft migration `20261104214500_drilldown_review.sql`, NOT applied):**
+- Add `generated_lessons.fact_check jsonb` (default `[]`, at most 12 objects with `ref` and `supported`).
+  - It gets no column grant to authenticated.
+  - New `drilldown_save_fact_check(user, id, items)` (drilldown_server only) stores it once. It only works for the
+    caller's own lesson, created today (LA time), before review.
+  - The P3 route calls it right after `drilldown_save_lesson()`. This is best effort: before the migration is applied
+    the call fails, generation is unaffected, and the screen says the per-claim results weren't stored.
+  - Lessons generated before this ship show only their flag.
+- **Owner identity:**
+  - The server takes the user id from the verified session (`getClaims()`, which verifies the JWT) and passes it to
+    the owner-only SECURITY DEFINER functions.
+  - Each function checks it against `public.drilldown_owner`, a single-row table holding Mike's `auth.users` id. The
+    owner's email must also be confirmed. Otherwise the function raises `WR403`.
+  - The owner id lives in the DB (set by owner SQL), not in env. There is no client-side check to trust.
+  - Like the P3 functions, this trusts the server to pass the session's id: anyone holding `DRILLDOWN_DB_URL` could
+    claim to be the owner. That URL is server-only and Sensitive.
+- `drilldown_review_queue(owner)` lists pending, flagged and open-reported lessons, including published ones.
+  - It returns content, sources, citations, the unconfirmed claim, per-claim results and open report reasons.
+  - It never returns the creator's id, the reporter's id or quiz answers. It is capped at 200 rows.
+- `drilldown_review_action(owner, id, action)`:
+  - `publish`: pending/flagged become `published`. Every signed-in user can then read the lesson through the existing
+    RLS policy. Rejected and already-published lessons can't be published.
+  - `reject`: only pending or flagged become `rejected` (never shared), and open reports are resolved (REV-019).
+  - `unpublish`: only published becomes `rejected`, hidden from everyone again, and open reports are resolved
+    (REV-019). The UI asks for confirmation first, as it does for reject. It reuses `rejected` rather than adding an
+    `unpublished` status: the status check in the applied P2 migration allows only pending/flagged/published/rejected,
+    and a new status would mean altering that constraint and re-checking the RLS policy, for a state that behaves
+    exactly like rejected. `reviewed_at` records when it happened and `published_at` is cleared by the existing trigger.
+  - `clear_report`: resolves open reports, status unchanged.
+  - An action that isn't allowed in the current state raises `WR404`.
+- All new functions:
+  - use `search_path ''`;
+  - have EXECUTE revoked from public/anon/authenticated/service_role and granted only to `drilldown_server`.
+  - `drilldown_require_owner` is internal. No service_role anywhere.
+
+**App:**
+- Pure logic lives in `review.mjs`: the queue filters, and the gate order flag → same-origin → session → strict body → DB.
+- Responses:
+  - flag off → 404
+  - signed out → 404 on both the page and the API, with no sign-in link (REV-019)
+  - non-owner (`WR403`) → 404, so the screen's existence isn't revealed
+  - cross-origin → 403
+  - action not allowed (`WR404`) → 409
+- DB access goes only through `server-db.mjs` (`server-only`). Quiz keys are never read.
+- Not in P4: reusing a published lesson instead of generating a new one (the cache lookup on `/api/drilldowns`).
+  Publishing makes the lesson shared and readable, but the generation route doesn't look it up yet. That is a
+  follow-up.
+
+**Before the screen works (Mike):**
+1. Review and apply `20261104214500` after `20261102231600`.
+2. As the table owner in the SQL editor:
+   `insert into public.drilldown_owner (user_id) values ('<Mike's auth.users id>');`
+3. Until then, `/review` returns 404 for everyone. The app needs no new env var.

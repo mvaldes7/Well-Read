@@ -7,9 +7,9 @@ const dir = new URL('../../supabase/migrations/', import.meta.url);
 const raw = readFileSync(new URL('20261102231600_drilldowns.sql', dir), 'utf8');
 const sql = raw.split('\n').filter((l) => !l.trim().startsWith('--')).join('\n');
 
-test('drilldowns migration is new, last, and marked unapplied', () => {
+test('drilldowns migration is new, last (before the P4 review draft), and marked unapplied', () => {
   const files = readdirSync(dir).filter((f) => f.endsWith('.sql')).sort();
-  assert.equal(files.at(-1), '20261102231600_drilldowns.sql');
+  assert.deepEqual(files.slice(-2), ['20261102231600_drilldowns.sql', '20261104214500_drilldown_review.sql']);
   assert.match(raw, /STATUS: UNAPPLIED/);
 });
 

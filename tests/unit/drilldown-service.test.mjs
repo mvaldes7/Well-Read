@@ -253,3 +253,25 @@ test('server-db binds jsonb with sql.json, never JSON.stringify (REV-016 double-
   assert.doesNotMatch(t, /JSON\.stringify|::jsonb/);
   assert.match(t, /s\.json\(/);
 });
+
+// P4: per-claim fact-check results are stored after the lesson (best effort; mocked DB, no Gemini).
+test('P4: saves per-claim fact-check results after a flagged lesson', async () => {
+  const s = setup({ gemQueue: [gem(fakeLesson()), gem(fc(1))] });
+  s.db.factChecks = [];
+  s.db.saveFactCheck = async (u, id, items) => { s.db.factChecks.push([u, id, items]); };
+  const r = await s.run();
+  assert.equal(r.status, 200); assert.equal(r.body.reviewStatus, 'flagged');
+  assert.equal(s.db.factChecks.length, 1);
+  const [u, id, items] = s.db.factChecks[0];
+  assert.equal(u, USER); assert.equal(id, s.db.saves[0].id);
+  assert.equal(items.length, 12);
+  assert.deepEqual(items[0], { ref: 'fact1', supported: false, note: 'not in source 0' });
+  assert.deepEqual(items[11], { ref: 'quiz6', supported: true });
+});
+
+test('P4: a failing saveFactCheck (migration not applied yet) does not change the result', async () => {
+  const s = setup();
+  s.db.saveFactCheck = async () => { throw Object.assign(new Error('function does not exist'), { code: '42883' }); };
+  const r = await s.run();
+  assert.equal(r.status, 200); assert.equal(r.body.reviewStatus, 'pending');
+});

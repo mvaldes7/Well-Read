@@ -3,8 +3,9 @@
 // component (`import "server-only"` makes that a build error); never rename the env var with a NEXT_PUBLIC_ prefix.
 // Second layer: CI's `pnpm check:bundle` scans .next/static.
 //
-// drilldown_server has no table privileges: it can only call drilldown_reserve(), drilldown_save_lesson() and
-// drilldown_quiz_key(). user_id always comes from the caller's verified session (route.ts -> service.mjs), never from
+// drilldown_server has no table privileges: it can only call drilldown_reserve(), drilldown_save_lesson(),
+// drilldown_quiz_key() and (P4 draft migration 20261104214500) drilldown_save_fact_check() and the owner-only
+// drilldown_review_queue() / drilldown_review_action(). user_id always comes from the caller's verified session (route.ts -> service.mjs), never from
 // the request. Users read lessons with their own session (RLS + column grants), never through this connection.
 // Connection: max 1 per server instance (the role's connection limit is 5), prepare: false so Supavisor transaction
 // mode (port 6543) works too.
@@ -58,6 +59,19 @@ export function drilldownDbFor(s) {
         ${p.model}, ${p.reviewStatus}, ${j(p.lesson)}, ${j(p.sources)}, ${j(p.citations)},
         ${j(p.unconfirmedClaims)}, ${j(p.answers)}, ${j(p.explanations)})`;
     },
+    /** P4 (20261104214500): per-claim fact-check results for p_user's own lesson created today. @param {string} userId @param {string} id @param {unknown} items */
+    async saveFactCheck(userId, id, items) {
+      await s`select public.drilldown_save_fact_check(${userId}::uuid, ${id}, ${j(items)})`;
+    },
+    /** P4 owner-only queue; ownerId = the caller's verified session user id (the function checks it, WR403 otherwise). @param {string} ownerId */
+    async reviewQueue(ownerId) {
+      return [...await s`select * from public.drilldown_review_queue(${ownerId}::uuid)`];
+    },
+    /** @param {string} ownerId @param {string} lessonId @param {"publish" | "reject" | "unpublish" | "clear_report"} action @returns {Promise<string>} */
+    async reviewAction(ownerId, lessonId, action) {
+      const [row] = await s`select public.drilldown_review_action(${ownerId}::uuid, ${lessonId}, ${action}) as status`;
+      return String(row.status);
+    },
   };
 }
 
@@ -66,3 +80,12 @@ export const reserve = (userId, calls, newLesson) => drilldownDbFor(db()).reserv
 
 /** @param {Parameters<ReturnType<typeof drilldownDbFor>["saveLesson"]>[0]} p */
 export const saveLesson = (p) => drilldownDbFor(db()).saveLesson(p);
+
+/** @param {string} userId @param {string} id @param {unknown} items */
+export const saveFactCheck = (userId, id, items) => drilldownDbFor(db()).saveFactCheck(userId, id, items);
+
+/** @param {string} ownerId */
+export const reviewQueue = (ownerId) => drilldownDbFor(db()).reviewQueue(ownerId);
+
+/** @param {string} ownerId @param {string} lessonId @param {"publish" | "reject" | "unpublish" | "clear_report"} action */
+export const reviewAction = (ownerId, lessonId, action) => drilldownDbFor(db()).reviewAction(ownerId, lessonId, action);
