@@ -68,6 +68,18 @@ export function describeReport(report) {
   return `step=${report?.attempts?.length ? "generate/factcheck" : "source_fetch"} calls=${report?.calls?.length ?? 0} fetch=[${fetch}]${attempts ? ` attempts=[${attempts}]` : ""}`;
 }
 
+/**
+ * Per-claim fact-check results of the last attempt, trimmed to the stored shape [{ref, supported, note?}] (max 12).
+ * @param {any} report
+ */
+export function factCheckItems(report) {
+  const at = report?.attempts?.[report.attempts.length - 1];
+  const items = Array.isArray(at?.factCheck?.items) ? at.factCheck.items : [];
+  return items.slice(0, 12).filter((/** @type {any} */ i) => i && typeof i.ref === "string").map((/** @type {any} */ i) => ({
+    ref: i.ref.slice(0, 20), supported: Boolean(i.supported), ...(typeof i.note === "string" && i.note ? { note: i.note.slice(0, 300) } : {}),
+  }));
+}
+
 /** pending (0 unconfirmed) / flagged (exactly 1) / rejected (2+ after the regenerate budget, or nothing usable). @param {any} report */
 export function reviewStatusOf(report) {
   if (!report.generated || !String(report.verdict).startsWith("passed")) return "rejected";
@@ -81,7 +93,8 @@ export function reviewStatusOf(report) {
  *   disciplines: ReadonlyArray<any>,
  *   getUserId: () => Promise<string | null>,
  *   getCompletionRows: (lessonId: string) => Promise<ReadonlyArray<{ lesson_id?: unknown }>>,
- *   db: { reserve: (userId: string, calls: number, newLesson: boolean) => Promise<void>, saveLesson: (p: any) => Promise<void> },
+ *   db: { reserve: (userId: string, calls: number, newLesson: boolean) => Promise<void>, saveLesson: (p: any) => Promise<void>,
+ *     saveFactCheck?: (userId: string, id: string, items: unknown) => Promise<void> },
  *   generate: (a: { lessonId: string, choiceId: string, onBeforeCall: () => Promise<void> }) => Promise<any>,
  *   limiter: { take: () => boolean },
  *   billing?: { stopped: boolean },
@@ -117,13 +130,19 @@ export async function handleDigDeeper(deps) {
   log(`drilldown ${gate.lessonId}/${gate.choice.id}: ${describeReport(report)}`);
   if (report.billingStop) { billing.stopped = true; return failure("billing_stop"); }
   const status = reviewStatusOf(report);
-  const save = (/** @type {"pending" | "flagged" | "rejected"} */ reviewStatus) => {
+  const save = async (/** @type {"pending" | "flagged" | "rejected"} */ reviewStatus) => {
     const { lesson, answers, explanations } = splitLesson(report.generated);
-    return db.saveLesson({
+    await db.saveLesson({
       userId, id: report.generated.id, parentLessonId: gate.lessonId, choiceId: gate.choice.id, promptVersion,
       model: report.model, reviewStatus, lesson, sources: report.generated.sources, citations: report.citations ?? {},
       unconfirmedClaims: reviewStatus === "flagged" ? [report.flag] : [], answers, explanations,
     });
+    // P4: per-claim results for Mike's review screen. Best effort: the lesson is already saved, and before the P4
+    // migration (20261104214500) is applied the function doesn't exist; the review screen then shows only the flag.
+    const items = factCheckItems(report);
+    if (db.saveFactCheck && items.length) {
+      try { await db.saveFactCheck(userId, report.generated.id, items); } catch { log(`drilldown ${report.generated.id}: fact check not stored`); }
+    }
   };
   if (status === "rejected") {
     if (report.stopError instanceof StopError) return failure(/** @type {any} */ (report.stopError).stopKind);

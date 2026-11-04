@@ -44,6 +44,18 @@ try {
   await assert.rejects(server`select id from public.generated_lessons`, (e) => e.code === "42501");
   const [usage] = await admin`select lessons, calls from public.drilldown_usage_user where user_id = ${U}`;
   assert.deepEqual({ ...usage }, { lessons: 2, calls: 2 });
+  // P4 (20261104214500): fact_check jsonb round-trip, owner gate and actions through postgres.js.
+  await db.saveFactCheck(U, "gen_nodetest01", [{ ref: "fact1", supported: true }, { ref: "quiz3", supported: false, note: "n" }]);
+  await assert.rejects(db.reviewQueue(U), (e) => e.code === "WR403");
+  await admin`delete from public.drilldown_owner`;
+  await admin`insert into public.drilldown_owner (user_id) values (${U})`;
+  const q = await db.reviewQueue(U);
+  const mine = q.find((r) => r.id === "gen_nodetest01");
+  assert.equal(Array.isArray(mine.fact_check) && mine.fact_check[1].note, "n");
+  assert.equal(Array.isArray(mine.open_reports), true);
+  assert.equal(await db.reviewAction(U, "gen_nodetest01", "publish"), "published");
+  assert.equal(await db.reviewAction(U, "gen_nodetest02", "reject"), "rejected");
+  await assert.rejects(db.reviewAction(U2, "gen_nodetest01", "reject"), (e) => e.code === "WR403");
   console.log("server-db.node.mjs: reserve + save via postgres.js as drilldown_server OK (jsonb stored as objects/arrays)");
 } finally {
   await server.end(); await admin.end();
