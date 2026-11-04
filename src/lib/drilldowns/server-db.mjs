@@ -67,7 +67,7 @@ export function drilldownDbFor(s) {
     async reviewQueue(ownerId) {
       return [...await s`select * from public.drilldown_review_queue(${ownerId}::uuid)`];
     },
-    /** @param {string} ownerId @param {string} lessonId @param {"publish" | "reject" | "clear_report"} action @returns {Promise<string>} */
+    /** @param {string} ownerId @param {string} lessonId @param {"publish" | "reject" | "unpublish" | "clear_report"} action @returns {Promise<string>} */
     async reviewAction(ownerId, lessonId, action) {
       const [row] = await s`select public.drilldown_review_action(${ownerId}::uuid, ${lessonId}, ${action}) as status`;
       return String(row.status);
@@ -87,5 +87,5 @@ export const saveFactCheck = (userId, id, items) => drilldownDbFor(db()).saveFac
 /** @param {string} ownerId */
 export const reviewQueue = (ownerId) => drilldownDbFor(db()).reviewQueue(ownerId);
 
-/** @param {string} ownerId @param {string} lessonId @param {"publish" | "reject" | "clear_report"} action */
+/** @param {string} ownerId @param {string} lessonId @param {"publish" | "reject" | "unpublish" | "clear_report"} action */
 export const reviewAction = (ownerId, lessonId, action) => drilldownDbFor(db()).reviewAction(ownerId, lessonId, action);

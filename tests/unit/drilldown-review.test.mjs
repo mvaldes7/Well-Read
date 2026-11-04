@@ -17,7 +17,8 @@ function mockDb(rows = []) {
       const row = rows.find((r) => r.id === lessonId);
       if (!row) throw wr('WR404');
       if (action === 'publish') { if (!['pending', 'flagged'].includes(row.review_status)) throw wr('WR404'); row.review_status = 'published'; }
-      if (action === 'reject') { if (row.review_status === 'rejected') throw wr('WR404'); row.review_status = 'rejected'; row.open_reports = []; }
+      if (action === 'reject') { if (!['pending', 'flagged'].includes(row.review_status)) throw wr('WR404'); row.review_status = 'rejected'; row.open_reports = []; }
+      if (action === 'unpublish') { if (row.review_status !== 'published') throw wr('WR404'); row.review_status = 'rejected'; row.open_reports = []; }
       if (action === 'clear_report') { if (!row.open_reports.length) throw wr('WR404'); row.open_reports = []; }
       return row.review_status;
     } };
@@ -51,7 +52,8 @@ test('actionsFor offers only what the DB allows', () => {
   const [p, f, rep] = rows();
   assert.deepEqual(actionsFor(p), ['publish', 'reject']);
   assert.deepEqual(actionsFor(f), ['publish', 'reject']);
-  assert.deepEqual(actionsFor(rep), ['reject', 'clear_report']);
+  assert.deepEqual(actionsFor(rep), ['unpublish', 'clear_report']);
+  assert.deepEqual(actionsFor({ review_status: 'published', open_reports: [] }), ['unpublish']);
   assert.deepEqual(actionsFor({ review_status: 'rejected', open_reports: [] }), []);
 });
 
@@ -64,14 +66,16 @@ test('flag off hides the route (404) and the page (hidden), nothing touches the 
   assert.equal(db.calls.length, 0);
 });
 
-test('owner gate: non-owner gets 404 from the route and a hidden page; signed out 401 / sign-in', async () => {
+test('owner gate: non-owner and signed-out both get 404 from the route and a hidden page', async () => {
   const s = act({ getUserId: async () => OTHER });
   const r = await s.run();
   assert.equal(r.status, 404); assert.equal(r.body.code, 'not_found');
   assert.equal(s.db.calls[0][1], OTHER, 'the session user id is what the DB checks');
-  assert.equal((await act({ getUserId: async () => null }).run()).status, 401);
+  const anon = act({ getUserId: async () => null });
+  const ar = await anon.run();
+  assert.equal(ar.status, 404); assert.equal(ar.body.code, 'not_found'); assert.equal(anon.db.calls.length, 0);
   assert.deepEqual(await loadReviewQueue({ enabled: true, configured: true, getUserId: async () => OTHER, db: mockDb() }), { status: 'hidden' });
-  assert.deepEqual(await loadReviewQueue({ enabled: true, configured: true, getUserId: async () => null, db: mockDb() }), { status: 'signedOut' });
+  assert.deepEqual(await loadReviewQueue({ enabled: true, configured: true, getUserId: async () => null, db: mockDb() }), { status: 'hidden' });
   const ok = await loadReviewQueue({ enabled: true, configured: true, getUserId: async () => OWNER, db: mockDb(rows()) });
   assert.equal(ok.status, 'ok'); assert.equal(ok.rows.length, 4);
   // DB not configured -> hidden, DB down -> unavailable
@@ -98,11 +102,23 @@ test('publish: pending/flagged -> published; not allowed twice (409)', async () 
   assert.equal(r.status, 409); assert.equal(r.body.code, 'not_allowed');
 });
 
-test('reject: hides a reported published lesson and resolves its reports', async () => {
+test('reject: only pending/flagged (409 for published); resolves reports', async () => {
   const db = mockDb(rows());
-  const r = await act({ db, body: { lessonId: 'gen_reported001', action: 'reject' } }).run();
+  let r = await act({ db, body: { lessonId: 'gen_flagrep0001', action: 'reject' } }).run();
   assert.equal(r.status, 200); assert.equal(r.body.reviewStatus, 'rejected');
-  assert.equal(filterQueue((await db.reviewQueue(OWNER)), 'reported').some((x) => x.id === 'gen_reported001'), false);
+  assert.equal(filterQueue(await db.reviewQueue(OWNER), 'reported').some((x) => x.id === 'gen_flagrep0001'), false);
+  r = await act({ db, body: { lessonId: 'gen_reported001', action: 'reject' } }).run();
+  assert.equal(r.status, 409);
+});
+
+test('unpublish: only published -> rejected, closes open reports; 409 otherwise; non-owner 404', async () => {
+  const db = mockDb(rows());
+  assert.equal((await act({ db, getUserId: async () => OTHER, body: { lessonId: 'gen_reported001', action: 'unpublish' } }).run()).status, 404);
+  assert.equal((await act({ db, body: { lessonId: 'gen_pending0001', action: 'unpublish' } }).run()).status, 409);
+  const r = await act({ db, body: { lessonId: 'gen_reported001', action: 'unpublish' } }).run();
+  assert.deepEqual(r, { status: 200, body: { ok: true, lessonId: 'gen_reported001', reviewStatus: 'rejected' } });
+  assert.equal(filterQueue(await db.reviewQueue(OWNER), 'reported').some((x) => x.id === 'gen_reported001'), false);
+  assert.equal((await act({ db, body: { lessonId: 'gen_reported001', action: 'unpublish' } }).run()).status, 409);
 });
 
 test('clear report: status unchanged, report gone; second clear is 409; unknown lesson 409; DB error 503', async () => {
@@ -125,6 +141,9 @@ test('wiring: route same-origin + flag, page flag + notFound, server-only DB mod
   assert.match(page, /if \(!drilldownsEnabled\(process\.env\)\) notFound\(\);/);
   assert.match(page, /if \(r\.status === "hidden"\) notFound\(\);/);
   assert.doesNotMatch(page, /answers|explanations|quiz_key/);
+  assert.doesNotMatch(page, /signedOut|\/login/, 'signed-out visitors get 404, no sign-in link');
+  const actions = readFileSync(new URL('../../src/components/ReviewActions.tsx', import.meta.url), 'utf8');
+  assert.match(actions, /unpublish: "Unpublish this lesson\?/); assert.match(actions, /window\.confirm\(confirmText\)/);
   const sdb = readFileSync(new URL('../../src/lib/drilldowns/server-db.mjs', import.meta.url), 'utf8');
   assert.match(sdb, /^import "server-only";/m);
   for (const f of [route, page, sdb, readFileSync(new URL('../../src/components/ReviewActions.tsx', import.meta.url), 'utf8')]) {
@@ -132,6 +151,8 @@ test('wiring: route same-origin + flag, page flag + notFound, server-only DB mod
   }
   const mig = readFileSync(new URL('../../supabase/migrations/20261104214500_drilldown_review.sql', import.meta.url), 'utf8');
   assert.match(mig, /STATUS: DRAFT, UNAPPLIED/);
+  assert.match(mig, /if s not in \('pending', 'flagged'\) then raise exception 'drilldown: cannot reject %'/);
+  assert.match(mig, /if s <> 'published' then raise exception 'drilldown: cannot unpublish %'/);
   for (const fn of ['drilldown_review_queue(uuid)', 'drilldown_review_action(uuid, text, text)', 'drilldown_save_fact_check(uuid, text, jsonb)']) {
     assert.ok(mig.includes(`revoke all on function public.${fn} from public, anon, authenticated, service_role;`), fn);
     assert.ok(mig.includes(`grant execute on function public.${fn} to drilldown_server;`), fn);

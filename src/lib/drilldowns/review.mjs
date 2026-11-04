@@ -5,7 +5,7 @@
 // client-side owner check to trust; WR403 from the DB = not the owner. Non-owners get 404 so the screen's existence
 // isn't revealed. Flag off = 404.
 
-export const REVIEW_ACTIONS = Object.freeze(["publish", "reject", "clear_report"]);
+export const REVIEW_ACTIONS = Object.freeze(["publish", "reject", "unpublish", "clear_report"]);
 /** @type {ReadonlyArray<"all" | "pending" | "flagged" | "reported">} */
 export const REVIEW_FILTERS = Object.freeze(["all", "pending", "flagged", "reported"]);
 const ID = /^gen_[a-z0-9]{8,16}$/;
@@ -35,8 +35,8 @@ export function queueCounts(rows) {
 /** Which actions make sense for a row (the DB enforces the same rules). @param {any} row */
 export function actionsFor(row) {
   const a = [];
-  if (row.review_status === "pending" || row.review_status === "flagged") a.push("publish");
-  if (row.review_status !== "rejected") a.push("reject");
+  if (row.review_status === "pending" || row.review_status === "flagged") a.push("publish", "reject");
+  if (row.review_status === "published") a.push("unpublish");
   if (Array.isArray(row.open_reports) && row.open_reports.length) a.push("clear_report");
   return a;
 }
@@ -50,12 +50,12 @@ const NOT_FOUND = reply(404, { ok: false, code: "not_found" });
 /**
  * Load the queue for the page. "hidden" -> the page renders notFound().
  * @param {{ enabled: boolean, configured: boolean, getUserId: () => Promise<string | null>, db: { reviewQueue: (ownerId: string) => Promise<any[]> } }} deps
- * @returns {Promise<{ status: "hidden" | "signedOut" | "unavailable" } | { status: "ok", rows: any[] }>}
+ * @returns {Promise<{ status: "hidden" | "unavailable" } | { status: "ok", rows: any[] }>}
  */
 export async function loadReviewQueue({ enabled, configured, getUserId, db }) {
   if (!enabled) return { status: "hidden" };
   const userId = await getUserId();
-  if (!userId) return { status: "signedOut" };
+  if (!userId) return { status: "hidden" }; // signed out: 404, no sign-in link (REV-019)
   if (!configured) return { status: "hidden" };
   try {
     return { status: "ok", rows: await db.reviewQueue(userId) };
@@ -65,7 +65,7 @@ export async function loadReviewQueue({ enabled, configured, getUserId, db }) {
 }
 
 /**
- * POST /api/drilldowns/review. Order: flag (404) -> same-origin (403) -> session (401) -> body exactly
+ * POST /api/drilldowns/review. Order: flag (404) -> same-origin (403) -> session (404) -> body exactly
  * { lessonId, action } (400) -> DB owner check + action (WR403 -> 404, WR404 -> 409).
  * @param {{ enabled: boolean, sameOrigin: boolean, configured: boolean, body: unknown, getUserId: () => Promise<string | null>,
  *   db: { reviewAction: (ownerId: string, lessonId: string, action: any) => Promise<string> }, log?: (m: string) => void }} deps
@@ -74,7 +74,7 @@ export async function handleReviewAction({ enabled, sameOrigin, configured, body
   if (!enabled) return NOT_FOUND;
   if (!sameOrigin) return reply(403, { ok: false, code: "forbidden" });
   const userId = await getUserId();
-  if (!userId) return reply(401, { ok: false, code: "signed_out" });
+  if (!userId) return NOT_FOUND; // signed out: 404, same as a non-owner (REV-019)
   if (!configured) return NOT_FOUND;
   const b = /** @type {any} */ (body);
   const keys = b && typeof b === "object" && !Array.isArray(b) ? Object.keys(b).sort().join(",") : "";

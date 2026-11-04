@@ -55,6 +55,8 @@ try {
   assert.equal(Array.isArray(mine.open_reports), true);
   assert.equal(await db.reviewAction(U, "gen_nodetest01", "publish"), "published");
   assert.equal(await db.reviewAction(U, "gen_nodetest02", "reject"), "rejected");
+  await assert.rejects(db.reviewAction(U, "gen_nodetest01", "reject"), (e) => e.code === "WR404");
+  assert.equal(await db.reviewAction(U, "gen_nodetest01", "unpublish"), "rejected");
   await assert.rejects(db.reviewAction(U2, "gen_nodetest01", "reject"), (e) => e.code === "WR403");
   console.log("server-db.node.mjs: reserve + save via postgres.js as drilldown_server OK (jsonb stored as objects/arrays)");
 } finally {

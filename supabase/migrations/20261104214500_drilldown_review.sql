@@ -115,7 +115,9 @@ grant execute on function public.drilldown_review_queue(uuid) to drilldown_serve
 
 -- ---------------------------------------------------------------- owner actions
 -- publish: pending/flagged -> published (readable by every signed-in user via the existing RLS policy).
--- reject: pending/flagged/published -> rejected (hidden from everyone, incl. the creator); resolves open reports.
+-- reject: pending/flagged -> rejected (never shared; hidden from the creator too); resolves open reports.
+-- unpublish: published -> rejected (hidden from everyone again); resolves open reports. Reuses 'rejected' because the
+--   20261102231600 status check allows only pending/flagged/published/rejected and rejected is already visible to no one.
 -- clear_report: resolve the lesson's open reports; status unchanged.
 -- Returns the resulting review_status. WR403 = not the owner; WR404 = unknown lesson or action not allowed now.
 create function public.drilldown_review_action(p_owner uuid, p_lesson_id text, p_action text)
@@ -136,7 +138,12 @@ begin
     update public.generated_lessons set review_status = 'published' where id = p_lesson_id;
     return 'published';
   elsif p_action = 'reject' then
-    if s = 'rejected' then raise exception 'drilldown: already rejected' using errcode = 'WR404'; end if;
+    if s not in ('pending', 'flagged') then raise exception 'drilldown: cannot reject %', s using errcode = 'WR404'; end if;
+    update public.generated_lessons set review_status = 'rejected' where id = p_lesson_id;
+    update public.lesson_reports set resolved_at = pg_catalog.now() where lesson_id = p_lesson_id and resolved_at is null;
+    return 'rejected';
+  elsif p_action = 'unpublish' then
+    if s <> 'published' then raise exception 'drilldown: cannot unpublish %', s using errcode = 'WR404'; end if;
     update public.generated_lessons set review_status = 'rejected' where id = p_lesson_id;
     update public.lesson_reports set resolved_at = pg_catalog.now() where lesson_id = p_lesson_id and resolved_at is null;
     return 'rejected';

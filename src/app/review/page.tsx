@@ -29,7 +29,7 @@ interface QueueRow {
 }
 
 // Mike's owner-only review screen (P4) at /review?filter=…. Behind WELL_READ_DRILLDOWNS; anyone who is not the
-// owner configured in the DB (public.drilldown_owner) gets a 404. The answer key is never loaded here.
+// owner configured in the DB (public.drilldown_owner), including signed-out visitors, gets a 404. The answer key is never loaded here.
 export default function ReviewPage({ searchParams }: PageProps<"/review">) {
   return (
     <article className="lesson review">
@@ -56,13 +56,6 @@ async function ReviewBody({ searchParams }: { searchParams: PageProps<"/review">
     db: { reviewQueue },
   });
   if (r.status === "hidden") notFound();
-  if (r.status === "signedOut") {
-    return (
-      <p>
-        <Link href={`/login?next=${encodeURIComponent("/review")}`}>Sign in</Link> to continue.
-      </p>
-    );
-  }
   if (r.status !== "ok") return <p role="alert" className="error">The review queue is unavailable right now.</p>;
   const all = r.rows as QueueRow[];
   const rows = filterQueue(all, filter) as QueueRow[];
@@ -174,7 +167,7 @@ function ReviewItem({ row }: { row: QueueRow }) {
             </li>
           ))}
         </ul>
-        <ReviewActions lessonId={row.id} actions={actionsFor(row) as ("publish" | "reject" | "clear_report")[]} />
+        <ReviewActions lessonId={row.id} actions={actionsFor(row) as ("publish" | "reject" | "unpublish" | "clear_report")[]} />
       </div>
     </section>
   );

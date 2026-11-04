@@ -317,7 +317,8 @@ URL, sslmode=require); then `WELL_READ_DRILLDOWNS=1` and redeploy.
 ## P4: Owner review and publish (behind WELL_READ_DRILLDOWNS)
 
 Branch `feat/drilldowns-p4-review`. Screen `/review` (filters `?filter=pending|flagged|reported`), actions via
-`POST /api/drilldowns/review` with body exactly `{ lessonId, action }`, where action is `publish`, `reject` or `clear_report`.
+`POST /api/drilldowns/review` with body exactly `{ lessonId, action }`, where action is `publish`, `reject`, `unpublish`
+or `clear_report`.
 
 **What the current schema has (20261102231600):**
 - `generated_lessons` has the lesson body, sources, citations, `review_status` and `unconfirmed_claims`. That is the
@@ -350,7 +351,12 @@ Branch `feat/drilldowns-p4-review`. Screen `/review` (filters `?filter=pending|f
 - `drilldown_review_action(owner, id, action)`:
   - `publish`: pending/flagged become `published`. Every signed-in user can then read the lesson through the existing
     RLS policy. Rejected and already-published lessons can't be published.
-  - `reject`: pending, flagged or published become `rejected`, hidden from everyone, and open reports are resolved.
+  - `reject`: only pending or flagged become `rejected` (never shared), and open reports are resolved (REV-019).
+  - `unpublish`: only published becomes `rejected`, hidden from everyone again, and open reports are resolved
+    (REV-019). The UI asks for confirmation first, as it does for reject. It reuses `rejected` rather than adding an
+    `unpublished` status: the status check in the applied P2 migration allows only pending/flagged/published/rejected,
+    and a new status would mean altering that constraint and re-checking the RLS policy, for a state that behaves
+    exactly like rejected. `reviewed_at` records when it happened and `published_at` is cleared by the existing trigger.
   - `clear_report`: resolves open reports, status unchanged.
   - An action that isn't allowed in the current state raises `WR404`.
 - All new functions:
@@ -362,6 +368,7 @@ Branch `feat/drilldowns-p4-review`. Screen `/review` (filters `?filter=pending|f
 - Pure logic lives in `review.mjs`: the queue filters, and the gate order flag → same-origin → session → strict body → DB.
 - Responses:
   - flag off → 404
+  - signed out → 404 on both the page and the API, with no sign-in link (REV-019)
   - non-owner (`WR403`) → 404, so the screen's existence isn't revealed
   - cross-origin → 403
   - action not allowed (`WR404`) → 409

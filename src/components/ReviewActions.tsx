@@ -3,7 +3,11 @@
 import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 
-const LABELS = { publish: "Publish", reject: "Reject", clear_report: "Clear report" } as const;
+const LABELS = { publish: "Publish", reject: "Reject", unpublish: "Unpublish", clear_report: "Clear report" } as const;
+const CONFIRM: Partial<Record<keyof typeof LABELS, string>> = {
+  reject: "Reject this lesson? It will never be shared.",
+  unpublish: "Unpublish this lesson? It will be hidden from everyone and its open reports closed.",
+};
 type Action = keyof typeof LABELS;
 
 /** Owner review buttons (P4). POSTs { lessonId, action } to the same-origin review route, then refreshes the list. */
@@ -13,7 +17,8 @@ export default function ReviewActions({ lessonId, actions }: { lessonId: string;
   const [busy, setBusy] = useState(false);
   const [, startTransition] = useTransition();
   async function run(action: Action) {
-    if (action === "reject" && !window.confirm("Reject this lesson? It will be hidden from everyone.")) return;
+    const confirmText = CONFIRM[action];
+    if (confirmText && !window.confirm(confirmText)) return;
     setBusy(true);
     setMessage(null);
     try {
