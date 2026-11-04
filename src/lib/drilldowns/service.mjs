@@ -6,6 +6,7 @@
 import { checkDigDeeperRequest } from "./gate.mjs";
 import { DRILLDOWN_CAPS } from "./config.mjs";
 import { dbErrorCode, failure } from "./messages.mjs";
+import { lessonHasFetchableSource } from "./sources.mjs";
 
 /** Error thrown from onBeforeCall; generate.mjs turns any error with stopKind into report.stopError. */
 export class StopError extends Error {
@@ -48,6 +49,25 @@ export function splitLesson(g) {
   };
 }
 
+/** @param {ReadonlyArray<any>} disciplines @param {string} lessonId */
+function findLesson(disciplines, lessonId) {
+  for (const d of disciplines) for (const t of d.topics ?? []) for (const l of t.lessons ?? []) if (l.id === lessonId) return l;
+  return null;
+}
+
+/**
+ * One-line, secret-free summary of which step decided the outcome: per-URL fetch results, model calls, and the
+ * unconfirmed fact-check refs per attempt. URLs are public curated sources; no lesson text, keys or user data.
+ * @param {any} report
+ */
+export function describeReport(report) {
+  const res = report?.sourceFetch?.results ?? [];
+  const fetch = res.map((/** @type {any} */ r) => `${r.blocked ? "blocked" : r.problems?.length ? `fail(${r.problems.join("; ").slice(0, 80)})` : `ok ${r.status} ${r.chars}c`} ${r.url}`).join(", ");
+  const attempts = (report?.attempts ?? []).map((/** @type {any} */ a, /** @type {number} */ i) =>
+    `#${i + 1}: schema ${a.schemaProblems?.length ?? 0}, source ${a.sourceProblems?.length ?? 0}, content ${a.contentProblems?.length ?? 0}, unconfirmed [${(a.factCheck?.unconfirmed ?? []).join(",")}] -> ${a.outcome}`).join("; ");
+  return `step=${report?.attempts?.length ? "generate/factcheck" : "source_fetch"} calls=${report?.calls?.length ?? 0} fetch=[${fetch}]${attempts ? ` attempts=[${attempts}]` : ""}`;
+}
+
 /** pending (0 unconfirmed) / flagged (exactly 1) / rejected (2+ after the regenerate budget, or nothing usable). @param {any} report */
 export function reviewStatusOf(report) {
   if (!report.generated || !String(report.verdict).startsWith("passed")) return "rejected";
@@ -80,6 +100,11 @@ export async function handleDigDeeper(deps) {
   const gate = checkDigDeeperRequest(disciplines, body, rows);
   if (!gate.ok) return failure(gate.reason === "not_completed" ? "not_completed" : "bad_request");
   if (billing.stopped) return failure("billing_stop");
+  // Refuse before reserving: a lesson with only blocked sources can never pass the fetch step (and must not use up a daily lesson).
+  if (!lessonHasFetchableSource(findLesson(disciplines, gate.lessonId))) {
+    log(`drilldown ${gate.lessonId}/${gate.choice.id}: refused, no fetchable curated source (all blocked)`);
+    return failure("no_sources");
+  }
 
   try { await db.reserve(userId, 0, true); } catch (e) { return failure(dbErrorCode(e)); }
 
@@ -89,6 +114,7 @@ export async function handleDigDeeper(deps) {
   };
   const report = await generate({ lessonId: gate.lessonId, choiceId: gate.choice.id, onBeforeCall });
   log(`drilldown ${gate.lessonId}/${gate.choice.id}: ${report.verdict}${report.stoppedOn ? ` (${report.stoppedOn})` : ""}`);
+  log(`drilldown ${gate.lessonId}/${gate.choice.id}: ${describeReport(report)}`);
   if (report.billingStop) { billing.stopped = true; return failure("billing_stop"); }
   const status = reviewStatusOf(report);
   const save = (/** @type {"pending" | "flagged" | "rejected"} */ reviewStatus) => {

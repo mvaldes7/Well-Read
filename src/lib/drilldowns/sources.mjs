@@ -103,3 +103,14 @@ export function isBlockedSource(raw) {
   const host = u.hostname.toLowerCase().replace(/\.$/, "");
   return BLOCKED_SOURCES.some((b) => hostMatches(host, b.domain) && (!b.pathPrefix || u.pathname === b.pathPrefix || u.pathname.startsWith(`${b.pathPrefix}/`)));
 }
+
+/**
+ * Can Dig deeper ever succeed for this lesson? The server fetches only the lesson's curated sources (no extras are
+ * wired in), so at least one curated source must be HTTPS and not on a blocked site. Lessons whose sources are all
+ * blocked (e.g. Britannica-only) must not offer Dig deeper: every run would stop at the fetch step with 0 model calls.
+ * @param {{ sources?: ReadonlyArray<{ url?: unknown }> } | null | undefined} lesson
+ */
+export function lessonHasFetchableSource(lesson) {
+  const list = Array.isArray(lesson?.sources) ? lesson.sources : [];
+  return list.some((s) => typeof s?.url === "string" && s.url.startsWith("https://") && !isBlockedSource(s.url));
+}
