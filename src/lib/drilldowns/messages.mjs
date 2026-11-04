@@ -14,6 +14,7 @@ export const DRILLDOWN_MESSAGES = Object.freeze({
   per_minute: "Lots of people are digging deeper right now. Try again in a minute.",
   provider_busy: "The lesson writer is busy right now. Please try again later.",
   billing_stop: "Dig deeper is paused for now. Please try again later.",
+  no_sources: "Dig deeper isn't available for this lesson yet: its sources can't be checked automatically.",
   generation_failed: "We couldn't write a lesson we could check against trusted sources this time. Please try a different choice.",
   unavailable: "Dig deeper is unavailable right now. Please try again later.",
 });
@@ -22,7 +23,7 @@ export const DRILLDOWN_MESSAGES = Object.freeze({
 export const DRILLDOWN_STATUS = Object.freeze({
   disabled: 404, signed_out: 401, forbidden: 403, bad_request: 400, not_completed: 403, email_unverified: 403,
   user_cap: 429, global_cap: 429, per_minute: 429, provider_busy: 503, billing_stop: 503,
-  generation_failed: 422, unavailable: 503,
+  no_sources: 422, generation_failed: 422, unavailable: 503,
 });
 
 /**

@@ -6,6 +6,7 @@ import Breadcrumbs from "@/components/Breadcrumbs";
 import { LessonStatus } from "@/components/Progress";
 import Quiz from "@/components/Quiz";
 import { disciplines, getDiscipline, getLesson, getTopic } from "@/content";
+import { lessonHasFetchableSource } from "@/lib/drilldowns/sources.mjs";
 import { toPublicQuestions } from "@/lib/quiz/public.mjs";
 import { drilldownsEnabled } from "@/lib/drilldowns/config.mjs";
 import { paragraphs } from "@/lib/ui/paragraphs.mjs";
@@ -86,7 +87,7 @@ export default async function LessonPage({
         <Quiz
           lessonId={lesson.id}
           questions={toPublicQuestions(lesson.quiz)}
-          digDeeper={drilldownsEnabled(process.env) ? lesson.digDeeper?.map((c) => ({ id: c.id, label: c.label })) : undefined}
+          digDeeper={drilldownsEnabled(process.env) && lessonHasFetchableSource(lesson) ? lesson.digDeeper?.map((c) => ({ id: c.id, label: c.label })) : undefined}
         />
       </section>
       {lesson.sources && lesson.sources.length > 0 && (
