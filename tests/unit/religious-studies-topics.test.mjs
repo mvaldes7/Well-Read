@@ -18,7 +18,7 @@ test('Religious Studies topics in order, one lesson each, with the long-lesson s
     ['four-noble-truths', 'concept', ['les_nt01']], ['covenant-in-judaism', 'concept', ['les_cv01']], ['protestant-reformation', 'event', ['les_pr01']], ['five-pillars-of-islam', 'concept', ['les_fp01']],
   ]);
   const shapes = rs.topics.map(({ lessons: [l] }) => [l.sections.length, l.keyFacts.length, l.quiz.length, l.sources.length]);
-  assert.deepEqual(shapes, [[4, 6, 6, 2], [4, 6, 6, 3], [4, 6, 6, 3], [4, 6, 6, 1]]);
+  assert.deepEqual(shapes, [[4, 6, 6, 3], [4, 6, 6, 3], [4, 6, 6, 5], [4, 6, 6, 2]]);
   assert.deepEqual(rs.topics.map(({ lessons: [l] }) => l.quiz.map((q) => q.answerIndex)), [[0, 3, 1, 2, 0, 1], [1, 2, 0, 3, 1, 2], [1, 0, 3, 2, 0, 1], [2, 0, 3, 1, 2, 0]]);
   for (const { lessons: [l] } of rs.topics) assert.equal(new Set(l.sources.map((s) => s.url)).size, l.sources.length);
 });

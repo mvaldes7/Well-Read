@@ -12,25 +12,27 @@ const lessons = disciplines.flatMap((d) => d.topics.flatMap((t) => t.lessons));
 const byId = (id) => lessons.find((l) => l.id === id);
 
 test('lessonHasFetchableSource: Britannica-only lesson is not eligible; mixed lesson is', () => {
-  assert.equal(lessonHasFetchableSource(byId('les_ch01')), false);
+  assert.equal(lessonHasFetchableSource({ sources: byId('les_ch01').sources.filter((s) => s.url.includes('britannica.com')) }), false);
   assert.equal(lessonHasFetchableSource(byId('les_fr02')), true);
   assert.equal(lessonHasFetchableSource({ sources: [{ url: 'http://example.edu/x' }] }), false);
   assert.equal(lessonHasFetchableSource({ sources: [] }), false);
   assert.equal(lessonHasFetchableSource(null), false);
 });
 
-test('known all-blocked lessons are exactly the ones QA can hit', () => {
-  const dead = lessons.filter((l) => (l.digDeeper ?? []).length && !lessonHasFetchableSource(l)).map((l) => l.id).sort();
-  assert.ok(dead.includes('les_ch01'));
-  for (const id of dead) assert.ok(byId(id).sources.length > 0);
+test('every Dig deeper lesson has at least one fetchable, non-blocked, allowlisted or curated HTTPS source', () => {
+  const dead = lessons.filter((l) => (l.digDeeper ?? []).length && !lessonHasFetchableSource(l)).map((l) => l.id);
+  assert.deepEqual(dead, []);
 });
 
 test('service refuses an all-blocked lesson before reserving or fetching (no daily lesson used)', async () => {
   const db = { reserves: [], async reserve(...a) { db.reserves.push(a); }, async saveLesson() { throw new Error('no save'); } };
   const logs = [];
   let generated = 0;
+  // Simulate the pre-fix content: les_ch01 with only its Britannica sources.
+  const blockedOnly = structuredClone(disciplines);
+  for (const d of blockedOnly) for (const t of d.topics) for (const l of t.lessons) if (l.id === 'les_ch01') l.sources = l.sources.filter((s) => s.url.includes('britannica.com'));
   const r = await handleDigDeeper({
-    enabled: true, body: { lessonId: 'les_ch01', choiceId: 'hammurabi' }, disciplines, promptVersion: 't',
+    enabled: true, body: { lessonId: 'les_ch01', choiceId: 'hammurabi' }, disciplines: blockedOnly, promptVersion: 't',
     limiter: createMinuteLimiter(4, () => 0), billing: { stopped: false },
     getUserId: async () => '11111111-1111-4111-8111-111111111111',
     getCompletionRows: async (id) => [{ lesson_id: id }], db,
