@@ -44,6 +44,10 @@ try {
   await assert.rejects(server`select id from public.generated_lessons`, (e) => e.code === "42501");
   const [usage] = await admin`select lessons, calls from public.drilldown_usage_user where user_id = ${U}`;
   assert.deepEqual({ ...usage }, { lessons: 2, calls: 2 });
+  // 20261105000000: releaseLesson through postgres.js; both slots back kept lessons, so nothing is given back.
+  await db.releaseLesson(U);
+  const [after] = await admin`select lessons, calls from public.drilldown_usage_user where user_id = ${U}`;
+  assert.deepEqual({ ...after }, { lessons: 2, calls: 2 });
   // P4 (20261104214500): fact_check jsonb round-trip, owner gate and actions through postgres.js.
   await db.saveFactCheck(U, "gen_nodetest01", [{ ref: "fact1", supported: true }, { ref: "quiz3", supported: false, note: "n" }]);
   await assert.rejects(db.reviewQueue(U), (e) => e.code === "WR403");

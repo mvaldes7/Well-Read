@@ -3,7 +3,7 @@
 // component (`import "server-only"` makes that a build error); never rename the env var with a NEXT_PUBLIC_ prefix.
 // Second layer: CI's `pnpm check:bundle` scans .next/static.
 //
-// drilldown_server has no table privileges: it can only call drilldown_reserve(), drilldown_save_lesson(),
+// drilldown_server has no table privileges: it can only call drilldown_reserve(), drilldown_release_lesson(), drilldown_save_lesson(),
 // drilldown_quiz_key() and (P4 draft migration 20261104214500) drilldown_save_fact_check() and the owner-only
 // drilldown_review_queue() / drilldown_review_action(). user_id always comes from the caller's verified session (route.ts -> service.mjs), never from
 // the request. Users read lessons with their own session (RLS + column grants), never through this connection.
@@ -49,6 +49,10 @@ export function drilldownDbFor(s) {
     async reserve(userId, calls, newLesson) {
       await s`select public.drilldown_reserve(${userId}::uuid, ${calls}::integer, ${newLesson}::boolean)`;
     },
+    /** Give back today's lesson slot after an attempt that kept no lesson (20261105000000). Calls stay counted. @param {string} userId */
+    async releaseLesson(userId) {
+      await s`select public.drilldown_release_lesson(${userId}::uuid)`;
+    },
     /**
      * @param {{ userId: string, id: string, parentLessonId: string, choiceId: string, promptVersion: string, model: string,
      *   reviewStatus: "pending" | "flagged" | "rejected", lesson: unknown, sources: unknown, citations: unknown,
@@ -77,6 +81,9 @@ export function drilldownDbFor(s) {
 
 /** @param {string} userId @param {number} calls @param {boolean} newLesson */
 export const reserve = (userId, calls, newLesson) => drilldownDbFor(db()).reserve(userId, calls, newLesson);
+
+/** @param {string} userId */
+export const releaseLesson = (userId) => drilldownDbFor(db()).releaseLesson(userId);
 
 /** @param {Parameters<ReturnType<typeof drilldownDbFor>["saveLesson"]>[0]} p */
 export const saveLesson = (p) => drilldownDbFor(db()).saveLesson(p);
