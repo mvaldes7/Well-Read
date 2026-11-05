@@ -93,7 +93,7 @@ export function reviewStatusOf(report) {
  *   disciplines: ReadonlyArray<any>,
  *   getUserId: () => Promise<string | null>,
  *   getCompletionRows: (lessonId: string) => Promise<ReadonlyArray<{ lesson_id?: unknown }>>,
- *   db: { reserve: (userId: string, calls: number, newLesson: boolean) => Promise<void>, saveLesson: (p: any) => Promise<void>,
+ *   db: { reserve: (userId: string, calls: number, newLesson: boolean) => Promise<void>, releaseLesson?: (userId: string) => Promise<void>, saveLesson: (p: any) => Promise<void>,
  *     saveFactCheck?: (userId: string, id: string, items: unknown) => Promise<void> },
  *   generate: (a: { lessonId: string, choiceId: string, onBeforeCall: () => Promise<void> }) => Promise<any>,
  *   limiter: { take: () => boolean },
@@ -121,36 +121,46 @@ export async function handleDigDeeper(deps) {
 
   try { await db.reserve(userId, 0, true); } catch (e) { return failure(dbErrorCode(e)); }
 
-  const onBeforeCall = async () => {
-    if (!limiter.take()) throw new StopError("per_minute");
-    try { await db.reserve(userId, 1, false); } catch (e) { throw new StopError(dbErrorCode(e)); }
-  };
-  const report = await generate({ lessonId: gate.lessonId, choiceId: gate.choice.id, onBeforeCall });
-  log(`drilldown ${gate.lessonId}/${gate.choice.id}: ${report.verdict}${report.stoppedOn ? ` (${report.stoppedOn})` : ""}`);
-  log(`drilldown ${gate.lessonId}/${gate.choice.id}: ${describeReport(report)}`);
-  if (report.billingStop) { billing.stopped = true; return failure("billing_stop"); }
-  const status = reviewStatusOf(report);
-  const save = async (/** @type {"pending" | "flagged" | "rejected"} */ reviewStatus) => {
-    const { lesson, answers, explanations } = splitLesson(report.generated);
-    await db.saveLesson({
-      userId, id: report.generated.id, parentLessonId: gate.lessonId, choiceId: gate.choice.id, promptVersion,
-      model: report.model, reviewStatus, lesson, sources: report.generated.sources, citations: report.citations ?? {},
-      unconfirmedClaims: reviewStatus === "flagged" ? [report.flag] : [], answers, explanations,
-    });
-    // P4: per-claim results for Mike's review screen. Best effort: the lesson is already saved, and before the P4
-    // migration (20261104214500) is applied the function doesn't exist; the review screen then shows only the flag.
-    const items = factCheckItems(report);
-    if (db.saveFactCheck && items.length) {
-      try { await db.saveFactCheck(userId, report.generated.id, items); } catch { log(`drilldown ${report.generated.id}: fact check not stored`); }
+  // From here on, an attempt that ends without a kept (pending/flagged) lesson gives its lesson slot back: failures,
+  // refusals, provider errors, timeouts and exceptions don't count toward the daily lesson cap. Calls stay counted.
+  let kept = false;
+  try {
+    const onBeforeCall = async () => {
+      if (!limiter.take()) throw new StopError("per_minute");
+      try { await db.reserve(userId, 1, false); } catch (e) { throw new StopError(dbErrorCode(e)); }
+    };
+    const report = await generate({ lessonId: gate.lessonId, choiceId: gate.choice.id, onBeforeCall });
+    log(`drilldown ${gate.lessonId}/${gate.choice.id}: ${report.verdict}${report.stoppedOn ? ` (${report.stoppedOn})` : ""}`);
+    log(`drilldown ${gate.lessonId}/${gate.choice.id}: ${describeReport(report)}`);
+    if (report.billingStop) { billing.stopped = true; return failure("billing_stop"); }
+    const status = reviewStatusOf(report);
+    const save = async (/** @type {"pending" | "flagged" | "rejected"} */ reviewStatus) => {
+      const { lesson, answers, explanations } = splitLesson(report.generated);
+      await db.saveLesson({
+        userId, id: report.generated.id, parentLessonId: gate.lessonId, choiceId: gate.choice.id, promptVersion,
+        model: report.model, reviewStatus, lesson, sources: report.generated.sources, citations: report.citations ?? {},
+        unconfirmedClaims: reviewStatus === "flagged" ? [report.flag] : [], answers, explanations,
+      });
+      // P4: per-claim results for Mike's review screen. Best effort: the lesson is already saved, and before the P4
+      // migration (20261104214500) is applied the function doesn't exist; the review screen then shows only the flag.
+      const items = factCheckItems(report);
+      if (db.saveFactCheck && items.length) {
+        try { await db.saveFactCheck(userId, report.generated.id, items); } catch { log(`drilldown ${report.generated.id}: fact check not stored`); }
+      }
+    };
+    if (status === "rejected") {
+      if (report.stopError instanceof StopError) return failure(/** @type {any} */ (report.stopError).stopKind);
+      if (/^(quota|provider unavailable)/.test(String(report.stoppedOn ?? ""))) return failure("provider_busy");
+      // Keep a validated but rejected lesson for Mike's review (never shown to anyone); its failure doesn't change the answer.
+      if (report.generated) { try { await save("rejected"); } catch { /* ignored */ } }
+      return failure("generation_failed");
     }
-  };
-  if (status === "rejected") {
-    if (report.stopError instanceof StopError) return failure(/** @type {any} */ (report.stopError).stopKind);
-    if (/^(quota|provider unavailable)/.test(String(report.stoppedOn ?? ""))) return failure("provider_busy");
-    // Keep a validated but rejected lesson for Mike's review (never shown to anyone); its failure doesn't change the answer.
-    if (report.generated) { try { await save("rejected"); } catch { /* ignored */ } }
-    return failure("generation_failed");
+    try { await save(status); } catch (e) { return failure(dbErrorCode(e)); }
+    kept = true;
+    return { status: 200, body: { ok: true, lessonId: report.generated.id, reviewStatus: status } };
+  } finally {
+    if (!kept && db.releaseLesson) {
+      try { await db.releaseLesson(userId); } catch { log(`drilldown ${gate.lessonId}/${gate.choice.id}: lesson slot not released`); }
+    }
   }
-  try { await save(status); } catch (e) { return failure(dbErrorCode(e)); }
-  return { status: 200, body: { ok: true, lessonId: report.generated.id, reviewStatus: status } };
 }

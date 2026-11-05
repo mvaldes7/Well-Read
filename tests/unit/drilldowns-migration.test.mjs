@@ -9,7 +9,7 @@ const sql = raw.split('\n').filter((l) => !l.trim().startsWith('--')).join('\n')
 
 test('drilldowns migration is new, last (before the P4 review draft), and marked unapplied', () => {
   const files = readdirSync(dir).filter((f) => f.endsWith('.sql')).sort();
-  assert.deepEqual(files.slice(-2), ['20261102231600_drilldowns.sql', '20261104214500_drilldown_review.sql']);
+  assert.deepEqual(files.slice(-3), ['20261102231600_drilldowns.sql', '20261104214500_drilldown_review.sql', '20261105000000_drilldown_release.sql']);
   assert.match(raw, /STATUS: UNAPPLIED/);
 });
 

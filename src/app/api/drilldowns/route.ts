@@ -9,7 +9,7 @@ import { drilldownsEnabled } from "@/lib/drilldowns/config.mjs";
 import { failure, isSameOriginRequest } from "@/lib/drilldowns/messages.mjs";
 import { PROMPT_VERSION, runGeneration } from "@/lib/drilldowns/generate.mjs";
 import { createMinuteLimiter, handleDigDeeper } from "@/lib/drilldowns/service.mjs";
-import { drilldownDbConfigured, reserve, saveFactCheck, saveLesson } from "@/lib/drilldowns/server-db.mjs";
+import { drilldownDbConfigured, releaseLesson, reserve, saveFactCheck, saveLesson } from "@/lib/drilldowns/server-db.mjs";
 
 const limiter = createMinuteLimiter();
 
@@ -42,7 +42,7 @@ export async function POST(request: Request) {
         const { data, error } = await supabase.from("lesson_completions").select("lesson_id").eq("lesson_id", lessonId);
         return error || !data ? [] : data;
       },
-      db: { reserve, saveLesson, saveFactCheck },
+      db: { reserve, releaseLesson, saveLesson, saveFactCheck },
       generate: ({ lessonId, choiceId, onBeforeCall }) => runGeneration({ disciplines, lessonId, choiceId, apiKey, onBeforeCall }),
       log: (m) => console.info(m),
     });

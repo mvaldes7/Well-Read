@@ -38,18 +38,19 @@ function mockFetch(q) {
   return fn;
 }
 
-function setup({ gemQueue = [gem(fakeLesson()), gem(allSupported)], body = { lessonId: 'les_fr02', choiceId: 'robespierre' }, userId = USER, enabled = true, reserveImpl, limiter, completed = true, billingState = { stopped: false } } = {}) {
+function setup({ gemQueue = [gem(fakeLesson()), gem(allSupported)], body = { lessonId: 'les_fr02', choiceId: 'robespierre' }, userId = USER, enabled = true, reserveImpl, limiter, completed = true, billingState = { stopped: false }, releaseImpl, saveImpl, generate } = {}) {
   const f = mockFetch(gemQueue);
-  const db = { reserves: [], saves: [],
+  const db = { reserves: [], saves: [], releases: [],
     async reserve(u, c, n) { db.reserves.push([u, c, n]); if (reserveImpl) await reserveImpl(u, c, n, db.reserves.length); },
-    async saveLesson(p) { db.saves.push(p); } };
+    async releaseLesson(u) { db.releases.push(u); if (releaseImpl) await releaseImpl(u); },
+    async saveLesson(p) { db.saves.push(p); if (saveImpl) await saveImpl(p); } };
   const deps = {
     enabled, body, disciplines, promptVersion: PROMPT_VERSION, billing: billingState,
     limiter: limiter ?? createMinuteLimiter(4, () => 0),
     getUserId: async () => userId,
     getCompletionRows: async (id) => (completed ? [{ lesson_id: id }] : []),
     db,
-    generate: (a) => runPrototype({ disciplines, apiKey: 'test-key-not-real', fetchImpl: f, ...a }),
+    generate: generate ?? ((a) => runPrototype({ disciplines, apiKey: 'test-key-not-real', fetchImpl: f, ...a })),
   };
   return { deps, db, f, run: () => handleDigDeeper(deps) };
 }
@@ -274,4 +275,87 @@ test('P4: a failing saveFactCheck (migration not applied yet) does not change th
   s.db.saveFactCheck = async () => { throw Object.assign(new Error('function does not exist'), { code: '42883' }); };
   const r = await s.run();
   assert.equal(r.status, 200); assert.equal(r.body.reviewStatus, 'pending');
+});
+
+// ---- cap fix (20261105000000): an attempt that keeps no lesson gives its lesson slot back; calls stay counted
+const lessonReserves = (db) => db.reserves.filter(([, , n]) => n).length;
+const callReserves = (db) => db.reserves.reduce((a, [, c]) => a + c, 0);
+
+test('release: success keeps the slot (no release)', async () => {
+  const s = setup();
+  const r = await s.run();
+  assert.equal(r.status, 200); assert.deepEqual(s.db.releases, []);
+});
+
+test('release: each failure after the reservation releases the lesson slot exactly once, calls are not released', async () => {
+  const cases = {
+    generation_failed: { gemQueue: [gem(fakeLesson()), gem(fc(2)), gem(fakeLesson()), gem(fc(2))] },
+    provider_busy: { gemQueue: [e503, e503, e503, e503] },
+    billing_stop: { gemQueue: [billing], billingState: { stopped: false } },
+    per_minute: { limiter: { take: () => false } },
+    user_calls_cap: { reserveImpl: async (_u, c) => { if (c > 0) { const e = new Error('drilldown cap: user_calls'); e.code = 'WR429'; throw e; } } },
+    save_failed: { saveImpl: async () => { const e = new Error('boom'); e.code = 'XX000'; throw e; } },
+  };
+  for (const [name, opts] of Object.entries(cases)) {
+    const s = setup(opts);
+    const r = await s.run();
+    assert.notEqual(r.status, 200, name);
+    assert.deepEqual(s.db.releases, [USER], `${name}: released once with the session user`);
+    assert.equal(lessonReserves(s.db), 1, name);
+    assert.equal(s.db.reserves.filter(([, c]) => c < 0).length, 0, `${name}: calls never given back`);
+  }
+});
+
+test('release: a timeout / exception thrown by generation still releases, and the error propagates to the route', async () => {
+  const s = setup({ generate: async () => { throw new Error('timeout'); } });
+  await assert.rejects(s.run(), /timeout/);
+  assert.deepEqual(s.db.releases, [USER]);
+});
+
+test('release: refusals before the reservation (no_sources, cap, signed out) release nothing', async () => {
+  const capped = setup({ reserveImpl: async () => { const e = new Error('drilldown cap: user_cap'); e.code = 'WR429'; throw e; } });
+  assert.equal((await capped.run()).status, 429); assert.deepEqual(capped.db.releases, []);
+  const out = setup({ userId: null });
+  assert.equal((await out.run()).status, 401); assert.deepEqual(out.db.releases, []);
+  const blocked = structuredClone(disciplines);
+  for (const d of blocked) for (const t of d.topics) for (const l of t.lessons) if (l.id === 'les_ch01') l.sources = l.sources.filter((x) => x.url.includes('britannica.com'));
+  const ns = setup({ body: { lessonId: 'les_ch01', choiceId: 'hammurabi' }, generate: async () => { throw new Error('must not generate'); } });
+  ns.deps.disciplines = blocked;
+  const r = await ns.run();
+  assert.equal(r.body.code, 'no_sources');
+  assert.equal(ns.db.reserves.length, 0); assert.deepEqual(ns.db.releases, []);
+});
+
+test('release: a failing release does not change the answer', async () => {
+  const s = setup({ gemQueue: [e503, e503, e503, e503], releaseImpl: async () => { throw new Error('db down'); } });
+  const r = await s.run();
+  assert.equal(r.body.code, 'provider_busy');
+  assert.ok(callReserves(s.db) >= 1);
+});
+
+test('release: rejected draft is saved for review and its slot is still released', async () => {
+  const s = setup({ gemQueue: [gem(fakeLesson()), gem(fc(2)), gem(fakeLesson()), gem(fc(2))] });
+  const r = await s.run();
+  assert.equal(r.body.code, 'generation_failed');
+  assert.equal(s.db.saves.at(-1)?.reviewStatus, 'rejected');
+  assert.deepEqual(s.db.releases, [USER]);
+});
+
+test('migration 20261105000000: release is definer, server-only, never touches calls; save excludes rejected', () => {
+  const m = readFileSync(new URL('../../supabase/migrations/20261105000000_drilldown_release.sql', import.meta.url), 'utf8');
+  const code = m.split('\n').filter((l) => !l.trim().startsWith('--')).join('\n');
+  assert.match(m, /STATUS: DRAFT, UNAPPLIED/);
+  assert.match(code, /create function public\.drilldown_release_lesson\(p_user uuid\)[\s\S]*?security definer\s+set search_path = ''/);
+  assert.match(code, /revoke all on function public\.drilldown_release_lesson\(uuid\) from public, anon, authenticated, service_role;/);
+  assert.match(code, /grant execute on function public\.drilldown_release_lesson\(uuid\) to drilldown_server;/);
+  const rel = code.slice(code.indexOf('create function public.drilldown_release_lesson'), code.indexOf('create or replace function'));
+  assert.doesNotMatch(rel, /calls\s*=/, 'calls are never released');
+  assert.match(code, /create or replace function public\.drilldown_save_lesson\([\s\S]*?review_status <> 'rejected'/);
+  assert.match(code, /revoke all on function public\.drilldown_save_lesson\(uuid, text, text, text, text, text, text, jsonb, jsonb, jsonb, jsonb, jsonb, jsonb\) from public, anon, authenticated, service_role;/);
+  assert.doesNotMatch(code, /service_role\s+to|to service_role/);
+});
+
+test('route passes releaseLesson to the service', () => {
+  const route = readFileSync(new URL('../../src/app/api/drilldowns/route.ts', import.meta.url), 'utf8');
+  assert.match(route, /db: \{ reserve, releaseLesson, saveLesson, saveFactCheck \}/);
 });

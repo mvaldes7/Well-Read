@@ -200,16 +200,16 @@ commit;
 -- ---- function hygiene: search_path='' everywhere; definer only where intended; EXECUTE grants exact
 select t.eq((select count(*) from pg_proc p join pg_namespace n on n.oid = p.pronamespace
   where n.nspname = 'public' and (p.proname like 'drilldown\_%' or p.proname like 'generated\_lessons\_%')
-    and p.proconfig = array['search_path=""']), 10::bigint, 'pinned search_path');  -- 6 from P2 + 4 from P4 (20261104214500)
+    and p.proconfig = array['search_path=""']), 11::bigint, 'pinned search_path');  -- 6 from P2 + 4 from P4 (20261104214500) + 1 release (20261105000000)
 select t.eq((select string_agg(p.proname, ',' order by p.proname) from pg_proc p join pg_namespace n on n.oid = p.pronamespace
-  where n.nspname = 'public' and p.prosecdef), 'drilldown_my_lessons,drilldown_quiz_key,drilldown_require_owner,drilldown_require_verified,drilldown_reserve,drilldown_review_action,drilldown_review_queue,drilldown_save_fact_check,drilldown_save_lesson', 'definer set');
+  where n.nspname = 'public' and p.prosecdef), 'drilldown_my_lessons,drilldown_quiz_key,drilldown_release_lesson,drilldown_require_owner,drilldown_require_verified,drilldown_reserve,drilldown_review_action,drilldown_review_queue,drilldown_save_fact_check,drilldown_save_lesson', 'definer set');
 select t.eq((select string_agg(p.proname || ':' || r.rolname, ',' order by p.proname, r.rolname)
   from pg_proc p join pg_namespace n on n.oid = p.pronamespace
   cross join (values ('public'), ('anon'), ('authenticated'), ('service_role'), ('drilldown_server')) r(rolname)
   where n.nspname = 'public' and (p.proname like 'drilldown\_%' or p.proname like 'generated\_lessons\_%')
     and has_function_privilege(case when r.rolname = 'public' then 'anon' else r.rolname end, p.oid, 'execute')
     ),
-  'drilldown_my_lessons:authenticated,drilldown_quiz_key:drilldown_server,drilldown_reserve:drilldown_server,drilldown_review_action:drilldown_server,drilldown_review_queue:drilldown_server,drilldown_save_fact_check:drilldown_server,drilldown_save_lesson:drilldown_server',
+  'drilldown_my_lessons:authenticated,drilldown_quiz_key:drilldown_server,drilldown_release_lesson:drilldown_server,drilldown_reserve:drilldown_server,drilldown_review_action:drilldown_server,drilldown_review_queue:drilldown_server,drilldown_save_fact_check:drilldown_server,drilldown_save_lesson:drilldown_server',
   'EXECUTE: server-only functions only for drilldown_server');
 -- hosted default privileges grant EXECUTE on new functions to service_role; the migration must revoke it (REV-014)
 begin;
