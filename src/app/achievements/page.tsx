@@ -5,6 +5,7 @@ import { disciplines } from "@/content";
 import { evaluateAchievements, earnedLabel, type AchievementResult } from "@/achievements/definitions.mjs";
 import { PROGRESS_ERROR, getMyProgress } from "@/lib/progress/data";
 import MasteryCard from "@/components/MasteryCard";
+import BadgeIcon from "@/components/BadgeIcon";
 
 export const metadata: Metadata = { title: "Achievements" };
 
@@ -72,7 +73,7 @@ async function Board() {
                 return (
                   <li key={a.id} className={`medal ${a.earned ? "earned" : "locked"}`}>
                     <span className="medallion" aria-hidden="true">
-                      {a.earned ? (a.tier ?? "★") : "◇"}
+                      <BadgeIcon id={a.id} />
                     </span>
                     <div className="medal-body">
                       <h3>
