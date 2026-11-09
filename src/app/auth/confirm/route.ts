@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { isEmailOtpType, safeNextPath } from "@/lib/auth/logic.mjs";
-import { RESET_PATH } from "@/lib/auth/reset.mjs";
+import { RESET_PATH, afterCodeExchangePath } from "@/lib/auth/reset.mjs";
 import { createClient } from "@/lib/supabase/server";
 
 // Email links land here (Supabase SSR email-auth guide). Two formats:
@@ -27,7 +27,12 @@ export async function GET(request: NextRequest) {
     if (!error) return NextResponse.redirect(new URL(type === "recovery" ? RESET_PATH : next, request.url));
   } else if (supabase && code) {
     const { error } = await supabase.auth.exchangeCodeForSession(code);
-    if (!error) return NextResponse.redirect(new URL(next, request.url));
+    if (!error) {
+      // A reset link that fell back to the Site URL root has no ?next=, so route
+      // recovery sessions to the reset form by their claims instead.
+      const { data } = await supabase.auth.getClaims();
+      return NextResponse.redirect(new URL(afterCodeExchangePath(data?.claims, next), request.url));
+    }
   }
   // Includes Supabase's own error redirect (?error=access_denied&error_code=otp_expired).
   const failure = isReset ? `${RESET_PATH}?error=invalid_link` : "/login?error=confirm_failed";
