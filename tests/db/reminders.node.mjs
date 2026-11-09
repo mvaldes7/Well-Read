@@ -4,7 +4,7 @@ import postgres from "postgres";
 const socket = process.env.WR_TEST_PG_SOCKET;
 if (!socket || !socket.startsWith("/tmp/")) throw new Error("local test socket required");
 const sql = postgres({ host: socket, user: "postgres", database: "postgres", max: 2, prepare: false, ssl: false });
-const user = "00000000-0000-0000-0000-0000000000e4";
+const user = "10000000-0000-0000-0000-0000000000e4";
 try {
   await sql`insert into auth.users(id) values (${user}::uuid)`;
   await sql`insert into public.lesson_reminder_settings(user_id, enabled, endpoint, p256dh, auth)
