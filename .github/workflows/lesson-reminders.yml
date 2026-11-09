@@ -1,0 +1,63 @@
+name: Lesson reminders
+
+# Daily Well-Read lesson reminder sender.
+# 02:00 UTC = 6 PM PST (Nov to Mar) / 7 PM PDT (Mar to Nov). GitHub may start scheduled runs late.
+# Emergency stop: set the repo variable WELL_READ_LESSON_REMINDERS to 0 (the sender then exits
+# without connecting), or disable this workflow (gh workflow disable lesson-reminders.yml).
+on:
+  schedule:
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "check = connect and read only (no claim, no push); send = real run"
+        type: choice
+        options: [check, send]
+        default: check
+  pull_request:
+    paths:
+      - .github/workflows/lesson-reminders.yml
+      - scripts/send-lesson-reminders.mjs
+      - src/lib/reminders/**
+
+permissions:
+  contents: read
+
+# Never run two senders at once; never cancel one mid-send.
+concurrency:
+  group: lesson-reminders
+  cancel-in-progress: false
+
+jobs:
+  remind:
+    name: remind
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    # Forks never get secrets; only same-repo PRs run the check.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - name: Install
+        run: pnpm install --frozen-lockfile --prod
+      - name: Connectivity check (no claim, no push)
+        env:
+          LESSON_REMINDER_DB_URL: ${{ secrets.LESSON_REMINDER_DB_URL }}
+          WELL_READ_LESSON_REMINDERS: ${{ vars.WELL_READ_LESSON_REMINDERS }}
+          VAPID_PUBLIC_KEY: ${{ secrets.VAPID_PUBLIC_KEY }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          VAPID_SUBJECT: ${{ secrets.VAPID_SUBJECT }}
+        run: node scripts/send-lesson-reminders.mjs --check
+      - name: Send reminders
+        if: github.event_name == 'schedule' || inputs.mode == 'send'
+        env:
+          LESSON_REMINDER_DB_URL: ${{ secrets.LESSON_REMINDER_DB_URL }}
+          WELL_READ_LESSON_REMINDERS: ${{ vars.WELL_READ_LESSON_REMINDERS }}
+          VAPID_PUBLIC_KEY: ${{ secrets.VAPID_PUBLIC_KEY }}
+          VAPID_PRIVATE_KEY: ${{ secrets.VAPID_PRIVATE_KEY }}
+          VAPID_SUBJECT: ${{ secrets.VAPID_SUBJECT }}
+        run: node scripts/send-lesson-reminders.mjs
