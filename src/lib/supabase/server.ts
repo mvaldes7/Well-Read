@@ -3,7 +3,13 @@ import { cookies } from "next/headers";
 import { connection } from "next/server";
 import { getSupabaseEnv } from "./env";
 
-/** Server Components / Server Actions client. Returns null when env is missing. */
+/**
+ * Server Components / Server Actions client. Returns null when env is missing.
+ * cookies() and connection() below make every caller request-specific. Under cacheComponents,
+ * call this only inside a <Suspense> child (e.g. OwnerReviewLink on /account), never in a
+ * cached or prerendered scope, or per-user output like the owner Review link could be cached
+ * and shown to other users.
+ */
 export async function createClient() {
   const env = getSupabaseEnv();
   if (!env) return null;

@@ -202,20 +202,19 @@ export function strayAuthLanding(pathname, searchParams) {
 }
 
 /**
- * Where /auth/confirm sends a user after a successful PKCE code exchange. A recovery
- * session (amr "recovery") always goes to the reset form, even when the link lost its ?next= (Site URL
- * fallback); everything else follows next.
+ * Where /auth/confirm sends a user after a successful PKCE code exchange. Only a fresh
+ * recovery sign-in (amr method "recovery") goes to the reset form, whatever ?next= says,
+ * so a signup confirmation or magic link carrying next=/auth/reset can't land there; those
+ * go to "/" instead. Everything else follows next.
  * @param {unknown} claims verified claims after the exchange
  * @param {string} next safe next path
  * @param {number} [nowS]
  */
 export function afterCodeExchangePath(claims, next, nowS = Math.floor(Date.now() / 1000)) {
-  if (next === RESET_PATH) return RESET_PATH;
-  // Only a true "recovery" sign-in: a signup confirmation (amr "otp") must not land on the
-  // reset form just because it also came from an email link.
   const amr = claims && typeof claims === "object" ? /** @type {{ amr?: unknown }} */ (claims).amr : null;
   const recoveryOnly = Array.isArray(amr)
     ? { .../** @type {object} */ (claims), amr: amr.filter((e) => e && typeof e === "object" && e.method === "recovery") }
     : null;
-  return recoveryOnly && recoveryOnly.amr.length && isRecoverySession(recoveryOnly, nowS) ? RESET_PATH : next;
+  if (recoveryOnly && recoveryOnly.amr.length && isRecoverySession(recoveryOnly, nowS)) return RESET_PATH;
+  return next === RESET_PATH ? "/" : next;
 }

@@ -42,6 +42,8 @@ async function AccountDetails() {
 
 // Owner-only link to /review. Uses the exact gate /review uses (flag, verified session, DB owner check);
 // for everyone else, or on any error, it renders nothing. Own Suspense so the queue never delays the page.
+// Keep it inside its <Suspense> child: createClient() reads cookies()/connection(), and moving that out
+// (or into a cached scope) could cache the link and show it to other users.
 async function OwnerReviewLink() {
   if (!drilldownsEnabled(process.env)) return null;
   const supabase = await createClient();
