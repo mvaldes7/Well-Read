@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import vm from "node:vm";
-import { reminderConfig, reminderDay, shouldRemind, parseSubscription, validPushEndpoint, LEARN_PATH } from "../../src/lib/reminders/logic.mjs";
+import { reminderConfig, reminderDay, shouldRemind, parseSubscription, validPushEndpoint, LEARN_PATH, REMINDER_PAYLOAD } from "../../src/lib/reminders/logic.mjs";
 import { sendLessonReminders } from "../../src/lib/reminders/send.mjs";
 import { classifyPath } from "../../src/lib/auth/logic.mjs";
 
@@ -49,7 +49,7 @@ test("claim precedes transport, fixed /learn payload, no transport retries", asy
   const result = await sendLessonReminders({ env,
     claim: async () => { calls.push("claim"); return [sub]; },
     canSend: async () => true, expire: async () => assert.fail("not expired"),
-    send: async (_s, payload, opts) => { calls.push("send"); assert.equal(JSON.parse(payload).url, LEARN_PATH); assert.equal(opts.TTL, 3600); },
+    send: async (_s, payload, opts) => { calls.push("send"); assert.equal(JSON.parse(payload).notification.navigate, "https://well-read-learn.vercel.app/learn"); assert.equal(opts.TTL, 3600); },
   });
   assert.deepEqual(calls, ["claim", "send"]);
   assert.deepEqual(result, { disabled: false, claimed: 1, sent: 1, failed: 0 });
@@ -88,6 +88,11 @@ test("service worker ignores injected URLs and navigates to same-origin Learn", 
   assert.deepEqual(opened, ["https://well-read.test/learn"]);
   assert.equal(classifyPath("/sw.js"), "public");
   assert.equal(classifyPath("/api/reminders"), "protected");
+  // Declarative push: the browser's proposed notification is left alone (no replacement).
+  shown.length = 0; let waited = false;
+  listeners.push({ notification: { title: "Well-Read" }, data: null, waitUntil: () => { waited = true; } });
+  assert.equal(shown.length, 0);
+  assert.equal(waited, false);
 });
 test("account control and auth wiring: opt-in only, Off persists before unsubscribe", () => {
   const ui = source("src/components/LessonReminder.tsx"), actions = source("src/lib/reminders/actions.ts");
@@ -113,4 +118,14 @@ test("completion/opt-out after claim wins before transport", async () => {
     canSend: async () => false, expire: async () => {}, send: async () => assert.fail("no send"),
   });
   assert.equal(result.claimed, 1); assert.equal(result.sent, 0);
+});
+
+test("reminder payload is Declarative Web Push with a fixed same-site /learn navigate", () => {
+  assert.equal(REMINDER_PAYLOAD.web_push, 8030);
+  const n = REMINDER_PAYLOAD.notification;
+  assert.equal(n.title, "Well-Read");
+  assert.equal(n.navigate, "https://well-read-learn.vercel.app" + LEARN_PATH);
+  assert.equal(new URL(n.navigate).protocol, "https:");
+  assert.ok(Object.isFrozen(REMINDER_PAYLOAD) && Object.isFrozen(n));
+  assert.deepEqual(Object.keys(REMINDER_PAYLOAD).sort(), ["notification", "web_push"]);
 });
