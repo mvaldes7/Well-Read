@@ -21,6 +21,7 @@ export const CONFIRM_PATH = "/auth/confirm";
  * NO extension or folder rules: other public/ files and any other "*.png" stay protected.
  */
 export const PUBLIC_PATHS = new Set([
+  "/sw.js", // Public push worker; no app content, no API bypass.
   "/favicon.ico",
   "/icon.svg",
   "/apple-icon.png",

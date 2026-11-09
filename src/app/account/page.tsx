@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import AccountForm from "@/components/AccountForm";
+import LessonReminder from "@/components/LessonReminder";
+import { reminderConfig } from "@/lib/reminders/logic.mjs";
 import PasswordForm from "@/components/PasswordForm";
 import { changePassword } from "@/lib/auth/reset-actions";
 import { namesFromMetadata } from "@/lib/account/names.mjs";
@@ -17,11 +19,14 @@ async function AccountDetails() {
   const email = typeof claims?.email === "string" ? claims.email : "";
   if (!claims?.sub) return <p className="error">Your session has ended. Sign in again.</p>;
   const { firstName, lastName } = namesFromMetadata(claims.user_metadata);
+  const config = reminderConfig(process.env);
+  const { data: reminder, error: reminderError } = await supabase.from("lesson_reminder_settings").select("enabled").eq("user_id", claims.sub).maybeSingle();
   return (
     <>
       <p className="account-email">
         Signed in as <strong>{email}</strong>
       </p>
+      <LessonReminder key={claims.sub} loadFailed={!!reminderError} enabled={reminder?.enabled === true} available={!!config} publicKey={config?.publicKey ?? null} />
       <AccountForm firstName={firstName ?? ""} lastName={lastName ?? ""} />
       <section aria-labelledby="password-heading" className="account-section">
         <h2 id="password-heading">Change password</h2>

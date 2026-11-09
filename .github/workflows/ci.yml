@@ -31,6 +31,8 @@ jobs:
         run: pnpm typecheck
       - name: Unit tests
         run: pnpm test
+      - name: Throwaway local Postgres tests (no project connection)
+        run: pnpm test:db
       - name: Build
         run: pnpm build
       - name: Client bundle scan (no server-only names)

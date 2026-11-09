@@ -45,3 +45,6 @@ next-env.d.ts
 
 # drill-downs P1b prototype output (never commit generated lessons)
 /.drilldowns-out/
+
+# Supabase CLI generated local metadata
+/supabase/.temp/

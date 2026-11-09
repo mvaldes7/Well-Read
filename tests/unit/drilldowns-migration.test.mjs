@@ -1,4 +1,4 @@
-// Static checks on the drill-downs P2 migration (CI has no Postgres; behaviour is tested by `pnpm test:db` locally).
+// Static checks on the drill-downs P2 migration; behaviour is covered by throwaway Postgres tests.
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, readdirSync } from 'node:fs';
@@ -7,9 +7,9 @@ const dir = new URL('../../supabase/migrations/', import.meta.url);
 const raw = readFileSync(new URL('20261102231600_drilldowns.sql', dir), 'utf8');
 const sql = raw.split('\n').filter((l) => !l.trim().startsWith('--')).join('\n');
 
-test('drilldowns migration is new, last (before the P4 review draft), and marked unapplied', () => {
+test('drilldowns migrations retain their order and P2 is marked unapplied', () => {
   const files = readdirSync(dir).filter((f) => f.endsWith('.sql')).sort();
-  assert.deepEqual(files.slice(-3), ['20261102231600_drilldowns.sql', '20261104214500_drilldown_review.sql', '20261105000000_drilldown_release.sql']);
+  assert.deepEqual(files.filter((f) => f.includes("_drilldown")), ['20261102231600_drilldowns.sql', '20261104214500_drilldown_review.sql', '20261105000000_drilldown_release.sql']);
   assert.match(raw, /STATUS: UNAPPLIED/);
 });
 
