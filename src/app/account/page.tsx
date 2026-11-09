@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Suspense } from "react";
 import AccountForm from "@/components/AccountForm";
 import LessonReminder from "@/components/LessonReminder";
@@ -7,6 +8,9 @@ import PasswordForm from "@/components/PasswordForm";
 import { changePassword } from "@/lib/auth/reset-actions";
 import { namesFromMetadata } from "@/lib/account/names.mjs";
 import { createClient } from "@/lib/supabase/server";
+import { drilldownsEnabled } from "@/lib/drilldowns/config.mjs";
+import { loadReviewLink, reviewLinkLabel } from "@/lib/drilldowns/review.mjs";
+import { drilldownDbConfigured, reviewQueue } from "@/lib/drilldowns/server-db.mjs";
 
 export const metadata: Metadata = { title: "Account" };
 
@@ -36,6 +40,30 @@ async function AccountDetails() {
   );
 }
 
+// Owner-only link to /review. Uses the exact gate /review uses (flag, verified session, DB owner check);
+// for everyone else, or on any error, it renders nothing. Own Suspense so the queue never delays the page.
+async function OwnerReviewLink() {
+  if (!drilldownsEnabled(process.env)) return null;
+  const supabase = await createClient();
+  const link = await loadReviewLink({
+    enabled: true,
+    configured: drilldownDbConfigured() && Boolean(supabase),
+    getUserId: async () => {
+      if (!supabase) return null;
+      const { data, error } = await supabase.auth.getClaims();
+      const sub = data?.claims?.sub;
+      return !error && typeof sub === "string" && sub ? sub : null;
+    },
+    db: { reviewQueue },
+  });
+  if (!link) return null;
+  return (
+    <p className="account-review-link">
+      <Link href="/review">{reviewLinkLabel(link.count)}</Link>
+    </p>
+  );
+}
+
 export default function AccountPage() {
   return (
     <section aria-labelledby="account-heading" className="auth-page">
@@ -44,6 +72,9 @@ export default function AccountPage() {
         <h1 id="account-heading">Account</h1>
         <Suspense fallback={<p className="muted">Loading…</p>}>
           <AccountDetails />
+        </Suspense>
+        <Suspense fallback={null}>
+          <OwnerReviewLink />
         </Suspense>
       </div>
     </section>

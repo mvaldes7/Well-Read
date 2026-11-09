@@ -65,6 +65,23 @@ export async function loadReviewQueue({ enabled, configured, getUserId, db }) {
 }
 
 /**
+ * Account-page link to /review. Same gate as the page (flag, verified session, DB owner check via reviewQueue);
+ * anything but "ok" (off, signed out, not the owner, DB error) -> null, so nothing renders.
+ * count = pending + flagged, using the same filters as the /review tabs.
+ * @param {Parameters<typeof loadReviewQueue>[0]} deps
+ * @returns {Promise<{ count: number } | null>}
+ */
+export async function loadReviewLink(deps) {
+  const r = await loadReviewQueue(deps);
+  if (r.status !== "ok") return null;
+  const c = queueCounts(r.rows);
+  return { count: c.pending + c.flagged };
+}
+
+/** @param {number} count */
+export const reviewLinkLabel = (count) => (count > 0 ? `Review AI lessons (${count})` : "Review AI lessons");
+
+/**
  * POST /api/drilldowns/review. Order: flag (404) -> same-origin (403) -> session (404) -> body exactly
  * { lessonId, action } (400) -> DB owner check + action (WR403 -> 404, WR404 -> 409).
  * @param {{ enabled: boolean, sameOrigin: boolean, configured: boolean, body: unknown, getUserId: () => Promise<string | null>,

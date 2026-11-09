@@ -247,6 +247,7 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
 .auth-page .forgot { text-align: center; font-size: 14px; margin: 14px 0 0; }
 .auth-form .hint { font-size: 13px; margin: 4px 0 0; }
 .center { text-align: center; }
+.account-review-link { text-align: center; font-size: 14px; margin: 18px 0 0; }
 .account-section { border-top: 1px solid var(--line); margin-top: 26px; padding-top: 18px; }
 .account-section h2 { font-size: 22px; text-align: center; margin: 0 0 4px; }
 .notice.flash { border: 1px solid var(--brass); padding: 10px 14px; margin: 0 0 18px; }
