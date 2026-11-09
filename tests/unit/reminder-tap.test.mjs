@@ -37,7 +37,7 @@ test("tap with the app open on Account focuses it and navigates to /learn", asyn
   assert.equal(w.focused, 1);
   assert.deepEqual(JSON.parse(JSON.stringify(w.messages)), [{ type: "well-read:open-learn" }]);
   assert.deepEqual(opened, []);
-  assert.equal(cachePuts[0][0], "/__reminder-tap");
+  assert.deepEqual(cachePuts.map(p => p[0]), ["/__reminder-tap", "/__reminder-last-tap"]);
 });
 
 test("if navigate() rejects (iOS / uncontrolled), the page is told and /learn is opened", async () => {
@@ -67,5 +67,24 @@ test("root layout mounts the tap listener on every page", () => {
   const listener = readFileSync(new URL("../../src/components/ReminderTapListener.tsx", import.meta.url), "utf8");
   assert.match(listener, /well-read:open-learn/);
   assert.match(listener, /__reminder-tap/);
-  assert.match(listener, /router\.push\("\/learn"\)/);
+  assert.match(listener, /window\.location\.assign\(new URL\("\/learn", window\.location\.origin\)\.href\)/);
+  assert.match(listener, /getRegistration\("\/"\)\)\?\.update\(\)/);
+  assert.match(listener, /visibilitychange/);
+});
+
+test("service worker takes over immediately and reports its version without personal data", async () => {
+  assert.match(sw, /addEventListener\("install", \(\) => self\.skipWaiting\(\)\)/);
+  assert.match(sw, /clients\.claim\(\)/);
+  const { listeners } = load([]);
+  let reply, done;
+  listeners.message({ data: { type: "well-read:sw-version" }, ports: [{ postMessage: m => { reply = m; } }], waitUntil: p => { done = p; } });
+  await done;
+  assert.match(reply.version, /^\d{4}-\d{2}-\d{2}\.\d+$/);
+  assert.deepEqual(Object.keys(reply).sort(), ["lastTapAt", "version"]);
+});
+
+test("registration skips the HTTP cache and Account shows the worker version", () => {
+  const ui = readFileSync(new URL("../../src/components/LessonReminder.tsx", import.meta.url), "utf8");
+  assert.match(ui, /updateViaCache: "none"/);
+  assert.match(ui, /<ReminderWorkerStatus \/>/);
 });

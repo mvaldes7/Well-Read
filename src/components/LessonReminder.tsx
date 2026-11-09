@@ -2,6 +2,7 @@
 
 import { useSyncExternalStore, useState } from "react";
 import { setLessonReminder } from "@/lib/reminders/actions";
+import ReminderWorkerStatus from "@/components/ReminderWorkerStatus";
 
 const subscribeSupport = () => () => {};
 const browserSupport = () => window.isSecureContext && "serviceWorker" in navigator && "PushManager" in window && "Notification" in window;
@@ -36,7 +37,7 @@ export default function LessonReminder({ enabled, available, publicKey, loadFail
           setMessage("Notifications are blocked or not allowed. Check browser settings; on iPhone/iPad, add Well-Read to your Home Screen first.");
           return;
         }
-        await navigator.serviceWorker.register("/sw.js", { scope: "/" });
+        await navigator.serviceWorker.register("/sw.js", { scope: "/", updateViaCache: "none" });
         const reg = await navigator.serviceWorker.ready;
         const existing = await reg.pushManager.getSubscription();
         const key = Uint8Array.from(atob(publicKey.replace(/-/g, "+").replace(/_/g, "/")), c => c.charCodeAt(0));
@@ -65,5 +66,6 @@ export default function LessonReminder({ enabled, available, publicKey, loadFail
       disabled={busy || loadFailed || (!on && (!available || !supported))} onChange={() => toggle()} /> Daily reminder {on ? "on" : "off"}</label>
     {loadFailed && <p>Couldn&apos;t load your reminder setting. Refresh to check it, or <button type="button" disabled={busy} onClick={() => toggle(true)}>Turn reminders off</button>.</p>}
     <p role="status" aria-live="polite">{message}</p>
+    {supported && <ReminderWorkerStatus />}
   </section>;
 }
