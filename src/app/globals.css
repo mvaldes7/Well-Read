@@ -500,6 +500,8 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
 .medal-status { margin: 0; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--brass-ink); }
 .medal-progress { letter-spacing: 0.12em; color: var(--sub); }
 .medallion { flex: none; display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%; font-family: var(--serif); font-size: 22px; color: var(--brass-text); background: radial-gradient(circle at 35% 30%, #f1dfae, var(--brass-hi) 35%, var(--brass-lo) 75%, #8d7546); border: 1px solid #7c6639; box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -2px 3px rgba(0, 0, 0, 0.25), 0 2px 4px rgba(30, 25, 15, 0.3); }
+.badge-icon { width: 28px; height: 28px; display: block; }
+.medal.locked .badge-icon { opacity: 0.6; }
 /* Locked: dim the card background and the medallion, never the text. */
 .medal.locked { background: var(--locked-bg); box-shadow: inset 0 1px 2px rgba(30, 25, 15, 0.12); }
 .medal.locked .medallion { color: var(--locked-glyph); background: var(--locked-medal); border-color: transparent; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.25); }
@@ -513,6 +515,7 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
   .medal { padding: 16px; gap: 14px; }
   .medal h3 { font-size: 19px; }
   .medallion { width: 44px; height: 44px; font-size: 19px; }
+  .badge-icon { width: 24px; height: 24px; }
   .topic-mastery { gap: 10px; }
 }
 
