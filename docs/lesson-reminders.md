@@ -63,6 +63,20 @@ like Family To-Do. No paid provider, new hosted service, or paid tier is require
    each need approval; approving/merging the PR alone is not approval for those actions.
 
 After all relevant approvals only: `node scripts/send-lesson-reminders.mjs`.
+
+### Scheduler (GitHub Actions, free tier)
+
+`.github/workflows/lesson-reminders.yml` runs the sender once a day at `0 2 * * *` UTC, which is
+6 PM PST in winter and 7 PM PDT in summer; GitHub can start scheduled runs late. Every run first
+does `node scripts/send-lesson-reminders.mjs --check`, which connects with the sender role and
+runs one read-only query (no claim, no push). Scheduled runs then send. Manual runs
+(`workflow_dispatch`) default to `check`; pick `send` for a real run. PRs touching the sender
+run the check only. Repeat runs on the same Pacific day send nothing, because each user's claim
+is per day.
+
+Repository secrets: `LESSON_REMINDER_DB_URL` (Supabase IPv4 session pooler, port 5432, sender
+role only), `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`. Repository variable:
+`WELL_READ_LESSON_REMINDERS` (`1` = on).
 Without the exact flag or any required setting it exits without connecting or sending.
 It never reads `DATABASE_URL`. Logs aggregate counts only, not ids/endpoints/keys/errors.
 A single invocation handles 100 candidates; larger usage needs separately reviewed batching
@@ -78,7 +92,9 @@ Before production activation, separately approve and verify actual browser opt-i
 permission denial, expiration cleanup, signed-out Learn deep link, device replacement,
 DST/day rollover, and real phone delivery. Offline mocks cannot establish real delivery.
 
-Emergency stop: remove/set `WELL_READ_LESSON_REMINDERS=0` in the sender **and** stop the job;
+Emergency stop: set the repo variable `WELL_READ_LESSON_REMINDERS` to `0`
+(`gh variable set WELL_READ_LESSON_REMINDERS --body 0`) **and** disable the job
+(`gh workflow disable lesson-reminders.yml`);
 application flag removal disables new opt-in but still permits Off. Disable sender login
 if needed. Accepted push messages cannot be recalled. Preserve claims so restart/re-enable
 cannot duplicate today's sends. Data cascade-deletes with accounts; no destructive rollback
