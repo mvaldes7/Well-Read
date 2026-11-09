@@ -2,7 +2,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { actionsFor, filterQueue, handleReviewAction, loadReviewQueue, parseFilter, queueCounts } from '../../src/lib/drilldowns/review.mjs';
+import { actionsFor, filterQueue, handleReviewAction, loadReviewLink, loadReviewQueue, parseFilter, queueCounts, reviewLinkLabel } from '../../src/lib/drilldowns/review.mjs';
 
 const OWNER = '11111111-1111-4111-8111-111111111111';
 const OTHER = '22222222-2222-4222-8222-222222222222';
@@ -158,4 +158,32 @@ test('wiring: route same-origin + flag, page flag + notFound, server-only DB mod
     assert.ok(mig.includes(`grant execute on function public.${fn} to drilldown_server;`), fn);
   }
   assert.doesNotMatch(mig, /grant [^;]* to (anon|authenticated|service_role)/);
+});
+
+test('Account review link: owner only, pending + flagged count, hidden otherwise', async () => {
+  const rows = [
+    { id: 'gen_aaaaaaaa', review_status: 'pending', unconfirmed_claims: [], open_reports: [] },
+    { id: 'gen_bbbbbbbb', review_status: 'flagged', unconfirmed_claims: ['x'], open_reports: [] },
+    { id: 'gen_cccccccc', review_status: 'published', unconfirmed_claims: [], open_reports: [{}] },
+  ];
+  const deps = (over) => ({ enabled: true, configured: true, getUserId: async () => OWNER, db: mockDb(rows), ...over });
+  assert.deepEqual(await loadReviewLink(deps()), { count: 2 });
+  assert.equal(await loadReviewLink(deps({ getUserId: async () => OTHER })), null);
+  assert.equal(await loadReviewLink(deps({ getUserId: async () => null })), null);
+  const off = mockDb(rows);
+  assert.equal(await loadReviewLink(deps({ enabled: false, db: off })), null);
+  assert.equal(off.calls.length, 0);
+  assert.equal(await loadReviewLink(deps({ configured: false })), null);
+  assert.equal(await loadReviewLink(deps({ db: { reviewQueue: async () => { throw new Error('down'); } } })), null);
+  assert.equal(reviewLinkLabel(2), 'Review AI lessons (2)');
+  assert.equal(reviewLinkLabel(0), 'Review AI lessons');
+});
+
+test('Account page gates the review link exactly like /review', () => {
+  const src = readFileSync(new URL('../../src/app/account/page.tsx', import.meta.url), 'utf8');
+  assert.match(src, /if \(!drilldownsEnabled\(process\.env\)\) return null;/);
+  assert.match(src, /loadReviewLink\(/);
+  assert.match(src, /db: \{ reviewQueue \}/);
+  assert.match(src, /getClaims\(\)/);
+  assert.doesNotMatch(src, /getSession\(/);
 });
