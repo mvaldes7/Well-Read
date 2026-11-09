@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import Sidebar from "@/components/Sidebar";
 import UserMenu from "@/components/UserMenu";
 import SidebarStreak from "@/components/SidebarStreak";
+import ReminderTapListener from "@/components/ReminderTapListener";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en">
       <body>
+        <ReminderTapListener />
         <div className="shell">
           {/* Sidebar (TSK-015). Only the name + sign-out stream in; a sized placeholder holds their space. */}
           <Sidebar
