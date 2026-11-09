@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from "next/server";
 import { getDiscipline, getLesson, getTopic } from "@/content";
 import { decideAuth } from "@/lib/auth/logic.mjs";
+import { strayAuthLanding } from "@/lib/auth/reset.mjs";
 import { updateSession, withSessionCookies } from "@/lib/supabase/proxy";
 
 // Order of checks:
@@ -44,6 +45,11 @@ function contentExists(pathname: string): boolean {
 }
 
 export async function proxy(request: NextRequest) {
+  // Email links that fell back to the Site URL root ("/?code=...") go to /auth/confirm
+  // before the auth redirect, which would otherwise drop the code on the way to /login.
+  const stray = strayAuthLanding(request.nextUrl.pathname, request.nextUrl.searchParams);
+  if (stray) return NextResponse.redirect(new URL(stray, request.url));
+
   const { response, authed } = await updateSession(request);
   const { pathname, search } = request.nextUrl;
 
