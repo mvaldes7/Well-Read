@@ -158,7 +158,7 @@ test('path guard: every icon/manifest path in the allowlist is public signed out
     assert.equal(classifyPath(p), 'public', p);
     assert.deepEqual(decideAuth({ pathname: p, authed: false }), { type: 'next' }, p);
   }
-  assert.deepEqual([...PUBLIC_PATHS].sort(), [...ICON_PATHS, '/auth/confirm', '/auth/forgot', '/auth/reset'].sort());
+  assert.deepEqual([...PUBLIC_PATHS].sort(), [...ICON_PATHS, '/sw.js', '/auth/confirm', '/auth/forgot', '/auth/reset'].sort());
 });
 
 test('path guard: look-alikes, other public/ files and traversal stay protected', () => {

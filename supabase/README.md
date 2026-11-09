@@ -34,6 +34,8 @@ In the repo but **not** applied to any Supabase project yet. Apply only with Mik
 | `20261104214500` | `migrations/20261104214500_drilldown_review.sql` | Drill-downs P4 (DRAFT) | Owner review: `drilldown_owner` (one row, set by owner SQL), `generated_lessons.fact_check` (not client-readable), SECURITY DEFINER `drilldown_save_fact_check()`/`drilldown_review_queue()`/`drilldown_review_action()` (EXECUTE only for `drilldown_server`, owner checked inside). Apply after `20261102231600`. Tested only on a local throwaway Postgres (`pnpm test:db`). No service_role. |
 | `20261105000000` | `migrations/20261105000000_drilldown_release.sql` | Drill-downs cap fix (DRAFT, unapplied) | SECURITY DEFINER `drilldown_release_lesson()` (EXECUTE only for `drilldown_server`) gives back a lesson slot after a failed/rejected attempt, never below kept lessons; calls stay counted. Replaces `drilldown_save_lesson()` (same signature) so rejected drafts don't count as used. Apply after `20261104214500`. Tested only on a local throwaway Postgres (`pnpm test:db`). No service_role. |
 
+| `20261109214457` | `migrations/20261109214457_lesson_reminders.sql` | Daily reminders (DRAFT, unapplied) | Opt-in settings, finished days, atomic daily claims, pass trigger, invoker finish RPC, private sender functions and NOLOGIN `lesson_reminder_sender`. No scheduler or sending enabled. Activation approvals: [lesson reminder runbook](../docs/lesson-reminders.md). |
+
 ## `drilldown_server` (after 20261102231600 is applied)
 
 The drill-down server uses this narrow role, **not** the service role, which stays forbidden. The migration creates it as LOGIN, with

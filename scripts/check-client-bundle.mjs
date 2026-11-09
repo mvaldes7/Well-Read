@@ -2,7 +2,7 @@
 import { readdirSync, readFileSync, statSync, existsSync } from "node:fs";
 import { join } from "node:path";
 
-export const FORBIDDEN = ["DRILLDOWN_DB_URL", "SUPABASE_SERVICE_ROLE_KEY", "SERVICE_ROLE_KEY", "service_role", "GEMINI_API_KEY", "drilldown_server"];
+export const FORBIDDEN = ["LESSON_REMINDER_DB_URL", "VAPID_PRIVATE_KEY", "VAPID_SUBJECT", "lesson_reminder_sender", "DRILLDOWN_DB_URL", "SUPABASE_SERVICE_ROLE_KEY", "SERVICE_ROLE_KEY", "service_role", "GEMINI_API_KEY", "drilldown_server"];
 
 export function scan(dir) {
   const hits = [];

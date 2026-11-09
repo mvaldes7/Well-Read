@@ -35,6 +35,12 @@ export async function submitQuiz(_prev: QuizState, payload: unknown): Promise<Qu
 
   const { lessonId, score, total, passed, questions } = graded.value;
   const save = await saveBestAttempt(supabase, userId, lessonId, { score, total, passed });
+  // Track passed submissions, including retakes whose best attempt was kept. The trigger
+  // also records stored passes atomically, so a transient RPC failure cannot lose a new pass.
+  // Never log payloads, user ids or DB errors, and don't let reminder bookkeeping break grading.
+  if (passed && save !== "failed") {
+    try { await supabase.rpc("lesson_reminder_finished"); } catch { /* Migration may be pending. */ }
+  }
   // Streak activity (TSK-016): one quiz_attempt per graded submission. Never throws and its
   // outcome is ignored, so a missing table or failed insert can't affect the quiz result.
   await logActivity(supabase, userId, "quiz_attempt", lessonId);

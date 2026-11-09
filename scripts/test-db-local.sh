@@ -19,4 +19,6 @@ for t in "$ROOT"/tests/db/*.test.sql; do echo "== $(basename "$t")"; "${PSQL[@]}
 echo "== race.sh"; "$ROOT/tests/db/race.sh" "${PSQL[@]}"
 echo "== server-db.node.mjs"
 (cd "$ROOT" && WR_TEST_PG_SOCKET="$TMP" node --conditions=react-server tests/db/server-db.node.mjs)
+echo "== reminders.node.mjs"
+(cd "$ROOT" && WR_TEST_PG_SOCKET="$TMP" node tests/db/reminders.node.mjs)
 echo "local DB tests: OK"
