@@ -8,7 +8,8 @@ if (!reminderConfig(process.env) || !process.env.LESSON_REMINDER_DB_URL) {
   console.log("Lesson reminders disabled; no database connection or push attempted.");
 } else {
   const { default: postgres } = await import("postgres");
-  const { default: webpush } = await import("web-push");
+  // web-push v4 is ESM with named exports only (no default export).
+  const webpush = await import("web-push");
   const sql = postgres(process.env.LESSON_REMINDER_DB_URL, {
     max: 1, prepare: false, idle_timeout: 5, connect_timeout: 10, ssl: "require",
   });
