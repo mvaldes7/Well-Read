@@ -2,8 +2,18 @@
 // Well-Read currently uses America/Los_Angeles for streaks and has no user timezone setting.
 export const REMINDER_TIME_ZONE = "America/Los_Angeles";
 export const LEARN_PATH = "/learn";
+export const APP_ORIGIN = "https://well-read-learn.vercel.app";
+export const LEARN_URL = new URL(LEARN_PATH, APP_ORIGIN).href;
+// Declarative Web Push format (RFC 8030 magic value). On iOS/iPadOS 18.4+ and macOS Safari the
+// browser shows this notification itself and opens `navigate` on tap, with no service worker
+// involved; Home Screen apps ignore WindowClient.navigate()/openWindow from notificationclick.
+// Other browsers still run public/sw.js, which shows the same fixed text and opens /learn.
 export const REMINDER_PAYLOAD = Object.freeze({
-  title: "Well-Read", body: "Take a moment to learn a lesson.", url: LEARN_PATH,
+  web_push: 8030,
+  notification: Object.freeze({
+    title: "Well-Read", body: "Take a moment to learn a lesson.", lang: "en-US", dir: "ltr",
+    navigate: LEARN_URL, silent: false,
+  }),
 });
 
 /** @param {Record<string, string | undefined>} env */

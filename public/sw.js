@@ -1,7 +1,7 @@
 // Push only: no offline/authenticated-content cache. The one cache entry below holds a
 // timestamp ("a reminder was just tapped"), never page content.
 // Bump on every sw.js change. Shown on the Account page so a phone's running version can be checked.
-const SW_VERSION = "2026-11-09.3";
+const SW_VERSION = "2026-11-09.4";
 const TAP_CACHE = "well-read-reminder-tap";
 const TAP_KEY = "/__reminder-tap";
 const LAST_TAP_KEY = "/__reminder-last-tap"; // diagnostics only: when this worker last handled a tap
@@ -10,7 +10,11 @@ const LEARN = "/learn";
 self.addEventListener("install", () => self.skipWaiting());
 self.addEventListener("activate", event => event.waitUntil(self.clients.claim()));
 self.addEventListener("push", event => {
-  // Fixed, privacy-preserving text and destination. Never trust a payload URL.
+  // Declarative Web Push (Safari 18.4+): the browser already has a proposed notification whose
+  // tap opens /learn natively. Replacing it would bring back the notificationclick path that iOS
+  // Home Screen apps ignore, so leave it alone; the browser shows it if we don't.
+  if (event.notification) return;
+  // Other browsers: fixed, privacy-preserving text and destination. Never trust a payload URL.
   event.waitUntil(self.registration.showNotification("Well-Read", {
     body: "Take a moment to learn a lesson.", icon: "/icons/well-read-192.png",
     tag: "daily-lesson-reminder", data: { url: LEARN },
