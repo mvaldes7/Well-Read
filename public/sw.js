@@ -1,7 +1,10 @@
 // Push only: no offline/authenticated-content cache. The one cache entry below holds a
 // timestamp ("a reminder was just tapped"), never page content.
+// Bump on every sw.js change. Shown on the Account page so a phone's running version can be checked.
+const SW_VERSION = "2026-11-09.3";
 const TAP_CACHE = "well-read-reminder-tap";
 const TAP_KEY = "/__reminder-tap";
+const LAST_TAP_KEY = "/__reminder-last-tap"; // diagnostics only: when this worker last handled a tap
 const LEARN = "/learn";
 
 self.addEventListener("install", () => self.skipWaiting());
@@ -25,7 +28,9 @@ self.addEventListener("notificationclick", event => {
   event.waitUntil((async () => {
     try {
       const cache = await self.caches.open(TAP_CACHE);
-      await cache.put(TAP_KEY, new Response(String(Date.now())));
+      const now = String(Date.now());
+      await cache.put(TAP_KEY, new Response(now));
+      await cache.put(LAST_TAP_KEY, new Response(now));
     } catch { /* marker is best effort */ }
     const windows = await self.clients.matchAll({ type: "window", includeUncontrolled: true });
     const client = windows.find(c => new URL(c.url).origin === self.location.origin);
@@ -38,5 +43,19 @@ self.addEventListener("notificationclick", event => {
       // The page's own listener handles it; openWindow is the last resort if no page answers.
       try { await self.clients.openWindow(target); } catch { /* the page listener still runs */ }
     }
+  })());
+});
+
+// Diagnostics for the Account page: version and last handled tap time. No ids, endpoints or keys.
+self.addEventListener("message", event => {
+  if (event.data?.type !== "well-read:sw-version" || !event.ports?.[0]) return;
+  const port = event.ports[0];
+  event.waitUntil((async () => {
+    let lastTapAt = null;
+    try {
+      const hit = await (await self.caches.open(TAP_CACHE)).match(LAST_TAP_KEY);
+      if (hit) lastTapAt = Number(await hit.text()) || null;
+    } catch { /* best effort */ }
+    port.postMessage({ version: SW_VERSION, lastTapAt });
   })());
 });
