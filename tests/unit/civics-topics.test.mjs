@@ -14,17 +14,22 @@ const civics = disciplines.find((d) => d.slug === 'american-civics');
 const row = (lesson_id, passed = true, completed_at = '2026-10-10T17:00:00Z') => ({ lesson_id, score: passed ? 6 : 1, total: 6, passed, completed_at, first_passed_at: passed ? completed_at : null });
 const CIVICS = ['les_cc01', 'les_br01', 'les_br02', 'les_lp01', 'les_jr01', 'les_ec01', 'les_gw01', 'les_ja01', 'les_tj01', 'les_al01', 'les_tr01'];
 
-test('American Civics topics stay in content order, including the 2026-11-10 lessons', () => {
+test('American Civics topics stay in content order, with the five presidents under one topic', () => {
   assert.deepEqual(civics.topics.map((t) => [t.slug, t.kind, t.lessons.map((l) => l.id)]), [
     ['constitution-bill-of-rights', 'era', ['les_cc01', 'les_br01', 'les_br02']],
     ['federal-legislative-process', 'process', ['les_lp01']],
     ['marbury-v-madison', 'concept', ['les_jr01']],
     ['electoral-college', 'institution', ['les_ec01']],
-    ['george-washington', 'person', ['les_gw01']],
-    ['john-adams', 'person', ['les_ja01']],
-    ['thomas-jefferson', 'person', ['les_tj01']],
-    ['abraham-lincoln', 'person', ['les_al01']],
-    ['theodore-roosevelt', 'person', ['les_tr01']],
+    ['us-presidents', 'institution', ['les_gw01', 'les_ja01', 'les_tj01', 'les_al01', 'les_tr01']],
+  ]);
+  const presidents = civics.topics.find((t) => t.slug === 'us-presidents');
+  assert.equal(presidents.title, 'U.S. Presidents');
+  assert.deepEqual(presidents.lessons.map((l) => l.slug), [
+    'making-the-presidency-work',
+    'national-security-and-the-limits-of-dissent',
+    'liberty-expansion-and-contradiction',
+    'from-preserving-the-union-to-ending-slavery',
+    'the-presidency-as-a-force-for-action',
   ]);
   const t = civics.topics[1];
   assert.equal(t.title, 'The Federal Legislative Process');
@@ -63,6 +68,12 @@ test('Library Wall shelves one Civics volume per topic with a passed lesson', ()
   const only = buildBookshelf([row('les_lp01')], disciplines).find((x) => x.discipline.slug === 'american-civics');
   assert.deepEqual(only.books.map((b) => b.topicSlug), ['federal-legislative-process']);
   assert.equal(passedInTopic(civics.topics[1], completionLookup([row('les_lp01')], disciplines)), 1);
+  const presidents = civics.topics.find((t) => t.slug === 'us-presidents');
+  const one = buildBookshelf([row('les_gw01')], disciplines).find((x) => x.discipline.slug === 'american-civics');
+  assert.deepEqual(one.books.map((b) => [b.topicSlug, b.passedCount, b.lessonCount, b.href]), [['us-presidents', 1, 5, '/d/american-civics/us-presidents']]);
+  const two = buildBookshelf([row('les_gw01'), row('les_tr01')], disciplines).find((x) => x.discipline.slug === 'american-civics');
+  assert.deepEqual(two.books.map((b) => [b.topicSlug, b.passedCount]), [['us-presidents', 2]]);
+  assert.equal(passedInTopic(presidents, completionLookup([row('les_gw01'), row('les_tr01')], disciplines)), 2);
 });
 
 test('Civics completionist needs all 11 lessons across its topics', () => {

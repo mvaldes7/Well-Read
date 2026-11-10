@@ -3103,10 +3103,10 @@
         ]
       },
       {
-        "slug": "george-washington",
-        "title": "George Washington",
-        "kind": "person",
-        "summary": "As the first president, Washington helped turn a constitutional framework into a functioning executive while confronting disputes over federal authority and the contradictions of slavery.",
+        "slug": "us-presidents",
+        "title": "U.S. Presidents",
+        "kind": "institution",
+        "summary": "Five presidencies in office order, from Washington through Theodore Roosevelt: establishing the office, the limits of dissent, expansion and contradiction, union and emancipation, and a more activist executive.",
         "lessons": [
           {
             "id": "les_gw01",
@@ -3257,15 +3257,7 @@
                 "kind": "idea"
               }
             ]
-          }
-        ]
-      },
-      {
-        "slug": "john-adams",
-        "title": "John Adams",
-        "kind": "person",
-        "summary": "Adams navigated an undeclared conflict with France, accepted an electoral defeat, and signed laws that sharply restricted political opposition.",
-        "lessons": [
+          },
           {
             "id": "les_ja01",
             "slug": "national-security-and-the-limits-of-dissent",
@@ -3419,15 +3411,7 @@
                 "kind": "event"
               }
             ]
-          }
-        ]
-      },
-      {
-        "slug": "thomas-jefferson",
-        "title": "Thomas Jefferson",
-        "kind": "person",
-        "summary": "Jefferson enlarged the country through the Louisiana Purchase while confronting the tensions between limited government, executive action, slavery, and national expansion.",
-        "lessons": [
+          },
           {
             "id": "les_tj01",
             "slug": "liberty-expansion-and-contradiction",
@@ -3575,15 +3559,7 @@
                 "kind": "idea"
               }
             ]
-          }
-        ]
-      },
-      {
-        "slug": "abraham-lincoln",
-        "title": "Abraham Lincoln",
-        "kind": "person",
-        "summary": "Lincoln’s Civil War presidency linked preservation of the Union with emancipation while distinguishing wartime executive action from permanent constitutional abolition.",
-        "lessons": [
+          },
           {
             "id": "les_al01",
             "slug": "from-preserving-the-union-to-ending-slavery",
@@ -3732,15 +3708,7 @@
                 "kind": "subtopic"
               }
             ]
-          }
-        ]
-      },
-      {
-        "slug": "theodore-roosevelt",
-        "title": "Theodore Roosevelt",
-        "kind": "person",
-        "summary": "Roosevelt expanded presidential activism through labor mediation, business oversight, conservation, and an assertive international role.",
-        "lessons": [
+          },
           {
             "id": "les_tr01",
             "slug": "the-presidency-as-a-force-for-action",
