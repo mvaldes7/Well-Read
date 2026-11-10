@@ -20,10 +20,11 @@ test('American Civics topics stay in content order, with the five presidents und
     ['federal-legislative-process', 'process', ['les_lp01']],
     ['marbury-v-madison', 'concept', ['les_jr01']],
     ['electoral-college', 'institution', ['les_ec01']],
-    ['us-presidents', 'institution', ['les_gw01', 'les_ja01', 'les_tj01', 'les_al01', 'les_tr01']],
+    ['us-presidents', 'series', ['les_gw01', 'les_ja01', 'les_tj01', 'les_al01', 'les_tr01']],
   ]);
   const presidents = civics.topics.find((t) => t.slug === 'us-presidents');
   assert.equal(presidents.title, 'U.S. Presidents');
+  assert.equal(presidents.kind, 'series');
   assert.deepEqual(presidents.lessons.map((l) => l.slug), [
     'making-the-presidency-work',
     'national-security-and-the-limits-of-dissent',
@@ -87,7 +88,11 @@ test('Civics completionist needs all 11 lessons across its topics', () => {
 
 test('topic and discipline pages render counts and mastery from content, not hardcoded', () => {
   const src = (f) => readFileSync(new URL(`../../src/${f}`, import.meta.url), 'utf8');
-  assert.match(src('app/d/[discipline]/page.tsx'), /discipline\.topics\.map/);
-  assert.match(src('app/d/[discipline]/page.tsx'), /t\.lessons\.length/);
+  const listing = src('app/d/[discipline]/page.tsx');
+  assert.match(listing, /discipline\.topics\.map/);
+  assert.match(listing, /t\.lessons\.length/);
+  // Kind is shown as a plain label (e.g. "series · 5 lessons"), with no special-case map.
+  assert.match(listing, /\{t\.kind\}/);
+  assert.doesNotMatch(listing, /kindLabels|KIND_LABEL|kind === ['\"]series['\"]/);
   assert.match(src('app/d/[discipline]/[topic]/page.tsx'), /<DisciplineMastery disciplineSlug=\{discipline\.slug\}/);
 });
