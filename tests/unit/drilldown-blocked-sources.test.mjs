@@ -3,7 +3,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { lessonHasFetchableSource } from '../../src/lib/drilldowns/sources.mjs';
+import { lessonHasFetchableSource, lessonOffersDigDeeper } from '../../src/lib/drilldowns/sources.mjs';
 import { handleDigDeeper, createMinuteLimiter, describeReport } from '../../src/lib/drilldowns/service.mjs';
 import { DRILLDOWN_MESSAGES, DRILLDOWN_STATUS } from '../../src/lib/drilldowns/messages.mjs';
 
@@ -19,16 +19,20 @@ test('lessonHasFetchableSource: Britannica-only lesson is not eligible; mixed le
   assert.equal(lessonHasFetchableSource(null), false);
 });
 
-test('every Dig deeper lesson has at least one fetchable, non-blocked, allowlisted or curated HTTPS source', () => {
-  const dead = lessons.filter((l) => (l.digDeeper ?? []).length && !lessonHasFetchableSource(l)).map((l) => l.id);
-  assert.deepEqual(dead, []);
+test('every lesson offers Dig deeper; blocked-only curated sources are still listed for Unreliable Narrator, Meiji, and Surrealism', () => {
+  const missing = lessons.filter((l) => !lessonOffersDigDeeper(l)).map((l) => l.id);
+  assert.deepEqual(missing, []);
+  const blockedOnly = lessons.filter((l) => !lessonHasFetchableSource(l)).map((l) => l.id).sort();
+  assert.deepEqual(blockedOnly, ['les_mr01', 'les_su01', 'les_un01']);
+  assert.equal(lessonOffersDigDeeper(byId('les_un01')), true);
+  assert.equal(lessonOffersDigDeeper({ digDeeper: [] }), false);
+  assert.equal(lessonOffersDigDeeper(null), false);
 });
 
-test('service refuses an all-blocked lesson before reserving or fetching (no daily lesson used)', async () => {
-  const db = { reserves: [], async reserve(...a) { db.reserves.push(a); }, async saveLesson() { throw new Error('no save'); } };
+test('service: all-blocked lesson reserves, tries generation (fallback), and if sources still fail returns no_sources and releases the slot', async () => {
+  const db = { reserves: [], releases: [], async reserve(...a) { db.reserves.push(a); }, async releaseLesson(u) { db.releases.push(u); }, async saveLesson() { throw new Error('no save'); } };
   const logs = [];
   let generated = 0;
-  // Simulate the pre-fix content: les_ch01 with only its Britannica sources.
   const blockedOnly = structuredClone(disciplines);
   for (const d of blockedOnly) for (const t of d.topics) for (const l of t.lessons) if (l.id === 'les_ch01') l.sources = l.sources.filter((s) => s.url.includes('britannica.com'));
   const r = await handleDigDeeper({
@@ -36,16 +40,20 @@ test('service refuses an all-blocked lesson before reserving or fetching (no dai
     limiter: createMinuteLimiter(4, () => 0), billing: { stopped: false },
     getUserId: async () => '11111111-1111-4111-8111-111111111111',
     getCompletionRows: async (id) => [{ lesson_id: id }], db,
-    generate: async () => { generated++; throw new Error('must not generate'); },
+    generate: async () => {
+      generated++;
+      return { verdict: 'rejected', stoppedOn: 'no usable fetched sources: no fetchable source passed the fetch check (blocked sites never count)', calls: [], attempts: [], sourceFetch: { results: [], problems: ['no fetchable source'] } };
+    },
     log: (m) => logs.push(m),
   });
   assert.equal(r.status, 422);
   assert.equal(DRILLDOWN_STATUS.no_sources, 422);
   assert.equal(r.body.code, 'no_sources');
   assert.equal(r.body.message, DRILLDOWN_MESSAGES.no_sources);
-  assert.equal(db.reserves.length, 0);
-  assert.equal(generated, 0);
-  assert.match(logs.join('\n'), /les_ch01\/hammurabi: refused, no fetchable curated source/);
+  assert.equal(db.reserves.length, 1);
+  assert.deepEqual(db.releases, ['11111111-1111-4111-8111-111111111111']);
+  assert.equal(generated, 1);
+  assert.match(logs.join('\n'), /les_ch01\/hammurabi: rejected \(no usable fetched sources/);
 });
 
 test('describeReport names the failing step and per-URL results without secrets', () => {

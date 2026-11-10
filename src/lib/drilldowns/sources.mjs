@@ -77,11 +77,17 @@ export function classifySourceUrl(raw) {
  * Tier rule over a lesson's passing sources: at least one fetchable, non-blocked source that is curated or "trusted".
  * @param {{ url: string, curated?: boolean }[]} passing sources that passed every fetch check
  */
-export function sourceTierProblems(passing) {
+/**
+ * @param {{ url: string, curated?: boolean }[]} passing
+ * @param {{ allowSupplementaryOnly?: boolean }} [opts] when true (fallback last resort), Wikipedia-only is accepted.
+ */
+export function sourceTierProblems(passing, opts = {}) {
   const usable = passing.filter((s) => !isBlockedSource(s.url));
   if (usable.length === 0) return ["no fetchable source passed the fetch check (blocked sites never count)"];
   const strong = usable.some((s) => s.curated || classifySourceUrl(s.url)?.tier === "trusted");
-  return strong ? [] : ["supplementary sources (e.g. Wikipedia) cannot be the only source"];
+  if (strong) return [];
+  if (opts.allowSupplementaryOnly) return [];
+  return ["supplementary sources (e.g. Wikipedia) cannot be the only source"];
 }
 
 /**
@@ -113,4 +119,13 @@ export function isBlockedSource(raw) {
 export function lessonHasFetchableSource(lesson) {
   const list = Array.isArray(lesson?.sources) ? lesson.sources : [];
   return list.some((s) => typeof s?.url === "string" && s.url.startsWith("https://") && !isBlockedSource(s.url));
+}
+
+/**
+ * Should the lesson page offer Dig deeper? Fallback discovery can ground a lesson even when every curated
+ * source is blocklisted, so this is about stored choices, not curated-source fetchability.
+ * @param {{ digDeeper?: ReadonlyArray<unknown> } | null | undefined} lesson
+ */
+export function lessonOffersDigDeeper(lesson) {
+  return Array.isArray(lesson?.digDeeper) && lesson.digDeeper.length > 0;
 }

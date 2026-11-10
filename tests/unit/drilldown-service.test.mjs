@@ -312,18 +312,22 @@ test('release: a timeout / exception thrown by generation still releases, and th
   assert.deepEqual(s.db.releases, [USER]);
 });
 
-test('release: refusals before the reservation (no_sources, cap, signed out) release nothing', async () => {
+test('release: refusals before the reservation (cap, signed out) release nothing', async () => {
   const capped = setup({ reserveImpl: async () => { const e = new Error('drilldown cap: user_cap'); e.code = 'WR429'; throw e; } });
   assert.equal((await capped.run()).status, 429); assert.deepEqual(capped.db.releases, []);
   const out = setup({ userId: null });
   assert.equal((await out.run()).status, 401); assert.deepEqual(out.db.releases, []);
-  const blocked = structuredClone(disciplines);
-  for (const d of blocked) for (const t of d.topics) for (const l of t.lessons) if (l.id === 'les_ch01') l.sources = l.sources.filter((x) => x.url.includes('britannica.com'));
-  const ns = setup({ body: { lessonId: 'les_ch01', choiceId: 'hammurabi' }, generate: async () => { throw new Error('must not generate'); } });
-  ns.deps.disciplines = blocked;
+});
+
+test('release: no_sources after a failed fallback reserves, then releases the lesson slot', async () => {
+  const ns = setup({
+    generate: async () => ({ verdict: 'rejected', stoppedOn: 'no usable fetched sources: fallback also failed', calls: [], attempts: [], sourceFetch: { results: [], problems: ['no fetchable source'] } }),
+  });
   const r = await ns.run();
   assert.equal(r.body.code, 'no_sources');
-  assert.equal(ns.db.reserves.length, 0); assert.deepEqual(ns.db.releases, []);
+  assert.equal(r.status, 422);
+  assert.equal(lessonReserves(ns.db), 1);
+  assert.deepEqual(ns.db.releases, [USER]);
 });
 
 test('release: a failing release does not change the answer', async () => {
