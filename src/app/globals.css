@@ -142,6 +142,10 @@ p { margin: 0 0 1rem; }
 
 /* ---------- Layout ---------- */
 main { max-width: var(--page); margin: 0 auto; padding: 64px 40px 100px; }
+/* Auto side margins alone shrink a grid item to max-content. Fill the shell
+   column so Bookshelf cases can pack several disciplines on one desktop shelf
+   (approved mockup). max-width + auto margins still center when the column is wider. */
+.shell > main { width: 100%; min-width: 0; }
 main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-right: auto; }
 .hero { text-align: center; margin-bottom: 20px; }
 .hero h1 { font-size: 64px; margin: 14px 0 10px; letter-spacing: 0.01em; }
@@ -255,7 +259,8 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
 .not-found .code { font-family: var(--serif); font-size: 120px; line-height: 1; margin: 10px 0 0; color: var(--ink); }
 
 /* ---------- Bookshelf ---------- */
-.room { display: grid; grid-template-columns: 250px 1fr; gap: 56px; margin-top: 64px; padding-top: 44px; border-top: 1px solid var(--line); align-items: center; }
+.room { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 56px; margin-top: 64px; padding-top: 44px; border-top: 1px solid var(--line); align-items: center; }
+.room-whole { align-items: start; }
 .walltext h2 { font-size: 38px; margin: 10px 0 14px; line-height: 1.05; }
 .walltext p { font-size: 14.5px; line-height: 1.7; color: var(--sub); margin: 0 0 18px; }
 .walltext .count { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; border-top: 1px solid var(--line); padding-top: 12px; color: var(--ink); margin: 0; }
