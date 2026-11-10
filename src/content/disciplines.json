@@ -1005,6 +1005,140 @@
             ]
           }
         ]
+      },
+      {
+        "slug": "meiji-restoration",
+        "title": "The Meiji Restoration",
+        "kind": "event",
+        "summary": "The political transformation of 1868 initiated reforms that centralized government, changed social privileges, and built new national institutions.",
+        "lessons": [
+          {
+            "id": "les_mr01",
+            "slug": "rebuilding-japan-in-the-name-of-an-emperor",
+            "title": "The Meiji Restoration: Rebuilding Japan in the Name of an Emperor",
+            "sections": [
+              {
+                "heading": "A restoration that became a revolution",
+                "body": "The word restoration sounds like a return to the past. In Japan, however, the Meiji Restoration opened a period of extraordinary institutional change. The apparent contradiction is the starting point: older imperial authority helped legitimize the construction of a new political order.\n\nIn 1868 the Tokugawa shogunate, Japan's military government, came to its final end, and authority was at least nominally restored to the emperor Mutsuhito, known as Meiji. The transformation ended the existing political order rather than simply replacing one officeholder within it.\n\nThe emperor was not the sole designer of every reform. Leaders acting in his name drove major changes, while imperial authority supplied legitimacy. Separating the symbolic center of government from the people shaping policy helps explain how a restoration could produce revolutionary consequences."
+              },
+              {
+                "heading": "Turning domains into a national state",
+                "body": "One major task was centralization. In 1871 the old domains were abolished and replaced with prefectures. This reduced the autonomy of regional authorities and strengthened the institutions of national government. Administrative reorganization changed where decisions were made and who could enforce them.\n\nChanges also dismantled inherited class privileges. A national army was formed in 1871, and a conscription law followed in 1873. Military service was no longer the exclusive preserve of the samurai class, undermining a central basis of its former position.\n\nThese reforms were connected rather than isolated. A national army required national administrative capacity, while reducing old privileges helped weaken competing centers of authority. What looks like a list of separate decrees becomes clearer as a project to remake the relationship between government, territory, and population."
+              },
+              {
+                "heading": "Education and selective borrowing",
+                "body": "A Ministry of Education was established in 1871. The Education System Order of 1872 laid out a national plan for schooling, making education part of the effort to strengthen and organize the country. An institutional plan did not mean every practical obstacle disappeared immediately.\n\nJapanese leaders and specialists studied abroad, while foreign advisers brought expertise to Japan. Educators, engineers, scientists, and other specialists contributed to the circulation of knowledge. The process involved active selection and adaptation, not merely passive imitation of one outside model.\n\nThis distinction matters when discussing modernization. New institutions did not require every Japanese practice or identity to vanish. The historical question is how imported knowledge was combined with local goals, political choices, and existing social relationships. The result was not simply a copy of another country."
+              },
+              {
+                "heading": "A constitution without universal democracy",
+                "body": "The Meiji Constitution was promulgated in 1889, and the first Imperial Diet met in 1890. The Diet was a bicameral parliament, meaning a legislature with two houses. Its elected component operated under a limited franchise rather than universal voting rights.\n\nThe constitution preserved extensive imperial authority. The emperor appointed the prime minister and cabinet and held supreme control of the army and navy. Parliamentary institutions therefore did not mean that sovereignty had moved entirely to an elected public.\n\nRead these developments as a linked transformation: central administration, national military service, schooling, and constitutional institutions strengthened the state while changing social relationships. The key lesson is not that modernization equals democracy, but that new national capacities can coexist with restricted political participation."
+              }
+            ],
+            "keyFacts": [
+              "The Meiji Restoration began in 1868.",
+              "It ended the Tokugawa shogunate.",
+              "Domains were abolished and replaced by prefectures in 1871.",
+              "A national conscription law followed in 1873.",
+              "The Education System Order appeared in 1872.",
+              "The 1889 constitution created a parliament but preserved imperial authority."
+            ],
+            "quiz": [
+              {
+                "question": "Why is the term restoration potentially misleading?",
+                "options": [
+                  "Nothing changed after 1868",
+                  "A return to imperial authority accompanied major institutional transformation",
+                  "The shogun gained permanent power",
+                  "It refers only to repairing buildings"
+                ],
+                "answerIndex": 1,
+                "explanation": "Restoration of imperial authority legitimated substantial changes."
+              },
+              {
+                "question": "What replaced the domains in 1871?",
+                "options": [
+                  "Independent kingdoms",
+                  "Foreign colonies",
+                  "Prefectures",
+                  "Universities"
+                ],
+                "answerIndex": 2,
+                "explanation": "Prefectures were part of national centralization."
+              },
+              {
+                "question": "What changed with nationwide conscription?",
+                "options": [
+                  "Samurai lost their exclusive military role",
+                  "Every school closed",
+                  "Regional lords gained unlimited power",
+                  "The emperor was abolished"
+                ],
+                "answerIndex": 0,
+                "explanation": "Military service became part of a national system."
+              },
+              {
+                "question": "What did the 1872 Education System Order provide?",
+                "options": [
+                  "A ban on schooling",
+                  "A plan to end national administration",
+                  "A treaty about shipping",
+                  "A national plan for education"
+                ],
+                "answerIndex": 3,
+                "explanation": "Schooling became part of institutional state-building."
+              },
+              {
+                "question": "What does bicameral mean?",
+                "options": [
+                  "Government by one ruler alone",
+                  "A legislature with two houses",
+                  "A system with no elections",
+                  "Rule by foreign advisers"
+                ],
+                "answerIndex": 1,
+                "explanation": "The Imperial Diet had two houses."
+              },
+              {
+                "question": "Which conclusion best fits the Meiji Constitution?",
+                "options": [
+                  "It introduced universal voting immediately",
+                  "It removed every imperial power",
+                  "Parliamentary institutions coexisted with strong imperial authority",
+                  "It restored the Tokugawa shogunate"
+                ],
+                "answerIndex": 2,
+                "explanation": "Modern institutions did not equal unrestricted democracy."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Meiji Restoration",
+                "url": "https://www.britannica.com/event/Meiji-Restoration"
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Meiji Constitution",
+                "url": "https://www.britannica.com/topic/Meiji-Constitution"
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "The emergence of modern Japan",
+                "url": "https://www.britannica.com/place/Empire-of-Japan/The-emergence-of-modern-Japan"
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Education: Japan",
+                "url": "https://www.britannica.com/topic/education/Japan"
+              },
+              {
+                "publisher": "The Metropolitan Museum of Art",
+                "title": "Japan, 1800–1900 A.D.",
+                "url": "https://www.metmuseum.org/toah/ht/10/eaj.html"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -1738,6 +1872,152 @@
                 "id": "virtue-and-habit",
                 "label": "Virtue and habit",
                 "kind": "subtopic"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "utilitarianism",
+        "title": "Utilitarianism",
+        "kind": "school",
+        "summary": "Utilitarianism evaluates choices by their consequences for overall well-being, raising questions about impartiality, rules, and individual protection.",
+        "lessons": [
+          {
+            "id": "les_ut01",
+            "slug": "who-benefits-and-at-what-cost",
+            "title": "Utilitarianism: Who Benefits, and at What Cost?",
+            "sections": [
+              {
+                "heading": "Looking beyond intentions",
+                "body": "Imagine a town deciding between two flood-prevention projects. One protects more buildings, while another protects fewer households facing much greater danger. This invented case raises a moral question: what should count when comparing the consequences of a choice?\n\nUtilitarianism is a form of consequentialism, meaning that moral evaluation turns on consequences. In broad terms, it asks us to choose what produces the greatest overall good. Good intentions or familiar habits do not settle the question if an alternative would produce better results.\n\nJeremy Bentham and John Stuart Mill are central figures in classical utilitarianism. Their concerns included legal and social reform, so the theory addressed institutions and policies as well as individual conduct. It offered a way to challenge inherited practices by asking what they actually did for people's lives."
+              },
+              {
+                "heading": "Whose happiness counts?",
+                "body": "Utilitarianism differs from egoism because it considers others' good, not merely the decision-maker's advantage. A benefit does not count more simply because it belongs to you. The theory's impartial ambition is one reason it can challenge favoritism and socially accepted exclusions.\n\nBentham and Mill identified the good with pleasure and the absence of pain, although Mill distinguished higher and lower pleasures. Utilitarian traditions have also developed different accounts of well-being. It is therefore useful to ask what a particular version means by “good” before applying its calculations.\n\n“Greatest overall good” is not the same as whatever a numerical majority happens to prefer. A smaller number of people might face severe losses while a larger group receives tiny conveniences. The relevant comparison concerns benefits and harms, not simply a show of hands."
+              },
+              {
+                "heading": "Actions or rules?",
+                "body": "Act utilitarianism assesses particular actions by their consequences. Its guiding question is which available act produces the best overall result. That can make context crucial: two superficially similar decisions may have different consequences in different situations.\n\nRule utilitarianism instead evaluates rules by the consequences of their general acceptance or use, then assesses conduct through the appropriate rules. This approach gives a central place to stable practices such as keeping promises, while still explaining their importance through human welfare.\n\nConsider an invented temptation to break a promise for a small immediate benefit. An act-focused analysis must include the full consequences, not just that immediate gain. A rule-focused analysis asks what happens when people generally follow a rule permitting that kind of exception. Neither approach is adequately described as “do whatever is convenient.”"
+              },
+              {
+                "heading": "Why the theory remains controversial",
+                "body": "One difficulty is knowledge: people cannot perfectly predict every consequence. A serious evaluation must recognize uncertainty, overlooked harms, and long-term effects rather than pretending that every moral choice comes with a complete spreadsheet of outcomes.\n\nAnother challenge concerns justice and individual protection. Critics ask whether maximizing aggregate welfare could sometimes permit unfair treatment of a person or minority. Utilitarian responses, including rule-based approaches, try to explain how rights, trust, and fair institutions can be supported by their consequences. The debate is not settled by naming the theory.\n\nTo practice, identify who is affected by a decision, what benefits and harms are plausible, and which uncertainties could change the judgment. Then ask whether your reasoning protects people only because of expected outcomes or also for some independent reason. That final question helps locate the boundary between utilitarian and other moral approaches."
+              }
+            ],
+            "keyFacts": [
+              "Utilitarianism is a form of consequentialism.",
+              "It considers overall good, not only personal advantage.",
+              "Bentham and Mill were concerned with social and legal reform.",
+              "Mill distinguished higher and lower pleasures.",
+              "Act and rule utilitarianism evaluate choices at different levels.",
+              "Justice, prediction, and individual protection are major points of debate."
+            ],
+            "quiz": [
+              {
+                "question": "What makes utilitarianism consequentialist?",
+                "options": [
+                  "It evaluates choices through their effects",
+                  "It rejects all comparison",
+                  "It follows status alone",
+                  "It ignores outcomes"
+                ],
+                "answerIndex": 0,
+                "explanation": "Consequences are central to moral evaluation."
+              },
+              {
+                "question": "How does it differ from egoism?",
+                "options": [
+                  "Only rulers count",
+                  "Only your pleasure counts",
+                  "Others’ well-being matters as well as your own",
+                  "Consequences never matter"
+                ],
+                "answerIndex": 2,
+                "explanation": "Its scope is overall good rather than self-interest alone."
+              },
+              {
+                "question": "Which pair represents classical utilitarianism?",
+                "options": [
+                  "Picasso and Braque",
+                  "Bentham and Mill",
+                  "Luther and Calvin",
+                  "Homer and Virgil"
+                ],
+                "answerIndex": 1,
+                "explanation": "Both developed influential forms of the theory."
+              },
+              {
+                "question": "What distinguishes rule utilitarianism?",
+                "options": [
+                  "It rejects consequences entirely",
+                  "It judges only by popularity",
+                  "It forbids every general principle",
+                  "It evaluates rules through their consequences"
+                ],
+                "answerIndex": 3,
+                "explanation": "Rules receive justification through their contribution to good results."
+              },
+              {
+                "question": "Why is a majority vote not a complete utilitarian analysis?",
+                "options": [
+                  "The scale and distribution of benefits and harms also matter",
+                  "Only one voter ever matters",
+                  "Preferences can never affect welfare",
+                  "Majorities always cause harm"
+                ],
+                "answerIndex": 0,
+                "explanation": "Counting people is not the same as comparing their welfare effects."
+              },
+              {
+                "question": "Which is a major objection to maximizing aggregate welfare?",
+                "options": [
+                  "It cannot discuss policy",
+                  "It necessarily ignores every person",
+                  "It may appear to permit unfair treatment of individuals",
+                  "It contains no idea of good"
+                ],
+                "answerIndex": 2,
+                "explanation": "Justice and individual protection are central challenges."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Internet Encyclopedia of Philosophy",
+                "title": "Act and Rule Utilitarianism",
+                "url": "https://iep.utm.edu/util-a-r/"
+              },
+              {
+                "publisher": "Stanford Encyclopedia of Philosophy",
+                "title": "The History of Utilitarianism",
+                "url": "https://plato.stanford.edu/archives/win2014/entries/utilitarianism-history/"
+              },
+              {
+                "publisher": "Stanford Encyclopedia of Philosophy",
+                "title": "Jeremy Bentham",
+                "url": "https://plato.stanford.edu/entries/bentham/"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "jeremy-bentham",
+                "label": "Jeremy Bentham",
+                "kind": "person"
+              },
+              {
+                "id": "john-stuart-mill",
+                "label": "John Stuart Mill",
+                "kind": "person"
+              },
+              {
+                "id": "act-and-rule",
+                "label": "Act and rule utilitarianism",
+                "kind": "subtopic"
+              },
+              {
+                "id": "higher-and-lower-pleasures",
+                "label": "Higher and lower pleasures",
+                "kind": "idea"
               }
             ]
           }
@@ -2675,6 +2955,936 @@
             ]
           }
         ]
+      },
+      {
+        "slug": "electoral-college",
+        "title": "The Electoral College",
+        "kind": "institution",
+        "summary": "The presidential election combines state-level voting, the selection of electors, electoral ballots, and a congressional count rather than one direct nationwide tally.",
+        "lessons": [
+          {
+            "id": "les_ec01",
+            "slug": "how-votes-become-a-presidency",
+            "title": "The Electoral College: How Votes Become a Presidency",
+            "sections": [
+              {
+                "heading": "An election with several stages",
+                "body": "On a presidential ballot, voters see candidates for president and vice president. Institutionally, however, the election operates through electors selected under state rules. Understanding that distinction explains why a national popular-vote total is not the final legal measure of who wins.\n\nThe Electoral College is a process, not a campus or a single national meeting. It includes choosing electors, their meetings to vote for president and vice president, and the counting of electoral votes in Congress. The electors meet within their respective states rather than assembling in one place.\n\nAt the current full allocation there are 538 electors, and 270 electoral votes constitute a majority. Those figures describe the institutional structure, not a prediction about any particular election. A candidate needs a majority of electoral votes, not merely the largest number among several contenders."
+              },
+              {
+                "heading": "Why states have different numbers of electors",
+                "body": "Each state's allocation equals its number of senators plus its number of representatives in the U.S. House. The District of Columbia also participates in the Electoral College. The formula connects presidential selection to the composition of Congress without making members of Congress themselves the presidential electors.\n\nBecause every state has two senators, the allocation is not simply a perfectly proportional division by population. House representation supplies a population-related component, while Senate representation supplies the same additional number for every state. These two components serve different institutional purposes.\n\nFor a fictional example, a state with eight House seats would receive ten electoral votes. The calculation describes its allocation; it does not yet explain which candidate receives those votes. That depends on a separate question: the state's method for selecting electors."
+              },
+              {
+                "heading": "How state results become electoral votes",
+                "body": "In 48 states and the District of Columbia, the statewide winner receives all the electoral votes. This winner-take-all approach means that a narrow statewide victory can produce the same electoral allocation as a landslide in that state. The margin matters politically, but it does not add extra electors.\n\nMaine and Nebraska use a different method: two electors are allocated to the statewide winner and one to the winner in each congressional district. This is a district-based method, not an exact proportional division according to each candidate's statewide vote share.\n\nDifferent state outcomes can therefore combine into a national electoral result that differs from the ranking of candidates in the nationwide popular vote. A useful election map must distinguish vote totals, state victories, and electoral allocations rather than treating those three measures as interchangeable."
+              },
+              {
+                "heading": "The formal result and a fallback procedure",
+                "body": "Election-night projections do not themselves constitute the electors' formal vote. Electors meet in December and cast separate ballots for president and vice president. Their votes are transmitted for the congressional count in January. This sequence separates public reporting from formal constitutional steps.\n\nIf no presidential candidate receives an electoral majority, the House of Representatives chooses among the top three presidential electoral-vote recipients. In that contingent election, each state delegation has one vote. For vice president, the Senate chooses between the top two if no candidate has an electoral majority.\n\nThe central distinction is between individual ballots, state-based allocation, and the final electoral majority. When discussing reforms or defending the existing arrangement, first identify which stage a proposal would change. That keeps a debate about institutional design separate from assumptions about which candidate might benefit."
+              }
+            ],
+            "keyFacts": [
+              "The Electoral College is a multistage process.",
+              "The current full allocation is 538 electors, with 270 constituting a majority.",
+              "State allocations equal House seats plus two Senate seats.",
+              "Forty-eight states and D.C. use statewide winner-take-all allocation.",
+              "Maine and Nebraska use statewide and congressional-district results.",
+              "A contingent House presidential election gives each state delegation one vote."
+            ],
+            "quiz": [
+              {
+                "question": "What is the Electoral College?",
+                "options": [
+                  "A single university",
+                  "A process including elector selection, voting, and counting",
+                  "A national opinion poll",
+                  "A committee of all governors"
+                ],
+                "answerIndex": 1,
+                "explanation": "It is a series of institutional steps rather than one location."
+              },
+              {
+                "question": "What is a majority of the current 538-vote allocation?",
+                "options": [
+                  "269",
+                  "300",
+                  "270",
+                  "538"
+                ],
+                "answerIndex": 2,
+                "explanation": "270 is more than half of 538."
+              },
+              {
+                "question": "A fictional state has eight House seats. How many electors does it receive?",
+                "options": [
+                  "Ten",
+                  "Eight",
+                  "Sixteen",
+                  "Two"
+                ],
+                "answerIndex": 0,
+                "explanation": "Add its two Senate seats to its eight House seats."
+              },
+              {
+                "question": "How do Maine and Nebraska allocate electors?",
+                "options": [
+                  "Exactly in proportion to statewide percentages",
+                  "Only by statewide winner-take-all",
+                  "Only by national popular vote",
+                  "Two statewide, plus one for each congressional-district winner"
+                ],
+                "answerIndex": 3,
+                "explanation": "Their method combines statewide and district outcomes."
+              },
+              {
+                "question": "What happens in a contingent presidential election in the House?",
+                "options": [
+                  "Every voter casts another national ballot",
+                  "Each state delegation casts one vote",
+                  "The chief justice chooses",
+                  "Governors vote by population"
+                ],
+                "answerIndex": 1,
+                "explanation": "The House chooses among the top three, voting by state delegation."
+              },
+              {
+                "question": "Why distinguish election-night projections from the formal process?",
+                "options": [
+                  "Projections are constitutional amendments",
+                  "Electors never actually vote",
+                  "Electoral ballots and congressional counting occur later",
+                  "State results do not matter"
+                ],
+                "answerIndex": 2,
+                "explanation": "Public projections are not the electors’ formal ballots."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "National Archives",
+                "title": "What is the Electoral College?",
+                "url": "https://www.archives.gov/electoral-college/about"
+              },
+              {
+                "publisher": "U.S. Election Assistance Commission",
+                "title": "Presidential Elections",
+                "url": "https://www.eac.gov/voters/presidential-elections"
+              },
+              {
+                "publisher": "Congressional Research Service",
+                "title": "The Electoral College: How It Works in Contemporary Presidential Elections",
+                "url": "https://www.congress.gov/crs-product/RL32611"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "538-and-270",
+                "label": "538 electors and a majority of 270",
+                "kind": "idea"
+              },
+              {
+                "id": "winner-take-all",
+                "label": "Winner-take-all allocation",
+                "kind": "subtopic"
+              },
+              {
+                "id": "maine-and-nebraska",
+                "label": "Maine and Nebraska",
+                "kind": "place"
+              },
+              {
+                "id": "contingent-election",
+                "label": "Contingent House election",
+                "kind": "event"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "george-washington",
+        "title": "George Washington",
+        "kind": "person",
+        "summary": "As the first president, Washington helped turn a constitutional framework into a functioning executive while confronting disputes over federal authority and the contradictions of slavery.",
+        "lessons": [
+          {
+            "id": "les_gw01",
+            "slug": "making-the-presidency-work",
+            "title": "George Washington: Making the Presidency Work",
+            "sections": [
+              {
+                "heading": "An office without an established routine",
+                "body": "Imagine being given a job whose legal powers have been described but whose everyday practices barely exist. George Washington faced a version of that challenge when he became the first president on April 30, 1789. His choices would help establish expectations for the office rather than merely follow familiar routines.\n\nWashington served from 1789 to 1797. He assembled the first Cabinet, including Alexander Hamilton as secretary of the treasury and Thomas Jefferson as secretary of state. The executive branch therefore took shape through personnel, advice, and working relationships as well as constitutional language.\n\nA useful term here is precedent: an earlier decision or practice that later leaders may treat as a guide. A precedent is not automatically a constitutional amendment. Washington's importance lies partly in the practices he established and the restraint he displayed while exercising substantial authority."
+              },
+              {
+                "heading": "A tax becomes a test of government",
+                "body": "The Whiskey Rebellion exposed a practical question: could the new federal government enforce an unpopular national law? Hamilton proposed a tax on domestically distilled spirits in 1791, and opposition became especially intense in western Pennsylvania. For some farmers, the burden was more than an abstract policy dispute.\n\nResistance included refusal to pay and violence against collectors. Washington initially sought compliance through proclamations and negotiation. In 1794, after violence escalated, he called up state militia forces and personally accompanied the army during part of its movement west. The insurgency dispersed rather than producing a major battle.\n\nThe response demonstrated federal capacity, but it should not be reduced to the slogan that force always solves disagreement. The episode involved taxation, regional resentment, legal authority, attempts at settlement, and coercion. Washington later pardoned the two men convicted of treason, combining enforcement with clemency."
+              },
+              {
+                "heading": "Restraint and the transfer of power",
+                "body": "Washington's decision not to pursue a third term helped establish a two-term tradition. The significance was institutional: a leader with exceptional personal standing voluntarily relinquished the presidency rather than treating continued service as his entitlement.\n\nHis Farewell Address of 1796 warned about political factions and foreign entanglements. Those concerns reflected a presidency already facing disputes about national policy and international pressures. The address is evidence of Washington's priorities, not proof that disagreement could or should disappear from public life.\n\nSeparate three questions when studying this legacy: what the Constitution required, what Washington chose, and what later presidents regarded as customary. Conflating law and custom makes it harder to understand how an institution develops. His conduct helped shape expectations without resolving every argument about executive power."
+              },
+              {
+                "heading": "Liberty and slavery in the same life",
+                "body": "Washington's institution-building must be studied alongside his participation in slavery. Enslaved people sustained Mount Vernon's plantation economy. His personal doubts about slavery did not lead him to make emancipation a public program of his presidency.\n\nHis will provided for the freedom of the people he personally enslaved, but it did not free everyone living in bondage at Mount Vernon. Ownership arrangements limited the will's reach. The distinction matters because an account that says simply “Washington freed his slaves” can conceal both timing and the people left enslaved.\n\nA balanced assessment keeps achievement and injustice in view together. Washington helped demonstrate that executive authority could be effective and temporary, while remaining embedded in a coercive system that denied others freedom. Studying both is more informative than either presenting an uncritical hero or treating institutional accomplishments as irrelevant."
+              }
+            ],
+            "keyFacts": [
+              "Washington was the first president, serving from 1789 to 1797.",
+              "He assembled the first Cabinet.",
+              "The whiskey tax was proposed in 1791.",
+              "He called out militia forces during the Whiskey Rebellion in 1794.",
+              "His departure after two terms established an influential tradition.",
+              "His will’s emancipation provision did not cover every enslaved person at Mount Vernon."
+            ],
+            "quiz": [
+              {
+                "question": "Why did Washington’s early decisions matter beyond his own administration?",
+                "options": [
+                  "They automatically amended the Constitution",
+                  "They established precedents for a new office",
+                  "They eliminated Congress",
+                  "They ended all political disagreement"
+                ],
+                "answerIndex": 1,
+                "explanation": "The office lacked an established set of working practices."
+              },
+              {
+                "question": "Which issue triggered the Whiskey Rebellion?",
+                "options": [
+                  "A tax on distilled spirits",
+                  "A ban on newspapers",
+                  "A presidential term limit",
+                  "A treaty buying Louisiana"
+                ],
+                "answerIndex": 0,
+                "explanation": "Resistance centered on the federal excise tax."
+              },
+              {
+                "question": "What did the 1794 militia mobilization demonstrate?",
+                "options": [
+                  "States could never participate in national action",
+                  "The presidency had no enforcement role",
+                  "Federal capacity to enforce national law",
+                  "The end of taxation"
+                ],
+                "answerIndex": 2,
+                "explanation": "The response tested whether the new government could secure compliance."
+              },
+              {
+                "question": "What happened to the two men convicted of treason?",
+                "options": [
+                  "They became Cabinet members",
+                  "They were deported to France",
+                  "They received life sentences without review",
+                  "Washington pardoned them"
+                ],
+                "answerIndex": 3,
+                "explanation": "Enforcement was followed by executive clemency."
+              },
+              {
+                "question": "What is the distinction between a precedent and a constitutional amendment?",
+                "options": [
+                  "There is no distinction",
+                  "A precedent can guide later practice without changing the constitutional text",
+                  "Precedents apply only to taxes",
+                  "An amendment is always informal"
+                ],
+                "answerIndex": 1,
+                "explanation": "Washington’s two-term example initially operated as a tradition."
+              },
+              {
+                "question": "Which statement best describes his will’s effect?",
+                "options": [
+                  "It immediately abolished American slavery",
+                  "It freed everyone at Mount Vernon while he lived",
+                  "Its emancipation provision was limited to people he personally owned",
+                  "It had no connection to slavery"
+                ],
+                "answerIndex": 2,
+                "explanation": "It did not reach every enslaved person on the estate."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "White House",
+                "title": "A People’s History of the United States",
+                "url": "https://www.whitehouse.gov/history/",
+                "note": "early presidency and Cabinet"
+              },
+              {
+                "publisher": "George Washington’s Mount Vernon",
+                "title": "Whiskey Rebellion",
+                "url": "https://www.mountvernon.org/library/digitalhistory/digital-encyclopedia/article/whiskey-rebellion"
+              },
+              {
+                "publisher": "George Washington’s Mount Vernon",
+                "title": "George Washington and the Whiskey Rebellion",
+                "url": "https://www.mountvernon.org/george-washington/the-first-president/whiskey-rebellion"
+              },
+              {
+                "publisher": "White House",
+                "title": "Founding Fathers",
+                "url": "https://www.whitehouse.gov/founding-fathers/",
+                "note": "Washington section"
+              },
+              {
+                "publisher": "George Washington’s Mount Vernon",
+                "title": "George Washington and Slavery",
+                "url": "https://mtv-main-assets.mountvernon.org/files/resources/george-washington-and-slavery.pdf"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "whiskey-rebellion",
+                "label": "The Whiskey Rebellion",
+                "kind": "event"
+              },
+              {
+                "id": "cabinet-precedent",
+                "label": "The Cabinet as a precedent",
+                "kind": "idea"
+              },
+              {
+                "id": "two-term-tradition",
+                "label": "The two-term tradition",
+                "kind": "subtopic"
+              },
+              {
+                "id": "washington-and-slavery",
+                "label": "Washington and slavery",
+                "kind": "idea"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "john-adams",
+        "title": "John Adams",
+        "kind": "person",
+        "summary": "Adams navigated an undeclared conflict with France, accepted an electoral defeat, and signed laws that sharply restricted political opposition.",
+        "lessons": [
+          {
+            "id": "les_ja01",
+            "slug": "national-security-and-the-limits-of-dissent",
+            "title": "John Adams: National Security and the Limits of Dissent",
+            "sections": [
+              {
+                "heading": "The difficult job of following Washington",
+                "body": "Being the first president required establishing precedents. Being the second required showing that the office could survive without its founding occupant. John Adams, Washington's former vice president, took office on March 4, 1797, and served until 1801.\n\nAdams had been a major advocate of independence and a diplomat before becoming president. His administration, however, cannot be understood only through his earlier achievements. It faced the immediate problems of international conflict, divided political loyalties, and the place of opposition in a young republic.\n\nThe Federalists and Democratic-Republicans offered competing visions of national policy. Their rivalry made it harder to separate criticism of a government from accusations of disloyalty. Adams's presidency provides a focused case study in the danger of treating opponents as threats to the nation rather than participants in politics."
+              },
+              {
+                "heading": "An undeclared conflict with France",
+                "body": "France's seizure of American ships strained relations with the United States. The XYZ Affair deepened the crisis when French intermediaries sought payments from American diplomats as a condition for negotiations. The episode generated anger and strengthened demands for a tougher response.\n\nFrom 1798 to 1800, the United States and France fought the Quasi-War, an undeclared naval conflict. “Undeclared” does not mean imaginary: ships were attacked and military resources were committed, even though the conflict did not become a formally declared general war.\n\nAdams strengthened naval defenses while pursuing a diplomatic settlement. His decision to send another peace mission in 1799 angered some Federalists who wanted a more confrontational policy. The distinction between preparing to fight and choosing negotiations is central to understanding his conduct."
+              },
+              {
+                "heading": "The Alien and Sedition Acts",
+                "body": "In 1798 Adams and his Federalist allies enacted the Alien and Sedition Acts amid fear of French influence and domestic subversion. The legislation connected international insecurity with restrictions at home. It is a warning against assuming that a national-security justification automatically makes a policy compatible with liberty.\n\nThe Sedition Act permitted punishment of certain writings against the federal government, and the administration used it against opposition journalists and editors. The result was not merely a debate about polite language: political criticism could bring prosecution, fines, or imprisonment.\n\nThe laws damaged Adams's reputation and intensified party conflict. His presidency therefore contains a real tension: the leader who resisted pressure for a larger war also supported measures that constrained dissent. Praising his diplomacy does not erase responsibility for the repression, just as criticizing the laws does not make the diplomatic choices disappear."
+              },
+              {
+                "heading": "Losing an election without ending the republic",
+                "body": "Adams lost the election of 1800 to Thomas Jefferson and left office in 1801. The transfer moved the presidency from one political party to its rival. Its importance was greater than a change of personnel because political opposition could replace the governing leadership without destroying the constitutional system.\n\nAdams also became the first president to reside in the White House, moving into the unfinished building with Abigail Adams. This familiar detail is useful when placed in context: national institutions were still being built physically as well as politically.\n\nTo evaluate his presidency, separate three outcomes: avoiding a wider war, restricting political expression, and yielding office after defeat. Together they show why a historical assessment should explain conflicting choices rather than assign a single character label. The same administration can establish valuable precedents and commit serious violations of political liberty."
+              }
+            ],
+            "keyFacts": [
+              "Adams was the second president, serving from 1797 to 1801.",
+              "He had served as Washington’s vice president.",
+              "The XYZ Affair helped intensify tensions with France.",
+              "The Quasi-War lasted from 1798 to 1800.",
+              "The Sedition Act was used against opposition journalists.",
+              "Adams left office after losing the election of 1800."
+            ],
+            "quiz": [
+              {
+                "question": "What made Adams’s succession especially significant?",
+                "options": [
+                  "He abolished the presidency",
+                  "He demonstrated continuity after Washington",
+                  "He founded the Supreme Court in 1900",
+                  "He became a hereditary king"
+                ],
+                "answerIndex": 1,
+                "explanation": "The institution had to function beyond its first occupant."
+              },
+              {
+                "question": "What was the XYZ Affair?",
+                "options": [
+                  "A demand for payments connected with negotiations in France",
+                  "The purchase of Alaska",
+                  "A congressional election",
+                  "A dispute over a national park"
+                ],
+                "answerIndex": 0,
+                "explanation": "French intermediaries sought payments from American diplomats."
+              },
+              {
+                "question": "What was the Quasi-War?",
+                "options": [
+                  "A fictional battle",
+                  "A war with Spain in 1898",
+                  "An undeclared naval conflict with France",
+                  "A civil war between states"
+                ],
+                "answerIndex": 2,
+                "explanation": "It involved actual hostilities from 1798 to 1800."
+              },
+              {
+                "question": "Which action illustrates Adams’s pursuit of peace?",
+                "options": [
+                  "Closing every diplomatic mission",
+                  "Declaring permanent war",
+                  "Ending all naval defenses",
+                  "Sending a new peace mission in 1799"
+                ],
+                "answerIndex": 3,
+                "explanation": "The mission angered more confrontational Federalists."
+              },
+              {
+                "question": "What is a major civil-liberties criticism of his administration?",
+                "options": [
+                  "It allowed all opponents to become judges",
+                  "It used the Sedition Act against opposition expression",
+                  "It refused to enforce any law",
+                  "It abolished political newspapers voluntarily"
+                ],
+                "answerIndex": 1,
+                "explanation": "Prosecution of critics constrained political dissent."
+              },
+              {
+                "question": "Why did the transfer to Jefferson matter?",
+                "options": [
+                  "It ended elections permanently",
+                  "It kept the same party in office forever",
+                  "A rival party gained executive power through the constitutional system",
+                  "It made the presidency hereditary"
+                ],
+                "answerIndex": 2,
+                "explanation": "Party replacement became compatible with constitutional continuity."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "White House",
+                "title": "Signers of the Declaration of Independence",
+                "url": "https://www.whitehouse.gov/freedom250/founders-museum/signers/profiles/",
+                "note": "Adams profile"
+              },
+              {
+                "publisher": "George Washington’s Mount Vernon",
+                "title": "John Adams",
+                "url": "https://www.mountvernon.org/library/digitalhistory/digital-encyclopedia/article/john-adams"
+              },
+              {
+                "publisher": "George Washington’s Mount Vernon",
+                "title": "XYZ Affair",
+                "url": "https://www.mountvernon.org/library/digitalhistory/digital-encyclopedia/article/xyz-affair"
+              },
+              {
+                "publisher": "George Washington’s Mount Vernon",
+                "title": "Quasi War",
+                "url": "https://www.mountvernon.org/library/digitalhistory/digital-encyclopedia/article/quasi-war"
+              },
+              {
+                "publisher": "George Washington’s Mount Vernon",
+                "title": "Four More Years?",
+                "url": "https://www.mountvernon.org/george-washington/the-first-president/four-more-years"
+              },
+              {
+                "publisher": "White House",
+                "title": "The White House Building",
+                "url": "https://www.whitehouse.gov/about/"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "xyz-affair",
+                "label": "The XYZ Affair",
+                "kind": "event"
+              },
+              {
+                "id": "quasi-war",
+                "label": "The Quasi-War",
+                "kind": "event"
+              },
+              {
+                "id": "alien-and-sedition-acts",
+                "label": "The Alien and Sedition Acts",
+                "kind": "idea"
+              },
+              {
+                "id": "election-of-1800",
+                "label": "The election of 1800",
+                "kind": "event"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "thomas-jefferson",
+        "title": "Thomas Jefferson",
+        "kind": "person",
+        "summary": "Jefferson enlarged the country through the Louisiana Purchase while confronting the tensions between limited government, executive action, slavery, and national expansion.",
+        "lessons": [
+          {
+            "id": "les_tj01",
+            "slug": "liberty-expansion-and-contradiction",
+            "title": "Thomas Jefferson: Liberty, Expansion, and Contradiction",
+            "sections": [
+              {
+                "heading": "A writer of principles becomes an executive",
+                "body": "It is one thing to state a principle and another to govern when events make that principle inconvenient. Thomas Jefferson's presidency is a useful case study in that tension. The principal drafter of the Declaration of Independence became the third president and served from 1801 to 1809.\n\nJefferson had already served as Washington's secretary of state and as vice president under John Adams. His political identity emphasized republican government and suspicion of concentrated national power. Taking executive responsibility required him to turn those preferences into decisions about territory, diplomacy, taxation, and trade.\n\nThe essential question is not whether he possessed ideals, but how those ideals related to his actions. His administration reduced internal taxes and sought to reduce debt, yet its most famous achievement dramatically enlarged the country and raised questions about constitutional authority."
+              },
+              {
+                "heading": "A purchase larger than the original plan",
+                "body": "American diplomats initially sought arrangements concerning New Orleans, whose location mattered for trade through the Mississippi River. In 1803 France instead offered the much larger Louisiana Territory. Negotiators accepted a purchase costing $15 million and covering approximately 827,000 square miles.\n\nThe acquisition roughly doubled the size of the United States. Jefferson worried about whether the Constitution authorized such a purchase and considered seeking an amendment. His Cabinet argued that an amendment was unnecessary, and he proceeded through the treaty process. The Senate ratified the agreement in October 1803.\n\nThis is a concrete example of principle meeting opportunity. A president associated with a narrow view of federal power accepted a major expansion of national authority. The outcome cannot be understood simply as abandoning all restraint or following an unambiguous written instruction; it involved interpretation, urgency, and political judgment."
+              },
+              {
+                "heading": "Expansion for whom?",
+                "body": "The purchase transferred France's territorial claims; it did not mean the land was empty or that its Indigenous inhabitants had consented to American rule. Monticello's account connects expansion with the displacement and disruption of Native American communities. National growth and Indigenous loss belonged to the same process.\n\nJefferson also supported the Lewis and Clark expedition. Exploration helped the United States gather knowledge about western geography and peoples, but such projects also belonged to an expanding nation's ambitions. A map can be a source of information and an instrument of power.\n\nThe contradiction around slavery was equally fundamental. Jefferson championed universal rights while holding more than 600 people in slavery over his lifetime. That figure is a lifetime total, not the number present at one moment. His political language and his participation in human bondage must be studied together."
+              },
+              {
+                "heading": "Economic pressure can fail",
+                "body": "In his second term, interference with American shipping and Britain's impressment of sailors created a foreign-policy crisis. Impressment meant forcing men into naval service. Jefferson sought economic pressure as an alternative to war, restricting trade through embargo policies.\n\nThe strategy overestimated American economic leverage. It disrupted commerce, reduced government revenue, and provoked domestic discontent without achieving its central aims. Treasury Secretary Albert Gallatin warned about the damage but carried out the administration's policy.\n\nJefferson's record therefore connects a celebrated territorial acquisition with a damaging economic experiment and enduring injustices. A strong evaluation asks who gained opportunities, who bore costs, and when executive flexibility contradicted stated limits. Those questions illuminate the presidency more effectively than treating the Declaration, the purchase, and the embargo as unrelated facts."
+              }
+            ],
+            "keyFacts": [
+              "Jefferson was the third president, serving from 1801 to 1809.",
+              "He was the principal drafter of the Declaration of Independence.",
+              "The Louisiana Purchase occurred in 1803 for $15 million.",
+              "The acquisition roughly doubled U.S. territory.",
+              "Jefferson held more than 600 people in slavery over his lifetime.",
+              "His embargo policies harmed American commerce without achieving their main goals."
+            ],
+            "quiz": [
+              {
+                "question": "Which tension frames the Louisiana Purchase?",
+                "options": [
+                  "Pacifism and painting",
+                  "Limited-government principles and expansive executive action",
+                  "Monarchy and royal succession",
+                  "Isolation from all western land"
+                ],
+                "answerIndex": 1,
+                "explanation": "Jefferson questioned constitutional authority but pursued the acquisition."
+              },
+              {
+                "question": "From which country did the United States purchase Louisiana?",
+                "options": [
+                  "France",
+                  "Britain",
+                  "Russia",
+                  "Japan"
+                ],
+                "answerIndex": 0,
+                "explanation": "France offered the territory in 1803."
+              },
+              {
+                "question": "What was the purchase price?",
+                "options": [
+                  "$1 billion",
+                  "$150,000",
+                  "$15 million",
+                  "$230 million"
+                ],
+                "answerIndex": 2,
+                "explanation": "The negotiated price was $15 million."
+              },
+              {
+                "question": "What does the transfer of territorial claims not establish?",
+                "options": [
+                  "That negotiations occurred",
+                  "That U.S. ambitions expanded",
+                  "That a treaty was ratified",
+                  "That Indigenous inhabitants consented to American rule"
+                ],
+                "answerIndex": 3,
+                "explanation": "Diplomatic transfer and Indigenous consent are distinct issues."
+              },
+              {
+                "question": "What does the figure of more than 600 enslaved people describe?",
+                "options": [
+                  "A single household census in 1803",
+                  "The people Jefferson enslaved over his lifetime",
+                  "The number freed by the purchase",
+                  "All enslaved people in Virginia"
+                ],
+                "answerIndex": 1,
+                "explanation": "It is a lifetime total, not a snapshot."
+              },
+              {
+                "question": "What was a major result of the embargo strategy?",
+                "options": [
+                  "It immediately ended every maritime dispute",
+                  "It abolished the navy",
+                  "It damaged American commerce without meeting its main aims",
+                  "It purchased New Orleans separately"
+                ],
+                "answerIndex": 2,
+                "explanation": "Economic leverage proved less effective than the administration expected."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Monticello",
+                "title": "Biography of Jefferson",
+                "url": "https://www.monticello.org/biography-of-jefferson"
+              },
+              {
+                "publisher": "Monticello",
+                "title": "The Presidency (1801–1809)",
+                "url": "https://www.monticello.org/jefferson-and/jefferson-and-the-presidency-1801-1809"
+              },
+              {
+                "publisher": "Monticello",
+                "title": "A Dynamic Duo: Jefferson and Madison",
+                "url": "https://www.monticello.org/stories/a-dynamic-duo-jefferson-and-madison"
+              },
+              {
+                "publisher": "Monticello",
+                "title": "The Louisiana Purchase",
+                "url": "https://www.monticello.org/the-louisiana-purchase"
+              },
+              {
+                "publisher": "Monticello",
+                "title": "Albert Gallatin",
+                "url": "https://www.monticello.org/encyclopedia/albert-gallatin"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "louisiana-purchase",
+                "label": "The Louisiana Purchase",
+                "kind": "event"
+              },
+              {
+                "id": "embargo-policy",
+                "label": "Jefferson’s embargo policy",
+                "kind": "idea"
+              },
+              {
+                "id": "indigenous-dispossession",
+                "label": "Indigenous dispossession",
+                "kind": "subtopic"
+              },
+              {
+                "id": "jefferson-and-slavery",
+                "label": "Jefferson and slavery",
+                "kind": "idea"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "abraham-lincoln",
+        "title": "Abraham Lincoln",
+        "kind": "person",
+        "summary": "Lincoln’s Civil War presidency linked preservation of the Union with emancipation while distinguishing wartime executive action from permanent constitutional abolition.",
+        "lessons": [
+          {
+            "id": "les_al01",
+            "slug": "from-preserving-the-union-to-ending-slavery",
+            "title": "Abraham Lincoln: From Preserving the Union to Ending Slavery",
+            "sections": [
+              {
+                "heading": "An election followed by a national rupture",
+                "body": "Abraham Lincoln became the sixteenth president in 1861 and served until his assassination in April 1865. His election in November 1860 was followed by secession, beginning with South Carolina in December. The crisis raised the question of whether the United States would survive as a single country.\n\nSlavery lay at the center of the conflict over the nation's future. Lincoln opposed slavery, but his position on the steps the federal government could take changed under the pressures and possibilities of war. Opposition to an institution and authority to abolish it were not, in his understanding, identical questions.\n\nThis distinction helps explain the course of his presidency. It was not simply four years of carrying out one fully formed plan. Constitutional argument, military developments, political resistance, and the actions of enslaved people shaped the route from Union preservation to emancipation."
+              },
+              {
+                "heading": "Why a wartime proclamation?",
+                "body": "Lincoln did not regard the presidency as conferring an unrestricted power to set aside state slavery laws solely because he believed slavery wrong. A peacetime decree could face constitutional challenges. Wartime commander-in-chief authority offered a different legal basis for action against the rebellion.\n\nHe issued the preliminary Emancipation Proclamation on September 22, 1862. It announced that people enslaved in areas still in rebellion on January 1, 1863, would be declared free. The final proclamation took effect on that date and specified the areas to which it applied.\n\nThe document did not abolish slavery everywhere in the United States. Loyal slave states and designated exempted areas were outside its reach. Recognizing those limits does not make the proclamation meaningless; it explains the legal strategy and geographic scope of the measure."
+              },
+              {
+                "heading": "Legal change and freedom on the ground",
+                "body": "The proclamation established a claim to freedom for people in the covered areas, but enforcement depended on circumstances, including Union military advances. A legal declaration and the practical ability to live freely are related without being identical.\n\nIt also opened the way for Black enlistment in the United States military. Black Americans were therefore participants in the struggle over the war's outcome, not merely recipients waiting for a president's decision. The relationship between emancipation and Union victory became increasingly direct.\n\nThis is why both common shortcuts are misleading: “Lincoln immediately freed everyone” ignores scope and enforcement, while “the proclamation did nothing” ignores its legal, military, and political consequences. The historically useful account explains what changed, where it changed, and what still had to be accomplished."
+              },
+              {
+                "heading": "From executive order to constitutional abolition",
+                "body": "Lincoln worried that a measure justified by wartime powers might be challenged after the conflict. A constitutional amendment offered a more durable and nationwide way to abolish slavery. He vigorously supported the Thirteenth Amendment rather than treating the proclamation as the final step.\n\nCongress approved the amendment in January 1865, and the states completed ratification on December 6, after Lincoln's death. Its abolition of slavery and involuntary servitude included an exception for punishment following criminal conviction. The distinction between congressional approval and state ratification matters: an amendment does not become part of the Constitution merely because a president supports it.\n\nLincoln's legacy thus involves leadership within a larger institutional and social struggle. Executive action, military service, congressional votes, and state ratification performed different roles. Ending legal slavery was a fundamental transformation, but it did not by itself complete the struggle for equal citizenship and political rights."
+              }
+            ],
+            "keyFacts": [
+              "Lincoln was the sixteenth president, serving from 1861 to 1865.",
+              "He issued the preliminary proclamation on September 22, 1862.",
+              "The final Emancipation Proclamation took effect January 1, 1863.",
+              "It did not apply to every enslaved person in the country.",
+              "It authorized Black military enlistment.",
+              "The Thirteenth Amendment was ratified in December 1865, after Lincoln’s death."
+            ],
+            "quiz": [
+              {
+                "question": "What distinction shaped Lincoln’s approach to slavery?",
+                "options": [
+                  "Moral opposition and constitutional authority were different questions",
+                  "The president could amend the Constitution alone",
+                  "State laws never existed",
+                  "War had no legal significance"
+                ],
+                "answerIndex": 0,
+                "explanation": "Lincoln argued that his moral judgment did not itself create unlimited executive power."
+              },
+              {
+                "question": "When did the final Emancipation Proclamation take effect?",
+                "options": [
+                  "July 4, 1776",
+                  "January 1, 1863",
+                  "December 6, 1865",
+                  "April 30, 1789"
+                ],
+                "answerIndex": 1,
+                "explanation": "The preliminary announcement preceded the January effective date."
+              },
+              {
+                "question": "Which statement describes its scope?",
+                "options": [
+                  "It applied instantly everywhere",
+                  "It concerned only foreign territory",
+                  "It covered designated areas in rebellion, with exceptions",
+                  "It abolished all state governments"
+                ],
+                "answerIndex": 2,
+                "explanation": "Loyal slave states and exempted areas were not covered."
+              },
+              {
+                "question": "What additional change did the proclamation authorize?",
+                "options": [
+                  "The end of all military service",
+                  "A third presidential term",
+                  "The purchase of Louisiana",
+                  "Black enlistment in the U.S. military"
+                ],
+                "answerIndex": 3,
+                "explanation": "Black soldiers became direct participants in Union military service."
+              },
+              {
+                "question": "Why pursue the Thirteenth Amendment?",
+                "options": [
+                  "To provide permanent nationwide constitutional abolition",
+                  "To cancel emancipation",
+                  "To replace Congress with the president",
+                  "To restore slavery in loyal states"
+                ],
+                "answerIndex": 0,
+                "explanation": "An amendment addressed the limits and possible vulnerability of wartime action."
+              },
+              {
+                "question": "Which event completed the amendment process?",
+                "options": [
+                  "Lincoln’s private approval",
+                  "State ratification in December 1865",
+                  "The preliminary proclamation",
+                  "The election of 1860"
+                ],
+                "answerIndex": 1,
+                "explanation": "Congressional passage and presidential support were not the final ratification step."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "White House",
+                "title": "A People’s History of the United States",
+                "url": "https://www.whitehouse.gov/history/",
+                "note": "election and secession"
+              },
+              {
+                "publisher": "National Park Service",
+                "title": "Lincoln and the U.S. Constitution",
+                "url": "https://www.nps.gov/liho/learn/historyculture/constitution.htm"
+              },
+              {
+                "publisher": "National Park Service",
+                "title": "Emancipation and the Quest for Freedom",
+                "url": "https://www.nps.gov/articles/emancipation-and-the-quest-for-freedom.htm"
+              },
+              {
+                "publisher": "National Park Service",
+                "title": "Lincoln on Slavery",
+                "url": "https://www.nps.gov/liho/learn/historyculture/slavery.htm"
+              },
+              {
+                "publisher": "National Park Service",
+                "title": "Freedom’s Eve",
+                "url": "https://home.nps.gov/articles/000/freedoms-eve.htm"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "emancipation-proclamation",
+                "label": "The Emancipation Proclamation",
+                "kind": "event"
+              },
+              {
+                "id": "thirteenth-amendment",
+                "label": "The Thirteenth Amendment",
+                "kind": "idea"
+              },
+              {
+                "id": "secession-crisis",
+                "label": "The secession crisis",
+                "kind": "event"
+              },
+              {
+                "id": "lincoln-on-slavery",
+                "label": "Lincoln on slavery",
+                "kind": "subtopic"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "theodore-roosevelt",
+        "title": "Theodore Roosevelt",
+        "kind": "person",
+        "summary": "Roosevelt expanded presidential activism through labor mediation, business oversight, conservation, and an assertive international role.",
+        "lessons": [
+          {
+            "id": "les_tr01",
+            "slug": "the-presidency-as-a-force-for-action",
+            "title": "Theodore Roosevelt: The Presidency as a Force for Action",
+            "sections": [
+              {
+                "heading": "An unexpected president with an expansive vision",
+                "body": "Theodore Roosevelt became the twenty-sixth president in September 1901 after William McKinley's assassination. He then won election in his own right in 1904 and served until 1909. His administration made presidential energy and public leadership central to the office's identity.\n\nRoosevelt described the president as a steward of the people, able to act for the public welfare unless the Constitution explicitly prohibited the action. That was an expansive interpretation of executive responsibility, not an uncontested description of every president's legal authority.\n\nThis distinction frames the lesson: an active president can intervene in problems previously left to other institutions, but action also raises questions about limits, accountability, and whose interests are being advanced. Roosevelt's domestic reforms and overseas policies illustrate both the reach and the tensions of this approach."
+              },
+              {
+                "heading": "A Square Deal between powerful interests",
+                "body": "Roosevelt's Square Deal emphasized a fair arrangement among business, labor, and the public. It was not simply a promise to favor workers in every conflict or to destroy every large corporation. He argued that businesses acting honestly should receive fair treatment while the government addressed abuses.\n\nThe anthracite coal strike of 1902 made this position concrete. With a prolonged dispute between miners and management threatening coal supplies, Roosevelt pressed for arbitration. The union accepted the proposal, management initially resisted, and negotiations eventually produced a compromise that included higher wages.\n\nHis intervention mattered because government had often aligned itself with management in labor disputes. Treating public welfare as a reason to press both sides expanded expectations of presidential involvement. The episode is better understood as a change in government's role than as a simple victory speech for either side."
+              },
+              {
+                "heading": "Conservation as a national responsibility",
+                "body": "Roosevelt also treated natural resources as a matter of public policy. During his presidency, approximately 230 million acres of public land received protection through several kinds of federal designation. The total includes more than national parks; counting only parks would badly misrepresent its scope.\n\nHis administration established national forests, wildlife reserves, and monuments as well as parks, and created the United States Forest Service. The Antiquities Act of 1906 supplied an important instrument for proclaiming national monuments. Different categories of protection served different institutional purposes.\n\nThe broader idea was that resources should not be treated as inexhaustible or governed only by immediate private use. Federal stewardship could look toward future generations. That is a policy argument about the state's responsibilities, not merely evidence that the president enjoyed outdoor recreation."
+              },
+              {
+                "heading": "An international role with unequal power",
+                "body": "Roosevelt sought a canal connecting the Atlantic and Pacific. When negotiations with Colombia failed, the United States supported Panama's break from Colombia and quickly recognized the new republic in 1903. A treaty then secured the basis for an American-controlled canal project.\n\nThe canal strengthened U.S. strategic and commercial reach, but the process also raises questions about intervention and the power of a stronger country over its neighbors. Construction began under Roosevelt, while the canal opened in 1914, more than five years after he left office. Saying he personally completed it confuses initiation with completion.\n\nHis international activity also included mediation of the Russo-Japanese War, for which he received the 1906 Nobel Peace Prize. Taken together, labor mediation, conservation, diplomacy, and intervention show a presidency that widened the range of national action. Evaluating that record requires asking both what the government accomplished and how it used power."
+              }
+            ],
+            "keyFacts": [
+              "Roosevelt was the twenty-sixth president, serving from 1901 to 1909.",
+              "He became president after McKinley’s assassination and won election in 1904.",
+              "The 1902 coal strike prompted his intervention for arbitration.",
+              "His administration protected approximately 230 million acres of public land.",
+              "He received the Nobel Peace Prize in 1906 for mediation of the Russo-Japanese War.",
+              "The Panama Canal opened in 1914, after his presidency."
+            ],
+            "quiz": [
+              {
+                "question": "What did Roosevelt’s stewardship view emphasize?",
+                "options": [
+                  "A president should never act",
+                  "Active public leadership unless constitutionally forbidden",
+                  "The abolition of all other branches",
+                  "Inherited executive power"
+                ],
+                "answerIndex": 1,
+                "explanation": "It was an expansive interpretation of executive responsibility."
+              },
+              {
+                "question": "What was the Square Deal intended to express?",
+                "options": [
+                  "Fair treatment among business, labor, and the public",
+                  "Only opposition to every corporation",
+                  "Only unlimited power for employers",
+                  "A treaty with France"
+                ],
+                "answerIndex": 0,
+                "explanation": "Roosevelt connected public oversight with fairness to different interests."
+              },
+              {
+                "question": "What did he seek during the 1902 coal strike?",
+                "options": [
+                  "A ban on all unions",
+                  "An immediate foreign invasion",
+                  "Arbitration and a settlement",
+                  "A constitutional amendment on coal"
+                ],
+                "answerIndex": 2,
+                "explanation": "He pressed the parties toward negotiation."
+              },
+              {
+                "question": "What does the 230-million-acre conservation figure include?",
+                "options": [
+                  "Only five national parks",
+                  "Only private gardens",
+                  "Only land outside the country",
+                  "Several kinds of protected public land"
+                ],
+                "answerIndex": 3,
+                "explanation": "Forests, reserves, monuments, and parks contributed to the total."
+              },
+              {
+                "question": "Which statement correctly distinguishes his canal role?",
+                "options": [
+                  "He initiated U.S. construction, but it opened after he left office",
+                  "He opened it in 1901",
+                  "He had no involvement",
+                  "He built it before Panama existed"
+                ],
+                "answerIndex": 0,
+                "explanation": "The canal opened in 1914."
+              },
+              {
+                "question": "Why did he receive the 1906 Nobel Peace Prize?",
+                "options": [
+                  "For founding the Forest Service",
+                  "For mediation of the Russo-Japanese War",
+                  "For completing the canal",
+                  "For ending the Civil War"
+                ],
+                "answerIndex": 1,
+                "explanation": "The award recognized his diplomatic mediation."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "National Park Service",
+                "title": "Theodore Roosevelt Biography",
+                "url": "https://www.nps.gov/articles/000/theodore-roosevelt-biography.htm"
+              },
+              {
+                "publisher": "National Park Service",
+                "title": "The Life of Theodore Roosevelt",
+                "url": "https://www.nps.gov/thri/theodorerooseveltbio.htm?fullweb=1"
+              },
+              {
+                "publisher": "National Park Service",
+                "title": "Theodore Roosevelt and Conservation",
+                "url": "https://www.nps.gov/thro/learn/historyculture/theodore-roosevelt-and-conservation.htm"
+              },
+              {
+                "publisher": "National Park Service",
+                "title": "Theodore Roosevelt Timeline",
+                "url": "https://www.nps.gov/thro/learn/historyculture/theodore-roosevelt-timeline.htm"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "square-deal",
+                "label": "The Square Deal",
+                "kind": "idea"
+              },
+              {
+                "id": "anthracite-coal-strike",
+                "label": "The anthracite coal strike",
+                "kind": "event"
+              },
+              {
+                "id": "conservation",
+                "label": "Conservation and public lands",
+                "kind": "subtopic"
+              },
+              {
+                "id": "panama-canal",
+                "label": "The Panama Canal",
+                "kind": "event"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -3603,6 +4813,130 @@
             ]
           }
         ]
+      },
+      {
+        "slug": "surrealism",
+        "title": "Surrealism",
+        "kind": "style",
+        "summary": "Surrealist artists and writers explored dreams, unexpected associations, and the unconscious through both spontaneous techniques and carefully constructed images.",
+        "lessons": [
+          {
+            "id": "les_su01",
+            "slug": "when-dreams-disrupt-reality",
+            "title": "Surrealism: When Dreams Disrupt Reality",
+            "sections": [
+              {
+                "heading": "A movement that began with words",
+                "body": "Imagine an ordinary room in which the objects are perfectly recognizable, but their relationships make no everyday sense. The strangeness comes not from poor observation but from a deliberate disruption of expectation. This invented scene introduces one route into Surrealism: making the familiar feel unfamiliar.\n\nSurrealism developed from literary experiments in the late 1910s and early 1920s. André Breton's Manifesto of Surrealism, published in Paris in 1924, formally announced the movement. Writers sought ways to release imagination from the restrictions they associated with ordinary reason and social convention.\n\nSigmund Freud's ideas about dreams and the unconscious influenced their experiments. This is a claim about artistic influence, not proof that a painting gives scientifically reliable access to its maker's mind. Understanding the movement means distinguishing what its participants hoped to achieve from what an observer can independently establish."
+              },
+              {
+                "heading": "Automatism: loosening deliberate control",
+                "body": "One important method was automatism, including automatic writing: working with reduced conscious planning in an effort to encourage unexpected associations. Instead of starting with a complete message and illustrating it, a writer or artist could allow the process itself to suggest material.\n\nAndré Masson's drawings of 1924 used continuous, curving lines from which strange figures emerged. Breton saw an affinity between these drawings and literary automatism. Joan Miró also developed fantastic figures through organic forms and twisting lines, although the movement did not require every artist to use an identical process.\n\nFor a brief learning exercise, draw one continuous line without planning an object, then look for a figure within it. This does not make the result a historical Surrealist work. It helps you understand the difference between beginning with a predetermined subject and discovering possibilities through marks."
+              },
+              {
+                "heading": "Dreamlike images can be carefully made",
+                "body": "Surrealism was not confined to rapid or apparently uncontrolled marks. René Magritte and Salvador Dalí developed striking dream imagery using recognizable objects and highly deliberate painting. The finished image could be meticulously constructed even when its relationships were irrational or surprising.\n\nThat creates an important distinction between process and appearance. A picture that looks dreamlike need not have been made spontaneously, and an automatic drawing need not resemble a detailed dream scene. Surrealism brought together different approaches to disrupting habitual thought.\n\nPhotography also played a central role. Double exposure, montage, distortion, and other procedures could evoke a meeting of dream and reality. Even an ordinary photograph could become unsettling when removed from its usual context and assigned a new role."
+              },
+              {
+                "heading": "Beyond a small circle in Paris",
+                "body": "Surrealism became an international movement, not simply a Parisian style owned by a handful of famous painters. The Metropolitan Museum's Surrealism Beyond Borders exhibition examined work across 45 countries and almost eight decades, emphasizing networks and local differences.\n\nIts ambitions also exceeded visual novelty. Participants connected experiments in imagination with questions of political, social, and personal freedom. Those connections differed across settings, so it is misleading to assume that every strange image expressed one universal political program.\n\nWhen looking at a work, ask what is recognizable, what relationship has been disrupted, and whether its effect depends on technique, context, or both. Then investigate the maker's setting. This approach treats the image as a constructed cultural object rather than a puzzle with one hidden dream-symbol answer."
+              }
+            ],
+            "keyFacts": [
+              "Breton published the Manifesto of Surrealism in 1924.",
+              "The movement developed from literary experiments.",
+              "Freud’s theories influenced its interest in dreams and the unconscious.",
+              "Automatism sought to loosen deliberate control.",
+              "Surrealist photography used techniques including montage and double exposure.",
+              "Surrealism developed through international networks."
+            ],
+            "quiz": [
+              {
+                "question": "What event formally announced Surrealism in 1924?",
+                "options": [
+                  "The first Impressionist exhibition",
+                  "Breton’s manifesto",
+                  "The founding of the Bauhaus",
+                  "The invention of photography"
+                ],
+                "answerIndex": 1,
+                "explanation": "Breton’s manifesto gave the movement a formal declaration."
+              },
+              {
+                "question": "What did automatism seek to encourage?",
+                "options": [
+                  "Only precise copying",
+                  "The elimination of imagination",
+                  "Unexpected associations through reduced conscious planning",
+                  "A fixed perspective grid"
+                ],
+                "answerIndex": 2,
+                "explanation": "Automatic writing and drawing sought less restricted imaginative connections."
+              },
+              {
+                "question": "Which distinction matters when examining a dreamlike painting?",
+                "options": [
+                  "Its appearance does not prove it was made spontaneously",
+                  "All dreams are photographs",
+                  "Every strange painting is automatic",
+                  "Careful technique excludes Surrealism"
+                ],
+                "answerIndex": 0,
+                "explanation": "Magritte and Dalí show that deliberate technique can construct irrational imagery."
+              },
+              {
+                "question": "Which medium also played a central role?",
+                "options": [
+                  "Only tapestry",
+                  "Only architecture",
+                  "Only manuscript illumination",
+                  "Photography"
+                ],
+                "answerIndex": 3,
+                "explanation": "Photographers used manipulation and changes of context to produce uncanny effects."
+              },
+              {
+                "question": "Why is a Paris-only account incomplete?",
+                "options": [
+                  "No Surrealists worked in Paris",
+                  "Surrealism developed through international networks",
+                  "Every country used an identical style",
+                  "The movement began as a government agency"
+                ],
+                "answerIndex": 1,
+                "explanation": "Its history includes exchanges and local developments across many regions."
+              },
+              {
+                "question": "What is a strong first question when viewing a Surrealist image?",
+                "options": [
+                  "Which universal symbol dictionary solves it?",
+                  "Why did the artist forget to observe?",
+                  "Which familiar relationships have been disrupted?",
+                  "Does it obey every rule of realism?"
+                ],
+                "answerIndex": 2,
+                "explanation": "Describing the disruption helps ground interpretation in visible choices."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "The Metropolitan Museum of Art",
+                "title": "Surrealism",
+                "url": "https://www.metmuseum.org/essays/surrealism"
+              },
+              {
+                "publisher": "The Metropolitan Museum of Art",
+                "title": "Photography and Surrealism",
+                "url": "https://www.metmuseum.org/essays/photography-and-surrealism"
+              },
+              {
+                "publisher": "The Metropolitan Museum of Art",
+                "title": "Surrealism Beyond Borders",
+                "url": "https://www.metmuseum.org/exhibitions/surrealism-beyond-borders"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -4259,6 +5593,130 @@
                 "id": "trojan-war",
                 "label": "The Trojan War",
                 "kind": "event"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "unreliable-narration",
+        "title": "Unreliable narration",
+        "kind": "technique",
+        "summary": "An unreliable narrator gives readers reasons to question the interpretation or accuracy of a story’s telling, creating a gap between the narrator’s account and the reader’s understanding.",
+        "lessons": [
+          {
+            "id": "les_un01",
+            "slug": "reading-between-the-telling-and-the-truth",
+            "title": "The Unreliable Narrator: Reading Between the Telling and the Truth",
+            "sections": [
+              {
+                "heading": "Who is speaking is part of the story",
+                "body": "Imagine a narrator who begins, “Everyone agreed I handled the argument calmly,” then describes shouting, throwing a glass, and leaving the room. This invented example creates a gap between the narrator's self-description and the events being reported. The reader must do more than accept the label “calm.”\n\nA narrator is the voice that tells a story and establishes its point of view. In fiction, an unreliable narrator may misunderstand a situation or draw mistaken conclusions about witnessed events. Unreliability is therefore not restricted to deliberate lying.\n\nThe question is not simply whether you like the speaker. A narrator can be sympathetic and mistaken, or unpleasant yet accurate about a particular event. Reading carefully requires distinguishing a judgment about personality from a judgment about the account's reliability."
+              },
+              {
+                "heading": "Author, narrator, and character are different roles",
+                "body": "The author creates the work; the narrator tells the story within its chosen narrative arrangement. A narrator's statements should not automatically be treated as the author's own beliefs. Fiction can create distance between what a speaker says and what the reader is encouraged to notice.\n\nA narrator can also be a character participating in events. That position may provide intimate access to certain experiences while limiting understanding of other people. Having a vivid first-person voice does not by itself prove either reliability or unreliability; the text must provide grounds for the distinction.\n\nFor an invented illustration, a character might confidently explain a friend's motives while reporting only a brief conversation. Readers can distinguish what was actually said from the interpretation imposed on it. That distinction preserves uncertainty without requiring us to invent a hidden motive of our own."
+              },
+              {
+                "heading": "The reader may understand more than the teller",
+                "body": "Ford Madox Ford's The Good Soldier, published in 1915, is a major example of a narrator who does not fully understand the story he tells. Britannica describes the technique as allowing the reader to understand better than the observer who supplies the account.\n\nThis structure asks readers to connect details that the narrator cannot adequately interpret. A report may contain information that works against its teller's explanation. The telling and the apparent implications of the telling become two layers of the reading experience.\n\nJ.D. Salinger's The Catcher in the Rye supplies another kind of example. Holden Caulfield calls himself a liar, and his emotional condition also complicates his narration. The point is not that every sentence must be false, but that the account must be read with attention to the speaker's limitations."
+              },
+              {
+                "heading": "How to question a narrator responsibly",
+                "body": "Start with a specific claim, then identify the textual evidence that supports or challenges it. Contradictions between description and action, or between an explanation and the reported details, can justify doubt. The opening invented example works because the reported behavior conflicts with the claim of calmness.\n\nNext, separate uncertainty from a replacement theory. If a narrator's explanation is weak, an alternative explanation is not automatically proven. A good interpretation makes clear which details are established within the text, which are inferred, and which remain unresolved. This is a reading method, not a requirement that every story have one solvable secret.\n\nFinally, ask what the narrative distance accomplishes. Does it create irony, sympathy, discomfort, or suspense? Unreliable narration matters because the act of telling becomes part of the subject: readers experience a person's effort to understand events while also noticing the limits of that understanding."
+              }
+            ],
+            "keyFacts": [
+              "The narrator is the voice telling a story.",
+              "Narration establishes point of view.",
+              "Unreliability can involve misunderstanding, not only intentional lies.",
+              "The Good Soldier is a major example of unreliable narration.",
+              "Holden Caulfield’s narration is complicated by lying and emotional distress.",
+              "Readers can understand implications that the narrator misses."
+            ],
+            "quiz": [
+              {
+                "question": "What is a narrator?",
+                "options": [
+                  "The publisher",
+                  "The voice telling the story",
+                  "Every reader",
+                  "The book’s cover designer"
+                ],
+                "answerIndex": 1,
+                "explanation": "Narration is the telling voice within the work."
+              },
+              {
+                "question": "Must an unreliable narrator deliberately lie?",
+                "options": [
+                  "Yes, without exception",
+                  "Only in first-person novels",
+                  "No; misunderstanding can also produce unreliability",
+                  "No narrator can ever lie"
+                ],
+                "answerIndex": 2,
+                "explanation": "Incorrect assumptions and limited understanding also matter."
+              },
+              {
+                "question": "Why not equate narrator and author?",
+                "options": [
+                  "The author can construct a voice whose claims readers should question",
+                  "They are always the same person",
+                  "Narrators exist only in nonfiction",
+                  "Authors never choose point of view"
+                ],
+                "answerIndex": 0,
+                "explanation": "The narrative arrangement can create distance from the teller’s claims."
+              },
+              {
+                "question": "Which novel provides a major example in this lesson?",
+                "options": [
+                  "The Odyssey",
+                  "Paradise Lost",
+                  "Pride and Prejudice",
+                  "The Good Soldier"
+                ],
+                "answerIndex": 3,
+                "explanation": "Ford’s narrator does not fully grasp his own account’s implications."
+              },
+              {
+                "question": "What follows when a narrator’s explanation is unconvincing?",
+                "options": [
+                  "Your first alternative is automatically true",
+                  "You should distinguish evidence from inference",
+                  "Every reported event must be false",
+                  "The novel has no meaning"
+                ],
+                "answerIndex": 1,
+                "explanation": "Doubt does not by itself prove a replacement account."
+              },
+              {
+                "question": "What is a useful final interpretive question?",
+                "options": [
+                  "How can I ignore the narrative voice?",
+                  "Which character is always morally perfect?",
+                  "What effect does the gap between teller and reader create?",
+                  "Why is all fiction dishonest?"
+                ],
+                "answerIndex": 2,
+                "explanation": "The gap can shape irony, sympathy, and the reading experience."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Narrator",
+                "url": "https://www.britannica.com/art/narrator"
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Novel: Narrative method and point of view",
+                "url": "https://www.britannica.com/art/novel/Narrative-method-and-point-of-view"
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "The Catcher in the Rye",
+                "url": "https://www.britannica.com/topic/The-Catcher-in-the-Rye"
               }
             ]
           }

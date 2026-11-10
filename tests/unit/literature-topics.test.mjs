@@ -15,7 +15,7 @@ test('existing Poetry & Literature discipline (not duplicated) gains Reading Poe
   assert.equal(disciplines.filter((d) => /literature/i.test(d.slug + d.title)).length, 1);
   assert.equal(lit.title, 'Poetry & Literature');
   assert.deepEqual(lit.topics.map((t) => [t.slug, t.kind, t.lessons.map((l) => l.id)]), [
-    ['classic-novels', 'style', ['les_cn01']], ['reading-poetry', 'technique', ['les_rp01']], ['langston-hughes', 'person', ['les_lh01']], ['homer', 'person', ['les_hm01']],
+    ['classic-novels', 'style', ['les_cn01']], ['reading-poetry', 'technique', ['les_rp01']], ['langston-hughes', 'person', ['les_lh01']], ['homer', 'person', ['les_hm01']], ['unreliable-narration', 'technique', ['les_un01']],
   ]);
   const l = lit.topics[1].lessons[0];
   assert.equal(l.title, 'How to Read a Poem: Sound, Images, and Line Breaks');
@@ -30,14 +30,15 @@ test('mastery, totals, Library Wall and completionist include les_rp01', () => {
   assert.equal(passedInDiscipline(lit, lk(['les_cn01', 'les_rp01'])), 2);
   assert.equal(masteryFor(passedInDiscipline(lit, lk(['les_rp01']))).tier, 'Novice');
   const p = dashboardData([row('les_rp01')], disciplines).perDiscipline.find((x) => x.slug === 'poetry-and-literature');
-  assert.deepEqual([p.passed, p.total], [1, 4]);
+  assert.deepEqual([p.passed, p.total], [1, 5]);
   const g = buildBookshelf([row('les_cn01'), row('les_rp01')], disciplines).find((x) => x.discipline.slug === 'poetry-and-literature');
   assert.deepEqual(g.books.map((b) => b.topicSlug), ['classic-novels', 'reading-poetry']);
   const by = (ids) => Object.fromEntries(evaluateAchievements(ids.map((id) => row(id)), disciplines).map((a) => [a.id, a]));
-  assert.equal(by(['les_cn01'])['completionist:poetry-and-literature'].progress, '1/4 lessons');
+  assert.equal(by(['les_cn01'])['completionist:poetry-and-literature'].progress, '1/5 lessons');
   assert.equal(by(['les_cn01', 'les_rp01'])['completionist:poetry-and-literature'].earned, false);
   assert.equal(by(['les_cn01', 'les_rp01', 'les_lh01'])['completionist:poetry-and-literature'].earned, false);
-  assert.equal(by(['les_cn01', 'les_rp01', 'les_lh01', 'les_hm01'])['completionist:poetry-and-literature'].earned, true);
+  assert.equal(by(['les_cn01', 'les_rp01', 'les_lh01', 'les_hm01'])['completionist:poetry-and-literature'].earned, false);
+  assert.equal(by(['les_cn01', 'les_rp01', 'les_lh01', 'les_hm01', 'les_un01'])['completionist:poetry-and-literature'].earned, true);
 });
 
 test('lesson 4: Langston Hughes (les_lh01) shape, Library Wall volume, mastery', () => {
