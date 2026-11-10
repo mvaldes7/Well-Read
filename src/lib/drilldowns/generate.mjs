@@ -9,6 +9,7 @@
 import { randomBytes } from "node:crypto";
 import { DRILLDOWN_CAPS, factCheckOutcome } from "./config.mjs";
 import { classifySourceUrl, isBlockedSource, sourceTierProblems } from "./sources.mjs";
+import { discoverFallbackSources, isChallengePage, isUnusablePage } from "./fallback-sources.mjs";
 import { generatedLessonProblems } from "./validate.mjs";
 import { isHttpsUrl } from "../../content/sources.mjs";
 
@@ -191,36 +192,93 @@ export function pageText(html) {
 const words = (/** @type {string} */ s) => s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").match(/[a-z0-9]{4,}/g) ?? [];
 
 /**
- * Step 1 of grounded generation: fetch every allowed candidate (curated + allowlisted extras) EXCEPT blocked sites.
- * Checks: HTTPS, allowlist/curated, HTTP 200, title match. Returns the usable sources (ids S1..Sn) and the per-URL results.
+ * Try one candidate: HTTPS, not blocked, allowlisted unless curated, HTTP 200, not a challenge/empty page,
+ * and (for curated/extra, not fallback) a title match. Returns the fetched record or null (problems recorded on `r`).
+ * A candidate may include pre-fetched `text` (Wikipedia extracts) so we skip the HTML fetch.
  */
-export async function fetchCandidateSources({ fetchImpl, lesson, extra = [] }) {
-  const curated = new Set(lesson.sources.map((/** @type {any} */ s) => s.url));
+async function ingestCandidate({ fetchImpl, s, r, curated, fetched, skipTitleMatch }) {
+  if (!isHttpsUrl(s.url)) { r.problems.push("not https"); return; }
+  if (isBlockedSource(s.url)) { r.blocked = true; return; } // never fetched, never fact-check text
+  if (!curated.has(s.url) && !s.text && !classifySourceUrl(s.url)) { r.problems.push("domain not allowlisted"); return; }
+  try {
+    let title = s.title, text = s.text, status = 200;
+    if (!text) {
+      const got = await fetchSourcePage(fetchImpl, s.url, curated.has(s.url));
+      r.status = got.status;
+      status = got.status;
+      if (got.problem) { r.problems.push(got.problem); return; }
+      const page = pageText(got.body);
+      title = s.title || page.title;
+      text = page.text;
+      const view = { status: got.status, body: got.body, title: page.title, text: page.text };
+      // Challenge pages often have an unrelated title; classify them before the title-match check.
+      if (isChallengePage(view)) { r.problems.push("challenge or empty page"); return; }
+      if (!skipTitleMatch) {
+        const tw = words(s.title), pw = new Set(words(`${page.title} ${page.text.slice(0, 4000)}`));
+        if (tw.length && tw.filter((w) => pw.has(w)).length / tw.length < 0.5) { r.problems.push(`page title mismatch ("${page.title.slice(0, 80)}")`); return; }
+      }
+      if (isUnusablePage(view)) {
+        r.problems.push("challenge or empty page");
+        return;
+      }
+    } else if (isUnusablePage({ status: 200, text, title })) {
+      r.status = 200;
+      r.problems.push("challenge or empty page");
+      return;
+    } else {
+      r.status = status;
+    }
+    r.chars = text.length;
+    r.status = r.status || status;
+    fetched.push({ id: `S${fetched.length + 1}`, url: s.url, title, publisher: s.publisher, text, curated: curated.has(s.url), fallback: Boolean(s.fallback) });
+  } catch (e) { r.problems.push(`fetch failed: ${e instanceof Error ? e.message : e}`); }
+}
+
+/**
+ * Step 1 of grounded generation: fetch every allowed candidate (curated + allowlisted extras) EXCEPT blocked sites.
+ * Checks: HTTPS, allowlist/curated, HTTP 200, not a challenge/empty page, title match (curated/extras).
+ * If the curated set is unusable (all blocked, or runtime 403/429/timeout/challenge), discover free fallback
+ * sources (Wikipedia, SEP, .gov/.edu) and fetch those. Returns usable sources (ids S1..Sn) and per-URL results.
+ */
+export async function fetchCandidateSources({ fetchImpl, lesson, extra = [], topic = undefined, choice = undefined, discover = discoverFallbackSources }) {
+  const curated = new Set((lesson.sources ?? []).map((/** @type {any} */ s) => s.url));
   /** @type {any[]} */
-  const cands = [...lesson.sources, ...extra.filter((s) => classifySourceUrl(s.url) && !curated.has(s.url))];
-  /** @type {{ url: string, problems: string[], status: number, blocked: boolean, chars: number }[]} */
+  const cands = [...(lesson.sources ?? []), ...extra.filter((s) => classifySourceUrl(s.url) && !curated.has(s.url))];
+  /** @type {{ url: string, problems: string[], status: number, blocked: boolean, chars: number, fallback?: boolean }[]} */
   const results = [];
-  /** @type {{ id: string, url: string, title: string, publisher: string, text: string, curated: boolean }[]} */
+  /** @type {{ id: string, url: string, title: string, publisher: string, text: string, curated: boolean, fallback?: boolean }[]} */
   const fetched = [];
+  const tried = new Set();
   for (const s of cands) {
     const r = { url: s.url, problems: /** @type {string[]} */ ([]), status: 0, blocked: false, chars: 0 };
     results.push(r);
-    if (!isHttpsUrl(s.url)) { r.problems.push("not https"); continue; }
-    if (isBlockedSource(s.url)) { r.blocked = true; continue; } // never fetched, never fact-check text
-    if (!curated.has(s.url) && !classifySourceUrl(s.url)) { r.problems.push("domain not allowlisted"); continue; }
-    try {
-      const got = await fetchSourcePage(fetchImpl, s.url, curated.has(s.url));
-      r.status = got.status;
-      if (got.problem) { r.problems.push(got.problem); continue; }
-      const page = pageText(got.body);
-      const tw = words(s.title), pw = new Set(words(`${page.title} ${page.text.slice(0, 4000)}`));
-      if (tw.length && tw.filter((w) => pw.has(w)).length / tw.length < 0.5) { r.problems.push(`page title mismatch ("${page.title.slice(0, 80)}")`); continue; }
-      r.chars = page.text.length;
-      fetched.push({ id: `S${fetched.length + 1}`, url: s.url, title: s.title, publisher: s.publisher, text: page.text, curated: curated.has(s.url) });
-    } catch (e) { r.problems.push(`fetch failed: ${e instanceof Error ? e.message : e}`); }
+    tried.add(s.url);
+    await ingestCandidate({ fetchImpl, s, r, curated, fetched, skipTitleMatch: false });
   }
-  const problems = sourceTierProblems(fetched.map((f) => ({ url: f.url, curated: f.curated })));
-  return { fetched, results, problems };
+  let problems = sourceTierProblems(fetched.map((f) => ({ url: f.url, curated: f.curated })));
+  /** @type {any} */
+  let fallback = null;
+  if (problems.length && typeof discover === "function") {
+    try {
+      const found = await discover({ fetchImpl, topic, lesson, choice });
+      const discovered = Array.isArray(found?.candidates) ? found.candidates : [];
+      fallback = { attempted: true, queries: found?.queries ?? [], added: [] };
+      for (const s of discovered) {
+        if (tried.has(s.url)) continue;
+        const r = { url: s.url, problems: /** @type {string[]} */ ([]), status: 0, blocked: false, chars: 0, fallback: true };
+        results.push(r);
+        tried.add(s.url);
+        const before = fetched.length;
+        await ingestCandidate({ fetchImpl, s: { ...s, fallback: true }, r, curated, fetched, skipTitleMatch: true });
+        if (fetched.length > before) fallback.added.push({ url: s.url, publisher: s.publisher, title: s.title });
+      }
+    } catch (e) {
+      fallback = { attempted: true, queries: fallback?.queries ?? [], added: [], error: e instanceof Error ? e.message : String(e) };
+    }
+    const usedFallback = Boolean(fallback?.added?.length);
+    problems = sourceTierProblems(fetched.map((f) => ({ url: f.url, curated: f.curated })), { allowSupplementaryOnly: usedFallback && !fetched.some((f) => f.curated) });
+  }
+  return { fetched, results, problems, fallback };
 }
 
 export const SOURCE_FETCH_LIMITS = Object.freeze({ timeoutMs: 10_000, maxBytes: 2_000_000, maxHops: 3 });
@@ -285,7 +343,9 @@ export async function fetchSourcePage(fetchImpl, url, _curated, limits = SOURCE_
 export function citedSourceProblems({ lesson, citations, citationProblems, fetched, choice }) {
   const problems = [...citationProblems];
   const cited = fetched.filter((f) => lesson.sources.some((/** @type {any} */ s) => s.url === f.url));
-  problems.push(...sourceTierProblems(cited.map((f) => ({ url: f.url, curated: f.curated }))));
+  const fetchedTrusted = fetched.some((f) => f.curated || classifySourceUrl(f.url)?.tier === "trusted");
+  const usedFallback = fetched.some((f) => f.fallback) && !fetchedTrusted;
+  problems.push(...sourceTierProblems(cited.map((f) => ({ url: f.url, curated: f.curated })), { allowSupplementaryOnly: usedFallback }));
   const terms = words(choice.label).filter((w) => !["the", "and", "with"].includes(w));
   if (cited.length && terms.length && !terms.some((w) => cited.some((f) => words(f.text).includes(w)))) problems.push(`no cited source mentions "${choice.label}"`);
   if (citations && cited.some((f) => isBlockedSource(f.url))) problems.push("blocked site cited as support");
@@ -356,7 +416,7 @@ export function extraCandidates(list) {
  */
 export const runGeneration = (/** @type {any} */ a) => runPrototype(a);
 
-export async function runPrototype({ disciplines, lessonId, choiceId, apiKey, model = DEFAULT_MODEL, fetchImpl = fetch, log = () => {}, extra = [], onBeforeCall = undefined }) {
+export async function runPrototype({ disciplines, lessonId, choiceId, apiKey, model = DEFAULT_MODEL, fetchImpl = fetch, log = () => {}, extra = [], onBeforeCall = undefined, discover = undefined }) {
   const ctx = findLessonChoice(disciplines, lessonId, choiceId);
   const cands = extraCandidates(extra);
   const budget = { used: 0, max: DRILLDOWN_CAPS.callsPerLessonMax };
@@ -364,8 +424,8 @@ export async function runPrototype({ disciplines, lessonId, choiceId, apiKey, mo
     attempts: /** @type {any[]} */ ([]), generated: /** @type {any} */ (null), verdict: "rejected", flag: /** @type {any} */ (null),
     stoppedOn: /** @type {string|null} */ (null), fallback: /** @type {any} */ (null), billingStop: false,
     sourceFetch: /** @type {any} */ (null), citations: /** @type {any} */ (null), stopError: /** @type {any} */ (null) };
-  const pre = await fetchCandidateSources({ fetchImpl, lesson: ctx.lesson, extra: cands });
-  report.sourceFetch = { results: pre.results, usable: pre.fetched.map((f) => ({ id: f.id, url: f.url, chars: f.text.length })), problems: pre.problems };
+  const pre = await fetchCandidateSources({ fetchImpl, lesson: ctx.lesson, extra: cands, topic: ctx.topic, choice: ctx.choice, ...(discover !== undefined ? { discover } : {}) });
+  report.sourceFetch = { results: pre.results, usable: pre.fetched.map((f) => ({ id: f.id, url: f.url, chars: f.text.length, fallback: Boolean(f.fallback) })), problems: pre.problems, fallback: pre.fallback };
   log(`fetched: ${pre.results.map((r) => `${r.blocked ? "blocked" : r.status || "-"} ${r.url}`).join(", ")}`);
   if (pre.problems.length) { report.stoppedOn = `no usable fetched sources: ${pre.problems.join("; ")}`; return report; }
   const fetched = pre.fetched;

@@ -6,7 +6,6 @@
 import { checkDigDeeperRequest } from "./gate.mjs";
 import { DRILLDOWN_CAPS } from "./config.mjs";
 import { dbErrorCode, failure } from "./messages.mjs";
-import { lessonHasFetchableSource } from "./sources.mjs";
 
 /** Error thrown from onBeforeCall; generate.mjs turns any error with stopKind into report.stopError. */
 export class StopError extends Error {
@@ -49,11 +48,6 @@ export function splitLesson(g) {
   };
 }
 
-/** @param {ReadonlyArray<any>} disciplines @param {string} lessonId */
-function findLesson(disciplines, lessonId) {
-  for (const d of disciplines) for (const t of d.topics ?? []) for (const l of t.lessons ?? []) if (l.id === lessonId) return l;
-  return null;
-}
 
 /**
  * One-line, secret-free summary of which step decided the outcome: per-URL fetch results, model calls, and the
@@ -113,11 +107,6 @@ export async function handleDigDeeper(deps) {
   const gate = checkDigDeeperRequest(disciplines, body, rows);
   if (!gate.ok) return failure(gate.reason === "not_completed" ? "not_completed" : "bad_request");
   if (billing.stopped) return failure("billing_stop");
-  // Refuse before reserving: a lesson with only blocked sources can never pass the fetch step (and must not use up a daily lesson).
-  if (!lessonHasFetchableSource(findLesson(disciplines, gate.lessonId))) {
-    log(`drilldown ${gate.lessonId}/${gate.choice.id}: refused, no fetchable curated source (all blocked)`);
-    return failure("no_sources");
-  }
 
   try { await db.reserve(userId, 0, true); } catch (e) { return failure(dbErrorCode(e)); }
 
@@ -151,6 +140,7 @@ export async function handleDigDeeper(deps) {
     if (status === "rejected") {
       if (report.stopError instanceof StopError) return failure(/** @type {any} */ (report.stopError).stopKind);
       if (/^(quota|provider unavailable)/.test(String(report.stoppedOn ?? ""))) return failure("provider_busy");
+      if (/^no usable fetched sources/.test(String(report.stoppedOn ?? ""))) return failure("no_sources");
       // Keep a validated but rejected lesson for Mike's review (never shown to anyone); its failure doesn't change the answer.
       if (report.generated) { try { await save("rejected"); } catch { /* ignored */ } }
       return failure("generation_failed");

@@ -1136,6 +1136,28 @@
                 "title": "Japan, 1800–1900 A.D.",
                 "url": "https://www.metmuseum.org/toah/ht/10/eaj.html"
               }
+            ],
+            "digDeeper": [
+              {
+                "id": "tokugawa-shogunate",
+                "label": "The Tokugawa shogunate",
+                "kind": "event"
+              },
+              {
+                "id": "meiji-constitution",
+                "label": "The Meiji Constitution",
+                "kind": "idea"
+              },
+              {
+                "id": "emperor-meiji",
+                "label": "Emperor Meiji",
+                "kind": "person"
+              },
+              {
+                "id": "education-system-order",
+                "label": "The Education System Order of 1872",
+                "kind": "event"
+              }
             ]
           }
         ]
@@ -4934,6 +4956,28 @@
                 "title": "Surrealism Beyond Borders",
                 "url": "https://www.metmuseum.org/exhibitions/surrealism-beyond-borders"
               }
+            ],
+            "digDeeper": [
+              {
+                "id": "andre-breton",
+                "label": "André Breton",
+                "kind": "person"
+              },
+              {
+                "id": "automatism",
+                "label": "Automatism",
+                "kind": "idea"
+              },
+              {
+                "id": "salvador-dali",
+                "label": "Salvador Dalí",
+                "kind": "person"
+              },
+              {
+                "id": "photography-and-surrealism",
+                "label": "Photography and Surrealism",
+                "kind": "subtopic"
+              }
             ]
           }
         ]
@@ -5717,6 +5761,28 @@
                 "publisher": "Encyclopaedia Britannica",
                 "title": "The Catcher in the Rye",
                 "url": "https://www.britannica.com/topic/The-Catcher-in-the-Rye"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "the-good-soldier",
+                "label": "The Good Soldier",
+                "kind": "idea"
+              },
+              {
+                "id": "holden-caulfield",
+                "label": "Holden Caulfield",
+                "kind": "person"
+              },
+              {
+                "id": "ford-madox-ford",
+                "label": "Ford Madox Ford",
+                "kind": "person"
+              },
+              {
+                "id": "author-vs-narrator",
+                "label": "Author vs. narrator",
+                "kind": "subtopic"
               }
             ]
           }

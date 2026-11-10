@@ -65,7 +65,6 @@ test('a lesson in the long hand-written shape validates; bad ones are rejected w
 
 // ---------- Dig deeper: stored choices only, and only after the lesson's quiz ----------
 import { digDeeperProblems, lessonDigDeeperProblems } from '../../src/content/digdeeper.mjs';
-import { lessonHasFetchableSource } from '../../src/lib/drilldowns/sources.mjs';
 import { checkDigDeeperRequest, hasCompletedLesson } from '../../src/lib/drilldowns/gate.mjs';
 
 const done = (id) => [{ lesson_id: id, score: 6, total: 6, passed: true }];
@@ -74,10 +73,8 @@ test('content: every digDeeper list is valid (3-4 choices, slug ids, known kinds
   assert.deepEqual(digDeeperProblems(disciplines), []);
   const lessons = disciplines.flatMap((d) => d.topics.flatMap((t) => t.lessons));
   const withChoices = lessons.filter((l) => l.digDeeper);
-  // PR #33 hides Dig deeper when no source is fetchable; blocked-only lessons omit choices rather than add a replacement source.
-  const fetchable = lessons.filter((l) => lessonHasFetchableSource(l));
-  assert.equal(withChoices.length, fetchable.length);
-  assert.deepEqual(withChoices.map((l) => l.id).sort(), fetchable.map((l) => l.id).sort());
+  // Every curated lesson offers Dig deeper; fallback grounding covers lessons whose own sources are blocked or fail at runtime.
+  assert.equal(withChoices.length, lessons.length);
   assert.ok(lessonDigDeeperProblems([{ id: 'a', label: 'A', kind: 'idea' }], 'x').length > 0); // too few
   assert.ok(lessonDigDeeperProblems([1, 2, 3].map(() => ({ id: 'a', label: 'A', kind: 'idea' })), 'x').some((p) => p.includes('duplicate')));
   assert.ok(lessonDigDeeperProblems(['a', 'b', 'c'].map((id) => ({ id, label: 'A', kind: 'vibe' })), 'x').some((p) => p.includes('kind')));
@@ -114,14 +111,10 @@ test('gate: free text and unknown ids are rejected, never passed through', () =>
   assert.equal(checkDigDeeperRequest(stripped, { lessonId: 'les_rr01', choiceId: 'cicero' }, done('les_rr01')).reason, 'no_choices');
 });
 
-test('content: every fetchable lesson has 3-4 valid Dig deeper choices, unique ids, at least two kinds (P1)', () => {
+test('content: every lesson has 3-4 valid Dig deeper choices, unique ids, at least two kinds (P1)', () => {
   const lessons = disciplines.flatMap((d) => d.topics.flatMap((t) => t.lessons));
   assert.ok(lessons.length >= 31);
   for (const l of lessons) {
-    if (!lessonHasFetchableSource(l)) {
-      assert.equal(l.digDeeper, undefined, `${l.id}: blocked-only lessons must not carry Dig deeper choices`);
-      continue;
-    }
     assert.ok(Array.isArray(l.digDeeper), `${l.id}: missing digDeeper`);
     assert.ok(l.digDeeper.length >= 3 && l.digDeeper.length <= 4, `${l.id}: expected 3-4 choices`);
     assert.deepEqual(lessonDigDeeperProblems(l.digDeeper, l.id), [], l.id);
