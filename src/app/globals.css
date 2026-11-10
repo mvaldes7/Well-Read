@@ -142,6 +142,10 @@ p { margin: 0 0 1rem; }
 
 /* ---------- Layout ---------- */
 main { max-width: var(--page); margin: 0 auto; padding: 64px 40px 100px; }
+/* Auto side margins alone shrink a grid item to max-content. Fill the shell
+   column so Bookshelf cases can pack several disciplines on one desktop shelf
+   (approved mockup). max-width + auto margins still center when the column is wider. */
+.shell > main { width: 100%; min-width: 0; }
 main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-right: auto; }
 .hero { text-align: center; margin-bottom: 20px; }
 .hero h1 { font-size: 64px; margin: 14px 0 10px; letter-spacing: 0.01em; }
@@ -255,7 +259,8 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
 .not-found .code { font-family: var(--serif); font-size: 120px; line-height: 1; margin: 10px 0 0; color: var(--ink); }
 
 /* ---------- Bookshelf ---------- */
-.room { display: grid; grid-template-columns: 250px 1fr; gap: 56px; margin-top: 64px; padding-top: 44px; border-top: 1px solid var(--line); align-items: center; }
+.room { display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 56px; margin-top: 64px; padding-top: 44px; border-top: 1px solid var(--line); align-items: center; }
+.room-whole { align-items: start; }
 .walltext h2 { font-size: 38px; margin: 10px 0 14px; line-height: 1.05; }
 .walltext p { font-size: 14.5px; line-height: 1.7; color: var(--sub); margin: 0 0 18px; }
 .walltext .count { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; border-top: 1px solid var(--line); padding-top: 12px; color: var(--ink); margin: 0; }
@@ -278,6 +283,19 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
 .legend { text-align: center; margin-top: 56px; font-size: 11px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--sub); }
 .legend b { display: inline-block; background: linear-gradient(var(--brass-hi), var(--brass-lo)); color: var(--brass-text); padding: 2px 7px; margin: 0 6px; letter-spacing: 0.1em; }
 .empty-shelf { text-align: center; margin-top: 56px; font-size: 16px; }
+
+/* Bookshelf view toggle + whole-library case (approved mockup) */
+.view-toggle { display: inline-flex; margin: 22px auto 0; padding: 3px; background: var(--paper); border: 1px solid var(--line); box-shadow: inset 0 1px 2px rgba(30, 25, 15, 0.08); }
+.view-toggle button { appearance: none; font: inherit; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sub); background: transparent; border: 0; padding: 8px 16px; cursor: pointer; }
+.view-toggle button:hover { color: var(--ink); }
+.view-toggle button[aria-pressed="true"] { color: var(--on-char); background: linear-gradient(#3a3a3e, #2a2a2e); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08); }
+.view-toggle button:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+.toggle-note { margin: 10px auto 0; font-size: 11px; letter-spacing: 0.08em; color: var(--sub); }
+.room-whole .palette { display: flex; flex-wrap: wrap; gap: 10px 18px; margin: 0 0 18px; padding: 0; list-style: none; }
+.room-whole .swatch { display: flex; align-items: center; gap: 8px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--sub); }
+.room-whole .swatch i { display: block; width: 18px; height: 10px; border-radius: 1px; background: var(--shade-1, #4a4a4a); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 1px 2px rgba(0, 0, 0, 0.25); }
+.case-stack .books li[data-group-start]:not(:first-child) { margin-left: 10px; }
+
 
 /* ---------- Dashboard + progress (TSK-015) ---------- */
 .stats { list-style: none; margin: 0 auto; padding: 0; max-width: 980px; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; }
