@@ -111,6 +111,23 @@ test('2+ unconfirmed -> regenerate within 4 calls; still 2+ -> saved as rejected
   assert.equal(bad.db.saves[0].reviewStatus, 'rejected');
 });
 
+test('stoppedOn call cap reached (4/4); failing gracefully maps to generation_failed and the trusted-sources UI message', async () => {
+  const s = setup({
+    generate: async () => ({
+      verdict: 'rejected',
+      stoppedOn: 'call cap reached (4/4); failing gracefully',
+      calls: [{}, {}, {}, {}],
+      attempts: [{ outcome: 'reject', factCheck: { unconfirmed: ['fact3', 'fact4', 'quiz2', 'quiz3', 'quiz4'] } }],
+      generated: null,
+    }),
+  });
+  const r = await s.run();
+  assert.equal(r.status, 422);
+  assert.equal(r.body.code, 'generation_failed');
+  assert.equal(r.body.message, "We couldn't write a lesson we could check against trusted sources this time. Please try a different choice.");
+  assert.equal(r.body.message, DRILLDOWN_MESSAGES.generation_failed);
+});
+
 test('503 falls back to the flash-lite fallback model', async () => {
   const s = setup({ gemQueue: [e503, gem(fakeLesson()), gem(allSupported)] });
   const r = await s.run();
@@ -362,6 +379,11 @@ test('migration 20261105000000: release is definer, server-only, never touches c
 test('route passes releaseLesson to the service', () => {
   const route = readFileSync(new URL('../../src/app/api/drilldowns/route.ts', import.meta.url), 'utf8');
   assert.match(route, /db: \{ reserve, releaseLesson, saveLesson, saveFactCheck \}/);
+});
+
+test('route passes log into runGeneration', () => {
+  const route = readFileSync(new URL('../../src/app/api/drilldowns/route.ts', import.meta.url), 'utf8');
+  assert.match(route, /runGeneration\(\{[^}]*log\s*\}/);
 });
 
 test('deadline response is distinct from provider busy, releases lesson slot, and does not save a draft', async () => {

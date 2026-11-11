@@ -464,6 +464,17 @@ export function extraCandidates(list) {
     .map((s) => ({ publisher: s.publisher, title: s.title, url: s.url }));
 }
 
+/** Per-claim fact-check summary for runtime logs: refs, support, truncated notes. No lesson text, keys, prompts, or user ids. */
+export const FACTCHECK_NOTE_LOG_CHARS = 200;
+export function describeFactCheckItems(items) {
+  return (Array.isArray(items) ? items : []).map((/** @type {any} */ i) => {
+    const ref = typeof i?.ref === "string" ? i.ref.replace(/\s+/g, "").slice(0, 20) : "?";
+    const flag = i?.supported ? "ok" : "unconfirmed";
+    const note = typeof i?.note === "string" ? i.note.replace(/\s+/g, " ").trim().slice(0, FACTCHECK_NOTE_LOG_CHARS) : "";
+    return note ? `${ref} ${flag}: ${note}` : `${ref} ${flag}`;
+  }).join("; ");
+}
+
 /**
  * Full prototype run for one lesson/choice. Returns a report object (also written to disk by main()).
  * Grounded: fetch allowed sources first (0 model calls; stop if none usable). Each attempt = generate from fetched excerpts
@@ -566,7 +577,8 @@ export async function runPrototype({ disciplines, lessonId, choiceId, apiKey, mo
       const complete = items.length === 12;
       at.factCheck = { items, unconfirmed: unconfirmed.map((/** @type {any} */ i) => i.ref), complete };
       at.outcome = complete ? factCheckOutcome(unconfirmed.length) : "reject";
-      log(`fact check: ${unconfirmed.length} unconfirmed -> ${at.outcome}`);
+      const claimNotes = describeFactCheckItems(items);
+      log(`fact check: ${unconfirmed.length} unconfirmed -> ${at.outcome}${claimNotes ? `; ${claimNotes}` : ""}`);
       if (at.outcome === "pass") { report.verdict = "passed (private until Mike approves)"; break; }
       if (at.outcome === "pass_flagged") {
         report.verdict = "passed with 1 unconfirmed claim (delivered privately with AI-generated label; flagged for Mike's review)";

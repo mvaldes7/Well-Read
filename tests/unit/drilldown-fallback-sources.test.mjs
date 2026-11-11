@@ -9,7 +9,8 @@ import {
 import { sourceTierProblems, lessonHasFetchableSource, lessonOffersDigDeeper } from '../../src/lib/drilldowns/sources.mjs';
 import {
   isUnusablePage, fallbackSearchQueries, slugifyForEntry, pickTrustedExtlinks,
-  guessedSepEntries, discoverFallbackSources, FALLBACK_USER_AGENT, WIKIPEDIA_API, SEP_ENTRY,
+  guessedSepEntries, discoverFallbackSources, normalizeSearchQuery, titleCoversQuery, isLibraryProxyUrl,
+  FALLBACK_USER_AGENT, WIKIPEDIA_API, SEP_ENTRY,
 } from '../../src/lib/drilldowns/fallback-sources.mjs';
 
 const disciplines = JSON.parse(readFileSync(new URL('../../src/content/disciplines.json', import.meta.url), 'utf8'));
@@ -83,7 +84,7 @@ test('isUnusablePage: 403, 429, timeout, empty and challenge pages', () => {
 });
 
 test('discovery helpers: queries, slugs, trusted extlinks, guessed SEP entries', () => {
-  assert.deepEqual(fallbackSearchQueries({ choice: { label: 'Robespierre' }, topic: { title: 'The French Revolution' }, lesson: { title: 'The Terror' } }), ['Robespierre', 'The French Revolution', 'The Terror']);
+  assert.deepEqual(fallbackSearchQueries({ choice: { label: 'Robespierre' }, topic: { title: 'The French Revolution' }, lesson: { title: 'The Terror' } }), ['Robespierre', 'French Revolution', 'The French Revolution', 'Terror', 'The Terror']);
   assert.equal(slugifyForEntry('André Breton'), 'andre-breton');
   const picked = pickTrustedExtlinks([
     'https://plato.stanford.edu/entries/robespierre/',
@@ -96,6 +97,104 @@ test('discovery helpers: queries, slugs, trusted extlinks, guessed SEP entries',
   ]);
   assert.deepEqual(picked.map((p) => p.url), [SEP_URL, GOV_URL, 'https://history.columbia.edu/robespierre']);
   assert.ok(guessedSepEntries({ choice: { label: 'Surrealism', id: 'surrealism' } }).some((s) => s.url.startsWith(SEP_ENTRY) && s.url.includes('surrealism')));
+});
+
+test('normalizeSearchQuery: strip a leading The/A/An, surrounding punctuation, and extra whitespace', () => {
+  assert.equal(normalizeSearchQuery('The Meiji Constitution'), 'Meiji Constitution');
+  assert.equal(normalizeSearchQuery('  the   Meiji Constitution.  '), 'Meiji Constitution');
+  assert.equal(normalizeSearchQuery('A Tokugawa shogunate'), 'Tokugawa shogunate');
+  assert.equal(normalizeSearchQuery('An Era of Reform'), 'Era of Reform');
+  assert.equal(normalizeSearchQuery('Emperor Meiji'), 'Emperor Meiji');
+  assert.equal(normalizeSearchQuery(''), '');
+});
+
+test('fallbackSearchQueries: "The Meiji Constitution" keeps a stripped form and the original', () => {
+  const q = fallbackSearchQueries({
+    choice: { label: 'The Meiji Constitution' },
+    topic: { title: 'The Meiji Restoration' },
+    lesson: { title: 'The Meiji Restoration: Rebuilding Japan in the Name of an Emperor' },
+  });
+  assert.equal(q[0], 'Meiji Constitution');
+  assert.ok(q.includes('The Meiji Constitution'));
+  assert.ok(q.includes('Meiji Restoration'));
+  assert.ok(q.includes('The Meiji Restoration'));
+  const tokugawa = fallbackSearchQueries({ choice: { label: 'The Tokugawa shogunate' }, topic: { title: 'The Meiji Restoration' } });
+  assert.equal(tokugawa[0], 'Tokugawa shogunate');
+  assert.ok(tokugawa.includes('The Tokugawa shogunate'));
+});
+
+test('titleCoversQuery: parent topic page is off-topic for a constitution choice', () => {
+  assert.equal(titleCoversQuery('Meiji Constitution', 'The Meiji Constitution'), true);
+  assert.equal(titleCoversQuery('Meiji Restoration', 'The Meiji Constitution'), false);
+  assert.equal(titleCoversQuery('Tokugawa shogunate', 'The Tokugawa shogunate'), true);
+  assert.equal(titleCoversQuery('Maximilien Robespierre', 'Robespierre'), true);
+  assert.equal(titleCoversQuery('Emperor Tenji', 'Emperor Meiji'), false);
+});
+
+test('pickTrustedExtlinks: drops library-proxy .edu URLs and keeps faculty/government pages', () => {
+  const gale = 'https://find.galegroup.com.lib.pepperdine.edu/gvrl/infomark.do?contentSet=EBKS';
+  const ezproxy = 'https://login.ezproxy.library.nyu.edu/login?url=https://example.com';
+  const faculty = 'https://works.swarthmore.edu/fac-history/279';
+  const picked = pickTrustedExtlinks([gale, ezproxy, faculty, GOV_URL, SEP_URL, 'https://www.britannica.com/topic/Meiji-Constitution']);
+  assert.deepEqual(picked.map((p) => p.url), [SEP_URL, GOV_URL, faculty]);
+  assert.equal(isLibraryProxyUrl(gale), true);
+  assert.equal(isLibraryProxyUrl(ezproxy), true);
+  assert.equal(isLibraryProxyUrl(faculty), false);
+  assert.equal(isLibraryProxyUrl(GOV_URL), false);
+});
+
+const CONSTITUTION_WIKI = 'https://en.wikipedia.org/wiki/Meiji_Constitution';
+const RESTORATION_WIKI = 'https://en.wikipedia.org/wiki/Meiji_Restoration';
+const CONSTITUTION_EXTRACT = 'The Meiji Constitution was the constitution of the Empire of Japan from 1890 to 1947. It established a bicameral Imperial Diet and preserved extensive imperial authority over the cabinet and the armed forces.';
+const RESTORATION_EXTRACT = 'The Meiji Restoration was a political event in 1868 that restored practical imperial rule to Japan under Emperor Meiji and began a period of rapid modernization and reform.';
+const openUrl = (q) => `${WIKIPEDIA_API}?action=opensearch&search=${encodeURIComponent(q)}&limit=5&namespace=0&format=json`;
+const extractUrl = (title) => `${WIKIPEDIA_API}?action=query&prop=extracts|extlinks|info&exintro=0&explaintext=1&inprop=url&ellimit=80&redirects=1&format=json&titles=${encodeURIComponent(title)}`;
+const wikiJson = (search, titles, urls) => ({ status: 200, json: async () => [search, titles, titles.map(() => ''), urls] });
+const extractJson = (title, url, extract, extlinks) => ({ status: 200, json: async () => ({ query: { pages: { 1: { title, extract, fullurl: url, extlinks: extlinks.map((u) => ({ '*': u })) } } } }) });
+const emptyOpen = { status: 200, json: async () => ['', [], [], []] };
+
+test('discoverFallbackSources: "The Meiji Constitution" finds the Constitution article, not only the Restoration parent page', async () => {
+  const pages = {
+    [openUrl('The Meiji Constitution')]: emptyOpen,
+    [openUrl('Meiji Constitution')]: wikiJson('Meiji Constitution', ['Meiji Constitution'], [CONSTITUTION_WIKI]),
+    [extractUrl('Meiji Constitution')]: extractJson('Meiji Constitution', CONSTITUTION_WIKI, CONSTITUTION_EXTRACT, [GOV_URL]),
+    [openUrl('The Meiji Restoration')]: wikiJson('The Meiji Restoration', ['The Meiji Restoration'], [RESTORATION_WIKI]),
+    [openUrl('Meiji Restoration')]: wikiJson('Meiji Restoration', ['Meiji Restoration'], [RESTORATION_WIKI]),
+    [extractUrl('Meiji Restoration')]: extractJson('Meiji Restoration', RESTORATION_WIKI, RESTORATION_EXTRACT, [GOV_URL]),
+    [extractUrl('The Meiji Restoration')]: extractJson('Meiji Restoration', RESTORATION_WIKI, RESTORATION_EXTRACT, [GOV_URL]),
+  };
+  const f = mockFetch([], pages);
+  const r = await discoverFallbackSources({
+    fetchImpl: f,
+    topic: { title: 'The Meiji Restoration', slug: 'meiji-restoration' },
+    lesson: { title: 'The Meiji Restoration: Rebuilding Japan in the Name of an Emperor' },
+    choice: { label: 'The Meiji Constitution', id: 'meiji-constitution' },
+  });
+  assert.ok(r.queries.includes('Meiji Constitution'));
+  assert.ok(r.candidates.some((c) => c.url === CONSTITUTION_WIKI && c.publisher === 'Wikipedia' && c.text.includes('Imperial Diet')));
+  const openCalls = f.calls.filter((c) => c.url.includes('action=opensearch')).map((c) => new URL(c.url).searchParams.get('search'));
+  assert.equal(openCalls[0], 'Meiji Constitution');
+});
+
+test('discoverFallbackSources: an off-topic Wikipedia hit does not stop the search before the choice page', async () => {
+  // First (stripped) query returns only the parent topic page plus a trusted link — the old early-stop.
+  const pages = {
+    [openUrl('Meiji Constitution')]: wikiJson('Meiji Constitution', ['Meiji Restoration'], [RESTORATION_WIKI]),
+    [openUrl('The Meiji Constitution')]: wikiJson('The Meiji Constitution', ['Meiji Constitution'], [CONSTITUTION_WIKI]),
+    [extractUrl('Meiji Restoration')]: extractJson('Meiji Restoration', RESTORATION_WIKI, RESTORATION_EXTRACT, [GOV_URL]),
+    [extractUrl('Meiji Constitution')]: extractJson('Meiji Constitution', CONSTITUTION_WIKI, CONSTITUTION_EXTRACT, [GOV_URL]),
+  };
+  const f = mockFetch([], pages);
+  const r = await discoverFallbackSources({
+    fetchImpl: f,
+    topic: { title: 'The Meiji Restoration' },
+    lesson: { title: 'The Meiji Restoration' },
+    choice: { label: 'The Meiji Constitution', id: 'meiji-constitution' },
+  });
+  const openCalls = f.calls.filter((c) => c.url.includes('action=opensearch')).map((c) => new URL(c.url).searchParams.get('search'));
+  assert.ok(openCalls.includes('The Meiji Constitution'), `continued after off-topic hit; got ${openCalls.join(', ')}`);
+  assert.ok(r.candidates.some((c) => c.url === CONSTITUTION_WIKI), 'on-topic Wikipedia page was discovered');
+  assert.ok(r.candidates.some((c) => c.url === RESTORATION_WIKI), 'off-topic parent page may still be kept as an extra candidate');
 });
 
 test('discoverFallbackSources: Wikipedia OpenSearch + extract, trusted extlinks, identifying User-Agent', async () => {
