@@ -2054,6 +2054,157 @@
     "color": "amber",
     "topics": [
       {
+        "slug": "the-nile-and-egyptian-kingship",
+        "title": "The Nile and Egyptian kingship",
+        "kind": "civilization",
+        "summary": "The Nile’s agricultural cycle supported Egyptian society, while institutions of kingship, storage, and religious authority organized resources and expressed ideals of order.",
+        "lessons": [
+          {
+            "id": "les_eg01",
+            "slug": "how-the-nile-supported-a-kingdom",
+            "title": "Ancient Egypt: How the Nile Supported a Kingdom",
+            "sections": [
+              {
+                "heading": "A civilization organized around a river",
+                "body": "Imagine planning a farming year around a river that rises, covers the fields, and then withdraws. In ancient Egypt, the annual Nile flood helped establish the rhythm of planting and harvest. When the waters receded, they left fertile deposits that supported agriculture along the valley and Delta.\n\nThe inundation depended on rainfall far to the south, especially in the Ethiopian highlands. Its timing was fairly predictable, but its size mattered: too little water threatened crops, while excessive flooding could also cause damage. A dependable seasonal pattern was not the same as guaranteed prosperity.\n\nThis is why the Nile is a starting point rather than a complete explanation of Egyptian civilization. Water and soil created opportunities; people still had to cultivate land, organize work, store produce, and respond to changing conditions. Geography shaped possibilities without making every political choice inevitable."
+              },
+              {
+                "heading": "Farms, food, and the work behind monuments",
+                "body": "Agriculture formed the basis of the economy. Grain, fruit, and vegetables supplied food, while other products could be processed into oil and wine. Storage allowed harvested produce to be used throughout the year rather than only at the moment it was gathered.\n\nEarly settlements leave archaeological evidence such as hearths, granaries, and grinding stones. Such remains help historians reconstruct everyday activity that royal monuments alone cannot reveal. The material record includes the work of producing and preparing food, not only the achievements claimed by kings.\n\nSurplus food made it possible to support people whose work was not primarily farming. Think of a temple or construction project as requiring continuing supplies, not just an order from a ruler. This connection helps make impressive monuments intelligible as products of organized labor and resources rather than isolated marvels."
+              },
+              {
+                "heading": "Two lands and an ideal of order",
+                "body": "Egyptian kingship united the Nile valley and the Delta as Upper and Lower Egypt. “Upper” refers to the southern, upstream region, not the top of a modern north-oriented map. The two regions retained symbolic importance even within a unified kingdom.\n\nThe white crown represented Upper Egypt and the red crown Lower Egypt. Royal imagery combined these claims to express rule over both lands. Symbols were therefore part of government: they presented political unity as a visible and repeatable idea.\n\nA king's central responsibility was to preserve maat, the right order of society and the cosmos. That included justice, stability, religious ritual, protection, and economic well-being. Egyptians linked the office of kingship with divine power, but this should not be reduced to saying every individual ruler was regarded in exactly the same way."
+              },
+              {
+                "heading": "Continuity did not mean permanent unity",
+                "body": "Ancient Egypt lasted across many dynasties and periods, not as one unchanging government. During the First Intermediate Period, authority became decentralized. Mentuhotep II later reunited Upper and Lower Egypt, opening the Middle Kingdom. Political unity had to be created and sometimes restored.\n\nThis variation matters when interpreting royal images. An image showing a king maintaining order expresses a claim about what kingship should accomplish; it does not prove that the country was always peaceful or every subject well provided for. Prescriptive ideals and everyday conditions are different kinds of evidence.\n\nTo study Egypt, connect three levels: the river's seasonal resources, the human work that transformed them, and the institutions that organized and represented authority. The relationship among all three is more informative than a list of pyramids or a statement that the Nile alone “created” civilization."
+              }
+            ],
+            "keyFacts": [
+              "The Nile’s annual flood helped establish the agricultural cycle.",
+              "Floods could be damaging when too high or too low.",
+              "Agriculture and stored produce sustained economic life.",
+              "Upper Egypt lay to the south; Lower Egypt included the northern Delta.",
+              "Maat concerned right order, justice, and stability.",
+              "Periods of unity alternated with periods of political decentralization."
+            ],
+            "quiz": [
+              {
+                "question": "What did the receding flood leave behind?",
+                "options": [
+                  "Fertile deposits useful for agriculture",
+                  "Permanent snowfields",
+                  "A new constitution",
+                  "Only salt water"
+                ],
+                "answerIndex": 0,
+                "explanation": "Floodwaters renewed the fields with sediment."
+              },
+              {
+                "question": "Why was a predictable flood not a guarantee of prosperity?",
+                "options": [
+                  "The river never changed",
+                  "Flood height could still damage agricultural conditions",
+                  "Egyptians did not farm",
+                  "Every field lay outside the valley"
+                ],
+                "answerIndex": 1,
+                "explanation": "Both inadequate and excessive flooding could be harmful."
+              },
+              {
+                "question": "What can granaries and grinding stones help reveal?",
+                "options": [
+                  "Only royal ancestry",
+                  "The meaning of every religious text",
+                  "Everyday food production and storage",
+                  "The exact words of every farmer"
+                ],
+                "answerIndex": 2,
+                "explanation": "Material evidence illuminates activities not recorded in royal claims."
+              },
+              {
+                "question": "Where was Upper Egypt?",
+                "options": [
+                  "North of the Mediterranean",
+                  "Only in the Delta",
+                  "West of the Atlantic",
+                  "In the southern, upstream Nile valley"
+                ],
+                "answerIndex": 3,
+                "explanation": "The name follows the river system rather than a map’s top edge."
+              },
+              {
+                "question": "What was maat?",
+                "options": [
+                  "An ideal of right order and justice",
+                  "A single kind of boat",
+                  "A Greek voting procedure",
+                  "A royal burial date"
+                ],
+                "answerIndex": 0,
+                "explanation": "Maintaining maat was central to the ideology of kingship."
+              },
+              {
+                "question": "Why should royal images be read critically?",
+                "options": [
+                  "All images are useless",
+                  "They express ideals and claims, not automatic proof of everyday conditions",
+                  "They were made only in modern times",
+                  "They prove every dynasty was identical"
+                ],
+                "answerIndex": 1,
+                "explanation": "A representation of order must be distinguished from evidence that order always prevailed."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "The Metropolitan Museum of Art",
+                "title": "The Art of Ancient Egypt: A Resource for Educators",
+                "url": "https://resources.metmuseum.org/resources/metpublications/pdf/The_Art_of_Ancient_Egypt_A_Resource_for_Educators.pdf"
+              },
+              {
+                "publisher": "The Metropolitan Museum of Art",
+                "title": "Life along the Nile: Three Egyptians of Ancient Thebes",
+                "url": "https://resources.metmuseum.org/resources/metpublications/pdf/Life_Along_the_Nile_Three_Egyptians_of_Ancient_Thebes_The_Metropolitan_Museum_of_Art_Bulletin_v_60_no_1_Summer_2002.pdf"
+              },
+              {
+                "publisher": "The Metropolitan Museum of Art",
+                "title": "Egypt, 8000–2000 B.C.",
+                "url": "https://www.metmuseum.org/toah/ht/02/afe.html"
+              },
+              {
+                "publisher": "The Metropolitan Museum of Art",
+                "title": "Kings and Queens of Egypt",
+                "url": "https://www.metmuseum.org/essays/kings-and-queens-of-egypt"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "nile-flood",
+                "label": "The Nile flood",
+                "kind": "event"
+              },
+              {
+                "id": "upper-and-lower-egypt",
+                "label": "Upper and Lower Egypt",
+                "kind": "place"
+              },
+              {
+                "id": "maat",
+                "label": "Maat",
+                "kind": "idea"
+              },
+              {
+                "id": "first-intermediate-period",
+                "label": "The First Intermediate Period",
+                "kind": "event"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "slug": "code-of-hammurabi",
         "title": "The Code of Hammurabi",
         "kind": "era",

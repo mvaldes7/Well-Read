@@ -7,7 +7,7 @@ import { readFileSync } from 'node:fs';
 const disciplines = JSON.parse(
   readFileSync(new URL('../../src/content/disciplines.json', import.meta.url), 'utf8'),
 );
-const KINDS = ['person', 'event', 'era', 'style', 'technique', 'process', 'concept', 'network', 'school', 'institution', 'series'];
+const KINDS = ['person', 'event', 'era', 'style', 'technique', 'process', 'concept', 'network', 'school', 'institution', 'series', 'civilization'];
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const topics = disciplines.flatMap((d) => d.topics.map((t) => ({ d, t })));
 const lessons = topics.flatMap(({ d, t }) => t.lessons.map((l) => ({ d, t, l })));
@@ -253,11 +253,15 @@ test('American Civics: one merged Constitution & Bill of Rights topic; lesson id
   assert.deepEqual(presidents.lessons.map((l) => l.id), ['les_gw01', 'les_ja01', 'les_tj01', 'les_jm01', 'les_jmo01', 'les_jqa01', 'les_aj01', 'les_mvb01', 'les_al01', 'les_tr01']);
 });
 
-test('Ancient History keeps Hammurabi and adds Athens and Ashoka as new topics', () => {
+test('Ancient History lists Egypt, Hammurabi, Athens, and Ashoka in chronological topic order', () => {
   const ah = disciplines.find((d) => d.slug === 'ancient-history');
   assert.deepEqual(ah.topics.map((t) => [t.slug, t.kind, t.lessons.map((l) => l.id)]), [
+    ['the-nile-and-egyptian-kingship', 'civilization', ['les_eg01']],
     ['code-of-hammurabi', 'era', ['les_ch01']],
     ['democracy-in-ancient-athens', 'institution', ['les_ad01']],
     ['ashoka-and-the-mauryan-empire', 'person', ['les_as01']],
   ]);
+  const egypt = ah.topics[0];
+  assert.equal(egypt.title, 'The Nile and Egyptian kingship');
+  assert.equal(egypt.lessons[0].slug, 'how-the-nile-supported-a-kingdom');
 });
