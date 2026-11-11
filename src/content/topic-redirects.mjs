@@ -12,6 +12,7 @@ export const TOPIC_REDIRECTS = [
   { discipline: "american-civics", from: "thomas-jefferson", to: "us-presidents" },
   { discipline: "american-civics", from: "abraham-lincoln", to: "us-presidents" },
   { discipline: "american-civics", from: "theodore-roosevelt", to: "us-presidents" },
+  { discipline: "religious-studies", from: "protestant-reformation", to: "protestant-christianity" },
 ];
 
 /**

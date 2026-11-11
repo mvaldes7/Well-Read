@@ -7125,10 +7125,10 @@
         ]
       },
       {
-        "slug": "protestant-reformation",
-        "title": "The Protestant Reformation",
-        "kind": "event",
-        "summary": "A sixteenth-century movement to reform Western Christianity produced new Protestant traditions and reshaped debates about salvation, religious authority, and political power.",
+        "slug": "protestant-christianity",
+        "title": "Protestant Christianity",
+        "kind": "concept",
+        "summary": "The Protestant Reformation produced new Christian traditions whose teachings on grace, faith, and scriptural authority are expressed in preaching, baptism, and Communion, while differing across communities.",
         "lessons": [
           {
             "id": "les_pr01",
@@ -7280,6 +7280,145 @@
                 "id": "council-of-trent",
                 "label": "The Council of Trent",
                 "kind": "event"
+              }
+            ]
+          },
+          {
+            "id": "les_pc01",
+            "slug": "from-belief-to-worship",
+            "title": "Protestant Christianity: From Belief to Worship",
+            "sections": [
+              {
+                "heading": "A shared heritage is not a single church",
+                "body": "Imagine attending two Protestant services. Both include Bible readings and prayer, yet their ministers, music, and celebration of Communion look different. This invented comparison introduces an important distinction: Protestant Christianity is a family of traditions, not one organization with a single worldwide leadership.\n\nBeyond the events of the Reformation, useful questions concern how Protestants understand salvation, identify religious authority, and organize worship. Common themes include justification by grace through faith, the special authority of Scripture, and the priesthood of all believers. These themes link beliefs with community practices.\n\n“Common” does not mean identical in every detail. Protestants have disagreed about biblical interpretation, church government, and the sacraments. This lesson describes recurring teachings without asking readers to accept them or assuming every Protestant congregation expresses them in the same way."
+              },
+              {
+                "heading": "Grace and faith: what is being claimed?",
+                "body": "Grace means God's freely given favor rather than something a person earns as a payment. In classical Protestant teaching, justification concerns a person's right relationship with God. It is grounded in divine grace and received through faith, rather than achieved by accumulating sufficient moral accomplishments.\n\nThis does not mean good conduct becomes irrelevant. Protestant teachers distinguished the basis of salvation from its consequences in a person's life. Good works could be understood as expressions or fruits of faith, not a price paid to secure God's acceptance. The distinction is theological, not merely a disagreement about whether kindness is desirable.\n\nFor a learning analogy, compare receiving a gift with earning a wage. The analogy helps explain why “grace” and “merit” are different categories; it does not capture every Christian debate about salvation. Religious literacy requires understanding the claim before deciding whether one agrees with it."
+              },
+              {
+                "heading": "Scripture, preaching, and shared responsibility",
+                "body": "Protestants generally give Scripture final authority in matters of faith. This emphasis helps explain the importance of biblical reading, preaching, and teaching. It does not mean Protestant communities have always agreed on every interpretation or on one account of how biblical authority operates.\n\nThe priesthood of all believers likewise concerns religious status and responsibility. It affirms that all believers can participate in prayer and serve as agents of God's grace. It does not automatically abolish ordained ministers, education, or leadership within a congregation.\n\nThe words used for leaders also vary. Many Protestant churches speak of ministers or pastors, while Anglican churches retain the title priest. A difference in terminology should prompt questions about actual responsibilities rather than an immediate assumption that the underlying theology is identical or entirely different."
+              },
+              {
+                "heading": "Water, bread, and wine: shared practices, disputed meanings",
+                "body": "Most Protestant traditions recognize baptism and the Lord's Supper, also called Holy Communion, as the two rites clearly instituted by Christ. Some communities use the word ordinances rather than sacraments. The practices are widely shared, but their theological explanations differ.\n\nBaptismal debates include whether to baptize infants or people making their own profession of faith. Communion debates concern how Christ is present and what participants receive. Treating every Protestant celebration as either identical to the Catholic Mass or merely an empty reminder would erase important distinctions.\n\nWhen comparing services, ask what is read, preached, and enacted, who leads, and how participants explain the rites. Then connect the answers to beliefs about grace, authority, and community. That method moves beyond identifying a denomination by appearances and helps explain why similar actions can carry different religious meanings."
+              }
+            ],
+            "keyFacts": [
+              "Protestant Christianity includes multiple traditions rather than one worldwide organization.",
+              "Classical Protestant teaching emphasizes justification by grace through faith.",
+              "Good works are distinguished from earning salvation.",
+              "Scriptural authority does not produce agreement on every interpretation.",
+              "The priesthood of all believers does not necessarily abolish ordained ministry.",
+              "Most Protestant traditions recognize baptism and Communion, while differing about their meaning."
+            ],
+            "quiz": [
+              {
+                "question": "Which description best fits Protestant Christianity?",
+                "options": [
+                  "One congregation with one global pastor",
+                  "A family of traditions sharing some themes but differing in important ways",
+                  "A religion with no Christian origins",
+                  "A uniform style of music"
+                ],
+                "answerIndex": 1,
+                "explanation": "Shared origins and themes do not make Protestantism a single institution."
+              },
+              {
+                "question": "What does grace emphasize in this lesson?",
+                "options": [
+                  "A wage paid for enough achievements",
+                  "A political office",
+                  "God’s freely given favor",
+                  "The abolition of all religious teaching"
+                ],
+                "answerIndex": 2,
+                "explanation": "Grace is distinguished from something earned through merit."
+              },
+              {
+                "question": "How are good works understood in the explanation given here?",
+                "options": [
+                  "As possible fruits of faith rather than a payment purchasing salvation",
+                  "As irrelevant to every Protestant",
+                  "As the only topic of worship",
+                  "As proof that every congregation agrees"
+                ],
+                "answerIndex": 0,
+                "explanation": "The basis of salvation is distinguished from its expression in conduct."
+              },
+              {
+                "question": "What does final scriptural authority not guarantee?",
+                "options": [
+                  "An emphasis on Bible reading",
+                  "A role for preaching",
+                  "Religious teaching",
+                  "Agreement on every biblical interpretation"
+                ],
+                "answerIndex": 3,
+                "explanation": "Shared authority can coexist with disputes over interpretation."
+              },
+              {
+                "question": "What does the priesthood of all believers affirm?",
+                "options": [
+                  "That every church must abolish ministers",
+                  "Shared religious responsibility among believers",
+                  "That only rulers may pray",
+                  "That no one can teach Scripture"
+                ],
+                "answerIndex": 1,
+                "explanation": "It concerns access, status, and responsibility, not necessarily the elimination of ordained roles."
+              },
+              {
+                "question": "Which two rites are most widely recognized in Protestant traditions?",
+                "options": [
+                  "Pilgrimage and coronation",
+                  "Marriage and royal succession",
+                  "Baptism and Communion",
+                  "Ordination and a national census"
+                ],
+                "answerIndex": 2,
+                "explanation": "Protestants differ over these rites’ interpretation while generally retaining both."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Protestantism",
+                "url": "https://www.britannica.com/topic/Protestantism"
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "The Protestant Heritage",
+                "url": "https://www.britannica.com/topic/The-Protestant-Heritage"
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Priest",
+                "url": "https://www.britannica.com/topic/priest-Christianity",
+                "note": "Christian ministry and Protestant terminology"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "justification-by-grace",
+                "label": "Justification by grace through faith",
+                "kind": "idea"
+              },
+              {
+                "id": "scriptural-authority",
+                "label": "Scriptural authority",
+                "kind": "idea"
+              },
+              {
+                "id": "priesthood-of-all-believers",
+                "label": "The priesthood of all believers",
+                "kind": "idea"
+              },
+              {
+                "id": "baptism-and-communion",
+                "label": "Baptism and Communion",
+                "kind": "subtopic"
               }
             ]
           }
