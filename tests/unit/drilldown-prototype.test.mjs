@@ -110,14 +110,16 @@ test('happy path: 2 model calls, sources = the cited fetched sources, key only i
   assert.ok(!JSON.stringify(r).includes(KEY));
 });
 
-test('citations: an unknown source id is a source problem and regenerates (no fact-check call)', async () => {
+test('citations: an unknown source id fails closed after one call (no full regeneration)', async () => {
   const bad = fakeLesson({ factSources: ['S1', 'S9', 'S1', 'S1', 'S1', 'S1'] });
   const f = mockFetch([gem(bad), gem(fakeLesson()), gem(allSupported)]);
   const r = await run(f);
   assert.ok(r.attempts[0].sourceProblems.some((p) => p.includes('fact2: cites "S9"')));
-  assert.equal(r.attempts[0].factCheck.skipped, 'source/content checks failed');
-  assert.match(r.verdict, /^passed/);
-  assert.equal(r.calls.length, 3);
+  assert.equal(r.attempts[0].factCheck.skipped, 'invalid citation identities');
+  assert.equal(r.verdict, 'rejected');
+  assert.match(r.stoppedOn, /citation validation failed/);
+  assert.equal(r.calls.length, 1);
+  assert.equal(f.gem().length, 1);
 });
 
 test('fact check sees each item\'s cited-source excerpts (with the cited URL), never blocked text', async () => {
@@ -385,3 +387,87 @@ test('overall deadline spans sources and model, and records provider 503 distinc
   assert.deepEqual(unavailable.callEvents.map(e => e.outcome), ['provider_unavailable', 'provider_unavailable']);
   assert.ok(unavailable.callEvents.every(e => typeof e.ms === 'number' && e.model && e.httpStatus === 503));
 }));
+
+import { lessonSchemaForSources, LESSON_SCHEMA, resolveCitation } from '../../src/lib/drilldowns/generate.mjs';
+
+test('citation schema enums contain only this run\'s allowed ids and do not mutate the template', () => {
+  const first = lessonSchemaForSources([{ id: 'S1' }, { id: 'S2' }]);
+  const second = lessonSchemaForSources([{ id: 'S7' }]);
+  for (const field of ['factSources', 'quizSources']) {
+    assert.deepEqual(first.properties[field].items.enum, ['S1', 'S2']);
+    assert.deepEqual(second.properties[field].items.enum, ['S7']);
+    assert.equal(LESSON_SCHEMA.properties[field].items.enum, undefined);
+    assert.equal(first.properties[field].minItems, 6);
+    assert.equal(first.properties[field].maxItems, 6);
+  }
+  assert.throws(() => lessonSchemaForSources([]), /no fetched source ids/);
+});
+
+test('generator receives constrained ids and trusted-source guidance; fact check still runs', async () => {
+  let schema, prompt;
+  const f = mockFetch([(url, init) => {
+    const body = JSON.parse(init.body);
+    schema = body.generationConfig.responseSchema;
+    prompt = body.contents[0].parts[0].text;
+    return gem(fakeLesson());
+  }, gem(allSupported)]);
+  const r = await run(f);
+  assert.deepEqual(schema.properties.factSources.items.enum, ['S1', 'S2', 'S3']);
+  assert.deepEqual(schema.properties.quizSources.items.enum, ['S1', 'S2', 'S3']);
+  assert.match(prompt, /complete allowed list: \["S1","S2","S3"\]/);
+  assert.match(prompt, /At least one citation must use a trusted\/curated source ID/);
+  assert.match(r.verdict, /^passed/);
+  assert.equal(f.gem().length, 2);
+});
+
+test('local citation repair accepts only unambiguous formatting of an already fetched identity', () => {
+  const fetched = [{ id: 'S1', url: 'https://example.edu/page?chapter=1' }];
+  for (const value of [' S1 ', 's1', 'https://EXAMPLE.edu:443/page?chapter=1#history']) {
+    assert.equal(resolveCitation(value, fetched), fetched[0]);
+  }
+  for (const value of ['S9', 'S01', 1, null, 'https://other.edu/page?chapter=1',
+    'https://example.edu/page?chapter=2', 'https://example.edu/page/?chapter=1',
+    'http://example.edu/page?chapter=1', 'https://user:pass@example.edu/page?chapter=1']) {
+    assert.equal(resolveCitation(value, fetched), null, String(value));
+  }
+  assert.equal(resolveCitation(fetched[0].url, [...fetched, { id: 'S2', url: fetched[0].url + '#other' }]), null);
+});
+
+test('case/whitespace and fetched-page URL citations repair locally without a generation retry', async () => {
+  const gen = fakeLesson({ factSources: Array(6).fill(' s1 '), quizSources: Array(6).fill(SRC.url + '#section') });
+  const f = mockFetch([gem(gen), gem(allSupported)]);
+  const r = await run(f);
+  assert.match(r.verdict, /^passed/);
+  assert.equal(r.calls.length, 2);
+  assert.deepEqual(r.citations.facts, Array(6).fill(SRC.url));
+  assert.deepEqual(r.citations.quiz, Array(6).fill(SRC.url));
+  assert.deepEqual(last(r).sourceProblems, []);
+});
+
+test('a source URL that was not fetched is not silently replaced with an unrelated source', async () => {
+  const f = mockFetch([gem(fakeLesson({ factSources: Array(6).fill('https://never-fetched.edu/meiji') }))]);
+  const r = await run(f);
+  assert.equal(r.verdict, 'rejected');
+  assert.equal(f.gem().length, 1);
+  assert.equal(r.citations.facts.filter(Boolean).length, 0);
+  assert.match(r.stoppedOn, /citation validation failed/);
+});
+
+test('generation fallback cannot consume the final fact-check slot', async () => {
+  const bad = fakeLesson({ keyFacts: ['too short'] });
+  const f = mockFetch([gem(bad), gem(bad), e503]);
+  const r = await run(f);
+  assert.equal(f.gem().length, 3);
+  assert.equal(r.fallback, null);
+  assert.match(r.stoppedOn, /provider unavailable: HTTP 503/);
+  assert.equal(r.callEvents.length, 3);
+  assert.ok(f.gem().every(c => c.url.includes(DEFAULT_MODEL)));
+});
+
+test('schema repair can use the third generation call but must leave the fourth for checking', async () => {
+  const bad = fakeLesson({ keyFacts: ['too short'] });
+  const f = mockFetch([gem(bad), gem(bad), gem(fakeLesson()), gem(allSupported)]);
+  const r = await run(f);
+  assert.match(r.verdict, /^passed/);
+  assert.deepEqual(r.calls.map(c => c.kind), ['generate', 'generate', 'generate', 'factcheck']);
+});

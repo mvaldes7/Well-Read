@@ -16,7 +16,7 @@ import { isHttpsUrl } from "../../content/sources.mjs";
 export const DEFAULT_MODEL = "gemini-3.1-flash-lite";
 /** Free-tier fallback, used only when the primary returns 503 / high demand (Mike, 2026-11-02). Never a paid model. */
 export const FALLBACK_MODEL = "gemini-3.5-flash-lite";
-export const PROMPT_VERSION = "p1b-2-grounded";
+export const PROMPT_VERSION = "p1b-3-citation-budget";
 export const FACTCHECK_SOURCE_CHARS = 24000;
 /** Total excerpt budget given to the generator, split across fetched sources. */
 export const GENERATE_SOURCE_CHARS = 24000;
@@ -61,6 +61,16 @@ export const LESSON_SCHEMA = {
   },
   required: ["slug", "title", "sections", "keyFacts", "quiz", "factSources", "quizSources"],
 };
+/** Restrict citation output to THIS run's fetched ids, without mutating the shared schema. */
+export function lessonSchemaForSources(fetched) {
+  const schema = structuredClone(LESSON_SCHEMA);
+  const ids = fetched.map((f) => f.id);
+  if (!ids.length) throw new Error("no fetched source ids");
+  schema.properties.factSources.items.enum = [...ids];
+  schema.properties.quizSources.items.enum = [...ids];
+  return schema;
+}
+
 export const FACTCHECK_SCHEMA = {
   type: "OBJECT",
   properties: { items: { type: "ARRAY", items: { type: "OBJECT", properties: {
@@ -109,6 +119,7 @@ export function buildPrompt({ discipline, topic, lesson, choice }, fetched) {
   const share = fetched.length ? Math.floor(GENERATE_SOURCE_CHARS / fetched.length) : 0;
   const query = `${choice.label} ${lesson.title}`;
   const blocks = fetched.map((f) => `[${f.id}] ${f.publisher}: ${f.title}\n${relevantExcerpts(f.text, query, share).map((c) => c.text).join(" ... ")}`).join("\n\n");
+  const strongIds = fetched.filter((f) => f.curated || classifySourceUrl(f.url)?.tier === "trusted").map((f) => f.id);
   const system = [
     "You write short, accurate introductory lessons for curious adult learners.",
     "Describe neutrally; never ask the reader to affirm a religious, political or civic position.",
@@ -123,7 +134,8 @@ export function buildPrompt({ discipline, topic, lesson, choice }, fetched) {
     `Write a follow-up lesson that digs deeper into: "${choice.label}" (${choice.kind}), as introduced in the parent lesson "${lesson.title}".`,
     "Exactly 4 sections (heading + 2-3 paragraph body), exactly 6 key facts, exactly 6 multiple-choice questions with 4 distinct options,",
     "a 0-based answerIndex and a one-sentence explanation. slug: lowercase-hyphenated. Do not repeat the parent lesson; go deeper.",
-    `factSources and quizSources: 6 ids each, chosen from ${fetched.map((f) => f.id).join(", ")}.`,
+    `factSources and quizSources: exactly 6 source IDs each, chosen ONLY from this complete allowed list: ${JSON.stringify(fetched.map((f) => f.id))}. Do not invent IDs or output URLs.`,
+    ...(strongIds.length ? [`At least one citation must use a trusted/curated source ID from ${JSON.stringify(strongIds)}. Use only claims actually supported by that source.`] : []),
     `\nFetched source excerpts (the ONLY allowed basis for claims):\n${blocks}`,
     `\nParent lesson (context only, not a source):\n${text}`,
   ].join("\n");
@@ -171,6 +183,28 @@ export async function callGemini({ fetchImpl, apiKey, model, system, user, schem
   return { json, ms, usage: body?.usageMetadata ?? null, finishReason: body?.candidates?.[0]?.finishReason ?? null, modelVersion: body?.modelVersion ?? null };
 }
 
+/** Canonical page identity only: preserve query/path, reject credentials/non-HTTPS, ignore fragments. */
+function citationPage(raw) {
+  try {
+    const url = new URL(raw);
+    if (url.protocol !== "https:" || url.username || url.password || url.port) return null;
+    url.hash = "";
+    return url.href;
+  } catch { return null; }
+}
+
+/** Repair formatting only, never guess which source supports a claim or substitute an unknown source. */
+export function resolveCitation(raw, fetched) {
+  if (typeof raw !== "string") return null;
+  const value = raw.trim();
+  const id = fetched.find((f) => f.id.toLowerCase() === value.toLowerCase());
+  if (id) return id;
+  const page = citationPage(value);
+  if (!page) return null;
+  const matches = fetched.filter((f) => citationPage(f.url) === page);
+  return matches.length === 1 ? matches[0] : null;
+}
+
 /**
  * Assign our own id; the lesson's sources are exactly the fetched sources it cites (metadata forced to the curated candidate).
  * Returns the lesson plus the per-item citations (kept in the report, not in the lesson shape).
@@ -178,10 +212,9 @@ export async function callGemini({ fetchImpl, apiKey, model, system, user, schem
  */
 export function normalizeLesson(raw, fetched) {
   if (!raw || typeof raw !== "object") return { lesson: raw, citations: null, citationProblems: ["no JSON object"] };
-  const byId = new Map(fetched.map((f) => [f.id, f]));
   const citationProblems = [];
   const cite = (/** @type {any} */ arr, /** @type {string} */ kind) => (Array.isArray(arr) ? arr : []).map((id, i) => {
-    const f = byId.get(String(id).trim());
+    const f = resolveCitation(id, fetched);
     if (!f) citationProblems.push(`${kind}${i + 1}: cites "${id}", not a fetched source`);
     return f ? f.url : null;
   });
@@ -461,11 +494,13 @@ export async function runPrototype({ disciplines, lessonId, choiceId, apiKey, mo
   if (pre.problems.length) { report.stoppedOn = `no usable fetched sources: ${pre.problems.join("; ")}`; return report; }
   const fetched = pre.fetched;
   const { system, user } = buildPrompt(ctx, fetched);
+  const lessonSchema = lessonSchemaForSources(fetched);
   const left = () => budget.max - budget.used;
   const state = { model };
   /** Call the current model; on 503 / high demand from the primary, switch once to the free-tier fallback (counts against the cap). */
   const invoke = async (args) => {
     totalSignal.throwIfAborted();
+    if (left() <= (args.reserveForFactCheck ?? 0)) throw new CallBudgetError("call budget reserved for fact check");
     const began = Date.now(), before = budget.used;
     try {
       const result = await callGemini({ ...args, model: state.model, onBeforeCall, timeoutMs: limits.modelMs });
@@ -480,7 +515,7 @@ export async function runPrototype({ disciplines, lessonId, choiceId, apiKey, mo
   const call = async (args) => {
     try { return await invoke(args); }
     catch (e) {
-      if (!(e instanceof ProviderUnavailableError) || state.model !== DEFAULT_MODEL || left() < 1 || totalSignal.aborted) throw e;
+      if (!(e instanceof ProviderUnavailableError) || state.model !== DEFAULT_MODEL || left() <= (args.reserveForFactCheck ?? 0) || totalSignal.aborted) throw e;
       log(`${state.model} unavailable (${e.message}); falling back to ${FALLBACK_MODEL}`);
       report.fallback = { from: state.model, to: FALLBACK_MODEL, reason: e.message };
       state.model = FALLBACK_MODEL;
@@ -499,7 +534,7 @@ export async function runPrototype({ disciplines, lessonId, choiceId, apiKey, mo
       // Generate; retry once on schema failure only while a fact-check call still fits.
       while (left() >= 2) {
         report.phase = "generate";
-        const r = await call({ fetchImpl, apiKey, system, user, schema: LESSON_SCHEMA, budget });
+        const r = await call({ fetchImpl, apiKey, system, user, schema: lessonSchema, budget, reserveForFactCheck: 1 });
         report.calls.push({ kind: "generate", model: state.model, ms: r.ms, usage: r.usage, finishReason: r.finishReason, modelVersion: r.modelVersion });
         norm = normalizeLesson(r.json, fetched);
         generated = norm.lesson;
@@ -512,6 +547,13 @@ export async function runPrototype({ disciplines, lessonId, choiceId, apiKey, mo
       report.citations = norm.citations;
       at.contentProblems = localContentProblems(generated, ctx.choice);
       at.sourceProblems = citedSourceProblems({ ...norm, fetched, choice: ctx.choice });
+      // Invalid citation identities cannot be fixed by trusting a different source. Fail closed rather
+      // than spending more provider calls rewriting the entire lesson. Formatting repairs happen locally.
+      if (norm.citationProblems.length) {
+        at.factCheck = { skipped: "invalid citation identities" };
+        report.stoppedOn = "citation validation failed; no further generation calls";
+        break;
+      }
       const fcText = at.sourceProblems.length ? "" : factCheckText(generated, norm.citations, fetched);
       log(`cited: ${generated.sources.map((/** @type {any} */ x) => x.url).join(", ")}; ${at.sourceProblems.length} source problem(s); fact-check text ${fcText.length} chars`);
       if (at.sourceProblems.length || at.contentProblems.length || !fcText) { at.factCheck = { skipped: "source/content checks failed" }; continue; }
