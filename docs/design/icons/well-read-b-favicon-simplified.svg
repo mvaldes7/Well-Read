@@ -1,7 +1,29 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect x="1" y="1" width="30" height="30" rx="5" fill="#232326" stroke="#a8915f" stroke-width="2"/>
-  <rect x="4" y="8" width="6" height="16" fill="#8a4243"/>
-  <rect x="12" y="6" width="8" height="18" fill="#4a5c7d"/>
-  <rect x="22" y="10" width="6" height="14" fill="#47654e"/>
-  <rect x="4" y="24" width="24" height="4" fill="#e2cb93"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
+  <!-- Frame matches the previous icon: 6/256 inset, rx 52, 12-unit gold stroke
+       on charcoal #232326 (the same geometry as the old 0.75 / 6.5 / 1.5 values
+       on a 32-unit grid). -->
+  <rect x="6" y="6" width="244" height="244" rx="52" fill="#232326" stroke="#a8915f" stroke-width="12"/>
+
+  <!-- Oxblood, slate and sage upright spines, rounded on the top only. -->
+  <path d="M37,192 L37,70 Q37,60 47,60 L68,60 Q78,60 78,70 L78,192 Z" fill="#7d3a3b"/>
+  <rect x="42" y="72" width="3.5" height="120" rx="1" fill="#5a2a2b"/>
+  <rect x="37" y="84" width="41" height="8" fill="#e2cb93"/>
+
+  <path d="M82,192 L82,52 Q82,42 92,42 L114,42 Q124,42 124,52 L124,192 Z" fill="#3f4f6c"/>
+  <rect x="87" y="54" width="3.5" height="138" rx="1" fill="#2d394e"/>
+  <rect x="82" y="66" width="42" height="8" fill="#e2cb93"/>
+
+  <path d="M128,192 L128,78 Q128,68 138,68 L155,68 Q165,68 165,78 L165,192 Z" fill="#3e5744"/>
+  <rect x="133" y="80" width="3.5" height="112" rx="1" fill="#2c3d31"/>
+  <rect x="128" y="91" width="37" height="8" fill="#e2cb93"/>
+
+  <!-- Tan book leaning 10 degrees, with a flush page sliver on the right. -->
+  <g transform="rotate(10 178 192)">
+    <path d="M176,194 L176,102 Q176,96 182,96 L211,96 Q217,96 217,102 L217,194 Z" fill="#f3ead4"/>
+    <path d="M176,194 L176,102 Q176,96 182,96 L212,96 L212,194 Z" fill="#a8915f"/>
+    <rect x="210" y="102" width="2" height="92" fill="#796844"/>
+  </g>
+
+  <!-- Cream shelf drawn last so it caps the book bottoms. -->
+  <rect x="22" y="192" width="212" height="21" rx="10.5" fill="#e2cb93"/>
 </svg>
