@@ -12,15 +12,15 @@ import { evaluateAchievements } from '../../src/achievements/definitions.mjs';
 const disciplines = JSON.parse(readFileSync(new URL('../../src/content/disciplines.json', import.meta.url), 'utf8'));
 const civics = disciplines.find((d) => d.slug === 'american-civics');
 const row = (lesson_id, passed = true, completed_at = '2026-10-10T17:00:00Z') => ({ lesson_id, score: passed ? 6 : 1, total: 6, passed, completed_at, first_passed_at: passed ? completed_at : null });
-const CIVICS = ['les_cc01', 'les_br01', 'les_br02', 'les_lp01', 'les_jr01', 'les_ec01', 'les_gw01', 'les_ja01', 'les_tj01', 'les_al01', 'les_tr01'];
+const CIVICS = ['les_cc01', 'les_br01', 'les_br02', 'les_lp01', 'les_jr01', 'les_ec01', 'les_gw01', 'les_ja01', 'les_tj01', 'les_jm01', 'les_jmo01', 'les_jqa01', 'les_aj01', 'les_mvb01', 'les_al01', 'les_tr01'];
 
-test('American Civics topics stay in content order, with the five presidents under one topic', () => {
+test('American Civics topics stay in content order, with the ten presidents under one topic', () => {
   assert.deepEqual(civics.topics.map((t) => [t.slug, t.kind, t.lessons.map((l) => l.id)]), [
     ['constitution-bill-of-rights', 'era', ['les_cc01', 'les_br01', 'les_br02']],
     ['federal-legislative-process', 'process', ['les_lp01']],
     ['marbury-v-madison', 'concept', ['les_jr01']],
     ['electoral-college', 'institution', ['les_ec01']],
-    ['us-presidents', 'series', ['les_gw01', 'les_ja01', 'les_tj01', 'les_al01', 'les_tr01']],
+    ['us-presidents', 'series', ['les_gw01', 'les_ja01', 'les_tj01', 'les_jm01', 'les_jmo01', 'les_jqa01', 'les_aj01', 'les_mvb01', 'les_al01', 'les_tr01']],
   ]);
   const presidents = civics.topics.find((t) => t.slug === 'us-presidents');
   assert.equal(presidents.title, 'U.S. Presidents');
@@ -29,6 +29,11 @@ test('American Civics topics stay in content order, with the five presidents und
     'making-the-presidency-work',
     'national-security-and-the-limits-of-dissent',
     'liberty-expansion-and-contradiction',
+    'a-constitution-maker-confronts-war',
+    'good-feelings-deep-divisions',
+    'a-presidency-shadowed-by-its-election',
+    'popular-rule-and-coercive-power',
+    'inheriting-crisis-choosing-continuity',
     'from-preserving-the-union-to-ending-slavery',
     'the-presidency-as-a-force-for-action',
   ]);
@@ -49,15 +54,15 @@ test('mastery counts passed lessons across both Civics topics', () => {
   const lk = (ids) => completionLookup(ids.map((id) => row(id)), disciplines);
   assert.equal(passedInDiscipline(civics, lk(['les_lp01'])), 1);
   assert.equal(masteryLine(masteryFor(passedInDiscipline(civics, lk(['les_lp01'])))), '1 lesson · Novice');
-  assert.equal(passedInDiscipline(civics, lk(CIVICS)), 11);
+  assert.equal(passedInDiscipline(civics, lk(CIVICS)), 16);
   assert.equal(masteryFor(passedInDiscipline(civics, lk(CIVICS))).tier, 'Scholar');
-  assert.equal(passedInDiscipline(civics, lk([...CIVICS, 'les_st01'])), 11);
+  assert.equal(passedInDiscipline(civics, lk([...CIVICS, 'les_st01'])), 16);
 });
 
 test('dashboard/progress per-discipline totals include the new lesson', () => {
   const d = dashboardData([row('les_lp01'), row('les_br01', false)], disciplines);
   const c = d.perDiscipline.find((x) => x.slug === 'american-civics');
-  assert.deepEqual([c.passed, c.total, c.mastery.tier], [1, 11, 'Novice']);
+  assert.deepEqual([c.passed, c.total, c.mastery.tier], [1, 16, 'Novice']);
   const all = disciplines.reduce((n, x) => n + x.topics.reduce((m, t) => m + t.lessons.length, 0), 0);
   assert.deepEqual(d.lessons, { passed: 1, total: all });
 });
@@ -71,18 +76,18 @@ test('Library Wall shelves one Civics volume per topic with a passed lesson', ()
   assert.equal(passedInTopic(civics.topics[1], completionLookup([row('les_lp01')], disciplines)), 1);
   const presidents = civics.topics.find((t) => t.slug === 'us-presidents');
   const one = buildBookshelf([row('les_gw01')], disciplines).find((x) => x.discipline.slug === 'american-civics');
-  assert.deepEqual(one.books.map((b) => [b.topicSlug, b.passedCount, b.lessonCount, b.href]), [['us-presidents', 1, 5, '/d/american-civics/us-presidents']]);
+  assert.deepEqual(one.books.map((b) => [b.topicSlug, b.passedCount, b.lessonCount, b.href]), [['us-presidents', 1, 10, '/d/american-civics/us-presidents']]);
   const two = buildBookshelf([row('les_gw01'), row('les_tr01')], disciplines).find((x) => x.discipline.slug === 'american-civics');
   assert.deepEqual(two.books.map((b) => [b.topicSlug, b.passedCount]), [['us-presidents', 2]]);
   assert.equal(passedInTopic(presidents, completionLookup([row('les_gw01'), row('les_tr01')], disciplines)), 2);
 });
 
-test('Civics completionist needs all 11 lessons across its topics', () => {
+test('Civics completionist needs all 16 lessons across its topics', () => {
   const by = (rows) => Object.fromEntries(evaluateAchievements(rows, disciplines).map((a) => [a.id, a]));
-  assert.equal(by([]) ['completionist:american-civics'].progress, '0/11 lessons');
+  assert.equal(by([]) ['completionist:american-civics'].progress, '0/16 lessons');
   const three = by(['les_cc01', 'les_br01', 'les_br02'].map((id) => row(id)));
   assert.equal(three['completionist:american-civics'].earned, false);
-  assert.equal(three['completionist:american-civics'].progress, '3/11 lessons');
+  assert.equal(three['completionist:american-civics'].progress, '3/16 lessons');
   assert.equal(by(CIVICS.map((id) => row(id)))['completionist:american-civics'].earned, true);
 });
 
@@ -91,7 +96,7 @@ test('topic and discipline pages render counts and mastery from content, not har
   const listing = src('app/d/[discipline]/page.tsx');
   assert.match(listing, /discipline\.topics\.map/);
   assert.match(listing, /t\.lessons\.length/);
-  // Kind is shown as a plain label (e.g. "series · 5 lessons"), with no special-case map.
+  // Kind is shown as a plain label (e.g. "series · 10 lessons"), with no special-case map.
   assert.match(listing, /\{t\.kind\}/);
   assert.doesNotMatch(listing, /kindLabels|KIND_LABEL|kind === ['\"]series['\"]/);
   assert.match(src('app/d/[discipline]/[topic]/page.tsx'), /<DisciplineMastery disciplineSlug=\{discipline\.slug\}/);
