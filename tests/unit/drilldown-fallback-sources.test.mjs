@@ -229,7 +229,7 @@ test('last-resort Wikipedia-only is accepted only when fallback ran and no trust
 });
 
 test('formerly blocked lessons offer Dig deeper; the lesson page no longer hides it behind curated fetchability', () => {
-  for (const id of ['les_un01', 'les_mr01', 'les_su01']) {
+  for (const id of ['les_un01', 'les_mr01', 'les_su01', 'les_ad01', 'les_pc01', 'les_eg01']) {
     const lesson = disciplines.flatMap((d) => d.topics.flatMap((t) => t.lessons)).find((l) => l.id === id);
     assert.equal(lessonHasFetchableSource(lesson), false, id);
     assert.equal(lessonOffersDigDeeper(lesson), true, id);

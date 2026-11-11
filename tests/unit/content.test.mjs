@@ -7,7 +7,7 @@ import { readFileSync } from 'node:fs';
 const disciplines = JSON.parse(
   readFileSync(new URL('../../src/content/disciplines.json', import.meta.url), 'utf8'),
 );
-const KINDS = ['person', 'event', 'era', 'style', 'technique', 'process', 'concept', 'network', 'school', 'institution', 'series'];
+const KINDS = ['person', 'event', 'era', 'style', 'technique', 'process', 'concept', 'network', 'school', 'institution', 'series', 'civilization'];
 const SLUG = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 const topics = disciplines.flatMap((d) => d.topics.map((t) => ({ d, t })));
 const lessons = topics.flatMap(({ d, t }) => t.lessons.map((l) => ({ d, t, l })));
@@ -243,12 +243,39 @@ test('paragraphs() splits section bodies on blank lines', async () => {
   assert.deepEqual(paragraphs(''), []);
 });
 
-test('American Civics: one merged Constitution & Bill of Rights topic; lesson ids unchanged, chronological (TSK-014); TSK-022 adds federal-legislative-process after it; five presidents share one topic', () => {
+test('American Civics: one merged Constitution & Bill of Rights topic; lesson ids unchanged, chronological (TSK-014); TSK-022 adds federal-legislative-process after it; ten presidents share one topic', () => {
   const ac = disciplines.find((d) => d.slug === 'american-civics');
   assert.deepEqual(ac.topics.map((t) => t.slug), ['constitution-bill-of-rights', 'federal-legislative-process', 'marbury-v-madison', 'electoral-college', 'us-presidents']);
   assert.equal(ac.topics[0].title, 'The Constitution & Bill of Rights');
   assert.deepEqual(ac.topics[0].lessons.map((l) => l.id), ['les_cc01', 'les_br01', 'les_br02']);
   const presidents = ac.topics.find((t) => t.slug === 'us-presidents');
   assert.equal(presidents.title, 'U.S. Presidents');
-  assert.deepEqual(presidents.lessons.map((l) => l.id), ['les_gw01', 'les_ja01', 'les_tj01', 'les_al01', 'les_tr01']);
+  assert.deepEqual(presidents.lessons.map((l) => l.id), ['les_gw01', 'les_ja01', 'les_tj01', 'les_jm01', 'les_jmo01', 'les_jqa01', 'les_aj01', 'les_mvb01', 'les_al01', 'les_tr01']);
+});
+
+test('Ancient History lists Egypt, Hammurabi, Athens, and Ashoka in chronological topic order', () => {
+  const ah = disciplines.find((d) => d.slug === 'ancient-history');
+  assert.deepEqual(ah.topics.map((t) => [t.slug, t.kind, t.lessons.map((l) => l.id)]), [
+    ['the-nile-and-egyptian-kingship', 'civilization', ['les_eg01']],
+    ['code-of-hammurabi', 'era', ['les_ch01']],
+    ['democracy-in-ancient-athens', 'institution', ['les_ad01']],
+    ['ashoka-and-the-mauryan-empire', 'person', ['les_as01']],
+  ]);
+  const egypt = ah.topics[0];
+  assert.equal(egypt.title, 'The Nile and Egyptian kingship');
+  assert.equal(egypt.lessons[0].slug, 'how-the-nile-supported-a-kingdom');
+});
+
+test('Art History merges the Renaissance and early twentieth-century art topics', () => {
+  const ah = disciplines.find((d) => d.slug === 'art-history');
+  assert.deepEqual(ah.topics.map((t) => [t.slug, t.kind, t.lessons.map((l) => l.id)]), [
+    ['renaissance', 'era', ['les_ir01', 'les_nr01']],
+    ['impressionism', 'style', ['les_im01', 'les_im02']],
+    ['perspective', 'technique', ['les_pe01']],
+    ['early-twentieth-century-art', 'style', ['les_cu01', 'les_su01']],
+  ]);
+  assert.equal(ah.topics[0].title, 'The Renaissance');
+  assert.equal(ah.topics[3].title, 'Early twentieth-century art');
+  assert.deepEqual(ah.topics[0].lessons.map((l) => l.slug), ['how-renaissance-artists-made-pictures-feel-real', 'detail-symbols-and-printed-images']);
+  assert.deepEqual(ah.topics[3].lessons.map((l) => l.slug), ['why-artists-broke-the-picture-apart', 'when-dreams-disrupt-reality']);
 });

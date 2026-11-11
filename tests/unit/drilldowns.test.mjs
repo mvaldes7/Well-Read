@@ -7,7 +7,7 @@ import { generatedLessonProblems, GENERATED_LESSON_ID_PATTERN } from '../../src/
 import { LESSON_ID_PATTERN } from '../../src/content/ids.mjs';
 
 const disciplines = JSON.parse(readFileSync(new URL('../../src/content/disciplines.json', import.meta.url), 'utf8'));
-const seed = disciplines.find((d) => d.slug === 'art-history').topics.find((t) => t.slug === 'cubism').lessons[0];
+const seed = disciplines.find((d) => d.slug === 'art-history').topics.find((t) => t.slug === 'early-twentieth-century-art').lessons.find((l) => l.id === 'les_cu01');
 const seedLesson = structuredClone(seed); delete seedLesson.digDeeper; // generated lessons carry no digDeeper of their own (P0)
 const gen = (patch = {}) => ({ ...structuredClone(seedLesson), id: 'gen_abc12345', ...patch });
 
@@ -84,7 +84,7 @@ test('content: every digDeeper list is valid (3-4 choices, slug ids, known kinds
 test('gate: accepts only a stored choice id for a completed lesson', () => {
   const ok = checkDigDeeperRequest(disciplines, { lessonId: 'les_cu01', choiceId: 'georges-braque' }, done('les_cu01'));
   assert.equal(ok.ok, true);
-  assert.deepEqual([ok.choice.label, ok.disciplineSlug, ok.topicSlug], ['Georges Braque', 'art-history', 'cubism']);
+  assert.deepEqual([ok.choice.label, ok.disciplineSlug, ok.topicSlug], ['Georges Braque', 'art-history', 'early-twentieth-century-art']);
 });
 
 test('gate: quiz not completed -> not_completed, even with a valid choice (server-side, not UI)', () => {

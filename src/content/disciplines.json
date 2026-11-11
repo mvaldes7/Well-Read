@@ -2054,6 +2054,157 @@
     "color": "amber",
     "topics": [
       {
+        "slug": "the-nile-and-egyptian-kingship",
+        "title": "The Nile and Egyptian kingship",
+        "kind": "civilization",
+        "summary": "The Nile’s agricultural cycle supported Egyptian society, while institutions of kingship, storage, and religious authority organized resources and expressed ideals of order.",
+        "lessons": [
+          {
+            "id": "les_eg01",
+            "slug": "how-the-nile-supported-a-kingdom",
+            "title": "Ancient Egypt: How the Nile Supported a Kingdom",
+            "sections": [
+              {
+                "heading": "A civilization organized around a river",
+                "body": "Imagine planning a farming year around a river that rises, covers the fields, and then withdraws. In ancient Egypt, the annual Nile flood helped establish the rhythm of planting and harvest. When the waters receded, they left fertile deposits that supported agriculture along the valley and Delta.\n\nThe inundation depended on rainfall far to the south, especially in the Ethiopian highlands. Its timing was fairly predictable, but its size mattered: too little water threatened crops, while excessive flooding could also cause damage. A dependable seasonal pattern was not the same as guaranteed prosperity.\n\nThis is why the Nile is a starting point rather than a complete explanation of Egyptian civilization. Water and soil created opportunities; people still had to cultivate land, organize work, store produce, and respond to changing conditions. Geography shaped possibilities without making every political choice inevitable."
+              },
+              {
+                "heading": "Farms, food, and the work behind monuments",
+                "body": "Agriculture formed the basis of the economy. Grain, fruit, and vegetables supplied food, while other products could be processed into oil and wine. Storage allowed harvested produce to be used throughout the year rather than only at the moment it was gathered.\n\nEarly settlements leave archaeological evidence such as hearths, granaries, and grinding stones. Such remains help historians reconstruct everyday activity that royal monuments alone cannot reveal. The material record includes the work of producing and preparing food, not only the achievements claimed by kings.\n\nSurplus food made it possible to support people whose work was not primarily farming. Think of a temple or construction project as requiring continuing supplies, not just an order from a ruler. This connection helps make impressive monuments intelligible as products of organized labor and resources rather than isolated marvels."
+              },
+              {
+                "heading": "Two lands and an ideal of order",
+                "body": "Egyptian kingship united the Nile valley and the Delta as Upper and Lower Egypt. “Upper” refers to the southern, upstream region, not the top of a modern north-oriented map. The two regions retained symbolic importance even within a unified kingdom.\n\nThe white crown represented Upper Egypt and the red crown Lower Egypt. Royal imagery combined these claims to express rule over both lands. Symbols were therefore part of government: they presented political unity as a visible and repeatable idea.\n\nA king's central responsibility was to preserve maat, the right order of society and the cosmos. That included justice, stability, religious ritual, protection, and economic well-being. Egyptians linked the office of kingship with divine power, but this should not be reduced to saying every individual ruler was regarded in exactly the same way."
+              },
+              {
+                "heading": "Continuity did not mean permanent unity",
+                "body": "Ancient Egypt lasted across many dynasties and periods, not as one unchanging government. During the First Intermediate Period, authority became decentralized. Mentuhotep II later reunited Upper and Lower Egypt, opening the Middle Kingdom. Political unity had to be created and sometimes restored.\n\nThis variation matters when interpreting royal images. An image showing a king maintaining order expresses a claim about what kingship should accomplish; it does not prove that the country was always peaceful or every subject well provided for. Prescriptive ideals and everyday conditions are different kinds of evidence.\n\nTo study Egypt, connect three levels: the river's seasonal resources, the human work that transformed them, and the institutions that organized and represented authority. The relationship among all three is more informative than a list of pyramids or a statement that the Nile alone “created” civilization."
+              }
+            ],
+            "keyFacts": [
+              "The Nile’s annual flood helped establish the agricultural cycle.",
+              "Floods could be damaging when too high or too low.",
+              "Agriculture and stored produce sustained economic life.",
+              "Upper Egypt lay to the south; Lower Egypt included the northern Delta.",
+              "Maat concerned right order, justice, and stability.",
+              "Periods of unity alternated with periods of political decentralization."
+            ],
+            "quiz": [
+              {
+                "question": "What did the receding flood leave behind?",
+                "options": [
+                  "Fertile deposits useful for agriculture",
+                  "Permanent snowfields",
+                  "A new constitution",
+                  "Only salt water"
+                ],
+                "answerIndex": 0,
+                "explanation": "Floodwaters renewed the fields with sediment."
+              },
+              {
+                "question": "Why was a predictable flood not a guarantee of prosperity?",
+                "options": [
+                  "The river never changed",
+                  "Flood height could still damage agricultural conditions",
+                  "Egyptians did not farm",
+                  "Every field lay outside the valley"
+                ],
+                "answerIndex": 1,
+                "explanation": "Both inadequate and excessive flooding could be harmful."
+              },
+              {
+                "question": "What can granaries and grinding stones help reveal?",
+                "options": [
+                  "Only royal ancestry",
+                  "The meaning of every religious text",
+                  "Everyday food production and storage",
+                  "The exact words of every farmer"
+                ],
+                "answerIndex": 2,
+                "explanation": "Material evidence illuminates activities not recorded in royal claims."
+              },
+              {
+                "question": "Where was Upper Egypt?",
+                "options": [
+                  "North of the Mediterranean",
+                  "Only in the Delta",
+                  "West of the Atlantic",
+                  "In the southern, upstream Nile valley"
+                ],
+                "answerIndex": 3,
+                "explanation": "The name follows the river system rather than a map’s top edge."
+              },
+              {
+                "question": "What was maat?",
+                "options": [
+                  "An ideal of right order and justice",
+                  "A single kind of boat",
+                  "A Greek voting procedure",
+                  "A royal burial date"
+                ],
+                "answerIndex": 0,
+                "explanation": "Maintaining maat was central to the ideology of kingship."
+              },
+              {
+                "question": "Why should royal images be read critically?",
+                "options": [
+                  "All images are useless",
+                  "They express ideals and claims, not automatic proof of everyday conditions",
+                  "They were made only in modern times",
+                  "They prove every dynasty was identical"
+                ],
+                "answerIndex": 1,
+                "explanation": "A representation of order must be distinguished from evidence that order always prevailed."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "The Metropolitan Museum of Art",
+                "title": "The Art of Ancient Egypt: A Resource for Educators",
+                "url": "https://resources.metmuseum.org/resources/metpublications/pdf/The_Art_of_Ancient_Egypt_A_Resource_for_Educators.pdf"
+              },
+              {
+                "publisher": "The Metropolitan Museum of Art",
+                "title": "Life along the Nile: Three Egyptians of Ancient Thebes",
+                "url": "https://resources.metmuseum.org/resources/metpublications/pdf/Life_Along_the_Nile_Three_Egyptians_of_Ancient_Thebes_The_Metropolitan_Museum_of_Art_Bulletin_v_60_no_1_Summer_2002.pdf"
+              },
+              {
+                "publisher": "The Metropolitan Museum of Art",
+                "title": "Egypt, 8000–2000 B.C.",
+                "url": "https://www.metmuseum.org/toah/ht/02/afe.html"
+              },
+              {
+                "publisher": "The Metropolitan Museum of Art",
+                "title": "Kings and Queens of Egypt",
+                "url": "https://www.metmuseum.org/essays/kings-and-queens-of-egypt"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "nile-flood",
+                "label": "The Nile flood",
+                "kind": "event"
+              },
+              {
+                "id": "upper-and-lower-egypt",
+                "label": "Upper and Lower Egypt",
+                "kind": "place"
+              },
+              {
+                "id": "maat",
+                "label": "Maat",
+                "kind": "idea"
+              },
+              {
+                "id": "first-intermediate-period",
+                "label": "The First Intermediate Period",
+                "kind": "event"
+              }
+            ]
+          }
+        ]
+      },
+      {
         "slug": "code-of-hammurabi",
         "title": "The Code of Hammurabi",
         "kind": "era",
@@ -2193,6 +2344,316 @@
                 "id": "stele-at-susa",
                 "label": "The stele found at Susa",
                 "kind": "event"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "democracy-in-ancient-athens",
+        "title": "Democracy in ancient Athens",
+        "kind": "institution",
+        "summary": "Athens developed direct citizen participation through an assembly, a council, and courts, but political membership excluded most residents.",
+        "lessons": [
+          {
+            "id": "les_ad01",
+            "slug": "who-counted-as-the-people",
+            "title": "Athenian Democracy: Who Counted as the People?",
+            "sections": [
+              {
+                "heading": "Democracy without modern elections",
+                "body": "Imagine having to attend a public gathering to vote on a policy yourself instead of choosing a representative to decide it later. Ancient Athens offers an important example of direct democracy: eligible citizens participated in collective decisions rather than delegating all lawmaking to an elected legislature.\n\nThe system developed over time. Cleisthenes' reforms near the end of the sixth century BCE reorganized the citizen body into ten tribes that combined residents from different parts of Attica, the territory of Athens. Political membership became tied to this civic arrangement rather than simply to older descent groups.\n\nAthenian democracy is important, but it should not be treated as a complete model of modern equal citizenship. To understand the institution, ask both how citizens exercised power and how citizenship was restricted. The answer to “who governs?” depends on who is allowed to count as part of the people."
+              },
+              {
+                "heading": "The Assembly and the Council",
+                "body": "The Assembly, or Ecclesia, was a gathering of eligible citizens that made major public decisions. Its functions included debating policy and voting on proposals. Participation occurred in person, and votes were generally taken by a show of hands.\n\nThe Council of Five Hundred prepared business for the Assembly. Cleisthenes' ten tribes supplied the structure for its membership. This connection linked a reorganization of the citizen body to the daily administrative work of government, rather than leaving the Assembly as an isolated crowd.\n\nSelection by lot also played a role in Athenian institutions. It could spread access to public service instead of making every office depend on winning an election. Popular courts supplied another arena of citizen authority. Democracy involved several connected institutions, not just occasional speeches in one meeting place."
+              },
+              {
+                "heading": "A narrow boundary around citizenship",
+                "body": "Political participation was limited to adult male citizens. Women, enslaved people, children, and resident foreigners were excluded from Assembly membership. Living or working in Athens did not automatically confer a voice in its public decisions.\n\nThis was not a small qualification attached to an otherwise universal electorate. It excluded substantial parts of society, including people whose labor sustained households and economic activity. The presence of slavery is part of the history of Athenian democracy, not a separate topic that can be removed from its description.\n\nFor a useful comparison, distinguish residents, citizens, and active participants in a particular meeting. These are not interchangeable groups. Even among eligible men, not everyone attended each Assembly. Stating that citizens could participate does not mean every policy expressed the recorded opinion of every citizen."
+              },
+              {
+                "heading": "What comparison can—and cannot—teach",
+                "body": "Athenian direct participation differs from a representative system, in which elected officials make many decisions on behalf of voters. Neither label alone tells us whether participation is broad, rights are protected, or power is well checked. Institutional form and inclusion must be examined separately.\n\nThe Council's preparation of business also complicates the idea of entirely spontaneous popular rule. Someone had to organize an agenda, administer decisions, and maintain public procedures. A system can give citizens substantial power while still depending on structured offices and rules.\n\nAs a study exercise, draw two boundaries: who belongs to the political community, and what decisions members can make. Athens is historically distinctive because participation within the boundary was unusually direct while the boundary itself excluded so many people. Holding both facts together avoids either celebrating it without qualification or dismissing its institutional innovations."
+              }
+            ],
+            "keyFacts": [
+              "Athenian democracy involved direct participation by eligible citizens.",
+              "Cleisthenes reorganized citizens into ten tribes.",
+              "The Ecclesia was the citizen Assembly.",
+              "The Council of Five Hundred prepared Assembly business.",
+              "Women, enslaved people, children, and resident foreigners were excluded from political participation.",
+              "Citizenship, residence, and attendance at a meeting were different categories."
+            ],
+            "quiz": [
+              {
+                "question": "What makes Athenian democracy direct?",
+                "options": [
+                  "All residents elected one permanent king",
+                  "Citizens could participate in policy decisions themselves",
+                  "Only foreign ambassadors voted",
+                  "Every decision was made by modern political parties"
+                ],
+                "answerIndex": 1,
+                "explanation": "Eligible citizens gathered to deliberate and vote."
+              },
+              {
+                "question": "What did Cleisthenes’ tribal reforms do?",
+                "options": [
+                  "End all public institutions",
+                  "Create the Roman Senate",
+                  "Reorganize the citizen body across Attica",
+                  "Grant every resident equal citizenship"
+                ],
+                "answerIndex": 2,
+                "explanation": "The ten tribes combined people from different areas."
+              },
+              {
+                "question": "What was the Ecclesia?",
+                "options": [
+                  "The citizen Assembly",
+                  "A royal tomb",
+                  "A temple tax",
+                  "A naval rank"
+                ],
+                "answerIndex": 0,
+                "explanation": "It was a central decision-making institution."
+              },
+              {
+                "question": "What role did the Council of Five Hundred play?",
+                "options": [
+                  "It ruled the entire Persian Empire",
+                  "It translated the Bible",
+                  "It selected every Egyptian king",
+                  "It prepared business for the Assembly"
+                ],
+                "answerIndex": 3,
+                "explanation": "Administrative preparation connected the Council and Assembly."
+              },
+              {
+                "question": "Which person was ordinarily excluded from Assembly membership?",
+                "options": [
+                  "An adult male citizen",
+                  "A resident foreigner without citizenship",
+                  "A member of the citizen body",
+                  "An eligible man attending the meeting"
+                ],
+                "answerIndex": 1,
+                "explanation": "Residence alone did not confer participation."
+              },
+              {
+                "question": "Which comparison is most accurate?",
+                "options": [
+                  "All ancient and modern democracies are identical",
+                  "Every Athenian resident could vote",
+                  "Athens combined direct citizen power with substantial exclusions",
+                  "A representative system never uses elections"
+                ],
+                "answerIndex": 2,
+                "explanation": "Both institutional participation and the limits of membership must be considered."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Britannica Students",
+                "title": "Ancient Greece",
+                "url": "https://kids.britannica.com/students/article/ancient-Greece/274648",
+                "note": "section on Athenian government; population estimates are not used here"
+              },
+              {
+                "publisher": "Britannica Students",
+                "title": "Democracy",
+                "url": "https://kids.britannica.com/students/article/democracy/273962"
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Ancient Greek civilization: The reforms of Cleisthenes",
+                "url": "https://www.britannica.com/place/ancient-Greece/The-reforms-of-Cleisthenes"
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Greek Law",
+                "url": "https://www.britannica.com/topic/Greek-law"
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Politeia",
+                "url": "https://www.britannica.com/topic/politeia"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "cleisthenes-reforms",
+                "label": "Cleisthenes’ tribal reforms",
+                "kind": "event"
+              },
+              {
+                "id": "ecclesia",
+                "label": "The Assembly (Ecclesia)",
+                "kind": "idea"
+              },
+              {
+                "id": "council-of-five-hundred",
+                "label": "The Council of Five Hundred",
+                "kind": "idea"
+              },
+              {
+                "id": "citizenship-exclusions",
+                "label": "Limits of Athenian citizenship",
+                "kind": "subtopic"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "ashoka-and-the-mauryan-empire",
+        "title": "Ashoka and the Mauryan Empire",
+        "kind": "person",
+        "summary": "After the conquest of Kalinga, Ashoka promoted dhamma through inscriptions, officials, public welfare, and respect for religious communities, leaving evidence of both moral aspirations and imperial authority.",
+        "lessons": [
+          {
+            "id": "les_as01",
+            "slug": "can-an-emperor-rule-through-moral-persuasion",
+            "title": "Ashoka: Can an Emperor Rule Through Moral Persuasion?",
+            "sections": [
+              {
+                "heading": "An empire before the change of heart",
+                "body": "A ruler's reputation for peace can obscure the violence that helped establish his power. Ashoka, a Mauryan emperor in the third century BCE, is remembered for religious patronage and moral government. His story also includes a devastating conquest.\n\nIn the eighth year of his reign, his forces conquered Kalinga on the eastern side of the Indian subcontinent. His inscriptions describe deaths, deportations, and suffering, and present the experience as a source of remorse. This is unusually direct evidence of how an ancient ruler chose to discuss the human costs of victory.\n\nThe inscriptions remain royal statements, not independent testimony from everyone affected. They tell us what Ashoka publicly claimed about the conquest and his response. Reading them critically means taking their moral language seriously while remembering who commissioned it and whose perspective it expresses."
+              },
+              {
+                "heading": "Dhamma was broader than a conversion requirement",
+                "body": "Ashoka embraced Buddhism, but the dhamma he promoted to his subjects was not simply an order that everyone become Buddhist. Dhamma is related to the Sanskrit word dharma and has a range of meanings; in these edicts it concerns principles of right conduct and social morality.\n\nIts themes include truthfulness, compassion, generosity, respect for parents and religious teachers, humane treatment of servants, and restraint in harming living beings. These are everyday responsibilities as well as ideals for rulers. His public program sought conduct that could be commended across different communities.\n\nReligious toleration did not require declaring every doctrine identical. Ashoka urged people to respect other traditions, learn about them, and avoid excessive praise of their own group at others' expense. The point was to improve coexistence and moral conduct while acknowledging a plurality of religious communities."
+              },
+              {
+                "heading": "Words on stone and officials on the ground",
+                "body": "Ashoka communicated through inscriptions placed on rocks and pillars across a large territory. These edicts allow historians to study policies in a ruler's own public language rather than relying exclusively on much later stories. Their survival is one reason his reign can be examined in unusual detail.\n\nThe program also used officials responsible for promoting dhamma and attending to people's needs. Edicts discuss concern for religious communities, householders, and vulnerable groups. Moral persuasion was therefore connected to administrative responsibilities, not confined to a private ruler's feelings.\n\nThe inscriptions describe welfare measures and encourage officials to administer justice attentively. Still, a statement announcing a measure is not a complete record of how well it worked everywhere. Historians distinguish the ruler's prescription, evidence of implementation, and claims about the experiences of subjects."
+              },
+              {
+                "heading": "A new ideal within an imperial structure",
+                "body": "Ashoka described a preference for “conquest by dhamma” rather than armed expansion. The phrase attempts to redefine success: influence through moral conduct instead of victory measured only by captured territory. The political setting nevertheless remained an empire governed by a monarch.\n\nHis edicts did not erase the earlier conquest or return every affected community to its former condition. Nor should their language be equated automatically with modern democracy or equal citizenship. A ruler could advocate compassion and toleration while retaining substantial coercive authority.\n\nFor a final exercise, separate three claims: what Ashoka said he valued, what actions the sources describe, and what cannot be established about outcomes. This makes his reign valuable for more than a story of personal transformation. It opens a larger question about whether moral ideals can restrain power without changing who holds it."
+              }
+            ],
+            "keyFacts": [
+              "Ashoka was a Mauryan emperor of the third century BCE.",
+              "His conquest of Kalinga preceded his public account of remorse.",
+              "He embraced Buddhism while addressing a wider ethic to his subjects.",
+              "Dhamma emphasized conduct including compassion, truthfulness, and respect.",
+              "Rock and pillar edicts are major sources for his reign.",
+              "His moral program operated within a monarchy, not a modern democracy."
+            ],
+            "quiz": [
+              {
+                "question": "Which event was central to Ashoka’s account of remorse?",
+                "options": [
+                  "The fall of Rome",
+                  "The conquest of Kalinga",
+                  "The Persian invasion of Athens",
+                  "The signing of Magna Carta"
+                ],
+                "answerIndex": 1,
+                "explanation": "His edicts connect Kalinga’s suffering with a change in emphasis."
+              },
+              {
+                "question": "Which distinction matters when reading his inscriptions?",
+                "options": [
+                  "Royal statements and subjects’ experiences are automatically identical",
+                  "Every inscription is a modern invention",
+                  "An official claim is not independent proof of every outcome",
+                  "Only later legends can be evidence"
+                ],
+                "answerIndex": 2,
+                "explanation": "Edicts reveal policy and self-presentation but require critical interpretation."
+              },
+              {
+                "question": "What best describes dhamma in his public program?",
+                "options": [
+                  "An ethic of conduct addressing a religiously diverse population",
+                  "A requirement to speak only Greek",
+                  "A system of modern elections",
+                  "A plan to abolish all administration"
+                ],
+                "answerIndex": 0,
+                "explanation": "Its moral themes extended beyond a command to convert to Buddhism."
+              },
+              {
+                "question": "What did he urge concerning other religions?",
+                "options": [
+                  "Their immediate destruction",
+                  "Complete agreement on every doctrine",
+                  "A ban on learning about them",
+                  "Respect and restraint in criticizing them"
+                ],
+                "answerIndex": 3,
+                "explanation": "He encouraged mutual understanding and praise of others’ good qualities."
+              },
+              {
+                "question": "Why are the edicts important historical sources?",
+                "options": [
+                  "They record every subject’s opinion",
+                  "They preserve the ruler’s public statements and policies",
+                  "They were written by modern historians",
+                  "They eliminate uncertainty about implementation"
+                ],
+                "answerIndex": 1,
+                "explanation": "Their contemporary royal perspective is valuable but not exhaustive."
+              },
+              {
+                "question": "What is the central tension in his reign?",
+                "options": [
+                  "He had no political authority",
+                  "He abolished every form of punishment",
+                  "Moral persuasion operated alongside imperial power",
+                  "He never participated in conquest"
+                ],
+                "answerIndex": 2,
+                "explanation": "The ideals should be studied within the institutional setting of monarchy."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Ashoka",
+                "url": "https://www.britannica.com/biography/Ashoka"
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "The Edicts of King Asoka",
+                "url": "https://cdn.britannica.com/primary_source/gutenberg/PGCC_classics/lib/bps/wheels/wheel386.html",
+                "note": "translated by Ven. S. Dhammika — primary-source translation hosted by Britannica"
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "India: Ashoka’s edicts",
+                "url": "https://www.britannica.com/place/India/Ashokas-edicts"
+              },
+              {
+                "publisher": "Oregon State University open textbook",
+                "title": "The Edicts of Ashoka",
+                "url": "https://open.oregonstate.education/ancientcivilizations/chapter/edicts-of-ashoka/",
+                "note": "primary-source selections and introduction"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "conquest-of-kalinga",
+                "label": "The conquest of Kalinga",
+                "kind": "event"
+              },
+              {
+                "id": "dhamma",
+                "label": "Dhamma",
+                "kind": "idea"
+              },
+              {
+                "id": "rock-and-pillar-edicts",
+                "label": "Rock and pillar edicts",
+                "kind": "subtopic"
+              },
+              {
+                "id": "conquest-by-dhamma",
+                "label": "Conquest by dhamma",
+                "kind": "idea"
               }
             ]
           }
@@ -3128,7 +3589,7 @@
         "slug": "us-presidents",
         "title": "U.S. Presidents",
         "kind": "series",
-        "summary": "Five presidencies in office order, from Washington through Theodore Roosevelt: establishing the office, the limits of dissent, expansion and contradiction, union and emancipation, and a more activist executive.",
+        "summary": "Ten presidencies in office order, from Washington through Theodore Roosevelt: establishing the office, the limits of dissent, expansion and contradiction, a constitution-maker at war, good feelings and deep divisions, a presidency shadowed by its election, popular rule and coercive power, inherited crisis and continuity, union and emancipation, and a more activist executive.",
         "lessons": [
           {
             "id": "les_gw01",
@@ -3583,6 +4044,758 @@
             ]
           },
           {
+            "id": "les_jm01",
+            "slug": "a-constitution-maker-confronts-war",
+            "title": "James Madison: A Constitution-Maker Confronts War",
+            "sections": [
+              {
+                "heading": "Designing government is not the same as running it",
+                "body": "James Madison is closely associated with the Constitution and the Federalist Papers, but his presidency presents a different problem from constitutional design. Once in office, he had to make institutions work amid party divisions, international pressure, and difficult choices about personnel. He served as the fourth president from 1809 to 1817.\n\nMadison inherited a political world shaped by the wars between Britain and France. Trade, maritime rights, and national security repeatedly cut across domestic policy. Decisions about taxation, borrowing, and executive organization could not be separated neatly from foreign affairs.\n\nHis Cabinet also reflected political bargaining rather than an ideal collection of administrators. Party leaders constrained appointments, while disputes among officials weakened coordination. The larger lesson is institutional: a sophisticated theory of government does not automatically supply competent subordinates or effective management."
+              },
+              {
+                "heading": "Why the United States went to war",
+                "body": "In June 1812 Madison asked Congress to declare war against Britain. His message listed grievances including interference with trade, blockades, and impressment—the seizure of sailors for British naval service. He also accused Britain of encouraging Native American resistance on the frontier.\n\nCongress authorized war, and Madison proclaimed it on June 19. Distinguish the president's request from Congress's declaration: the administration advocated the policy, but the constitutional process involved both branches. Calling it simply “Madison's decision” can hide that division of responsibility.\n\nThe grievances explain the government's stated case; they do not establish that every war aim was clear or achievable. Historians continue to debate the conflict's purposes and outcome. A careful reader distinguishes a leader's justification for war from a retrospective assessment of whether the war delivered the claimed benefits."
+              },
+              {
+                "heading": "A capital burns, and peace arrives unevenly",
+                "body": "In August 1814 British troops entered Washington and burned the Capitol, the president's residence, and other federal buildings. The attack exposed the vulnerability of the national government and became an enduring symbol of the war's dangers.\n\nAmerican and British negotiators signed the Treaty of Ghent on December 24, 1814. News traveled slowly: Americans did not receive word until February 1815. The sequence reminds us that signing a treaty, communicating its terms, and completing formal ratification are separate steps, not one instantaneous event.\n\nMadison presented peace as vindication of national independence and urged Congress to strengthen the army, navy, and harbor defenses. Those proposals reveal what the experience had taught his administration: asserting sovereignty required institutions and resources, not only declarations of principle."
+              },
+              {
+                "heading": "A national bank and a constitutional limit",
+                "body": "Wartime borrowing and financial difficulties helped change Madison's position on a national bank. Although he had opposed Hamilton's earlier proposal, he signed legislation establishing the Second Bank of the United States in 1816. He accepted its constitutional standing through accumulated institutional practice and public acceptance.\n\nThis was not an unrestricted embrace of every federal program. Madison supported the practical value of roads, canals, and bridges but maintained that a general federal internal-improvements program needed a constitutional amendment. He vetoed an infrastructure bill near the end of his presidency.\n\nThe contrast is the key to the lesson. Madison adapted to experience in finance while maintaining a constitutional objection elsewhere. His presidency asks us to evaluate both capacity and restraint: could the government perform necessary tasks, and what legal authority justified the means it chose?"
+              }
+            ],
+            "keyFacts": [
+              "Madison was the fourth president, serving from 1809 to 1817.",
+              "His June 1812 war message emphasized maritime grievances and national sovereignty.",
+              "Congress authorized war against Britain in June 1812.",
+              "British troops burned major federal buildings in Washington in August 1814.",
+              "The Treaty of Ghent was signed December 24, 1814.",
+              "Madison signed the Second Bank’s charter in 1816 but later vetoed an internal-improvements bill."
+            ],
+            "quiz": [
+              {
+                "question": "What does Madison’s Cabinet experience illustrate?",
+                "options": [
+                  "Constitutional expertise guarantees administrative success",
+                  "Political bargaining and personnel choices affect governing capacity",
+                  "Presidents have no role in appointments",
+                  "International affairs never influence administration"
+                ],
+                "answerIndex": 1,
+                "explanation": "Party pressures and disputes complicated the executive’s work."
+              },
+              {
+                "question": "What was impressment?",
+                "options": [
+                  "A tax on whiskey",
+                  "The purchase of western territory",
+                  "Seizing sailors for British naval service",
+                  "A presidential pardon"
+                ],
+                "answerIndex": 2,
+                "explanation": "Madison identified impressment among his grievances against Britain."
+              },
+              {
+                "question": "Which description respects the constitutional division of responsibility?",
+                "options": [
+                  "Madison requested war and Congress authorized it",
+                  "The president amended the Constitution alone",
+                  "The Supreme Court declared war",
+                  "State governors signed the treaty"
+                ],
+                "answerIndex": 0,
+                "explanation": "The executive’s advocacy and Congress’s authorization were distinct."
+              },
+              {
+                "question": "What happened in Washington in August 1814?",
+                "options": [
+                  "The Louisiana Purchase was signed",
+                  "The national bank opened",
+                  "The Constitution was drafted",
+                  "British troops burned major federal buildings"
+                ],
+                "answerIndex": 3,
+                "explanation": "The attack included the Capitol and the president’s residence."
+              },
+              {
+                "question": "When was the Treaty of Ghent signed?",
+                "options": [
+                  "June 19, 1812",
+                  "December 24, 1814",
+                  "March 4, 1809",
+                  "December 2, 1823"
+                ],
+                "answerIndex": 1,
+                "explanation": "The treaty was signed before news reached the United States in February 1815."
+              },
+              {
+                "question": "What best describes Madison’s later domestic policy?",
+                "options": [
+                  "He accepted every proposed federal power",
+                  "He rejected every national institution",
+                  "He accepted a national bank while retaining constitutional objections to an infrastructure program",
+                  "He abolished congressional lawmaking"
+                ],
+                "answerIndex": 2,
+                "explanation": "His judgments distinguished between different policies and their legal bases."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "University of Virginia Miller Center",
+                "title": "James Madison",
+                "url": "https://millercenter.org/president/madison"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "James Madison: Domestic Affairs",
+                "url": "https://millercenter.org/president/madison/domestic-affairs",
+                "note": "Tyson Reeder"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "James Madison, June 1, 1812 war message",
+                "url": "https://millercenter.org/the-presidency/presidential-speeches/june-1-1812-special-message-congress-foreign-policy-crisis-war",
+                "note": "transcript"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "James Madison, June 19, 1812 proclamation",
+                "url": "https://millercenter.org/the-presidency/presidential-speeches/june-19-1812-proclamation-state-war-great-britain",
+                "note": "transcript"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "James Madison: Impact and Legacy",
+                "url": "https://millercenter.org/president/madison/impact-and-legacy"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "James Madison: Key Events",
+                "url": "https://millercenter.org/president/james-madison/key-events"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "Treaty of Ghent",
+                "url": "https://millercenter.org/node/63566"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "James Madison, February 18, 1815 message on the Treaty of Ghent",
+                "url": "https://millercenter.org/the-presidency/presidential-speeches/february-18-1815-special-message-congress-treaty-ghent",
+                "note": "transcript"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "war-of-1812",
+                "label": "The War of 1812",
+                "kind": "event"
+              },
+              {
+                "id": "impressment",
+                "label": "Impressment",
+                "kind": "idea"
+              },
+              {
+                "id": "treaty-of-ghent",
+                "label": "The Treaty of Ghent",
+                "kind": "event"
+              },
+              {
+                "id": "second-bank",
+                "label": "The Second Bank of the United States",
+                "kind": "idea"
+              }
+            ]
+          },
+          {
+            "id": "les_jmo01",
+            "slug": "good-feelings-deep-divisions",
+            "title": "James Monroe: Good Feelings, Deep Divisions",
+            "sections": [
+              {
+                "heading": "What the “Era of Good Feelings” leaves out",
+                "body": "James Monroe served as the fifth president from 1817 to 1825. His administration is often associated with the “Era of Good Feelings,” a phrase linked to the enthusiastic reception of his 1817 northern tour. He sought to present the presidency as a national institution reaching across regional divisions.\n\nThe declining strength of the Federalist Party reduced organized opposition, but it did not eliminate political disagreement. Monroe himself hoped government could function without parties, yet he still had to assemble shifting coalitions among officials with different interests and ambitions.\n\nThe label is therefore a starting point, not a summary of everyone's experience. National optimism coexisted with the Panic of 1819, sectional conflict over slavery, and bitter rivalry among prospective successors. Political unity at the top could conceal disagreements that institutions had not resolved."
+              },
+              {
+                "heading": "Economic distress behind the optimism",
+                "body": "The Panic of 1819 brought unemployment, bank failures, bankruptcies, and foreclosures. Falling agricultural prices and disrupted commerce contributed to the crisis, while tighter banking policies made credit more difficult to obtain. The downturn challenged the image of uninterrupted national progress.\n\nMonroe did not respond with a modern nationwide relief program. He regarded economic contractions as part of a developing economy, although he supported easing payment terms for people who had bought federal land. His choices reflected both his beliefs and the institutions available to him.\n\nTo understand the policy, separate three questions: what produced the crisis, what powers the president possessed, and what he chose to do. Blaming or crediting one leader for an entire economic cycle obscures the interaction of commerce, banking, legislation, and executive judgment."
+              },
+              {
+                "heading": "The Missouri Compromise postpones a reckoning",
+                "body": "Missouri's application for statehood brought the expansion of slavery to the center of national politics. Would admission strengthen slaveholding interests, and could Congress impose restrictions? The dispute tied the status of enslaved people to representation and power in the Union.\n\nThe settlement of 1820 paired Maine's admission as a free state with authorization for Missouri as a slave state. It prohibited slavery in the remaining Louisiana Purchase territory north of latitude 36°30′, except Missouri. Missouri's actual admission followed in 1821 after an additional dispute.\n\nMonroe signed the principal compromise legislation on March 6, 1820. It balanced political interests without ending slavery. Describing it as a settlement should not imply that the underlying injustice or sectional disagreement had disappeared; national leaders had postponed a confrontation while preserving human bondage."
+              },
+              {
+                "heading": "What the Monroe Doctrine actually said",
+                "body": "In his annual message of December 2, 1823, Monroe warned against new European colonization in the Americas and intervention against independent American governments. He also reaffirmed noninterference with existing European colonies and a policy of staying out of European conflicts. These qualifications are part of the doctrine, not minor exceptions.\n\nThe statement did not announce that the United States had instantly expelled European powers from the hemisphere. It articulated a policy and a warning. Later uses of the Monroe Doctrine should be distinguished from the precise commitments in the original address.\n\nMonroe's presidency thus combined the language of unity and independence with unresolved questions of power and exclusion. Compare its domestic and international claims: who was protected from outside interference, who remained enslaved, and whose interests were accommodated by compromise? Those questions reveal the limits of the era's “good feelings.”"
+              }
+            ],
+            "keyFacts": [
+              "Monroe was the fifth president, serving from 1817 to 1825.",
+              "The “Era of Good Feelings” label arose during his 1817 tour.",
+              "The Panic of 1819 brought severe economic distress.",
+              "The 1820 compromise paired free Maine with slaveholding Missouri.",
+              "The Louisiana territory restriction used latitude 36°30′, with Missouri excepted.",
+              "Monroe announced his hemispheric policy on December 2, 1823."
+            ],
+            "quiz": [
+              {
+                "question": "Why is “Era of Good Feelings” an incomplete description?",
+                "options": [
+                  "There was no national optimism",
+                  "It conceals economic distress and serious political divisions",
+                  "It refers to a foreign monarchy",
+                  "It means every person could vote"
+                ],
+                "answerIndex": 1,
+                "explanation": "A decline in party competition did not end conflict."
+              },
+              {
+                "question": "Which economic crisis occurred during Monroe’s presidency?",
+                "options": [
+                  "The Great Depression",
+                  "The Panic of 1837",
+                  "The Panic of 1819",
+                  "The crash of 1929"
+                ],
+                "answerIndex": 2,
+                "explanation": "The 1819 crisis brought failures, unemployment, and foreclosures."
+              },
+              {
+                "question": "Which pairing was central to the Missouri Compromise?",
+                "options": [
+                  "Free Maine and slaveholding Missouri",
+                  "Free Missouri and slaveholding Maine",
+                  "California and Texas",
+                  "Kansas and Nebraska"
+                ],
+                "answerIndex": 0,
+                "explanation": "The pairing maintained a balance between free and slave states."
+              },
+              {
+                "question": "Where did the compromise restrict slavery?",
+                "options": [
+                  "All existing states",
+                  "Only Maine",
+                  "All land south of the equator",
+                  "Remaining Louisiana Purchase territory north of 36°30′, except Missouri"
+                ],
+                "answerIndex": 3,
+                "explanation": "The geographic restriction did not apply uniformly to every U.S. territory."
+              },
+              {
+                "question": "What did the original Monroe Doctrine say about existing European colonies?",
+                "options": [
+                  "They were all immediately annexed",
+                  "The United States would not interfere with them",
+                  "They had already vanished",
+                  "Their residents automatically became U.S. citizens"
+                ],
+                "answerIndex": 1,
+                "explanation": "The address distinguished existing colonies from future colonization and intervention."
+              },
+              {
+                "question": "What did the doctrine establish in 1823?",
+                "options": [
+                  "The immediate removal of every European presence",
+                  "A constitutional amendment",
+                  "A declared foreign-policy position and warning",
+                  "A treaty governing every American republic"
+                ],
+                "answerIndex": 2,
+                "explanation": "A presidential declaration is not the same as immediate enforcement everywhere."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Miller Center",
+                "title": "James Monroe",
+                "url": "https://millercenter.org/president/monroe"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "James Monroe: Domestic Affairs",
+                "url": "https://millercenter.org/president/monroe/domestic-affairs",
+                "note": "Daniel Preston"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "Missouri Compromise",
+                "url": "https://millercenter.org/node/63706",
+                "note": "legislative overview; distinguish the 1820 settlement from Missouri’s 1821 admission"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "James Monroe, December 2, 1823 annual message",
+                "url": "https://millercenter.org/the-presidency/presidential-speeches/december-2-1823-seventh-annual-message-monroe-doctrine",
+                "note": "transcript"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "James Monroe: Foreign Affairs",
+                "url": "https://millercenter.org/president/monroe/foreign-affairs"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "era-of-good-feelings",
+                "label": "The Era of Good Feelings",
+                "kind": "idea"
+              },
+              {
+                "id": "panic-of-1819",
+                "label": "The Panic of 1819",
+                "kind": "event"
+              },
+              {
+                "id": "missouri-compromise",
+                "label": "The Missouri Compromise",
+                "kind": "event"
+              },
+              {
+                "id": "monroe-doctrine",
+                "label": "The Monroe Doctrine",
+                "kind": "idea"
+              }
+            ]
+          },
+          {
+            "id": "les_jqa01",
+            "slug": "a-presidency-shadowed-by-its-election",
+            "title": "John Quincy Adams: A Presidency Shadowed by Its Election",
+            "sections": [
+              {
+                "heading": "A familiar surname, a different president",
+                "body": "John Quincy Adams was the son of President John Adams, but his own route to the presidency was distinct. He served as James Monroe's secretary of state before becoming the sixth president in 1825. His administration lasted one term, ending in 1829.\n\nThe election of 1824 produced four major candidates and no electoral majority. Andrew Jackson received 99 electoral votes, Adams 84, William Crawford 41, and Henry Clay 37. The largest total was not enough: the Constitution required a majority, not merely first place.\n\nUnder the Twelfth Amendment, the House chose among the top three candidates, with each state delegation casting one vote. Clay was excluded as a candidate but remained influential as House speaker. On February 9, 1825, Adams won 13 state votes to Jackson's seven and Crawford's four."
+              },
+              {
+                "heading": "An accusation is not the same as proof",
+                "body": "Clay supported Adams and subsequently became his secretary of state. Jackson's supporters charged that a “corrupt bargain” had traded the appointment for political support. The sequence supplied a powerful campaign accusation and damaged the new administration's legitimacy.\n\nThat accusation should not be presented as an established agreement. Clay also had policy reasons to prefer Adams, including shared support for national economic development and doubts about Jackson. Behind-the-scenes political maneuvering does not by itself prove the specific alleged exchange.\n\nThis distinction is a useful historical habit: identify an event, a participant's interpretation, and the evidence for the interpretation. Adams's election followed the constitutional procedure. Whether it felt representative to Jackson's supporters was a separate political question with major consequences for governing."
+              },
+              {
+                "heading": "An ambitious program meets organized resistance",
+                "body": "Adams supported federal investment in roads, canals, harbors, and public knowledge. His first annual message proposed a national university and an astronomical observatory alongside transportation improvements. He regarded national institutions as tools for improving society and connecting regional economies.\n\nOpponents questioned both the constitutional reach and regional fairness of these plans. Some argued that a president chosen by the House lacked a broad popular mandate. Nevertheless, the administration supported practical improvements, including road extensions, canal development, and harbor work. His program was constrained rather than wholly nonexistent.\n\nIn 1828 Adams signed a highly protective tariff after Congress rejected more moderate alternatives. Southern critics called it the “Tariff of Abominations.” Economic development therefore became entangled with sectional arguments that would continue into Jackson's presidency. Jackson defeated Adams in the election of 1828."
+              },
+              {
+                "heading": "A consequential career after the White House",
+                "body": "Adams returned to elected office in the House of Representatives, serving from 1831 until his death in 1848. This later career must be distinguished from presidential achievements: important actions can belong to a former president without having occurred during his administration.\n\nHe fought the House's “gag rule,” which blocked consideration of antislavery petitions, and helped secure its repeal in 1844. In 1841 he also argued successfully before the Supreme Court on behalf of the African captives in the Amistad case.\n\nHis record illustrates the difference between institutional position and historical influence. A frustrated president became an important congressional voice against slavery. Studying the phases separately makes it possible to assess his limited executive success without overlooking the significance of his later public work."
+              }
+            ],
+            "keyFacts": [
+              "John Quincy Adams was the sixth president, serving from 1825 to 1829.",
+              "No candidate won an electoral majority in 1824.",
+              "The House selected Adams on February 9, 1825.",
+              "The “corrupt bargain” was an allegation, not an established fact.",
+              "His domestic program emphasized national development and infrastructure.",
+              "His Amistad advocacy and campaign against the gag rule occurred after his presidency."
+            ],
+            "quiz": [
+              {
+                "question": "Why did the House choose the president after the 1824 election?",
+                "options": [
+                  "All votes were canceled",
+                  "No candidate won an electoral majority",
+                  "The Senate refused to meet",
+                  "Adams inherited the office"
+                ],
+                "answerIndex": 1,
+                "explanation": "A plurality did not satisfy the majority requirement."
+              },
+              {
+                "question": "How did the House vote in this contingent election?",
+                "options": [
+                  "One vote per senator",
+                  "By national popular totals",
+                  "One vote per state delegation",
+                  "One vote per governor"
+                ],
+                "answerIndex": 2,
+                "explanation": "State delegations, rather than individual members as a national total, determined the outcome."
+              },
+              {
+                "question": "How should the “corrupt bargain” be described?",
+                "options": [
+                  "As Jackson supporters’ allegation rather than a proven agreement",
+                  "As a constitutional amendment",
+                  "As a treaty with France",
+                  "As an undisputed written contract"
+                ],
+                "answerIndex": 0,
+                "explanation": "The appointment and support are established; the alleged exchange should not be asserted as proven."
+              },
+              {
+                "question": "Which policy fit Adams’s program?",
+                "options": [
+                  "A ban on all scientific study",
+                  "An end to all transportation spending",
+                  "Immediate abolition of Congress",
+                  "Federal support for canals and public institutions"
+                ],
+                "answerIndex": 3,
+                "explanation": "He advocated an active national development program."
+              },
+              {
+                "question": "Who defeated Adams in 1828?",
+                "options": [
+                  "James Monroe",
+                  "Andrew Jackson",
+                  "John Adams",
+                  "Abraham Lincoln"
+                ],
+                "answerIndex": 1,
+                "explanation": "Jackson won the presidential rematch."
+              },
+              {
+                "question": "Which distinction is essential to his legacy?",
+                "options": [
+                  "His father’s actions were all his own",
+                  "He never held office after 1829",
+                  "His congressional antislavery work came after his presidency",
+                  "The Amistad case elected him president"
+                ],
+                "answerIndex": 2,
+                "explanation": "The later phase of his career should not be misdated to his presidential term."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Library of Congress",
+                "title": "Presidential Election of 1824: A Resource Guide",
+                "url": "https://guides.loc.gov/presidential-election-1824"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "John Quincy Adams: Campaigns and Elections",
+                "url": "https://millercenter.org/president/jqadams/campaigns-and-elections",
+                "note": "Margaret A. Hogan"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "John Quincy Adams: Domestic Affairs",
+                "url": "https://millercenter.org/president/jqadams/domestic-affairs",
+                "note": "Margaret A. Hogan"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "John Quincy Adams: Life After the Presidency",
+                "url": "https://millercenter.org/president/jqadams/life-after-the-presidency"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "election-of-1824",
+                "label": "The election of 1824",
+                "kind": "event"
+              },
+              {
+                "id": "corrupt-bargain",
+                "label": "The corrupt bargain allegation",
+                "kind": "idea"
+              },
+              {
+                "id": "national-development",
+                "label": "Adams’s national development program",
+                "kind": "idea"
+              },
+              {
+                "id": "amistad-and-gag-rule",
+                "label": "The Amistad case and the gag rule",
+                "kind": "event"
+              }
+            ]
+          },
+          {
+            "id": "les_aj01",
+            "slug": "popular-rule-and-coercive-power",
+            "title": "Andrew Jackson: Popular Rule and Coercive Power",
+            "sections": [
+              {
+                "heading": "The people, the president, and political rewards",
+                "body": "Andrew Jackson served as the seventh president from 1829 to 1837 after defeating John Quincy Adams in 1828. His supporters presented him as an alternative to an entrenched political elite. His administration repeatedly claimed to defend ordinary citizens against concentrated privilege.\n\nJackson promoted “rotation in office,” replacing officials he associated with corruption or his opponents. In practice, supporters received many appointments. This patronage became associated with the spoils system: public positions used as rewards for political service. Jackson's stated reform goal and the actual distribution of jobs were not identical.\n\nThe question of who counted as “the people” is crucial. Jackson's attacks on privilege did not extend equal protection to everyone. He accepted slavery and supported policies that deprived Indigenous nations of land and autonomy. Democratic language and coercive exclusion coexisted in the same presidency."
+              },
+              {
+                "heading": "A state challenges federal law",
+                "body": "South Carolina's nullification campaign argued that a state could declare a federal law unconstitutional and prevent its enforcement within that state. In 1832 a state convention rejected federal tariffs, turning an economic dispute into a direct challenge to national authority.\n\nJackson rejected nullification and warned against disunion. He sought stronger enforcement powers while also supporting lower tariff rates. His response combined a readiness to use force with willingness to negotiate, rather than relying on either coercion or concession alone.\n\nIn 1833 Congress passed a compromise tariff and a Force Bill authorizing enforcement. South Carolina withdrew its nullification of the tariffs. The episode demonstrates that “states' rights” was not a single policy Jackson applied consistently in every dispute: he could favor state action in one setting and resist it in another."
+              },
+              {
+                "heading": "The Bank War expands executive conflict",
+                "body": "Jackson also attacked the Second Bank of the United States, a federally chartered institution that handled government finances and influenced credit. He viewed its concentrated financial power as a threat to popular liberty and vetoed a bill renewing its charter in 1832.\n\nAfter reelection, he moved federal deposits into selected state banks. When Treasury Secretary William Duane refused to carry out the policy, Jackson dismissed him and installed Roger Taney. The dispute therefore concerned executive control and statutory responsibilities as well as banking policy.\n\nOpponents joined together as Whigs and accused Jackson of acting like a monarch. Their charge is evidence of a political conflict, not proof that every action was identical to royal government. The constitutional question was how far a president could go in using executive authority to carry out his own interpretation of the public interest."
+              },
+              {
+                "heading": "Removal and responsibility across administrations",
+                "body": "Jackson secured the Indian Removal Act of 1830 and backed state claims against Indigenous nations. His administration pushed treaties and relocation west of the Mississippi under intense pressure. Presenting removal simply as a voluntary exchange conceals the coercion behind the policy.\n\nThe 1835 Cherokee removal treaty was rejected by most Cherokee people but became the basis for forced deportation. The large-scale Cherokee roundup and removal of 1838 occurred under Martin Van Buren, not Jackson. Chronology matters: Jackson helped establish the policy and treaty framework; his successor carried out the later operation.\n\nJackson's legacy is therefore a study in unequal uses of power. He challenged financial privilege and state nullification while enabling dispossession and defending slavery. A useful assessment asks whose authority he resisted, whose rights he protected, and whose interests his claims of popular government excluded."
+              }
+            ],
+            "keyFacts": [
+              "Jackson was the seventh president, serving from 1829 to 1837.",
+              "Rotation in office became associated with patronage and the spoils system.",
+              "He rejected South Carolina’s nullification of federal tariffs.",
+              "He vetoed renewal of the Second Bank’s charter in 1832.",
+              "The Indian Removal Act passed in 1830.",
+              "The 1838 Cherokee removal occurred under Van Buren, following policies and a treaty advanced under Jackson."
+            ],
+            "quiz": [
+              {
+                "question": "What was the spoils system?",
+                "options": [
+                  "A method of military supply",
+                  "Awarding public jobs to political supporters",
+                  "A national park program",
+                  "A court procedure"
+                ],
+                "answerIndex": 1,
+                "explanation": "Jackson’s rotation policy distributed many positions to allies."
+              },
+              {
+                "question": "What did South Carolina claim through nullification?",
+                "options": [
+                  "That all taxes had already ended",
+                  "That the president could abolish states",
+                  "That a state could invalidate federal law within its borders",
+                  "That the Supreme Court could not meet"
+                ],
+                "answerIndex": 2,
+                "explanation": "The claim directly challenged national legal authority."
+              },
+              {
+                "question": "How did Jackson respond to the tariff crisis?",
+                "options": [
+                  "He combined enforcement pressure with tariff compromise",
+                  "He accepted unlimited state nullification",
+                  "He dissolved Congress",
+                  "He immediately abolished every tariff"
+                ],
+                "answerIndex": 0,
+                "explanation": "The 1833 settlement included both a compromise and enforcement authority."
+              },
+              {
+                "question": "Which action belonged to the Bank War?",
+                "options": [
+                  "Buying Louisiana",
+                  "Creating the first Cabinet",
+                  "Ratifying the Thirteenth Amendment",
+                  "Vetoing the bank recharter in 1832"
+                ],
+                "answerIndex": 3,
+                "explanation": "The veto was central to Jackson’s attack on concentrated financial power."
+              },
+              {
+                "question": "Why is “voluntary relocation” an inadequate description of removal?",
+                "options": [
+                  "No relocation ever occurred",
+                  "It conceals pressure, dispossession, and coercion",
+                  "All Indigenous nations requested the same policy",
+                  "It was only a banking rule"
+                ],
+                "answerIndex": 1,
+                "explanation": "The legal framework operated in conditions of powerful state and federal pressure."
+              },
+              {
+                "question": "Who was president during the large-scale Cherokee removal of 1838?",
+                "options": [
+                  "John Quincy Adams",
+                  "James Monroe",
+                  "Martin Van Buren",
+                  "Andrew Jackson"
+                ],
+                "answerIndex": 2,
+                "explanation": "Jackson shaped the framework, but Van Buren’s administration executed the later removal."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Miller Center",
+                "title": "John Quincy Adams: Campaigns and Elections",
+                "url": "https://millercenter.org/president/jqadams/campaigns-and-elections",
+                "note": "Margaret A. Hogan; 1828 result"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "Andrew Jackson: Domestic Affairs",
+                "url": "https://millercenter.org/president/jackson/domestic-affairs",
+                "note": "Daniel Feller; policy chronology; distinguish the source’s evaluative language from established events"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "Martin Van Buren: Domestic Affairs",
+                "url": "https://millercenter.org/president/vanburen/domestic-affairs"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "spoils-system",
+                "label": "The spoils system",
+                "kind": "idea"
+              },
+              {
+                "id": "nullification-crisis",
+                "label": "The nullification crisis",
+                "kind": "event"
+              },
+              {
+                "id": "bank-war",
+                "label": "The Bank War",
+                "kind": "event"
+              },
+              {
+                "id": "indian-removal",
+                "label": "Indian Removal",
+                "kind": "idea"
+              }
+            ]
+          },
+          {
+            "id": "les_mvb01",
+            "slug": "inheriting-crisis-choosing-continuity",
+            "title": "Martin Van Buren: Inheriting Crisis, Choosing Continuity",
+            "sections": [
+              {
+                "heading": "A party builder becomes president",
+                "body": "Martin Van Buren helped build the Democratic Party and served as Andrew Jackson's vice president before becoming the eighth president in 1837. His term lasted until 1841. He entered office as a political organizer closely associated with the administration he succeeded.\n\nContinuity supplied political support but also linked him to earlier decisions. When inherited policies produced difficulties, he could not easily present himself as an outsider. His presidency therefore raises a recurring question: how much responsibility belongs to a leader who did not begin a policy but chooses to continue it?\n\nAn economic crisis soon made that question urgent. The Panic of 1837 began shortly after his inauguration, disrupting credit, employment, and public finances. The timing made it easy to attach the disaster to the new president even though its causes reached beyond his first weeks in office."
+              },
+              {
+                "heading": "Why a panic is more than one decision",
+                "body": "Banks suspended payments in gold and silver as financial pressure intensified. Falling cotton prices, tighter British lending, and weaknesses in American banking contributed to the collapse. Jackson's earlier banking policies were part of the background, not a complete explanation of every cause.\n\nA financial panic can spread because institutions depend on one another's payments and credit. Van Buren faced not one isolated bank failure but a series of crises extending into the early 1840s. Historical explanation must therefore connect domestic policy with international commerce and the behavior of lenders.\n\nVan Buren did not seek to revive the Second Bank of the United States or launch a broad federal relief program. He favored limited government and focused on the safety of public funds. That was a policy choice, not evidence that the economic suffering was unreal or unavoidable in every detail."
+              },
+              {
+                "heading": "Separating the Treasury from banks",
+                "body": "His central proposal was an independent treasury: federal money would be held through government facilities rather than deposited in a national bank or selected state banks. He described this as separating public funds from private financial interests and commercial risk.\n\nCongress resisted, including members of his own party. The Independent Treasury Act did not pass until 1840, the final full year of his presidency. The delay shows that a president's proposed remedy and the policy actually enacted may belong to very different moments in a crisis.\n\nThe system aimed to protect government finances; that objective should not be confused with a guarantee of immediate recovery for households and businesses. The distinction between securing the Treasury and restoring the wider economy is essential to evaluating the proposal rather than merely repeating its supporters' claims."
+              },
+              {
+                "heading": "The Trail of Tears was not only an inherited policy",
+                "body": "Van Buren continued the removal program established under Jackson. In 1838 he sent General Winfield Scott to enforce Cherokee removal from the Southeast. Soldiers rounded up people for deportation west to what is now Oklahoma. Calling the operation merely “Jackson's policy” would hide Van Buren's direct executive responsibility.\n\nThousands died during the removal process; the Miller Center estimates approximately 4,000 Cherokee deaths. Exact totals vary, and the count does not capture all the dispossession, illness, and lasting trauma. Van Buren also continued the war against Seminole resistance in Florida.\n\nHis record joins two different kinds of continuity: a limited-government approach to finance and an aggressively coercive policy toward Indigenous nations. Those choices should be assessed together. A government reluctant to intervene for economic relief could still mobilize extensive power to force people from their homes."
+              }
+            ],
+            "keyFacts": [
+              "Van Buren was the eighth president, serving from 1837 to 1841.",
+              "He helped organize the Democratic Party and served as Jackson’s vice president.",
+              "The Panic of 1837 had domestic and international causes.",
+              "His independent treasury proposal separated federal funds from banks.",
+              "Congress enacted the Independent Treasury Act in 1840.",
+              "His administration carried out the 1838 Cherokee removal."
+            ],
+            "quiz": [
+              {
+                "question": "Which role did Van Buren hold before becoming president?",
+                "options": [
+                  "Jackson’s vice president",
+                  "Chief justice",
+                  "President of France",
+                  "Commander of the British navy"
+                ],
+                "answerIndex": 0,
+                "explanation": "His administration followed closely from his association with Jackson."
+              },
+              {
+                "question": "Which account best explains the Panic of 1837?",
+                "options": [
+                  "It had only one cause",
+                  "Domestic banking conditions and international pressures interacted",
+                  "It began with the Louisiana Purchase alone",
+                  "It affected only government stationery"
+                ],
+                "answerIndex": 1,
+                "explanation": "British credit, cotton prices, and American policies all mattered."
+              },
+              {
+                "question": "What did the independent treasury proposal seek to do?",
+                "options": [
+                  "Create a new royal bank",
+                  "Give every bank unlimited federal deposits",
+                  "Hold federal funds separately from banks",
+                  "Replace Congress with private lenders"
+                ],
+                "answerIndex": 2,
+                "explanation": "The plan separated Treasury operations from bank deposits."
+              },
+              {
+                "question": "When did Congress enact the Independent Treasury Act?",
+                "options": [
+                  "1820",
+                  "1830",
+                  "1865",
+                  "1840"
+                ],
+                "answerIndex": 3,
+                "explanation": "The proposal faced resistance for most of his presidency."
+              },
+              {
+                "question": "Who ordered Scott to carry out Cherokee removal in 1838?",
+                "options": [
+                  "Martin Van Buren",
+                  "James Madison",
+                  "Thomas Jefferson",
+                  "John Adams"
+                ],
+                "answerIndex": 0,
+                "explanation": "Van Buren made and implemented executive decisions, rather than merely inheriting a label."
+              },
+              {
+                "question": "What tension does his record illustrate?",
+                "options": [
+                  "Government never used force",
+                  "Limited intervention in economic relief coexisted with coercive removal",
+                  "The Treasury Act ended all deportations",
+                  "Every inherited policy was abandoned"
+                ],
+                "answerIndex": 1,
+                "explanation": "Different policy areas reveal different choices about using federal power."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Miller Center",
+                "title": "Martin Van Buren",
+                "url": "https://millercenter.org/president/martin-van-buren"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "Martin Van Buren: Life in Brief",
+                "url": "https://millercenter.org/president/vanburen/life-in-brief"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "Martin Van Buren: Domestic Affairs",
+                "url": "https://millercenter.org/president/vanburen/domestic-affairs"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "Martin Van Buren: Key Events",
+                "url": "https://millercenter.org/president/martin-van-buren/key-events"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "Martin Van Buren, December 5, 1837 annual message",
+                "url": "https://millercenter.org/the-presidency/presidential-speeches/december-5-1837-first-annual-message-congress",
+                "note": "transcript"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "panic-of-1837",
+                "label": "The Panic of 1837",
+                "kind": "event"
+              },
+              {
+                "id": "independent-treasury",
+                "label": "The independent treasury",
+                "kind": "idea"
+              },
+              {
+                "id": "cherokee-removal-1838",
+                "label": "The 1838 Cherokee removal",
+                "kind": "event"
+              },
+              {
+                "id": "jacksonian-continuity",
+                "label": "Continuing Jacksonian policy",
+                "kind": "subtopic"
+              }
+            ]
+          },
+          {
             "id": "les_al01",
             "slug": "from-preserving-the-union-to-ending-slavery",
             "title": "Abraham Lincoln: From Preserving the Union to Ending Slavery",
@@ -3885,10 +5098,10 @@
     "color": "plum",
     "topics": [
       {
-        "slug": "italian-renaissance",
-        "title": "The Italian Renaissance",
+        "slug": "renaissance",
+        "title": "The Renaissance",
         "kind": "era",
-        "summary": "The Italian Renaissance was a period of renewed interest in ancient Greek and Roman culture during which artists developed influential ways to depict people, emotion, and three-dimensional space.",
+        "summary": "The Renaissance was a period of renewed interest in ancient Greek and Roman culture, in Italy and north of the Alps, during which artists developed influential ways to depict people, emotion, and three-dimensional space, along with finely observed oil painting, expanding print culture, and responses to religious change.",
         "lessons": [
           {
             "id": "les_ir01",
@@ -4050,15 +5263,7 @@
                 "kind": "subtopic"
               }
             ]
-          }
-        ]
-      },
-      {
-        "slug": "northern-renaissance",
-        "title": "The Northern Renaissance",
-        "kind": "era",
-        "summary": "The Northern Renaissance was a flourishing of fifteenth- and sixteenth-century art north of the Alps, distinguished by finely observed oil painting, expanding print culture, and responses to religious change.",
-        "lessons": [
+          },
           {
             "id": "les_nr01",
             "slug": "detail-symbols-and-printed-images",
@@ -4658,10 +5863,10 @@
         ]
       },
       {
-        "slug": "cubism",
-        "title": "Cubism",
+        "slug": "early-twentieth-century-art",
+        "title": "Early twentieth-century art",
         "kind": "style",
-        "summary": "Picasso and Braque challenged traditional pictorial illusion by fragmenting forms, combining viewpoints, and incorporating everyday materials.",
+        "summary": "Early twentieth-century artists challenged traditional pictorial illusion, from Cubist fragmentation, combined viewpoints, and everyday materials to Surrealist explorations of dreams, unexpected associations, and the unconscious.",
         "lessons": [
           {
             "id": "les_cu01",
@@ -4801,15 +6006,7 @@
                 "kind": "place"
               }
             ]
-          }
-        ]
-      },
-      {
-        "slug": "surrealism",
-        "title": "Surrealism",
-        "kind": "style",
-        "summary": "Surrealist artists and writers explored dreams, unexpected associations, and the unconscious through both spontaneous techniques and carefully constructed images.",
-        "lessons": [
+          },
           {
             "id": "les_su01",
             "slug": "when-dreams-disrupt-reality",
@@ -6063,10 +7260,10 @@
         ]
       },
       {
-        "slug": "protestant-reformation",
-        "title": "The Protestant Reformation",
-        "kind": "event",
-        "summary": "A sixteenth-century movement to reform Western Christianity produced new Protestant traditions and reshaped debates about salvation, religious authority, and political power.",
+        "slug": "protestant-christianity",
+        "title": "Protestant Christianity",
+        "kind": "concept",
+        "summary": "The Protestant Reformation produced new Christian traditions whose teachings on grace, faith, and scriptural authority are expressed in preaching, baptism, and Communion, while differing across communities.",
         "lessons": [
           {
             "id": "les_pr01",
@@ -6218,6 +7415,145 @@
                 "id": "council-of-trent",
                 "label": "The Council of Trent",
                 "kind": "event"
+              }
+            ]
+          },
+          {
+            "id": "les_pc01",
+            "slug": "from-belief-to-worship",
+            "title": "Protestant Christianity: From Belief to Worship",
+            "sections": [
+              {
+                "heading": "A shared heritage is not a single church",
+                "body": "Imagine attending two Protestant services. Both include Bible readings and prayer, yet their ministers, music, and celebration of Communion look different. This invented comparison introduces an important distinction: Protestant Christianity is a family of traditions, not one organization with a single worldwide leadership.\n\nBeyond the events of the Reformation, useful questions concern how Protestants understand salvation, identify religious authority, and organize worship. Common themes include justification by grace through faith, the special authority of Scripture, and the priesthood of all believers. These themes link beliefs with community practices.\n\n“Common” does not mean identical in every detail. Protestants have disagreed about biblical interpretation, church government, and the sacraments. This lesson describes recurring teachings without asking readers to accept them or assuming every Protestant congregation expresses them in the same way."
+              },
+              {
+                "heading": "Grace and faith: what is being claimed?",
+                "body": "Grace means God's freely given favor rather than something a person earns as a payment. In classical Protestant teaching, justification concerns a person's right relationship with God. It is grounded in divine grace and received through faith, rather than achieved by accumulating sufficient moral accomplishments.\n\nThis does not mean good conduct becomes irrelevant. Protestant teachers distinguished the basis of salvation from its consequences in a person's life. Good works could be understood as expressions or fruits of faith, not a price paid to secure God's acceptance. The distinction is theological, not merely a disagreement about whether kindness is desirable.\n\nFor a learning analogy, compare receiving a gift with earning a wage. The analogy helps explain why “grace” and “merit” are different categories; it does not capture every Christian debate about salvation. Religious literacy requires understanding the claim before deciding whether one agrees with it."
+              },
+              {
+                "heading": "Scripture, preaching, and shared responsibility",
+                "body": "Protestants generally give Scripture final authority in matters of faith. This emphasis helps explain the importance of biblical reading, preaching, and teaching. It does not mean Protestant communities have always agreed on every interpretation or on one account of how biblical authority operates.\n\nThe priesthood of all believers likewise concerns religious status and responsibility. It affirms that all believers can participate in prayer and serve as agents of God's grace. It does not automatically abolish ordained ministers, education, or leadership within a congregation.\n\nThe words used for leaders also vary. Many Protestant churches speak of ministers or pastors, while Anglican churches retain the title priest. A difference in terminology should prompt questions about actual responsibilities rather than an immediate assumption that the underlying theology is identical or entirely different."
+              },
+              {
+                "heading": "Water, bread, and wine: shared practices, disputed meanings",
+                "body": "Most Protestant traditions recognize baptism and the Lord's Supper, also called Holy Communion, as the two rites clearly instituted by Christ. Some communities use the word ordinances rather than sacraments. The practices are widely shared, but their theological explanations differ.\n\nBaptismal debates include whether to baptize infants or people making their own profession of faith. Communion debates concern how Christ is present and what participants receive. Treating every Protestant celebration as either identical to the Catholic Mass or merely an empty reminder would erase important distinctions.\n\nWhen comparing services, ask what is read, preached, and enacted, who leads, and how participants explain the rites. Then connect the answers to beliefs about grace, authority, and community. That method moves beyond identifying a denomination by appearances and helps explain why similar actions can carry different religious meanings."
+              }
+            ],
+            "keyFacts": [
+              "Protestant Christianity includes multiple traditions rather than one worldwide organization.",
+              "Classical Protestant teaching emphasizes justification by grace through faith.",
+              "Good works are distinguished from earning salvation.",
+              "Scriptural authority does not produce agreement on every interpretation.",
+              "The priesthood of all believers does not necessarily abolish ordained ministry.",
+              "Most Protestant traditions recognize baptism and Communion, while differing about their meaning."
+            ],
+            "quiz": [
+              {
+                "question": "Which description best fits Protestant Christianity?",
+                "options": [
+                  "One congregation with one global pastor",
+                  "A family of traditions sharing some themes but differing in important ways",
+                  "A religion with no Christian origins",
+                  "A uniform style of music"
+                ],
+                "answerIndex": 1,
+                "explanation": "Shared origins and themes do not make Protestantism a single institution."
+              },
+              {
+                "question": "What does grace emphasize in this lesson?",
+                "options": [
+                  "A wage paid for enough achievements",
+                  "A political office",
+                  "God’s freely given favor",
+                  "The abolition of all religious teaching"
+                ],
+                "answerIndex": 2,
+                "explanation": "Grace is distinguished from something earned through merit."
+              },
+              {
+                "question": "How are good works understood in the explanation given here?",
+                "options": [
+                  "As possible fruits of faith rather than a payment purchasing salvation",
+                  "As irrelevant to every Protestant",
+                  "As the only topic of worship",
+                  "As proof that every congregation agrees"
+                ],
+                "answerIndex": 0,
+                "explanation": "The basis of salvation is distinguished from its expression in conduct."
+              },
+              {
+                "question": "What does final scriptural authority not guarantee?",
+                "options": [
+                  "An emphasis on Bible reading",
+                  "A role for preaching",
+                  "Religious teaching",
+                  "Agreement on every biblical interpretation"
+                ],
+                "answerIndex": 3,
+                "explanation": "Shared authority can coexist with disputes over interpretation."
+              },
+              {
+                "question": "What does the priesthood of all believers affirm?",
+                "options": [
+                  "That every church must abolish ministers",
+                  "Shared religious responsibility among believers",
+                  "That only rulers may pray",
+                  "That no one can teach Scripture"
+                ],
+                "answerIndex": 1,
+                "explanation": "It concerns access, status, and responsibility, not necessarily the elimination of ordained roles."
+              },
+              {
+                "question": "Which two rites are most widely recognized in Protestant traditions?",
+                "options": [
+                  "Pilgrimage and coronation",
+                  "Marriage and royal succession",
+                  "Baptism and Communion",
+                  "Ordination and a national census"
+                ],
+                "answerIndex": 2,
+                "explanation": "Protestants differ over these rites’ interpretation while generally retaining both."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Protestantism",
+                "url": "https://www.britannica.com/topic/Protestantism"
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "The Protestant Heritage",
+                "url": "https://www.britannica.com/topic/The-Protestant-Heritage"
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Priest",
+                "url": "https://www.britannica.com/topic/priest-Christianity",
+                "note": "Christian ministry and Protestant terminology"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "justification-by-grace",
+                "label": "Justification by grace through faith",
+                "kind": "idea"
+              },
+              {
+                "id": "scriptural-authority",
+                "label": "Scriptural authority",
+                "kind": "idea"
+              },
+              {
+                "id": "priesthood-of-all-believers",
+                "label": "The priesthood of all believers",
+                "kind": "idea"
+              },
+              {
+                "id": "baptism-and-communion",
+                "label": "Baptism and Communion",
+                "kind": "subtopic"
               }
             ]
           }
