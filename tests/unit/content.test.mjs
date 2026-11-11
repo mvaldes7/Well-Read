@@ -265,3 +265,17 @@ test('Ancient History lists Egypt, Hammurabi, Athens, and Ashoka in chronologica
   assert.equal(egypt.title, 'The Nile and Egyptian kingship');
   assert.equal(egypt.lessons[0].slug, 'how-the-nile-supported-a-kingdom');
 });
+
+test('Art History merges the Renaissance and early twentieth-century art topics', () => {
+  const ah = disciplines.find((d) => d.slug === 'art-history');
+  assert.deepEqual(ah.topics.map((t) => [t.slug, t.kind, t.lessons.map((l) => l.id)]), [
+    ['renaissance', 'era', ['les_ir01', 'les_nr01']],
+    ['impressionism', 'style', ['les_im01', 'les_im02']],
+    ['perspective', 'technique', ['les_pe01']],
+    ['early-twentieth-century-art', 'style', ['les_cu01', 'les_su01']],
+  ]);
+  assert.equal(ah.topics[0].title, 'The Renaissance');
+  assert.equal(ah.topics[3].title, 'Early twentieth-century art');
+  assert.deepEqual(ah.topics[0].lessons.map((l) => l.slug), ['how-renaissance-artists-made-pictures-feel-real', 'detail-symbols-and-printed-images']);
+  assert.deepEqual(ah.topics[3].lessons.map((l) => l.slug), ['why-artists-broke-the-picture-apart', 'when-dreams-disrupt-reality']);
+});

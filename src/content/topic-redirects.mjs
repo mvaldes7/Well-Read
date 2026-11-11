@@ -13,6 +13,10 @@ export const TOPIC_REDIRECTS = [
   { discipline: "american-civics", from: "abraham-lincoln", to: "us-presidents" },
   { discipline: "american-civics", from: "theodore-roosevelt", to: "us-presidents" },
   { discipline: "religious-studies", from: "protestant-reformation", to: "protestant-christianity" },
+  { discipline: "art-history", from: "italian-renaissance", to: "renaissance" },
+  { discipline: "art-history", from: "northern-renaissance", to: "renaissance" },
+  { discipline: "art-history", from: "cubism", to: "early-twentieth-century-art" },
+  { discipline: "art-history", from: "surrealism", to: "early-twentieth-century-art" },
 ];
 
 /**

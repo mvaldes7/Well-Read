@@ -5098,10 +5098,10 @@
     "color": "plum",
     "topics": [
       {
-        "slug": "italian-renaissance",
-        "title": "The Italian Renaissance",
+        "slug": "renaissance",
+        "title": "The Renaissance",
         "kind": "era",
-        "summary": "The Italian Renaissance was a period of renewed interest in ancient Greek and Roman culture during which artists developed influential ways to depict people, emotion, and three-dimensional space.",
+        "summary": "The Renaissance was a period of renewed interest in ancient Greek and Roman culture, in Italy and north of the Alps, during which artists developed influential ways to depict people, emotion, and three-dimensional space, along with finely observed oil painting, expanding print culture, and responses to religious change.",
         "lessons": [
           {
             "id": "les_ir01",
@@ -5263,15 +5263,7 @@
                 "kind": "subtopic"
               }
             ]
-          }
-        ]
-      },
-      {
-        "slug": "northern-renaissance",
-        "title": "The Northern Renaissance",
-        "kind": "era",
-        "summary": "The Northern Renaissance was a flourishing of fifteenth- and sixteenth-century art north of the Alps, distinguished by finely observed oil painting, expanding print culture, and responses to religious change.",
-        "lessons": [
+          },
           {
             "id": "les_nr01",
             "slug": "detail-symbols-and-printed-images",
@@ -5871,10 +5863,10 @@
         ]
       },
       {
-        "slug": "cubism",
-        "title": "Cubism",
+        "slug": "early-twentieth-century-art",
+        "title": "Early twentieth-century art",
         "kind": "style",
-        "summary": "Picasso and Braque challenged traditional pictorial illusion by fragmenting forms, combining viewpoints, and incorporating everyday materials.",
+        "summary": "Early twentieth-century artists challenged traditional pictorial illusion, from Cubist fragmentation, combined viewpoints, and everyday materials to Surrealist explorations of dreams, unexpected associations, and the unconscious.",
         "lessons": [
           {
             "id": "les_cu01",
@@ -6014,15 +6006,7 @@
                 "kind": "place"
               }
             ]
-          }
-        ]
-      },
-      {
-        "slug": "surrealism",
-        "title": "Surrealism",
-        "kind": "style",
-        "summary": "Surrealist artists and writers explored dreams, unexpected associations, and the unconscious through both spontaneous techniques and carefully constructed images.",
-        "lessons": [
+          },
           {
             "id": "les_su01",
             "slug": "when-dreams-disrupt-reality",
