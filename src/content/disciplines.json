@@ -2197,6 +2197,316 @@
             ]
           }
         ]
+      },
+      {
+        "slug": "democracy-in-ancient-athens",
+        "title": "Democracy in ancient Athens",
+        "kind": "institution",
+        "summary": "Athens developed direct citizen participation through an assembly, a council, and courts, but political membership excluded most residents.",
+        "lessons": [
+          {
+            "id": "les_ad01",
+            "slug": "who-counted-as-the-people",
+            "title": "Athenian Democracy: Who Counted as the People?",
+            "sections": [
+              {
+                "heading": "Democracy without modern elections",
+                "body": "Imagine having to attend a public gathering to vote on a policy yourself instead of choosing a representative to decide it later. Ancient Athens offers an important example of direct democracy: eligible citizens participated in collective decisions rather than delegating all lawmaking to an elected legislature.\n\nThe system developed over time. Cleisthenes' reforms near the end of the sixth century BCE reorganized the citizen body into ten tribes that combined residents from different parts of Attica, the territory of Athens. Political membership became tied to this civic arrangement rather than simply to older descent groups.\n\nAthenian democracy is important, but it should not be treated as a complete model of modern equal citizenship. To understand the institution, ask both how citizens exercised power and how citizenship was restricted. The answer to “who governs?” depends on who is allowed to count as part of the people."
+              },
+              {
+                "heading": "The Assembly and the Council",
+                "body": "The Assembly, or Ecclesia, was a gathering of eligible citizens that made major public decisions. Its functions included debating policy and voting on proposals. Participation occurred in person, and votes were generally taken by a show of hands.\n\nThe Council of Five Hundred prepared business for the Assembly. Cleisthenes' ten tribes supplied the structure for its membership. This connection linked a reorganization of the citizen body to the daily administrative work of government, rather than leaving the Assembly as an isolated crowd.\n\nSelection by lot also played a role in Athenian institutions. It could spread access to public service instead of making every office depend on winning an election. Popular courts supplied another arena of citizen authority. Democracy involved several connected institutions, not just occasional speeches in one meeting place."
+              },
+              {
+                "heading": "A narrow boundary around citizenship",
+                "body": "Political participation was limited to adult male citizens. Women, enslaved people, children, and resident foreigners were excluded from Assembly membership. Living or working in Athens did not automatically confer a voice in its public decisions.\n\nThis was not a small qualification attached to an otherwise universal electorate. It excluded substantial parts of society, including people whose labor sustained households and economic activity. The presence of slavery is part of the history of Athenian democracy, not a separate topic that can be removed from its description.\n\nFor a useful comparison, distinguish residents, citizens, and active participants in a particular meeting. These are not interchangeable groups. Even among eligible men, not everyone attended each Assembly. Stating that citizens could participate does not mean every policy expressed the recorded opinion of every citizen."
+              },
+              {
+                "heading": "What comparison can—and cannot—teach",
+                "body": "Athenian direct participation differs from a representative system, in which elected officials make many decisions on behalf of voters. Neither label alone tells us whether participation is broad, rights are protected, or power is well checked. Institutional form and inclusion must be examined separately.\n\nThe Council's preparation of business also complicates the idea of entirely spontaneous popular rule. Someone had to organize an agenda, administer decisions, and maintain public procedures. A system can give citizens substantial power while still depending on structured offices and rules.\n\nAs a study exercise, draw two boundaries: who belongs to the political community, and what decisions members can make. Athens is historically distinctive because participation within the boundary was unusually direct while the boundary itself excluded so many people. Holding both facts together avoids either celebrating it without qualification or dismissing its institutional innovations."
+              }
+            ],
+            "keyFacts": [
+              "Athenian democracy involved direct participation by eligible citizens.",
+              "Cleisthenes reorganized citizens into ten tribes.",
+              "The Ecclesia was the citizen Assembly.",
+              "The Council of Five Hundred prepared Assembly business.",
+              "Women, enslaved people, children, and resident foreigners were excluded from political participation.",
+              "Citizenship, residence, and attendance at a meeting were different categories."
+            ],
+            "quiz": [
+              {
+                "question": "What makes Athenian democracy direct?",
+                "options": [
+                  "All residents elected one permanent king",
+                  "Citizens could participate in policy decisions themselves",
+                  "Only foreign ambassadors voted",
+                  "Every decision was made by modern political parties"
+                ],
+                "answerIndex": 1,
+                "explanation": "Eligible citizens gathered to deliberate and vote."
+              },
+              {
+                "question": "What did Cleisthenes’ tribal reforms do?",
+                "options": [
+                  "End all public institutions",
+                  "Create the Roman Senate",
+                  "Reorganize the citizen body across Attica",
+                  "Grant every resident equal citizenship"
+                ],
+                "answerIndex": 2,
+                "explanation": "The ten tribes combined people from different areas."
+              },
+              {
+                "question": "What was the Ecclesia?",
+                "options": [
+                  "The citizen Assembly",
+                  "A royal tomb",
+                  "A temple tax",
+                  "A naval rank"
+                ],
+                "answerIndex": 0,
+                "explanation": "It was a central decision-making institution."
+              },
+              {
+                "question": "What role did the Council of Five Hundred play?",
+                "options": [
+                  "It ruled the entire Persian Empire",
+                  "It translated the Bible",
+                  "It selected every Egyptian king",
+                  "It prepared business for the Assembly"
+                ],
+                "answerIndex": 3,
+                "explanation": "Administrative preparation connected the Council and Assembly."
+              },
+              {
+                "question": "Which person was ordinarily excluded from Assembly membership?",
+                "options": [
+                  "An adult male citizen",
+                  "A resident foreigner without citizenship",
+                  "A member of the citizen body",
+                  "An eligible man attending the meeting"
+                ],
+                "answerIndex": 1,
+                "explanation": "Residence alone did not confer participation."
+              },
+              {
+                "question": "Which comparison is most accurate?",
+                "options": [
+                  "All ancient and modern democracies are identical",
+                  "Every Athenian resident could vote",
+                  "Athens combined direct citizen power with substantial exclusions",
+                  "A representative system never uses elections"
+                ],
+                "answerIndex": 2,
+                "explanation": "Both institutional participation and the limits of membership must be considered."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Britannica Students",
+                "title": "Ancient Greece",
+                "url": "https://kids.britannica.com/students/article/ancient-Greece/274648",
+                "note": "section on Athenian government; population estimates are not used here"
+              },
+              {
+                "publisher": "Britannica Students",
+                "title": "Democracy",
+                "url": "https://kids.britannica.com/students/article/democracy/273962"
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Ancient Greek civilization: The reforms of Cleisthenes",
+                "url": "https://www.britannica.com/place/ancient-Greece/The-reforms-of-Cleisthenes"
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Greek Law",
+                "url": "https://www.britannica.com/topic/Greek-law"
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Politeia",
+                "url": "https://www.britannica.com/topic/politeia"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "cleisthenes-reforms",
+                "label": "Cleisthenes’ tribal reforms",
+                "kind": "event"
+              },
+              {
+                "id": "ecclesia",
+                "label": "The Assembly (Ecclesia)",
+                "kind": "idea"
+              },
+              {
+                "id": "council-of-five-hundred",
+                "label": "The Council of Five Hundred",
+                "kind": "idea"
+              },
+              {
+                "id": "citizenship-exclusions",
+                "label": "Limits of Athenian citizenship",
+                "kind": "subtopic"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "ashoka-and-the-mauryan-empire",
+        "title": "Ashoka and the Mauryan Empire",
+        "kind": "person",
+        "summary": "After the conquest of Kalinga, Ashoka promoted dhamma through inscriptions, officials, public welfare, and respect for religious communities, leaving evidence of both moral aspirations and imperial authority.",
+        "lessons": [
+          {
+            "id": "les_as01",
+            "slug": "can-an-emperor-rule-through-moral-persuasion",
+            "title": "Ashoka: Can an Emperor Rule Through Moral Persuasion?",
+            "sections": [
+              {
+                "heading": "An empire before the change of heart",
+                "body": "A ruler's reputation for peace can obscure the violence that helped establish his power. Ashoka, a Mauryan emperor in the third century BCE, is remembered for religious patronage and moral government. His story also includes a devastating conquest.\n\nIn the eighth year of his reign, his forces conquered Kalinga on the eastern side of the Indian subcontinent. His inscriptions describe deaths, deportations, and suffering, and present the experience as a source of remorse. This is unusually direct evidence of how an ancient ruler chose to discuss the human costs of victory.\n\nThe inscriptions remain royal statements, not independent testimony from everyone affected. They tell us what Ashoka publicly claimed about the conquest and his response. Reading them critically means taking their moral language seriously while remembering who commissioned it and whose perspective it expresses."
+              },
+              {
+                "heading": "Dhamma was broader than a conversion requirement",
+                "body": "Ashoka embraced Buddhism, but the dhamma he promoted to his subjects was not simply an order that everyone become Buddhist. Dhamma is related to the Sanskrit word dharma and has a range of meanings; in these edicts it concerns principles of right conduct and social morality.\n\nIts themes include truthfulness, compassion, generosity, respect for parents and religious teachers, humane treatment of servants, and restraint in harming living beings. These are everyday responsibilities as well as ideals for rulers. His public program sought conduct that could be commended across different communities.\n\nReligious toleration did not require declaring every doctrine identical. Ashoka urged people to respect other traditions, learn about them, and avoid excessive praise of their own group at others' expense. The point was to improve coexistence and moral conduct while acknowledging a plurality of religious communities."
+              },
+              {
+                "heading": "Words on stone and officials on the ground",
+                "body": "Ashoka communicated through inscriptions placed on rocks and pillars across a large territory. These edicts allow historians to study policies in a ruler's own public language rather than relying exclusively on much later stories. Their survival is one reason his reign can be examined in unusual detail.\n\nThe program also used officials responsible for promoting dhamma and attending to people's needs. Edicts discuss concern for religious communities, householders, and vulnerable groups. Moral persuasion was therefore connected to administrative responsibilities, not confined to a private ruler's feelings.\n\nThe inscriptions describe welfare measures and encourage officials to administer justice attentively. Still, a statement announcing a measure is not a complete record of how well it worked everywhere. Historians distinguish the ruler's prescription, evidence of implementation, and claims about the experiences of subjects."
+              },
+              {
+                "heading": "A new ideal within an imperial structure",
+                "body": "Ashoka described a preference for “conquest by dhamma” rather than armed expansion. The phrase attempts to redefine success: influence through moral conduct instead of victory measured only by captured territory. The political setting nevertheless remained an empire governed by a monarch.\n\nHis edicts did not erase the earlier conquest or return every affected community to its former condition. Nor should their language be equated automatically with modern democracy or equal citizenship. A ruler could advocate compassion and toleration while retaining substantial coercive authority.\n\nFor a final exercise, separate three claims: what Ashoka said he valued, what actions the sources describe, and what cannot be established about outcomes. This makes his reign valuable for more than a story of personal transformation. It opens a larger question about whether moral ideals can restrain power without changing who holds it."
+              }
+            ],
+            "keyFacts": [
+              "Ashoka was a Mauryan emperor of the third century BCE.",
+              "His conquest of Kalinga preceded his public account of remorse.",
+              "He embraced Buddhism while addressing a wider ethic to his subjects.",
+              "Dhamma emphasized conduct including compassion, truthfulness, and respect.",
+              "Rock and pillar edicts are major sources for his reign.",
+              "His moral program operated within a monarchy, not a modern democracy."
+            ],
+            "quiz": [
+              {
+                "question": "Which event was central to Ashoka’s account of remorse?",
+                "options": [
+                  "The fall of Rome",
+                  "The conquest of Kalinga",
+                  "The Persian invasion of Athens",
+                  "The signing of Magna Carta"
+                ],
+                "answerIndex": 1,
+                "explanation": "His edicts connect Kalinga’s suffering with a change in emphasis."
+              },
+              {
+                "question": "Which distinction matters when reading his inscriptions?",
+                "options": [
+                  "Royal statements and subjects’ experiences are automatically identical",
+                  "Every inscription is a modern invention",
+                  "An official claim is not independent proof of every outcome",
+                  "Only later legends can be evidence"
+                ],
+                "answerIndex": 2,
+                "explanation": "Edicts reveal policy and self-presentation but require critical interpretation."
+              },
+              {
+                "question": "What best describes dhamma in his public program?",
+                "options": [
+                  "An ethic of conduct addressing a religiously diverse population",
+                  "A requirement to speak only Greek",
+                  "A system of modern elections",
+                  "A plan to abolish all administration"
+                ],
+                "answerIndex": 0,
+                "explanation": "Its moral themes extended beyond a command to convert to Buddhism."
+              },
+              {
+                "question": "What did he urge concerning other religions?",
+                "options": [
+                  "Their immediate destruction",
+                  "Complete agreement on every doctrine",
+                  "A ban on learning about them",
+                  "Respect and restraint in criticizing them"
+                ],
+                "answerIndex": 3,
+                "explanation": "He encouraged mutual understanding and praise of others’ good qualities."
+              },
+              {
+                "question": "Why are the edicts important historical sources?",
+                "options": [
+                  "They record every subject’s opinion",
+                  "They preserve the ruler’s public statements and policies",
+                  "They were written by modern historians",
+                  "They eliminate uncertainty about implementation"
+                ],
+                "answerIndex": 1,
+                "explanation": "Their contemporary royal perspective is valuable but not exhaustive."
+              },
+              {
+                "question": "What is the central tension in his reign?",
+                "options": [
+                  "He had no political authority",
+                  "He abolished every form of punishment",
+                  "Moral persuasion operated alongside imperial power",
+                  "He never participated in conquest"
+                ],
+                "answerIndex": 2,
+                "explanation": "The ideals should be studied within the institutional setting of monarchy."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Ashoka",
+                "url": "https://www.britannica.com/biography/Ashoka"
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "The Edicts of King Asoka",
+                "url": "https://cdn.britannica.com/primary_source/gutenberg/PGCC_classics/lib/bps/wheels/wheel386.html",
+                "note": "translated by Ven. S. Dhammika — primary-source translation hosted by Britannica"
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "India: Ashoka’s edicts",
+                "url": "https://www.britannica.com/place/India/Ashokas-edicts"
+              },
+              {
+                "publisher": "Oregon State University open textbook",
+                "title": "The Edicts of Ashoka",
+                "url": "https://open.oregonstate.education/ancientcivilizations/chapter/edicts-of-ashoka/",
+                "note": "primary-source selections and introduction"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "conquest-of-kalinga",
+                "label": "The conquest of Kalinga",
+                "kind": "event"
+              },
+              {
+                "id": "dhamma",
+                "label": "Dhamma",
+                "kind": "idea"
+              },
+              {
+                "id": "rock-and-pillar-edicts",
+                "label": "Rock and pillar edicts",
+                "kind": "subtopic"
+              },
+              {
+                "id": "conquest-by-dhamma",
+                "label": "Conquest by dhamma",
+                "kind": "idea"
+              }
+            ]
+          }
+        ]
       }
     ]
   },

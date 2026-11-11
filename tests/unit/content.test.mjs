@@ -252,3 +252,12 @@ test('American Civics: one merged Constitution & Bill of Rights topic; lesson id
   assert.equal(presidents.title, 'U.S. Presidents');
   assert.deepEqual(presidents.lessons.map((l) => l.id), ['les_gw01', 'les_ja01', 'les_tj01', 'les_jm01', 'les_jmo01', 'les_jqa01', 'les_aj01', 'les_mvb01', 'les_al01', 'les_tr01']);
 });
+
+test('Ancient History keeps Hammurabi and adds Athens and Ashoka as new topics', () => {
+  const ah = disciplines.find((d) => d.slug === 'ancient-history');
+  assert.deepEqual(ah.topics.map((t) => [t.slug, t.kind, t.lessons.map((l) => l.id)]), [
+    ['code-of-hammurabi', 'era', ['les_ch01']],
+    ['democracy-in-ancient-athens', 'institution', ['les_ad01']],
+    ['ashoka-and-the-mauryan-empire', 'person', ['les_as01']],
+  ]);
+});
