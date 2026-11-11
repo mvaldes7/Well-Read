@@ -5,6 +5,7 @@ import { readFileSync } from 'node:fs';
 import {
   runPrototype, buildPrompt, findLessonChoice, callGemini, normalizeLesson, pageText, relevantExcerpts, factCheckText,
   fetchCandidateSources, QuotaError, BillingError, DEFAULT_MODEL, FALLBACK_MODEL, FACTCHECK_SOURCE_CHARS,
+  describeFactCheckItems,
 } from '../../scripts/drilldown-prototype.mjs';
 
 const disciplines = JSON.parse(readFileSync(new URL('../../src/content/disciplines.json', import.meta.url), 'utf8'));
@@ -170,6 +171,22 @@ test('cap exhaustion: two rejects use all 4 calls and fail gracefully with no 5t
   assert.match(r.stoppedOn, /call cap reached \(4\/4\); failing gracefully/);
   // sources are fetched once, not per attempt
   assert.equal(f.calls.filter((c) => c.url === SRC.url).length, 1);
+});
+
+test('runPrototype logs per-claim fact-check notes without secrets, prompts, or user ids', async () => {
+  const logs = [];
+  const f = mockFetch([gem(fakeLesson()), gem(fc(1))]);
+  await runPrototype({ disciplines, lessonId: 'les_fr02', choiceId: 'robespierre', apiKey: KEY, fetchImpl: f, log: (m) => logs.push(m) });
+  const line = logs.find((m) => String(m).startsWith('fact check:'));
+  assert.ok(line, `expected a fact check log, got: ${logs.join(' | ')}`);
+  assert.match(line, /1 unconfirmed -> pass_flagged/);
+  assert.match(line, /fact1 unconfirmed: not in source 0/);
+  assert.match(line, /fact2 ok/);
+  assert.match(line, /quiz1 ok/);
+  const joined = logs.join('\n');
+  assert.doesNotMatch(joined, /test-key-not-real/);
+  assert.doesNotMatch(joined, /x-goog-api-key/);
+  assert.equal(describeFactCheckItems([{ ref: 'fact3', supported: false, note: '  missing from excerpt  ' }]), 'fact3 unconfirmed: missing from excerpt');
 });
 
 test('cap exhaustion: schema retry + fact check + reject leaves 1 call, too few to regenerate', async () => {

@@ -29,6 +29,7 @@ export async function POST(request: Request) {
   try { body = await request.json(); } catch { return reply(failure("bad_request")); }
   const supabase = await createClient();
   if (!supabase) return reply(failure("unavailable"));
+  const log = (m: string) => console.info(m);
   try {
     const result = await handleDigDeeper({
       enabled,
@@ -46,8 +47,8 @@ export async function POST(request: Request) {
         return error || !data ? [] : data;
       },
       db: { reserve, releaseLesson, saveLesson, saveFactCheck },
-      generate: ({ lessonId, choiceId, onBeforeCall }) => runGeneration({ disciplines, lessonId, choiceId, apiKey, onBeforeCall }),
-      log: (m) => console.info(m),
+      generate: ({ lessonId, choiceId, onBeforeCall }) => runGeneration({ disciplines, lessonId, choiceId, apiKey, onBeforeCall, log }),
+      log,
     });
     return reply(result);
   } catch (e) {

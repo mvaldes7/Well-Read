@@ -14,6 +14,57 @@ export const SEP_ENTRY = "https://plato.stanford.edu/entries/";
 const CHALLENGE_RE = /just a moment|enable javascript and cookies|checking your browser|cf-browser-verification|vercel security checkpoint|attention required|access denied|sorry, you have been blocked|please verify you are a human|unfortunately,? we cannot serve/i;
 const MIN_EXTRACT = 120;
 const MIN_VISIBLE = 40;
+const LEADING_ARTICLE = /^(the|a|an)\s+/i;
+// Surrounding punctuation/symbols only; inner punctuation in a title is kept.
+const EDGE_PUNCT = /^[\s\p{P}\p{S}]+|[\s\p{P}\p{S}]+$/gu;
+
+/**
+ * Collapse whitespace, trim surrounding punctuation, and strip one leading English article (The/A/An).
+ * @param {string} s
+ */
+export function normalizeSearchQuery(s) {
+  let t = String(s ?? "").replace(/\s+/g, " ").trim();
+  t = t.replace(EDGE_PUNCT, "").trim();
+  t = t.replace(LEADING_ARTICLE, "").trim();
+  t = t.replace(EDGE_PUNCT, "").trim();
+  return t;
+}
+
+/** Significant words (4+ alphanumeric, after article-stripping) for title/query overlap. @param {string} s */
+function significantWords(s) {
+  return normalizeSearchQuery(s).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").match(/[a-z0-9]{4,}/g) ?? [];
+}
+
+/**
+ * True when a Wikipedia page title covers the drilldown choice (not merely the parent topic).
+ * Two-word queries must match both words, so "Meiji Restoration" does not cover "Meiji Constitution".
+ * @param {string} title @param {string} query
+ */
+export function titleCoversQuery(title, query) {
+  const qw = significantWords(query);
+  if (!qw.length) return false;
+  const tw = new Set(significantWords(title));
+  const hit = qw.filter((w) => tw.has(w)).length;
+  if (qw.length <= 2) return hit === qw.length;
+  return hit / qw.length >= 0.7;
+}
+
+/**
+ * Subscription/library proxy hosts that sit under an allowlisted .edu/.gov domain but are not freely fetchable.
+ * Real faculty or museum .edu pages are kept; ezproxy / .lib. / Gale proxy hosts are dropped.
+ * @param {string} url
+ */
+export function isLibraryProxyUrl(url) {
+  try {
+    const host = new URL(url).hostname.toLowerCase();
+    if (host === "gale.com" || host.endsWith(".gale.com") || host === "galegroup.com" || host.endsWith(".galegroup.com")) return true;
+    const labels = host.split(".");
+    if (labels.some((l) => l === "lib" || l === "ezproxy" || l === "libproxy" || l === "ezp" || l === "libraryproxy")) return true;
+    return false;
+  } catch {
+    return false;
+  }
+}
 
 /** @param {{ title?: string, body?: string, text?: string }} page */
 export function isChallengePage(page = {}) {
@@ -61,14 +112,23 @@ export function fallbackSearchQueries(ctx = {}) {
   const seen = new Set();
   /** @type {string[]} */
   const out = [];
-  for (const s of raw) {
-    const t = s.trim();
+  const add = (/** @type {string} */ value) => {
+    const t = value.replace(/\s+/g, " ").trim();
+    if (!t) return;
     const key = t.toLowerCase();
-    if (seen.has(key)) continue;
+    if (seen.has(key)) return;
     seen.add(key);
     out.push(t);
+  };
+  for (const s of raw) {
+    const original = s.replace(/\s+/g, " ").trim();
+    const normalized = normalizeSearchQuery(original);
+    // Prefer the stripped form (OpenSearch is prefix/title-based; "The Meiji Constitution" returns no hits).
+    add(normalized);
+    // Keep the original when it differs: some articles are actually titled with a leading "The".
+    if (normalized.toLowerCase() !== original.toLowerCase()) add(original);
   }
-  return out.slice(0, 3);
+  return out.slice(0, 6);
 }
 
 /**
@@ -153,7 +213,7 @@ export function pickTrustedExtlinks(links) {
   /** @type {{ publisher: string, title: string, url: string, rank: number }[]} */
   const out = [];
   for (const raw of links) {
-    if (typeof raw !== "string" || !isHttpsUrl(raw) || isBlockedSource(raw)) continue;
+    if (typeof raw !== "string" || !isHttpsUrl(raw) || isBlockedSource(raw) || isLibraryProxyUrl(raw)) continue;
     let href;
     try { href = new URL(raw).href; } catch { continue; }
     if (seen.has(href)) continue;
@@ -256,8 +316,11 @@ export async function discoverFallbackSources({ fetchImpl, topic, lesson, choice
       }
       for (const t of pickTrustedExtlinks(page.extlinks)) add(t);
     }
-    // One good Wikipedia extract plus a trusted link is enough to stop searching.
-    if (candidates.some((c) => c.publisher === "Wikipedia") && candidates.some((c) => c.publisher !== "Wikipedia")) break;
+    // One on-topic Wikipedia extract plus a trusted link is enough to stop. An off-topic hit
+    // (often the parent topic page, e.g. Meiji Restoration for "The Meiji Constitution") must not end the search.
+    const choiceQuery = typeof choice?.label === "string" ? choice.label : "";
+    const onTopicWiki = Boolean(choiceQuery) && candidates.some((c) => c.publisher === "Wikipedia" && titleCoversQuery(c.title, choiceQuery));
+    if (onTopicWiki && candidates.some((c) => c.publisher !== "Wikipedia")) break;
   }
 
   for (const sep of guessedSepEntries({ topic, choice })) add(sep);
