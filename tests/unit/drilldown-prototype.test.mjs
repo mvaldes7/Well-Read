@@ -322,3 +322,66 @@ test('billing vs quota: free-tier 429 / RESOURCE_EXHAUSTED is quota, real billin
   const r = await run(mockFetch([{ status: 429, ok: false, json: async () => ({ error: { status: 'RESOURCE_EXHAUSTED', message: 'check your plan and billing details' } }) }]));
   assert.equal(r.billingStop, false);
 });
+
+// All deadline tests are offline. Keep Node alive while AbortSignal.timeout (unref'ed) fires.
+const withTimer = async (fn) => {
+  const keepAlive = setInterval(() => {}, 1000);
+  try { return await fn(); } finally { clearInterval(keepAlive); }
+};
+const waitForAbort = (signal) => new Promise((_, reject) => {
+  if (signal.aborted) reject(signal.reason);
+  else signal.addEventListener('abort', () => reject(signal.reason), { once: true });
+});
+
+test('source fetches run three at a time but assign source IDs in input order', async () => {
+  const pending = [];
+  const f = (url) => new Promise((resolve) => pending.push({ url, resolve }));
+  const done = fetchCandidateSources({ fetchImpl: f, lesson: ctx.lesson });
+  assert.equal(pending.length, 3); // no sequential wait on the first page
+  for (const p of [...pending].reverse()) p.resolve(pageFor(ctx.lesson.sources.find(s => s.url === p.url)));
+  const result = await done;
+  assert.deepEqual(result.fetched.map(s => s.url), FETCHABLE.map(s => s.url));
+  assert.deepEqual(result.fetched.map(s => s.id), ['S1', 'S2', 'S3']);
+  assert.ok(result.results.every(r => typeof r.ms === 'number'));
+});
+
+test('slow model times out once, with no fallback/retry; failed call is observable', async () => withTimer(async () => {
+  const f = mockFetch([(_url, init) => waitForAbort(init.signal)]);
+  const r = await runPrototype({ disciplines, lessonId: 'les_fr02', choiceId: 'robespierre', apiKey: KEY, fetchImpl: f,
+    limits: { totalMs: 200, sourcesMs: 100, modelMs: 10 } });
+  assert.equal(r.stoppedOn, 'generation timeout');
+  assert.equal(r.phase, 'generate');
+  assert.equal(f.gem().length, 1);
+  assert.equal(r.callEvents.length, 1);
+  assert.equal(r.callEvents[0].outcome, 'timeout');
+  assert.ok(r.timings.totalMs >= 0);
+}));
+
+test('model timeout covers a stalled response body, not only headers', async () => withTimer(async () => {
+  const f = async (_url, init) => ({ status: 200, ok: true, json: () => waitForAbort(init.signal) });
+  await assert.rejects(callGemini({ fetchImpl: f, apiKey: KEY, model: 'm', system: '', user: '', schema: {}, budget: { used: 0, max: 4 }, timeoutMs: 10 }), { name: 'TimeoutError' });
+}));
+
+test('source phase deadline stops stalled fallback discovery without any model call', async () => withTimer(async () => {
+  const meiji = findLessonChoice(disciplines, 'les_mr01', 'meiji-constitution');
+  assert.ok(meiji.lesson.sources.every(s => /britannica.com|metmuseum.org/.test(s.url)));
+  let requests = 0;
+  const f = (_url, init) => { requests++; return waitForAbort(init.signal); };
+  const r = await runPrototype({ disciplines, lessonId: 'les_mr01', choiceId: 'meiji-constitution', apiKey: KEY, fetchImpl: f,
+    limits: { totalMs: 200, sourcesMs: 10, modelMs: 100 } });
+  assert.equal(r.stoppedOn, 'generation timeout');
+  assert.equal(r.phase, 'source_fetch');
+  assert.equal(r.calls.length, 0);
+  assert.equal(requests, 1); // expired deadline prevents later discovery requests
+}));
+
+test('overall deadline spans sources and model, and records provider 503 distinctly', async () => withTimer(async () => {
+  const f = mockFetch([(_url, init) => waitForAbort(init.signal)]);
+  const r = await runPrototype({ disciplines, lessonId: 'les_fr02', choiceId: 'robespierre', apiKey: KEY, fetchImpl: f,
+    limits: { totalMs: 10, sourcesMs: 100, modelMs: 200 } });
+  assert.equal(r.stoppedOn, 'generation timeout');
+  assert.equal(f.gem().length, 1);
+  const unavailable = await run(mockFetch([e503, e503]));
+  assert.deepEqual(unavailable.callEvents.map(e => e.outcome), ['provider_unavailable', 'provider_unavailable']);
+  assert.ok(unavailable.callEvents.every(e => typeof e.ms === 'number' && e.model && e.httpStatus === 503));
+}));

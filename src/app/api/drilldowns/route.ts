@@ -11,6 +11,9 @@ import { PROMPT_VERSION, runGeneration } from "@/lib/drilldowns/generate.mjs";
 import { createMinuteLimiter, handleDigDeeper } from "@/lib/drilldowns/service.mjs";
 import { drilldownDbConfigured, releaseLesson, reserve, saveFactCheck, saveLesson } from "@/lib/drilldowns/server-db.mjs";
 
+// Explicit host ceiling; generation stops at 55s so the finally block can release the lesson slot.
+export const maxDuration = 90;
+
 const limiter = createMinuteLimiter();
 
 const reply = (r: { status: number; body: unknown }) => NextResponse.json(r.body, { status: r.status, headers: { "cache-control": "no-store" } });
