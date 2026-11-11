@@ -12,6 +12,7 @@ export const DRILLDOWN_MESSAGES = Object.freeze({
   user_cap: "You've used today's Dig deeper lessons. Come back tomorrow for more.",
   global_cap: "Dig deeper is resting for today. Please try again tomorrow.",
   per_minute: "Lots of people are digging deeper right now. Try again in a minute.",
+  generation_timeout: "Writing and checking this lesson took too long. No lesson was saved. Please try again later.",
   provider_busy: "The lesson writer is busy right now. Please try again later.",
   billing_stop: "Dig deeper is paused for now. Please try again later.",
   no_sources: "Dig deeper isn't available for this lesson yet: its sources can't be checked automatically.",
@@ -22,7 +23,7 @@ export const DRILLDOWN_MESSAGES = Object.freeze({
 /** HTTP status per code (the route's response status). */
 export const DRILLDOWN_STATUS = Object.freeze({
   disabled: 404, signed_out: 401, forbidden: 403, bad_request: 400, not_completed: 403, email_unverified: 403,
-  user_cap: 429, global_cap: 429, per_minute: 429, provider_busy: 503, billing_stop: 503,
+  user_cap: 429, global_cap: 429, per_minute: 429, provider_busy: 503, generation_timeout: 504, billing_stop: 503,
   no_sources: 422, generation_failed: 422, unavailable: 503,
 });
 

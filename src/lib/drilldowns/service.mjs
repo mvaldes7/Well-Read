@@ -56,10 +56,10 @@ export function splitLesson(g) {
  */
 export function describeReport(report) {
   const res = report?.sourceFetch?.results ?? [];
-  const fetch = res.map((/** @type {any} */ r) => `${r.blocked ? "blocked" : r.problems?.length ? `fail(${r.problems.join("; ").slice(0, 80)})` : `ok ${r.status} ${r.chars}c`} ${r.url}`).join(", ");
+  const fetch = res.map((/** @type {any} */ r) => `${r.blocked ? "blocked" : r.problems?.length ? `fail(${r.problems.join("; ").slice(0, 80)})` : `ok ${r.status} ${r.chars}c`} ${r.url} ${r.ms ?? "unknown"}ms`).join(", ");
   const attempts = (report?.attempts ?? []).map((/** @type {any} */ a, /** @type {number} */ i) =>
     `#${i + 1}: schema ${a.schemaProblems?.length ?? 0}, source ${a.sourceProblems?.length ?? 0}, content ${a.contentProblems?.length ?? 0}, unconfirmed [${(a.factCheck?.unconfirmed ?? []).join(",")}] -> ${a.outcome}`).join("; ");
-  return `step=${report?.attempts?.length ? "generate/factcheck" : "source_fetch"} calls=${report?.calls?.length ?? 0} fetch=[${fetch}]${attempts ? ` attempts=[${attempts}]` : ""}`;
+  return `step=${report?.attempts?.length ? "generate/factcheck" : "source_fetch"} calls=${report?.calls?.length ?? 0} phase=${report?.phase ?? "unknown"} elapsedMs=${report?.timings?.totalMs ?? "unknown"} sourceMs=${report?.timings?.sourceMs ?? "unknown"} modelCalls=${JSON.stringify(report?.callEvents ?? [])} fetch=[${fetch}]${attempts ? ` attempts=[${attempts}]` : ""}`;
 }
 
 /**
@@ -139,6 +139,7 @@ export async function handleDigDeeper(deps) {
     };
     if (status === "rejected") {
       if (report.stopError instanceof StopError) return failure(/** @type {any} */ (report.stopError).stopKind);
+      if (report.stoppedOn === "generation timeout") return failure("generation_timeout");
       if (/^(quota|provider unavailable)/.test(String(report.stoppedOn ?? ""))) return failure("provider_busy");
       if (/^no usable fetched sources/.test(String(report.stoppedOn ?? ""))) return failure("no_sources");
       // Keep a validated but rejected lesson for Mike's review (never shown to anyone); its failure doesn't change the answer.

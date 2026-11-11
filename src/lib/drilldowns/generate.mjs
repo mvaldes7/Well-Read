@@ -130,14 +130,25 @@ export function buildPrompt({ discipline, topic, lesson, choice }, fetched) {
   return { system, user };
 }
 
+// Bound latency independently of the host's 300s default; leave time for reservation cleanup.
+export const GENERATION_LIMITS = Object.freeze({ totalMs: 55_000, sourcesMs: 20_000, modelMs: 25_000 });
+/** A signal shared by source discovery, page fetches (including bodies), and model calls. */
+export function deadlineFetch(fetchImpl, signal) {
+  return (url, init = {}) => {
+    signal.throwIfAborted();
+    return fetchImpl(url, { ...init, signal: init.signal ? AbortSignal.any([signal, init.signal]) : signal });
+  };
+}
+
 /** One Gemini generateContent call with a JSON schema. Counts against a per-run budget. */
-export async function callGemini({ fetchImpl, apiKey, model, system, user, schema, budget, onBeforeCall }) {
+export async function callGemini({ fetchImpl, apiKey, model, system, user, schema, budget, onBeforeCall, timeoutMs = GENERATION_LIMITS.modelMs }) {
   if (budget.used >= budget.max) throw new CallBudgetError(`call budget ${budget.max} reached`);
   if (onBeforeCall) await onBeforeCall();
   budget.used++;
   const t0 = Date.now();
   const res = await fetchImpl(`${API}/${encodeURIComponent(model)}:generateContent`, {
     method: "POST",
+    signal: AbortSignal.timeout(timeoutMs),
     headers: { "content-type": "application/json", "x-goog-api-key": apiKey },
     body: JSON.stringify({
       systemInstruction: { parts: [{ text: system }] },
@@ -146,13 +157,13 @@ export async function callGemini({ fetchImpl, apiKey, model, system, user, schem
     }),
   });
   const ms = Date.now() - t0;
-  const body = await res.json().catch(() => ({}));
+  const body = await res.json().catch((e) => { if (e?.name === "AbortError" || e?.name === "TimeoutError") throw e; return {}; });
   const status = body?.error?.status;
   const msg = String(body?.error?.message ?? "");
   const quota = res.status === 429 || status === "RESOURCE_EXHAUSTED";
   if (res.status === 402 || status === "PAYMENT_REQUIRED" || (!quota && (BILLING_RE.test(msg) || BILLING_RE.test(JSON.stringify(body?.error?.details ?? ""))))) throw new BillingError(`billing/paid requirement: HTTP ${res.status} ${status ?? ""} ${msg}`.trim());
   if (quota) throw new QuotaError(`quota/rate limit: HTTP ${res.status} ${status ?? ""} ${body?.error?.message ?? ""}`.trim());
-  if (res.status >= 500 || status === "UNAVAILABLE" || /high demand|overloaded/i.test(msg)) throw new ProviderUnavailableError(`provider unavailable: HTTP ${res.status} ${status ?? ""}`.trim());
+  if (res.status >= 500 || status === "UNAVAILABLE" || /high demand|overloaded/i.test(msg)) throw Object.assign(new ProviderUnavailableError(`provider unavailable: HTTP ${res.status} ${status ?? ""}`.trim()), { httpStatus: res.status });
   if (!res.ok) throw new Error(`Gemini HTTP ${res.status} ${status ?? ""}: ${body?.error?.message ?? "error"}`);
   const text = body?.candidates?.[0]?.content?.parts?.map((/** @type {any} */ p) => p.text ?? "").join("") ?? "";
   let json;
@@ -234,6 +245,23 @@ async function ingestCandidate({ fetchImpl, s, r, curated, fetched, skipTitleMat
   } catch (e) { r.problems.push(`fetch failed: ${e instanceof Error ? e.message : e}`); }
 }
 
+/** Fetch at most three pages concurrently; commit sources/ids in input order, not completion order. */
+async function ingestBatch(candidates, args) {
+  const records = [];
+  for (let start = 0; start < candidates.length; start += 3) {
+    const batch = await Promise.all(candidates.slice(start, start + 3).map(async (s) => {
+      const r = { url: s.url, problems: [], status: 0, blocked: false, chars: 0, ...(s.fallback ? { fallback: true } : {}) };
+      const fetched = [];
+      const began = Date.now();
+      await ingestCandidate({ ...args, s, r, fetched });
+      r.ms = Date.now() - began;
+      return { r, fetched };
+    }));
+    records.push(...batch);
+  }
+  return records;
+}
+
 /**
  * Step 1 of grounded generation: fetch every allowed candidate (curated + allowlisted extras) EXCEPT blocked sites.
  * Checks: HTTPS, allowlist/curated, HTTP 200, not a challenge/empty page, title match (curated/extras).
@@ -249,12 +277,14 @@ export async function fetchCandidateSources({ fetchImpl, lesson, extra = [], top
   /** @type {{ id: string, url: string, title: string, publisher: string, text: string, curated: boolean, fallback?: boolean }[]} */
   const fetched = [];
   const tried = new Set();
-  for (const s of cands) {
-    const r = { url: s.url, problems: /** @type {string[]} */ ([]), status: 0, blocked: false, chars: 0 };
-    results.push(r);
-    tried.add(s.url);
-    await ingestCandidate({ fetchImpl, s, r, curated, fetched, skipTitleMatch: false });
-  }
+  const append = (records) => {
+    for (const { r, fetched: added } of records) {
+      results.push(r);
+      tried.add(r.url);
+      for (const f of added) fetched.push({ ...f, id: `S${fetched.length + 1}` });
+    }
+  };
+  append(await ingestBatch(cands, { fetchImpl, curated, skipTitleMatch: false }));
   let problems = sourceTierProblems(fetched.map((f) => ({ url: f.url, curated: f.curated })));
   /** @type {any} */
   let fallback = null;
@@ -263,15 +293,9 @@ export async function fetchCandidateSources({ fetchImpl, lesson, extra = [], top
       const found = await discover({ fetchImpl, topic, lesson, choice });
       const discovered = Array.isArray(found?.candidates) ? found.candidates : [];
       fallback = { attempted: true, queries: found?.queries ?? [], added: [] };
-      for (const s of discovered) {
-        if (tried.has(s.url)) continue;
-        const r = { url: s.url, problems: /** @type {string[]} */ ([]), status: 0, blocked: false, chars: 0, fallback: true };
-        results.push(r);
-        tried.add(s.url);
-        const before = fetched.length;
-        await ingestCandidate({ fetchImpl, s: { ...s, fallback: true }, r, curated, fetched, skipTitleMatch: true });
-        if (fetched.length > before) fallback.added.push({ url: s.url, publisher: s.publisher, title: s.title });
-      }
+      const records = await ingestBatch(discovered.filter((s) => !tried.has(s.url)).map((s) => ({ ...s, fallback: true })), { fetchImpl, curated, skipTitleMatch: true });
+      append(records);
+      fallback.added = records.flatMap(({ fetched }) => fetched.map(({ url, publisher, title }) => ({ url, publisher, title })));
     } catch (e) {
       fallback = { attempted: true, queries: fallback?.queries ?? [], added: [], error: e instanceof Error ? e.message : String(e) };
     }
@@ -416,32 +440,52 @@ export function extraCandidates(list) {
  */
 export const runGeneration = (/** @type {any} */ a) => runPrototype(a);
 
-export async function runPrototype({ disciplines, lessonId, choiceId, apiKey, model = DEFAULT_MODEL, fetchImpl = fetch, log = () => {}, extra = [], onBeforeCall = undefined, discover = undefined }) {
+export async function runPrototype({ disciplines, lessonId, choiceId, apiKey, model = DEFAULT_MODEL, fetchImpl = fetch, log = () => {}, extra = [], onBeforeCall = undefined, discover = undefined, limits = GENERATION_LIMITS }) {
+  const started = Date.now();
+  const totalSignal = AbortSignal.timeout(limits.totalMs);
+  fetchImpl = deadlineFetch(fetchImpl, totalSignal);
   const ctx = findLessonChoice(disciplines, lessonId, choiceId);
   const cands = extraCandidates(extra);
   const budget = { used: 0, max: DRILLDOWN_CAPS.callsPerLessonMax };
   const report = { lessonId, choiceId, model, promptVersion: PROMPT_VERSION, at: new Date().toISOString(), calls: /** @type {any[]} */ ([]),
     attempts: /** @type {any[]} */ ([]), generated: /** @type {any} */ (null), verdict: "rejected", flag: /** @type {any} */ (null),
     stoppedOn: /** @type {string|null} */ (null), fallback: /** @type {any} */ (null), billingStop: false,
-    sourceFetch: /** @type {any} */ (null), citations: /** @type {any} */ (null), stopError: /** @type {any} */ (null) };
-  const pre = await fetchCandidateSources({ fetchImpl, lesson: ctx.lesson, extra: cands, topic: ctx.topic, choice: ctx.choice, ...(discover !== undefined ? { discover } : {}) });
+    timings: { sourceMs: 0, totalMs: 0 }, callEvents: /** @type {any[]} */ ([]), phase: "source_fetch", sourceFetch: /** @type {any} */ (null), citations: /** @type {any} */ (null), stopError: /** @type {any} */ (null) };
+  const sourceSignal = AbortSignal.timeout(limits.sourcesMs);
+  const pre = await fetchCandidateSources({ fetchImpl: deadlineFetch(fetchImpl, sourceSignal), lesson: ctx.lesson, extra: cands, topic: ctx.topic, choice: ctx.choice, ...(discover !== undefined ? { discover } : {}) });
+  report.timings.sourceMs = Date.now() - started;
+  report.timings.totalMs = Date.now() - started;
   report.sourceFetch = { results: pre.results, usable: pre.fetched.map((f) => ({ id: f.id, url: f.url, chars: f.text.length, fallback: Boolean(f.fallback) })), problems: pre.problems, fallback: pre.fallback };
   log(`fetched: ${pre.results.map((r) => `${r.blocked ? "blocked" : r.status || "-"} ${r.url}`).join(", ")}`);
+  if (totalSignal.aborted || (sourceSignal.aborted && pre.problems.length)) { report.stoppedOn = "generation timeout"; return report; }
   if (pre.problems.length) { report.stoppedOn = `no usable fetched sources: ${pre.problems.join("; ")}`; return report; }
   const fetched = pre.fetched;
   const { system, user } = buildPrompt(ctx, fetched);
   const left = () => budget.max - budget.used;
   const state = { model };
   /** Call the current model; on 503 / high demand from the primary, switch once to the free-tier fallback (counts against the cap). */
-  const call = async (/** @type {any} */ args) => {
-    try { return await callGemini({ ...args, model: state.model, onBeforeCall }); }
+  const invoke = async (args) => {
+    totalSignal.throwIfAborted();
+    const began = Date.now(), before = budget.used;
+    try {
+      const result = await callGemini({ ...args, model: state.model, onBeforeCall, timeoutMs: limits.modelMs });
+      report.callEvents.push({ kind: report.phase, model: state.model, ms: Date.now() - began, outcome: "ok" });
+      return result;
+    } catch (e) {
+      // Never log provider bodies, prompts, API keys, or user ids. Failed calls consume quota too.
+      if (budget.used > before) report.callEvents.push({ kind: report.phase, model: state.model, ms: Date.now() - began, httpStatus: e?.httpStatus ?? null, outcome: e instanceof ProviderUnavailableError ? "provider_unavailable" : e instanceof QuotaError ? "provider_quota" : e instanceof BillingError ? "billing_stop" : e?.name === "TimeoutError" || e?.name === "AbortError" ? "timeout" : "error" });
+      throw e;
+    }
+  };
+  const call = async (args) => {
+    try { return await invoke(args); }
     catch (e) {
-      if (!(e instanceof ProviderUnavailableError) || state.model !== DEFAULT_MODEL || left() < 1) throw e;
+      if (!(e instanceof ProviderUnavailableError) || state.model !== DEFAULT_MODEL || left() < 1 || totalSignal.aborted) throw e;
       log(`${state.model} unavailable (${e.message}); falling back to ${FALLBACK_MODEL}`);
       report.fallback = { from: state.model, to: FALLBACK_MODEL, reason: e.message };
       state.model = FALLBACK_MODEL;
       report.model = FALLBACK_MODEL;
-      return await callGemini({ ...args, model: state.model, onBeforeCall });
+      return await invoke(args);
     }
   };
   try {
@@ -454,6 +498,7 @@ export async function runPrototype({ disciplines, lessonId, choiceId, apiKey, mo
       let norm = null;
       // Generate; retry once on schema failure only while a fact-check call still fits.
       while (left() >= 2) {
+        report.phase = "generate";
         const r = await call({ fetchImpl, apiKey, system, user, schema: LESSON_SCHEMA, budget });
         report.calls.push({ kind: "generate", model: state.model, ms: r.ms, usage: r.usage, finishReason: r.finishReason, modelVersion: r.modelVersion });
         norm = normalizeLesson(r.json, fetched);
@@ -471,6 +516,7 @@ export async function runPrototype({ disciplines, lessonId, choiceId, apiKey, mo
       log(`cited: ${generated.sources.map((/** @type {any} */ x) => x.url).join(", ")}; ${at.sourceProblems.length} source problem(s); fact-check text ${fcText.length} chars`);
       if (at.sourceProblems.length || at.contentProblems.length || !fcText) { at.factCheck = { skipped: "source/content checks failed" }; continue; }
       const fc = buildFactCheckPrompt(generated, fcText, norm.citations);
+      report.phase = "factcheck";
       const r = await call({ fetchImpl, apiKey, system: fc.system, user: fc.user, schema: FACTCHECK_SCHEMA, budget });
       report.calls.push({ kind: "factcheck", model: state.model, ms: r.ms, usage: r.usage, finishReason: r.finishReason, modelVersion: r.modelVersion });
       const items = Array.isArray(r.json?.items) ? r.json.items : [];
@@ -488,11 +534,13 @@ export async function runPrototype({ disciplines, lessonId, choiceId, apiKey, mo
     }
     if (report.verdict === "rejected" && left() < 2) report.stoppedOn = `call cap reached (${budget.used}/${budget.max}); failing gracefully`;
   } catch (e) {
-    if (e instanceof BillingError) { report.stoppedOn = e.message; report.billingStop = true; }
+    if (totalSignal.aborted || e?.name === "TimeoutError" || e?.name === "AbortError") report.stoppedOn = "generation timeout";
+    else if (e instanceof BillingError) { report.stoppedOn = e.message; report.billingStop = true; }
     else if (e instanceof QuotaError || e instanceof CallBudgetError || e instanceof ProviderUnavailableError) report.stoppedOn = e.message;
     else if (e && typeof e === "object" && "stopKind" in e) { report.stoppedOn = String(/** @type {any} */ (e).stopKind); report.stopError = e; }
     else throw e;
   }
+  report.timings.totalMs = Date.now() - started;
   return report;
 }
 

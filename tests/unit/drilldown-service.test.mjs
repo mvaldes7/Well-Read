@@ -363,3 +363,17 @@ test('route passes releaseLesson to the service', () => {
   const route = readFileSync(new URL('../../src/app/api/drilldowns/route.ts', import.meta.url), 'utf8');
   assert.match(route, /db: \{ reserve, releaseLesson, saveLesson, saveFactCheck \}/);
 });
+
+test('deadline response is distinct from provider busy, releases lesson slot, and does not save a draft', async () => {
+  const s = setup({ generate: async ({ onBeforeCall }) => {
+    await onBeforeCall();
+    return { verdict: 'rejected', stoppedOn: 'generation timeout', generated: null };
+  } });
+  const r = await s.run();
+  assert.equal(r.status, 504);
+  assert.equal(r.body.code, 'generation_timeout');
+  assert.match(r.body.message, /took too long/);
+  assert.deepEqual(s.db.releases, [USER]);
+  assert.equal(s.db.saves.length, 0);
+  assert.deepEqual(s.db.reserves.map(([, c, n]) => [c, n]), [[0, true], [1, false]]);
+});
