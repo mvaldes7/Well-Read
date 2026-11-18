@@ -3868,11 +3868,11 @@
               },
               {
                 "heading": "The conflict in Marbury v. Madison",
-                "body": "Marbury v. Madison, decided in 1803, became the landmark Supreme Court case establishing judicial review. William Marbury sought delivery of his commission, an official document associated with his appointment, and asked the Supreme Court to order James Madison to provide it.\n\nThe requested order was a writ of mandamus: a legal command directing an official to perform a duty. The case raised a crucial preliminary issue. Could the Supreme Court issue that order in a case brought directly before it, rather than through an appeal?\n\nThat question concerned jurisdiction, meaning a court's legal authority to hear and decide a matter. Before a court can provide a remedy, it must have authority to act. Recognizing that distinction helps explain why a case can turn on the court's powers rather than only on the claimant's grievance."
+                "body": "Marbury v. Madison, decided in 1803, became the landmark Supreme Court case establishing judicial review. William Marbury received a judicial appointment from President John Adams, but his commission was not delivered before the administration changed and Thomas Jefferson became president. He asked the Supreme Court to order James Madison, in the new administration, to provide it.\n\nThe requested order was a writ of mandamus: a legal command directing an official to perform a duty. The case raised a crucial preliminary issue. Could the Supreme Court issue that order in a case brought directly before it, rather than through an appeal?\n\nThat question concerned jurisdiction, meaning a court's legal authority to hear and decide a matter. Before a court can provide a remedy, it must have authority to act. A valid claim does not, by itself, settle jurisdiction: whether someone has suffered a legal wrong and whether a particular court may supply the requested remedy are separate questions."
               },
               {
                 "heading": "A statute could not enlarge the Constitution",
-                "body": "The Court read a provision of the Judiciary Act of 1789 as authorizing the requested exercise of original jurisdiction. Original jurisdiction concerns cases beginning in a court; appellate jurisdiction concerns review of decisions from other courts. These are different routes by which a dispute can reach a court.\n\nThe justices concluded that the Constitution did not permit original jurisdiction in this matter. Congress could not use an ordinary statute to enlarge the Supreme Court's constitutionally defined original jurisdiction. The conflict therefore was not solved by treating the newer statute as superior.\n\nChief Justice John Marshall's opinion treated the Constitution as higher law. When a congressional enactment conflicted with it, the Constitution controlled. The Court did not issue the requested order, and it struck down the conflicting statutory provision rather than invalidating the entire Judiciary Act."
+                "body": "The Court read a provision of the Judiciary Act of 1789 as authorizing the requested exercise of original jurisdiction. Original jurisdiction concerns cases beginning in a court; appellate jurisdiction concerns review of decisions from other courts. These are different routes by which a dispute can reach a court.\n\nThe justices concluded that the Constitution did not permit original jurisdiction in this matter. Article III specifies the Supreme Court's original jurisdiction, and Congress could not use an ordinary statute to enlarge it. The conflict therefore was not solved by treating the newer statute as superior.\n\nChief Justice John Marshall's opinion treated the Constitution as higher law. When a congressional enactment conflicted with it, the Constitution controlled. The Court did not issue the requested order, and it struck down the conflicting statutory provision rather than invalidating the entire Judiciary Act."
               },
               {
                 "heading": "Power exercised through a limit",
@@ -3884,7 +3884,7 @@
               "Marbury v. Madison was decided in 1803.",
               "John Marshall delivered the Court’s opinion.",
               "A writ of mandamus orders an official to perform a duty.",
-              "Original and appellate jurisdiction are distinct.",
+              "Article III specifies the Supreme Court’s original jurisdiction, which is distinct from appellate jurisdiction.",
               "The Court held that a conflicting statutory provision could not override the Constitution."
             ],
             "quiz": [
@@ -3970,130 +3970,7 @@
                 "publisher": "United States Courts",
                 "title": "The Enduring Legacy of Marbury v. Madison (1803)",
                 "url": "https://www.uscourts.gov/file/judicial-reviewpdf-0"
-              }
-            ],
-            "digDeeper": [
-              {
-                "id": "john-marshall",
-                "label": "John Marshall",
-                "kind": "person"
               },
-              {
-                "id": "judiciary-act-of-1789",
-                "label": "The Judiciary Act of 1789",
-                "kind": "event"
-              },
-              {
-                "id": "constitutional-supremacy",
-                "label": "Constitutional supremacy",
-                "kind": "idea"
-              },
-              {
-                "id": "original-vs-appellate-jurisdiction",
-                "label": "Original vs. appellate jurisdiction",
-                "kind": "subtopic"
-              }
-            ]
-          },
-          {
-            "id": "les_jr02",
-            "slug": "why-courts-can-reject-an-unconstitutional-law",
-            "title": "Marbury v. Madison: Why Courts Can Reject an Unconstitutional Law",
-            "sections": [
-              {
-                "heading": "An appointment dispute raised a larger issue",
-                "body": "William Marbury received a judicial appointment from President John Adams, but his commission was not delivered before the administration changed. Marbury asked the Supreme Court to order the new administration to deliver it. The case was decided in 1803.\n\nThe immediate dispute concerned an appointment. The lasting constitutional issue concerned courts’ authority when legislation conflicts with the Constitution."
-              },
-              {
-                "heading": "A valid claim does not settle jurisdiction",
-                "body": "Marbury sought a writ of mandamus: an order requiring a public official to perform a duty. Chief Justice John Marshall concluded that the Court could not grant the requested order because the statutory provision authorizing it improperly expanded the Supreme Court’s original jurisdiction.\n\nOriginal jurisdiction concerns cases that begin in a court, rather than arrive through an appeal. Article III specifies the Supreme Court’s original jurisdiction; Congress could not enlarge it through ordinary legislation in the manner the Court identified here.\n\nWhether someone has suffered a legal wrong and whether a particular court has authority to supply the requested remedy are separate questions."
-              },
-              {
-                "heading": "The Constitution takes priority",
-                "body": "Marshall’s reasoning defended judicial review: the power of courts to reject legislation that violates the Constitution. Marbury v. Madison was the first case in which the Supreme Court invalidated a law passed by Congress.\n\nThe Constitution does not expressly give federal courts this power in those words. The decision articulated its constitutional basis through the courts’ responsibility to decide cases under a superior, binding Constitution."
-              },
-              {
-                "heading": "An immediate limit and lasting authority",
-                "body": "Marbury did not receive the order he requested. Yet the Court’s refusal asserted an enduring institutional power: it could hold an act of Congress unconstitutional.\n\nThe case is therefore more subtle than “the Court gave itself more power.” In the immediate dispute, it denied that it possessed jurisdiction to act; in explaining why, it established a major basis for reviewing legislative power."
-              }
-            ],
-            "keyFacts": [
-              "The decision came in 1803.",
-              "John Marshall wrote the Court’s opinion.",
-              "Marbury did not obtain his requested order.",
-              "The decision was the Supreme Court’s first invalidation of a federal statute.",
-              "Original jurisdiction concerns cases that begin in a court rather than arrive through an appeal.",
-              "Judicial review concerns conflict with the Constitution, not mere policy disagreement."
-            ],
-            "quiz": [
-              {
-                "question": "Did Marbury obtain the order requiring delivery of his commission?",
-                "options": [
-                  "Yes. The Court ordered the new administration to deliver it",
-                  "Yes, but only after the case arrived on appeal",
-                  "No",
-                  "The Court declined to decide the dispute at all"
-                ],
-                "answerIndex": 2,
-                "explanation": "Marbury did not receive the order he requested."
-              },
-              {
-                "question": "Why did the Court reject the relevant statutory provision?",
-                "options": [
-                  "It concluded that the provision expanded the Supreme Court’s original jurisdiction beyond constitutional limits",
-                  "It considered the statute unwise as a matter of policy",
-                  "It held that Marbury had no legal claim at all",
-                  "It ruled that Congress may never pass laws about the courts"
-                ],
-                "answerIndex": 0,
-                "explanation": "Marshall concluded that the statutory provision authorizing the order improperly expanded the Supreme Court’s original jurisdiction."
-              },
-              {
-                "question": "Does judicial review mean a court can reject legislation merely because it considers it unwise?",
-                "options": [
-                  "Yes. Unwise policy is enough to invalidate a statute",
-                  "Yes, but only when the president agrees",
-                  "No. Courts may reject statutes only when Congress asks them to",
-                  "No. The principle at issue is conflict with the Constitution, not simple policy disagreement"
-                ],
-                "answerIndex": 3,
-                "explanation": "The principle at issue is conflict with the Constitution, not simple policy disagreement."
-              },
-              {
-                "question": "When was Marbury v. Madison decided?",
-                "options": [
-                  "1789",
-                  "1803",
-                  "1865",
-                  "1954"
-                ],
-                "answerIndex": 1,
-                "explanation": "The case was decided in 1803."
-              },
-              {
-                "question": "Who wrote the Court’s opinion?",
-                "options": [
-                  "William Marbury",
-                  "President John Adams",
-                  "Chief Justice John Marshall",
-                  "James Madison, as the new administration’s representative"
-                ],
-                "answerIndex": 2,
-                "explanation": "John Marshall wrote the Court’s opinion."
-              },
-              {
-                "question": "Why is the result more subtle than “the Court gave itself more power”?",
-                "options": [
-                  "The Court issued every remedy Marbury requested",
-                  "The Court denied that it had jurisdiction to issue the order, and in explaining why, it established a basis for reviewing legislation",
-                  "The Court held that Congress is superior to the Constitution",
-                  "The Court refused to discuss judicial review at all"
-                ],
-                "answerIndex": 1,
-                "explanation": "In the immediate dispute, the Court denied that it possessed jurisdiction to act; in explaining why, it established a major basis for reviewing legislative power."
-              }
-            ],
-            "sources": [
               {
                 "publisher": "National Constitution Center",
                 "title": "Marbury v. Madison",
@@ -4117,23 +3994,23 @@
             ],
             "digDeeper": [
               {
-                "id": "william-marbury",
-                "label": "William Marbury",
-                "kind": "person"
-              },
-              {
                 "id": "john-marshall",
                 "label": "John Marshall",
                 "kind": "person"
               },
               {
-                "id": "writ-of-mandamus",
-                "label": "Writ of mandamus",
+                "id": "judiciary-act-of-1789",
+                "label": "The Judiciary Act of 1789",
+                "kind": "event"
+              },
+              {
+                "id": "constitutional-supremacy",
+                "label": "Constitutional supremacy",
                 "kind": "idea"
               },
               {
-                "id": "article-iii-original-jurisdiction",
-                "label": "Article III and original jurisdiction",
+                "id": "original-vs-appellate-jurisdiction",
+                "label": "Original vs. appellate jurisdiction",
                 "kind": "subtopic"
               }
             ]
