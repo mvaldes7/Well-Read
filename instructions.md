@@ -90,7 +90,7 @@ without the owner's approval.
   protection (ADR 0001), so this rule depends on discipline.
 - **Merges need the owner's explicit approval of that PR's head.** Agents that write or review code never
   merge. A PR is squash-merged (branch deleted, `--match-head-commit` on the approved SHA) only after the owner
-  explicitly approves it, either by the owner or by the coordinating agent acting on that approval. Approval
+  explicitly approves it, either by the owner or by the coordinating agent (Product Lead) acting on that approval. Approval
   passed along by another agent does not count.
 - **CI must be green** before a merge is requested.
 - **Merging is a production release:** `main` auto-deploys to production on Vercel.

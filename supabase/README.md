@@ -1,8 +1,9 @@
 # Supabase migrations
 
 Migrations live in `supabase/migrations/` as `<version>_<name>.sql`. The version is the
-timestamp the migration was recorded under on the Supabase project, and it must match the
-filename. Migrations are applied only through the normal process, with Mike's approval.
+timestamp the migration was recorded under on the Supabase project. It usually matches the
+filename, but several do not; see "Recorded versions that differ from filenames" below, and treat
+the project's migration history (`list_migrations`) as the source of truth. Migrations are applied only through the normal process, with Mike's approval.
 App code never applies them and never uses the service role.
 
 ## Applied migrations
