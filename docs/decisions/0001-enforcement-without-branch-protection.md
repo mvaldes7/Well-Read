@@ -39,3 +39,9 @@ implementation task" and "at most two repair attempts per failure" to hold.
   by the ledger or CI.
 - Revisit if the repo moves to GitHub Pro or an org plan: enable branch protection
   on `main` with the `checks` status required.
+
+## Amendment (2026-11-17)
+
+In practice, the coordinating agent (Product Lead) runs the squash merge after Mike explicitly approves that PR's
+head SHA. Agents that write or review code still never merge, and an approval relayed by another agent does not
+count. The current rule is in `instructions.md` (section 4).

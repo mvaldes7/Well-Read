@@ -1,8 +1,8 @@
 # Architecture: Well-Read
 
-Stack (as of TSK-011). Display name: **Well-Read** (TSK-013); the repo is github.com/mvaldes7/Well-Read and the Vercel project is `well-read`; production is https://well-read-learn.vercel.app.
+Stack (updated 2026-11-17; repo rules for contributors and AI tools are in `instructions.md`). Display name: **Well-Read** (TSK-013); the repo is github.com/mvaldes7/Well-Read and the Vercel project is `well-read`; production is https://well-read-learn.vercel.app.
 
-- **Framework:** Next.js 16.4.0 (App Router, Turbopack), React 19.3.0, source in `src/app/`.
+- **Framework:** Next.js 16.4.5 (App Router, Turbopack), React 19.3.0, source in `src/app/`.
 - **Language:** TypeScript 5.x, `strict: true` (`tsconfig.json`), import alias `@/*` → `src/*`.
 - **Runtime:** Node.js 24 (`engines.node: "24.x"`, `.nvmrc`). CI uses Node 24; Vercel picks the major from
   `engines.node` (overriding the project setting). `@types/node` ^24. `pnpm test` passes test files explicitly
@@ -20,7 +20,7 @@ Stack (as of TSK-011). Display name: **Well-Read** (TSK-013); the repo is github
   Bounds are measured from mockup C2: 60-74px wide, 250-286px tall in a 340px case (310px on mobile, same px).
   The header nav is in the static shell (client `MainNav`, no auth data); only the email + sign-out stream in.
   Focus rings are gold: `--ring` on light surfaces, `--ring-on-dark` on the header, cases and placard.
-- **Next config:** create-next-app 16.4.0 defaults (`cacheComponents`, `partialPrefetching`) plus `agentRules: false` so `next dev` does not generate `AGENTS.md`.
+- **Next config:** create-next-app 16.4 defaults (`cacheComponents`, `partialPrefetching`) plus `agentRules: false` so `next dev` does not generate `AGENTS.md`.
 - **Content (TSK-003):** seed lessons in `src/content/disciplines.json`, types in `src/content/schema.ts`,
   and a loader in `src/content/index.ts` that checks the JSON at runtime and narrows it to those types
   (a bad seed file fails `next build`). The JSON is also read directly by `tests/unit/content.test.mjs`.
@@ -162,6 +162,14 @@ Stack (as of TSK-011). Display name: **Well-Read** (TSK-013); the repo is github
   - Rules: min 8 characters, max 72 bytes (bcrypt), must match.
 - **Tooling outside the app:** `scripts/ledger.mjs` (zero-dependency task ledger CLI) with `node:test` unit tests in `tests/unit/`.
 - **CI:** GitHub Actions, single job `checks` (`.github/workflows/ci.yml`).
-- **Not yet decided/added:** database, auth, hosting/deployment, E2E tests.
+- **Database and auth:** Supabase (Postgres with RLS, email/password auth). Migrations and their recorded versions:
+  `supabase/README.md`. Vercel Preview deployments use the same production Supabase project as the live site.
+- **Hosting:** Vercel (Hobby), project `well-read`; `main` auto-deploys to production, and each PR gets a preview.
+  Migrations do not run on deploy.
+- **Scheduled jobs:** GitHub Actions `lesson-reminders.yml` sends the daily lesson reminder (see
+  `docs/lesson-reminders.md`).
+- **Dig deeper (AI lessons):** Gemini free tier, server-side only, behind `WELL_READ_DRILLDOWNS` (on in production
+  since 2026-11-04). Design, caps and phases: `docs/plans/topic-drilldowns.md`.
+- **Not added yet:** E2E tests.
 
 See `docs/decisions/` for ADRs.
