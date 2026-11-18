@@ -866,10 +866,10 @@
         ]
       },
       {
-        "slug": "silk-roads",
-        "title": "The Silk Roads",
+        "slug": "trade-and-exchange-networks",
+        "title": "Trade and Exchange Networks",
         "kind": "network",
-        "summary": "Overlapping land and maritime routes carried goods, travelers, religious traditions, and knowledge between connected societies.",
+        "summary": "Long-distance routes carried goods, people, texts, and ideas: the Silk Roads, trans-Saharan commerce, and the movement of learning into Arabic all connected distant societies.",
         "lessons": [
           {
             "id": "les_sr01",
@@ -1001,6 +1001,277 @@
                 "id": "pilgrim-travel-accounts",
                 "label": "Pilgrims’ travel accounts",
                 "kind": "idea"
+              }
+            ]
+          },
+          {
+            "id": "les_ig01",
+            "slug": "the-abbasid-translation-movement",
+            "title": "The Abbasid Translation Movement: Knowledge Across Languages",
+            "sections": [
+              {
+                "heading": "Intellectual traditions depend on exchange",
+                "body": "During the Abbasid period, scholars translated works associated with Greek, Persian, and Indian learning into Arabic. Baghdad was an important setting, but sponsored libraries and scholarship also existed in other centers.\n\nTexts moved across political, linguistic, and religious boundaries, making earlier bodies of learning accessible to new readers. Knowledge did not remain inside one civilization."
+              },
+              {
+                "heading": "Translation could involve intermediate languages",
+                "body": "Some Greek works reached Arabic through Syriac translations. Eastern Christian scholars played an important role in this transmission, linking multiple linguistic traditions.\n\nThe simplified chain—Greek text → Syriac version → Arabic version—helps explain why a text’s later audience might depend on several generations of translators. It describes an important route, not a universal route followed by every work."
+              },
+              {
+                "heading": "Libraries and patronage mattered",
+                "body": "Knowledge does not circulate through intellectual interest alone. The Abbasid setting included sponsored libraries that collected and supported access to texts. Such institutions helped make translation part of sustained scholarly activity rather than merely isolated individual effort.\n\nAs a learning analogy, an educational project needs more than an author: it also needs materials, funding, editors, and a way to reach readers. This illustrates why institutional support matters without making a medieval library identical to a modern university."
+              },
+              {
+                "heading": "Be careful with the House of Wisdom story",
+                "body": "Popular accounts often make Baghdad’s House of Wisdom sound like the single headquarters of the entire translation movement. The evidence requires more caution. It was associated with a royal library and translation activity, especially involving Persian materials, but its precise role—and particularly claims that it organized Greek-to-Arabic translation—is disputed.\n\nThe safer historical picture is a wider network of translators, patrons, libraries, and scholarly communities. One memorable institution should not replace the larger system in our explanation."
+              }
+            ],
+            "keyFacts": [
+              "Abbasid-era translation brought several intellectual traditions into Arabic.",
+              "Syriac served as an intermediary for some Greek texts.",
+              "Christian scholars contributed to transmission.",
+              "The wider movement should not be equated with one institution.",
+              "Baghdad was an important setting, but sponsored libraries and scholarship also existed in other centers.",
+              "Patronage and libraries helped make translation part of sustained scholarly activity."
+            ],
+            "quiz": [
+              {
+                "question": "Did all Greek texts move directly from Greek into Arabic?",
+                "options": [
+                  "Yes. Every work was translated in a single step",
+                  "No. Some passed through Syriac",
+                  "Yes, except for poetry",
+                  "No. Greek texts were never translated into Arabic"
+                ],
+                "answerIndex": 1,
+                "explanation": "Some Greek works reached Arabic through Syriac translations, though that was an important route rather than a universal one."
+              },
+              {
+                "question": "Why does the participation of Christian translators matter?",
+                "options": [
+                  "It shows that only Christians produced original scientific work",
+                  "It shows that translation occurred only in Europe",
+                  "It shows that intellectual exchange crossed religious as well as linguistic boundaries",
+                  "It shows that Arabic was not used in scholarship"
+                ],
+                "answerIndex": 2,
+                "explanation": "Eastern Christian scholars played an important role in transmission, so intellectual exchange crossed religious as well as linguistic boundaries."
+              },
+              {
+                "question": "What is wrong with calling the House of Wisdom the undisputed headquarters of all translation?",
+                "options": [
+                  "It overstates a disputed institutional role and hides the wider network supporting scholarship",
+                  "The House of Wisdom never existed in any form",
+                  "The House of Wisdom was in Mecca, not Baghdad",
+                  "Translation did not occur during the Abbasid period"
+                ],
+                "answerIndex": 0,
+                "explanation": "Its precise role is disputed, and the safer picture is a wider network of translators, patrons, libraries, and scholarly communities."
+              },
+              {
+                "question": "Which intellectual traditions were brought into Arabic in the translation movement described here?",
+                "options": [
+                  "Only Roman law",
+                  "Greek, Persian, and Indian learning",
+                  "Only Chinese chronicles",
+                  "Only West African oral epics"
+                ],
+                "answerIndex": 1,
+                "explanation": "Scholars translated works associated with Greek, Persian, and Indian learning into Arabic."
+              },
+              {
+                "question": "Why do libraries and patronage matter in this account?",
+                "options": [
+                  "They prove that one building organized every translation",
+                  "They show that translation happened without any institutional support",
+                  "They helped make translation part of sustained scholarly activity rather than isolated individual effort",
+                  "They replaced the need for translators"
+                ],
+                "answerIndex": 2,
+                "explanation": "Knowledge does not circulate through intellectual interest alone; sponsored libraries and patronage supported sustained scholarly activity."
+              },
+              {
+                "question": "What safer picture should replace treating one institution as the movement’s single headquarters?",
+                "options": [
+                  "A wider network of translators, patrons, libraries, and scholarly communities",
+                  "A single official list of approved Greek authors",
+                  "A story in which knowledge never crossed linguistic boundaries",
+                  "The claim that Baghdad had no libraries"
+                ],
+                "answerIndex": 0,
+                "explanation": "One memorable institution should not replace the larger system in our explanation."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Stanford University",
+                "title": "The Translation Movements of Islamic Learning",
+                "url": "https://intellectualproperties.stanford.edu/sites/g/files/sbiybj24701/files/media/file/6._islamic_learning_0.pdf"
+              },
+              {
+                "publisher": "History of Information",
+                "title": "Foundation of the House of Wisdom in Baghdad",
+                "url": "https://www.historyofinformation.com/detail.php?id=1583"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "baghdad",
+                "label": "Baghdad",
+                "kind": "place"
+              },
+              {
+                "id": "syriac-translations",
+                "label": "Syriac as an intermediary",
+                "kind": "subtopic"
+              },
+              {
+                "id": "house-of-wisdom",
+                "label": "The House of Wisdom",
+                "kind": "place"
+              },
+              {
+                "id": "abbasid-patronage",
+                "label": "Libraries and patronage",
+                "kind": "idea"
+              }
+            ]
+          },
+          {
+            "id": "les_ml01",
+            "slug": "how-trade-supported-an-empire",
+            "title": "Mali and Mansa Musa: How Trade Supported an Empire",
+            "sections": [
+              {
+                "heading": "Look beyond the wealthy ruler",
+                "body": "Mansa Musa is famous for his wealth, but that wealth becomes more understandable within the Mali Empire’s trading system. Mali drew much of its power from trans-Saharan trade linking western Africa with North Africa, especially commerce in gold and salt. Taxation of exchanged goods helped support imperial wealth.\n\nThe important relationship is not simply that a ruler possessed gold. Trade routes, valuable commodities, and the ability to collect revenue connected economic activity with political authority."
+              },
+              {
+                "heading": "Geography made connections possible",
+                "body": "Timbuktu’s position near the Sahara and with access to the Niger River helped connect transportation and trading networks. Its importance came partly from being a meeting point between regions rather than an isolated city with a single valuable resource.\n\nWhen studying a wealthy city, ask not only what it produces but also what passes through it, who trades there, and who benefits from those exchanges."
+              },
+              {
+                "heading": "A pilgrimage became an international demonstration",
+                "body": "In 1324, Mansa Musa undertook the hajj, the Muslim pilgrimage to Mecca. The extravagance of his journey publicized his wealth and Mali’s importance far beyond the empire.\n\nThe journey joined religious practice with political visibility. A pilgrimage undertaken by a powerful ruler could also communicate the scale of the resources available to him."
+              },
+              {
+                "heading": "Commerce and scholarship reinforced one another",
+                "body": "Mansa Musa supported scholarship and the arts, and Timbuktu developed as a significant commercial and Islamic intellectual center. Its connections with North African trading centers helped place it within wider networks of exchange.\n\nMali belongs in a history of scholarship and cross-regional connections as well as a history of wealth. Reducing the empire to its gold obscures the institutions and relationships through which that wealth mattered."
+              }
+            ],
+            "keyFacts": [
+              "Mali benefited from trans-Saharan trade.",
+              "Gold and salt were important commodities.",
+              "Mansa Musa undertook his celebrated pilgrimage in 1324.",
+              "Timbuktu became a center of commerce and Islamic learning.",
+              "Taxation of exchanged goods helped support imperial wealth.",
+              "The pilgrimage joined religious practice with political visibility."
+            ],
+            "quiz": [
+              {
+                "question": "Why is “Mali was wealthy because Mansa Musa was wealthy” incomplete?",
+                "options": [
+                  "Because Mansa Musa was not actually wealthy",
+                  "It leaves out trade routes, commodities, taxation, and the economic system supporting imperial power",
+                  "Because Mali had no political authority",
+                  "Because gold and salt were unimportant"
+                ],
+                "answerIndex": 1,
+                "explanation": "It leaves out trade routes, commodities, taxation, and the economic system supporting imperial power."
+              },
+              {
+                "question": "How did geography contribute to Timbuktu’s importance?",
+                "options": [
+                  "It was isolated from other regions, which protected a single resource",
+                  "It sat on the Mediterranean coast",
+                  "Its location connected Saharan trade with the Niger region",
+                  "It had no access to river transportation"
+                ],
+                "answerIndex": 2,
+                "explanation": "Timbuktu’s position near the Sahara and with access to the Niger River helped connect transportation and trading networks."
+              },
+              {
+                "question": "What did the pilgrimage communicate beyond religious devotion?",
+                "options": [
+                  "It made Mali’s resources and its ruler’s wealth visible to a wider world",
+                  "It ended trans-Saharan trade",
+                  "It moved the empire’s capital to Mecca",
+                  "It showed that Mali rejected connections beyond West Africa"
+                ],
+                "answerIndex": 0,
+                "explanation": "The extravagance of the 1324 hajj publicized Mansa Musa’s wealth and Mali’s importance far beyond the empire."
+              },
+              {
+                "question": "When did Mansa Musa undertake his celebrated pilgrimage?",
+                "options": [
+                  "1066",
+                  "1258",
+                  "1324",
+                  "1492"
+                ],
+                "answerIndex": 2,
+                "explanation": "In 1324, Mansa Musa undertook the hajj to Mecca."
+              },
+              {
+                "question": "Which commodities were especially important in the trans-Saharan trade described here?",
+                "options": [
+                  "Silk and spices",
+                  "Gold and salt",
+                  "Tea and porcelain",
+                  "Oil and rubber"
+                ],
+                "answerIndex": 1,
+                "explanation": "Mali drew much of its power from trans-Saharan commerce in gold and salt."
+              },
+              {
+                "question": "Why is reducing Mali to its gold an incomplete historical picture?",
+                "options": [
+                  "Because the empire had no cities",
+                  "Because Mansa Musa opposed scholarship",
+                  "Because trans-Saharan trade was unimportant",
+                  "It obscures the institutions, scholarship, and relationships through which that wealth mattered"
+                ],
+                "answerIndex": 3,
+                "explanation": "Timbuktu developed as a commercial and Islamic intellectual center, and Mali belongs in a history of scholarship and cross-regional connections as well as a history of wealth."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Mali",
+                "url": "https://www.britannica.com/place/Mali-historical-empire-Africa"
+              },
+              {
+                "publisher": "BBC Bitesize",
+                "title": "Mali and Mansa Musa",
+                "url": "https://www.bbc.co.uk/bitesize/articles/zjch6g8"
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Musa I of Mali",
+                "url": "https://www.britannica.com/biography/Musa-I-of-Mali"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "mansa-musa",
+                "label": "Mansa Musa",
+                "kind": "person"
+              },
+              {
+                "id": "timbuktu",
+                "label": "Timbuktu",
+                "kind": "place"
+              },
+              {
+                "id": "trans-saharan-trade",
+                "label": "Trans-Saharan trade",
+                "kind": "subtopic"
+              },
+              {
+                "id": "hajj-of-1324",
+                "label": "The hajj of 1324",
+                "kind": "event"
               }
             ]
           }
@@ -1156,293 +1427,6 @@
               {
                 "id": "education-system-order",
                 "label": "The Education System Order of 1872",
-                "kind": "event"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "slug": "islamic-golden-age",
-        "title": "The Islamic Golden Age",
-        "kind": "era",
-        "summary": "Translation, libraries, patronage, and multilingual scholarship brought Greek, Persian, and Indian learning into Arabic and supported a wider network of intellectual exchange.",
-        "lessons": [
-          {
-            "id": "les_ig01",
-            "slug": "the-abbasid-translation-movement",
-            "title": "The Abbasid Translation Movement: Knowledge Across Languages",
-            "sections": [
-              {
-                "heading": "Intellectual traditions depend on exchange",
-                "body": "During the Abbasid period, scholars translated works associated with Greek, Persian, and Indian learning into Arabic. Baghdad was an important setting, but sponsored libraries and scholarship also existed in other centers.\n\nTexts moved across political, linguistic, and religious boundaries, making earlier bodies of learning accessible to new readers. Knowledge did not remain inside one civilization."
-              },
-              {
-                "heading": "Translation could involve intermediate languages",
-                "body": "Some Greek works reached Arabic through Syriac translations. Eastern Christian scholars played an important role in this transmission, linking multiple linguistic traditions.\n\nThe simplified chain—Greek text → Syriac version → Arabic version—helps explain why a text’s later audience might depend on several generations of translators. It describes an important route, not a universal route followed by every work."
-              },
-              {
-                "heading": "Libraries and patronage mattered",
-                "body": "Knowledge does not circulate through intellectual interest alone. The Abbasid setting included sponsored libraries that collected and supported access to texts. Such institutions helped make translation part of sustained scholarly activity rather than merely isolated individual effort.\n\nAs a learning analogy, an educational project needs more than an author: it also needs materials, funding, editors, and a way to reach readers. This illustrates why institutional support matters without making a medieval library identical to a modern university."
-              },
-              {
-                "heading": "Be careful with the House of Wisdom story",
-                "body": "Popular accounts often make Baghdad’s House of Wisdom sound like the single headquarters of the entire translation movement. The evidence requires more caution. It was associated with a royal library and translation activity, especially involving Persian materials, but its precise role—and particularly claims that it organized Greek-to-Arabic translation—is disputed.\n\nThe safer historical picture is a wider network of translators, patrons, libraries, and scholarly communities. One memorable institution should not replace the larger system in our explanation."
-              }
-            ],
-            "keyFacts": [
-              "Abbasid-era translation brought several intellectual traditions into Arabic.",
-              "Syriac served as an intermediary for some Greek texts.",
-              "Christian scholars contributed to transmission.",
-              "The wider movement should not be equated with one institution.",
-              "Baghdad was an important setting, but sponsored libraries and scholarship also existed in other centers.",
-              "Patronage and libraries helped make translation part of sustained scholarly activity."
-            ],
-            "quiz": [
-              {
-                "question": "Did all Greek texts move directly from Greek into Arabic?",
-                "options": [
-                  "Yes. Every work was translated in a single step",
-                  "No. Some passed through Syriac",
-                  "Yes, except for poetry",
-                  "No. Greek texts were never translated into Arabic"
-                ],
-                "answerIndex": 1,
-                "explanation": "Some Greek works reached Arabic through Syriac translations, though that was an important route rather than a universal one."
-              },
-              {
-                "question": "Why does the participation of Christian translators matter?",
-                "options": [
-                  "It shows that only Christians produced original scientific work",
-                  "It shows that translation occurred only in Europe",
-                  "It shows that intellectual exchange crossed religious as well as linguistic boundaries",
-                  "It shows that Arabic was not used in scholarship"
-                ],
-                "answerIndex": 2,
-                "explanation": "Eastern Christian scholars played an important role in transmission, so intellectual exchange crossed religious as well as linguistic boundaries."
-              },
-              {
-                "question": "What is wrong with calling the House of Wisdom the undisputed headquarters of all translation?",
-                "options": [
-                  "It overstates a disputed institutional role and hides the wider network supporting scholarship",
-                  "The House of Wisdom never existed in any form",
-                  "The House of Wisdom was in Mecca, not Baghdad",
-                  "Translation did not occur during the Abbasid period"
-                ],
-                "answerIndex": 0,
-                "explanation": "Its precise role is disputed, and the safer picture is a wider network of translators, patrons, libraries, and scholarly communities."
-              },
-              {
-                "question": "Which intellectual traditions were brought into Arabic in the translation movement described here?",
-                "options": [
-                  "Only Roman law",
-                  "Greek, Persian, and Indian learning",
-                  "Only Chinese chronicles",
-                  "Only West African oral epics"
-                ],
-                "answerIndex": 1,
-                "explanation": "Scholars translated works associated with Greek, Persian, and Indian learning into Arabic."
-              },
-              {
-                "question": "Why do libraries and patronage matter in this account?",
-                "options": [
-                  "They prove that one building organized every translation",
-                  "They show that translation happened without any institutional support",
-                  "They helped make translation part of sustained scholarly activity rather than isolated individual effort",
-                  "They replaced the need for translators"
-                ],
-                "answerIndex": 2,
-                "explanation": "Knowledge does not circulate through intellectual interest alone; sponsored libraries and patronage supported sustained scholarly activity."
-              },
-              {
-                "question": "What safer picture should replace treating one institution as the movement’s single headquarters?",
-                "options": [
-                  "A wider network of translators, patrons, libraries, and scholarly communities",
-                  "A single official list of approved Greek authors",
-                  "A story in which knowledge never crossed linguistic boundaries",
-                  "The claim that Baghdad had no libraries"
-                ],
-                "answerIndex": 0,
-                "explanation": "One memorable institution should not replace the larger system in our explanation."
-              }
-            ],
-            "sources": [
-              {
-                "publisher": "Stanford University",
-                "title": "The Translation Movements of Islamic Learning",
-                "url": "https://intellectualproperties.stanford.edu/sites/g/files/sbiybj24701/files/media/file/6._islamic_learning_0.pdf"
-              },
-              {
-                "publisher": "History of Information",
-                "title": "Foundation of the House of Wisdom in Baghdad",
-                "url": "https://www.historyofinformation.com/detail.php?id=1583"
-              }
-            ],
-            "digDeeper": [
-              {
-                "id": "baghdad",
-                "label": "Baghdad",
-                "kind": "place"
-              },
-              {
-                "id": "syriac-translations",
-                "label": "Syriac as an intermediary",
-                "kind": "subtopic"
-              },
-              {
-                "id": "house-of-wisdom",
-                "label": "The House of Wisdom",
-                "kind": "place"
-              },
-              {
-                "id": "abbasid-patronage",
-                "label": "Libraries and patronage",
-                "kind": "idea"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "slug": "west-african-empires",
-        "title": "West African Empires",
-        "kind": "civilization",
-        "summary": "West African empires were shaped by trans-Saharan trade, imperial taxation, and cities that became centers of commerce and Islamic learning.",
-        "lessons": [
-          {
-            "id": "les_ml01",
-            "slug": "how-trade-supported-an-empire",
-            "title": "Mali and Mansa Musa: How Trade Supported an Empire",
-            "sections": [
-              {
-                "heading": "Look beyond the wealthy ruler",
-                "body": "Mansa Musa is famous for his wealth, but that wealth becomes more understandable within the Mali Empire’s trading system. Mali drew much of its power from trans-Saharan trade linking western Africa with North Africa, especially commerce in gold and salt. Taxation of exchanged goods helped support imperial wealth.\n\nThe important relationship is not simply that a ruler possessed gold. Trade routes, valuable commodities, and the ability to collect revenue connected economic activity with political authority."
-              },
-              {
-                "heading": "Geography made connections possible",
-                "body": "Timbuktu’s position near the Sahara and with access to the Niger River helped connect transportation and trading networks. Its importance came partly from being a meeting point between regions rather than an isolated city with a single valuable resource.\n\nWhen studying a wealthy city, ask not only what it produces but also what passes through it, who trades there, and who benefits from those exchanges."
-              },
-              {
-                "heading": "A pilgrimage became an international demonstration",
-                "body": "In 1324, Mansa Musa undertook the hajj, the Muslim pilgrimage to Mecca. The extravagance of his journey publicized his wealth and Mali’s importance far beyond the empire.\n\nThe journey joined religious practice with political visibility. A pilgrimage undertaken by a powerful ruler could also communicate the scale of the resources available to him."
-              },
-              {
-                "heading": "Commerce and scholarship reinforced one another",
-                "body": "Mansa Musa supported scholarship and the arts, and Timbuktu developed as a significant commercial and Islamic intellectual center. Its connections with North African trading centers helped place it within wider networks of exchange.\n\nMali belongs in a history of scholarship and cross-regional connections as well as a history of wealth. Reducing the empire to its gold obscures the institutions and relationships through which that wealth mattered."
-              }
-            ],
-            "keyFacts": [
-              "Mali benefited from trans-Saharan trade.",
-              "Gold and salt were important commodities.",
-              "Mansa Musa undertook his celebrated pilgrimage in 1324.",
-              "Timbuktu became a center of commerce and Islamic learning.",
-              "Taxation of exchanged goods helped support imperial wealth.",
-              "The pilgrimage joined religious practice with political visibility."
-            ],
-            "quiz": [
-              {
-                "question": "Why is “Mali was wealthy because Mansa Musa was wealthy” incomplete?",
-                "options": [
-                  "Because Mansa Musa was not actually wealthy",
-                  "It leaves out trade routes, commodities, taxation, and the economic system supporting imperial power",
-                  "Because Mali had no political authority",
-                  "Because gold and salt were unimportant"
-                ],
-                "answerIndex": 1,
-                "explanation": "It leaves out trade routes, commodities, taxation, and the economic system supporting imperial power."
-              },
-              {
-                "question": "How did geography contribute to Timbuktu’s importance?",
-                "options": [
-                  "It was isolated from other regions, which protected a single resource",
-                  "It sat on the Mediterranean coast",
-                  "Its location connected Saharan trade with the Niger region",
-                  "It had no access to river transportation"
-                ],
-                "answerIndex": 2,
-                "explanation": "Timbuktu’s position near the Sahara and with access to the Niger River helped connect transportation and trading networks."
-              },
-              {
-                "question": "What did the pilgrimage communicate beyond religious devotion?",
-                "options": [
-                  "It made Mali’s resources and its ruler’s wealth visible to a wider world",
-                  "It ended trans-Saharan trade",
-                  "It moved the empire’s capital to Mecca",
-                  "It showed that Mali rejected connections beyond West Africa"
-                ],
-                "answerIndex": 0,
-                "explanation": "The extravagance of the 1324 hajj publicized Mansa Musa’s wealth and Mali’s importance far beyond the empire."
-              },
-              {
-                "question": "When did Mansa Musa undertake his celebrated pilgrimage?",
-                "options": [
-                  "1066",
-                  "1258",
-                  "1324",
-                  "1492"
-                ],
-                "answerIndex": 2,
-                "explanation": "In 1324, Mansa Musa undertook the hajj to Mecca."
-              },
-              {
-                "question": "Which commodities were especially important in the trans-Saharan trade described here?",
-                "options": [
-                  "Silk and spices",
-                  "Gold and salt",
-                  "Tea and porcelain",
-                  "Oil and rubber"
-                ],
-                "answerIndex": 1,
-                "explanation": "Mali drew much of its power from trans-Saharan commerce in gold and salt."
-              },
-              {
-                "question": "Why is reducing Mali to its gold an incomplete historical picture?",
-                "options": [
-                  "Because the empire had no cities",
-                  "Because Mansa Musa opposed scholarship",
-                  "Because trans-Saharan trade was unimportant",
-                  "It obscures the institutions, scholarship, and relationships through which that wealth mattered"
-                ],
-                "answerIndex": 3,
-                "explanation": "Timbuktu developed as a commercial and Islamic intellectual center, and Mali belongs in a history of scholarship and cross-regional connections as well as a history of wealth."
-              }
-            ],
-            "sources": [
-              {
-                "publisher": "Encyclopaedia Britannica",
-                "title": "Mali",
-                "url": "https://www.britannica.com/place/Mali-historical-empire-Africa"
-              },
-              {
-                "publisher": "BBC Bitesize",
-                "title": "Mali and Mansa Musa",
-                "url": "https://www.bbc.co.uk/bitesize/articles/zjch6g8"
-              },
-              {
-                "publisher": "Encyclopaedia Britannica",
-                "title": "Musa I of Mali",
-                "url": "https://www.britannica.com/biography/Musa-I-of-Mali"
-              }
-            ],
-            "digDeeper": [
-              {
-                "id": "mansa-musa",
-                "label": "Mansa Musa",
-                "kind": "person"
-              },
-              {
-                "id": "timbuktu",
-                "label": "Timbuktu",
-                "kind": "place"
-              },
-              {
-                "id": "trans-saharan-trade",
-                "label": "Trans-Saharan trade",
-                "kind": "subtopic"
-              },
-              {
-                "id": "hajj-of-1324",
-                "label": "The hajj of 1324",
                 "kind": "event"
               }
             ]
