@@ -3589,7 +3589,7 @@
         "slug": "us-presidents",
         "title": "U.S. Presidents",
         "kind": "series",
-        "summary": "Ten presidencies in office order, from Washington through Theodore Roosevelt: establishing the office, the limits of dissent, expansion and contradiction, a constitution-maker at war, good feelings and deep divisions, a presidency shadowed by its election, popular rule and coercive power, inherited crisis and continuity, union and emancipation, and a more activist executive.",
+        "summary": "Nineteen presidencies in office order, from Washington through Grant and then Theodore Roosevelt: establishing the office, the limits of dissent, expansion and contradiction, a constitution-maker at war, good feelings and deep divisions, a presidency shadowed by its election, popular rule and coercive power, inherited crisis and continuity, a month-long term and a succession question, succession and Texas, expansion and war with Mexico, a slaveholder confronting slavery's expansion, compromise and fugitive-slave enforcement, popular sovereignty and Bleeding Kansas, leadership that failed to prevent disunion, union and emancipation, Reconstruction and impeachment, enforcing rights and Reconstruction's limits, and a more activist executive.",
         "lessons": [
           {
             "id": "les_gw01",
@@ -4796,6 +4796,942 @@
             ]
           },
           {
+            "id": "les_whh01",
+            "slug": "a-short-presidency-and-a-lasting-succession-question",
+            "title": "William Henry Harrison: A Short Presidency and a Lasting Succession Question",
+            "sections": [
+              {
+                "heading": "A military reputation became a political asset",
+                "body": "Before becoming president, Harrison built a military and political career in the Northwest. His reputation rested partly on the Battle of Tippecanoe in 1811 and the Battle of the Thames in 1813. These victories contributed to his popularity among white Americans, but the same expansion involved Native peoples losing land and resisting American encroachment. Military fame and territorial dispossession belong in the same historical account."
+              },
+              {
+                "heading": "The campaign image was not the whole biography",
+                "body": "The Whigs used log cabins, hard cider, rallies, songs, and the slogan “Tippecanoe and Tyler, Too” in the 1840 election. This popular imagery contrasted with Harrison’s actual origins in a wealthy, politically prominent Virginia family. His campaign illustrates the difference between a candidate’s public image and social background. He defeated incumbent Martin Van Buren during the aftermath of a major economic downturn."
+              },
+              {
+                "heading": "Too little time for a governing record",
+                "body": "Harrison entered office on March 4, 1841, and died on April 4. He was the first Whig president and the first president to die in office. His term was the shortest in presidential history. Because he had so little time to govern, assessments should distinguish his earlier career and campaign promises from presidential policies he actually implemented."
+              },
+              {
+                "heading": "His death exposed an unresolved question",
+                "body": "Vice President John Tyler insisted that he became president, not merely an official temporarily exercising presidential powers. His successful assertion established an important succession precedent. Harrison’s death therefore mattered institutionally even though Harrison himself had little opportunity to shape national legislation."
+              }
+            ],
+            "keyFacts": [
+              "Ninth president of the United States.",
+              "Served March 4–April 4, 1841.",
+              "First Whig president.",
+              "Won the election of 1840.",
+              "First president to die in office.",
+              "Succeeded by Vice President John Tyler."
+            ],
+            "quiz": [
+              {
+                "question": "Which contrast best describes Harrison’s 1840 campaign?",
+                "options": [
+                  "A log-cabin image contrasted with a privileged family background",
+                  "He refused public campaigning because he was unknown",
+                  "He campaigned as the Democratic incumbent",
+                  "His campaign centered on Reconstruction"
+                ],
+                "answerIndex": 0,
+                "explanation": "Campaign imagery should not be mistaken for a complete biography."
+              },
+              {
+                "question": "Why is Harrison difficult to evaluate as a policymaking president?",
+                "options": [
+                  "He never took office",
+                  "His presidency lasted only about a month",
+                  "He served only as vice president",
+                  "Congress had permanently dissolved"
+                ],
+                "answerIndex": 1,
+                "explanation": "His death left very little time for a presidential governing record."
+              },
+              {
+                "question": "What major question followed his death?",
+                "options": [
+                  "Whether California was a state",
+                  "Whether slavery had ended",
+                  "Whether Tyler became president or merely exercised the powers of the office",
+                  "Whether presidential elections would be abolished"
+                ],
+                "answerIndex": 2,
+                "explanation": "Tyler asserted that he had become president, establishing a succession precedent."
+              },
+              {
+                "question": "Which battles helped build Harrison's military reputation?",
+                "options": [
+                  "Saratoga and Yorktown",
+                  "Tippecanoe and the Thames",
+                  "Gettysburg and Vicksburg",
+                  "Buena Vista and Monterrey"
+                ],
+                "answerIndex": 1,
+                "explanation": "Tippecanoe (1811) and the Thames (1813) made him popular among white Americans."
+              },
+              {
+                "question": "Which statement about Harrison's presidency is accurate?",
+                "options": [
+                  "He served two full terms",
+                  "He was the last Whig president",
+                  "He was the first president to die in office",
+                  "He was elected as a Democrat"
+                ],
+                "answerIndex": 2,
+                "explanation": "He died on April 4, 1841, a month after taking office."
+              },
+              {
+                "question": "Whom did Harrison defeat in the election of 1840?",
+                "options": [
+                  "Martin Van Buren",
+                  "Andrew Jackson",
+                  "Henry Clay",
+                  "James K. Polk"
+                ],
+                "answerIndex": 0,
+                "explanation": "He defeated the incumbent Van Buren after a major economic downturn."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Miller Center",
+                "title": "William Harrison: Life in Brief",
+                "url": "https://millercenter.org/president/harrison/life-in-brief"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "William Harrison",
+                "url": "https://millercenter.org/president/harrison"
+              },
+              {
+                "publisher": "White House Historical Association",
+                "title": "John Tyler and Presidential Succession",
+                "url": "https://www.whitehousehistory.org/john-tyler-and-presidential-succession"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "battle-of-tippecanoe",
+                "label": "The Battle of Tippecanoe",
+                "kind": "event"
+              },
+              {
+                "id": "election-of-1840",
+                "label": "The log-cabin campaign of 1840",
+                "kind": "event"
+              },
+              {
+                "id": "tyler-precedent",
+                "label": "The Tyler succession precedent",
+                "kind": "idea"
+              },
+              {
+                "id": "native-land-loss-northwest",
+                "label": "Native land loss in the Northwest",
+                "kind": "subtopic"
+              }
+            ]
+          },
+          {
+            "id": "les_jt01",
+            "slug": "succession-party-conflict-and-texas",
+            "title": "John Tyler: Succession, Party Conflict, and Texas",
+            "sections": [
+              {
+                "heading": "Becoming president rather than acting president",
+                "body": "Tyler succeeded Harrison in 1841, the first time a vice president faced a president’s death. He asserted that he had become the president, bringing continuity to an uncertain constitutional situation. He retained the office’s full authority rather than accepting a subordinate or temporary status."
+              },
+              {
+                "heading": "An alliance did not guarantee ideological agreement",
+                "body": "Tyler had long opposed a powerful national bank and what he saw as excessive national authority. His association with the Whigs did not erase those convictions. His background helps explain why winning on a party ticket did not necessarily mean agreement with every part of the party’s governing program."
+              },
+              {
+                "heading": "An isolated president",
+                "body": "By 1844, Tyler had been rejected by both the Whigs and the Democrats. He briefly pursued a separate presidential candidacy before withdrawing and supporting James K. Polk. His experience shows that constitutional authority and political support are different resources: a president can retain the former while losing much of the latter."
+              },
+              {
+                "heading": "Texas links his term to Polk’s",
+                "body": "Near the end of Tyler’s presidency, Congress passed a joint resolution offering annexation to Texas. Tyler used the joint-resolution route because a treaty required a two-thirds Senate majority that he did not expect to obtain. Texas actually entered the Union in December 1845, during Polk’s presidency. Distinguishing the offer from completed statehood keeps the two presidents’ roles clear."
+              }
+            ],
+            "keyFacts": [
+              "Tenth president.",
+              "Served 1841–1845.",
+              "First vice president to succeed a president who died in office.",
+              "Established a precedent for full presidential succession.",
+              "Lost the support of the Whig Party.",
+              "Advanced Texas annexation before its completion under Polk."
+            ],
+            "quiz": [
+              {
+                "question": "What was Tyler’s most important succession claim?",
+                "options": [
+                  "He was only a cabinet adviser",
+                  "He became president with the office’s full authority",
+                  "Congress had to elect him before he could act",
+                  "The presidency remained permanently vacant"
+                ],
+                "answerIndex": 1,
+                "explanation": "Tyler’s position established a durable precedent."
+              },
+              {
+                "question": "Why did Tyler use a joint resolution for Texas?",
+                "options": [
+                  "It required no congressional vote",
+                  "It abolished the Senate",
+                  "It offered a lower voting threshold than a treaty",
+                  "It automatically ended slavery"
+                ],
+                "answerIndex": 2,
+                "explanation": "A treaty required a two-thirds Senate majority; the resolution needed simple majorities."
+              },
+              {
+                "question": "When did Texas enter the Union?",
+                "options": [
+                  "During Polk’s presidency",
+                  "Before Harrison’s election",
+                  "During Reconstruction",
+                  "During Grant’s second term"
+                ],
+                "answerIndex": 0,
+                "explanation": "Tyler advanced annexation, but statehood followed in December 1845."
+              },
+              {
+                "question": "Which long-held view put Tyler at odds with the Whig program?",
+                "options": [
+                  "Support for a strong national bank",
+                  "Opposition to a powerful national bank",
+                  "Support for abolishing the Senate",
+                  "Opposition to all western settlement"
+                ],
+                "answerIndex": 1,
+                "explanation": "His opposition to a national bank and broad national authority survived his place on a Whig ticket."
+              },
+              {
+                "question": "What happened to Tyler's political support by 1844?",
+                "options": [
+                  "Both the Whigs and the Democrats had rejected him",
+                  "Both parties nominated him",
+                  "The Whigs renominated him unanimously",
+                  "He won a second term"
+                ],
+                "answerIndex": 0,
+                "explanation": "He briefly ran separately, then withdrew and supported Polk."
+              },
+              {
+                "question": "What does Tyler's presidency show about constitutional authority and political support?",
+                "options": [
+                  "They always rise and fall together",
+                  "Authority depends on a party nomination",
+                  "A president can keep the office's authority while losing support",
+                  "Losing support ends a presidency"
+                ],
+                "answerIndex": 2,
+                "explanation": "He retained full presidential authority even after losing his coalition."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "White House Historical Association",
+                "title": "John Tyler and Presidential Succession",
+                "url": "https://www.whitehousehistory.org/john-tyler-and-presidential-succession"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "John Tyler",
+                "url": "https://millercenter.org/president/tyler"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "James K. Polk: Foreign Affairs",
+                "url": "https://millercenter.org/president/polk/foreign-affairs"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "presidential-succession",
+                "label": "Presidential succession",
+                "kind": "idea"
+              },
+              {
+                "id": "whig-party",
+                "label": "The Whig Party",
+                "kind": "subtopic"
+              },
+              {
+                "id": "texas-annexation",
+                "label": "The annexation of Texas",
+                "kind": "event"
+              },
+              {
+                "id": "james-k-polk",
+                "label": "James K. Polk",
+                "kind": "person"
+              }
+            ]
+          },
+          {
+            "id": "les_jkp01",
+            "slug": "expansion-war-and-the-cost-of-manifest-destiny",
+            "title": "James K. Polk: Expansion, War, and the Cost of Manifest Destiny",
+            "sections": [
+              {
+                "heading": "An expansionist agenda",
+                "body": "Polk made territorial expansion a central aim of his presidency. Manifest Destiny described the belief that the United States was destined to spread across North America. This was an argument used to justify expansion, not a neutral description proving that expansion was inevitable or morally justified."
+              },
+              {
+                "heading": "Negotiation in Oregon",
+                "body": "The United States and Britain had overlapping claims in the Oregon region. Despite expansive demands from some supporters, Polk accepted a settlement using the forty-ninth parallel for much of the boundary. The agreement illustrates how an ambitious president could compromise when negotiation offered a desirable result without another war."
+              },
+              {
+                "heading": "War with Mexico",
+                "body": "Polk sent American troops into disputed territory near the Rio Grande. After fighting began in 1846, he asked Congress for war, asserting that American blood had been shed on American soil. Critics disputed the premise because the location’s sovereignty was contested. The Mexican-American War therefore raised questions about both expansion and presidential responsibility for creating conditions for conflict."
+              },
+              {
+                "heading": "Territory acquired, consequences inherited",
+                "body": "The 1848 Treaty of Guadalupe Hidalgo recognized the Rio Grande boundary and transferred vast territories to the United States in exchange for $15 million and other treaty provisions. American expansion came with military deaths, Mexican defeat, and renewed political conflict over slavery in western lands. Polk’s territorial achievements and their human and political costs must be evaluated together."
+              }
+            ],
+            "keyFacts": [
+              "Eleventh president.",
+              "Democrat who served 1845–1849.",
+              "Made western expansion a central priority.",
+              "Negotiated an Oregon boundary settlement with Britain.",
+              "Led the country during the Mexican-American War.",
+              "The Treaty of Guadalupe Hidalgo was signed in 1848."
+            ],
+            "quiz": [
+              {
+                "question": "Which comparison is accurate?",
+                "options": [
+                  "Polk acquired both regions without negotiation or war",
+                  "Oregon involved negotiation; the Mexican Cession followed war",
+                  "Mexico peacefully donated California",
+                  "Britain fought the United States in the Mexican-American War"
+                ],
+                "answerIndex": 1,
+                "explanation": "The two acquisitions followed different diplomatic and military paths."
+              },
+              {
+                "question": "Why was Polk’s justification for war disputed?",
+                "options": [
+                  "The United States had no army",
+                  "Mexico had already become a U.S. state",
+                  "The fighting occurred in territory with competing sovereignty claims",
+                  "Congress had outlawed treaties"
+                ],
+                "answerIndex": 2,
+                "explanation": "Critics challenged whether the bloodshed had occurred on uncontested American soil."
+              },
+              {
+                "question": "Which treaty ended the war with Mexico?",
+                "options": [
+                  "Guadalupe Hidalgo",
+                  "Versailles",
+                  "Ghent",
+                  "Webster-Ashburton"
+                ],
+                "answerIndex": 0,
+                "explanation": "The treaty was signed in 1848."
+              },
+              {
+                "question": "What did Manifest Destiny describe?",
+                "options": [
+                  "A neutral proof that expansion was inevitable",
+                  "A treaty with Britain",
+                  "The belief that the United States was destined to spread across North America",
+                  "A plan to abolish slavery"
+                ],
+                "answerIndex": 2,
+                "explanation": "It was an argument used to justify expansion, not proof that it was inevitable or right."
+              },
+              {
+                "question": "Which line was used for much of the Oregon boundary?",
+                "options": [
+                  "The forty-ninth parallel",
+                  "The Rio Grande",
+                  "The Mississippi River",
+                  "The Mason-Dixon Line"
+                ],
+                "answerIndex": 0,
+                "explanation": "Polk accepted a negotiated settlement rather than risk another war."
+              },
+              {
+                "question": "Which consequence of the Mexican Cession does the lesson emphasize?",
+                "options": [
+                  "An end to sectional conflict",
+                  "Renewed political conflict over slavery in western lands",
+                  "The return of Oregon to Britain",
+                  "The abolition of the army"
+                ],
+                "answerIndex": 1,
+                "explanation": "New territory reopened the question of slavery's expansion."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Miller Center",
+                "title": "James K. Polk",
+                "url": "https://millercenter.org/president/polk"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "James K. Polk: Foreign Affairs",
+                "url": "https://millercenter.org/president/polk/foreign-affairs"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "manifest-destiny",
+                "label": "Manifest Destiny",
+                "kind": "idea"
+              },
+              {
+                "id": "oregon-boundary",
+                "label": "The Oregon boundary settlement",
+                "kind": "event"
+              },
+              {
+                "id": "mexican-american-war",
+                "label": "The Mexican-American War",
+                "kind": "event"
+              },
+              {
+                "id": "treaty-of-guadalupe-hidalgo",
+                "label": "The Treaty of Guadalupe Hidalgo",
+                "kind": "event"
+              }
+            ]
+          },
+          {
+            "id": "les_zt01",
+            "slug": "a-slaveholder-confronts-the-expansion-of-slavery",
+            "title": "Zachary Taylor: A Slaveholder Confronts the Expansion of Slavery",
+            "sections": [
+              {
+                "heading": "A general enters politics",
+                "body": "Taylor became a national figure through military service, especially the Mexican-American War. He entered the White House as a Whig in 1849. He was also a wealthy slaveholder. These facts created expectations about his presidency, but they did not determine every position he took on western statehood."
+              },
+              {
+                "heading": "Statehood as a route around territorial conflict",
+                "body": "Taylor urged California and New Mexico to draft constitutions and seek admission as states. He expected constitutions prohibiting slavery. By moving directly toward statehood, he hoped to avoid a congressional fight over whether territorial governments would permit slavery. This was not the same as seeking to abolish slavery throughout the existing slave states."
+              },
+              {
+                "heading": "The Union came before sectional threats",
+                "body": "Some southern leaders responded angrily to the prospect of additional free states, which would change the balance in the Senate. Taylor opposed threats to break up the Union and took a hard line against using force to disrupt it. His position illustrates why slaveholding, support for the Union, and positions on slavery’s expansion must be distinguished."
+              },
+              {
+                "heading": "Death changed the policy direction",
+                "body": "Taylor opposed Henry Clay’s proposed compromise approach. He died on July 9, 1850, before the settlement passed. His successor, Millard Fillmore, supported the measures that became the Compromise of 1850. Taylor should therefore not be credited with signing laws enacted after his death."
+              }
+            ],
+            "keyFacts": [
+              "Twelfth president.",
+              "Whig who served 1849–1850.",
+              "Previously a general in the Mexican-American War.",
+              "Owned enslaved people.",
+              "Favored rapid statehood for California and New Mexico.",
+              "Died before passage of the Compromise of 1850."
+            ],
+            "quiz": [
+              {
+                "question": "Why did Taylor favor rapid statehood?",
+                "options": [
+                  "To avoid a congressional struggle over slavery in territorial governments",
+                  "To abolish Congress",
+                  "To return California to Britain",
+                  "To prevent constitutions from being written"
+                ],
+                "answerIndex": 0,
+                "explanation": "He hoped state constitutions would bypass a dangerous territorial debate."
+              },
+              {
+                "question": "Which statement about Taylor is accurate?",
+                "options": [
+                  "He signed the Compromise of 1850",
+                  "He owned enslaved people but expected new western state constitutions to prohibit slavery",
+                  "He was elected as a Republican",
+                  "He served two complete terms"
+                ],
+                "answerIndex": 1,
+                "explanation": "His background and statehood policy did not align in the way some supporters expected."
+              },
+              {
+                "question": "Who succeeded Taylor?",
+                "options": [
+                  "James Buchanan",
+                  "John Tyler",
+                  "Millard Fillmore",
+                  "Andrew Johnson"
+                ],
+                "answerIndex": 2,
+                "explanation": "Fillmore became president after Taylor’s death in 1850."
+              },
+              {
+                "question": "How did Taylor first become a national figure?",
+                "options": [
+                  "As Speaker of the House",
+                  "As a newspaper editor",
+                  "As a Supreme Court justice",
+                  "Through military service, especially in the Mexican-American War"
+                ],
+                "answerIndex": 3,
+                "explanation": "His war record brought him to the White House as a Whig in 1849."
+              },
+              {
+                "question": "How did Taylor respond to threats to break up the Union?",
+                "options": [
+                  "He took a hard line against them",
+                  "He endorsed secession",
+                  "He resigned",
+                  "He referred them to Britain"
+                ],
+                "answerIndex": 0,
+                "explanation": "He put the Union ahead of sectional threats, despite being a slaveholder."
+              },
+              {
+                "question": "Why did some southern leaders object to new free states?",
+                "options": [
+                  "They would abolish Congress",
+                  "They would change the balance in the Senate",
+                  "They would end presidential elections",
+                  "They would return land to Mexico"
+                ],
+                "answerIndex": 1,
+                "explanation": "Additional free states threatened the sectional balance in the Senate."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Miller Center",
+                "title": "Zachary Taylor",
+                "url": "https://millercenter.org/president/taylor"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "Zachary Taylor: Domestic Affairs",
+                "url": "https://millercenter.org/president/taylor/domestic-affairs"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "california-statehood",
+                "label": "California statehood",
+                "kind": "event"
+              },
+              {
+                "id": "henry-clay",
+                "label": "Henry Clay",
+                "kind": "person"
+              },
+              {
+                "id": "senate-sectional-balance",
+                "label": "The sectional balance in the Senate",
+                "kind": "idea"
+              },
+              {
+                "id": "compromise-of-1850",
+                "label": "The Compromise of 1850",
+                "kind": "event"
+              }
+            ]
+          },
+          {
+            "id": "les_mf01",
+            "slug": "compromise-and-the-federal-enforcement-of-slavery",
+            "title": "Millard Fillmore: Compromise and the Federal Enforcement of Slavery",
+            "sections": [
+              {
+                "heading": "An inherited crisis and a changed administration",
+                "body": "Fillmore became president after Taylor’s death in July 1850. Unlike Taylor, he supported the compromise proposals aimed at easing sectional conflict. He accepted the resignations of Taylor’s cabinet and appointed advisers sympathetic to his pro-compromise position. Presidential succession therefore produced a substantial policy shift without a new election."
+              },
+              {
+                "heading": "The compromise was a package of separate measures",
+                "body": "Congress enacted the Compromise of 1850 through separate bills rather than one successful omnibus bill. California entered as a free state. Utah and New Mexico received territorial governments without a congressional prohibition of slavery. Texas settled its boundary dispute, and the slave trade—but not slavery itself—was prohibited in Washington, D.C."
+              },
+              {
+                "heading": "The Fugitive Slave Law exposed the moral cost",
+                "body": "The settlement also included a stronger Fugitive Slave Law. Fillmore vigorously supported its enforcement, using federal authority against resistance to the return of people who had escaped enslavement. For those facing capture, the compromise was not simply an abstract agreement between regions: it threatened their freedom."
+              },
+              {
+                "heading": "Delay was not resolution",
+                "body": "Fillmore viewed the legislation as a success in preserving the Union, but it provoked opposition from antislavery northerners and failed to satisfy all southern demands. The dispute strained the Whig Party. Political compromise had postponed an immediate rupture without removing the underlying conflict over slavery."
+              }
+            ],
+            "keyFacts": [
+              "Thirteenth president.",
+              "Succeeded Taylor in 1850.",
+              "Supported and signed the Compromise of 1850 measures.",
+              "California entered as a free state.",
+              "The Washington, D.C., slave trade ended, but slavery there did not.",
+              "Vigorously enforced the Fugitive Slave Law."
+            ],
+            "quiz": [
+              {
+                "question": "How did the compromise become law?",
+                "options": [
+                  "As separate bills with different supporting coalitions",
+                  "Through a Supreme Court election",
+                  "By Taylor’s executive order",
+                  "Without congressional action"
+                ],
+                "answerIndex": 0,
+                "explanation": "Breaking the package into separate measures enabled passage."
+              },
+              {
+                "question": "What ended in Washington, D.C., under the compromise?",
+                "options": [
+                  "All slavery",
+                  "The slave trade, but not slavery itself",
+                  "All federal government",
+                  "Presidential elections"
+                ],
+                "answerIndex": 1,
+                "explanation": "The distinction between trade and the institution itself is essential."
+              },
+              {
+                "question": "Why did many abolitionists oppose Fillmore?",
+                "options": [
+                  "He had abolished all state governments",
+                  "He returned California to Mexico",
+                  "He enforced the Fugitive Slave Law",
+                  "He refused to recognize Congress"
+                ],
+                "answerIndex": 2,
+                "explanation": "Federal enforcement helped return escapees to enslavement."
+              },
+              {
+                "question": "What did Fillmore do with Taylor's cabinet?",
+                "options": [
+                  "Kept every member",
+                  "Accepted their resignations and appointed pro-compromise advisers",
+                  "Asked Congress to elect a new cabinet",
+                  "Abolished the cabinet"
+                ],
+                "answerIndex": 1,
+                "explanation": "Succession brought a substantial policy shift without a new election."
+              },
+              {
+                "question": "How did Utah and New Mexico fare under the compromise?",
+                "options": [
+                  "They entered as free states",
+                  "They were returned to Mexico",
+                  "They received territorial governments without a congressional prohibition of slavery",
+                  "They were annexed to Texas"
+                ],
+                "answerIndex": 2,
+                "explanation": "Congress did not bar slavery in the new territorial governments."
+              },
+              {
+                "question": "What was the compromise's longer-term effect?",
+                "options": [
+                  "It postponed rupture without removing the conflict over slavery",
+                  "It permanently settled the slavery question",
+                  "It ended the Whig Party's divisions",
+                  "It abolished slavery nationwide"
+                ],
+                "answerIndex": 0,
+                "explanation": "It drew antislavery opposition, did not satisfy all southern demands, and strained the Whigs."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Miller Center",
+                "title": "Millard Fillmore: Domestic Affairs",
+                "url": "https://millercenter.org/president/fillmore/domestic-affairs"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "compromise-of-1850",
+                "label": "The Compromise of 1850",
+                "kind": "event"
+              },
+              {
+                "id": "fugitive-slave-law",
+                "label": "The Fugitive Slave Law",
+                "kind": "subtopic"
+              },
+              {
+                "id": "washington-dc-slave-trade",
+                "label": "Ending the slave trade in Washington, D.C.",
+                "kind": "place"
+              },
+              {
+                "id": "whig-party-strain",
+                "label": "The strain on the Whig Party",
+                "kind": "subtopic"
+              }
+            ]
+          },
+          {
+            "id": "les_frp01",
+            "slug": "popular-sovereignty-and-bleeding-kansas",
+            "title": "Franklin Pierce: Popular Sovereignty and Bleeding Kansas",
+            "sections": [
+              {
+                "heading": "A president hoping to quiet sectional conflict",
+                "body": "Pierce took office as a Democrat in 1853 amid growing conflict over slavery. His presidency demonstrates that supporting a procedural solution does not guarantee a peaceful or fair outcome. The central problem was not merely how decisions would be counted, but whether human bondage could expand and who would have a voice in deciding."
+              },
+              {
+                "heading": "The Kansas-Nebraska Act reopened a settlement",
+                "body": "Senator Stephen Douglas promoted the Kansas-Nebraska Act of 1854, and Pierce signed it. It repealed the Missouri Compromise restriction on slavery in the affected region and relied on popular sovereignty. In this setting, that meant decisions by white male voters, not equal participation by all people whose lives would be affected."
+              },
+              {
+                "heading": "Contested voting became violent conflict",
+                "body": "Proslavery and antislavery settlers competed for control of Kansas, while interference from neighboring Missouri compromised elections. Rival governments emerged, and Pierce supported the proslavery territorial authorities. Violence included the attack on Lawrence and killings by John Brown’s followers at Pottawatomie. The conflict became known as Bleeding Kansas."
+              },
+              {
+                "heading": "A national party system under strain",
+                "body": "The act intensified rather than settled the dispute over slavery. It helped accelerate the Whig Party’s collapse, contributed to the rise of the Republican Party, and split northern Democrats. Pierce sought another term, but Democrats chose James Buchanan in 1856. His record shows how a president can worsen a crisis by endorsing a destabilizing change."
+              }
+            ],
+            "keyFacts": [
+              "Fourteenth president.",
+              "Democrat who served 1853–1857.",
+              "Signed the Kansas-Nebraska Act in 1854.",
+              "The law repealed the Missouri Compromise restriction in the affected region.",
+              "Kansas experienced fraudulent political contests and violence.",
+              "Democrats did not renominate him in 1856."
+            ],
+            "quiz": [
+              {
+                "question": "Who promoted the Kansas-Nebraska Act in the Senate?",
+                "options": [
+                  "Stephen Douglas",
+                  "Ulysses S. Grant",
+                  "William Henry Harrison",
+                  "John Marshall"
+                ],
+                "answerIndex": 0,
+                "explanation": "Pierce supported and signed legislation associated with Douglas."
+              },
+              {
+                "question": "Who participated in popular sovereignty as described here?",
+                "options": [
+                  "Every resident equally",
+                  "White male voters, rather than all affected people",
+                  "Only enslaved people",
+                  "Only foreign ambassadors"
+                ],
+                "answerIndex": 1,
+                "explanation": "The procedure excluded people whose freedom was at stake."
+              },
+              {
+                "question": "What was a major result of the act?",
+                "options": [
+                  "An immediate end to slavery nationwide",
+                  "Permanent agreement between North and South",
+                  "Violence in Kansas and increased national polarization",
+                  "The end of presidential elections"
+                ],
+                "answerIndex": 2,
+                "explanation": "The intended settlement intensified the conflict."
+              },
+              {
+                "question": "Which earlier restriction did the Kansas-Nebraska Act repeal?",
+                "options": [
+                  "The Northwest Ordinance",
+                  "The Missouri Compromise restriction on slavery",
+                  "The Fugitive Slave Law",
+                  "The Treaty of Guadalupe Hidalgo"
+                ],
+                "answerIndex": 1,
+                "explanation": "It replaced that restriction with popular sovereignty in the affected region."
+              },
+              {
+                "question": "Which side did Pierce support in Kansas?",
+                "options": [
+                  "The antislavery government",
+                  "Neither side",
+                  "The proslavery territorial authorities",
+                  "John Brown's followers"
+                ],
+                "answerIndex": 2,
+                "explanation": "Rival governments emerged, and Pierce backed the proslavery one."
+              },
+              {
+                "question": "Whom did the Democrats nominate instead of Pierce in 1856?",
+                "options": [
+                  "James Buchanan",
+                  "Stephen Douglas",
+                  "Millard Fillmore",
+                  "Zachary Taylor"
+                ],
+                "answerIndex": 0,
+                "explanation": "Pierce sought another term but was not renominated."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Miller Center",
+                "title": "Franklin Pierce",
+                "url": "https://millercenter.org/president/pierce"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "Franklin Pierce: Domestic Affairs",
+                "url": "https://millercenter.org/president/pierce/domestic-affairs"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "kansas-nebraska-act",
+                "label": "The Kansas-Nebraska Act",
+                "kind": "event"
+              },
+              {
+                "id": "stephen-douglas",
+                "label": "Stephen Douglas",
+                "kind": "person"
+              },
+              {
+                "id": "bleeding-kansas",
+                "label": "Bleeding Kansas",
+                "kind": "event"
+              },
+              {
+                "id": "popular-sovereignty",
+                "label": "Popular sovereignty",
+                "kind": "idea"
+              }
+            ]
+          },
+          {
+            "id": "les_jb01",
+            "slug": "when-political-leadership-failed-to-prevent-disunion",
+            "title": "James Buchanan: When Political Leadership Failed to Prevent Disunion",
+            "sections": [
+              {
+                "heading": "Experience did not produce effective crisis leadership",
+                "body": "Buchanan entered office in 1857 with the country deeply divided over slavery. His administration inherited conflict in Kansas and a national argument about slavery’s expansion. By the time he left office, southern secession had broken the Union apart. His presidency illustrates the difference between holding high office and successfully addressing a crisis."
+              },
+              {
+                "heading": "Dred Scott did not settle the dispute",
+                "body": "Buchanan supported the Supreme Court’s Dred Scott decision and encouraged acceptance of it. He had also improperly involved himself by urging a northern justice to join the southern justices. The decision strengthened proslavery constitutional claims and provoked intense antislavery opposition rather than supplying the widely accepted settlement he sought."
+              },
+              {
+                "heading": "Kansas exposed a conflict with popular sovereignty",
+                "body": "Buchanan endorsed the proslavery Lecompton Constitution despite evidence that it did not reflect the wishes of most white Kansas voters. Stephen Douglas opposed that course as a violation of popular sovereignty. The dispute damaged Buchanan’s credibility and deepened divisions within the Democratic Party."
+              },
+              {
+                "heading": "Secession began before Lincoln took office",
+                "body": "After Lincoln’s election in 1860, South Carolina seceded, followed by six other Lower South states before Buchanan’s term ended. Buchanan avoided decisive confrontation while refusing to surrender Fort Sumter. It is important to distinguish Lincoln’s election from his inauguration: the first wave of secession unfolded while Buchanan was still president."
+              }
+            ],
+            "keyFacts": [
+              "Fifteenth president.",
+              "Democrat who served 1857–1861.",
+              "Supported acceptance of the Dred Scott decision.",
+              "Backed the proslavery Lecompton Constitution for Kansas.",
+              "His party fractured before the 1860 election.",
+              "Seven slave states seceded before he left office."
+            ],
+            "quiz": [
+              {
+                "question": "Why did the Lecompton controversy damage Buchanan?",
+                "options": [
+                  "He backed a proslavery constitution lacking majority support among white Kansas voters",
+                  "He had ended all state elections",
+                  "He refused to recognize any constitution",
+                  "He had joined the Republican Party"
+                ],
+                "answerIndex": 0,
+                "explanation": "His policy contradicted the claimed principle of local choice."
+              },
+              {
+                "question": "Who was president during the first wave of secession?",
+                "options": [
+                  "Grant",
+                  "Buchanan",
+                  "Taylor",
+                  "Harrison"
+                ],
+                "answerIndex": 1,
+                "explanation": "Lincoln had been elected but had not yet taken office."
+              },
+              {
+                "question": "What did Buchanan’s support for Dred Scott accomplish?",
+                "options": [
+                  "Universal acceptance of a settlement",
+                  "Immediate emancipation",
+                  "Further controversy rather than resolution",
+                  "The abolition of the Supreme Court"
+                ],
+                "answerIndex": 2,
+                "explanation": "The decision sharpened the dispute over slavery."
+              },
+              {
+                "question": "How did Buchanan improperly involve himself in Dred Scott?",
+                "options": [
+                  "He argued the case in court",
+                  "He wrote the majority opinion",
+                  "He urged a northern justice to join the southern justices",
+                  "He refused to appoint any justices"
+                ],
+                "answerIndex": 2,
+                "explanation": "He urged a northern justice to join the southern justices, an improper intervention."
+              },
+              {
+                "question": "Who opposed the Lecompton course as a violation of popular sovereignty?",
+                "options": [
+                  "Ulysses S. Grant",
+                  "Stephen Douglas",
+                  "John Tyler",
+                  "Zachary Taylor"
+                ],
+                "answerIndex": 1,
+                "explanation": "The dispute deepened divisions within the Democratic Party."
+              },
+              {
+                "question": "How many states had seceded before Buchanan left office?",
+                "options": [
+                  "Seven",
+                  "One",
+                  "Eleven",
+                  "None"
+                ],
+                "answerIndex": 0,
+                "explanation": "South Carolina and six other Lower South states seceded before March 1861."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Miller Center",
+                "title": "James Buchanan",
+                "url": "https://millercenter.org/president/buchanan"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "James Buchanan: Domestic Affairs",
+                "url": "https://millercenter.org/president/buchanan/domestic-affairs"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "dred-scott-decision",
+                "label": "The Dred Scott decision",
+                "kind": "event"
+              },
+              {
+                "id": "lecompton-constitution",
+                "label": "The Lecompton Constitution",
+                "kind": "event"
+              },
+              {
+                "id": "fort-sumter",
+                "label": "Fort Sumter",
+                "kind": "place"
+              },
+              {
+                "id": "democratic-party-split",
+                "label": "The Democratic Party split",
+                "kind": "subtopic"
+              }
+            ]
+          },
+          {
             "id": "les_al01",
             "slug": "from-preserving-the-union-to-ending-slavery",
             "title": "Abraham Lincoln: From Preserving the Union to Ending Slavery",
@@ -4941,6 +5877,267 @@
                 "id": "lincoln-on-slavery",
                 "label": "Lincoln on slavery",
                 "kind": "subtopic"
+              }
+            ]
+          },
+          {
+            "id": "les_ajo01",
+            "slug": "reconstruction-rights-and-impeachment",
+            "title": "Andrew Johnson: Reconstruction, Rights, and Impeachment",
+            "sections": [
+              {
+                "heading": "Preserving the Union was not the same as supporting equality",
+                "body": "Johnson became president after Lincoln’s death. A Unionist who opposed secession, he nevertheless resisted federal guarantees of Black political equality. The distinction matters: opposition to Confederate independence did not necessarily imply support for Black suffrage or equal citizenship."
+              },
+              {
+                "heading": "Presidential Reconstruction restored former elites",
+                "body": "Johnson appointed provisional governors and set conditions for restoring southern governments. He issued many pardons, allowing former Confederate leaders and members of the planter elite to regain influence. Southern governments enacted Black Codes restricting the freedom and labor choices of formerly enslaved people. Abolishing legal slavery did not automatically create equal freedom."
+              },
+              {
+                "heading": "Congress confronted presidential obstruction",
+                "body": "Johnson vetoed the Civil Rights Act of 1866 and legislation extending the Freedmen’s Bureau. Congress overrode those vetoes and pursued a stronger Reconstruction program. The conflict concerned constitutional authority, but it also concerned whether the federal government would protect Black Americans against discriminatory state governments."
+              },
+              {
+                "heading": "Impeachment was not removal",
+                "body": "In 1868, the House impeached Johnson after his clash with Congress over the removal of Secretary of War Edwin Stanton and the Tenure of Office Act. The Senate fell one vote short of the two-thirds required for conviction on the articles it voted on. Johnson remained president. Impeachment is the House’s accusation; conviction and removal require a separate Senate decision."
+              }
+            ],
+            "keyFacts": [
+              "Seventeenth president.",
+              "Served 1865–1869.",
+              "Opposed secession but resisted Black political equality.",
+              "Vetoed the Civil Rights Act of 1866; Congress overrode him.",
+              "First U.S. president impeached by the House.",
+              "Acquitted in the Senate and remained in office."
+            ],
+            "quiz": [
+              {
+                "question": "What did Black Codes do?",
+                "options": [
+                  "Restricted the rights and labor freedom of formerly enslaved people",
+                  "Guaranteed equal voting rights nationwide",
+                  "Ended racial discrimination",
+                  "Created the Oregon boundary"
+                ],
+                "answerIndex": 0,
+                "explanation": "They helped preserve coercive racial and labor hierarchies after slavery."
+              },
+              {
+                "question": "How did Congress respond to Johnson’s civil-rights vetoes?",
+                "options": [
+                  "It permanently dissolved",
+                  "It overrode vetoes and pursued congressional Reconstruction",
+                  "It surrendered all legislative power",
+                  "It returned the country to British rule"
+                ],
+                "answerIndex": 1,
+                "explanation": "The confrontation shifted Reconstruction policy toward Congress."
+              },
+              {
+                "question": "What was the outcome of Johnson’s impeachment trial?",
+                "options": [
+                  "He was automatically removed when impeached",
+                  "He resigned before trial",
+                  "The Senate did not reach the required two-thirds for conviction",
+                  "He was sentenced by the Supreme Court"
+                ],
+                "answerIndex": 2,
+                "explanation": "Impeachment and removal are distinct constitutional steps."
+              },
+              {
+                "question": "Which distinction does the lesson draw about Johnson's Unionism?",
+                "options": [
+                  "Opposing secession did not mean supporting Black political equality",
+                  "Unionists always supported Black suffrage",
+                  "Johnson supported Confederate independence",
+                  "Johnson opposed both secession and emancipation in every form"
+                ],
+                "answerIndex": 0,
+                "explanation": "He opposed secession but resisted federal guarantees of Black political equality."
+              },
+              {
+                "question": "What effect did Johnson's many pardons have?",
+                "options": [
+                  "They freed enslaved people",
+                  "They abolished the Black Codes",
+                  "They helped former Confederate leaders and planters regain influence",
+                  "They removed him from office"
+                ],
+                "answerIndex": 2,
+                "explanation": "Presidential Reconstruction restored much of the southern elite."
+              },
+              {
+                "question": "Which dispute led to Johnson's impeachment?",
+                "options": [
+                  "The purchase of Alaska",
+                  "His removal of Secretary of War Edwin Stanton under the Tenure of Office Act",
+                  "The Kansas-Nebraska Act",
+                  "The Panic of 1873"
+                ],
+                "answerIndex": 1,
+                "explanation": "The House impeached him in 1868 after that clash with Congress."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Miller Center",
+                "title": "Andrew Johnson: Domestic Affairs",
+                "url": "https://millercenter.org/president/johnson/domestic-affairs"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "presidential-reconstruction",
+                "label": "Presidential Reconstruction",
+                "kind": "subtopic"
+              },
+              {
+                "id": "black-codes",
+                "label": "The Black Codes",
+                "kind": "subtopic"
+              },
+              {
+                "id": "civil-rights-act-of-1866",
+                "label": "The Civil Rights Act of 1866",
+                "kind": "event"
+              },
+              {
+                "id": "johnson-impeachment",
+                "label": "The impeachment of Andrew Johnson",
+                "kind": "event"
+              }
+            ]
+          },
+          {
+            "id": "les_usg01",
+            "slug": "enforcing-rights-and-the-limits-of-reconstruction",
+            "title": "Ulysses S. Grant: Enforcing Rights and the Limits of Reconstruction",
+            "sections": [
+              {
+                "heading": "A general confronts a different struggle",
+                "body": "Grant’s Union military leadership helped win the Civil War. Elected president in 1868, he faced the separate challenge of protecting freedom and political participation during Reconstruction. Winning a war and building durable civil institutions required different forms of leadership."
+              },
+              {
+                "heading": "Rights required enforcement",
+                "body": "Grant supported the Fifteenth Amendment and signed Enforcement Acts intended to protect voting rights. Under the Ku Klux Klan Act of 1871, his administration used federal power against white-supremacist terrorism. Federal troops and prosecutions challenged organized intimidation. A legal right could not function fully when people faced violence for exercising it."
+              },
+              {
+                "heading": "Political support weakened",
+                "body": "Grant’s protection of Reconstruction was uneven, and he did not intervene in every southern crisis. Northern commitment weakened, while the Panic of 1873 and economic depression redirected attention. His administration also suffered from corruption scandals. Grant was not personally implicated in the scandals described by the Miller Center, but his loyalty to compromised associates harmed his administration."
+              },
+              {
+                "heading": "A mixed record must remain mixed",
+                "body": "Grant’s Native American Peace Policy aimed at reform but relied on reservations and assimilation while dispossession continued. His civil-rights enforcement, administrative failures, economic challenges, and Native policies should be examined separately rather than reduced to a single label. His record illustrates both the possibilities of federal protection and the limits of reforms without sustained political support."
+              }
+            ],
+            "keyFacts": [
+              "Eighteenth president.",
+              "Republican who served 1869–1877.",
+              "Previously the Union’s leading general.",
+              "Supported the Fifteenth Amendment and Enforcement Acts.",
+              "Used federal power against the Ku Klux Klan.",
+              "Faced the Panic of 1873 and major administration scandals."
+            ],
+            "quiz": [
+              {
+                "question": "Why were Enforcement Acts important?",
+                "options": [
+                  "They supplied federal tools against intimidation and interference with rights",
+                  "They repealed emancipation",
+                  "They gave the Klan federal authority",
+                  "They abolished the presidency"
+                ],
+                "answerIndex": 0,
+                "explanation": "Constitutional guarantees required practical protection."
+              },
+              {
+                "question": "What complicated Grant’s Reconstruction policies?",
+                "options": [
+                  "The country had no elections",
+                  "Violence, declining political support, and economic depression",
+                  "The Civil War had never occurred",
+                  "Congress refused to meet for eight years"
+                ],
+                "answerIndex": 1,
+                "explanation": "Protecting rights depended on institutions and sustained commitment."
+              },
+              {
+                "question": "Which assessment is most accurate?",
+                "options": [
+                  "Scandals erase every civil-rights action",
+                  "Civil-rights enforcement means every policy succeeded",
+                  "Grant’s rights enforcement and serious policy failures must both be examined",
+                  "His presidency involved only military battles"
+                ],
+                "answerIndex": 2,
+                "explanation": "A balanced evaluation distinguishes achievements, limitations, and different policy areas."
+              },
+              {
+                "question": "Which law did Grant's administration use against white-supremacist terrorism?",
+                "options": [
+                  "The Kansas-Nebraska Act",
+                  "The Tenure of Office Act",
+                  "The Ku Klux Klan Act of 1871",
+                  "The Independent Treasury Act"
+                ],
+                "answerIndex": 2,
+                "explanation": "Federal troops and prosecutions challenged organized intimidation."
+              },
+              {
+                "question": "Which amendment did Grant support to protect voting rights?",
+                "options": [
+                  "The Thirteenth",
+                  "The Fifteenth",
+                  "The Nineteenth",
+                  "The First"
+                ],
+                "answerIndex": 1,
+                "explanation": "He also signed Enforcement Acts to protect voting rights."
+              },
+              {
+                "question": "How does the lesson describe Grant's Peace Policy?",
+                "options": [
+                  "It aimed at reform but relied on reservations and assimilation",
+                  "It ended dispossession",
+                  "It returned all land to Native nations",
+                  "It was never put into practice"
+                ],
+                "answerIndex": 0,
+                "explanation": "Dispossession continued despite its reform aims."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "White House Historical Association",
+                "title": "Ulysses S. Grant",
+                "url": "https://www.whitehousehistory.org/bios/ulysses-s-grant"
+              },
+              {
+                "publisher": "Miller Center",
+                "title": "Ulysses S. Grant: Domestic Affairs",
+                "url": "https://millercenter.org/president/grant/domestic-affairs"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "enforcement-acts",
+                "label": "The Enforcement Acts",
+                "kind": "subtopic"
+              },
+              {
+                "id": "ku-klux-klan-act",
+                "label": "The Ku Klux Klan Act of 1871",
+                "kind": "event"
+              },
+              {
+                "id": "panic-of-1873",
+                "label": "The Panic of 1873",
+                "kind": "event"
+              },
+              {
+                "id": "peace-policy",
+                "label": "Grant's Peace Policy",
+                "kind": "idea"
               }
             ]
           },
