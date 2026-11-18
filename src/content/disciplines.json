@@ -1161,6 +1161,293 @@
             ]
           }
         ]
+      },
+      {
+        "slug": "islamic-golden-age",
+        "title": "The Islamic Golden Age",
+        "kind": "era",
+        "summary": "Translation, libraries, patronage, and multilingual scholarship brought Greek, Persian, and Indian learning into Arabic and supported a wider network of intellectual exchange.",
+        "lessons": [
+          {
+            "id": "les_ig01",
+            "slug": "the-abbasid-translation-movement",
+            "title": "The Abbasid Translation Movement: Knowledge Across Languages",
+            "sections": [
+              {
+                "heading": "Intellectual traditions depend on exchange",
+                "body": "During the Abbasid period, scholars translated works associated with Greek, Persian, and Indian learning into Arabic. Baghdad was an important setting, but sponsored libraries and scholarship also existed in other centers.\n\nTexts moved across political, linguistic, and religious boundaries, making earlier bodies of learning accessible to new readers. Knowledge did not remain inside one civilization."
+              },
+              {
+                "heading": "Translation could involve intermediate languages",
+                "body": "Some Greek works reached Arabic through Syriac translations. Eastern Christian scholars played an important role in this transmission, linking multiple linguistic traditions.\n\nThe simplified chain—Greek text → Syriac version → Arabic version—helps explain why a text’s later audience might depend on several generations of translators. It describes an important route, not a universal route followed by every work."
+              },
+              {
+                "heading": "Libraries and patronage mattered",
+                "body": "Knowledge does not circulate through intellectual interest alone. The Abbasid setting included sponsored libraries that collected and supported access to texts. Such institutions helped make translation part of sustained scholarly activity rather than merely isolated individual effort.\n\nAs a learning analogy, an educational project needs more than an author: it also needs materials, funding, editors, and a way to reach readers. This illustrates why institutional support matters without making a medieval library identical to a modern university."
+              },
+              {
+                "heading": "Be careful with the House of Wisdom story",
+                "body": "Popular accounts often make Baghdad’s House of Wisdom sound like the single headquarters of the entire translation movement. The evidence requires more caution. It was associated with a royal library and translation activity, especially involving Persian materials, but its precise role—and particularly claims that it organized Greek-to-Arabic translation—is disputed.\n\nThe safer historical picture is a wider network of translators, patrons, libraries, and scholarly communities. One memorable institution should not replace the larger system in our explanation."
+              }
+            ],
+            "keyFacts": [
+              "Abbasid-era translation brought several intellectual traditions into Arabic.",
+              "Syriac served as an intermediary for some Greek texts.",
+              "Christian scholars contributed to transmission.",
+              "The wider movement should not be equated with one institution.",
+              "Baghdad was an important setting, but sponsored libraries and scholarship also existed in other centers.",
+              "Patronage and libraries helped make translation part of sustained scholarly activity."
+            ],
+            "quiz": [
+              {
+                "question": "Did all Greek texts move directly from Greek into Arabic?",
+                "options": [
+                  "Yes. Every work was translated in a single step",
+                  "No. Some passed through Syriac",
+                  "Yes, except for poetry",
+                  "No. Greek texts were never translated into Arabic"
+                ],
+                "answerIndex": 1,
+                "explanation": "Some Greek works reached Arabic through Syriac translations, though that was an important route rather than a universal one."
+              },
+              {
+                "question": "Why does the participation of Christian translators matter?",
+                "options": [
+                  "It shows that only Christians produced original scientific work",
+                  "It shows that translation occurred only in Europe",
+                  "It shows that intellectual exchange crossed religious as well as linguistic boundaries",
+                  "It shows that Arabic was not used in scholarship"
+                ],
+                "answerIndex": 2,
+                "explanation": "Eastern Christian scholars played an important role in transmission, so intellectual exchange crossed religious as well as linguistic boundaries."
+              },
+              {
+                "question": "What is wrong with calling the House of Wisdom the undisputed headquarters of all translation?",
+                "options": [
+                  "It overstates a disputed institutional role and hides the wider network supporting scholarship",
+                  "The House of Wisdom never existed in any form",
+                  "The House of Wisdom was in Mecca, not Baghdad",
+                  "Translation did not occur during the Abbasid period"
+                ],
+                "answerIndex": 0,
+                "explanation": "Its precise role is disputed, and the safer picture is a wider network of translators, patrons, libraries, and scholarly communities."
+              },
+              {
+                "question": "Which intellectual traditions were brought into Arabic in the translation movement described here?",
+                "options": [
+                  "Only Roman law",
+                  "Greek, Persian, and Indian learning",
+                  "Only Chinese chronicles",
+                  "Only West African oral epics"
+                ],
+                "answerIndex": 1,
+                "explanation": "Scholars translated works associated with Greek, Persian, and Indian learning into Arabic."
+              },
+              {
+                "question": "Why do libraries and patronage matter in this account?",
+                "options": [
+                  "They prove that one building organized every translation",
+                  "They show that translation happened without any institutional support",
+                  "They helped make translation part of sustained scholarly activity rather than isolated individual effort",
+                  "They replaced the need for translators"
+                ],
+                "answerIndex": 2,
+                "explanation": "Knowledge does not circulate through intellectual interest alone; sponsored libraries and patronage supported sustained scholarly activity."
+              },
+              {
+                "question": "What safer picture should replace treating one institution as the movement’s single headquarters?",
+                "options": [
+                  "A wider network of translators, patrons, libraries, and scholarly communities",
+                  "A single official list of approved Greek authors",
+                  "A story in which knowledge never crossed linguistic boundaries",
+                  "The claim that Baghdad had no libraries"
+                ],
+                "answerIndex": 0,
+                "explanation": "One memorable institution should not replace the larger system in our explanation."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Stanford University",
+                "title": "The Translation Movements of Islamic Learning",
+                "url": "https://intellectualproperties.stanford.edu/sites/g/files/sbiybj24701/files/media/file/6._islamic_learning_0.pdf"
+              },
+              {
+                "publisher": "History of Information",
+                "title": "Foundation of the House of Wisdom in Baghdad",
+                "url": "https://www.historyofinformation.com/detail.php?id=1583"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "baghdad",
+                "label": "Baghdad",
+                "kind": "place"
+              },
+              {
+                "id": "syriac-translations",
+                "label": "Syriac as an intermediary",
+                "kind": "subtopic"
+              },
+              {
+                "id": "house-of-wisdom",
+                "label": "The House of Wisdom",
+                "kind": "place"
+              },
+              {
+                "id": "abbasid-patronage",
+                "label": "Libraries and patronage",
+                "kind": "idea"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "west-african-empires",
+        "title": "West African Empires",
+        "kind": "civilization",
+        "summary": "West African empires were shaped by trans-Saharan trade, imperial taxation, and cities that became centers of commerce and Islamic learning.",
+        "lessons": [
+          {
+            "id": "les_ml01",
+            "slug": "how-trade-supported-an-empire",
+            "title": "Mali and Mansa Musa: How Trade Supported an Empire",
+            "sections": [
+              {
+                "heading": "Look beyond the wealthy ruler",
+                "body": "Mansa Musa is famous for his wealth, but that wealth becomes more understandable within the Mali Empire’s trading system. Mali drew much of its power from trans-Saharan trade linking western Africa with North Africa, especially commerce in gold and salt. Taxation of exchanged goods helped support imperial wealth.\n\nThe important relationship is not simply that a ruler possessed gold. Trade routes, valuable commodities, and the ability to collect revenue connected economic activity with political authority."
+              },
+              {
+                "heading": "Geography made connections possible",
+                "body": "Timbuktu’s position near the Sahara and with access to the Niger River helped connect transportation and trading networks. Its importance came partly from being a meeting point between regions rather than an isolated city with a single valuable resource.\n\nWhen studying a wealthy city, ask not only what it produces but also what passes through it, who trades there, and who benefits from those exchanges."
+              },
+              {
+                "heading": "A pilgrimage became an international demonstration",
+                "body": "In 1324, Mansa Musa undertook the hajj, the Muslim pilgrimage to Mecca. The extravagance of his journey publicized his wealth and Mali’s importance far beyond the empire.\n\nThe journey joined religious practice with political visibility. A pilgrimage undertaken by a powerful ruler could also communicate the scale of the resources available to him."
+              },
+              {
+                "heading": "Commerce and scholarship reinforced one another",
+                "body": "Mansa Musa supported scholarship and the arts, and Timbuktu developed as a significant commercial and Islamic intellectual center. Its connections with North African trading centers helped place it within wider networks of exchange.\n\nMali belongs in a history of scholarship and cross-regional connections as well as a history of wealth. Reducing the empire to its gold obscures the institutions and relationships through which that wealth mattered."
+              }
+            ],
+            "keyFacts": [
+              "Mali benefited from trans-Saharan trade.",
+              "Gold and salt were important commodities.",
+              "Mansa Musa undertook his celebrated pilgrimage in 1324.",
+              "Timbuktu became a center of commerce and Islamic learning.",
+              "Taxation of exchanged goods helped support imperial wealth.",
+              "The pilgrimage joined religious practice with political visibility."
+            ],
+            "quiz": [
+              {
+                "question": "Why is “Mali was wealthy because Mansa Musa was wealthy” incomplete?",
+                "options": [
+                  "Because Mansa Musa was not actually wealthy",
+                  "It leaves out trade routes, commodities, taxation, and the economic system supporting imperial power",
+                  "Because Mali had no political authority",
+                  "Because gold and salt were unimportant"
+                ],
+                "answerIndex": 1,
+                "explanation": "It leaves out trade routes, commodities, taxation, and the economic system supporting imperial power."
+              },
+              {
+                "question": "How did geography contribute to Timbuktu’s importance?",
+                "options": [
+                  "It was isolated from other regions, which protected a single resource",
+                  "It sat on the Mediterranean coast",
+                  "Its location connected Saharan trade with the Niger region",
+                  "It had no access to river transportation"
+                ],
+                "answerIndex": 2,
+                "explanation": "Timbuktu’s position near the Sahara and with access to the Niger River helped connect transportation and trading networks."
+              },
+              {
+                "question": "What did the pilgrimage communicate beyond religious devotion?",
+                "options": [
+                  "It made Mali’s resources and its ruler’s wealth visible to a wider world",
+                  "It ended trans-Saharan trade",
+                  "It moved the empire’s capital to Mecca",
+                  "It showed that Mali rejected connections beyond West Africa"
+                ],
+                "answerIndex": 0,
+                "explanation": "The extravagance of the 1324 hajj publicized Mansa Musa’s wealth and Mali’s importance far beyond the empire."
+              },
+              {
+                "question": "When did Mansa Musa undertake his celebrated pilgrimage?",
+                "options": [
+                  "1066",
+                  "1258",
+                  "1324",
+                  "1492"
+                ],
+                "answerIndex": 2,
+                "explanation": "In 1324, Mansa Musa undertook the hajj to Mecca."
+              },
+              {
+                "question": "Which commodities were especially important in the trans-Saharan trade described here?",
+                "options": [
+                  "Silk and spices",
+                  "Gold and salt",
+                  "Tea and porcelain",
+                  "Oil and rubber"
+                ],
+                "answerIndex": 1,
+                "explanation": "Mali drew much of its power from trans-Saharan commerce in gold and salt."
+              },
+              {
+                "question": "Why is reducing Mali to its gold an incomplete historical picture?",
+                "options": [
+                  "Because the empire had no cities",
+                  "Because Mansa Musa opposed scholarship",
+                  "Because trans-Saharan trade was unimportant",
+                  "It obscures the institutions, scholarship, and relationships through which that wealth mattered"
+                ],
+                "answerIndex": 3,
+                "explanation": "Timbuktu developed as a commercial and Islamic intellectual center, and Mali belongs in a history of scholarship and cross-regional connections as well as a history of wealth."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Mali",
+                "url": "https://www.britannica.com/place/Mali-historical-empire-Africa"
+              },
+              {
+                "publisher": "BBC Bitesize",
+                "title": "Mali and Mansa Musa",
+                "url": "https://www.bbc.co.uk/bitesize/articles/zjch6g8"
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Musa I of Mali",
+                "url": "https://www.britannica.com/biography/Musa-I-of-Mali"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "mansa-musa",
+                "label": "Mansa Musa",
+                "kind": "person"
+              },
+              {
+                "id": "timbuktu",
+                "label": "Timbuktu",
+                "kind": "place"
+              },
+              {
+                "id": "trans-saharan-trade",
+                "label": "Trans-Saharan trade",
+                "kind": "subtopic"
+              },
+              {
+                "id": "hajj-of-1324",
+                "label": "The hajj of 1324",
+                "kind": "event"
+              }
+            ]
+          }
+        ]
       }
     ]
   },
@@ -1747,6 +2034,139 @@
                 "kind": "subtopic"
               }
             ]
+          },
+          {
+            "id": "les_st04",
+            "slug": "choosing-your-response",
+            "title": "Epictetus: Choosing Your Response Without Pretending You Control Everything",
+            "sections": [
+              {
+                "heading": "Agency and outcomes are different",
+                "body": "Epictetus, a Stoic philosopher of the first and early second centuries CE, places moral agency at the center of a good life. His ethics distinguishes our judgments and choices from external circumstances that do not depend entirely on us.\n\nA useful illustration is preparing for an interview. You can work on your preparation, honesty, and conduct. You cannot guarantee the interviewer’s preferences or the final decision. This example separates acting well from controlling everything that follows.\n\nFor Epictetus, the deepest ethical question concerns how you exercise your capacity for choice—not whether the world delivers your preferred outcome."
+              },
+              {
+                "heading": "An impression is not yet a verdict",
+                "body": "Epictetus emphasizes examining impressions before accepting them. Something happens; it appears to mean something; you can then consider whether that interpretation deserves your agreement. Training involves learning not to endorse every first impression automatically.\n\nThe aim is not to declare a comforting explanation true. It is to avoid treating an unproven explanation as established fact."
+              },
+              {
+                "heading": "An ethical discipline, not just a calming technique",
+                "body": "Stoic ethics identifies goodness with virtue and the sound use of reason. Its purpose is therefore more demanding than making unpleasant feelings disappear. Justice and responsible action remain central to the tradition.\n\nA person who calmly behaves dishonestly has not achieved the Stoic ideal merely by remaining relaxed. Emotional composure alone does not establish good character."
+              },
+              {
+                "heading": "Practice still requires attention",
+                "body": "Epictetus treats examining impressions as a skill strengthened through practice. Nevertheless, continued vigilance remains necessary.\n\nPractice exercise: Take one recent disappointment and write three separate lines:\n\n1. What happened?\n\n2. What meaning did I immediately assign to it?\n\n3. What choice about my own conduct remains available?\n\nThe aim is to distinguish evidence, interpretation, and action."
+              }
+            ],
+            "keyFacts": [
+              "Epictetus centers ethics on the responsible exercise of choice.",
+              "External outcomes are not entirely ours to command.",
+              "First impressions require examination.",
+              "Stoicism concerns virtue, not merely emotional comfort.",
+              "Examining impressions is a skill strengthened through practice, and continued vigilance remains necessary.",
+              "Acting well is not the same as controlling every outcome that follows."
+            ],
+            "quiz": [
+              {
+                "question": "Is “I can control whether everyone likes me” consistent with this lesson?",
+                "options": [
+                  "Yes, because enough effort guarantees other people’s affection",
+                  "Yes, if you remain calm in every conversation",
+                  "No. Other people’s responses do not depend entirely on your choices",
+                  "No, because liking other people is incompatible with virtue"
+                ],
+                "answerIndex": 2,
+                "explanation": "Other people’s responses do not depend entirely on your choices."
+              },
+              {
+                "question": "What is missing from “I felt calm, so I acted virtuously”?",
+                "options": [
+                  "A measurement of how long the calm mood lasted",
+                  "An assessment of whether the conduct was reasonable and ethically good",
+                  "Proof that no one else noticed the situation",
+                  "A guarantee that the preferred outcome occurred"
+                ],
+                "answerIndex": 1,
+                "explanation": "Emotional composure alone does not establish good character; the conduct still has to be reasonable and ethically good."
+              },
+              {
+                "question": "Why pause before accepting an upsetting interpretation?",
+                "options": [
+                  "Because first impressions are always false",
+                  "Because Stoicism forbids having any emotional reaction",
+                  "Because pausing forces other people to change their behavior",
+                  "An impression can be mistaken; examining it creates room for a better-grounded judgment"
+                ],
+                "answerIndex": 3,
+                "explanation": "An impression can be mistaken; examining it creates room for a better-grounded judgment."
+              },
+              {
+                "question": "In the interview illustration, what can you work on, and what can you not guarantee?",
+                "options": [
+                  "You can work on preparation, honesty, and conduct, but not the interviewer’s final decision",
+                  "You can guarantee the outcome if your preparation is thorough",
+                  "You can control the interviewer’s preferences, but not your own conduct",
+                  "You cannot influence either your preparation or the result"
+                ],
+                "answerIndex": 0,
+                "explanation": "The example separates acting well from controlling everything that follows."
+              },
+              {
+                "question": "What does the three-line practice ask you to distinguish?",
+                "options": [
+                  "Wealth, health, and reputation",
+                  "What happened, the meaning you assigned, and the choice still available to you",
+                  "The teacher, the student, and the emperor",
+                  "Past, present, and future moods"
+                ],
+                "answerIndex": 1,
+                "explanation": "The aim is to distinguish evidence, interpretation, and action."
+              },
+              {
+                "question": "Why is remaining relaxed not enough to achieve the Stoic ideal?",
+                "options": [
+                  "Stoicism is only concerned with appearing calm in public",
+                  "Relaxation is treated as a vice",
+                  "A person can remain calm while acting dishonestly; Stoicism concerns virtue and the sound use of reason",
+                  "The Stoic ideal is to control every external outcome"
+                ],
+                "answerIndex": 2,
+                "explanation": "A person who calmly behaves dishonestly has not achieved the Stoic ideal merely by remaining relaxed."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Stanford Encyclopedia of Philosophy",
+                "title": "Epictetus",
+                "url": "https://plato.stanford.edu/entries/epictetus/"
+              },
+              {
+                "publisher": "Stanford Encyclopedia of Philosophy",
+                "title": "Stoicism",
+                "url": "https://plato.stanford.edu/entries/stoicism/"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "epictetus",
+                "label": "Epictetus",
+                "kind": "person"
+              },
+              {
+                "id": "examining-impressions",
+                "label": "Examining impressions",
+                "kind": "subtopic"
+              },
+              {
+                "id": "moral-agency",
+                "label": "Moral agency and choice",
+                "kind": "idea"
+              },
+              {
+                "id": "virtue-not-composure",
+                "label": "Virtue, not mere composure",
+                "kind": "idea"
+              }
+            ]
           }
         ]
       },
@@ -1894,6 +2314,144 @@
                 "id": "virtue-and-habit",
                 "label": "Virtue and habit",
                 "kind": "subtopic"
+              }
+            ]
+          },
+          {
+            "id": "les_ar02",
+            "slug": "how-habits-shape-character",
+            "title": "Aristotle: How Habits Shape Character",
+            "sections": [
+              {
+                "heading": "A good life is more than a good mood",
+                "body": "For Aristotle, ethics asks what it means for a human life to go well. His central concept, eudaimonia, is often translated as “happiness,” but means something closer to flourishing or living well than simply feeling cheerful. Virtuous activity belongs at the center of that life; it is not merely a tool for getting something else.\n\nInstead of focusing only on “What should I do right now?” Aristotle also asks what kind of person someone is becoming. Courage, justice, and moderation are enduring qualities of character, not isolated successes."
+              },
+              {
+                "heading": "Character develops through practice",
+                "body": "Ethical character develops through habituation. Repeated actions help shape how we tend to feel, choose, and respond. But becoming virtuous requires more than mechanically repeating approved behavior: it also requires judgment about what matters and why."
+              },
+              {
+                "heading": "The mean is not always the middle",
+                "body": "Aristotle describes moral virtue as a mean between excess and deficiency. This does not mean splitting every difference or choosing the mathematically average response. The appropriate response depends on the situation: the right feeling, toward the right person, at the right time, for the right reason.\n\nAnger illustrates the distinction. Becoming furious over a tiny inconvenience can be excessive, but never becoming angry at serious mistreatment can also be inappropriate. Virtue involves responding fittingly—not eliminating emotion."
+              },
+              {
+                "heading": "Knowing and wanting can come apart",
+                "body": "Aristotelian virtue ethics distinguishes full virtue from self-control. A self-controlled person does what is right despite a strong contrary desire. A fully virtuous person’s desires and judgment are more closely aligned. Both may act correctly, but their inner struggle differs.\n\nThe point is not that struggling makes an action worthless. Ethical development concerns the education of desire and emotion as well as the restraint of behavior."
+              }
+            ],
+            "keyFacts": [
+              "Eudaimonia concerns flourishing, not just pleasant feelings.",
+              "Habits help form character.",
+              "Virtue requires judgment, not blind repetition.",
+              "The mean is the fitting response, not an arithmetic midpoint.",
+              "Anger can be excessive or deficient; virtue is a fitting response, not the absence of emotion.",
+              "Self-control does the right thing despite contrary desire; full virtue brings desire and judgment into closer agreement."
+            ],
+            "quiz": [
+              {
+                "question": "Someone refuses every reasonable risk. Why might Aristotle question whether this is virtuous?",
+                "options": [
+                  "Because any refusal of risk is already courageous",
+                  "Avoiding every risk may reflect a deficiency of courage rather than good judgment",
+                  "Because the virtuous person never feels fear",
+                  "Because the mean is always the most cautious option"
+                ],
+                "answerIndex": 1,
+                "explanation": "Avoiding every risk may reflect a deficiency of courage rather than good judgment."
+              },
+              {
+                "question": "Does finding a mean require compromising halfway between justice and injustice?",
+                "options": [
+                  "Yes. Virtue is the midpoint between any two opposed positions",
+                  "Yes, but only when the two positions are equally popular",
+                  "No. The mean concerns an appropriate response, not averaging any two positions",
+                  "No, because Aristotle rejects the idea of a mean entirely"
+                ],
+                "answerIndex": 2,
+                "explanation": "The mean concerns an appropriate response, not averaging any two positions."
+              },
+              {
+                "question": "What separates self-control from full virtue?",
+                "options": [
+                  "Self-control is a vice, while full virtue is a mood",
+                  "They are the same whenever the outward action is correct",
+                  "Full virtue never involves emotion, while self-control does",
+                  "Self-control overcomes contrary desires; full virtue brings desire and sound judgment into closer agreement"
+                ],
+                "answerIndex": 3,
+                "explanation": "Self-control overcomes contrary desires; full virtue brings desire and sound judgment into closer agreement."
+              },
+              {
+                "question": "What is eudaimonia closer to, on Aristotle’s account?",
+                "options": [
+                  "A cheerful mood that makes circumstances irrelevant",
+                  "Flourishing or living well, not merely feeling pleasant",
+                  "The average of pleasure and pain",
+                  "Success measured only by what other people praise"
+                ],
+                "answerIndex": 1,
+                "explanation": "Eudaimonia is often translated as “happiness,” but means something closer to flourishing or living well than simply feeling cheerful."
+              },
+              {
+                "question": "Why is mechanically repeating approved behavior not enough to become virtuous?",
+                "options": [
+                  "Virtue also requires judgment about what matters and why",
+                  "Aristotle thinks practice has no role in character",
+                  "Only inborn talent can produce virtue",
+                  "Repeated action always makes a person worse"
+                ],
+                "answerIndex": 0,
+                "explanation": "Habits help form character, but becoming virtuous also requires judgment about what matters and why."
+              },
+              {
+                "question": "What does the example of anger illustrate?",
+                "options": [
+                  "Virtue requires eliminating emotion altogether",
+                  "Any anger is an excess, so the mean is never to be angry",
+                  "Virtue can involve feeling anger fittingly, not only restraining it or never feeling it",
+                  "The mean is the mathematical midpoint between fury and indifference"
+                ],
+                "answerIndex": 2,
+                "explanation": "Becoming furious over a tiny inconvenience can be excessive, but never becoming angry at serious mistreatment can also be inappropriate."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Stanford Encyclopedia of Philosophy",
+                "title": "Aristotle’s Ethics",
+                "url": "https://plato.stanford.edu/entries/aristotle-ethics/"
+              },
+              {
+                "publisher": "Stanford Encyclopedia of Philosophy",
+                "title": "Ancient Ethical Theory",
+                "url": "https://plato.stanford.edu/entries/ethics-ancient/"
+              },
+              {
+                "publisher": "Stanford Encyclopedia of Philosophy",
+                "title": "Virtue Ethics",
+                "url": "https://plato.stanford.edu/entries/ethics-virtue/"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "eudaimonia",
+                "label": "Eudaimonia",
+                "kind": "idea"
+              },
+              {
+                "id": "habituation",
+                "label": "Habituation",
+                "kind": "subtopic"
+              },
+              {
+                "id": "the-mean",
+                "label": "The doctrine of the mean",
+                "kind": "idea"
+              },
+              {
+                "id": "self-control-and-virtue",
+                "label": "Self-control and full virtue",
+                "kind": "idea"
               }
             ]
           }
@@ -3433,6 +3991,149 @@
               {
                 "id": "original-vs-appellate-jurisdiction",
                 "label": "Original vs. appellate jurisdiction",
+                "kind": "subtopic"
+              }
+            ]
+          },
+          {
+            "id": "les_jr02",
+            "slug": "why-courts-can-reject-an-unconstitutional-law",
+            "title": "Marbury v. Madison: Why Courts Can Reject an Unconstitutional Law",
+            "sections": [
+              {
+                "heading": "An appointment dispute raised a larger issue",
+                "body": "William Marbury received a judicial appointment from President John Adams, but his commission was not delivered before the administration changed. Marbury asked the Supreme Court to order the new administration to deliver it. The case was decided in 1803.\n\nThe immediate dispute concerned an appointment. The lasting constitutional issue concerned courts’ authority when legislation conflicts with the Constitution."
+              },
+              {
+                "heading": "A valid claim does not settle jurisdiction",
+                "body": "Marbury sought a writ of mandamus: an order requiring a public official to perform a duty. Chief Justice John Marshall concluded that the Court could not grant the requested order because the statutory provision authorizing it improperly expanded the Supreme Court’s original jurisdiction.\n\nOriginal jurisdiction concerns cases that begin in a court, rather than arrive through an appeal. Article III specifies the Supreme Court’s original jurisdiction; Congress could not enlarge it through ordinary legislation in the manner the Court identified here.\n\nWhether someone has suffered a legal wrong and whether a particular court has authority to supply the requested remedy are separate questions."
+              },
+              {
+                "heading": "The Constitution takes priority",
+                "body": "Marshall’s reasoning defended judicial review: the power of courts to reject legislation that violates the Constitution. Marbury v. Madison was the first case in which the Supreme Court invalidated a law passed by Congress.\n\nThe Constitution does not expressly give federal courts this power in those words. The decision articulated its constitutional basis through the courts’ responsibility to decide cases under a superior, binding Constitution."
+              },
+              {
+                "heading": "An immediate limit and lasting authority",
+                "body": "Marbury did not receive the order he requested. Yet the Court’s refusal asserted an enduring institutional power: it could hold an act of Congress unconstitutional.\n\nThe case is therefore more subtle than “the Court gave itself more power.” In the immediate dispute, it denied that it possessed jurisdiction to act; in explaining why, it established a major basis for reviewing legislative power."
+              }
+            ],
+            "keyFacts": [
+              "The decision came in 1803.",
+              "John Marshall wrote the Court’s opinion.",
+              "Marbury did not obtain his requested order.",
+              "The decision was the Supreme Court’s first invalidation of a federal statute.",
+              "Original jurisdiction concerns cases that begin in a court rather than arrive through an appeal.",
+              "Judicial review concerns conflict with the Constitution, not mere policy disagreement."
+            ],
+            "quiz": [
+              {
+                "question": "Did Marbury obtain the order requiring delivery of his commission?",
+                "options": [
+                  "Yes. The Court ordered the new administration to deliver it",
+                  "Yes, but only after the case arrived on appeal",
+                  "No",
+                  "The Court declined to decide the dispute at all"
+                ],
+                "answerIndex": 2,
+                "explanation": "Marbury did not receive the order he requested."
+              },
+              {
+                "question": "Why did the Court reject the relevant statutory provision?",
+                "options": [
+                  "It concluded that the provision expanded the Supreme Court’s original jurisdiction beyond constitutional limits",
+                  "It considered the statute unwise as a matter of policy",
+                  "It held that Marbury had no legal claim at all",
+                  "It ruled that Congress may never pass laws about the courts"
+                ],
+                "answerIndex": 0,
+                "explanation": "Marshall concluded that the statutory provision authorizing the order improperly expanded the Supreme Court’s original jurisdiction."
+              },
+              {
+                "question": "Does judicial review mean a court can reject legislation merely because it considers it unwise?",
+                "options": [
+                  "Yes. Unwise policy is enough to invalidate a statute",
+                  "Yes, but only when the president agrees",
+                  "No. Courts may reject statutes only when Congress asks them to",
+                  "No. The principle at issue is conflict with the Constitution, not simple policy disagreement"
+                ],
+                "answerIndex": 3,
+                "explanation": "The principle at issue is conflict with the Constitution, not simple policy disagreement."
+              },
+              {
+                "question": "When was Marbury v. Madison decided?",
+                "options": [
+                  "1789",
+                  "1803",
+                  "1865",
+                  "1954"
+                ],
+                "answerIndex": 1,
+                "explanation": "The case was decided in 1803."
+              },
+              {
+                "question": "Who wrote the Court’s opinion?",
+                "options": [
+                  "William Marbury",
+                  "President John Adams",
+                  "Chief Justice John Marshall",
+                  "James Madison, as the new administration’s representative"
+                ],
+                "answerIndex": 2,
+                "explanation": "John Marshall wrote the Court’s opinion."
+              },
+              {
+                "question": "Why is the result more subtle than “the Court gave itself more power”?",
+                "options": [
+                  "The Court issued every remedy Marbury requested",
+                  "The Court denied that it had jurisdiction to issue the order, and in explaining why, it established a basis for reviewing legislation",
+                  "The Court held that Congress is superior to the Constitution",
+                  "The Court refused to discuss judicial review at all"
+                ],
+                "answerIndex": 1,
+                "explanation": "In the immediate dispute, the Court denied that it possessed jurisdiction to act; in explaining why, it established a major basis for reviewing legislative power."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "National Constitution Center",
+                "title": "Marbury v. Madison",
+                "url": "https://constitutioncenter.org/the-constitution/supreme-court-case-library/marbury-v-madison"
+              },
+              {
+                "publisher": "Federal Judicial Center",
+                "title": "Marbury v. Madison",
+                "url": "https://www.fjc.gov/history/cases/cases-that-shaped-the-federal-courts/marbury-v-madison"
+              },
+              {
+                "publisher": "Constitution Annotated",
+                "title": "ArtIII.S1.3 Judicial Review",
+                "url": "https://constitution.congress.gov/browse/essay/artIII-S1-3/ALDE_00013514/"
+              },
+              {
+                "publisher": "Oyez",
+                "title": "Marbury v. Madison",
+                "url": "https://www.oyez.org/cases/1789-1850/5us137"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "william-marbury",
+                "label": "William Marbury",
+                "kind": "person"
+              },
+              {
+                "id": "john-marshall",
+                "label": "John Marshall",
+                "kind": "person"
+              },
+              {
+                "id": "writ-of-mandamus",
+                "label": "Writ of mandamus",
+                "kind": "idea"
+              },
+              {
+                "id": "article-iii-original-jurisdiction",
+                "label": "Article III and original jurisdiction",
                 "kind": "subtopic"
               }
             ]
