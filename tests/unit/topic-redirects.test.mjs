@@ -68,4 +68,14 @@ test('next.config redirects cover each retired topic and its lesson wildcard', (
     assert.ok(sources.has(`/d/art-history/${from}`), from);
     assert.ok(sources.has(`/d/art-history/${from}/:lesson`), from);
   }
+  assert.ok(sources.has('/d/world-history/silk-roads'));
+  assert.ok(sources.has('/d/world-history/silk-roads/:lesson'));
+});
+
+test('retired Silk Roads topic and lesson pages redirect to Trade and Exchange Networks', () => {
+  assert.equal(topicRedirectPath('/d/world-history/silk-roads'), '/d/world-history/trade-and-exchange-networks');
+  assert.equal(topicRedirectPath('/d/world-history/silk-roads/how-trade-connected-worlds'), '/d/world-history/trade-and-exchange-networks/how-trade-connected-worlds');
+  assert.equal(topicRedirectPath('/d/world-history/silk-roads/nope'), '/d/world-history/trade-and-exchange-networks/nope');
+  assert.equal(topicRedirectPath('/d/world-history/trade-and-exchange-networks'), null);
+  assert.equal(topicRedirectPath('/d/world-history/meiji-restoration'), null);
 });
