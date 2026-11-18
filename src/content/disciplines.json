@@ -5179,6 +5179,11 @@
                 "publisher": "Miller Center",
                 "title": "James K. Polk: Foreign Affairs",
                 "url": "https://millercenter.org/president/polk/foreign-affairs"
+              },
+              {
+                "publisher": "National Archives",
+                "title": "Treaty of Guadalupe Hidalgo (1848)",
+                "url": "https://www.archives.gov/milestone-documents/treaty-of-guadalupe-hidalgo"
               }
             ],
             "digDeeper": [
@@ -5312,6 +5317,11 @@
                 "publisher": "Miller Center",
                 "title": "Zachary Taylor: Domestic Affairs",
                 "url": "https://millercenter.org/president/taylor/domestic-affairs"
+              },
+              {
+                "publisher": "White House Historical Association",
+                "title": "Zachary Taylor",
+                "url": "https://www.whitehousehistory.org/bios/zachary-taylor"
               }
             ],
             "digDeeper": [
@@ -5440,6 +5450,21 @@
                 "publisher": "Miller Center",
                 "title": "Millard Fillmore: Domestic Affairs",
                 "url": "https://millercenter.org/president/fillmore/domestic-affairs"
+              },
+              {
+                "publisher": "National Archives",
+                "title": "Compromise of 1850 (1850)",
+                "url": "https://www.archives.gov/milestone-documents/compromise-of-1850"
+              },
+              {
+                "publisher": "White House Historical Association",
+                "title": "Millard Fillmore",
+                "url": "https://www.whitehousehistory.org/bios/millard-fillmore"
+              },
+              {
+                "publisher": "Wikipedia",
+                "title": "Compromise of 1850",
+                "url": "https://en.wikipedia.org/wiki/Compromise_of_1850"
               }
             ],
             "digDeeper": [
@@ -5573,6 +5598,11 @@
                 "publisher": "Miller Center",
                 "title": "Franklin Pierce: Domestic Affairs",
                 "url": "https://millercenter.org/president/pierce/domestic-affairs"
+              },
+              {
+                "publisher": "National Archives",
+                "title": "Kansas-Nebraska Act (1854)",
+                "url": "https://www.archives.gov/milestone-documents/kansas-nebraska-act"
               }
             ],
             "digDeeper": [
@@ -5706,6 +5736,11 @@
                 "publisher": "Miller Center",
                 "title": "James Buchanan: Domestic Affairs",
                 "url": "https://millercenter.org/president/buchanan/domestic-affairs"
+              },
+              {
+                "publisher": "White House Historical Association",
+                "title": "James Buchanan",
+                "url": "https://www.whitehousehistory.org/bios/james-buchanan"
               }
             ],
             "digDeeper": [
@@ -5983,6 +6018,21 @@
                 "publisher": "Miller Center",
                 "title": "Andrew Johnson: Domestic Affairs",
                 "url": "https://millercenter.org/president/johnson/domestic-affairs"
+              },
+              {
+                "publisher": "U.S. Senate",
+                "title": "Impeachment Trial of President Andrew Johnson, 1868",
+                "url": "https://www.senate.gov/about/powers-procedures/impeachment/impeachment-johnson.htm"
+              },
+              {
+                "publisher": "White House Historical Association",
+                "title": "Andrew Johnson",
+                "url": "https://www.whitehousehistory.org/bios/andrew-johnson"
+              },
+              {
+                "publisher": "Wikipedia",
+                "title": "Andrew Johnson",
+                "url": "https://en.wikipedia.org/wiki/Andrew_Johnson"
               }
             ],
             "digDeeper": [
@@ -6116,6 +6166,11 @@
                 "publisher": "Miller Center",
                 "title": "Ulysses S. Grant: Domestic Affairs",
                 "url": "https://millercenter.org/president/grant/domestic-affairs"
+              },
+              {
+                "publisher": "Wikipedia",
+                "title": "Presidency of Ulysses S. Grant",
+                "url": "https://en.wikipedia.org/wiki/Presidency_of_Ulysses_S._Grant"
               }
             ],
             "digDeeper": [
