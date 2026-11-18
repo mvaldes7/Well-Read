@@ -1,6 +1,6 @@
 # Well-Read: Instructions for Contributors and Reviewers
 
-DRAFT. This file is the standing brief for any person or tool that writes, reviews or changes code in this
+This file is the standing brief for any person or tool that writes, reviews or changes code in this
 repository, including Cursor, Claude, Codex, Copilot, Grok and human reviewers. Read it before you start.
 If this file and the code disagree, the code and the applied database are the source of truth. Flag the
 mismatch in your PR instead of guessing.
