@@ -7,7 +7,11 @@ mismatch in your PR instead of guessing.
 
 Related docs: `ROADMAP.md` (shipped work, backlog, decisions), `docs/product-brief.md`, `docs/architecture.md`,
 `docs/runbook.md`, `docs/plans/topic-drilldowns.md`, `docs/lesson-reminders.md`, `supabase/README.md`,
-`docs/decisions/` (ADRs), `SECURITY.md`.
+`docs/decisions/` (ADRs), `SECURITY.md`. `AGENTS.md` and `CLAUDE.md` are thin pointers to this file.
+
+If this file, another doc, the code, or the applied database disagree, the code and the project's migration
+history (`list_migrations`) win. `supabase/README.md`, `docs/architecture.md` and `docs/lesson-reminders.md` can
+lag. Do not apply a migration just because a README lists it as unapplied.
 
 ## 1. What Well-Read is
 
@@ -17,7 +21,8 @@ Related docs: `ROADMAP.md` (shipped work, backlog, decisions), `docs/product-bri
 - Core flow: Discipline -> Topic -> Lesson -> Quiz. A lesson is complete when its quiz is passed with 70% or
   higher (`score*10 >= total*7`, graded on the server).
 - Other features:
-  - Dig deeper: AI-generated follow-up lessons, unlocked after any completed quiz.
+  - Dig deeper: AI-generated follow-up lessons. Dig deeper is offered on a lesson only after that lesson's
+    quiz has been submitted (pass or fail).
   - `/review`: the owner-only queue for publishing or rejecting AI lessons.
   - Achievements and per-discipline mastery tiers (Novice 1, Apprentice 5, Scholar 10, Luminary 20).
   - Library bookshelf with a whole-library toggle.
@@ -31,6 +36,7 @@ Related docs: `ROADMAP.md` (shipped work, backlog, decisions), `docs/product-bri
 - Supabase handles auth (email/password via `@supabase/ssr`) and Postgres with row-level security (RLS).
   Lesson content is file-based, not in the database.
 - Vercel hosts the app (Hobby plan); `main` auto-deploys to production, and every PR gets a preview.
+  Previews use the production Supabase project (see section 4).
 - Web Push for reminders (`web-push`, service worker `public/sw.js`, Declarative Web Push for iOS).
 - GitHub Actions runs `ci.yml` on every push and PR. `lesson-reminders.yml` sends the daily reminder at 02:00 UTC
   (6 PM PST / 7 PM PDT).
@@ -40,7 +46,7 @@ Related docs: `ROADMAP.md` (shipped work, backlog, decisions), `docs/product-bri
 | --- | --- |
 | `src/app/` | Routes: `/`, `/learn`, `/d/[discipline]/[topic]/[lesson]`, `/dig`, `/review`, `/bookshelf`, `/achievements`, `/progress`, `/reading-list`, `/account`, `/login`, `/signup`, `/auth/*`, `api/` |
 | `src/components/` | React components (Quiz, DigDeeper, ReviewCard, BookshelfView, LessonReminder, ...) |
-| `src/content/` | `disciplines.json` (all lessons), `schema.ts` (types), `index.ts` (runtime validator), `ids.mjs`, `sources.mjs`, `topic-redirects.mjs`, `colors.mjs` |
+| `src/content/` | `disciplines.json` (all lessons), `schema.ts` (types), `index.ts` (runtime validator), `ids.mjs`, `sources.mjs`, `digdeeper.mjs` (Dig deeper choice validation), `topic-redirects.mjs`, `colors.mjs` |
 | `src/lib/` | Feature logic by area: `auth`, `quiz`, `progress`, `streaks`, `reading-list`, `drilldowns`, `reminders`, `supabase`, `ui`, `account`, `bookshelf` |
 | `src/achievements/` | Achievement definitions and badge icons |
 | `src/proxy.ts` | Session refresh, auth redirects, real 404s for unknown `/d/...` slugs |
@@ -70,18 +76,27 @@ pnpm check:bundle               # fails if server-only names reach the client bu
 node scripts/ledger.mjs validate
 ```
 
-CI (`checks` job) runs all of the above in that order. Without `.env.local` the app still builds, but every
-page redirects to `/login`. Never point local tools or tests at the production database.
+CI (`checks` job) runs all of the above except `pnpm dev`, in that order. Without `.env.local` the app still
+builds, but every protected route redirects to `/login` (`/login`, `/signup` and `/auth/*` do not). Never point
+local tools or tests at the production database.
+
+Tests and prototypes must mock Gemini, email and Web Push, even when keys are present in your environment.
+`scripts/drilldown-prototype.mjs` can make real Gemini calls if a key is set; do not run it against real keys
+without the owner's approval.
 
 ## 4. How work flows
 
 - **One PR per change, branched off `main`.** Never push to `main` directly. `main` has no technical branch
   protection (ADR 0001), so this rule depends on discipline.
-- **Merges need the owner's explicit approval for that specific PR.** PRs are squash-merged with the branch
-  deleted, against the reviewed head SHA. Authors never merge their own PR, and approval passed along by
-  another agent does not count.
+- **Merges need the owner's explicit approval of that PR's head.** Agents that write or review code never
+  merge. A PR is squash-merged (branch deleted, `--match-head-commit` on the approved SHA) only after the owner
+  explicitly approves it, either by the owner or by the coordinating agent acting on that approval. Approval
+  passed along by another agent does not count.
 - **CI must be green** before a merge is requested.
 - **Merging is a production release:** `main` auto-deploys to production on Vercel.
+- **Previews hit production data.** Vercel Preview uses the same production Supabase project as the live site.
+  Applying a migration, or writing/deleting hosted data, from Preview or any deploy other than a throwaway
+  local Postgres hits production. Don't do it without the owner's approval.
 - **Migrations do not run on deploy.** They are applied separately, only with the owner's approval, then
   recorded in `supabase/README.md`.
   - Never edit, rename or re-apply an applied migration. Some applied versions differ from their filenames;
@@ -96,8 +111,9 @@ page redirects to `/login`. Never point local tools or tests at the production d
   - Writes or deletes on production data, including publishing or rejecting AI lessons on someone else's behalf.
   - New accounts, services or cloud resources.
 - **Feature flags:**
-  - `WELL_READ_DRILLDOWNS` enables Dig deeper when exactly `1`, and is read at build time by the lesson pages,
-    so a change needs a redeploy.
+  - `WELL_READ_DRILLDOWNS` enables Dig deeper when exactly `1`. `/api/drilldowns` and `/dig` check it at
+    request time; the lesson pages read it at build time, so only the Dig deeper choices on lesson pages need a
+    redeploy to appear or disappear.
   - `WELL_READ_LESSON_REMINDERS` gates reminder sending; it is a repo variable for the scheduler.
 - **Keep docs current:** update `ROADMAP.md` when something ships or is planned, and the relevant `docs/` file
   when behavior changes.
@@ -170,11 +186,19 @@ and in `tests/unit/content.test.mjs`.
   - `drilldown_server` uses `DRILLDOWN_DB_URL` and is read only by `src/lib/drilldowns/server-db.mjs`.
   - `lesson_reminder_sender` uses `LESSON_REMINDER_DB_URL` and is used by the reminder sender.
   - Both go through SECURITY DEFINER functions with revoked defaults.
-- **Server-only values:** `GEMINI_API_KEY`, `DRILLDOWN_DB_URL`, `LESSON_REMINDER_DB_URL`, `VAPID_PRIVATE_KEY`.
+- **New SQL functions:** new SECURITY DEFINER functions must use `set search_path = ''`. Revoke EXECUTE from
+  PUBLIC, anon, authenticated, and service_role (hosted default ACLs grant all three). Grant EXECUTE only to the
+  intended narrow role (`drilldown_server` or `lesson_reminder_sender`). Prove it in `tests/db/` with
+  `has_function_privilege`. `drilldown_owner` stays RLS-on with no grants to any API or server role. Do not
+  grant `fact_check` to authenticated.
+- **Server-only values:** `GEMINI_API_KEY`, `DRILLDOWN_DB_URL`, `LESSON_REMINDER_DB_URL`, `VAPID_PRIVATE_KEY`,
+  `VAPID_SUBJECT` (a sender setting).
   - Never give them a `NEXT_PUBLIC_` prefix.
   - Modules that read them import `server-only`.
   - `pnpm check:bundle` enforces this.
-  - Only `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` are client-safe.
+  - Only `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY` are client-safe env vars.
+  - `VAPID_PUBLIC_KEY` is not `NEXT_PUBLIC_`; the Account page reads it on the server and passes it to the
+    reminder component as a prop.
 - **No secrets anywhere:** not in code, commits, PR text, logs, screenshots or chat. `.env.local` is
   git-ignored. If a secret is exposed, stop work and report it so it can be rotated.
 - **Column-granted tables:** no wildcard reads (`select('*')`, bare `.select()`, `.insert().select()`) on
@@ -207,7 +231,10 @@ Run this on every PR:
 - [ ] New logic has tests, including failure paths; no tests were weakened or skipped.
 - [ ] No secrets, tokens or real personal data in the diff, the PR text or logs.
 - [ ] No server-only env var or module reaches client code.
-- [ ] No service-role usage; new tables have RLS and `tests/db/` coverage.
+- [ ] No service-role usage; new tables have RLS and `tests/db/` coverage; new SECURITY DEFINER functions set
+      `search_path = ''`, revoke defaults and are proven with `has_function_privilege`.
+- [ ] Nothing in the PR, its preview or its tests writes to the hosted database or calls Gemini, email or Web
+      Push for real.
 - [ ] No applied migration edited; any new migration is called out as needing separate approval.
 - [ ] Env, flag, cron or production-data changes are listed as separate approval steps, not done in the PR.
 - [ ] Content: valid lesson shape, permanent new ids, sources present, broad topics, presidents in "U.S.

@@ -1,8 +1,16 @@
-# Daily lesson reminders — inactive until separately approved
+# Daily lesson reminders
 
-This PR does not apply production migrations, configure any environment, provision
-credentials, schedule a job, deploy, or send a notification. Standard Web Push (VAPID),
-like Family To-Do. No paid provider, new hosted service, or paid tier is required.
+**Status: live in production.** Each opted-in user gets one "learn a lesson" Web Push a day at 6 PM PST / 7 PM PDT
+(`0 2 * * *` UTC, GitHub Actions `lesson-reminders.yml`), skipped on days they passed a lesson quiz. Tapping it
+opens `/learn`; iOS uses Declarative Web Push (`public/sw.js`). Real delivery and the tap-to-Learn behavior were
+confirmed on Mike's phone on 2026-11-10.
+
+Shipped in PRs #38 (opt-in reminders), #39 (sender fix), #40 (scheduler), #41-#43 (tap opens `/learn`, Declarative
+Web Push). The migration is applied (file `20261109214457_lesson_reminders.sql`, recorded as `20261109220157`; see
+`supabase/README.md`). Standard Web Push (VAPID), no paid provider or paid tier.
+
+Any change to the schedule, the flag, secrets or env vars, or turning sending off or on still needs Mike's explicit
+approval. Emergency stop: see "Verification and rollback" below.
 
 ## Behavior and judgment calls
 
@@ -33,7 +41,7 @@ like Family To-Do. No paid provider, new hosted service, or paid tier is require
   Unknown push providers are rejected. iPhone/iPad requires Home Screen installation and
   permission. Settings use the user's session and RLS; sender never uses service-role keys.
 
-## Exact items requiring Mike's explicit approval (none performed)
+## Activation steps (historical; all completed with Mike's approval, Nov 9, 2026)
 
 1. Apply **only** `supabase/migrations/20261109214457_lesson_reminders.sql` through the normal
    migration process after review. Three RLS tables, pass trigger, invoker completion RPC,
@@ -54,15 +62,14 @@ like Family To-Do. No paid provider, new hosted service, or paid tier is require
    Dedicated Well-Read VAPID keys must be generated only after approval, not reused from Family To-Do.
 4. Add/enable a scheduler **separately**: proposed free GitHub Actions scheduled workflow
    running the CLI once daily at **6 PM PST / 7 PM PDT** (same instant year-round).
-   No scheduled workflow or cron is added. Mike must approve platform, cadence, secret
-   placement and permissions. Confirm private-repo Actions allowances; stay within free
-   minutes and disable if unavailable, never upgrade. No public cron endpoint/auth secret.
+   Done in PR #40 (see "Scheduler" below). Stay within free Actions minutes and disable if
+   unavailable, never upgrade. No public cron endpoint/auth secret.
 5. Turn on real sending by setting **`WELL_READ_LESSON_REMINDERS=1`**, with all VAPID settings
    and `LESSON_REMINDER_DB_URL` present in the sender, then invoking/scheduling the CLI.
    Feature activation, credential setup, scheduler setup, a real send test and deployment
    each need approval; approving/merging the PR alone is not approval for those actions.
 
-After all relevant approvals only: `node scripts/send-lesson-reminders.mjs`.
+Manual sender (only with Mike's approval): `node scripts/send-lesson-reminders.mjs`.
 
 ### Scheduler (GitHub Actions, free tier)
 
@@ -98,4 +105,4 @@ Emergency stop: set the repo variable `WELL_READ_LESSON_REMINDERS` to `0`
 application flag removal disables new opt-in but still permits Off. Disable sender login
 if needed. Accepted push messages cannot be recalled. Preserve claims so restart/re-enable
 cannot duplicate today's sends. Data cascade-deletes with accounts; no destructive rollback
-or retention job is part of this PR.
+or retention job exists.

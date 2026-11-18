@@ -16,6 +16,10 @@ All of these are applied to the Well-Read project (`pjiuquekewnkctpkhiow`):
 | `20261014233800` | `migrations/20261014233800_activity_log.sql`        | TSK-016 | `activity_log` (append-only, for day streaks) + backfill |
 | `20261015023134` | `migrations/20261015023134_reading_list_items.sql`  | TSK-017 | `reading_list_items` (own-row CRUD, `completed_at`/`updated_at` trigger) |
 | `20261102212005` | `migrations/20261102210548_activity_log_rate_limit.sql` | REV-011 | `activity_log` per-user insert rate limit (20/min, 300/h; trigger, SQLSTATE `WR429`). **Recorded version differs from the filename**, see below |
+| `20261103015240` | `migrations/20261102231600_drilldowns.sql`         | Drill-downs P2 | `generated_lessons`, `generated_quiz_keys`, `lesson_reports`, `drilldown_usage_user`/`_global`, `generated_lesson_completions`, SECURITY DEFINER `drilldown_reserve()`/`drilldown_save_lesson()`/`drilldown_quiz_key()`/`drilldown_my_lessons()`, LOGIN role `drilldown_server` (no table privileges). No service_role. **Recorded version differs from the filename** |
+| `20261104224637` | `migrations/20261104214500_drilldown_review.sql`  | Drill-downs P4 | Owner review: `drilldown_owner` (one row, set by owner SQL), `generated_lessons.fact_check` (not client-readable), SECURITY DEFINER `drilldown_save_fact_check()`/`drilldown_review_queue()`/`drilldown_review_action()` (EXECUTE only for `drilldown_server`, owner checked inside). **Recorded version differs from the filename** |
+| `20261105062545` | `migrations/20261105000000_drilldown_release.sql` | Drill-downs cap fix | SECURITY DEFINER `drilldown_release_lesson()` (EXECUTE only for `drilldown_server`) gives back a lesson slot after a failed/rejected attempt; replaces `drilldown_save_lesson()` (same signature) so rejected drafts don't count. **Recorded version differs from the filename** |
+| `20261109220157` | `migrations/20261109214457_lesson_reminders.sql`  | Daily reminders | Opt-in settings, finished days, atomic daily claims, pass trigger, invoker finish RPC, private sender functions and role `lesson_reminder_sender`. See the [lesson reminder runbook](../docs/lesson-reminders.md). **Recorded version differs from the filename** |
 
 **Version mismatch (REV-011 rate limit):** this migration was applied to production on 2026-11-02 and recorded in the
 project's migration history as `20261102212005`, but the file is named `20261102210548_activity_log_rate_limit.sql`. The
@@ -26,17 +30,18 @@ Its header still says `STATUS: UNAPPLIED`; that is historical, as described belo
 
 ## Unapplied migrations
 
-In the repo but **not** applied to any Supabase project yet. Apply only with Mike's approval, then move the row up.
+None. Every file in `migrations/` is applied (checked against the project's migration history on 2026-11-17).
+A new migration file goes here until it is applied with Mike's approval; then move its row up.
 
-| Version          | File                                       | Task | Adds |
-| ---------------- | ------------------------------------------ | ---- | ---- |
-| `20261102231600` | `migrations/20261102231600_drilldowns.sql` | Drill-downs P2 | `generated_lessons`, `generated_quiz_keys`, `lesson_reports`, `drilldown_usage_user`/`_global`, `generated_lesson_completions`, SECURITY DEFINER `drilldown_reserve()`/`drilldown_save_lesson()`/`drilldown_quiz_key()`/`drilldown_my_lessons()`, LOGIN role `drilldown_server` (no password; no table privileges). Tested only on a local throwaway Postgres (`pnpm test:db`). No service_role. Password and env setup: see below. |
-| `20261104214500` | `migrations/20261104214500_drilldown_review.sql` | Drill-downs P4 (DRAFT) | Owner review: `drilldown_owner` (one row, set by owner SQL), `generated_lessons.fact_check` (not client-readable), SECURITY DEFINER `drilldown_save_fact_check()`/`drilldown_review_queue()`/`drilldown_review_action()` (EXECUTE only for `drilldown_server`, owner checked inside). Apply after `20261102231600`. Tested only on a local throwaway Postgres (`pnpm test:db`). No service_role. |
-| `20261105000000` | `migrations/20261105000000_drilldown_release.sql` | Drill-downs cap fix (DRAFT, unapplied) | SECURITY DEFINER `drilldown_release_lesson()` (EXECUTE only for `drilldown_server`) gives back a lesson slot after a failed/rejected attempt, never below kept lessons; calls stay counted. Replaces `drilldown_save_lesson()` (same signature) so rejected drafts don't count as used. Apply after `20261104214500`. Tested only on a local throwaway Postgres (`pnpm test:db`). No service_role. |
+## Recorded versions that differ from filenames
 
-| `20261109214457` | `migrations/20261109214457_lesson_reminders.sql` | Daily reminders (DRAFT, unapplied) | Opt-in settings, finished days, atomic daily claims, pass trigger, invoker finish RPC, private sender functions and NOLOGIN `lesson_reminder_sender`. No scheduler or sending enabled. Activation approvals: [lesson reminder runbook](../docs/lesson-reminders.md). |
+Five applied migrations were recorded under a different version than their filename (REV-011 rate limit and
+the four rows above marked as differing). The recorded version is authoritative. The files are deliberately
+**not** renamed or edited. Tooling that matches files to history by version (`supabase db push`,
+`supabase migration list`) will report the filename versions as local-only and the recorded versions as
+remote-only. Don't re-apply them. Reconcile with `supabase migration repair` only with Mike's approval.
 
-## `drilldown_server` (after 20261102231600 is applied)
+## `drilldown_server`
 
 The drill-down server uses this narrow role, **not** the service role, which stays forbidden. The migration creates it as LOGIN, with
 `connection limit 5` and **no password**. Mike:
@@ -59,8 +64,9 @@ Behaviour P3 must respect:
 ## The `STATUS:` header comments are historical
 
 Each migration's header comment describes its state **when it was written**. Some applied
-migrations still say `STATUS: UNAPPLIED` (currently `20261010040740_lesson_completions.sql`,
-`20261015023134_reading_list_items.sql` and `20261102210548_activity_log_rate_limit.sql`). That's stale but deliberate: an applied
+migrations still say `STATUS: UNAPPLIED` (for example `20261010040740_lesson_completions.sql`,
+`20261015023134_reading_list_items.sql` and `20261102210548_activity_log_rate_limit.sql`; several later files also
+say DRAFT or UNAPPLIED). That's stale but deliberate: an applied
 migration is never edited, comments included, so the file stays exactly as it was applied.
 **The table above is the source of truth.** Check the project's migration history
 (`list_migrations`) when in doubt.
@@ -72,4 +78,4 @@ follow-up). Don't touch the migration file itself.
 
 The app calls `drilldown_reserve` and `drilldown_save_lesson` only from `src/lib/drilldowns/server-db.mjs`
 (`import "server-only"`, `DRILLDOWN_DB_URL`, `max: 1`, `prepare: false`). Users read `generated_lessons` and insert
-`lesson_reports` with their own session and explicit columns. The migration is still not applied anywhere.
+`lesson_reports` with their own session and explicit columns. The migration is applied (recorded as `20261103015240`).
