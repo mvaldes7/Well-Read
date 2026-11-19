@@ -6,866 +6,6 @@
     "color": "crimson",
     "topics": [
       {
-        "slug": "roman-republic",
-        "title": "The Roman Republic",
-        "kind": "era",
-        "summary": "Rome's period of elected, shared government before the rise of the emperors.",
-        "lessons": [
-          {
-            "id": "les_rr01",
-            "slug": "how-the-republic-was-governed",
-            "title": "How the Republic Was Governed",
-            "sections": [
-              {
-                "heading": "Two consuls instead of a king",
-                "body": "Imagine waking up in a city that has just thrown out its king. What would you put in his place? By the end of the Republic, Romans generally accepted a traditional story: Rome had been ruled by seven kings, and in 509 BCE the last of them, Lucius Tarquinius Superbus, was overthrown. Rather than crown someone new, the Romans replaced kingship with two magistrates called consuls, elected every year. Two leaders instead of one, and only for a year: that design tells you what Romans feared most.\n\nTo see how the system worked from the inside, follow one real career through it. Marcus Tullius Cicero was born in 106 BCE in Arpinum, a town in Latium outside Rome. He was what Romans called a “new man,” someone without noble ancestry. Nobody handed Cicero a place at the top. He had to climb, office by office and election by election, and his path will take you through the machinery of the Republic.\n\nStart with the office Cicero eventually reached. The two consuls were, above all, generals whose task was to lead Rome’s armies in war. In a military emergency, when a single commander seemed necessary, Rome could appoint a dictator in place of the consuls. Even then there was a limit: a dictator could not hold supreme military command for longer than six months. In this system, even the exception came with an expiration date."
-              },
-              {
-                "heading": "Climbing the ladder of offices",
-                "body": "Roman politicians of senatorial rank followed a set sequence of public offices known as the cursus honorum, the “course of honors.” Over time, laws regulated the ladder. Holding the same magistracy a second time was prohibited, and the praetorship became a requirement for anyone seeking the consulship. Ambition was allowed, but it had to move in order.\n\nCicero’s career follows that path. After making his name as a lawyer, he began his public career in 75 BCE as quaestor, an office of financial administration, in western Sicily. In 66 BCE he served as praetor, a judicial office of great power at the time. He was then elected consul for 63 BCE, helped by conservative senators who feared the revolutionary ideas of his rival, Catiline. A man without noble ancestry had reached the Republic’s highest regular office.\n\nWho did the electing? Romans voted in popular assemblies. The centuriate assembly, military in nature, voted on war and peace and elected the magistrates who held imperium, or military power, including consuls and praetors. The tribal assembly was a civilian body that elected magistrates without imperium and did most of the legislating. So when Cicero ran for praetor and then consul, he was asking the centuriate assembly for its votes."
-              },
-              {
-                "heading": "Balanced, or tilted toward the few?",
-                "body": "Then there was the Senate, which may already have advised the kings. Under the Republic it advised both the magistrates and the Roman people. In theory the people were sovereign and the Senate only offered advice, but in practice it wielded enormous power because of the collective prestige of its members. It also controlled the treasury: the Greek historian Polybius noted that, apart from payments to the consuls, quaestors could not spend public money without a decree of the Senate. Cicero the quaestor would have worked inside exactly that rule.\n\nCitizens were also divided into patricians, members of privileged families, and plebeians, the general citizenry. Plebeians were originally excluded from the Senate and from almost all public offices. In a long campaign called the Conflict of the Orders, which lasted until 287 BCE, they withdrew from the state on several occasions to force concessions, elected their own officials called tribunes, and won the inviolability of those tribunes. Polybius observed that if a single tribune interposed, the Senate could not reach a final decision on a matter or even meet.\n\nPolybius admired the result. He argued that the consuls made Rome look monarchical, the Senate aristocratic, and the people democratic, so that even a Roman could not say which the constitution was. But look closely at the voting. In the centuriate assembly, citizens were grouped by wealth, voting started with the wealthier groups, and their votes outweighed those of the poorer. Cicero’s story cuts both ways: a new man could rise, yet the dominant circle of conservative senators never fully accepted him. Whether the Republic was a balance or a system tilted toward the wealthy is a question worth keeping open."
-              }
-            ],
-            "keyFacts": [
-              "By Roman tradition, the Republic began in 509 BCE, when the last king was overthrown.",
-              "Two consuls were elected every year; a dictator could hold supreme command for no more than six months.",
-              "The cursus honorum was a fixed sequence of offices, and the praetorship became a requirement for the consulship.",
-              "Cicero, a “new man,” was quaestor in 75 BCE, praetor in 66 BCE, and consul in 63 BCE.",
-              "In the centuriate assembly, the wealthier groups voted first and their votes outweighed those of the poorer."
-            ],
-            "quiz": [
-              {
-                "question": "Rome faces a sudden military emergency and wants a single commander in charge. What could it do under the Republic?",
-                "options": [
-                  "Crown a new king for life.",
-                  "Appoint a dictator, whose supreme command could last no more than six months.",
-                  "Let the Senate choose one consul for ten years.",
-                  "Hand command of the army to the tribunes of the plebs."
-                ],
-                "answerIndex": 1,
-                "explanation": "In military emergencies Rome could appoint a dictator in place of the consuls, but only for up to six months."
-              },
-              {
-                "question": "An ambitious Roman wants to run for consul next year but has never served as praetor. What stands in his way?",
-                "options": [
-                  "Consuls were appointed by the outgoing dictator.",
-                  "Only former quaestors of Sicily could become consul.",
-                  "The praetorship had become a requirement for the consulship.",
-                  "The consulship could be held only by members of the Senate’s oldest families."
-                ],
-                "answerIndex": 2,
-                "explanation": "Laws regulating the cursus honorum made the praetorship a prerequisite for the consulship."
-              },
-              {
-                "question": "What does Cicero’s path from quaestor to consul suggest about Roman politics?",
-                "options": [
-                  "A man without noble ancestry could rise by winning elections, though the elite never fully accepted him.",
-                  "Offices were inherited from father to son.",
-                  "Consuls were chosen by drawing lots.",
-                  "Only patricians could hold any office at all."
-                ],
-                "answerIndex": 0,
-                "explanation": "Cicero was a “new man” who climbed office by office to the consulship, yet the dominant circle of conservative senators never fully accepted him."
-              },
-              {
-                "question": "The Senate is about to decide a matter when a tribune of the plebs interposes. According to Polybius, what happens?",
-                "options": [
-                  "The matter automatically becomes law.",
-                  "The tribune immediately becomes consul.",
-                  "The consuls remove the tribune from office.",
-                  "The Senate cannot reach a final decision on the matter."
-                ],
-                "answerIndex": 3,
-                "explanation": "Polybius wrote that if a single tribune interposed, the Senate could not decide finally about any matter, or even meet."
-              },
-              {
-                "question": "Poorer citizens greatly outnumber the wealthy in the centuriate assembly. Why might the wealthy still decide an election?",
-                "options": [
-                  "Poorer citizens were barred from attending.",
-                  "Citizens voted in groups by wealth, the wealthier groups voted first, and their votes outweighed the poorer.",
-                  "The Senate counted the votes in secret.",
-                  "Only the consuls were allowed to vote."
-                ],
-                "answerIndex": 1,
-                "explanation": "The centuriate assembly grouped citizens by wealth, and the wealthier centuries voted first with votes that outweighed the poorer ones."
-              },
-              {
-                "question": "A friend says, “The Senate only gave advice, so it had little real power.” What is the best response?",
-                "options": [
-                  "That is right; the magistrates usually ignored it.",
-                  "The Senate was the only body the people elected directly.",
-                  "In theory it only advised, but its prestige gave it enormous power, and it controlled public spending.",
-                  "The Senate replaced the consuls after 509 BCE."
-                ],
-                "answerIndex": 2,
-                "explanation": "The Senate’s role was advisory in theory, but its members’ collective prestige gave it great power, and Polybius notes its control of the treasury."
-              }
-            ],
-            "sources": [
-              {
-                "publisher": "Encyclopaedia Britannica",
-                "title": "Roman Republic",
-                "url": "https://www.britannica.com/place/Roman-Republic",
-                "note": "Traditional 509 BCE founding, the two annually elected consuls, the six-month dictatorship, the Senate’s role, and the two popular assemblies."
-              },
-              {
-                "publisher": "Encyclopaedia Britannica",
-                "title": "Cicero",
-                "url": "https://www.britannica.com/biography/Cicero",
-                "note": "Cicero’s birth at Arpinum, his offices as quaestor, praetor, and consul, his status as a “new man,” and his relationship with the Optimates."
-              },
-              {
-                "publisher": "Encyclopaedia Britannica",
-                "title": "Cursus honorum",
-                "url": "https://www.britannica.com/topic/cursus-honorum",
-                "note": "The sequence of offices and the laws making the praetorship a prerequisite for the consulship."
-              },
-              {
-                "publisher": "Encyclopaedia Britannica",
-                "title": "Comitia Centuriata",
-                "url": "https://www.britannica.com/topic/Comitia-Centuriata",
-                "note": "Organization of the centuriate assembly by wealth and the weighting of its votes."
-              },
-              {
-                "publisher": "Encyclopaedia Britannica",
-                "title": "Plebeian",
-                "url": "https://www.britannica.com/topic/plebeian",
-                "note": "Patricians and plebeians, the Conflict of the Orders, secessions, and the plebeian tribunes."
-              },
-              {
-                "publisher": "LacusCurtius, University of Chicago",
-                "title": "Polybius, The Histories, Book VI",
-                "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/6*.html",
-                "note": "Primary source (Loeb translation) on the mixed constitution, the Senate’s control of the treasury, and the tribunes’ power to block the Senate."
-              }
-            ],
-            "digDeeper": [
-              {
-                "id": "cicero",
-                "label": "Cicero",
-                "kind": "person"
-              },
-              {
-                "id": "consuls-and-dictators",
-                "label": "Consuls and dictators",
-                "kind": "idea"
-              },
-              {
-                "id": "cursus-honorum",
-                "label": "The cursus honorum",
-                "kind": "idea"
-              },
-              {
-                "id": "centuriate-assembly",
-                "label": "The centuriate assembly",
-                "kind": "subtopic"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "slug": "french-revolution",
-        "title": "The French Revolution",
-        "kind": "event",
-        "summary": "The upheaval of 1789-1799 that overthrew the French monarchy and spread ideas of rights and citizenship.",
-        "lessons": [
-          {
-            "id": "les_fr01",
-            "slug": "1789-the-revolution-begins",
-            "title": "1789: The Revolution Begins",
-            "sections": [
-              {
-                "heading": "A kingdom that couldn’t pay its bills",
-                "body": "Picture a government that has been spending far more than it takes in, year after year, and covering the gap by borrowing. That was the French monarchy in the 1780s, partly because of the long, costly wars of the eighteenth century. Then the borrowing dried up. Historians still argue about exactly why, but the result was clear: mounting debt pushed the monarchy toward fundamental financial change.\n\nIn 1787 the royal government proposed major reforms to taxation and spending. They met furious resistance from a special Assembly of Notables and from the king’s own law courts, especially the Parlement of Paris. These bodies insisted on an old tradition: the French people had once consented to royal decrees through a representative body called the Estates-General. It had not met since 1614, but many saw it as the only national body with the authority to approve reforms and new taxes. Facing imminent bankruptcy, Louis XVI called it in the fall of 1788.\n\nNow meet the person whose ideas will run through this whole lesson. Emmanuel-Joseph Sieyès was a churchman and constitutional theorist. In January 1789 he wrote a pamphlet called What Is the Third Estate?, arguing that the unprivileged Third Estate, everyone outside the clergy and the nobility, was the French nation itself. In an 1899 English translation, his answer to his own title question is blunt: “Everything; but an everything shackled and oppressed.”"
-              },
-              {
-                "heading": "The fight over how to count votes",
-                "body": "Here is the problem Sieyès was attacking. Traditionally, the Estates-General had three estates, the clergy, the nobility, and the commons, each with the same number of deputies and a single vote. Under that arrangement the nobility always dominated, because the clerical deputies included a majority of nobles. Leading nobles wanted to keep this “voting by order,” and many commoners reacted angrily. If you were a Third Estate deputy, you could do the math: two votes against one, every time.\n\nThe pamphlet made Sieyès immensely popular and ensured his election to the Estates-General, which convened on May 5, 1789. Divisions between noble and commoner deputies only deepened. On June 17, on Sieyès’s motion, the deputies of the Third Estate proclaimed themselves a National Assembly, claiming that they alone represented the nation. It was a radical departure that struck directly at the political basis of the monarchy.\n\nThree days later, on June 20, the deputies found themselves locked out of their usual meeting hall at Versailles. Thinking the king meant to force them to disband, they moved to a nearby indoor tennis court and swore never to separate until a written constitution had been established for France. Louis XVI wavered. He refused to recognize the “National Assembly,” yet he also agreed to become a constitutional monarch, a pattern of ambivalence that would continue."
-              },
-              {
-                "heading": "Paris, the countryside, and a declaration of rights",
-                "body": "By mid-July, Paris was tense. The deputies at Versailles had been thwarted by the king, and on July 12 Parisians learned that the popular finance minister Jacques Necker had been dismissed. On July 14 a crowd swarmed the Bastille, a medieval royal fortress looming over the workers’ neighborhoods, and took it. Was this a deliberate political act to protect the deputies from royal interference, or a large-scale bread riot that took on political meaning as events unfolded? Bread prices were rising sharply, and historians still debate the question.\n\nThe upheaval spread to the countryside. When peasants heard about the Bastille, rumors also circulated of armed “brigands” coming to burn fields and attack villages. Driven by what became known as the Great Fear, peasants formed armed groups to defend their villages. The National Assembly, feeling pressure to stay ahead of events, responded with the decrees of August 4, announcing the “abolition of feudalism.” They were a first step toward dismantling the old regime’s system of privileges.\n\nOn August 26, 1789, the National Assembly approved the Declaration of the Rights of Man and of the Citizen. Its first article states that men are born and remain free and equal in rights, and that social distinctions may be founded only upon the general good. You can hear Sieyès’s argument in it: privilege has to justify itself. On October 5–6, with bread prices at their highest level of the century, a crowd of women marched from Paris to Versailles and forced the royal family back to Paris. Soon afterward Louis consented to sign the Declaration."
-              }
-            ],
-            "keyFacts": [
-              "The Estates-General had not met since 1614; it convened on May 5, 1789.",
-              "Under “voting by order,” each of the three estates had a single vote.",
-              "On June 17, 1789, on Sieyès’s motion, the Third Estate proclaimed itself the National Assembly.",
-              "Crowds took the Bastille on July 14, 1789.",
-              "The Declaration of the Rights of Man and of the Citizen was approved on August 26, 1789."
-            ],
-            "quiz": [
-              {
-                "question": "Under “voting by order,” the clergy and the nobility support a proposal and the Third Estate opposes it. What happens?",
-                "options": [
-                  "The proposal passes, two votes to one.",
-                  "The proposal fails, because the Third Estate had the most deputies.",
-                  "The king must break the tie.",
-                  "Each deputy votes individually, so the outcome is uncertain."
-                ],
-                "answerIndex": 0,
-                "explanation": "Each estate had a single vote, so the two privileged orders could outvote the Third Estate every time."
-              },
-              {
-                "question": "Sieyès argued that the Third Estate was the whole nation. Which event in 1789 put that idea into action?",
-                "options": [
-                  "Louis XVI calling the Estates-General in 1788.",
-                  "The Third Estate proclaiming itself the National Assembly on June 17.",
-                  "The Assembly of Notables resisting reform in 1787.",
-                  "The women’s march to Versailles in October."
-                ],
-                "answerIndex": 1,
-                "explanation": "On Sieyès’s motion, the Third Estate deputies declared that they alone represented the nation and formed the National Assembly."
-              },
-              {
-                "question": "Imagine you are one of the deputies taking the Tennis Court Oath. What are you promising?",
-                "options": [
-                  "To restore voting by order.",
-                  "To leave Versailles and return home.",
-                  "Never to separate until France has a written constitution.",
-                  "To give the king full control of taxation."
-                ],
-                "answerIndex": 2,
-                "explanation": "Locked out of their hall on June 20, the deputies swore never to separate until a written constitution had been established."
-              },
-              {
-                "question": "A historian notes that bread prices in Paris were rising sharply in July 1789. Which interpretation of the taking of the Bastille does this evidence support?",
-                "options": [
-                  "The attack was planned by royal troops.",
-                  "The Bastille was taken to celebrate the Declaration of Rights.",
-                  "Nobles organized the crowd to defend voting by order.",
-                  "The crowd may have begun with a bread riot that took on political meaning as events unfolded."
-                ],
-                "answerIndex": 3,
-                "explanation": "Historians debate whether the crowd acted to protect the deputies or engaged in a traditional bread riot that became political; rising bread prices support the second view."
-              },
-              {
-                "question": "Peasants hear rumors that “brigands” are coming to burn their crops, and they arm themselves. How did the National Assembly respond to movements like this?",
-                "options": [
-                  "With the decrees of August 4, announcing the abolition of feudalism.",
-                  "By recalling the Assembly of Notables.",
-                  "By restoring the old voting rules.",
-                  "By moving the Assembly back to the tennis court."
-                ],
-                "answerIndex": 0,
-                "explanation": "Feeling pressure from the Great Fear in the countryside, the Assembly announced the abolition of feudalism on August 4."
-              },
-              {
-                "question": "Why did Louis XVI end up calling the Estates-General at all?",
-                "options": [
-                  "Because the Third Estate had already declared a republic.",
-                  "Because bankruptcy loomed and powerful bodies insisted only the Estates-General could approve reforms and new taxes.",
-                  "Because it met every year by law.",
-                  "Because Sieyès’s pamphlet ordered him to."
-                ],
-                "answerIndex": 1,
-                "explanation": "Mounting debt and resistance from the Notables and the Parlement, who looked to the Estates-General, forced the king to call it in 1788."
-              }
-            ],
-            "sources": [
-              {
-                "publisher": "Liberty, Equality, Fraternity (George Mason University & CUNY)",
-                "title": "Monarchy Falls",
-                "url": "https://revolution.chnm.org/exhibits/show/liberty--equality--fraternity/monarchy-falls",
-                "note": "The debt crisis, the 1787 reforms, the Estates-General and voting by order, June 17, the Tennis Court Oath, and the October 5–6 march."
-              },
-              {
-                "publisher": "Liberty, Equality, Fraternity (George Mason University & CUNY)",
-                "title": "Paris and the Politics of Rebellion",
-                "url": "https://revolution.chnm.org/exhibits/show/liberty--equality--fraternity/paris-and-the-politics-of-rebe",
-                "note": "Necker’s dismissal, the taking of the Bastille and the debate over its motives, and the king’s signing of the Declaration."
-              },
-              {
-                "publisher": "Liberty, Equality, Fraternity (George Mason University & CUNY)",
-                "title": "Social Causes of the Revolution",
-                "url": "https://revolution.chnm.org/exhibits/show/liberty--equality--fraternity/social-causes-of-revolution",
-                "note": "The Great Fear and the August 4 decrees."
-              },
-              {
-                "publisher": "Liberty, Equality, Fraternity (George Mason University & CUNY)",
-                "title": "“What Is the Third Estate?” by Emmanuel Sieyès",
-                "url": "https://revolution.chnm.org/exhibits/show/liberty--equality--fraternity/item/485",
-                "note": "Primary source in an 1899 English translation (University of Pennsylvania Press); the quoted line comes from this text."
-              },
-              {
-                "publisher": "Encyclopaedia Britannica",
-                "title": "Emmanuel-Joseph Sieyès",
-                "url": "https://www.britannica.com/biography/Emmanuel-Joseph-Sieyes",
-                "note": "The pamphlet’s date and argument, the May 5 opening of the Estates-General, and Sieyès’s June 17 motion."
-              },
-              {
-                "publisher": "Encyclopaedia Britannica",
-                "title": "Tennis Court Oath",
-                "url": "https://www.britannica.com/event/Tennis-Court-Oath",
-                "note": "The June 20, 1789 oath and its circumstances."
-              },
-              {
-                "publisher": "Avalon Project, Yale Law School",
-                "title": "Declaration of the Rights of Man - 1789",
-                "url": "https://avalon.law.yale.edu/18th_century/rightsof.asp",
-                "note": "Text of the Declaration and its August 26, 1789 approval date."
-              }
-            ],
-            "digDeeper": [
-              {
-                "id": "estates-general-1789",
-                "label": "The Estates-General of 1789",
-                "kind": "event"
-              },
-              {
-                "id": "sieyes",
-                "label": "Sieyès",
-                "kind": "person"
-              },
-              {
-                "id": "storming-of-the-bastille",
-                "label": "Storming of the Bastille",
-                "kind": "event"
-              },
-              {
-                "id": "rights-of-man",
-                "label": "Declaration of the Rights of Man",
-                "kind": "idea"
-              }
-            ]
-          },
-          {
-            "id": "les_fr02",
-            "slug": "republic-and-terror",
-            "title": "Republic and Terror",
-            "sections": [
-              {
-                "heading": "From king to citizen",
-                "body": "In 1789 Maximilien Robespierre, born in Arras in 1758, was elected to represent the Third Estate of Artois in the Estates-General. From the very beginning he spoke for popular causes, and admirers called him “the Incorruptible.” Keep him in view throughout this lesson. His path shows how a revolution that began by limiting a king ended by executing one, and then turned on its own leaders.\n\nAt first, almost no one imagined France without a king. That changed fast. In June 1791 the royal family fled Paris in disguise, but the king was recognized and arrested at Varennes. A majority of the Assembly accepted his weak excuse, fearing that punishing him would destabilize the country. Then came war: in April 1792 the Girondin leaders of the new Legislative Assembly declared war on Austria, and early French defeats panicked Paris.\n\nOn August 10, 1792, Parisian militants known as sans-culottes invaded the Tuileries Palace and effectively deposed the king. A new National Convention met in September and, after news of the first great French victory at Valmy, declared France a republic. In December the Convention began Louis’s trial; it voted unanimously to convict him of treason and sentenced him to death. He was executed by guillotine in January 1793 before tens of thousands of onlookers."
-              },
-              {
-                "heading": "Government by Terror",
-                "body": "Governing in wartime through a quarrelsome legislature of some 600 members proved nearly impossible. So in the spring of 1793 the Convention handed power to a twelve-member Committee of Public Safety. Pressure was coming from every side: foreign war, a peasant revolt in the Vendée sparked by a call for 300,000 army “volunteers,” and revolts in cities that rejected rule from Paris. On July 27, 1793, Robespierre took his seat on the Committee, and in the following months he came to dominate it.\n\nIn early September 1793, pushed by the sans-culottes, the Committee led the Convention into what became known as the Terror. Britannica dates it from September 5, 1793, to July 27, 1794. In practice it meant the organized use of state power to force compliance: revolutionary tribunals tried “suspects” for treason and sent those convicted to the guillotine. The Terror also enforced price controls known as the maximum, and pursued vaguer aims such as ensuring the “virtue” of all citizens.\n\nThe scale was enormous. About 300,000 people were arrested, and 17,000 of them were tried and executed. As many as 23,000 more were killed without trial or died in prison. Deputies sent out as “representatives on mission” often became the most zealous enforcers; at Nantes, one ordered thousands of rebels drowned in the Loire. By the end of 1793 even radical Jacobins such as Georges Danton argued that the violence had gone too far."
-              },
-              {
-                "heading": "The fall of the Incorruptible",
-                "body": "In June 1794 Robespierre staged the Festival of the Supreme Being, an attempt at a civic religion, with himself in the leading role. Two days later he pushed through the Law of 22 Prairial (June 10, 1794), which put the machinery of the Terror directly under the Committee’s control and made openly political prosecutions easier. He defended it as a way to instill virtue, but many deputies concluded that he wanted to eliminate his opponents and rule alone.\n\nIn late July 1794, in the coup known by its revolutionary calendar date, 9 Thermidor, Robespierre and a number of his followers were arrested at the Hôtel de Ville in Paris. He was executed on July 28. Notice the motive: the men who brought him down acted mainly to save themselves from the Terror, not to end it. Only over the following months were the Law of 22 Prairial repealed, the revolutionary tribunals abolished, and the price controls abandoned.\n\nHistorians still disagree about what the Terror means. Some argue it grew out of 1789 itself, whether as the necessary sweeping away of the old regime or because the revolutionaries had unknowingly built authoritarianism into their democratic principles. Others see a revolution swept off course by war, revolt, and economic crisis. The revolutionary decade ended with a twist: in November 1799 Sieyès, the author of What Is the Third Estate?, helped arrange the coup that brought General Napoleon Bonaparte to power."
-              }
-            ],
-            "keyFacts": [
-              "France was declared a republic in September 1792, and Louis XVI was executed in January 1793.",
-              "The twelve-member Committee of Public Safety was created in spring 1793; Robespierre joined it in July 1793.",
-              "Britannica dates the Reign of Terror from September 5, 1793, to July 27, 1794.",
-              "About 17,000 people were tried and executed; as many as 23,000 more died without trial or in prison.",
-              "Robespierre was arrested on July 27, 1794, and executed the next day."
-            ],
-            "quiz": [
-              {
-                "question": "In late 1793 a shopkeeper is accused of being an enemy of the Revolution. Which institution would most likely try them?",
-                "options": [
-                  "The Estates-General.",
-                  "The Directory.",
-                  "A revolutionary tribunal.",
-                  "The Parlement of Paris."
-                ],
-                "answerIndex": 2,
-                "explanation": "During the Terror, revolutionary tribunals tried “suspects” for treason and sent those convicted to the guillotine."
-              },
-              {
-                "question": "Why did the Law of 22 Prairial alarm many deputies in June 1794?",
-                "options": [
-                  "It abolished the Committee of Public Safety.",
-                  "It put the Terror under the Committee’s direct control, making political prosecutions easier.",
-                  "It restored the monarchy.",
-                  "It ended the war with Austria."
-                ],
-                "answerIndex": 1,
-                "explanation": "The law concentrated the Terror’s machinery in the Committee, and many feared Robespierre would use it against his opponents."
-              },
-              {
-                "question": "What mainly motivated the deputies who overthrew Robespierre in July 1794?",
-                "options": [
-                  "A plan to restore Louis XVI’s family to the throne.",
-                  "Orders from the Austrian emperor.",
-                  "A wish to make Robespierre king.",
-                  "Saving themselves from the Terror."
-                ],
-                "answerIndex": 3,
-                "explanation": "The coup leaders acted to protect themselves; dismantling the Terror’s institutions took several more months."
-              },
-              {
-                "question": "A historian argues that war, regional revolts, and economic hardship drove France into the Terror. Which interpretation is this?",
-                "options": [
-                  "The Revolution was swept off course by circumstances.",
-                  "The Terror was the unavoidable product of 1789’s principles.",
-                  "The Terror never really happened.",
-                  "The Terror was organized by foreign kings."
-                ],
-                "answerIndex": 0,
-                "explanation": "One school sees the Terror as unconnected to 1789 and caused by the crises of the moment; the other links it to the Revolution’s own principles."
-              },
-              {
-                "question": "Which statement best describes the scale of the Terror according to Britannica?",
-                "options": [
-                  "Only the king and queen were executed.",
-                  "About 300,000 people were executed in Paris alone.",
-                  "About 17,000 people were tried and executed, and up to 23,000 more died without trial or in prison.",
-                  "No one was executed outside Paris."
-                ],
-                "answerIndex": 2,
-                "explanation": "About 300,000 were arrested; 17,000 were tried and executed; as many as 23,000 more were killed without trial or died in prison."
-              },
-              {
-                "question": "Why did the Convention hand power to a twelve-member committee in 1793?",
-                "options": [
-                  "The king appointed the committee before his execution.",
-                  "A divided legislature of some 600 members found it nearly impossible to govern in wartime.",
-                  "The constitution required a committee in every republic.",
-                  "The sans-culottes had abolished the Convention."
-                ],
-                "answerIndex": 1,
-                "explanation": "Faced with war and revolt, the faction-ridden Convention delegated power to the Committee of Public Safety."
-              }
-            ],
-            "sources": [
-              {
-                "publisher": "Liberty, Equality, Fraternity (George Mason University & CUNY)",
-                "title": "Monarchy Falls",
-                "url": "https://revolution.chnm.org/exhibits/show/liberty--equality--fraternity/monarchy-falls",
-                "note": "The flight to Varennes, the declaration of war, August 10, 1792, and the trial and execution of Louis XVI."
-              },
-              {
-                "publisher": "Liberty, Equality, Fraternity (George Mason University & CUNY)",
-                "title": "War, Terror, and Resistance to the Revolution",
-                "url": "https://revolution.chnm.org/exhibits/show/liberty--equality--fraternity/war-terror-and-resistance",
-                "note": "Valmy and the republic, the Committee of Public Safety, the Vendée, how the Terror worked, the Law of 22 Prairial, 9 Thermidor, the historians’ debate, and the 1799 coup."
-              },
-              {
-                "publisher": "Liberty, Equality, Fraternity (George Mason University & CUNY)",
-                "title": "Paris and the Politics of Rebellion",
-                "url": "https://revolution.chnm.org/exhibits/show/liberty--equality--fraternity/paris-and-the-politics-of-rebe",
-                "note": "Robespierre as “the Incorruptible” and his early support for popular causes."
-              },
-              {
-                "publisher": "Encyclopaedia Britannica",
-                "title": "Reign of Terror",
-                "url": "https://www.britannica.com/event/Reign-of-Terror",
-                "note": "Dates of the Terror, arrest and execution figures, and the maximum."
-              },
-              {
-                "publisher": "Encyclopaedia Britannica",
-                "title": "Maximilien Robespierre",
-                "url": "https://www.britannica.com/biography/Maximilien-Robespierre",
-                "note": "Birth in Arras in 1758, election to the Estates-General, joining the Committee on July 27, 1793, arrest on July 27, 1794, and death on July 28, 1794."
-              }
-            ],
-            "digDeeper": [
-              {
-                "id": "robespierre",
-                "label": "Robespierre",
-                "kind": "person"
-              },
-              {
-                "id": "committee-of-public-safety",
-                "label": "Committee of Public Safety",
-                "kind": "subtopic"
-              },
-              {
-                "id": "execution-of-louis-xvi",
-                "label": "Execution of Louis XVI",
-                "kind": "event"
-              },
-              {
-                "id": "reign-of-terror",
-                "label": "The Reign of Terror",
-                "kind": "event"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "slug": "genghis-khan",
-        "title": "Genghis Khan",
-        "kind": "person",
-        "summary": "Genghis Khan united the Mongolian steppe in 1206 and launched conquests that laid the foundations of an enormous Eurasian empire, combining exceptional military organization with devastating violence.",
-        "lessons": [
-          {
-            "id": "les_gk01",
-            "slug": "unification-conquest-and-legacy",
-            "title": "Genghis Khan: Unification, Conquest, and Legacy",
-            "sections": [
-              {
-                "heading": "From Temüjin to Genghis Khan",
-                "body": "Genghis Khan was born Temüjin, probably around 1162, although sources disagree about his birth year. He grew up among the pastoral nomadic peoples of the Mongolian steppe, where herding, alliances, and competition among groups shaped political life.\n\nAfter hardship in his early life, Temüjin built alliances and defeated rivals, using both personal relationships and force to gather followers. He redistributed members of conquered or allied groups among his own units, reducing the influence of older tribal loyalties and directing allegiance toward himself.\n\nIn 1206, an assembly recognized him as ruler, and he took the title Genghis Khan, also written Chinggis Khan. Unifying the steppe mattered because it brought formerly competing groups under a single political and military leadership capable of launching coordinated campaigns beyond Mongolia."
-              },
-              {
-                "heading": "Organization mattered as much as force",
-                "body": "Genghis Khan organized his forces using a decimal structure, with units based on ten, one hundred, one thousand, and ten thousand. Personal loyalty between major commanders and the ruler helped hold these forces together and sustain his authority.\n\nMongol soldiers were skilled horsemen and archers, combining mobility with the ability to attack while mounted. Riders could change horses during long journeys, helping their armies maintain speed and surprise across large distances.\n\nOne important tactic was the feigned withdrawal: soldiers pretended to retreat, encouraging enemies to pursue them into a trap. Mongol success also involved adapting to opponents and learning siege techniques, showing that their armies were more than groups of riders relying on speed alone."
-              },
-              {
-                "heading": "Conquest carried a devastating human cost",
-                "body": "Genghis Khan's campaigns targeted states in northwestern and northern China, including the Xia and Jin, and later the Khwarazmian Empire in Central Asia. Trade disputes and attacks on Mongol diplomatic representatives contributed to these conflicts, although their outcomes involved much more than adjustments to trade.\n\nThe invasion of Central Asia began in 1219 and brought devastating attacks on major urban centers, including Bukhara and Samarkand. Cities were destroyed, civilians were killed, and damage to irrigation systems harmed the conditions needed for settled life and agriculture.\n\nMongol forces used the threat of destruction to pressure other cities into surrender, making terror part of their strategy rather than simply an accidental consequence of fighting. A balanced assessment therefore needs to recognize military effectiveness without treating successful conquest as justification for massacres or the destruction of communities."
-              },
-              {
-                "heading": "His empire continued to grow after his death",
-                "body": "Genghis Khan also pursued measures to govern conquered territories, including adopting a writing system for Mongolian and allowing rulers in some regions to remain as subordinate authorities. His administration accommodated different religions and encouraged trade, but those policies coexisted with the brutality of conquest rather than canceling it out.\n\nHe died in 1227, and his son Ögödei became Great Khan in 1229, overseeing further major expansion. Later descendants extended Mongol rule still farther; his grandson Kublai completed the conquest of the Southern Song in China in 1279, decades after Genghis Khan's death.\n\nThe Mongol Empire ultimately became the largest contiguous land empire in world history, meaning its territories formed a connected landmass rather than primarily an overseas network. Genghis Khan founded that imperial project, but its full extent and its wider influence on Eurasian exchange resulted from developments under several generations of rulers."
-              }
-            ],
-            "keyFacts": [
-              "Genghis Khan was born Temüjin; his birth year is uncertain, often given as about 1162.",
-              "He became ruler of the united Mongolian steppe in 1206.",
-              "Military units were based on ten, one hundred, one thousand, and ten thousand.",
-              "Mounted archery, mobility, and feigned retreats were important advantages.",
-              "His Central Asian campaigns devastated cities and killed civilians.",
-              "He died in 1227, and his successors substantially expanded the empire."
-            ],
-            "quiz": [
-              {
-                "question": "What was Genghis Khan's original name?",
-                "options": [
-                  "Osman.",
-                  "Kublai.",
-                  "Temüjin.",
-                  "Süleyman."
-                ],
-                "answerIndex": 2,
-                "explanation": "Temüjin was his birth name; Genghis Khan was a title adopted after his rise to power."
-              },
-              {
-                "question": "Why was the year 1206 a turning point?",
-                "options": [
-                  "He completed the conquest of the Southern Song.",
-                  "An assembly recognized his rule over the united Mongolian steppe.",
-                  "The Ottoman sultanate was abolished.",
-                  "He died and Ögödei immediately took the throne."
-                ],
-                "answerIndex": 1,
-                "explanation": "The assembly recognized his leadership in 1206, marking the establishment of his rule as Genghis Khan."
-              },
-              {
-                "question": "Which feature best describes the organization of his military forces?",
-                "options": [
-                  "Units based on ten, one hundred, one thousand, and ten thousand.",
-                  "Every soldier acted independently without commanders.",
-                  "Units were organized solely by the city where each soldier was born.",
-                  "Only one permanent unit was permitted."
-                ],
-                "answerIndex": 0,
-                "explanation": "His military organization used a decimal structure."
-              },
-              {
-                "question": "A Mongol force appears to flee, lures an enemy into pursuit, and then attacks with waiting troops. What tactic is this?",
-                "options": [
-                  "A naval blockade.",
-                  "A diplomatic surrender.",
-                  "A siege conducted entirely from a fixed position.",
-                  "A feigned withdrawal."
-                ],
-                "answerIndex": 3,
-                "explanation": "The apparent retreat is a deliberate maneuver intended to draw an enemy into a trap."
-              },
-              {
-                "question": "Which statement best evaluates the relationship between Mongol administrative policies and military violence?",
-                "options": [
-                  "Encouraging trade proves that no civilians were harmed.",
-                  "Religious accommodation meant that conquest was always peaceful.",
-                  "Administrative innovation and religious accommodation coexisted with destructive campaigns and massacres.",
-                  "The existence of massacres means there were no governing institutions."
-                ],
-                "answerIndex": 2,
-                "explanation": "Governing innovations and accommodation do not erase the documented brutality of Mongol conquest."
-              },
-              {
-                "question": "Why is it inaccurate to credit Genghis Khan personally with every Mongol conquest?",
-                "options": [
-                  "He never led military campaigns.",
-                  "His successors expanded the empire after his death in 1227.",
-                  "The Mongol Empire ended before he became ruler.",
-                  "Kublai completed the conquest of the Southern Song before Genghis Khan was born."
-                ],
-                "answerIndex": 1,
-                "explanation": "Later rulers, including Ögödei and Kublai, made major conquests after Genghis Khan's death."
-              }
-            ],
-            "sources": [
-              {
-                "publisher": "Encyclopaedia Britannica",
-                "title": "Genghis Khan",
-                "url": "https://www.britannica.com/biography/Genghis-Khan",
-                "note": "Birth name and uncertain birth year, rise to power, and the 1206 assembly."
-              },
-              {
-                "publisher": "Encyclopaedia Britannica",
-                "title": "Mongolia: The rise of Genghis Khan",
-                "url": "https://www.britannica.com/place/Mongolia/The-rise-of-Genghis-Khan",
-                "note": "Steppe society in which Temüjin grew up."
-              },
-              {
-                "publisher": "Asia for Educators (Columbia University)",
-                "title": "Tribal Group vs. Mongol Identity under Chinggis Khan",
-                "url": "https://afe.easia.columbia.edu/mongols/conquests/conquests_2a.htm",
-                "note": "Alliances and redistributing conquered groups to break old tribal loyalties."
-              },
-              {
-                "publisher": "Asia for Educators (Columbia University)",
-                "title": "Chinggis's Mastery of Organization and Military Tactics",
-                "url": "https://afe.easia.columbia.edu/mongols/conquests/conquests_2b.htm",
-                "note": "Decimal military units, personal loyalty, and the feigned withdrawal."
-              },
-              {
-                "publisher": "Asia for Educators (Columbia University)",
-                "title": "The Advantage of the Bow and Horse",
-                "url": "https://afe.easia.columbia.edu/mongols/pop//conquests/cavalry_pop.htm",
-                "note": "Mounted archery."
-              },
-              {
-                "publisher": "Asia for Educators (Columbia University)",
-                "title": "Horses: The Key to the Mongols' Military Strategy",
-                "url": "https://afe.easia.columbia.edu/mongols/pop/conquests/battle_pop.htm",
-                "note": "Changing horses to keep speed and surprise."
-              },
-              {
-                "publisher": "Asia for Educators (Columbia University)",
-                "title": "Three Invasions Led by Chinggis",
-                "url": "https://afe.easia.columbia.edu/mongols/conquests/conquests_2c.htm",
-                "note": "Campaigns against the Xia, Jin and Khwarazm, and the 1219 invasion of Central Asia."
-              },
-              {
-                "publisher": "Asia for Educators (Columbia University)",
-                "title": "Chinggis's Successor and Further Expansion of the Empire",
-                "url": "https://afe.easia.columbia.edu/mongols/conquests/conquests_2d.htm",
-                "note": "Ögödei and expansion after 1227."
-              },
-              {
-                "publisher": "Asia for Educators (Columbia University)",
-                "title": "The Mongols' Mark on Global History",
-                "url": "https://afe.easia.columbia.edu/mongols/history/history.htm",
-                "note": "Largest contiguous land empire; weighing achievement against brutality."
-              },
-              {
-                "publisher": "World History Encyclopedia",
-                "title": "Genghis Khan",
-                "url": "https://www.worldhistory.org/Genghis_Khan/",
-                "note": "Siege techniques, the destruction of Central Asian cities, administration, and successors."
-              }
-            ],
-            "digDeeper": [
-              {
-                "id": "temujin-early-life",
-                "label": "Temüjin's early life",
-                "kind": "person"
-              },
-              {
-                "id": "decimal-military-units",
-                "label": "Decimal military units",
-                "kind": "idea"
-              },
-              {
-                "id": "mounted-archery",
-                "label": "Mounted archery and feigned retreats",
-                "kind": "idea"
-              },
-              {
-                "id": "central-asian-campaigns",
-                "label": "Central Asian campaigns",
-                "kind": "event"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "slug": "ottoman-empire",
-        "title": "The Ottoman Empire",
-        "kind": "era",
-        "summary": "The Ottoman Empire grew from a small state in Anatolia around 1300 into a major power across southeastern Europe, the Middle East, and North Africa before its imperial rule ended in 1922.",
-        "lessons": [
-          {
-            "id": "les_ot01",
-            "slug": "governing-across-three-continents",
-            "title": "The Ottoman Empire: Governing Across Three Continents",
-            "sections": [
-              {
-                "heading": "From a frontier state to an empire",
-                "body": "The Ottoman state began in northwestern Anatolia, the Asian part of present-day Turkey, around 1300. Its name comes from Osman I, the founder of its ruling dynasty, whose followers expanded into neighboring territories as older regional powers weakened.\n\nThe Ottomans expanded into both Anatolia and the Balkans, the region of southeastern Europe across the water from their original territory. In 1453, Sultan Mehmed II captured Constantinople, ending the Byzantine Empire and making the city a center of Ottoman power.\n\nLater conquests brought Syria and Egypt under Ottoman rule, and the empire reached a high point of political power during Süleyman the Magnificent's reign, from 1520 to 1566. Its territories extended across parts of Europe, Asia, and Africa, so understanding it requires thinking beyond the borders of modern Turkey."
-              },
-              {
-                "heading": "Governing people with different identities",
-                "body": "The empire was ruled by a sultan from the Ottoman dynasty, supported by administrators and a military establishment. Farmers, merchants, and craftspeople produced wealth and paid taxes that supported the ruling institutions.\n\nOttoman society included Muslims, Christians, and Jews, with religious communities exercising varying degrees of control over their own affairs. Arrangements commonly described as the millet system allowed religious leaders to oversee matters such as worship, education, and some legal disputes, but non-Muslims faced legal disadvantages and additional taxation; communal autonomy did not mean equal citizenship.\n\nAnother institution, the devşirme, periodically took Christian boys from their families, converted them to Islam, and trained them for service in the military or imperial administration. Some recruits rose to powerful positions, but those opportunities do not erase the system's coercion, forced conversion, and family separation."
-              },
-              {
-                "heading": "Art and architecture expressed imperial power",
-                "body": "Ottoman rulers supported architecture, calligraphy, manuscript painting, textiles, and ceramics, creating a distinctive visual culture from several artistic traditions. Conquest and court patronage brought artists and ideas from Byzantine, Persian, and Arab cultural worlds into Ottoman artistic production.\n\nThe architect Sinan designed celebrated mosques and religious complexes during the sixteenth century, including the age of Süleyman. Ottoman mosque complexes could combine religious, educational, social, and commercial functions, making them important urban institutions rather than merely places for prayer.\n\nArtistic production also flourished outside the capital: Iznik became known for ceramics, while Bursa was an important center for silk textiles. Domed mosques, slender minarets, and related artistic traditions spread across Ottoman territories, leaving a cultural legacy visible well beyond modern Turkey."
-              },
-              {
-                "heading": "Reform, war, and the end of imperial rule",
-                "body": "In the nineteenth century, Ottoman rulers confronted territorial losses, nationalist movements, financial pressures, and the growing influence of European powers. The Tanzimat reforms, associated with the period 1839–1876, attempted to strengthen the state through changes in administration, education, law, and other institutions, including promises of greater equality that were not consistently implemented.\n\nThe empire fought alongside Germany in World War I and suffered defeat. During the war, Ottoman authorities carried out the Armenian genocide, using deportations, massacres, and systematic persecution to destroy Armenian communities, particularly in 1915–1916.\n\nAfter the war, a Turkish nationalist movement led by Mustafa Kemal, later known as Atatürk, challenged the postwar settlement and the old imperial order. The sultanate was abolished in 1922, and Turkey was proclaimed a republic in 1923: these were related but distinct events, and the republic did not inherit the empire's full territory."
-              }
-            ],
-            "keyFacts": [
-              "The empire began in Anatolia around 1300 and took its name from Osman I.",
-              "Mehmed II captured the city in 1453.",
-              "Ottoman territories spanned parts of Europe, Asia, and Africa.",
-              "His reign, 1520–1566, was a high point of political power and artistic patronage.",
-              "Ottoman authorities carried out mass deportations and killings, particularly in 1915–1916.",
-              "The sultanate ended in 1922; Turkey became a republic in 1923."
-            ],
-            "quiz": [
-              {
-                "question": "Where did the Ottoman state originate?",
-                "options": [
-                  "The Arabian Peninsula.",
-                  "Northwestern Anatolia.",
-                  "The British Isles.",
-                  "Northern India."
-                ],
-                "answerIndex": 1,
-                "explanation": "The Ottoman state began in northwestern Anatolia, in present-day Turkey."
-              },
-              {
-                "question": "Why was the conquest of Constantinople in 1453 a major turning point?",
-                "options": [
-                  "It ended the Byzantine Empire and gave the Ottomans an important imperial center.",
-                  "It immediately created the Republic of Turkey.",
-                  "It ended Ottoman expansion into Europe.",
-                  "It abolished the position of sultan."
-                ],
-                "answerIndex": 0,
-                "explanation": "Mehmed II's conquest ended Byzantine rule and established Constantinople as an Ottoman imperial center."
-              },
-              {
-                "question": "Which statement best describes religious communities under Ottoman rule?",
-                "options": [
-                  "Everyone had to practice the same religion.",
-                  "Religious communities had no role in education or law.",
-                  "Every subject always possessed identical legal rights.",
-                  "Some communities managed internal affairs, but their autonomy did not guarantee equal legal status."
-                ],
-                "answerIndex": 3,
-                "explanation": "Religious communities could exercise internal autonomy while non-Muslims faced disadvantages and additional taxation."
-              },
-              {
-                "question": "What was the devşirme?",
-                "options": [
-                  "A voluntary university exchange program.",
-                  "A tax paid only by foreign merchants.",
-                  "A levy taking Christian boys for conversion and training in imperial service.",
-                  "A law abolishing the Ottoman military."
-                ],
-                "answerIndex": 2,
-                "explanation": "Christian boys were taken from their families, converted to Islam, and trained for military or administrative service."
-              },
-              {
-                "question": "Which description best captures the purpose of the Tanzimat reforms?",
-                "options": [
-                  "Strengthening the state through institutional changes, including reforms in law and education.",
-                  "Restoring the Byzantine Empire.",
-                  "Ending all state involvement in administration.",
-                  "Replacing the empire with a republic in 1839."
-                ],
-                "answerIndex": 0,
-                "explanation": "The reforms sought to preserve and strengthen the Ottoman state through institutional modernization."
-              },
-              {
-                "question": "Which sequence correctly describes the end of Ottoman imperial rule and the founding of modern Turkey?",
-                "options": [
-                  "Republic proclaimed in 1922; sultanate abolished in 1923.",
-                  "Sultanate abolished in 1922; republic proclaimed in 1923.",
-                  "Sultanate abolished in 1453; republic proclaimed in 1520.",
-                  "Sultanate abolished and republic proclaimed in 1839."
-                ],
-                "answerIndex": 1,
-                "explanation": "Abolition of the sultanate preceded proclamation of the republic by one year."
-              }
-            ],
-            "sources": [
-              {
-                "publisher": "Encyclopaedia Britannica",
-                "title": "Ottoman Empire",
-                "url": "https://www.britannica.com/place/Ottoman-Empire",
-                "note": "Origins in Anatolia, Osman I, territory across three continents, end of imperial rule."
-              },
-              {
-                "publisher": "Encyclopaedia Britannica",
-                "title": "Ottoman Empire summary",
-                "url": "https://www.britannica.com/summary/Ottoman-Empire",
-                "note": "The 1453 conquest of Constantinople."
-              },
-              {
-                "publisher": "Encyclopaedia Britannica",
-                "title": "Ottoman Empire timeline",
-                "url": "https://www.britannica.com/summary/Ottoman-Empire-Timeline",
-                "note": "Key dates from Constantinople and Süleyman to 1922–1923."
-              },
-              {
-                "publisher": "Encyclopaedia Britannica",
-                "title": "Ottoman Empire: Classical Ottoman society and administration",
-                "url": "https://www.britannica.com/place/Ottoman-Empire/Classical-Ottoman-society-and-administration",
-                "note": "Sultan, administrators and taxpayers; religious communities."
-              },
-              {
-                "publisher": "Encyclopaedia Britannica",
-                "title": "Greece: Greece under Ottoman rule",
-                "url": "https://www.britannica.com/place/Greece/Greece-under-Ottoman-rule",
-                "note": "Communal autonomy and the legal disadvantages of non-Muslims."
-              },
-              {
-                "publisher": "Encyclopaedia Britannica",
-                "title": "Devşirme",
-                "url": "https://www.britannica.com/topic/devsirme",
-                "note": "The levy of Christian boys for conversion and imperial service."
-              },
-              {
-                "publisher": "The Metropolitan Museum of Art",
-                "title": "The Art of the Ottomans before 1600",
-                "url": "https://www.metmuseum.org/essays/the-art-of-the-ottomans-before-1600",
-                "note": "Court patronage, Sinan, Iznik ceramics and Bursa silks."
-              },
-              {
-                "publisher": "Encyclopaedia Britannica",
-                "title": "Decline of the Ottoman Empire summary",
-                "url": "https://www.britannica.com/summary/Decline-of-the-Ottoman-Empire",
-                "note": "Nineteenth-century pressures and the Turkish nationalist movement."
-              },
-              {
-                "publisher": "Encyclopaedia Britannica",
-                "title": "Ottoman Empire: The Tanzimat reforms, 1839–76",
-                "url": "https://www.britannica.com/place/Ottoman-Empire/The-Tanzimat-reforms-1839-76",
-                "note": "Institutional reform and unevenly kept promises of equality."
-              },
-              {
-                "publisher": "United States Holocaust Memorial Museum",
-                "title": "The Armenian Genocide (1915-16): Overview",
-                "url": "https://encyclopedia.ushmm.org/content/en/article/the-armenian-genocide-1915-16-overview",
-                "note": "Deportations, massacres and the destruction of Armenian communities."
-              }
-            ],
-            "digDeeper": [
-              {
-                "id": "osman-i",
-                "label": "Osman I",
-                "kind": "person"
-              },
-              {
-                "id": "fall-of-constantinople",
-                "label": "Mehmed II and 1453",
-                "kind": "event"
-              },
-              {
-                "id": "suleyman-the-magnificent",
-                "label": "Süleyman the Magnificent",
-                "kind": "person"
-              },
-              {
-                "id": "end-of-the-sultanate",
-                "label": "End of the sultanate",
-                "kind": "event"
-              }
-            ]
-          }
-        ]
-      },
-      {
         "slug": "trade-and-exchange-networks",
         "title": "Trade and Exchange Networks",
         "kind": "network",
@@ -1278,11 +418,693 @@
         ]
       },
       {
-        "slug": "meiji-restoration",
-        "title": "The Meiji Restoration",
-        "kind": "event",
-        "summary": "The political transformation of 1868 initiated reforms that centralized government, changed social privileges, and built new national institutions.",
+        "slug": "mongol-and-ottoman-empires",
+        "title": "Land Empires: Mongols and Ottomans",
+        "kind": "era",
+        "summary": "The Mongol and Ottoman empires were built by conquest and ruled diverse peoples across Eurasia, combining military organization with ways of governing many languages, faiths, and regions.",
         "lessons": [
+          {
+            "id": "les_gk01",
+            "slug": "unification-conquest-and-legacy",
+            "title": "Genghis Khan: Unification, Conquest, and Legacy",
+            "sections": [
+              {
+                "heading": "From Temüjin to Genghis Khan",
+                "body": "Genghis Khan was born Temüjin, probably around 1162, although sources disagree about his birth year. He grew up among the pastoral nomadic peoples of the Mongolian steppe, where herding, alliances, and competition among groups shaped political life.\n\nAfter hardship in his early life, Temüjin built alliances and defeated rivals, using both personal relationships and force to gather followers. He redistributed members of conquered or allied groups among his own units, reducing the influence of older tribal loyalties and directing allegiance toward himself.\n\nIn 1206, an assembly recognized him as ruler, and he took the title Genghis Khan, also written Chinggis Khan. Unifying the steppe mattered because it brought formerly competing groups under a single political and military leadership capable of launching coordinated campaigns beyond Mongolia."
+              },
+              {
+                "heading": "Organization mattered as much as force",
+                "body": "Genghis Khan organized his forces using a decimal structure, with units based on ten, one hundred, one thousand, and ten thousand. Personal loyalty between major commanders and the ruler helped hold these forces together and sustain his authority.\n\nMongol soldiers were skilled horsemen and archers, combining mobility with the ability to attack while mounted. Riders could change horses during long journeys, helping their armies maintain speed and surprise across large distances.\n\nOne important tactic was the feigned withdrawal: soldiers pretended to retreat, encouraging enemies to pursue them into a trap. Mongol success also involved adapting to opponents and learning siege techniques, showing that their armies were more than groups of riders relying on speed alone."
+              },
+              {
+                "heading": "Conquest carried a devastating human cost",
+                "body": "Genghis Khan's campaigns targeted states in northwestern and northern China, including the Xia and Jin, and later the Khwarazmian Empire in Central Asia. Trade disputes and attacks on Mongol diplomatic representatives contributed to these conflicts, although their outcomes involved much more than adjustments to trade.\n\nThe invasion of Central Asia began in 1219 and brought devastating attacks on major urban centers, including Bukhara and Samarkand. Cities were destroyed, civilians were killed, and damage to irrigation systems harmed the conditions needed for settled life and agriculture.\n\nMongol forces used the threat of destruction to pressure other cities into surrender, making terror part of their strategy rather than simply an accidental consequence of fighting. A balanced assessment therefore needs to recognize military effectiveness without treating successful conquest as justification for massacres or the destruction of communities."
+              },
+              {
+                "heading": "His empire continued to grow after his death",
+                "body": "Genghis Khan also pursued measures to govern conquered territories, including adopting a writing system for Mongolian and allowing rulers in some regions to remain as subordinate authorities. His administration accommodated different religions and encouraged trade, but those policies coexisted with the brutality of conquest rather than canceling it out.\n\nHe died in 1227, and his son Ögödei became Great Khan in 1229, overseeing further major expansion. Later descendants extended Mongol rule still farther; his grandson Kublai completed the conquest of the Southern Song in China in 1279, decades after Genghis Khan's death.\n\nThe Mongol Empire ultimately became the largest contiguous land empire in world history, meaning its territories formed a connected landmass rather than primarily an overseas network. Genghis Khan founded that imperial project, but its full extent and its wider influence on Eurasian exchange resulted from developments under several generations of rulers."
+              }
+            ],
+            "keyFacts": [
+              "Genghis Khan was born Temüjin; his birth year is uncertain, often given as about 1162.",
+              "He became ruler of the united Mongolian steppe in 1206.",
+              "Military units were based on ten, one hundred, one thousand, and ten thousand.",
+              "Mounted archery, mobility, and feigned retreats were important advantages.",
+              "His Central Asian campaigns devastated cities and killed civilians.",
+              "He died in 1227, and his successors substantially expanded the empire."
+            ],
+            "quiz": [
+              {
+                "question": "What was Genghis Khan's original name?",
+                "options": [
+                  "Osman.",
+                  "Kublai.",
+                  "Temüjin.",
+                  "Süleyman."
+                ],
+                "answerIndex": 2,
+                "explanation": "Temüjin was his birth name; Genghis Khan was a title adopted after his rise to power."
+              },
+              {
+                "question": "Why was the year 1206 a turning point?",
+                "options": [
+                  "He completed the conquest of the Southern Song.",
+                  "An assembly recognized his rule over the united Mongolian steppe.",
+                  "The Ottoman sultanate was abolished.",
+                  "He died and Ögödei immediately took the throne."
+                ],
+                "answerIndex": 1,
+                "explanation": "The assembly recognized his leadership in 1206, marking the establishment of his rule as Genghis Khan."
+              },
+              {
+                "question": "Which feature best describes the organization of his military forces?",
+                "options": [
+                  "Units based on ten, one hundred, one thousand, and ten thousand.",
+                  "Every soldier acted independently without commanders.",
+                  "Units were organized solely by the city where each soldier was born.",
+                  "Only one permanent unit was permitted."
+                ],
+                "answerIndex": 0,
+                "explanation": "His military organization used a decimal structure."
+              },
+              {
+                "question": "A Mongol force appears to flee, lures an enemy into pursuit, and then attacks with waiting troops. What tactic is this?",
+                "options": [
+                  "A naval blockade.",
+                  "A diplomatic surrender.",
+                  "A siege conducted entirely from a fixed position.",
+                  "A feigned withdrawal."
+                ],
+                "answerIndex": 3,
+                "explanation": "The apparent retreat is a deliberate maneuver intended to draw an enemy into a trap."
+              },
+              {
+                "question": "Which statement best evaluates the relationship between Mongol administrative policies and military violence?",
+                "options": [
+                  "Encouraging trade proves that no civilians were harmed.",
+                  "Religious accommodation meant that conquest was always peaceful.",
+                  "Administrative innovation and religious accommodation coexisted with destructive campaigns and massacres.",
+                  "The existence of massacres means there were no governing institutions."
+                ],
+                "answerIndex": 2,
+                "explanation": "Governing innovations and accommodation do not erase the documented brutality of Mongol conquest."
+              },
+              {
+                "question": "Why is it inaccurate to credit Genghis Khan personally with every Mongol conquest?",
+                "options": [
+                  "He never led military campaigns.",
+                  "His successors expanded the empire after his death in 1227.",
+                  "The Mongol Empire ended before he became ruler.",
+                  "Kublai completed the conquest of the Southern Song before Genghis Khan was born."
+                ],
+                "answerIndex": 1,
+                "explanation": "Later rulers, including Ögödei and Kublai, made major conquests after Genghis Khan's death."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Genghis Khan",
+                "url": "https://www.britannica.com/biography/Genghis-Khan",
+                "note": "Birth name and uncertain birth year, rise to power, and the 1206 assembly."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Mongolia: The rise of Genghis Khan",
+                "url": "https://www.britannica.com/place/Mongolia/The-rise-of-Genghis-Khan",
+                "note": "Steppe society in which Temüjin grew up."
+              },
+              {
+                "publisher": "Asia for Educators (Columbia University)",
+                "title": "Tribal Group vs. Mongol Identity under Chinggis Khan",
+                "url": "https://afe.easia.columbia.edu/mongols/conquests/conquests_2a.htm",
+                "note": "Alliances and redistributing conquered groups to break old tribal loyalties."
+              },
+              {
+                "publisher": "Asia for Educators (Columbia University)",
+                "title": "Chinggis's Mastery of Organization and Military Tactics",
+                "url": "https://afe.easia.columbia.edu/mongols/conquests/conquests_2b.htm",
+                "note": "Decimal military units, personal loyalty, and the feigned withdrawal."
+              },
+              {
+                "publisher": "Asia for Educators (Columbia University)",
+                "title": "The Advantage of the Bow and Horse",
+                "url": "https://afe.easia.columbia.edu/mongols/pop//conquests/cavalry_pop.htm",
+                "note": "Mounted archery."
+              },
+              {
+                "publisher": "Asia for Educators (Columbia University)",
+                "title": "Horses: The Key to the Mongols' Military Strategy",
+                "url": "https://afe.easia.columbia.edu/mongols/pop/conquests/battle_pop.htm",
+                "note": "Changing horses to keep speed and surprise."
+              },
+              {
+                "publisher": "Asia for Educators (Columbia University)",
+                "title": "Three Invasions Led by Chinggis",
+                "url": "https://afe.easia.columbia.edu/mongols/conquests/conquests_2c.htm",
+                "note": "Campaigns against the Xia, Jin and Khwarazm, and the 1219 invasion of Central Asia."
+              },
+              {
+                "publisher": "Asia for Educators (Columbia University)",
+                "title": "Chinggis's Successor and Further Expansion of the Empire",
+                "url": "https://afe.easia.columbia.edu/mongols/conquests/conquests_2d.htm",
+                "note": "Ögödei and expansion after 1227."
+              },
+              {
+                "publisher": "Asia for Educators (Columbia University)",
+                "title": "The Mongols' Mark on Global History",
+                "url": "https://afe.easia.columbia.edu/mongols/history/history.htm",
+                "note": "Largest contiguous land empire; weighing achievement against brutality."
+              },
+              {
+                "publisher": "World History Encyclopedia",
+                "title": "Genghis Khan",
+                "url": "https://www.worldhistory.org/Genghis_Khan/",
+                "note": "Siege techniques, the destruction of Central Asian cities, administration, and successors."
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "temujin-early-life",
+                "label": "Temüjin's early life",
+                "kind": "person"
+              },
+              {
+                "id": "decimal-military-units",
+                "label": "Decimal military units",
+                "kind": "idea"
+              },
+              {
+                "id": "mounted-archery",
+                "label": "Mounted archery and feigned retreats",
+                "kind": "idea"
+              },
+              {
+                "id": "central-asian-campaigns",
+                "label": "Central Asian campaigns",
+                "kind": "event"
+              }
+            ]
+          },
+          {
+            "id": "les_ot01",
+            "slug": "governing-across-three-continents",
+            "title": "The Ottoman Empire: Governing Across Three Continents",
+            "sections": [
+              {
+                "heading": "From a frontier state to an empire",
+                "body": "The Ottoman state began in northwestern Anatolia, the Asian part of present-day Turkey, around 1300. Its name comes from Osman I, the founder of its ruling dynasty, whose followers expanded into neighboring territories as older regional powers weakened.\n\nThe Ottomans expanded into both Anatolia and the Balkans, the region of southeastern Europe across the water from their original territory. In 1453, Sultan Mehmed II captured Constantinople, ending the Byzantine Empire and making the city a center of Ottoman power.\n\nLater conquests brought Syria and Egypt under Ottoman rule, and the empire reached a high point of political power during Süleyman the Magnificent's reign, from 1520 to 1566. Its territories extended across parts of Europe, Asia, and Africa, so understanding it requires thinking beyond the borders of modern Turkey."
+              },
+              {
+                "heading": "Governing people with different identities",
+                "body": "The empire was ruled by a sultan from the Ottoman dynasty, supported by administrators and a military establishment. Farmers, merchants, and craftspeople produced wealth and paid taxes that supported the ruling institutions.\n\nOttoman society included Muslims, Christians, and Jews, with religious communities exercising varying degrees of control over their own affairs. Arrangements commonly described as the millet system allowed religious leaders to oversee matters such as worship, education, and some legal disputes, but non-Muslims faced legal disadvantages and additional taxation; communal autonomy did not mean equal citizenship.\n\nAnother institution, the devşirme, periodically took Christian boys from their families, converted them to Islam, and trained them for service in the military or imperial administration. Some recruits rose to powerful positions, but those opportunities do not erase the system's coercion, forced conversion, and family separation."
+              },
+              {
+                "heading": "Art and architecture expressed imperial power",
+                "body": "Ottoman rulers supported architecture, calligraphy, manuscript painting, textiles, and ceramics, creating a distinctive visual culture from several artistic traditions. Conquest and court patronage brought artists and ideas from Byzantine, Persian, and Arab cultural worlds into Ottoman artistic production.\n\nThe architect Sinan designed celebrated mosques and religious complexes during the sixteenth century, including the age of Süleyman. Ottoman mosque complexes could combine religious, educational, social, and commercial functions, making them important urban institutions rather than merely places for prayer.\n\nArtistic production also flourished outside the capital: Iznik became known for ceramics, while Bursa was an important center for silk textiles. Domed mosques, slender minarets, and related artistic traditions spread across Ottoman territories, leaving a cultural legacy visible well beyond modern Turkey."
+              },
+              {
+                "heading": "Reform, war, and the end of imperial rule",
+                "body": "In the nineteenth century, Ottoman rulers confronted territorial losses, nationalist movements, financial pressures, and the growing influence of European powers. The Tanzimat reforms, associated with the period 1839–1876, attempted to strengthen the state through changes in administration, education, law, and other institutions, including promises of greater equality that were not consistently implemented.\n\nThe empire fought alongside Germany in World War I and suffered defeat. During the war, Ottoman authorities carried out the Armenian genocide, using deportations, massacres, and systematic persecution to destroy Armenian communities, particularly in 1915–1916.\n\nAfter the war, a Turkish nationalist movement led by Mustafa Kemal, later known as Atatürk, challenged the postwar settlement and the old imperial order. The sultanate was abolished in 1922, and Turkey was proclaimed a republic in 1923: these were related but distinct events, and the republic did not inherit the empire's full territory."
+              }
+            ],
+            "keyFacts": [
+              "The empire began in Anatolia around 1300 and took its name from Osman I.",
+              "Mehmed II captured the city in 1453.",
+              "Ottoman territories spanned parts of Europe, Asia, and Africa.",
+              "His reign, 1520–1566, was a high point of political power and artistic patronage.",
+              "Ottoman authorities carried out mass deportations and killings, particularly in 1915–1916.",
+              "The sultanate ended in 1922; Turkey became a republic in 1923."
+            ],
+            "quiz": [
+              {
+                "question": "Where did the Ottoman state originate?",
+                "options": [
+                  "The Arabian Peninsula.",
+                  "Northwestern Anatolia.",
+                  "The British Isles.",
+                  "Northern India."
+                ],
+                "answerIndex": 1,
+                "explanation": "The Ottoman state began in northwestern Anatolia, in present-day Turkey."
+              },
+              {
+                "question": "Why was the conquest of Constantinople in 1453 a major turning point?",
+                "options": [
+                  "It ended the Byzantine Empire and gave the Ottomans an important imperial center.",
+                  "It immediately created the Republic of Turkey.",
+                  "It ended Ottoman expansion into Europe.",
+                  "It abolished the position of sultan."
+                ],
+                "answerIndex": 0,
+                "explanation": "Mehmed II's conquest ended Byzantine rule and established Constantinople as an Ottoman imperial center."
+              },
+              {
+                "question": "Which statement best describes religious communities under Ottoman rule?",
+                "options": [
+                  "Everyone had to practice the same religion.",
+                  "Religious communities had no role in education or law.",
+                  "Every subject always possessed identical legal rights.",
+                  "Some communities managed internal affairs, but their autonomy did not guarantee equal legal status."
+                ],
+                "answerIndex": 3,
+                "explanation": "Religious communities could exercise internal autonomy while non-Muslims faced disadvantages and additional taxation."
+              },
+              {
+                "question": "What was the devşirme?",
+                "options": [
+                  "A voluntary university exchange program.",
+                  "A tax paid only by foreign merchants.",
+                  "A levy taking Christian boys for conversion and training in imperial service.",
+                  "A law abolishing the Ottoman military."
+                ],
+                "answerIndex": 2,
+                "explanation": "Christian boys were taken from their families, converted to Islam, and trained for military or administrative service."
+              },
+              {
+                "question": "Which description best captures the purpose of the Tanzimat reforms?",
+                "options": [
+                  "Strengthening the state through institutional changes, including reforms in law and education.",
+                  "Restoring the Byzantine Empire.",
+                  "Ending all state involvement in administration.",
+                  "Replacing the empire with a republic in 1839."
+                ],
+                "answerIndex": 0,
+                "explanation": "The reforms sought to preserve and strengthen the Ottoman state through institutional modernization."
+              },
+              {
+                "question": "Which sequence correctly describes the end of Ottoman imperial rule and the founding of modern Turkey?",
+                "options": [
+                  "Republic proclaimed in 1922; sultanate abolished in 1923.",
+                  "Sultanate abolished in 1922; republic proclaimed in 1923.",
+                  "Sultanate abolished in 1453; republic proclaimed in 1520.",
+                  "Sultanate abolished and republic proclaimed in 1839."
+                ],
+                "answerIndex": 1,
+                "explanation": "Abolition of the sultanate preceded proclamation of the republic by one year."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Ottoman Empire",
+                "url": "https://www.britannica.com/place/Ottoman-Empire",
+                "note": "Origins in Anatolia, Osman I, territory across three continents, end of imperial rule."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Ottoman Empire summary",
+                "url": "https://www.britannica.com/summary/Ottoman-Empire",
+                "note": "The 1453 conquest of Constantinople."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Ottoman Empire timeline",
+                "url": "https://www.britannica.com/summary/Ottoman-Empire-Timeline",
+                "note": "Key dates from Constantinople and Süleyman to 1922–1923."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Ottoman Empire: Classical Ottoman society and administration",
+                "url": "https://www.britannica.com/place/Ottoman-Empire/Classical-Ottoman-society-and-administration",
+                "note": "Sultan, administrators and taxpayers; religious communities."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Greece: Greece under Ottoman rule",
+                "url": "https://www.britannica.com/place/Greece/Greece-under-Ottoman-rule",
+                "note": "Communal autonomy and the legal disadvantages of non-Muslims."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Devşirme",
+                "url": "https://www.britannica.com/topic/devsirme",
+                "note": "The levy of Christian boys for conversion and imperial service."
+              },
+              {
+                "publisher": "The Metropolitan Museum of Art",
+                "title": "The Art of the Ottomans before 1600",
+                "url": "https://www.metmuseum.org/essays/the-art-of-the-ottomans-before-1600",
+                "note": "Court patronage, Sinan, Iznik ceramics and Bursa silks."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Decline of the Ottoman Empire summary",
+                "url": "https://www.britannica.com/summary/Decline-of-the-Ottoman-Empire",
+                "note": "Nineteenth-century pressures and the Turkish nationalist movement."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Ottoman Empire: The Tanzimat reforms, 1839–76",
+                "url": "https://www.britannica.com/place/Ottoman-Empire/The-Tanzimat-reforms-1839-76",
+                "note": "Institutional reform and unevenly kept promises of equality."
+              },
+              {
+                "publisher": "United States Holocaust Memorial Museum",
+                "title": "The Armenian Genocide (1915-16): Overview",
+                "url": "https://encyclopedia.ushmm.org/content/en/article/the-armenian-genocide-1915-16-overview",
+                "note": "Deportations, massacres and the destruction of Armenian communities."
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "osman-i",
+                "label": "Osman I",
+                "kind": "person"
+              },
+              {
+                "id": "fall-of-constantinople",
+                "label": "Mehmed II and 1453",
+                "kind": "event"
+              },
+              {
+                "id": "suleyman-the-magnificent",
+                "label": "Süleyman the Magnificent",
+                "kind": "person"
+              },
+              {
+                "id": "end-of-the-sultanate",
+                "label": "End of the sultanate",
+                "kind": "event"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "slug": "revolution-and-reform",
+        "title": "Revolution and Reform",
+        "kind": "event",
+        "summary": "Revolutions and state-led reforms remade governments: the French Revolution overthrew a monarchy from below, while Japan's Meiji Restoration rebuilt a state from above around a restored emperor.",
+        "lessons": [
+          {
+            "id": "les_fr01",
+            "slug": "1789-the-revolution-begins",
+            "title": "1789: The Revolution Begins",
+            "sections": [
+              {
+                "heading": "A kingdom that couldn’t pay its bills",
+                "body": "Picture a government that has been spending far more than it takes in, year after year, and covering the gap by borrowing. That was the French monarchy in the 1780s, partly because of the long, costly wars of the eighteenth century. Then the borrowing dried up. Historians still argue about exactly why, but the result was clear: mounting debt pushed the monarchy toward fundamental financial change.\n\nIn 1787 the royal government proposed major reforms to taxation and spending. They met furious resistance from a special Assembly of Notables and from the king’s own law courts, especially the Parlement of Paris. These bodies insisted on an old tradition: the French people had once consented to royal decrees through a representative body called the Estates-General. It had not met since 1614, but many saw it as the only national body with the authority to approve reforms and new taxes. Facing imminent bankruptcy, Louis XVI called it in the fall of 1788.\n\nNow meet the person whose ideas will run through this whole lesson. Emmanuel-Joseph Sieyès was a churchman and constitutional theorist. In January 1789 he wrote a pamphlet called What Is the Third Estate?, arguing that the unprivileged Third Estate, everyone outside the clergy and the nobility, was the French nation itself. In an 1899 English translation, his answer to his own title question is blunt: “Everything; but an everything shackled and oppressed.”"
+              },
+              {
+                "heading": "The fight over how to count votes",
+                "body": "Here is the problem Sieyès was attacking. Traditionally, the Estates-General had three estates, the clergy, the nobility, and the commons, each with the same number of deputies and a single vote. Under that arrangement the nobility always dominated, because the clerical deputies included a majority of nobles. Leading nobles wanted to keep this “voting by order,” and many commoners reacted angrily. If you were a Third Estate deputy, you could do the math: two votes against one, every time.\n\nThe pamphlet made Sieyès immensely popular and ensured his election to the Estates-General, which convened on May 5, 1789. Divisions between noble and commoner deputies only deepened. On June 17, on Sieyès’s motion, the deputies of the Third Estate proclaimed themselves a National Assembly, claiming that they alone represented the nation. It was a radical departure that struck directly at the political basis of the monarchy.\n\nThree days later, on June 20, the deputies found themselves locked out of their usual meeting hall at Versailles. Thinking the king meant to force them to disband, they moved to a nearby indoor tennis court and swore never to separate until a written constitution had been established for France. Louis XVI wavered. He refused to recognize the “National Assembly,” yet he also agreed to become a constitutional monarch, a pattern of ambivalence that would continue."
+              },
+              {
+                "heading": "Paris, the countryside, and a declaration of rights",
+                "body": "By mid-July, Paris was tense. The deputies at Versailles had been thwarted by the king, and on July 12 Parisians learned that the popular finance minister Jacques Necker had been dismissed. On July 14 a crowd swarmed the Bastille, a medieval royal fortress looming over the workers’ neighborhoods, and took it. Was this a deliberate political act to protect the deputies from royal interference, or a large-scale bread riot that took on political meaning as events unfolded? Bread prices were rising sharply, and historians still debate the question.\n\nThe upheaval spread to the countryside. When peasants heard about the Bastille, rumors also circulated of armed “brigands” coming to burn fields and attack villages. Driven by what became known as the Great Fear, peasants formed armed groups to defend their villages. The National Assembly, feeling pressure to stay ahead of events, responded with the decrees of August 4, announcing the “abolition of feudalism.” They were a first step toward dismantling the old regime’s system of privileges.\n\nOn August 26, 1789, the National Assembly approved the Declaration of the Rights of Man and of the Citizen. Its first article states that men are born and remain free and equal in rights, and that social distinctions may be founded only upon the general good. You can hear Sieyès’s argument in it: privilege has to justify itself. On October 5–6, with bread prices at their highest level of the century, a crowd of women marched from Paris to Versailles and forced the royal family back to Paris. Soon afterward Louis consented to sign the Declaration."
+              }
+            ],
+            "keyFacts": [
+              "The Estates-General had not met since 1614; it convened on May 5, 1789.",
+              "Under “voting by order,” each of the three estates had a single vote.",
+              "On June 17, 1789, on Sieyès’s motion, the Third Estate proclaimed itself the National Assembly.",
+              "Crowds took the Bastille on July 14, 1789.",
+              "The Declaration of the Rights of Man and of the Citizen was approved on August 26, 1789."
+            ],
+            "quiz": [
+              {
+                "question": "Under “voting by order,” the clergy and the nobility support a proposal and the Third Estate opposes it. What happens?",
+                "options": [
+                  "The proposal passes, two votes to one.",
+                  "The proposal fails, because the Third Estate had the most deputies.",
+                  "The king must break the tie.",
+                  "Each deputy votes individually, so the outcome is uncertain."
+                ],
+                "answerIndex": 0,
+                "explanation": "Each estate had a single vote, so the two privileged orders could outvote the Third Estate every time."
+              },
+              {
+                "question": "Sieyès argued that the Third Estate was the whole nation. Which event in 1789 put that idea into action?",
+                "options": [
+                  "Louis XVI calling the Estates-General in 1788.",
+                  "The Third Estate proclaiming itself the National Assembly on June 17.",
+                  "The Assembly of Notables resisting reform in 1787.",
+                  "The women’s march to Versailles in October."
+                ],
+                "answerIndex": 1,
+                "explanation": "On Sieyès’s motion, the Third Estate deputies declared that they alone represented the nation and formed the National Assembly."
+              },
+              {
+                "question": "Imagine you are one of the deputies taking the Tennis Court Oath. What are you promising?",
+                "options": [
+                  "To restore voting by order.",
+                  "To leave Versailles and return home.",
+                  "Never to separate until France has a written constitution.",
+                  "To give the king full control of taxation."
+                ],
+                "answerIndex": 2,
+                "explanation": "Locked out of their hall on June 20, the deputies swore never to separate until a written constitution had been established."
+              },
+              {
+                "question": "A historian notes that bread prices in Paris were rising sharply in July 1789. Which interpretation of the taking of the Bastille does this evidence support?",
+                "options": [
+                  "The attack was planned by royal troops.",
+                  "The Bastille was taken to celebrate the Declaration of Rights.",
+                  "Nobles organized the crowd to defend voting by order.",
+                  "The crowd may have begun with a bread riot that took on political meaning as events unfolded."
+                ],
+                "answerIndex": 3,
+                "explanation": "Historians debate whether the crowd acted to protect the deputies or engaged in a traditional bread riot that became political; rising bread prices support the second view."
+              },
+              {
+                "question": "Peasants hear rumors that “brigands” are coming to burn their crops, and they arm themselves. How did the National Assembly respond to movements like this?",
+                "options": [
+                  "With the decrees of August 4, announcing the abolition of feudalism.",
+                  "By recalling the Assembly of Notables.",
+                  "By restoring the old voting rules.",
+                  "By moving the Assembly back to the tennis court."
+                ],
+                "answerIndex": 0,
+                "explanation": "Feeling pressure from the Great Fear in the countryside, the Assembly announced the abolition of feudalism on August 4."
+              },
+              {
+                "question": "Why did Louis XVI end up calling the Estates-General at all?",
+                "options": [
+                  "Because the Third Estate had already declared a republic.",
+                  "Because bankruptcy loomed and powerful bodies insisted only the Estates-General could approve reforms and new taxes.",
+                  "Because it met every year by law.",
+                  "Because Sieyès’s pamphlet ordered him to."
+                ],
+                "answerIndex": 1,
+                "explanation": "Mounting debt and resistance from the Notables and the Parlement, who looked to the Estates-General, forced the king to call it in 1788."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Liberty, Equality, Fraternity (George Mason University & CUNY)",
+                "title": "Monarchy Falls",
+                "url": "https://revolution.chnm.org/exhibits/show/liberty--equality--fraternity/monarchy-falls",
+                "note": "The debt crisis, the 1787 reforms, the Estates-General and voting by order, June 17, the Tennis Court Oath, and the October 5–6 march."
+              },
+              {
+                "publisher": "Liberty, Equality, Fraternity (George Mason University & CUNY)",
+                "title": "Paris and the Politics of Rebellion",
+                "url": "https://revolution.chnm.org/exhibits/show/liberty--equality--fraternity/paris-and-the-politics-of-rebe",
+                "note": "Necker’s dismissal, the taking of the Bastille and the debate over its motives, and the king’s signing of the Declaration."
+              },
+              {
+                "publisher": "Liberty, Equality, Fraternity (George Mason University & CUNY)",
+                "title": "Social Causes of the Revolution",
+                "url": "https://revolution.chnm.org/exhibits/show/liberty--equality--fraternity/social-causes-of-revolution",
+                "note": "The Great Fear and the August 4 decrees."
+              },
+              {
+                "publisher": "Liberty, Equality, Fraternity (George Mason University & CUNY)",
+                "title": "“What Is the Third Estate?” by Emmanuel Sieyès",
+                "url": "https://revolution.chnm.org/exhibits/show/liberty--equality--fraternity/item/485",
+                "note": "Primary source in an 1899 English translation (University of Pennsylvania Press); the quoted line comes from this text."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Emmanuel-Joseph Sieyès",
+                "url": "https://www.britannica.com/biography/Emmanuel-Joseph-Sieyes",
+                "note": "The pamphlet’s date and argument, the May 5 opening of the Estates-General, and Sieyès’s June 17 motion."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Tennis Court Oath",
+                "url": "https://www.britannica.com/event/Tennis-Court-Oath",
+                "note": "The June 20, 1789 oath and its circumstances."
+              },
+              {
+                "publisher": "Avalon Project, Yale Law School",
+                "title": "Declaration of the Rights of Man - 1789",
+                "url": "https://avalon.law.yale.edu/18th_century/rightsof.asp",
+                "note": "Text of the Declaration and its August 26, 1789 approval date."
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "estates-general-1789",
+                "label": "The Estates-General of 1789",
+                "kind": "event"
+              },
+              {
+                "id": "sieyes",
+                "label": "Sieyès",
+                "kind": "person"
+              },
+              {
+                "id": "storming-of-the-bastille",
+                "label": "Storming of the Bastille",
+                "kind": "event"
+              },
+              {
+                "id": "rights-of-man",
+                "label": "Declaration of the Rights of Man",
+                "kind": "idea"
+              }
+            ]
+          },
+          {
+            "id": "les_fr02",
+            "slug": "republic-and-terror",
+            "title": "Republic and Terror",
+            "sections": [
+              {
+                "heading": "From king to citizen",
+                "body": "In 1789 Maximilien Robespierre, born in Arras in 1758, was elected to represent the Third Estate of Artois in the Estates-General. From the very beginning he spoke for popular causes, and admirers called him “the Incorruptible.” Keep him in view throughout this lesson. His path shows how a revolution that began by limiting a king ended by executing one, and then turned on its own leaders.\n\nAt first, almost no one imagined France without a king. That changed fast. In June 1791 the royal family fled Paris in disguise, but the king was recognized and arrested at Varennes. A majority of the Assembly accepted his weak excuse, fearing that punishing him would destabilize the country. Then came war: in April 1792 the Girondin leaders of the new Legislative Assembly declared war on Austria, and early French defeats panicked Paris.\n\nOn August 10, 1792, Parisian militants known as sans-culottes invaded the Tuileries Palace and effectively deposed the king. A new National Convention met in September and, after news of the first great French victory at Valmy, declared France a republic. In December the Convention began Louis’s trial; it voted unanimously to convict him of treason and sentenced him to death. He was executed by guillotine in January 1793 before tens of thousands of onlookers."
+              },
+              {
+                "heading": "Government by Terror",
+                "body": "Governing in wartime through a quarrelsome legislature of some 600 members proved nearly impossible. So in the spring of 1793 the Convention handed power to a twelve-member Committee of Public Safety. Pressure was coming from every side: foreign war, a peasant revolt in the Vendée sparked by a call for 300,000 army “volunteers,” and revolts in cities that rejected rule from Paris. On July 27, 1793, Robespierre took his seat on the Committee, and in the following months he came to dominate it.\n\nIn early September 1793, pushed by the sans-culottes, the Committee led the Convention into what became known as the Terror. Britannica dates it from September 5, 1793, to July 27, 1794. In practice it meant the organized use of state power to force compliance: revolutionary tribunals tried “suspects” for treason and sent those convicted to the guillotine. The Terror also enforced price controls known as the maximum, and pursued vaguer aims such as ensuring the “virtue” of all citizens.\n\nThe scale was enormous. About 300,000 people were arrested, and 17,000 of them were tried and executed. As many as 23,000 more were killed without trial or died in prison. Deputies sent out as “representatives on mission” often became the most zealous enforcers; at Nantes, one ordered thousands of rebels drowned in the Loire. By the end of 1793 even radical Jacobins such as Georges Danton argued that the violence had gone too far."
+              },
+              {
+                "heading": "The fall of the Incorruptible",
+                "body": "In June 1794 Robespierre staged the Festival of the Supreme Being, an attempt at a civic religion, with himself in the leading role. Two days later he pushed through the Law of 22 Prairial (June 10, 1794), which put the machinery of the Terror directly under the Committee’s control and made openly political prosecutions easier. He defended it as a way to instill virtue, but many deputies concluded that he wanted to eliminate his opponents and rule alone.\n\nIn late July 1794, in the coup known by its revolutionary calendar date, 9 Thermidor, Robespierre and a number of his followers were arrested at the Hôtel de Ville in Paris. He was executed on July 28. Notice the motive: the men who brought him down acted mainly to save themselves from the Terror, not to end it. Only over the following months were the Law of 22 Prairial repealed, the revolutionary tribunals abolished, and the price controls abandoned.\n\nHistorians still disagree about what the Terror means. Some argue it grew out of 1789 itself, whether as the necessary sweeping away of the old regime or because the revolutionaries had unknowingly built authoritarianism into their democratic principles. Others see a revolution swept off course by war, revolt, and economic crisis. The revolutionary decade ended with a twist: in November 1799 Sieyès, the author of What Is the Third Estate?, helped arrange the coup that brought General Napoleon Bonaparte to power."
+              }
+            ],
+            "keyFacts": [
+              "France was declared a republic in September 1792, and Louis XVI was executed in January 1793.",
+              "The twelve-member Committee of Public Safety was created in spring 1793; Robespierre joined it in July 1793.",
+              "Britannica dates the Reign of Terror from September 5, 1793, to July 27, 1794.",
+              "About 17,000 people were tried and executed; as many as 23,000 more died without trial or in prison.",
+              "Robespierre was arrested on July 27, 1794, and executed the next day."
+            ],
+            "quiz": [
+              {
+                "question": "In late 1793 a shopkeeper is accused of being an enemy of the Revolution. Which institution would most likely try them?",
+                "options": [
+                  "The Estates-General.",
+                  "The Directory.",
+                  "A revolutionary tribunal.",
+                  "The Parlement of Paris."
+                ],
+                "answerIndex": 2,
+                "explanation": "During the Terror, revolutionary tribunals tried “suspects” for treason and sent those convicted to the guillotine."
+              },
+              {
+                "question": "Why did the Law of 22 Prairial alarm many deputies in June 1794?",
+                "options": [
+                  "It abolished the Committee of Public Safety.",
+                  "It put the Terror under the Committee’s direct control, making political prosecutions easier.",
+                  "It restored the monarchy.",
+                  "It ended the war with Austria."
+                ],
+                "answerIndex": 1,
+                "explanation": "The law concentrated the Terror’s machinery in the Committee, and many feared Robespierre would use it against his opponents."
+              },
+              {
+                "question": "What mainly motivated the deputies who overthrew Robespierre in July 1794?",
+                "options": [
+                  "A plan to restore Louis XVI’s family to the throne.",
+                  "Orders from the Austrian emperor.",
+                  "A wish to make Robespierre king.",
+                  "Saving themselves from the Terror."
+                ],
+                "answerIndex": 3,
+                "explanation": "The coup leaders acted to protect themselves; dismantling the Terror’s institutions took several more months."
+              },
+              {
+                "question": "A historian argues that war, regional revolts, and economic hardship drove France into the Terror. Which interpretation is this?",
+                "options": [
+                  "The Revolution was swept off course by circumstances.",
+                  "The Terror was the unavoidable product of 1789’s principles.",
+                  "The Terror never really happened.",
+                  "The Terror was organized by foreign kings."
+                ],
+                "answerIndex": 0,
+                "explanation": "One school sees the Terror as unconnected to 1789 and caused by the crises of the moment; the other links it to the Revolution’s own principles."
+              },
+              {
+                "question": "Which statement best describes the scale of the Terror according to Britannica?",
+                "options": [
+                  "Only the king and queen were executed.",
+                  "About 300,000 people were executed in Paris alone.",
+                  "About 17,000 people were tried and executed, and up to 23,000 more died without trial or in prison.",
+                  "No one was executed outside Paris."
+                ],
+                "answerIndex": 2,
+                "explanation": "About 300,000 were arrested; 17,000 were tried and executed; as many as 23,000 more were killed without trial or died in prison."
+              },
+              {
+                "question": "Why did the Convention hand power to a twelve-member committee in 1793?",
+                "options": [
+                  "The king appointed the committee before his execution.",
+                  "A divided legislature of some 600 members found it nearly impossible to govern in wartime.",
+                  "The constitution required a committee in every republic.",
+                  "The sans-culottes had abolished the Convention."
+                ],
+                "answerIndex": 1,
+                "explanation": "Faced with war and revolt, the faction-ridden Convention delegated power to the Committee of Public Safety."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Liberty, Equality, Fraternity (George Mason University & CUNY)",
+                "title": "Monarchy Falls",
+                "url": "https://revolution.chnm.org/exhibits/show/liberty--equality--fraternity/monarchy-falls",
+                "note": "The flight to Varennes, the declaration of war, August 10, 1792, and the trial and execution of Louis XVI."
+              },
+              {
+                "publisher": "Liberty, Equality, Fraternity (George Mason University & CUNY)",
+                "title": "War, Terror, and Resistance to the Revolution",
+                "url": "https://revolution.chnm.org/exhibits/show/liberty--equality--fraternity/war-terror-and-resistance",
+                "note": "Valmy and the republic, the Committee of Public Safety, the Vendée, how the Terror worked, the Law of 22 Prairial, 9 Thermidor, the historians’ debate, and the 1799 coup."
+              },
+              {
+                "publisher": "Liberty, Equality, Fraternity (George Mason University & CUNY)",
+                "title": "Paris and the Politics of Rebellion",
+                "url": "https://revolution.chnm.org/exhibits/show/liberty--equality--fraternity/paris-and-the-politics-of-rebe",
+                "note": "Robespierre as “the Incorruptible” and his early support for popular causes."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Reign of Terror",
+                "url": "https://www.britannica.com/event/Reign-of-Terror",
+                "note": "Dates of the Terror, arrest and execution figures, and the maximum."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Maximilien Robespierre",
+                "url": "https://www.britannica.com/biography/Maximilien-Robespierre",
+                "note": "Birth in Arras in 1758, election to the Estates-General, joining the Committee on July 27, 1793, arrest on July 27, 1794, and death on July 28, 1794."
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "robespierre",
+                "label": "Robespierre",
+                "kind": "person"
+              },
+              {
+                "id": "committee-of-public-safety",
+                "label": "Committee of Public Safety",
+                "kind": "subtopic"
+              },
+              {
+                "id": "execution-of-louis-xvi",
+                "label": "Execution of Louis XVI",
+                "kind": "event"
+              },
+              {
+                "id": "reign-of-terror",
+                "label": "The Reign of Terror",
+                "kind": "event"
+              }
+            ]
+          },
           {
             "id": "les_mr01",
             "slug": "rebuilding-japan-in-the-name-of-an-emperor",
@@ -2620,10 +2442,10 @@
     "color": "amber",
     "topics": [
       {
-        "slug": "the-nile-and-egyptian-kingship",
-        "title": "The Nile and Egyptian kingship",
+        "slug": "egypt-and-mesopotamia",
+        "title": "Egypt and Mesopotamia",
         "kind": "civilization",
-        "summary": "The Nile’s agricultural cycle supported Egyptian society, while institutions of kingship, storage, and religious authority organized resources and expressed ideals of order.",
+        "summary": "The earliest river-valley states organized land, labor, and authority: Egyptian kingship drew on the Nile's cycle, and Babylonian law recorded how a society ordered everyday life and hierarchy.",
         "lessons": [
           {
             "id": "les_eg01",
@@ -2785,15 +2607,7 @@
                 "kind": "event"
               }
             ]
-          }
-        ]
-      },
-      {
-        "slug": "code-of-hammurabi",
-        "title": "The Code of Hammurabi",
-        "kind": "era",
-        "summary": "The Code of Hammurabi is an ancient Babylonian collection of legal decisions that reveals how a society organized everyday life, punishment, and social hierarchy.",
-        "lessons": [
+          },
           {
             "id": "les_ch01",
             "slug": "what-ancient-laws-tell-us",
@@ -2934,10 +2748,10 @@
         ]
       },
       {
-        "slug": "democracy-in-ancient-athens",
-        "title": "Democracy in ancient Athens",
-        "kind": "institution",
-        "summary": "Athens developed direct citizen participation through an assembly, a council, and courts, but political membership excluded most residents.",
+        "slug": "governing-the-classical-world",
+        "title": "Governing the Classical World",
+        "kind": "era",
+        "summary": "Classical societies experimented with how to govern: Athens with citizen assemblies and courts, Rome with a republic of elected, shared offices, and Mauryan India with a king who ruled through moral persuasion.",
         "lessons": [
           {
             "id": "les_ad01",
@@ -3099,15 +2913,161 @@
                 "kind": "subtopic"
               }
             ]
-          }
-        ]
-      },
-      {
-        "slug": "ashoka-and-the-mauryan-empire",
-        "title": "Ashoka and the Mauryan Empire",
-        "kind": "person",
-        "summary": "After the conquest of Kalinga, Ashoka promoted dhamma through inscriptions, officials, public welfare, and respect for religious communities, leaving evidence of both moral aspirations and imperial authority.",
-        "lessons": [
+          },
+          {
+            "id": "les_rr01",
+            "slug": "how-the-republic-was-governed",
+            "title": "How the Republic Was Governed",
+            "sections": [
+              {
+                "heading": "Two consuls instead of a king",
+                "body": "Imagine waking up in a city that has just thrown out its king. What would you put in his place? By the end of the Republic, Romans generally accepted a traditional story: Rome had been ruled by seven kings, and in 509 BCE the last of them, Lucius Tarquinius Superbus, was overthrown. Rather than crown someone new, the Romans replaced kingship with two magistrates called consuls, elected every year. Two leaders instead of one, and only for a year: that design tells you what Romans feared most.\n\nTo see how the system worked from the inside, follow one real career through it. Marcus Tullius Cicero was born in 106 BCE in Arpinum, a town in Latium outside Rome. He was what Romans called a “new man,” someone without noble ancestry. Nobody handed Cicero a place at the top. He had to climb, office by office and election by election, and his path will take you through the machinery of the Republic.\n\nStart with the office Cicero eventually reached. The two consuls were, above all, generals whose task was to lead Rome’s armies in war. In a military emergency, when a single commander seemed necessary, Rome could appoint a dictator in place of the consuls. Even then there was a limit: a dictator could not hold supreme military command for longer than six months. In this system, even the exception came with an expiration date."
+              },
+              {
+                "heading": "Climbing the ladder of offices",
+                "body": "Roman politicians of senatorial rank followed a set sequence of public offices known as the cursus honorum, the “course of honors.” Over time, laws regulated the ladder. Holding the same magistracy a second time was prohibited, and the praetorship became a requirement for anyone seeking the consulship. Ambition was allowed, but it had to move in order.\n\nCicero’s career follows that path. After making his name as a lawyer, he began his public career in 75 BCE as quaestor, an office of financial administration, in western Sicily. In 66 BCE he served as praetor, a judicial office of great power at the time. He was then elected consul for 63 BCE, helped by conservative senators who feared the revolutionary ideas of his rival, Catiline. A man without noble ancestry had reached the Republic’s highest regular office.\n\nWho did the electing? Romans voted in popular assemblies. The centuriate assembly, military in nature, voted on war and peace and elected the magistrates who held imperium, or military power, including consuls and praetors. The tribal assembly was a civilian body that elected magistrates without imperium and did most of the legislating. So when Cicero ran for praetor and then consul, he was asking the centuriate assembly for its votes."
+              },
+              {
+                "heading": "Balanced, or tilted toward the few?",
+                "body": "Then there was the Senate, which may already have advised the kings. Under the Republic it advised both the magistrates and the Roman people. In theory the people were sovereign and the Senate only offered advice, but in practice it wielded enormous power because of the collective prestige of its members. It also controlled the treasury: the Greek historian Polybius noted that, apart from payments to the consuls, quaestors could not spend public money without a decree of the Senate. Cicero the quaestor would have worked inside exactly that rule.\n\nCitizens were also divided into patricians, members of privileged families, and plebeians, the general citizenry. Plebeians were originally excluded from the Senate and from almost all public offices. In a long campaign called the Conflict of the Orders, which lasted until 287 BCE, they withdrew from the state on several occasions to force concessions, elected their own officials called tribunes, and won the inviolability of those tribunes. Polybius observed that if a single tribune interposed, the Senate could not reach a final decision on a matter or even meet.\n\nPolybius admired the result. He argued that the consuls made Rome look monarchical, the Senate aristocratic, and the people democratic, so that even a Roman could not say which the constitution was. But look closely at the voting. In the centuriate assembly, citizens were grouped by wealth, voting started with the wealthier groups, and their votes outweighed those of the poorer. Cicero’s story cuts both ways: a new man could rise, yet the dominant circle of conservative senators never fully accepted him. Whether the Republic was a balance or a system tilted toward the wealthy is a question worth keeping open."
+              }
+            ],
+            "keyFacts": [
+              "By Roman tradition, the Republic began in 509 BCE, when the last king was overthrown.",
+              "Two consuls were elected every year; a dictator could hold supreme command for no more than six months.",
+              "The cursus honorum was a fixed sequence of offices, and the praetorship became a requirement for the consulship.",
+              "Cicero, a “new man,” was quaestor in 75 BCE, praetor in 66 BCE, and consul in 63 BCE.",
+              "In the centuriate assembly, the wealthier groups voted first and their votes outweighed those of the poorer."
+            ],
+            "quiz": [
+              {
+                "question": "Rome faces a sudden military emergency and wants a single commander in charge. What could it do under the Republic?",
+                "options": [
+                  "Crown a new king for life.",
+                  "Appoint a dictator, whose supreme command could last no more than six months.",
+                  "Let the Senate choose one consul for ten years.",
+                  "Hand command of the army to the tribunes of the plebs."
+                ],
+                "answerIndex": 1,
+                "explanation": "In military emergencies Rome could appoint a dictator in place of the consuls, but only for up to six months."
+              },
+              {
+                "question": "An ambitious Roman wants to run for consul next year but has never served as praetor. What stands in his way?",
+                "options": [
+                  "Consuls were appointed by the outgoing dictator.",
+                  "Only former quaestors of Sicily could become consul.",
+                  "The praetorship had become a requirement for the consulship.",
+                  "The consulship could be held only by members of the Senate’s oldest families."
+                ],
+                "answerIndex": 2,
+                "explanation": "Laws regulating the cursus honorum made the praetorship a prerequisite for the consulship."
+              },
+              {
+                "question": "What does Cicero’s path from quaestor to consul suggest about Roman politics?",
+                "options": [
+                  "A man without noble ancestry could rise by winning elections, though the elite never fully accepted him.",
+                  "Offices were inherited from father to son.",
+                  "Consuls were chosen by drawing lots.",
+                  "Only patricians could hold any office at all."
+                ],
+                "answerIndex": 0,
+                "explanation": "Cicero was a “new man” who climbed office by office to the consulship, yet the dominant circle of conservative senators never fully accepted him."
+              },
+              {
+                "question": "The Senate is about to decide a matter when a tribune of the plebs interposes. According to Polybius, what happens?",
+                "options": [
+                  "The matter automatically becomes law.",
+                  "The tribune immediately becomes consul.",
+                  "The consuls remove the tribune from office.",
+                  "The Senate cannot reach a final decision on the matter."
+                ],
+                "answerIndex": 3,
+                "explanation": "Polybius wrote that if a single tribune interposed, the Senate could not decide finally about any matter, or even meet."
+              },
+              {
+                "question": "Poorer citizens greatly outnumber the wealthy in the centuriate assembly. Why might the wealthy still decide an election?",
+                "options": [
+                  "Poorer citizens were barred from attending.",
+                  "Citizens voted in groups by wealth, the wealthier groups voted first, and their votes outweighed the poorer.",
+                  "The Senate counted the votes in secret.",
+                  "Only the consuls were allowed to vote."
+                ],
+                "answerIndex": 1,
+                "explanation": "The centuriate assembly grouped citizens by wealth, and the wealthier centuries voted first with votes that outweighed the poorer ones."
+              },
+              {
+                "question": "A friend says, “The Senate only gave advice, so it had little real power.” What is the best response?",
+                "options": [
+                  "That is right; the magistrates usually ignored it.",
+                  "The Senate was the only body the people elected directly.",
+                  "In theory it only advised, but its prestige gave it enormous power, and it controlled public spending.",
+                  "The Senate replaced the consuls after 509 BCE."
+                ],
+                "answerIndex": 2,
+                "explanation": "The Senate’s role was advisory in theory, but its members’ collective prestige gave it great power, and Polybius notes its control of the treasury."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Roman Republic",
+                "url": "https://www.britannica.com/place/Roman-Republic",
+                "note": "Traditional 509 BCE founding, the two annually elected consuls, the six-month dictatorship, the Senate’s role, and the two popular assemblies."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Cicero",
+                "url": "https://www.britannica.com/biography/Cicero",
+                "note": "Cicero’s birth at Arpinum, his offices as quaestor, praetor, and consul, his status as a “new man,” and his relationship with the Optimates."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Cursus honorum",
+                "url": "https://www.britannica.com/topic/cursus-honorum",
+                "note": "The sequence of offices and the laws making the praetorship a prerequisite for the consulship."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Comitia Centuriata",
+                "url": "https://www.britannica.com/topic/Comitia-Centuriata",
+                "note": "Organization of the centuriate assembly by wealth and the weighting of its votes."
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Plebeian",
+                "url": "https://www.britannica.com/topic/plebeian",
+                "note": "Patricians and plebeians, the Conflict of the Orders, secessions, and the plebeian tribunes."
+              },
+              {
+                "publisher": "LacusCurtius, University of Chicago",
+                "title": "Polybius, The Histories, Book VI",
+                "url": "https://penelope.uchicago.edu/Thayer/E/Roman/Texts/Polybius/6*.html",
+                "note": "Primary source (Loeb translation) on the mixed constitution, the Senate’s control of the treasury, and the tribunes’ power to block the Senate."
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "cicero",
+                "label": "Cicero",
+                "kind": "person"
+              },
+              {
+                "id": "consuls-and-dictators",
+                "label": "Consuls and dictators",
+                "kind": "idea"
+              },
+              {
+                "id": "cursus-honorum",
+                "label": "The cursus honorum",
+                "kind": "idea"
+              },
+              {
+                "id": "centuriate-assembly",
+                "label": "The centuriate assembly",
+                "kind": "subtopic"
+              }
+            ]
+          },
           {
             "id": "les_as01",
             "slug": "can-an-emperor-rule-through-moral-persuasion",
