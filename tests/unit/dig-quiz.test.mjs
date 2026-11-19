@@ -84,13 +84,15 @@ test('limiter: per-key sliding window', () => {
   assert.equal(digSaveMessage('saved', true), 'Result saved.');
 });
 
-test('action: flag, verified session, parent check before the key, best attempt to generated_lesson_completions, no streak or mastery writes yet', () => {
+test('action: flag, verified session, parent check before the key, best attempt to generated_lesson_completions, streak activity only (C2)', () => {
   const action = read('lib/drilldowns/quiz-actions.ts');
   assert.match(action, /^"use server";/);
   assert.match(action, /drilldownsEnabled\(process\.env\)/);
   assert.match(action, /auth\.getClaims\(\)/);
   assert.match(action, /saveBestAttempt\(supabase, userId, lessonId, \{ score, total, passed \}, "generated_lesson_completions"\)/);
-  assert.doesNotMatch(action, /logActivity|activity_log|lesson_reminder_finished/);
+  assert.match(action, /await logActivity\(supabase, userId, "quiz_attempt", lessonId\);/);
+  assert.ok(action.indexOf('logActivity(') > action.indexOf('saveBestAttempt('), 'activity is logged after the save');
+  assert.doesNotMatch(action, /lesson_reminder_finished|from\("lesson_completions"\)|"lesson_completions"\)/);
   assert.doesNotMatch(action, /select\(\s*["']\*|\.select\(\)/);
   const data = read('lib/drilldowns/quiz-data.ts');
   assert.match(data, /^import "server-only";/);
@@ -105,5 +107,5 @@ test('/dig page: quiz section sends only question text and options; DigQuiz has 
   const comp = read('components/DigQuiz.tsx');
   assert.doesNotMatch(comp, /DigDeeper|answerIndex|quizKey/);
   assert.doesNotMatch(comp, /[\u2713\u2717\u{1F300}-\u{1FAFF}]/u);
-  assert.match(comp, /don&apos;t count toward mastery/);
+  assert.match(comp, /count toward your day streak, not\s+toward mastery or achievements/);
 });

@@ -84,8 +84,8 @@ function DigQuizAttempt({ lessonId, questions, onRetry }: Props & { onRetry: () 
   return (
     <form onSubmit={onSubmit} className="quiz-form" aria-describedby="dig-quiz-help">
       <p id="dig-quiz-help" className="quiz-help">
-        Answer all {questions.length} questions. You need 70% to pass. Dig deeper quizzes don&apos;t count toward mastery or
-        achievements.
+        Answer all {questions.length} questions. You need 70% to pass. Dig deeper quizzes count toward your day streak, not
+        toward mastery or achievements.
       </p>
       {questions.map((q, i) => (
         <fieldset key={i}>

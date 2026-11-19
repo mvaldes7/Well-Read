@@ -79,3 +79,7 @@ Recommendation: **C2**. The daily-reminder "finished day" trigger keys on `lesso
 2. `/dig` quiz UI and the grading server action. Saves the best attempt to the existing table. Parent check in the action. No credit (C1 behavior). No migration.
 3. Migration: `first_passed_at`, the stricter insert policy and, for C2, the `activity_log` CHECK. **Needs Mike's separate OK to apply.** The code tolerates the migration being absent (the `isMissingColumnError` pattern).
 4. After 3 is applied: log streak activity for Dig deeper attempts and passes, and update docs and ROADMAP.
+
+## Implementation status
+- Step 1: quiz quality guards (#64). Step 2: `/dig` quiz with server-side grading (#65). Step 3: migration `20261119063000_dig_quiz_progress.sql` (#67, unapplied until Mike's separate OK).
+- Step 4: each graded Dig deeper submission logs one `quiz_attempt` row with the `gen_` id, the same as static lessons, so it counts toward day streaks. Mastery, achievements and the daily-reminder "finished" day are unchanged. This merges only after step 3 is applied.
