@@ -66,3 +66,10 @@ test('migration: activity_log rate limit is a new, invoker, pinned-search_path B
   // Applied to prod as recorded version 20261102212005 (filename keeps 20261102210548).
   assert.match(readme, /\| `20261102212005` \| `migrations\/20261102210548_activity_log_rate_limit\.sql`/);
 });
+
+test('logActivity: a Dig deeper (gen_) ref is inserted as-is, one quiz_attempt row (C2, after migration 20261119063000)', async () => {
+  const rows = [];
+  const sb = { from: () => ({ insert: async (r) => { rows.push(r); return { error: null }; } }) };
+  assert.equal(await logActivity(sb, 'u1', 'quiz_attempt', 'gen_abcdef012345'), 'logged');
+  assert.deepEqual(rows, [{ user_id: 'u1', kind: 'quiz_attempt', ref: 'gen_abcdef012345' }]);
+});
