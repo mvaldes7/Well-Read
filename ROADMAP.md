@@ -89,6 +89,7 @@ Approved plan: `docs/plans/topic-drilldowns.md`. Free tiers only, AI-generated l
 - Check the subject badge icons from #45 on a real device **(status unclear)**.
 - Topic consolidation round 2 (plan approved by Mike, Nov 18): two content-only PRs, World and Ancient History (#66) and Philosophy, Civics, Art History and Poetry & Literature. Single-lesson topics left by decision: Utilitarianism (until a second modern-ethics lesson), Marbury v. Madison, and the Buddhism, Judaism and Islam topics.
 - More U.S. Presidents lessons, added to the existing series topic.
+- Quizzes on Dig deeper lessons ([plan](docs/plans/dig-deeper-quizzes.md), approved Nov 18, credit = streaks only): 1) quiz quality guards, 2) quiz on `/dig` with server-side grading, 3) progress migration (needs Mike's OK to apply), 4) streak logging after 3 is applied.
 - Dig deeper follow-ups noted in the plan: reuse already-published lessons instead of generating new ones; a short multi-lesson plan per choice; automated handling of reported lessons.
 - Disable public sign-ups (AC-7), only with Mike's approval **(status unclear; an Oct 10 check found sign-ups already off)**.
 - Repair the Supabase migration history: several migrations were applied with versions that differ from their repo filenames (see `supabase/README.md`).

@@ -492,3 +492,33 @@ test('schema repair can use the third generation call but must leave the fourth 
   assert.match(r.verdict, /^passed/);
   assert.deepEqual(r.calls.map(c => c.kind), ['generate', 'generate', 'generate', 'factcheck']);
 });
+
+test('quiz guards: a quiz with an "all of the above" option is a content problem and regenerates within the cap', async () => {
+  const meta = fakeLesson({ quiz: [1, 2, 3, 4, 5, 6].map((i) => ({ question: `Q${i}?`, options: ['a', 'b', 'c', 'All of the above'], answerIndex: 1, explanation: 'Because b.' })) });
+  const f = mockFetch([gem(meta), gem(fakeLesson()), gem(allSupported)]);
+  const r = await run(f);
+  assert.equal(f.gem().length, 3);
+  assert.ok(r.attempts[0].contentProblems.some((p) => /all\/none of the above/.test(p)));
+  assert.equal(r.attempts[0].factCheck.skipped, 'source/content checks failed');
+  assert.match(r.verdict, /^passed/);
+});
+
+test('quiz guards: answers are moved to balanced positions before the fact check; the correct option is kept', async () => {
+  let fcPrompt = '';
+  const f = mockFetch([gem(fakeLesson()), (u, i) => { fcPrompt = JSON.parse(i.body).contents[0].parts[0].text; return gem(allSupported); }]);
+  const r = await run(f);
+  const answers = r.generated.quiz.map((q) => q.answerIndex);
+  assert.deepEqual([0, 1, 2, 3].map((p) => answers.filter((a) => a === p).length).sort(), [1, 1, 2, 2]);
+  for (const q of r.generated.quiz) assert.equal(q.options[q.answerIndex], 'b');
+  assert.match(fcPrompt, /Marked correct: b \| Other options: /);
+  assert.equal(r.promptVersion, 'p1c-quiz-guards');
+});
+
+test('quiz guards: generator prompt states the quiz rules; fact checker must reject a second correct option', async () => {
+  let prompt = '', fcSys = '';
+  const f = mockFetch([(u, i) => { prompt = JSON.parse(i.body).contents[0].parts[0].text; return gem(fakeLesson()); }, (u, i) => { fcSys = JSON.parse(i.body).systemInstruction.parts[0].text; return gem(allSupported); }]);
+  await run(f);
+  assert.match(prompt, /every correct answer must be stated in your own sections or key facts/);
+  assert.match(prompt, /Never use "all of the above"/);
+  assert.match(fcSys, /no other listed option may also be correct/);
+});

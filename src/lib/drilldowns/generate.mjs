@@ -11,12 +11,14 @@ import { DRILLDOWN_CAPS, factCheckOutcome } from "./config.mjs";
 import { classifySourceUrl, isBlockedSource, sourceTierProblems } from "./sources.mjs";
 import { discoverFallbackSources, isChallengePage, isUnusablePage } from "./fallback-sources.mjs";
 import { generatedLessonProblems } from "./validate.mjs";
+import { balanceAnswerPositions, quizQualityProblems } from "./quiz-quality.mjs";
 import { isHttpsUrl } from "../../content/sources.mjs";
 
 export const DEFAULT_MODEL = "gemini-3.1-flash-lite";
 /** Free-tier fallback, used only when the primary returns 503 / high demand (Mike, 2026-11-02). Never a paid model. */
 export const FALLBACK_MODEL = "gemini-3.5-flash-lite";
-export const PROMPT_VERSION = "p1b-3-citation-budget";
+/** Bumped for the quiz quality guards so lessons cached under the older prompt are regenerated. */
+export const PROMPT_VERSION = "p1c-quiz-guards";
 export const FACTCHECK_SOURCE_CHARS = 24000;
 /** Total excerpt budget given to the generator, split across fetched sources. */
 export const GENERATE_SOURCE_CHARS = 24000;
@@ -134,6 +136,8 @@ export function buildPrompt({ discipline, topic, lesson, choice }, fetched) {
     `Write a follow-up lesson that digs deeper into: "${choice.label}" (${choice.kind}), as introduced in the parent lesson "${lesson.title}".`,
     "Exactly 4 sections (heading + 2-3 paragraph body), exactly 6 key facts, exactly 6 multiple-choice questions with 4 distinct options,",
     "a 0-based answerIndex and a one-sentence explanation. slug: lowercase-hyphenated. Do not repeat the parent lesson; go deeper.",
+    "Quiz rules: every correct answer must be stated in your own sections or key facts. Distractors must be plausible but clearly wrong according to the lesson.",
+    "Keep the 4 options of similar length. Never use \"all of the above\" or \"none of the above\". Explanations must not mention option letters or positions.",
     `factSources and quizSources: exactly 6 source IDs each, chosen ONLY from this complete allowed list: ${JSON.stringify(fetched.map((f) => f.id))}. Do not invent IDs or output URLs.`,
     ...(strongIds.length ? [`At least one citation must use a trusted/curated source ID from ${JSON.stringify(strongIds)}. Use only claims actually supported by that source.`] : []),
     `\nFetched source excerpts (the ONLY allowed basis for claims):\n${blocks}`,
@@ -449,10 +453,10 @@ export function buildFactCheckPrompt(generated, sourceText, citations = null) {
   const at = (/** @type {string} */ k, /** @type {number} */ i) => (citations?.[k]?.[i] ? ` | Cited source: ${citations[k][i]}` : "");
   const items = [
     ...generated.keyFacts.map((/** @type {string} */ f, /** @type {number} */ i) => `fact${i + 1}: ${f}${at("facts", i)}`),
-    ...generated.quiz.map((/** @type {any} */ q, /** @type {number} */ i) => `quiz${i + 1}: Q: ${q.question} | Marked correct: ${q.options[q.answerIndex]} | Explanation: ${q.explanation}${at("quiz", i)}`),
+    ...generated.quiz.map((/** @type {any} */ q, /** @type {number} */ i) => `quiz${i + 1}: Q: ${q.question} | Marked correct: ${q.options[q.answerIndex]} | Other options: ${q.options.filter((/** @type {string} */ _, /** @type {number} */ j) => j !== q.answerIndex).join(" / ")} | Explanation: ${q.explanation}${at("quiz", i)}`),
   ].join("\n");
   return {
-    system: "You are a strict fact checker. Judge ONLY against the provided source text. An item is supported only if the source text states or directly implies it; for quiz items the marked answer must be correct and consistent with the explanation. Return one entry per ref.",
+    system: "You are a strict fact checker. Judge ONLY against the provided source text. An item is supported only if the source text states or directly implies it; for quiz items the marked answer must be correct and consistent with the explanation, and no other listed option may also be correct. Return one entry per ref.",
     user: `Source text (truncated):\n${sourceText.slice(0, FACTCHECK_SOURCE_CHARS + 2000)}\n\nItems:\n${items}`,
   };
 }
@@ -554,9 +558,13 @@ export async function runPrototype({ disciplines, lessonId, choiceId, apiKey, mo
         if (at.schemaProblems.length === 0) break;
       }
       if (at.schemaProblems.length) break;
+      // Quiz guards: move correct answers to balanced positions (seeded by the lesson id), then check grounding,
+      // distractors and explanations. A failure is a content problem: regenerate within the call budget, else reject.
+      generated = { ...generated, quiz: balanceAnswerPositions(generated.quiz, generated.id) };
+      norm = { ...norm, lesson: generated };
       report.generated = generated;
       report.citations = norm.citations;
-      at.contentProblems = localContentProblems(generated, ctx.choice);
+      at.contentProblems = [...localContentProblems(generated, ctx.choice), ...quizQualityProblems(generated)];
       at.sourceProblems = citedSourceProblems({ ...norm, fetched, choice: ctx.choice });
       // Invalid citation identities cannot be fixed by trusting a different source. Fail closed rather
       // than spending more provider calls rewriting the entire lesson. Formatting repairs happen locally.
