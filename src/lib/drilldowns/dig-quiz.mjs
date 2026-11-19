@@ -87,11 +87,12 @@ export function digQuizAvailability(p) {
  * Grade a parsed submission against the joined quiz. Same 70% rule as static lessons (5 of 6).
  * @param {NonNullable<ReturnType<typeof joinQuizKey>>} quiz
  * @param {number[]} answers
+ * @returns {{ ok: true, value: import("../quiz/logic.mjs").GradeResult } | { ok: false, error: string }}
  */
 export function gradeDigQuiz(quiz, answers) {
   const r = gradeQuiz(quiz, answers);
   if (r.ok) return r;
-  return { ok: false, error: r.error === QUIZ_ERRORS.wrongCount ? DIG_QUIZ_ERRORS.wrongCount : r.error === QUIZ_ERRORS.outOfRange ? DIG_QUIZ_ERRORS.outOfRange : DIG_QUIZ_ERRORS.noQuiz };
+  return { ok: /** @type {const} */ (false), error: r.error === QUIZ_ERRORS.wrongCount ? DIG_QUIZ_ERRORS.wrongCount : r.error === QUIZ_ERRORS.outOfRange ? DIG_QUIZ_ERRORS.outOfRange : DIG_QUIZ_ERRORS.noQuiz };
 }
 
 /**
