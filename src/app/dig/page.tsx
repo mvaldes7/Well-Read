@@ -2,10 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
+import DigQuiz from "@/components/DigQuiz";
 import ReportLesson from "@/components/ReportLesson";
 import { getLessonById } from "@/content";
 import { AI_GENERATED_LABEL, drilldownsEnabled } from "@/lib/drilldowns/config.mjs";
-import { getGeneratedLesson } from "@/lib/drilldowns/data";
+import { getGeneratedLesson, type GeneratedLessonRow } from "@/lib/drilldowns/data";
+import { getDigBest, loadDigQuiz } from "@/lib/drilldowns/quiz-data";
+import { toPublicQuestions } from "@/lib/quiz/public.mjs";
+import { createClient } from "@/lib/supabase/server";
 import { paragraphs } from "@/lib/ui/paragraphs.mjs";
 import { toRoman } from "@/lib/ui/roman.mjs";
 
@@ -74,6 +78,12 @@ async function GeneratedLessonBody({ searchParams }: { searchParams: PageProps<"
           </ol>
         </div>
       </aside>
+      <section aria-labelledby="quiz-heading" className="quiz-frame">
+        <h2 id="quiz-heading">Quiz</h2>
+        <Suspense fallback={<p className="muted">Loading quiz…</p>}>
+          <DigQuizSection row={row} parentHref={parentHref} parentTitle={parent?.lesson.title ?? null} />
+        </Suspense>
+      </section>
       <section className="sources" aria-labelledby="sources-heading">
         <h2 id="sources-heading">
           <small>Checked against</small>Sources
@@ -98,6 +108,42 @@ async function GeneratedLessonBody({ searchParams }: { searchParams: PageProps<"
           <Link href={parentHref}>← Back to {parent?.lesson.title}</Link>
         </p>
       )}
+    </>
+  );
+}
+
+// Quiz on a Dig deeper lesson (docs/plans/dig-deeper-quizzes.md). Only question text and options reach the client;
+// the key is read server-side through drilldown_quiz_key() and used again only when grading. Locked until the
+// parent lesson's quiz has been submitted (pass or fail), the same rule as Dig deeper itself.
+async function DigQuizSection({ row, parentHref, parentTitle }: { row: GeneratedLessonRow; parentHref: string | null; parentTitle: string | null }) {
+  const unavailable = <p className="muted">The quiz is unavailable right now. Please try again later.</p>;
+  const supabase = await createClient();
+  if (!supabase) return unavailable;
+  const { data: claims } = await supabase.auth.getClaims();
+  const userId = claims?.claims?.sub;
+  if (typeof userId !== "string" || !userId) return unavailable;
+  const ctx = await loadDigQuiz(supabase, userId, row);
+  if (ctx.status === "locked") {
+    return (
+      <p className="muted">
+        Finish the quiz on {parentHref ? <Link href={parentHref}>{parentTitle ?? "the original lesson"}</Link> : "the original lesson"} first.
+        This quiz opens after it.
+      </p>
+    );
+  }
+  if (ctx.status === "no_quiz") return <p className="muted">This lesson doesn&apos;t have a quiz.</p>;
+  if (ctx.status !== "ok") return unavailable;
+  const best = await getDigBest(supabase, userId, row.id);
+  return (
+    <>
+      <p className="eyebrow center">{ctx.quiz.length} questions · pass at 70%</p>
+      {best && (
+        <p className="muted center">
+          Your best: {best.score}/{best.total}
+          {best.passed ? " (passed)" : " (not passed yet)"}
+        </p>
+      )}
+      <DigQuiz lessonId={row.id} questions={toPublicQuestions(ctx.quiz)} />
     </>
   );
 }

@@ -10,7 +10,7 @@ export interface GeneratedLessonRow {
   parent_lesson_id: string;
   choice_id: string;
   review_status: "pending" | "flagged" | "published" | "rejected";
-  lesson: { title: string; sections: { heading: string; body: string }[]; keyFacts: string[] };
+  lesson: { title: string; sections: { heading: string; body: string }[]; keyFacts: string[]; quiz?: { question: string; options: string[] }[] };
   sources: { publisher?: string; title?: string; url: string }[];
   created_at: string;
   published_at: string | null;

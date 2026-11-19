@@ -34,6 +34,12 @@ try {
   assert.deepEqual({ ...row }, { l: "object", s: "array", c: "object", u: "array", review_status: "pending", created_by: U, has_answer: false });
   const [key] = await admin`select jsonb_typeof(answers) a, answers->>0 a0, explanations->>5 e5 from public.generated_quiz_keys where lesson_id = 'gen_nodetest01'`;
   assert.deepEqual({ ...key }, { a: "array", a0: "1", e5: "E6" });
+  // Dig deeper quizzes step 2: quizKey through postgres.js returns arrays for the generator (pending, own lesson),
+  // and null for a user who cannot see the lesson (another user's pending lesson) or an unknown id.
+  const k = await db.quizKey(U, "gen_nodetest01");
+  assert.deepEqual(k, { answers: [1, 2, 3, 0, 1, 2], explanations: ["E1", "E2", "E3", "E4", "E5", "E6"] });
+  assert.equal(await db.quizKey(U2, "gen_nodetest01"), null);
+  assert.equal(await db.quizKey(U, "gen_nosuchlesson"), null);
   await db.reserve(U, 0, true);
   await save("gen_nodetest02", "flagged", [{ ref: "fact1", claim: "x", reason: "y" }]);
   // Per-user cap (2 lessons) and no reservation left -> WR429; unverified email -> WR403.
