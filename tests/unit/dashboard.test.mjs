@@ -20,11 +20,11 @@ test('stats: lessons passed (distinct, content only), badges earned, disciplines
   assert.equal(d.badges.earned, 4);
   assert.equal(d.badges.earned, d.achievements.filter((a) => a.earned).length);
   const ph = d.perDiscipline.find((x) => x.slug === 'philosophy');
-  assert.deepEqual([ph.passed, ph.total, ph.mastery.tier], [1, 6, 'Novice']);
+  assert.deepEqual([ph.passed, ph.total, ph.mastery.tier], [1, 8, 'Novice']);
 });
 
 test('continue link: first unpassed lesson in content order; start when none passed; review when all passed', () => {
-  const ph = disciplines.find((d) => d.slug === 'philosophy'); // socrates/so01, stoicism/st01, st02, aristotle-virtue-ethics/ar01 (TSK-022)
+  const ph = disciplines.find((d) => d.slug === 'philosophy'); // socrates, stoicism (st01-st04), aristotle (ar01-ar02), utilitarianism
   const lesson = (id) => { for (const t of ph.topics) for (const l of t.lessons) if (l.id === id) return [t, l]; };
   const href = (id) => { const [t, l] = lesson(id); return `/d/philosophy/${t.slug}/${l.slug}`; };
   const lk = (...ids) => completionLookup(ids.map((id) => frow(id, 4, 4, true)), disciplines);
@@ -34,9 +34,11 @@ test('continue link: first unpassed lesson in content order; start when none pas
   assert.equal(nextStep(ph, lk('les_st01')).href, href('les_so01'));
   assert.equal(nextStep(ph, lk('les_st01')).kind, 'continue');
   assert.deepEqual(nextStep(ph, lk('les_so01', 'les_st01', 'les_st02')), { kind: 'continue', href: href('les_st03'), lessonTitle: lesson('les_st03')[1].title });
-  assert.deepEqual(nextStep(ph, lk('les_so01', 'les_st01', 'les_st02', 'les_st03')), { kind: 'continue', href: href('les_ar01'), lessonTitle: lesson('les_ar01')[1].title });
-  assert.deepEqual(nextStep(ph, lk('les_so01', 'les_st01', 'les_st02', 'les_st03', 'les_ar01')), { kind: 'continue', href: href('les_ut01'), lessonTitle: lesson('les_ut01')[1].title });
-  assert.deepEqual(nextStep(ph, lk('les_so01', 'les_st01', 'les_st02', 'les_st03', 'les_ar01', 'les_ut01')), { kind: 'review', href: '/d/philosophy', lessonTitle: null });
+  assert.deepEqual(nextStep(ph, lk('les_so01', 'les_st01', 'les_st02', 'les_st03')), { kind: 'continue', href: href('les_st04'), lessonTitle: lesson('les_st04')[1].title });
+  assert.deepEqual(nextStep(ph, lk('les_so01', 'les_st01', 'les_st02', 'les_st03', 'les_st04')), { kind: 'continue', href: href('les_ar01'), lessonTitle: lesson('les_ar01')[1].title });
+  assert.deepEqual(nextStep(ph, lk('les_so01', 'les_st01', 'les_st02', 'les_st03', 'les_st04', 'les_ar01')), { kind: 'continue', href: href('les_ar02'), lessonTitle: lesson('les_ar02')[1].title });
+  assert.deepEqual(nextStep(ph, lk('les_so01', 'les_st01', 'les_st02', 'les_st03', 'les_st04', 'les_ar01', 'les_ar02')), { kind: 'continue', href: href('les_ut01'), lessonTitle: lesson('les_ut01')[1].title });
+  assert.deepEqual(nextStep(ph, lk('les_so01', 'les_st01', 'les_st02', 'les_st03', 'les_st04', 'les_ar01', 'les_ar02', 'les_ut01')), { kind: 'review', href: '/d/philosophy', lessonTitle: null });
   // A failed attempt doesn't count as passed.
   assert.equal(nextStep(ph, completionLookup([frow('les_so01', 1, 4, false)], disciplines)).kind, 'start');
 });

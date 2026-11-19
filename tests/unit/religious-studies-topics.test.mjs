@@ -20,7 +20,7 @@ test('Religious Studies topics in order, with Protestant Christianity holding bo
   const lessons = rs.topics.flatMap((t) => t.lessons);
   assert.deepEqual(lessons.map((l) => l.id), RS);
   const shapes = lessons.map((l) => [l.sections.length, l.keyFacts.length, l.quiz.length, l.sources.length]);
-  assert.deepEqual(shapes, [[4, 6, 6, 3], [4, 6, 6, 3], [4, 6, 6, 5], [4, 6, 6, 3], [4, 6, 6, 2]]);
+  assert.deepEqual(shapes, [[4, 6, 6, 3], [4, 6, 6, 3], [4, 6, 6, 5], [4, 6, 6, 6], [4, 6, 6, 2]]);
   assert.deepEqual(lessons.map((l) => l.quiz.map((q) => q.answerIndex)), [[0, 3, 1, 2, 0, 1], [1, 2, 0, 3, 1, 2], [1, 0, 3, 2, 0, 1], [1, 2, 0, 3, 1, 2], [2, 0, 3, 1, 2, 0]]);
   const protestant = rs.topics.find((t) => t.slug === 'protestant-christianity');
   assert.equal(protestant.title, 'Protestant Christianity');

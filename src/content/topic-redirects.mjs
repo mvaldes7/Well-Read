@@ -17,6 +17,7 @@ export const TOPIC_REDIRECTS = [
   { discipline: "art-history", from: "northern-renaissance", to: "renaissance" },
   { discipline: "art-history", from: "cubism", to: "early-twentieth-century-art" },
   { discipline: "art-history", from: "surrealism", to: "early-twentieth-century-art" },
+  { discipline: "world-history", from: "silk-roads", to: "trade-and-exchange-networks" },
 ];
 
 /**
