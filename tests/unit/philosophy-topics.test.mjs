@@ -1,4 +1,4 @@
-// TSK-022 lesson 2: Philosophy gains a third topic (aristotle-virtue-ethics / les_ar01, kind concept).
+// TSK-022 lesson 2: Philosophy gains les_ar01 (Aristotle). Round 2 consolidation: Socrates and Aristotle share Ancient Greek Ethics.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
@@ -12,13 +12,14 @@ const ph = disciplines.find((d) => d.slug === 'philosophy');
 const row = (lesson_id, passed = true, at = '2026-10-10T17:00:00Z') => ({ lesson_id, score: passed ? 6 : 1, total: 6, passed, completed_at: at, first_passed_at: passed ? at : null });
 const PH = ['les_so01', 'les_st01', 'les_st02', 'les_st03', 'les_st04', 'les_ar01', 'les_ar02', 'les_ut01'];
 
-test('Philosophy topics in order; Aristotle topic holds les_ar01 with the long-lesson shape', () => {
+test('Philosophy topics in order; Ancient Greek Ethics holds Socrates and both Aristotle lessons; les_ar01 keeps the long-lesson shape', () => {
   assert.deepEqual(ph.topics.map((t) => [t.slug, t.kind, t.lessons.map((l) => l.id)]), [
-    ['socrates', 'person', ['les_so01']], ['stoicism', 'style', ['les_st01', 'les_st02', 'les_st03', 'les_st04']], ['aristotle-virtue-ethics', 'concept', ['les_ar01', 'les_ar02']], ['utilitarianism', 'school', ['les_ut01']],
+    ['ancient-greek-ethics', 'concept', ['les_so01', 'les_ar01', 'les_ar02']], ['stoicism', 'style', ['les_st01', 'les_st02', 'les_st03', 'les_st04']], ['utilitarianism', 'school', ['les_ut01']],
   ]);
-  const t = ph.topics[2];
-  assert.equal(t.title, 'Aristotle’s Virtue Ethics');
-  const l = t.lessons[0];
+  const t = ph.topics[0];
+  assert.equal(t.title, 'Ancient Greek Ethics');
+  assert.deepEqual(t.lessons.map((x) => x.slug), ['the-examined-life', 'becoming-the-kind-of-person-who-acts-well', 'how-habits-shape-character']);
+  const l = t.lessons[1];
   assert.equal(l.title, 'Aristotle: Becoming the Kind of Person Who Acts Well');
   assert.deepEqual([l.sections.length, l.keyFacts.length, l.quiz.length, l.sources.length], [4, 6, 6, 3]);
   assert.deepEqual(l.quiz.map((q) => q.answerIndex), [1, 3, 0, 2, 1, 3]);
@@ -37,9 +38,9 @@ test('mastery, dashboard and progress counts include les_ar01', () => {
   assert.deepEqual([p.passed, p.total], [1, 8]);
 });
 
-test('Library Wall shelves an Aristotle volume; completionist needs all 8 Philosophy lessons', () => {
+test('Library Wall shelves an Ancient Greek Ethics volume; completionist needs all 8 Philosophy lessons', () => {
   const g = buildBookshelf([row('les_st01'), row('les_ar01')], disciplines).find((x) => x.discipline.slug === 'philosophy');
-  assert.deepEqual(g.books.map((b) => b.topicSlug), ['stoicism', 'aristotle-virtue-ethics']);
+  assert.deepEqual(g.books.map((b) => b.topicSlug), ['ancient-greek-ethics', 'stoicism']);
   const by = (ids) => Object.fromEntries(evaluateAchievements(ids.map((id) => row(id)), disciplines).map((a) => [a.id, a]));
   assert.equal(by(PH.slice(0, 3))['completionist:philosophy'].progress, '3/8 lessons');
   assert.equal(by(PH)['completionist:philosophy'].earned, true);

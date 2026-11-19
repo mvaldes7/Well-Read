@@ -21,7 +21,7 @@ test('retired president topic pages and lesson pages redirect to U.S. Presidents
     assert.equal(topicRedirectPath(`/d/american-civics/${from}/${lesson}`), `/d/american-civics/us-presidents/${lesson}`);
   }
   assert.equal(topicRedirectPath('/d/american-civics/us-presidents'), null);
-  assert.equal(topicRedirectPath('/d/american-civics/electoral-college'), null);
+  assert.equal(topicRedirectPath('/d/american-civics/marbury-v-madison'), null);
   assert.equal(topicRedirectPath('/d/american-civics/george-washington/nope'), '/d/american-civics/us-presidents/nope');
   assert.equal(topicRedirectPath('/learn'), null);
 });
