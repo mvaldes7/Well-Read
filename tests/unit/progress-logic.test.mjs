@@ -12,20 +12,20 @@ const color = (slug) => disciplines.find((d) => d.slug === slug).color;
 const WH = ['World History', color('world-history')];
 const PH = ['Philosophy', color('philosophy')];
 
-test('QA fixture: les_st01 + les_rr01 -> World History [Roman Republic (1)] then Philosophy [Stoicism (1)]', () => {
-  const groups = buildBookshelf([row('les_st01', 3, 3, true), row('les_rr01', 4, 4, true)], disciplines);
-  assert.deepEqual(shelf(groups), [[...WH, ['The Roman Republic (1)']], [...PH, ['Stoicism (1)']]]);
+test('QA fixture: les_st01 + les_fr01 -> World History [Revolution and Reform (1)] then Philosophy [Stoicism (1)]', () => {
+  const groups = buildBookshelf([row('les_st01', 3, 3, true), row('les_fr01', 4, 4, true)], disciplines);
+  assert.deepEqual(shelf(groups), [[...WH, ['Revolution and Reform (1)']], [...PH, ['Stoicism (1)']]]);
   assert.deepEqual(groups[0].discipline, { slug: 'world-history', title: 'World History', color: 'crimson' });
   assert.deepEqual(groups[1].discipline, { slug: 'philosophy', title: 'Philosophy', color: 'navy' });
   assert.deepEqual(groups.map((g) => g.position), [1, 2]);
   assert.deepEqual(groups[0].books[0], {
     disciplineSlug: 'world-history',
     disciplineTitle: 'World History',
-    topicSlug: 'roman-republic',
-    topicTitle: 'The Roman Republic',
+    topicSlug: 'revolution-and-reform',
+    topicTitle: 'Revolution and Reform',
     passedCount: 1,
-    lessonCount: 1,
-    href: '/d/world-history/roman-republic',
+    lessonCount: 3,
+    href: '/d/world-history/revolution-and-reform',
   });
   assert.equal(groups[1].books[0].href, '/d/philosophy/stoicism');
 });
@@ -91,8 +91,8 @@ test('malformed rows are dropped', () => {
 test('book label includes the count; save messages distinguish attempts from progress', () => {
   const [book] = buildBookshelf([row('les_st01', 3, 3, true), row('les_st02', 4, 4, true)], disciplines)[0].books;
   assert.equal(bookLabel(book), 'Stoicism (Philosophy): 2 lessons completed');
-  const [one] = buildBookshelf([row('les_rr01', 4, 4, true)], disciplines)[0].books;
-  assert.equal(bookLabel(one), 'The Roman Republic (World History): 1 lesson completed');
+  const [one] = buildBookshelf([row('les_fr01', 4, 4, true)], disciplines)[0].books;
+  assert.equal(bookLabel(one), 'Revolution and Reform (World History): 1 lesson completed');
   assert.equal(saveMessage('saved', false), 'Attempt saved.');
   assert.equal(saveMessage('saved', true), 'Progress saved.');
   assert.equal(saveMessage('kept', false), 'Your earlier best result is kept.');
