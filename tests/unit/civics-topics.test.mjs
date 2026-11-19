@@ -1,4 +1,4 @@
-// TSK-022: American Civics gains a second topic (federal-legislative-process / les_lp01).
+// TSK-022: American Civics gains les_lp01. Round 2 consolidation: lp01 and ec01 share How the Federal Government Works.
 // Counts, mastery, the Library Wall and the completionist badge all derive from content, so
 // they must pick up the new lesson across both topics.
 import { test } from 'node:test';
@@ -12,14 +12,13 @@ import { evaluateAchievements } from '../../src/achievements/definitions.mjs';
 const disciplines = JSON.parse(readFileSync(new URL('../../src/content/disciplines.json', import.meta.url), 'utf8'));
 const civics = disciplines.find((d) => d.slug === 'american-civics');
 const row = (lesson_id, passed = true, completed_at = '2026-10-10T17:00:00Z') => ({ lesson_id, score: passed ? 6 : 1, total: 6, passed, completed_at, first_passed_at: passed ? completed_at : null });
-const CIVICS = ['les_cc01', 'les_br01', 'les_br02', 'les_lp01', 'les_jr01', 'les_ec01', 'les_gw01', 'les_ja01', 'les_tj01', 'les_jm01', 'les_jmo01', 'les_jqa01', 'les_aj01', 'les_mvb01', 'les_whh01', 'les_jt01', 'les_jkp01', 'les_zt01', 'les_mf01', 'les_frp01', 'les_jb01', 'les_al01', 'les_ajo01', 'les_usg01', 'les_tr01'];
+const CIVICS = ['les_cc01', 'les_br01', 'les_br02', 'les_lp01', 'les_ec01', 'les_jr01', 'les_gw01', 'les_ja01', 'les_tj01', 'les_jm01', 'les_jmo01', 'les_jqa01', 'les_aj01', 'les_mvb01', 'les_whh01', 'les_jt01', 'les_jkp01', 'les_zt01', 'les_mf01', 'les_frp01', 'les_jb01', 'les_al01', 'les_ajo01', 'les_usg01', 'les_tr01'];
 
 test('American Civics topics stay in content order, with the nineteen presidents under one topic', () => {
   assert.deepEqual(civics.topics.map((t) => [t.slug, t.kind, t.lessons.map((l) => l.id)]), [
     ['constitution-bill-of-rights', 'era', ['les_cc01', 'les_br01', 'les_br02']],
-    ['federal-legislative-process', 'process', ['les_lp01']],
+    ['how-federal-government-works', 'process', ['les_lp01', 'les_ec01']],
     ['marbury-v-madison', 'concept', ['les_jr01']],
-    ['electoral-college', 'institution', ['les_ec01']],
     ['us-presidents', 'series', ['les_gw01', 'les_ja01', 'les_tj01', 'les_jm01', 'les_jmo01', 'les_jqa01', 'les_aj01', 'les_mvb01', 'les_whh01', 'les_jt01', 'les_jkp01', 'les_zt01', 'les_mf01', 'les_frp01', 'les_jb01', 'les_al01', 'les_ajo01', 'les_usg01', 'les_tr01']],
   ]);
   const presidents = civics.topics.find((t) => t.slug === 'us-presidents');
@@ -47,7 +46,8 @@ test('American Civics topics stay in content order, with the nineteen presidents
     'the-presidency-as-a-force-for-action',
   ]);
   const t = civics.topics[1];
-  assert.equal(t.title, 'The Federal Legislative Process');
+  assert.equal(t.title, 'How the Federal Government Works');
+  assert.deepEqual(t.lessons.map((x) => x.slug), ['how-an-idea-becomes-federal-law', 'how-votes-become-a-presidency']);
   assert.equal(t.kind, 'process');
   const l = t.lessons[0];
   assert.equal(l.title, 'How an Idea Becomes Federal Law');
@@ -79,9 +79,9 @@ test('dashboard/progress per-discipline totals include the new lesson', () => {
 test('Library Wall shelves one Civics volume per topic with a passed lesson', () => {
   const groups = buildBookshelf([row('les_cc01'), row('les_lp01')], disciplines);
   const g = groups.find((x) => x.discipline.slug === 'american-civics');
-  assert.deepEqual(g.books.map((b) => [b.topicSlug, b.passedCount]), [['constitution-bill-of-rights', 1], ['federal-legislative-process', 1]]);
-  const only = buildBookshelf([row('les_lp01')], disciplines).find((x) => x.discipline.slug === 'american-civics');
-  assert.deepEqual(only.books.map((b) => b.topicSlug), ['federal-legislative-process']);
+  assert.deepEqual(g.books.map((b) => [b.topicSlug, b.passedCount]), [['constitution-bill-of-rights', 1], ['how-federal-government-works', 1]]);
+  const only = buildBookshelf([row('les_lp01'), row('les_ec01')], disciplines).find((x) => x.discipline.slug === 'american-civics');
+  assert.deepEqual(only.books.map((b) => [b.topicSlug, b.passedCount, b.lessonCount]), [['how-federal-government-works', 2, 2]]);
   assert.equal(passedInTopic(civics.topics[1], completionLookup([row('les_lp01')], disciplines)), 1);
   const presidents = civics.topics.find((t) => t.slug === 'us-presidents');
   const one = buildBookshelf([row('les_gw01')], disciplines).find((x) => x.discipline.slug === 'american-civics');

@@ -243,9 +243,9 @@ test('paragraphs() splits section bodies on blank lines', async () => {
   assert.deepEqual(paragraphs(''), []);
 });
 
-test('American Civics: one merged Constitution & Bill of Rights topic; lesson ids unchanged, chronological (TSK-014); TSK-022 adds federal-legislative-process after it; nineteen presidents share one topic', () => {
+test('American Civics: one merged Constitution & Bill of Rights topic; lesson ids unchanged, chronological (TSK-014); How the Federal Government Works (lawmaking, Electoral College) after it; Marbury stays separate; nineteen presidents share one topic', () => {
   const ac = disciplines.find((d) => d.slug === 'american-civics');
-  assert.deepEqual(ac.topics.map((t) => t.slug), ['constitution-bill-of-rights', 'federal-legislative-process', 'marbury-v-madison', 'electoral-college', 'us-presidents']);
+  assert.deepEqual(ac.topics.map((t) => t.slug), ['constitution-bill-of-rights', 'how-federal-government-works', 'marbury-v-madison', 'us-presidents']);
   assert.equal(ac.topics[0].title, 'The Constitution & Bill of Rights');
   assert.deepEqual(ac.topics[0].lessons.map((l) => l.id), ['les_cc01', 'les_br01', 'les_br02']);
   const presidents = ac.topics.find((t) => t.slug === 'us-presidents');
@@ -266,16 +266,15 @@ test('Ancient History lists Egypt, Hammurabi, Athens, and Ashoka in chronologica
   assert.equal(egypt.lessons[0].slug, 'how-the-nile-supported-a-kingdom');
 });
 
-test('Art History merges the Renaissance and early twentieth-century art topics', () => {
+test('Art History merges the Renaissance (with Perspective) and early twentieth-century art topics', () => {
   const ah = disciplines.find((d) => d.slug === 'art-history');
   assert.deepEqual(ah.topics.map((t) => [t.slug, t.kind, t.lessons.map((l) => l.id)]), [
-    ['renaissance', 'era', ['les_ir01', 'les_nr01']],
+    ['renaissance', 'era', ['les_ir01', 'les_pe01', 'les_nr01']],
     ['impressionism', 'style', ['les_im01', 'les_im02']],
-    ['perspective', 'technique', ['les_pe01']],
     ['early-twentieth-century-art', 'style', ['les_cu01', 'les_su01']],
   ]);
   assert.equal(ah.topics[0].title, 'The Renaissance');
-  assert.equal(ah.topics[3].title, 'Early twentieth-century art');
-  assert.deepEqual(ah.topics[0].lessons.map((l) => l.slug), ['how-renaissance-artists-made-pictures-feel-real', 'detail-symbols-and-printed-images']);
-  assert.deepEqual(ah.topics[3].lessons.map((l) => l.slug), ['why-artists-broke-the-picture-apart', 'when-dreams-disrupt-reality']);
+  assert.equal(ah.topics[2].title, 'Early twentieth-century art');
+  assert.deepEqual(ah.topics[0].lessons.map((l) => l.slug), ['how-renaissance-artists-made-pictures-feel-real', 'how-paintings-create-depth', 'detail-symbols-and-printed-images']);
+  assert.deepEqual(ah.topics[2].lessons.map((l) => l.slug), ['why-artists-broke-the-picture-apart', 'when-dreams-disrupt-reality']);
 });

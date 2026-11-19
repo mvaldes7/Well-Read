@@ -1466,10 +1466,10 @@
     "color": "navy",
     "topics": [
       {
-        "slug": "socrates",
-        "title": "Socrates",
-        "kind": "person",
-        "summary": "The Athenian philosopher who taught by questioning and was put to death for it.",
+        "slug": "ancient-greek-ethics",
+        "title": "Ancient Greek Ethics",
+        "kind": "concept",
+        "summary": "Ancient Greek ethics asks how to live well: Socrates taught by questioning and examining one's life, and Aristotle connected living well with good character built through habit, deliberate choice, and practical wisdom.",
         "lessons": [
           {
             "id": "les_so01",
@@ -1598,6 +1598,285 @@
                 "id": "xenophon-and-aristophanes",
                 "label": "Xenophon and Aristophanes",
                 "kind": "subtopic"
+              }
+            ]
+          },
+          {
+            "id": "les_ar01",
+            "slug": "becoming-the-kind-of-person-who-acts-well",
+            "title": "Aristotle: Becoming the Kind of Person Who Acts Well",
+            "sections": [
+              {
+                "heading": "A good mood is not the same as a good life",
+                "body": "Imagine someone who gets everything they want today but repeatedly cheats friends and avoids responsibilities. Are they living well, or merely enjoying themselves? Aristotle’s ethics asks us to evaluate a life, not just a pleasant moment. His central question is what it means for a human being to flourish.\n\nThe Greek word eudaimonia is often translated as “happiness,” but “flourishing” helps avoid confusing it with a cheerful mood. Aristotle connects it with excellent rational activity across a complete life. Living well is something people do, not simply something they feel or possess.\n\nThis does not mean circumstances never matter. Aristotle recognizes that friendship, resources, and good fortune affect a life. His account is not the comforting promise that having a good attitude makes suffering irrelevant. Character matters enormously, but it does not give us complete control over our circumstances."
+              },
+              {
+                "heading": "Character grows through practice",
+                "body": "A virtue is an excellence of character, such as courage or generosity. Rather than focusing only on isolated decisions, Aristotle asks what stable dispositions allow someone to act and feel appropriately. One generous donation does not, by itself, establish a generous character.\n\nWe develop character partly through repeated action. Practicing fair dealing can help us become fair, just as practicing a skill develops competence. But this is not mindless repetition: genuine virtue involves understanding what we are doing and choosing the action for its own sake.\n\nConsider an invented example: someone returns a lost wallet only because a camera is watching. The action helps its owner, but it does not yet demonstrate the same character as knowingly returning it because doing so is right. Outward behavior and the reasons behind it both matter."
+              },
+              {
+                "heading": "The mean is not splitting the difference",
+                "body": "Aristotle describes many virtues as a mean between excess and deficiency. Courage, for example, avoids both cowardice and rashness. The courageous person does not ignore danger or flee every risk; they respond appropriately to what deserves fear and what is worth facing.\n\nThis mean is not an arithmetic midpoint. Imagine noticing a dangerous situation: refusing all help may be cowardly, while rushing in without the necessary skills may be reckless. Seeking trained assistance can be the courageous response. The example illustrates judgment, not a universal emergency rule.\n\nNor does the doctrine mean every action becomes acceptable in moderation. Aristotle explicitly rejects that idea for actions he regards as inherently wrong. The point is appropriate feeling and action—not automatic compromise, mildness, or finding halfway ground between any two positions."
+              },
+              {
+                "heading": "Good intentions need practical wisdom",
+                "body": "How do you recognize the appropriate response? Aristotle calls the relevant capacity phronesis, or practical wisdom. It combines deliberation with sensitivity to the details of a situation. General principles help, but they cannot mechanically settle every decision.\n\nImagine a friend asks for an honest opinion after a disappointment. Practical wisdom involves recognizing what is true, what matters now, and how to speak helpfully. Honesty need not mean careless bluntness, while kindness need not mean saying whatever is easiest. This is an illustrative application, not Aristotle’s own example.\n\nThe resulting question is larger than “Did I follow a rule?” It is also “What am I learning to notice, value, and choose?” Aristotle’s answer links ethical growth to practice guided by reflection: becoming someone who can recognize good reasons and reliably act on them."
+              }
+            ],
+            "keyFacts": [
+              "Eudaimonia concerns flourishing across a life, not merely feeling happy.",
+              "Virtues are stable excellences of character, not isolated good deeds.",
+              "Repeated action helps develop character, but virtue also requires understanding and deliberate choice.",
+              "The mean is an appropriate response between excess and deficiency, not a mathematical midpoint.",
+              "Some actions are not made right by performing them “in moderation.”",
+              "Practical wisdom applies ethical understanding to particular circumstances."
+            ],
+            "quiz": [
+              {
+                "question": "Which example best captures the distinction between a pleasant mood and eudaimonia?",
+                "options": [
+                  "Someone feels cheerful for an afternoon, so their entire life must be flourishing.",
+                  "Someone evaluates how well they live and act over time, not only how they feel today.",
+                  "Someone assumes money guarantees excellent character.",
+                  "Someone treats every uncomfortable experience as proof of a bad life."
+                ],
+                "answerIndex": 1,
+                "explanation": "Eudaimonia concerns living well across a life, rather than a temporary emotional state."
+              },
+              {
+                "question": "Someone returns a wallet only because they fear being recorded. What is the best Aristotelian assessment?",
+                "options": [
+                  "Their action automatically proves a fully virtuous character.",
+                  "The owner receives no benefit from the return.",
+                  "Motives never matter when evaluating character.",
+                  "The action may be right, but it does not by itself demonstrate acting virtuously for the right reason."
+                ],
+                "answerIndex": 3,
+                "explanation": "Aristotle distinguishes doing an outwardly appropriate act from acting with knowledge, deliberate choice, and a stable virtuous disposition."
+              },
+              {
+                "question": "What does courage as a mean involve?",
+                "options": [
+                  "Responding appropriately to danger rather than being cowardly or rash.",
+                  "Taking exactly half the risks available.",
+                  "Never experiencing fear.",
+                  "Always choosing the most dangerous option."
+                ],
+                "answerIndex": 0,
+                "explanation": "The mean concerns an appropriate response to the situation, not a numerical average or the elimination of emotion."
+              },
+              {
+                "question": "Why is “Everything is good in moderation” an inaccurate summary of Aristotle’s position?",
+                "options": [
+                  "He thinks every decision must be extreme.",
+                  "He denies that character matters.",
+                  "He holds that some actions are wrong in themselves and cannot be corrected by choosing a moderate amount.",
+                  "He thinks every disagreement should end in a compromise."
+                ],
+                "answerIndex": 2,
+                "explanation": "The doctrine of the mean is not a blanket permission to perform any kind of act in a limited quantity."
+              },
+              {
+                "question": "A person wants to help a friend but struggles to judge what the friend actually needs. Which capacity is especially relevant?",
+                "options": [
+                  "The ability to ignore circumstances.",
+                  "Practical wisdom: discerning how to act well in this particular situation.",
+                  "The habit of choosing whichever response is easiest.",
+                  "The belief that good intentions guarantee good judgment."
+                ],
+                "answerIndex": 1,
+                "explanation": "Practical wisdom connects ethical aims with deliberation and perception of relevant particulars."
+              },
+              {
+                "question": "Which practice best fits Aristotle’s account of ethical development?",
+                "options": [
+                  "Memorizing a definition of generosity without ever acting generously.",
+                  "Repeating actions mechanically while refusing to examine their purpose.",
+                  "Treating one good deed as proof that no further growth is needed.",
+                  "Repeatedly acting well while reflecting on reasons, motives, and circumstances."
+                ],
+                "answerIndex": 3,
+                "explanation": "Habituation supports ethical development, but mature virtue also involves understanding, deliberate choice, and practical wisdom."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Stanford Encyclopedia of Philosophy",
+                "title": "Aristotle’s Ethics",
+                "url": "https://plato.stanford.edu/entries/aristotle-ethics/",
+                "note": "Supports the explanations of eudaimonia, external goods, habituation, virtuous choice, the mean, actions not admitting a mean, and practical wisdom."
+              },
+              {
+                "publisher": "Internet Encyclopedia of Philosophy",
+                "title": "Aristotle: Ethics",
+                "url": "https://iep.utm.edu/aristotle-ethics/",
+                "note": "Supports the distinction between passive habit and an active, stable character disposition, and the importance of choosing virtuous action knowingly and for its own sake."
+              },
+              {
+                "publisher": "Internet Encyclopedia of Philosophy",
+                "title": "Virtue Ethics",
+                "url": "https://iep.utm.edu/virtue/",
+                "note": "Supports the introductory account of character-centered ethics and the relationship between habituation, understanding, and practical judgment."
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "eudaimonia",
+                "label": "Eudaimonia",
+                "kind": "idea"
+              },
+              {
+                "id": "doctrine-of-the-mean",
+                "label": "The doctrine of the mean",
+                "kind": "idea"
+              },
+              {
+                "id": "practical-wisdom",
+                "label": "Practical wisdom",
+                "kind": "idea"
+              },
+              {
+                "id": "virtue-and-habit",
+                "label": "Virtue and habit",
+                "kind": "subtopic"
+              }
+            ]
+          },
+          {
+            "id": "les_ar02",
+            "slug": "how-habits-shape-character",
+            "title": "Aristotle: How Habits Shape Character",
+            "sections": [
+              {
+                "heading": "A good life is more than a good mood",
+                "body": "For Aristotle, ethics asks what it means for a human life to go well. His central concept, eudaimonia, is often translated as “happiness,” but means something closer to flourishing or living well than simply feeling cheerful. Virtuous activity belongs at the center of that life; it is not merely a tool for getting something else.\n\nInstead of focusing only on “What should I do right now?” Aristotle also asks what kind of person someone is becoming. Courage, justice, and moderation are enduring qualities of character, not isolated successes."
+              },
+              {
+                "heading": "Character develops through practice",
+                "body": "Ethical character develops through habituation. Repeated actions help shape how we tend to feel, choose, and respond. But becoming virtuous requires more than mechanically repeating approved behavior: it also requires judgment about what matters and why."
+              },
+              {
+                "heading": "The mean is not always the middle",
+                "body": "Aristotle describes moral virtue as a mean between excess and deficiency. This does not mean splitting every difference or choosing the mathematically average response. The appropriate response depends on the situation: the right feeling, toward the right person, at the right time, for the right reason.\n\nAnger illustrates the distinction. Becoming furious over a tiny inconvenience can be excessive, but never becoming angry at serious mistreatment can also be inappropriate. Virtue involves responding fittingly—not eliminating emotion."
+              },
+              {
+                "heading": "Knowing and wanting can come apart",
+                "body": "Aristotelian virtue ethics distinguishes full virtue from self-control. A self-controlled person does what is right despite a strong contrary desire. A fully virtuous person’s desires and judgment are more closely aligned. Both may act correctly, but their inner struggle differs.\n\nThe point is not that struggling makes an action worthless. Ethical development concerns the education of desire and emotion as well as the restraint of behavior."
+              }
+            ],
+            "keyFacts": [
+              "Eudaimonia concerns flourishing, not just pleasant feelings.",
+              "Habits help form character.",
+              "Virtue requires judgment, not blind repetition.",
+              "The mean is the fitting response, not an arithmetic midpoint.",
+              "Anger can be excessive or deficient; virtue is a fitting response, not the absence of emotion.",
+              "Self-control does the right thing despite contrary desire; full virtue brings desire and judgment into closer agreement."
+            ],
+            "quiz": [
+              {
+                "question": "Someone refuses every reasonable risk. Why might Aristotle question whether this is virtuous?",
+                "options": [
+                  "Because any refusal of risk is already courageous",
+                  "Avoiding every risk may reflect a deficiency of courage rather than good judgment",
+                  "Because the virtuous person never feels fear",
+                  "Because the mean is always the most cautious option"
+                ],
+                "answerIndex": 1,
+                "explanation": "Avoiding every risk may reflect a deficiency of courage rather than good judgment."
+              },
+              {
+                "question": "Does finding a mean require compromising halfway between justice and injustice?",
+                "options": [
+                  "Yes. Virtue is the midpoint between any two opposed positions",
+                  "Yes, but only when the two positions are equally popular",
+                  "No. The mean concerns an appropriate response, not averaging any two positions",
+                  "No, because Aristotle rejects the idea of a mean entirely"
+                ],
+                "answerIndex": 2,
+                "explanation": "The mean concerns an appropriate response, not averaging any two positions."
+              },
+              {
+                "question": "What separates self-control from full virtue?",
+                "options": [
+                  "Self-control is a vice, while full virtue is a mood",
+                  "They are the same whenever the outward action is correct",
+                  "Full virtue never involves emotion, while self-control does",
+                  "Self-control overcomes contrary desires; full virtue brings desire and sound judgment into closer agreement"
+                ],
+                "answerIndex": 3,
+                "explanation": "Self-control overcomes contrary desires; full virtue brings desire and sound judgment into closer agreement."
+              },
+              {
+                "question": "What is eudaimonia closer to, on Aristotle’s account?",
+                "options": [
+                  "A cheerful mood that makes circumstances irrelevant",
+                  "Flourishing or living well, not merely feeling pleasant",
+                  "The average of pleasure and pain",
+                  "Success measured only by what other people praise"
+                ],
+                "answerIndex": 1,
+                "explanation": "Eudaimonia is often translated as “happiness,” but means something closer to flourishing or living well than simply feeling cheerful."
+              },
+              {
+                "question": "Why is mechanically repeating approved behavior not enough to become virtuous?",
+                "options": [
+                  "Virtue also requires judgment about what matters and why",
+                  "Aristotle thinks practice has no role in character",
+                  "Only inborn talent can produce virtue",
+                  "Repeated action always makes a person worse"
+                ],
+                "answerIndex": 0,
+                "explanation": "Habits help form character, but becoming virtuous also requires judgment about what matters and why."
+              },
+              {
+                "question": "What does the example of anger illustrate?",
+                "options": [
+                  "Virtue requires eliminating emotion altogether",
+                  "Any anger is an excess, so the mean is never to be angry",
+                  "Virtue can involve feeling anger fittingly, not only restraining it or never feeling it",
+                  "The mean is the mathematical midpoint between fury and indifference"
+                ],
+                "answerIndex": 2,
+                "explanation": "Becoming furious over a tiny inconvenience can be excessive, but never becoming angry at serious mistreatment can also be inappropriate."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Stanford Encyclopedia of Philosophy",
+                "title": "Aristotle’s Ethics",
+                "url": "https://plato.stanford.edu/entries/aristotle-ethics/"
+              },
+              {
+                "publisher": "Stanford Encyclopedia of Philosophy",
+                "title": "Ancient Ethical Theory",
+                "url": "https://plato.stanford.edu/entries/ethics-ancient/"
+              },
+              {
+                "publisher": "Stanford Encyclopedia of Philosophy",
+                "title": "Virtue Ethics",
+                "url": "https://plato.stanford.edu/entries/ethics-virtue/"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "eudaimonia",
+                "label": "Eudaimonia",
+                "kind": "idea"
+              },
+              {
+                "id": "habituation",
+                "label": "Habituation",
+                "kind": "subtopic"
+              },
+              {
+                "id": "the-mean",
+                "label": "The doctrine of the mean",
+                "kind": "idea"
+              },
+              {
+                "id": "self-control-and-virtue",
+                "label": "Self-control and full virtue",
+                "kind": "idea"
               }
             ]
           }
@@ -2172,293 +2451,6 @@
               {
                 "id": "virtue-not-composure",
                 "label": "Virtue, not mere composure",
-                "kind": "idea"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "slug": "aristotle-virtue-ethics",
-        "title": "Aristotle’s Virtue Ethics",
-        "kind": "concept",
-        "summary": "Aristotle’s virtue ethics connects living well with developing good character through practice, deliberate choice, and practical wisdom.",
-        "lessons": [
-          {
-            "id": "les_ar01",
-            "slug": "becoming-the-kind-of-person-who-acts-well",
-            "title": "Aristotle: Becoming the Kind of Person Who Acts Well",
-            "sections": [
-              {
-                "heading": "A good mood is not the same as a good life",
-                "body": "Imagine someone who gets everything they want today but repeatedly cheats friends and avoids responsibilities. Are they living well, or merely enjoying themselves? Aristotle’s ethics asks us to evaluate a life, not just a pleasant moment. His central question is what it means for a human being to flourish.\n\nThe Greek word eudaimonia is often translated as “happiness,” but “flourishing” helps avoid confusing it with a cheerful mood. Aristotle connects it with excellent rational activity across a complete life. Living well is something people do, not simply something they feel or possess.\n\nThis does not mean circumstances never matter. Aristotle recognizes that friendship, resources, and good fortune affect a life. His account is not the comforting promise that having a good attitude makes suffering irrelevant. Character matters enormously, but it does not give us complete control over our circumstances."
-              },
-              {
-                "heading": "Character grows through practice",
-                "body": "A virtue is an excellence of character, such as courage or generosity. Rather than focusing only on isolated decisions, Aristotle asks what stable dispositions allow someone to act and feel appropriately. One generous donation does not, by itself, establish a generous character.\n\nWe develop character partly through repeated action. Practicing fair dealing can help us become fair, just as practicing a skill develops competence. But this is not mindless repetition: genuine virtue involves understanding what we are doing and choosing the action for its own sake.\n\nConsider an invented example: someone returns a lost wallet only because a camera is watching. The action helps its owner, but it does not yet demonstrate the same character as knowingly returning it because doing so is right. Outward behavior and the reasons behind it both matter."
-              },
-              {
-                "heading": "The mean is not splitting the difference",
-                "body": "Aristotle describes many virtues as a mean between excess and deficiency. Courage, for example, avoids both cowardice and rashness. The courageous person does not ignore danger or flee every risk; they respond appropriately to what deserves fear and what is worth facing.\n\nThis mean is not an arithmetic midpoint. Imagine noticing a dangerous situation: refusing all help may be cowardly, while rushing in without the necessary skills may be reckless. Seeking trained assistance can be the courageous response. The example illustrates judgment, not a universal emergency rule.\n\nNor does the doctrine mean every action becomes acceptable in moderation. Aristotle explicitly rejects that idea for actions he regards as inherently wrong. The point is appropriate feeling and action—not automatic compromise, mildness, or finding halfway ground between any two positions."
-              },
-              {
-                "heading": "Good intentions need practical wisdom",
-                "body": "How do you recognize the appropriate response? Aristotle calls the relevant capacity phronesis, or practical wisdom. It combines deliberation with sensitivity to the details of a situation. General principles help, but they cannot mechanically settle every decision.\n\nImagine a friend asks for an honest opinion after a disappointment. Practical wisdom involves recognizing what is true, what matters now, and how to speak helpfully. Honesty need not mean careless bluntness, while kindness need not mean saying whatever is easiest. This is an illustrative application, not Aristotle’s own example.\n\nThe resulting question is larger than “Did I follow a rule?” It is also “What am I learning to notice, value, and choose?” Aristotle’s answer links ethical growth to practice guided by reflection: becoming someone who can recognize good reasons and reliably act on them."
-              }
-            ],
-            "keyFacts": [
-              "Eudaimonia concerns flourishing across a life, not merely feeling happy.",
-              "Virtues are stable excellences of character, not isolated good deeds.",
-              "Repeated action helps develop character, but virtue also requires understanding and deliberate choice.",
-              "The mean is an appropriate response between excess and deficiency, not a mathematical midpoint.",
-              "Some actions are not made right by performing them “in moderation.”",
-              "Practical wisdom applies ethical understanding to particular circumstances."
-            ],
-            "quiz": [
-              {
-                "question": "Which example best captures the distinction between a pleasant mood and eudaimonia?",
-                "options": [
-                  "Someone feels cheerful for an afternoon, so their entire life must be flourishing.",
-                  "Someone evaluates how well they live and act over time, not only how they feel today.",
-                  "Someone assumes money guarantees excellent character.",
-                  "Someone treats every uncomfortable experience as proof of a bad life."
-                ],
-                "answerIndex": 1,
-                "explanation": "Eudaimonia concerns living well across a life, rather than a temporary emotional state."
-              },
-              {
-                "question": "Someone returns a wallet only because they fear being recorded. What is the best Aristotelian assessment?",
-                "options": [
-                  "Their action automatically proves a fully virtuous character.",
-                  "The owner receives no benefit from the return.",
-                  "Motives never matter when evaluating character.",
-                  "The action may be right, but it does not by itself demonstrate acting virtuously for the right reason."
-                ],
-                "answerIndex": 3,
-                "explanation": "Aristotle distinguishes doing an outwardly appropriate act from acting with knowledge, deliberate choice, and a stable virtuous disposition."
-              },
-              {
-                "question": "What does courage as a mean involve?",
-                "options": [
-                  "Responding appropriately to danger rather than being cowardly or rash.",
-                  "Taking exactly half the risks available.",
-                  "Never experiencing fear.",
-                  "Always choosing the most dangerous option."
-                ],
-                "answerIndex": 0,
-                "explanation": "The mean concerns an appropriate response to the situation, not a numerical average or the elimination of emotion."
-              },
-              {
-                "question": "Why is “Everything is good in moderation” an inaccurate summary of Aristotle’s position?",
-                "options": [
-                  "He thinks every decision must be extreme.",
-                  "He denies that character matters.",
-                  "He holds that some actions are wrong in themselves and cannot be corrected by choosing a moderate amount.",
-                  "He thinks every disagreement should end in a compromise."
-                ],
-                "answerIndex": 2,
-                "explanation": "The doctrine of the mean is not a blanket permission to perform any kind of act in a limited quantity."
-              },
-              {
-                "question": "A person wants to help a friend but struggles to judge what the friend actually needs. Which capacity is especially relevant?",
-                "options": [
-                  "The ability to ignore circumstances.",
-                  "Practical wisdom: discerning how to act well in this particular situation.",
-                  "The habit of choosing whichever response is easiest.",
-                  "The belief that good intentions guarantee good judgment."
-                ],
-                "answerIndex": 1,
-                "explanation": "Practical wisdom connects ethical aims with deliberation and perception of relevant particulars."
-              },
-              {
-                "question": "Which practice best fits Aristotle’s account of ethical development?",
-                "options": [
-                  "Memorizing a definition of generosity without ever acting generously.",
-                  "Repeating actions mechanically while refusing to examine their purpose.",
-                  "Treating one good deed as proof that no further growth is needed.",
-                  "Repeatedly acting well while reflecting on reasons, motives, and circumstances."
-                ],
-                "answerIndex": 3,
-                "explanation": "Habituation supports ethical development, but mature virtue also involves understanding, deliberate choice, and practical wisdom."
-              }
-            ],
-            "sources": [
-              {
-                "publisher": "Stanford Encyclopedia of Philosophy",
-                "title": "Aristotle’s Ethics",
-                "url": "https://plato.stanford.edu/entries/aristotle-ethics/",
-                "note": "Supports the explanations of eudaimonia, external goods, habituation, virtuous choice, the mean, actions not admitting a mean, and practical wisdom."
-              },
-              {
-                "publisher": "Internet Encyclopedia of Philosophy",
-                "title": "Aristotle: Ethics",
-                "url": "https://iep.utm.edu/aristotle-ethics/",
-                "note": "Supports the distinction between passive habit and an active, stable character disposition, and the importance of choosing virtuous action knowingly and for its own sake."
-              },
-              {
-                "publisher": "Internet Encyclopedia of Philosophy",
-                "title": "Virtue Ethics",
-                "url": "https://iep.utm.edu/virtue/",
-                "note": "Supports the introductory account of character-centered ethics and the relationship between habituation, understanding, and practical judgment."
-              }
-            ],
-            "digDeeper": [
-              {
-                "id": "eudaimonia",
-                "label": "Eudaimonia",
-                "kind": "idea"
-              },
-              {
-                "id": "doctrine-of-the-mean",
-                "label": "The doctrine of the mean",
-                "kind": "idea"
-              },
-              {
-                "id": "practical-wisdom",
-                "label": "Practical wisdom",
-                "kind": "idea"
-              },
-              {
-                "id": "virtue-and-habit",
-                "label": "Virtue and habit",
-                "kind": "subtopic"
-              }
-            ]
-          },
-          {
-            "id": "les_ar02",
-            "slug": "how-habits-shape-character",
-            "title": "Aristotle: How Habits Shape Character",
-            "sections": [
-              {
-                "heading": "A good life is more than a good mood",
-                "body": "For Aristotle, ethics asks what it means for a human life to go well. His central concept, eudaimonia, is often translated as “happiness,” but means something closer to flourishing or living well than simply feeling cheerful. Virtuous activity belongs at the center of that life; it is not merely a tool for getting something else.\n\nInstead of focusing only on “What should I do right now?” Aristotle also asks what kind of person someone is becoming. Courage, justice, and moderation are enduring qualities of character, not isolated successes."
-              },
-              {
-                "heading": "Character develops through practice",
-                "body": "Ethical character develops through habituation. Repeated actions help shape how we tend to feel, choose, and respond. But becoming virtuous requires more than mechanically repeating approved behavior: it also requires judgment about what matters and why."
-              },
-              {
-                "heading": "The mean is not always the middle",
-                "body": "Aristotle describes moral virtue as a mean between excess and deficiency. This does not mean splitting every difference or choosing the mathematically average response. The appropriate response depends on the situation: the right feeling, toward the right person, at the right time, for the right reason.\n\nAnger illustrates the distinction. Becoming furious over a tiny inconvenience can be excessive, but never becoming angry at serious mistreatment can also be inappropriate. Virtue involves responding fittingly—not eliminating emotion."
-              },
-              {
-                "heading": "Knowing and wanting can come apart",
-                "body": "Aristotelian virtue ethics distinguishes full virtue from self-control. A self-controlled person does what is right despite a strong contrary desire. A fully virtuous person’s desires and judgment are more closely aligned. Both may act correctly, but their inner struggle differs.\n\nThe point is not that struggling makes an action worthless. Ethical development concerns the education of desire and emotion as well as the restraint of behavior."
-              }
-            ],
-            "keyFacts": [
-              "Eudaimonia concerns flourishing, not just pleasant feelings.",
-              "Habits help form character.",
-              "Virtue requires judgment, not blind repetition.",
-              "The mean is the fitting response, not an arithmetic midpoint.",
-              "Anger can be excessive or deficient; virtue is a fitting response, not the absence of emotion.",
-              "Self-control does the right thing despite contrary desire; full virtue brings desire and judgment into closer agreement."
-            ],
-            "quiz": [
-              {
-                "question": "Someone refuses every reasonable risk. Why might Aristotle question whether this is virtuous?",
-                "options": [
-                  "Because any refusal of risk is already courageous",
-                  "Avoiding every risk may reflect a deficiency of courage rather than good judgment",
-                  "Because the virtuous person never feels fear",
-                  "Because the mean is always the most cautious option"
-                ],
-                "answerIndex": 1,
-                "explanation": "Avoiding every risk may reflect a deficiency of courage rather than good judgment."
-              },
-              {
-                "question": "Does finding a mean require compromising halfway between justice and injustice?",
-                "options": [
-                  "Yes. Virtue is the midpoint between any two opposed positions",
-                  "Yes, but only when the two positions are equally popular",
-                  "No. The mean concerns an appropriate response, not averaging any two positions",
-                  "No, because Aristotle rejects the idea of a mean entirely"
-                ],
-                "answerIndex": 2,
-                "explanation": "The mean concerns an appropriate response, not averaging any two positions."
-              },
-              {
-                "question": "What separates self-control from full virtue?",
-                "options": [
-                  "Self-control is a vice, while full virtue is a mood",
-                  "They are the same whenever the outward action is correct",
-                  "Full virtue never involves emotion, while self-control does",
-                  "Self-control overcomes contrary desires; full virtue brings desire and sound judgment into closer agreement"
-                ],
-                "answerIndex": 3,
-                "explanation": "Self-control overcomes contrary desires; full virtue brings desire and sound judgment into closer agreement."
-              },
-              {
-                "question": "What is eudaimonia closer to, on Aristotle’s account?",
-                "options": [
-                  "A cheerful mood that makes circumstances irrelevant",
-                  "Flourishing or living well, not merely feeling pleasant",
-                  "The average of pleasure and pain",
-                  "Success measured only by what other people praise"
-                ],
-                "answerIndex": 1,
-                "explanation": "Eudaimonia is often translated as “happiness,” but means something closer to flourishing or living well than simply feeling cheerful."
-              },
-              {
-                "question": "Why is mechanically repeating approved behavior not enough to become virtuous?",
-                "options": [
-                  "Virtue also requires judgment about what matters and why",
-                  "Aristotle thinks practice has no role in character",
-                  "Only inborn talent can produce virtue",
-                  "Repeated action always makes a person worse"
-                ],
-                "answerIndex": 0,
-                "explanation": "Habits help form character, but becoming virtuous also requires judgment about what matters and why."
-              },
-              {
-                "question": "What does the example of anger illustrate?",
-                "options": [
-                  "Virtue requires eliminating emotion altogether",
-                  "Any anger is an excess, so the mean is never to be angry",
-                  "Virtue can involve feeling anger fittingly, not only restraining it or never feeling it",
-                  "The mean is the mathematical midpoint between fury and indifference"
-                ],
-                "answerIndex": 2,
-                "explanation": "Becoming furious over a tiny inconvenience can be excessive, but never becoming angry at serious mistreatment can also be inappropriate."
-              }
-            ],
-            "sources": [
-              {
-                "publisher": "Stanford Encyclopedia of Philosophy",
-                "title": "Aristotle’s Ethics",
-                "url": "https://plato.stanford.edu/entries/aristotle-ethics/"
-              },
-              {
-                "publisher": "Stanford Encyclopedia of Philosophy",
-                "title": "Ancient Ethical Theory",
-                "url": "https://plato.stanford.edu/entries/ethics-ancient/"
-              },
-              {
-                "publisher": "Stanford Encyclopedia of Philosophy",
-                "title": "Virtue Ethics",
-                "url": "https://plato.stanford.edu/entries/ethics-virtue/"
-              }
-            ],
-            "digDeeper": [
-              {
-                "id": "eudaimonia",
-                "label": "Eudaimonia",
-                "kind": "idea"
-              },
-              {
-                "id": "habituation",
-                "label": "Habituation",
-                "kind": "subtopic"
-              },
-              {
-                "id": "the-mean",
-                "label": "The doctrine of the mean",
-                "kind": "idea"
-              },
-              {
-                "id": "self-control-and-virtue",
-                "label": "Self-control and full virtue",
                 "kind": "idea"
               }
             ]
@@ -3729,10 +3721,10 @@
         ]
       },
       {
-        "slug": "federal-legislative-process",
-        "title": "The Federal Legislative Process",
+        "slug": "how-federal-government-works",
+        "title": "How the Federal Government Works",
         "kind": "process",
-        "summary": "Federal lawmaking turns proposals into binding law through committee work, decisions in both chambers of Congress, and presidential action, with several points where a proposal can change or stall.",
+        "summary": "How federal power works in practice: proposals become law through committees, both chambers of Congress, and presidential action, and a president is chosen through state voting, electors, and a congressional count.",
         "lessons": [
           {
             "id": "les_lp01",
@@ -3884,6 +3876,144 @@
                 "id": "identical-text",
                 "label": "Passing identical text",
                 "kind": "idea"
+              }
+            ]
+          },
+          {
+            "id": "les_ec01",
+            "slug": "how-votes-become-a-presidency",
+            "title": "The Electoral College: How Votes Become a Presidency",
+            "sections": [
+              {
+                "heading": "An election with several stages",
+                "body": "On a presidential ballot, voters see candidates for president and vice president. Institutionally, however, the election operates through electors selected under state rules. Understanding that distinction explains why a national popular-vote total is not the final legal measure of who wins.\n\nThe Electoral College is a process, not a campus or a single national meeting. It includes choosing electors, their meetings to vote for president and vice president, and the counting of electoral votes in Congress. The electors meet within their respective states rather than assembling in one place.\n\nAt the current full allocation there are 538 electors, and 270 electoral votes constitute a majority. Those figures describe the institutional structure, not a prediction about any particular election. A candidate needs a majority of electoral votes, not merely the largest number among several contenders."
+              },
+              {
+                "heading": "Why states have different numbers of electors",
+                "body": "Each state's allocation equals its number of senators plus its number of representatives in the U.S. House. The District of Columbia also participates in the Electoral College. The formula connects presidential selection to the composition of Congress without making members of Congress themselves the presidential electors.\n\nBecause every state has two senators, the allocation is not simply a perfectly proportional division by population. House representation supplies a population-related component, while Senate representation supplies the same additional number for every state. These two components serve different institutional purposes.\n\nFor a fictional example, a state with eight House seats would receive ten electoral votes. The calculation describes its allocation; it does not yet explain which candidate receives those votes. That depends on a separate question: the state's method for selecting electors."
+              },
+              {
+                "heading": "How state results become electoral votes",
+                "body": "In 48 states and the District of Columbia, the statewide winner receives all the electoral votes. This winner-take-all approach means that a narrow statewide victory can produce the same electoral allocation as a landslide in that state. The margin matters politically, but it does not add extra electors.\n\nMaine and Nebraska use a different method: two electors are allocated to the statewide winner and one to the winner in each congressional district. This is a district-based method, not an exact proportional division according to each candidate's statewide vote share.\n\nDifferent state outcomes can therefore combine into a national electoral result that differs from the ranking of candidates in the nationwide popular vote. A useful election map must distinguish vote totals, state victories, and electoral allocations rather than treating those three measures as interchangeable."
+              },
+              {
+                "heading": "The formal result and a fallback procedure",
+                "body": "Election-night projections do not themselves constitute the electors' formal vote. Electors meet in December and cast separate ballots for president and vice president. Their votes are transmitted for the congressional count in January. This sequence separates public reporting from formal constitutional steps.\n\nIf no presidential candidate receives an electoral majority, the House of Representatives chooses among the top three presidential electoral-vote recipients. In that contingent election, each state delegation has one vote. For vice president, the Senate chooses between the top two if no candidate has an electoral majority.\n\nThe central distinction is between individual ballots, state-based allocation, and the final electoral majority. When discussing reforms or defending the existing arrangement, first identify which stage a proposal would change. That keeps a debate about institutional design separate from assumptions about which candidate might benefit."
+              }
+            ],
+            "keyFacts": [
+              "The Electoral College is a multistage process.",
+              "The current full allocation is 538 electors, with 270 constituting a majority.",
+              "State allocations equal House seats plus two Senate seats.",
+              "Forty-eight states and D.C. use statewide winner-take-all allocation.",
+              "Maine and Nebraska use statewide and congressional-district results.",
+              "A contingent House presidential election gives each state delegation one vote."
+            ],
+            "quiz": [
+              {
+                "question": "What is the Electoral College?",
+                "options": [
+                  "A single university",
+                  "A process including elector selection, voting, and counting",
+                  "A national opinion poll",
+                  "A committee of all governors"
+                ],
+                "answerIndex": 1,
+                "explanation": "It is a series of institutional steps rather than one location."
+              },
+              {
+                "question": "What is a majority of the current 538-vote allocation?",
+                "options": [
+                  "269",
+                  "300",
+                  "270",
+                  "538"
+                ],
+                "answerIndex": 2,
+                "explanation": "270 is more than half of 538."
+              },
+              {
+                "question": "A fictional state has eight House seats. How many electors does it receive?",
+                "options": [
+                  "Ten",
+                  "Eight",
+                  "Sixteen",
+                  "Two"
+                ],
+                "answerIndex": 0,
+                "explanation": "Add its two Senate seats to its eight House seats."
+              },
+              {
+                "question": "How do Maine and Nebraska allocate electors?",
+                "options": [
+                  "Exactly in proportion to statewide percentages",
+                  "Only by statewide winner-take-all",
+                  "Only by national popular vote",
+                  "Two statewide, plus one for each congressional-district winner"
+                ],
+                "answerIndex": 3,
+                "explanation": "Their method combines statewide and district outcomes."
+              },
+              {
+                "question": "What happens in a contingent presidential election in the House?",
+                "options": [
+                  "Every voter casts another national ballot",
+                  "Each state delegation casts one vote",
+                  "The chief justice chooses",
+                  "Governors vote by population"
+                ],
+                "answerIndex": 1,
+                "explanation": "The House chooses among the top three, voting by state delegation."
+              },
+              {
+                "question": "Why distinguish election-night projections from the formal process?",
+                "options": [
+                  "Projections are constitutional amendments",
+                  "Electors never actually vote",
+                  "Electoral ballots and congressional counting occur later",
+                  "State results do not matter"
+                ],
+                "answerIndex": 2,
+                "explanation": "Public projections are not the electors’ formal ballots."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "National Archives",
+                "title": "What is the Electoral College?",
+                "url": "https://www.archives.gov/electoral-college/about"
+              },
+              {
+                "publisher": "U.S. Election Assistance Commission",
+                "title": "Presidential Elections",
+                "url": "https://www.eac.gov/voters/presidential-elections"
+              },
+              {
+                "publisher": "Congressional Research Service",
+                "title": "The Electoral College: How It Works in Contemporary Presidential Elections",
+                "url": "https://www.congress.gov/crs-product/RL32611"
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "538-and-270",
+                "label": "538 electors and a majority of 270",
+                "kind": "idea"
+              },
+              {
+                "id": "winner-take-all",
+                "label": "Winner-take-all allocation",
+                "kind": "subtopic"
+              },
+              {
+                "id": "maine-and-nebraska",
+                "label": "Maine and Nebraska",
+                "kind": "place"
+              },
+              {
+                "id": "contingent-election",
+                "label": "Contingent House election",
+                "kind": "event"
               }
             ]
           }
@@ -4050,152 +4180,6 @@
                 "id": "original-vs-appellate-jurisdiction",
                 "label": "Original vs. appellate jurisdiction",
                 "kind": "subtopic"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "slug": "electoral-college",
-        "title": "The Electoral College",
-        "kind": "institution",
-        "summary": "The presidential election combines state-level voting, the selection of electors, electoral ballots, and a congressional count rather than one direct nationwide tally.",
-        "lessons": [
-          {
-            "id": "les_ec01",
-            "slug": "how-votes-become-a-presidency",
-            "title": "The Electoral College: How Votes Become a Presidency",
-            "sections": [
-              {
-                "heading": "An election with several stages",
-                "body": "On a presidential ballot, voters see candidates for president and vice president. Institutionally, however, the election operates through electors selected under state rules. Understanding that distinction explains why a national popular-vote total is not the final legal measure of who wins.\n\nThe Electoral College is a process, not a campus or a single national meeting. It includes choosing electors, their meetings to vote for president and vice president, and the counting of electoral votes in Congress. The electors meet within their respective states rather than assembling in one place.\n\nAt the current full allocation there are 538 electors, and 270 electoral votes constitute a majority. Those figures describe the institutional structure, not a prediction about any particular election. A candidate needs a majority of electoral votes, not merely the largest number among several contenders."
-              },
-              {
-                "heading": "Why states have different numbers of electors",
-                "body": "Each state's allocation equals its number of senators plus its number of representatives in the U.S. House. The District of Columbia also participates in the Electoral College. The formula connects presidential selection to the composition of Congress without making members of Congress themselves the presidential electors.\n\nBecause every state has two senators, the allocation is not simply a perfectly proportional division by population. House representation supplies a population-related component, while Senate representation supplies the same additional number for every state. These two components serve different institutional purposes.\n\nFor a fictional example, a state with eight House seats would receive ten electoral votes. The calculation describes its allocation; it does not yet explain which candidate receives those votes. That depends on a separate question: the state's method for selecting electors."
-              },
-              {
-                "heading": "How state results become electoral votes",
-                "body": "In 48 states and the District of Columbia, the statewide winner receives all the electoral votes. This winner-take-all approach means that a narrow statewide victory can produce the same electoral allocation as a landslide in that state. The margin matters politically, but it does not add extra electors.\n\nMaine and Nebraska use a different method: two electors are allocated to the statewide winner and one to the winner in each congressional district. This is a district-based method, not an exact proportional division according to each candidate's statewide vote share.\n\nDifferent state outcomes can therefore combine into a national electoral result that differs from the ranking of candidates in the nationwide popular vote. A useful election map must distinguish vote totals, state victories, and electoral allocations rather than treating those three measures as interchangeable."
-              },
-              {
-                "heading": "The formal result and a fallback procedure",
-                "body": "Election-night projections do not themselves constitute the electors' formal vote. Electors meet in December and cast separate ballots for president and vice president. Their votes are transmitted for the congressional count in January. This sequence separates public reporting from formal constitutional steps.\n\nIf no presidential candidate receives an electoral majority, the House of Representatives chooses among the top three presidential electoral-vote recipients. In that contingent election, each state delegation has one vote. For vice president, the Senate chooses between the top two if no candidate has an electoral majority.\n\nThe central distinction is between individual ballots, state-based allocation, and the final electoral majority. When discussing reforms or defending the existing arrangement, first identify which stage a proposal would change. That keeps a debate about institutional design separate from assumptions about which candidate might benefit."
-              }
-            ],
-            "keyFacts": [
-              "The Electoral College is a multistage process.",
-              "The current full allocation is 538 electors, with 270 constituting a majority.",
-              "State allocations equal House seats plus two Senate seats.",
-              "Forty-eight states and D.C. use statewide winner-take-all allocation.",
-              "Maine and Nebraska use statewide and congressional-district results.",
-              "A contingent House presidential election gives each state delegation one vote."
-            ],
-            "quiz": [
-              {
-                "question": "What is the Electoral College?",
-                "options": [
-                  "A single university",
-                  "A process including elector selection, voting, and counting",
-                  "A national opinion poll",
-                  "A committee of all governors"
-                ],
-                "answerIndex": 1,
-                "explanation": "It is a series of institutional steps rather than one location."
-              },
-              {
-                "question": "What is a majority of the current 538-vote allocation?",
-                "options": [
-                  "269",
-                  "300",
-                  "270",
-                  "538"
-                ],
-                "answerIndex": 2,
-                "explanation": "270 is more than half of 538."
-              },
-              {
-                "question": "A fictional state has eight House seats. How many electors does it receive?",
-                "options": [
-                  "Ten",
-                  "Eight",
-                  "Sixteen",
-                  "Two"
-                ],
-                "answerIndex": 0,
-                "explanation": "Add its two Senate seats to its eight House seats."
-              },
-              {
-                "question": "How do Maine and Nebraska allocate electors?",
-                "options": [
-                  "Exactly in proportion to statewide percentages",
-                  "Only by statewide winner-take-all",
-                  "Only by national popular vote",
-                  "Two statewide, plus one for each congressional-district winner"
-                ],
-                "answerIndex": 3,
-                "explanation": "Their method combines statewide and district outcomes."
-              },
-              {
-                "question": "What happens in a contingent presidential election in the House?",
-                "options": [
-                  "Every voter casts another national ballot",
-                  "Each state delegation casts one vote",
-                  "The chief justice chooses",
-                  "Governors vote by population"
-                ],
-                "answerIndex": 1,
-                "explanation": "The House chooses among the top three, voting by state delegation."
-              },
-              {
-                "question": "Why distinguish election-night projections from the formal process?",
-                "options": [
-                  "Projections are constitutional amendments",
-                  "Electors never actually vote",
-                  "Electoral ballots and congressional counting occur later",
-                  "State results do not matter"
-                ],
-                "answerIndex": 2,
-                "explanation": "Public projections are not the electors’ formal ballots."
-              }
-            ],
-            "sources": [
-              {
-                "publisher": "National Archives",
-                "title": "What is the Electoral College?",
-                "url": "https://www.archives.gov/electoral-college/about"
-              },
-              {
-                "publisher": "U.S. Election Assistance Commission",
-                "title": "Presidential Elections",
-                "url": "https://www.eac.gov/voters/presidential-elections"
-              },
-              {
-                "publisher": "Congressional Research Service",
-                "title": "The Electoral College: How It Works in Contemporary Presidential Elections",
-                "url": "https://www.congress.gov/crs-product/RL32611"
-              }
-            ],
-            "digDeeper": [
-              {
-                "id": "538-and-270",
-                "label": "538 electors and a majority of 270",
-                "kind": "idea"
-              },
-              {
-                "id": "winner-take-all",
-                "label": "Winner-take-all allocation",
-                "kind": "subtopic"
-              },
-              {
-                "id": "maine-and-nebraska",
-                "label": "Maine and Nebraska",
-                "kind": "place"
-              },
-              {
-                "id": "contingent-election",
-                "label": "Contingent House election",
-                "kind": "event"
               }
             ]
           }
@@ -6982,7 +6966,7 @@
               },
               {
                 "heading": "Making a flat surface look deep",
-                "body": "One of the Renaissance’s important artistic developments was linear perspective: a mathematical method for suggesting depth on a flat surface. In a simple one-point system, lines representing parallel edges receding directly away from the viewer appear to meet at a single vanishing point. That shared point helps make the painted space look coherent rather than arbitrary.\n\nThink about standing in a long, straight hallway. Its walls do not actually move closer together, but their edges appear to converge in the distance. A painter can imitate that appearance. Floor tiles, ceilings, and rows of columns become useful guides, helping establish where objects belong and how large they should appear within the scene.\n\nOther techniques strengthened the illusion. Foreshortening makes an object or body part appear shorter when it points toward or away from the viewer. Light and shadow can make a figure look rounded rather than flat. The early Renaissance painter Masaccio combined convincing light with careful perspective, producing figures that appear to have weight and occupy believable space."
+                "body": "One of the Renaissance’s important artistic developments was linear perspective: a mathematical method for suggesting depth on a flat surface, in which receding parallel edges appear to meet at a vanishing point. The Perspective lesson in this topic shows how that system works and how to trace it in a painting.\n\nOther techniques strengthened the illusion. Foreshortening makes an object or body part appear shorter when it points toward or away from the viewer. Light and shadow can make a figure look rounded rather than flat.\n\nThe early Renaissance painter Masaccio combined convincing light with careful perspective, producing figures that appear to have weight and occupy believable space."
               },
               {
                 "heading": "People became worth a closer look",
@@ -7021,15 +7005,15 @@
                 "explanation": "Linear perspective uses mathematical relationships to make painted space appear deep and coherent."
               },
               {
-                "question": "In a one-point perspective painting, the receding edges of a hallway appear to meet in the distance. What is that meeting place called?",
+                "question": "How could humanism change the way Renaissance artists presented religious stories?",
                 "options": [
-                  "The foreground.",
-                  "The vanishing point.",
-                  "The portrait plane.",
-                  "The shadow line."
+                  "It required artists to stop painting religious subjects.",
+                  "It made sacred figures more physically convincing and emotionally recognizable.",
+                  "It limited paintings to flat, symbolic figures without emotion.",
+                  "It meant only rulers could appear in paintings."
                 ],
                 "answerIndex": 1,
-                "explanation": "The vanishing point is where the relevant receding parallel lines appear to converge."
+                "explanation": "Humanism did not necessarily replace religious belief; it could make the figures in religious stories look more solid and emotionally human."
               },
               {
                 "question": "An artist paints an arm reaching toward the viewer so that it appears shorter than an arm seen from the side. Which technique is being used?",
@@ -7116,8 +7100,8 @@
                 "kind": "person"
               },
               {
-                "id": "linear-perspective",
-                "label": "Linear perspective",
+                "id": "humanism",
+                "label": "Humanism",
                 "kind": "idea"
               },
               {
@@ -7129,6 +7113,159 @@
                 "id": "classical-revival",
                 "label": "Revival of Greek and Roman culture",
                 "kind": "subtopic"
+              }
+            ]
+          },
+          {
+            "id": "les_pe01",
+            "slug": "how-paintings-create-depth",
+            "title": "Perspective: How Paintings Create Depth",
+            "sections": [
+              {
+                "heading": "A flat surface can suggest a deep space",
+                "body": "A painting is a flat surface, but it can make us feel that we are looking into a room, down a street, or across a landscape. Perspective is a means of creating that impression of three-dimensional space, rather than physically adding depth to the canvas or wall.\n\nLinear perspective uses lines to construct the illusion, while atmospheric perspective, also called aerial perspective, primarily uses tone and color. The two can work together: a landscape might use converging lines in the foreground and increasingly indistinct, bluish hills in the distance.\n\nIn early fifteenth-century Florence, Filippo Brunelleschi demonstrated a systematic approach to linear perspective, and Leon Battista Alberti explained it for artists in On Painting in 1435. These developments gave painters a mathematical framework for constructing convincing spaces, rather than simply placing smaller objects behind larger ones."
+              },
+              {
+                "heading": "Three clues in one-point perspective",
+                "body": "In one-point perspective, the horizon line represents eye level, and the principal vanishing point lies on that line. The vanishing point does not have to be a visible object: it is the location where a particular set of lines appears to meet as it recedes into the depicted space.\n\nReceding lines, often called orthogonals in this system, guide the eye toward the vanishing point. Imagine looking straight down a tiled hallway: the edges of the floor and the depth-directed tile lines can suggest convergence, while the horizontal divisions across the floor remain horizontal and become more closely spaced farther away.\n\nThat distinction matters: one-point perspective does not mean that every line in a painting must converge at one point. In the hallway example, it is the parallel lines running into depth that converge, and the progressively compressed floor divisions help make equal real-world distances appear correctly spaced in the image."
+              },
+              {
+                "heading": "Reading the illusion in a real painting",
+                "body": "Masaccio's Holy Trinity, a fresco in the church of Santa Maria Novella in Florence, uses perspective to make a solid wall appear to open into a chapel. Its painted architecture invites the viewer to experience the religious scene as if it occupies a space extending behind the wall.\n\nThe edges of the recessed squares, or coffers, in the painted ceiling provide useful orthogonals to follow. Extend those receding edges mentally and they lead toward the vanishing point on the ledge where the donors kneel, positioned at the viewer's eye level.\n\nThis alignment connects the depicted space to the viewer's position in front of the wall. As a looking exercise, first locate the strongest receding edges, then imagine extending them until they meet; use that meeting place to estimate the painting's eye level."
+              },
+              {
+                "heading": "Distance can also emerge through color",
+                "body": "Atmospheric perspective offers a different way to suggest depth, particularly in landscapes. In Cima da Conegliano's David and Jonathan, distant features become more indistinct, and far-off hills appear blue even though the landscape is understood to be green.\n\nThe painting also uses a road and a river that converge toward a vanishing point, combining linear and atmospheric methods. A convincing space therefore need not depend on a clearly visible grid; lines, relative scale, and changes in clarity can reinforce one another.\n\nAccurate perspective is an artistic option, not a universal requirement: Van Gogh deliberately flattened the space in The Bedroom and did not apply perspective consistently. Understanding the rules helps you recognize both convincing illusions and purposeful departures from them, rather than treating every unusual space as a mistake."
+              }
+            ],
+            "keyFacts": [
+              "Perspective suggests three-dimensional space on a two-dimensional surface.",
+              "In one-point perspective, the horizon line represents eye level.",
+              "Depth-directed orthogonals converge at a point on the horizon.",
+              "On Painting, published in 1435, explained a systematic approach to perspective.",
+              "Changes in tone, color, and clarity can suggest distance.",
+              "Artists can deliberately flatten or alter pictorial space."
+            ],
+            "quiz": [
+              {
+                "question": "What does perspective create in a painting?",
+                "options": [
+                  "A physically hollow space behind the canvas.",
+                  "The illusion of three-dimensional space on a flat surface.",
+                  "A requirement that every painting depict architecture.",
+                  "A method for removing all signs of distance."
+                ],
+                "answerIndex": 1,
+                "explanation": "Perspective constructs an impression of depth on a two-dimensional surface."
+              },
+              {
+                "question": "In one-point perspective, what does the horizon line represent?",
+                "options": [
+                  "The bottom edge of the frame.",
+                  "The tallest object in the picture.",
+                  "The boundary between warm and cool colors.",
+                  "Eye level."
+                ],
+                "answerIndex": 3,
+                "explanation": "The horizon line corresponds to eye level and contains the vanishing point."
+              },
+              {
+                "question": "In a straight-on view of a tiled hallway, which lines converge toward the principal vanishing point?",
+                "options": [
+                  "The parallel lines running into the hallway's depth.",
+                  "Every line, including the vertical sides of the door.",
+                  "Only the horizontal lines crossing the front of the hallway.",
+                  "Only the outlines of people."
+                ],
+                "answerIndex": 0,
+                "explanation": "In this one-point arrangement, depth-directed lines converge while the crosswise floor divisions remain horizontal."
+              },
+              {
+                "question": "Distant hills in a painting are bluer and less distinct than nearby trees. Which method is most directly responsible?",
+                "options": [
+                  "A rule that all landscape objects must have equal size.",
+                  "The complete elimination of color.",
+                  "Atmospheric perspective.",
+                  "Printmaking."
+                ],
+                "answerIndex": 2,
+                "explanation": "Atmospheric perspective uses changes in color and clarity to suggest distance."
+              },
+              {
+                "question": "What illusion does perspective create in Masaccio's Holy Trinity?",
+                "options": [
+                  "A solid wall appears to open into a chapel.",
+                  "The painting appears to contain no architecture.",
+                  "Every figure appears to stand on the same flat foreground line.",
+                  "The ceiling appears to be a real hole cut into the church roof."
+                ],
+                "answerIndex": 0,
+                "explanation": "The painted architecture creates an illusion of a chapel extending behind the wall."
+              },
+              {
+                "question": "A painting does not consistently follow accurate linear perspective. What is the most reasonable initial response?",
+                "options": [
+                  "Conclude that its artist could not draw.",
+                  "Assume that no painting can create convincing depth.",
+                  "Reject it as incapable of artistic meaning.",
+                  "Consider whether the artist intentionally altered space for another effect."
+                ],
+                "answerIndex": 3,
+                "explanation": "Van Gogh's The Bedroom provides an example of deliberately flattened space rather than simple inability."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "National Gallery, London",
+                "title": "Linear perspective (Glossary)",
+                "url": "https://www.nationalgallery.org.uk/paintings/glossary/linear-perspective",
+                "note": "What perspective is; linear versus atmospheric (aerial) perspective."
+              },
+              {
+                "publisher": "Smarthistory",
+                "title": "How one-point linear perspective works",
+                "url": "https://smarthistory.org/how-one-point-linear-perspective-works/",
+                "note": "Brunelleschi, Alberti's On Painting (1435), horizon line, vanishing point and orthogonals."
+              },
+              {
+                "publisher": "Smarthistory",
+                "title": "Masaccio, Holy Trinity",
+                "url": "https://smarthistory.org/masaccio-holy-trinity/",
+                "note": "The painted chapel illusion, the coffer orthogonals and the vanishing point at the viewer's eye level."
+              },
+              {
+                "publisher": "National Gallery, London",
+                "title": "Giovanni Battista Cima da Conegliano, David and Jonathan",
+                "url": "https://www.nationalgallery.org.uk/paintings/giovanni-battista-cima-da-conegliano-david-and-jonathan",
+                "note": "Atmospheric perspective combined with converging road and river."
+              },
+              {
+                "publisher": "Van Gogh Museum",
+                "title": "Vincent van Gogh, The Bedroom",
+                "url": "https://www.vangoghmuseum.nl/en/collection/s0047V1962",
+                "note": "Deliberately flattened space and inconsistent perspective."
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "one-point-perspective",
+                "label": "One-point perspective",
+                "kind": "idea"
+              },
+              {
+                "id": "on-painting-1435",
+                "label": "On Painting (1435)",
+                "kind": "subtopic"
+              },
+              {
+                "id": "atmospheric-perspective",
+                "label": "Atmospheric perspective",
+                "kind": "idea"
+              },
+              {
+                "id": "flattened-space",
+                "label": "Flattened space",
+                "kind": "idea"
               }
             ]
           },
@@ -7570,167 +7707,6 @@
         ]
       },
       {
-        "slug": "perspective",
-        "title": "Perspective",
-        "kind": "technique",
-        "summary": "Perspective creates the illusion of three-dimensional space on a flat surface, using lines, proportions, and changes in color or clarity to suggest distance.",
-        "lessons": [
-          {
-            "id": "les_pe01",
-            "slug": "how-paintings-create-depth",
-            "title": "Perspective: How Paintings Create Depth",
-            "sections": [
-              {
-                "heading": "A flat surface can suggest a deep space",
-                "body": "A painting is a flat surface, but it can make us feel that we are looking into a room, down a street, or across a landscape. Perspective is a means of creating that impression of three-dimensional space, rather than physically adding depth to the canvas or wall.\n\nLinear perspective uses lines to construct the illusion, while atmospheric perspective, also called aerial perspective, primarily uses tone and color. The two can work together: a landscape might use converging lines in the foreground and increasingly indistinct, bluish hills in the distance.\n\nIn early fifteenth-century Florence, Filippo Brunelleschi demonstrated a systematic approach to linear perspective, and Leon Battista Alberti explained it for artists in On Painting in 1435. These developments gave painters a mathematical framework for constructing convincing spaces, rather than simply placing smaller objects behind larger ones."
-              },
-              {
-                "heading": "Three clues in one-point perspective",
-                "body": "In one-point perspective, the horizon line represents eye level, and the principal vanishing point lies on that line. The vanishing point does not have to be a visible object: it is the location where a particular set of lines appears to meet as it recedes into the depicted space.\n\nReceding lines, often called orthogonals in this system, guide the eye toward the vanishing point. Imagine looking straight down a tiled hallway: the edges of the floor and the depth-directed tile lines can suggest convergence, while the horizontal divisions across the floor remain horizontal and become more closely spaced farther away.\n\nThat distinction matters: one-point perspective does not mean that every line in a painting must converge at one point. In the hallway example, it is the parallel lines running into depth that converge, and the progressively compressed floor divisions help make equal real-world distances appear correctly spaced in the image."
-              },
-              {
-                "heading": "Reading the illusion in a real painting",
-                "body": "Masaccio's Holy Trinity, a fresco in the church of Santa Maria Novella in Florence, uses perspective to make a solid wall appear to open into a chapel. Its painted architecture invites the viewer to experience the religious scene as if it occupies a space extending behind the wall.\n\nThe edges of the recessed squares, or coffers, in the painted ceiling provide useful orthogonals to follow. Extend those receding edges mentally and they lead toward the vanishing point on the ledge where the donors kneel, positioned at the viewer's eye level.\n\nThis alignment connects the depicted space to the viewer's position in front of the wall. As a looking exercise, first locate the strongest receding edges, then imagine extending them until they meet; use that meeting place to estimate the painting's eye level."
-              },
-              {
-                "heading": "Distance can also emerge through color",
-                "body": "Atmospheric perspective offers a different way to suggest depth, particularly in landscapes. In Cima da Conegliano's David and Jonathan, distant features become more indistinct, and far-off hills appear blue even though the landscape is understood to be green.\n\nThe painting also uses a road and a river that converge toward a vanishing point, combining linear and atmospheric methods. A convincing space therefore need not depend on a clearly visible grid; lines, relative scale, and changes in clarity can reinforce one another.\n\nAccurate perspective is an artistic option, not a universal requirement: Van Gogh deliberately flattened the space in The Bedroom and did not apply perspective consistently. Understanding the rules helps you recognize both convincing illusions and purposeful departures from them, rather than treating every unusual space as a mistake."
-              }
-            ],
-            "keyFacts": [
-              "Perspective suggests three-dimensional space on a two-dimensional surface.",
-              "In one-point perspective, the horizon line represents eye level.",
-              "Depth-directed orthogonals converge at a point on the horizon.",
-              "On Painting, published in 1435, explained a systematic approach to perspective.",
-              "Changes in tone, color, and clarity can suggest distance.",
-              "Artists can deliberately flatten or alter pictorial space."
-            ],
-            "quiz": [
-              {
-                "question": "What does perspective create in a painting?",
-                "options": [
-                  "A physically hollow space behind the canvas.",
-                  "The illusion of three-dimensional space on a flat surface.",
-                  "A requirement that every painting depict architecture.",
-                  "A method for removing all signs of distance."
-                ],
-                "answerIndex": 1,
-                "explanation": "Perspective constructs an impression of depth on a two-dimensional surface."
-              },
-              {
-                "question": "In one-point perspective, what does the horizon line represent?",
-                "options": [
-                  "The bottom edge of the frame.",
-                  "The tallest object in the picture.",
-                  "The boundary between warm and cool colors.",
-                  "Eye level."
-                ],
-                "answerIndex": 3,
-                "explanation": "The horizon line corresponds to eye level and contains the vanishing point."
-              },
-              {
-                "question": "In a straight-on view of a tiled hallway, which lines converge toward the principal vanishing point?",
-                "options": [
-                  "The parallel lines running into the hallway's depth.",
-                  "Every line, including the vertical sides of the door.",
-                  "Only the horizontal lines crossing the front of the hallway.",
-                  "Only the outlines of people."
-                ],
-                "answerIndex": 0,
-                "explanation": "In this one-point arrangement, depth-directed lines converge while the crosswise floor divisions remain horizontal."
-              },
-              {
-                "question": "Distant hills in a painting are bluer and less distinct than nearby trees. Which method is most directly responsible?",
-                "options": [
-                  "A rule that all landscape objects must have equal size.",
-                  "The complete elimination of color.",
-                  "Atmospheric perspective.",
-                  "Printmaking."
-                ],
-                "answerIndex": 2,
-                "explanation": "Atmospheric perspective uses changes in color and clarity to suggest distance."
-              },
-              {
-                "question": "What illusion does perspective create in Masaccio's Holy Trinity?",
-                "options": [
-                  "A solid wall appears to open into a chapel.",
-                  "The painting appears to contain no architecture.",
-                  "Every figure appears to stand on the same flat foreground line.",
-                  "The ceiling appears to be a real hole cut into the church roof."
-                ],
-                "answerIndex": 0,
-                "explanation": "The painted architecture creates an illusion of a chapel extending behind the wall."
-              },
-              {
-                "question": "A painting does not consistently follow accurate linear perspective. What is the most reasonable initial response?",
-                "options": [
-                  "Conclude that its artist could not draw.",
-                  "Assume that no painting can create convincing depth.",
-                  "Reject it as incapable of artistic meaning.",
-                  "Consider whether the artist intentionally altered space for another effect."
-                ],
-                "answerIndex": 3,
-                "explanation": "Van Gogh's The Bedroom provides an example of deliberately flattened space rather than simple inability."
-              }
-            ],
-            "sources": [
-              {
-                "publisher": "National Gallery, London",
-                "title": "Linear perspective (Glossary)",
-                "url": "https://www.nationalgallery.org.uk/paintings/glossary/linear-perspective",
-                "note": "What perspective is; linear versus atmospheric (aerial) perspective."
-              },
-              {
-                "publisher": "Smarthistory",
-                "title": "How one-point linear perspective works",
-                "url": "https://smarthistory.org/how-one-point-linear-perspective-works/",
-                "note": "Brunelleschi, Alberti's On Painting (1435), horizon line, vanishing point and orthogonals."
-              },
-              {
-                "publisher": "Smarthistory",
-                "title": "Masaccio, Holy Trinity",
-                "url": "https://smarthistory.org/masaccio-holy-trinity/",
-                "note": "The painted chapel illusion, the coffer orthogonals and the vanishing point at the viewer's eye level."
-              },
-              {
-                "publisher": "National Gallery, London",
-                "title": "Giovanni Battista Cima da Conegliano, David and Jonathan",
-                "url": "https://www.nationalgallery.org.uk/paintings/giovanni-battista-cima-da-conegliano-david-and-jonathan",
-                "note": "Atmospheric perspective combined with converging road and river."
-              },
-              {
-                "publisher": "Van Gogh Museum",
-                "title": "Vincent van Gogh, The Bedroom",
-                "url": "https://www.vangoghmuseum.nl/en/collection/s0047V1962",
-                "note": "Deliberately flattened space and inconsistent perspective."
-              }
-            ],
-            "digDeeper": [
-              {
-                "id": "one-point-perspective",
-                "label": "One-point perspective",
-                "kind": "idea"
-              },
-              {
-                "id": "on-painting-1435",
-                "label": "On Painting (1435)",
-                "kind": "subtopic"
-              },
-              {
-                "id": "atmospheric-perspective",
-                "label": "Atmospheric perspective",
-                "kind": "idea"
-              },
-              {
-                "id": "flattened-space",
-                "label": "Flattened space",
-                "kind": "idea"
-              }
-            ]
-          }
-        ]
-      },
-      {
         "slug": "early-twentieth-century-art",
         "title": "Early twentieth-century art",
         "kind": "style",
@@ -8030,10 +8006,10 @@
     "color": "forest",
     "topics": [
       {
-        "slug": "classic-novels",
-        "title": "Classic Novels",
-        "kind": "style",
-        "summary": "Classic novels are books that remain meaningful across generations, although readers and institutions continually debate which works deserve that recognition.",
+        "slug": "reading-fiction",
+        "title": "Reading Fiction",
+        "kind": "technique",
+        "summary": "Reading fiction well means asking what makes a novel endure and how its telling shapes what readers understand, including when a narrator's account cannot be fully trusted.",
         "lessons": [
           {
             "id": "les_cn01",
@@ -8183,14 +8159,164 @@
                 "kind": "idea"
               }
             ]
+          },
+          {
+            "id": "les_un01",
+            "slug": "reading-between-the-telling-and-the-truth",
+            "title": "The Unreliable Narrator: Reading Between the Telling and the Truth",
+            "sections": [
+              {
+                "heading": "Who is speaking is part of the story",
+                "body": "Imagine a narrator who begins, “Everyone agreed I handled the argument calmly,” then describes shouting, throwing a glass, and leaving the room. This invented example creates a gap between the narrator's self-description and the events being reported. The reader must do more than accept the label “calm.”\n\nA narrator is the voice that tells a story and establishes its point of view. In fiction, an unreliable narrator may misunderstand a situation or draw mistaken conclusions about witnessed events. Unreliability is therefore not restricted to deliberate lying.\n\nThe question is not simply whether you like the speaker. A narrator can be sympathetic and mistaken, or unpleasant yet accurate about a particular event. Reading carefully requires distinguishing a judgment about personality from a judgment about the account's reliability."
+              },
+              {
+                "heading": "Author, narrator, and character are different roles",
+                "body": "The author creates the work; the narrator tells the story within its chosen narrative arrangement. A narrator's statements should not automatically be treated as the author's own beliefs. Fiction can create distance between what a speaker says and what the reader is encouraged to notice.\n\nA narrator can also be a character participating in events. That position may provide intimate access to certain experiences while limiting understanding of other people. Having a vivid first-person voice does not by itself prove either reliability or unreliability; the text must provide grounds for the distinction.\n\nFor an invented illustration, a character might confidently explain a friend's motives while reporting only a brief conversation. Readers can distinguish what was actually said from the interpretation imposed on it. That distinction preserves uncertainty without requiring us to invent a hidden motive of our own."
+              },
+              {
+                "heading": "The reader may understand more than the teller",
+                "body": "Ford Madox Ford's The Good Soldier, published in 1915, is a major example of a narrator who does not fully understand the story he tells. Britannica describes the technique as allowing the reader to understand better than the observer who supplies the account.\n\nThis structure asks readers to connect details that the narrator cannot adequately interpret. A report may contain information that works against its teller's explanation. The telling and the apparent implications of the telling become two layers of the reading experience.\n\nJ.D. Salinger's The Catcher in the Rye supplies another kind of example. Holden Caulfield calls himself a liar, and his emotional condition also complicates his narration. The point is not that every sentence must be false, but that the account must be read with attention to the speaker's limitations."
+              },
+              {
+                "heading": "How to question a narrator responsibly",
+                "body": "Start with a specific claim, then identify the textual evidence that supports or challenges it. Contradictions between description and action, or between an explanation and the reported details, can justify doubt. The opening invented example works because the reported behavior conflicts with the claim of calmness.\n\nNext, separate uncertainty from a replacement theory. If a narrator's explanation is weak, an alternative explanation is not automatically proven. A good interpretation makes clear which details are established within the text, which are inferred, and which remain unresolved. This is a reading method, not a requirement that every story have one solvable secret.\n\nFinally, ask what the narrative distance accomplishes. Does it create irony, sympathy, discomfort, or suspense? Unreliable narration matters because the act of telling becomes part of the subject: readers experience a person's effort to understand events while also noticing the limits of that understanding."
+              }
+            ],
+            "keyFacts": [
+              "The narrator is the voice telling a story.",
+              "Narration establishes point of view.",
+              "Unreliability can involve misunderstanding, not only intentional lies.",
+              "The Good Soldier is a major example of unreliable narration.",
+              "Holden Caulfield’s narration is complicated by lying and emotional distress.",
+              "Readers can understand implications that the narrator misses."
+            ],
+            "quiz": [
+              {
+                "question": "What is a narrator?",
+                "options": [
+                  "The publisher",
+                  "The voice telling the story",
+                  "Every reader",
+                  "The book’s cover designer"
+                ],
+                "answerIndex": 1,
+                "explanation": "Narration is the telling voice within the work."
+              },
+              {
+                "question": "Must an unreliable narrator deliberately lie?",
+                "options": [
+                  "Yes, without exception",
+                  "Only in first-person novels",
+                  "No; misunderstanding can also produce unreliability",
+                  "No narrator can ever lie"
+                ],
+                "answerIndex": 2,
+                "explanation": "Incorrect assumptions and limited understanding also matter."
+              },
+              {
+                "question": "Why not equate narrator and author?",
+                "options": [
+                  "The author can construct a voice whose claims readers should question",
+                  "They are always the same person",
+                  "Narrators exist only in nonfiction",
+                  "Authors never choose point of view"
+                ],
+                "answerIndex": 0,
+                "explanation": "The narrative arrangement can create distance from the teller’s claims."
+              },
+              {
+                "question": "Which novel provides a major example in this lesson?",
+                "options": [
+                  "The Odyssey",
+                  "Paradise Lost",
+                  "Pride and Prejudice",
+                  "The Good Soldier"
+                ],
+                "answerIndex": 3,
+                "explanation": "Ford’s narrator does not fully grasp his own account’s implications."
+              },
+              {
+                "question": "What follows when a narrator’s explanation is unconvincing?",
+                "options": [
+                  "Your first alternative is automatically true",
+                  "You should distinguish evidence from inference",
+                  "Every reported event must be false",
+                  "The novel has no meaning"
+                ],
+                "answerIndex": 1,
+                "explanation": "Doubt does not by itself prove a replacement account."
+              },
+              {
+                "question": "What is a useful final interpretive question?",
+                "options": [
+                  "How can I ignore the narrative voice?",
+                  "Which character is always morally perfect?",
+                  "What effect does the gap between teller and reader create?",
+                  "Why is all fiction dishonest?"
+                ],
+                "answerIndex": 2,
+                "explanation": "The gap can shape irony, sympathy, and the reading experience."
+              }
+            ],
+            "sources": [
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Narrator",
+                "url": "https://www.britannica.com/art/narrator"
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "Novel: Narrative method and point of view",
+                "url": "https://www.britannica.com/art/novel/Narrative-method-and-point-of-view"
+              },
+              {
+                "publisher": "Encyclopaedia Britannica",
+                "title": "The Catcher in the Rye",
+                "url": "https://www.britannica.com/topic/The-Catcher-in-the-Rye"
+              },
+              {
+                "publisher": "Wikipedia",
+                "title": "Unreliable narrator",
+                "url": "https://en.wikipedia.org/wiki/Unreliable_narrator",
+                "note": "The narrator as a point of view; unreliability that includes fallible or naïve speakers as well as lying; and Holden Caulfield in The Catcher in the Rye as an example."
+              },
+              {
+                "publisher": "Modernism Lab, Yale University",
+                "title": "The Good Soldier",
+                "url": "https://campuspress.yale.edu/modernismlab/the-good-soldier/",
+                "note": "Ford Madox Ford’s 1915 novel as a major example of unreliable narration: John Dowell is not deliberately misleading, but the reader must assemble what his account does not fully order."
+              }
+            ],
+            "digDeeper": [
+              {
+                "id": "the-good-soldier",
+                "label": "The Good Soldier",
+                "kind": "idea"
+              },
+              {
+                "id": "holden-caulfield",
+                "label": "Holden Caulfield",
+                "kind": "person"
+              },
+              {
+                "id": "ford-madox-ford",
+                "label": "Ford Madox Ford",
+                "kind": "person"
+              },
+              {
+                "id": "author-vs-narrator",
+                "label": "Author vs. narrator",
+                "kind": "subtopic"
+              }
+            ]
           }
         ]
       },
       {
-        "slug": "reading-poetry",
-        "title": "Reading Poetry",
+        "slug": "poetry",
+        "title": "Poetry",
         "kind": "technique",
-        "summary": "Reading poetry involves noticing how a speaker’s words, sensory details, comparisons, sounds, and line breaks work together to create meaning.",
+        "summary": "How to read a poem by noticing its speaker, images, sounds, and line breaks, then two poets: the Homeric epics shaped by oral performance, and Langston Hughes, who brought everyday speech, blues, and jazz into modern poetry.",
         "lessons": [
           {
             "id": "les_rp01",
@@ -8350,176 +8476,7 @@
                 "kind": "subtopic"
               }
             ]
-          }
-        ]
-      },
-      {
-        "slug": "langston-hughes",
-        "title": "Langston Hughes",
-        "kind": "person",
-        "summary": "Langston Hughes brought Black everyday speech, blues, and jazz into influential poetry about ordinary lives, cultural pride, and the consequences of unequal opportunity.",
-        "lessons": [
-          {
-            "id": "les_lh01",
-            "slug": "poetry-with-the-rhythm-of-everyday-life",
-            "title": "Langston Hughes: Poetry with the Rhythm of Everyday Life",
-            "sections": [
-              {
-                "heading": "Whose life belongs in a poem?",
-                "body": "Imagine opening a poetry book and hearing the voices of a neighborhood: music from a club, a conversation on the street, someone worrying about work. Langston Hughes made such experiences central to literature. His subjects included the humor, disappointments, creativity, and ambitions of ordinary Black Americans.\n\nHughes became a leading figure in the Harlem Renaissance, a flowering of Black artistic and intellectual life during the 1920s. Harlem, a neighborhood in New York City, was a major center, but the movement was not confined to one place or one writer.\n\nHis first poetry collection, The Weary Blues, appeared in 1926. He also wrote fiction, plays, and essays. What connects much of this work is his determination to portray Black life without reducing it either to idealized respectability or to degrading stereotypes."
-              },
-              {
-                "heading": "Making the page sound like music",
-                "body": "For Hughes, blues and jazz were not merely subjects to mention. Their rhythms and expressive possibilities helped shape the writing itself. Repetition, variations in phrasing, and the rhythms of speech let a printed poem suggest a performance rather than a formally delivered speech.\n\nIn the poem “The Weary Blues,” a speaker describes hearing a Black pianist sing. The poem moves between the listener’s account and the musician’s lyrics. Repeated phrases and descriptions of swaying make music something the reader experiences through language, not just something the speaker reports.\n\nNotice the distinction between poet, observing speaker, and performing musician. Their perspectives are connected, but they are not interchangeable. Reading aloud helps reveal how repeated sounds and changes in voice give the scene its movement and melancholy. This is a reading exercise grounded in the poem’s structure."
-              },
-              {
-                "heading": "What happens when hope must wait?",
-                "body": "Hughes’s 1951 collection Montage of a Dream Deferred explores Black life in Harlem through an interrelated sequence of poems. Its musical shifts reflect a community’s varied voices and experiences. The famous poem “Harlem” belongs to this larger work, rather than standing entirely alone.\n\n“Harlem” considers the consequences of postponing a dream. Its comparisons turn an abstract frustration into physical experiences: drying fruit, an untreated wound, spoiled food, and an exhausting burden. These images make delay seem active and damaging rather than a harmless period of waiting.\n\nThe ending shifts toward the possibility of explosion. One plausible interpretation is accumulated social anger, but the poem does not offer a simple prediction. Its racial and historical context matters: reading it only as advice about personal ambition overlooks the barriers faced by the community it addresses."
-              },
-              {
-                "heading": "Cultural pride without a polished mask",
-                "body": "In his 1926 essay “The Negro Artist and the Racial Mountain,” Hughes defended artistic freedom rooted in Black experience. He challenged the pressure to treat white cultural standards as the measure of artistic achievement or to suppress Black identity to gain approval.\n\nThat position also left room for ordinary people’s imperfections. A literature worthy of its subjects could include hardship, pleasure, humor, and contradiction. Cultural pride did not require every character to become an exemplary spokesperson or every poem to become an uplifting public message.\n\nHughes offers a way to connect literary technique with social meaning. Ask not only what a poem says about equality, but whose voice it makes audible and how it sounds. His influence rests partly on bringing those questions together through language readers can hear."
-              }
-            ],
-            "keyFacts": [
-              "Hughes was a leading writer of the Harlem Renaissance, not its sole creator.",
-              "His first poetry collection, The Weary Blues, was published in 1926.",
-              "Blues, jazz, and everyday speech shaped his poetic techniques as well as his subjects.",
-              "The poem “The Weary Blues” distinguishes an observing speaker from a performing musician.",
-              "“Harlem” appears in Montage of a Dream Deferred, published in 1951.",
-              "Hughes defended the freedom to represent Black culture without submitting to white approval or idealizing every subject."
-            ],
-            "quiz": [
-              {
-                "question": "Which description best places Hughes within the Harlem Renaissance?",
-                "options": [
-                  "He single-handedly created a movement limited entirely to poetry.",
-                  "He opposed writing about contemporary Black life.",
-                  "He was a leading participant in a broader flowering of Black arts and intellectual life.",
-                  "He belonged to a movement devoted exclusively to ancient literature."
-                ],
-                "answerIndex": 2,
-                "explanation": "The Harlem Renaissance involved many writers and artists, with Harlem as a major center rather than the movement’s only location."
-              },
-              {
-                "question": "How did blues and jazz influence Hughes’s poetry?",
-                "options": [
-                  "They helped shape rhythm, repetition, voice, and phrasing, not just subject matter.",
-                  "They required every poem to use the same rhyme scheme.",
-                  "They prevented him from writing about social concerns.",
-                  "They appeared only in the titles of his books."
-                ],
-                "answerIndex": 0,
-                "explanation": "Musical traditions helped organize how his poems sound and move, alongside providing subjects and settings."
-              },
-              {
-                "question": "In “The Weary Blues,” why distinguish the speaker from the musician?",
-                "options": [
-                  "Because the musician never sings.",
-                  "Because poems cannot contain more than one voice.",
-                  "Because the speaker must be a newspaper reporter.",
-                  "Because the poem includes both an observer’s account and the performer’s lyrics."
-                ],
-                "answerIndex": 3,
-                "explanation": "Identifying these voices helps readers follow the structure without assuming every utterance comes directly from Hughes himself."
-              },
-              {
-                "question": "What do the physical comparisons in “Harlem” contribute?",
-                "options": [
-                  "They establish that delayed dreams always disappear harmlessly.",
-                  "They make the possible damage of postponed hope tangible through sensory experiences.",
-                  "They prove that the poem is a guide to food storage.",
-                  "They remove any connection to historical inequality."
-                ],
-                "answerIndex": 1,
-                "explanation": "Images of decay, injury, and burden give concrete form to the consequences of deferral."
-              },
-              {
-                "question": "Which statement best reflects Hughes’s position in “The Negro Artist and the Racial Mountain”?",
-                "options": [
-                  "Black artists should suppress their cultural identity to gain acceptance.",
-                  "Every Black character must be morally flawless.",
-                  "Black artists should be free to draw on their own culture without making white approval their governing standard.",
-                  "Music has no place in serious literature."
-                ],
-                "answerIndex": 2,
-                "explanation": "The essay defends creative freedom and Black cultural expression against pressures to conform or produce only respectable images."
-              },
-              {
-                "question": "Which reading approach best fits this lesson?",
-                "options": [
-                  "Connect voice, sound, and imagery with the social experiences the poem represents.",
-                  "Assume accessible language cannot carry complex ideas.",
-                  "Treat every speaker as an exact portrait of Hughes.",
-                  "Read “Harlem” only as motivational advice, ignoring its setting and larger sequence."
-                ],
-                "answerIndex": 0,
-                "explanation": "Hughes’s work rewards attention both to how language operates and to the Black lives and historical circumstances it presents."
-              }
-            ],
-            "sources": [
-              {
-                "publisher": "Academy of American Poets",
-                "title": "About Langston Hughes",
-                "url": "https://poets.org/poet/langston-hughes",
-                "note": "Supports the overview of Hughes’s writing, first collection, musical influences, and the 1951 publication of Montage of a Dream Deferred."
-              },
-              {
-                "publisher": "Poetry Foundation",
-                "title": "Langston Hughes",
-                "url": "https://www.poetryfoundation.org/poets/langston-hughes",
-                "note": "Supports the Harlem Renaissance context and his portrayal of working-class Black lives without idealization or negative stereotyping."
-              },
-              {
-                "publisher": "Poetry Foundation",
-                "title": "Langston Hughes, “The Weary Blues”",
-                "url": "https://www.poetryfoundation.org/poems/47347/the-weary-blues",
-                "note": "Primary text supporting the discussion of speaker, musician, repetition, movement, and melancholy. The lesson’s account of these effects is close reading, not a claim about a documented real-life performance."
-              },
-              {
-                "publisher": "Poetry Foundation",
-                "title": "Langston Hughes: ‘Harlem’",
-                "url": "https://www.poetryfoundation.org/articles/150907/langston-hughes-harlem",
-                "note": "Provides the 1951 poem’s text, its place within Montage of a Dream Deferred, and analysis of imagery, musical structure, historical context, and possible meanings of its ending. Hughes also wrote a different poem titled “Harlem”; this lesson discusses the 1951 poem about a deferred dream."
-              },
-              {
-                "publisher": "Poetry Foundation",
-                "title": "Langston Hughes, “The Negro Artist and the Racial Mountain”",
-                "url": "https://www.poetryfoundation.org/articles/69395/the-negro-artist-and-the-racial-mountain",
-                "note": "Supports the discussion of his 1926 essay, artistic independence, cultural identity, and resistance to respectability pressures. Its historical title is reproduced for identification."
-              }
-            ],
-            "digDeeper": [
-              {
-                "id": "harlem-renaissance",
-                "label": "The Harlem Renaissance",
-                "kind": "event"
-              },
-              {
-                "id": "the-weary-blues",
-                "label": "The Weary Blues",
-                "kind": "subtopic"
-              },
-              {
-                "id": "montage-of-a-dream-deferred",
-                "label": "Montage of a Dream Deferred",
-                "kind": "subtopic"
-              },
-              {
-                "id": "blues-and-jazz",
-                "label": "Blues and jazz in poetry",
-                "kind": "idea"
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "slug": "homer",
-        "title": "Homer",
-        "kind": "person",
-        "summary": "The ancient Greek epics traditionally attributed to Homer explore anger, loss, ingenuity, and homecoming through stories shaped by generations of oral performance.",
-        "lessons": [
+          },
           {
             "id": "les_hm01",
             "slug": "war-homecoming-and-the-making-of-an-epic",
@@ -8678,162 +8635,157 @@
                 "kind": "event"
               }
             ]
-          }
-        ]
-      },
-      {
-        "slug": "unreliable-narration",
-        "title": "Unreliable narration",
-        "kind": "technique",
-        "summary": "An unreliable narrator gives readers reasons to question the interpretation or accuracy of a story’s telling, creating a gap between the narrator’s account and the reader’s understanding.",
-        "lessons": [
+          },
           {
-            "id": "les_un01",
-            "slug": "reading-between-the-telling-and-the-truth",
-            "title": "The Unreliable Narrator: Reading Between the Telling and the Truth",
+            "id": "les_lh01",
+            "slug": "poetry-with-the-rhythm-of-everyday-life",
+            "title": "Langston Hughes: Poetry with the Rhythm of Everyday Life",
             "sections": [
               {
-                "heading": "Who is speaking is part of the story",
-                "body": "Imagine a narrator who begins, “Everyone agreed I handled the argument calmly,” then describes shouting, throwing a glass, and leaving the room. This invented example creates a gap between the narrator's self-description and the events being reported. The reader must do more than accept the label “calm.”\n\nA narrator is the voice that tells a story and establishes its point of view. In fiction, an unreliable narrator may misunderstand a situation or draw mistaken conclusions about witnessed events. Unreliability is therefore not restricted to deliberate lying.\n\nThe question is not simply whether you like the speaker. A narrator can be sympathetic and mistaken, or unpleasant yet accurate about a particular event. Reading carefully requires distinguishing a judgment about personality from a judgment about the account's reliability."
+                "heading": "Whose life belongs in a poem?",
+                "body": "Imagine opening a poetry book and hearing the voices of a neighborhood: music from a club, a conversation on the street, someone worrying about work. Langston Hughes made such experiences central to literature. His subjects included the humor, disappointments, creativity, and ambitions of ordinary Black Americans.\n\nHughes became a leading figure in the Harlem Renaissance, a flowering of Black artistic and intellectual life during the 1920s. Harlem, a neighborhood in New York City, was a major center, but the movement was not confined to one place or one writer.\n\nHis first poetry collection, The Weary Blues, appeared in 1926. He also wrote fiction, plays, and essays. What connects much of this work is his determination to portray Black life without reducing it either to idealized respectability or to degrading stereotypes."
               },
               {
-                "heading": "Author, narrator, and character are different roles",
-                "body": "The author creates the work; the narrator tells the story within its chosen narrative arrangement. A narrator's statements should not automatically be treated as the author's own beliefs. Fiction can create distance between what a speaker says and what the reader is encouraged to notice.\n\nA narrator can also be a character participating in events. That position may provide intimate access to certain experiences while limiting understanding of other people. Having a vivid first-person voice does not by itself prove either reliability or unreliability; the text must provide grounds for the distinction.\n\nFor an invented illustration, a character might confidently explain a friend's motives while reporting only a brief conversation. Readers can distinguish what was actually said from the interpretation imposed on it. That distinction preserves uncertainty without requiring us to invent a hidden motive of our own."
+                "heading": "Making the page sound like music",
+                "body": "For Hughes, blues and jazz were not merely subjects to mention. Their rhythms and expressive possibilities helped shape the writing itself. Repetition, variations in phrasing, and the rhythms of speech let a printed poem suggest a performance rather than a formally delivered speech.\n\nIn the poem “The Weary Blues,” a speaker describes hearing a Black pianist sing. The poem moves between the listener’s account and the musician’s lyrics. Repeated phrases and descriptions of swaying make music something the reader experiences through language, not just something the speaker reports.\n\nNotice the distinction between poet, observing speaker, and performing musician. Their perspectives are connected, but they are not interchangeable. Reading aloud helps reveal how repeated sounds and changes in voice give the scene its movement and melancholy. This is a reading exercise grounded in the poem’s structure."
               },
               {
-                "heading": "The reader may understand more than the teller",
-                "body": "Ford Madox Ford's The Good Soldier, published in 1915, is a major example of a narrator who does not fully understand the story he tells. Britannica describes the technique as allowing the reader to understand better than the observer who supplies the account.\n\nThis structure asks readers to connect details that the narrator cannot adequately interpret. A report may contain information that works against its teller's explanation. The telling and the apparent implications of the telling become two layers of the reading experience.\n\nJ.D. Salinger's The Catcher in the Rye supplies another kind of example. Holden Caulfield calls himself a liar, and his emotional condition also complicates his narration. The point is not that every sentence must be false, but that the account must be read with attention to the speaker's limitations."
+                "heading": "What happens when hope must wait?",
+                "body": "Hughes’s 1951 collection Montage of a Dream Deferred explores Black life in Harlem through an interrelated sequence of poems. Its musical shifts reflect a community’s varied voices and experiences. The famous poem “Harlem” belongs to this larger work, rather than standing entirely alone.\n\n“Harlem” considers the consequences of postponing a dream. Its comparisons turn an abstract frustration into physical experiences: drying fruit, an untreated wound, spoiled food, and an exhausting burden. These images make delay seem active and damaging rather than a harmless period of waiting.\n\nThe ending shifts toward the possibility of explosion. One plausible interpretation is accumulated social anger, but the poem does not offer a simple prediction. Its racial and historical context matters: reading it only as advice about personal ambition overlooks the barriers faced by the community it addresses."
               },
               {
-                "heading": "How to question a narrator responsibly",
-                "body": "Start with a specific claim, then identify the textual evidence that supports or challenges it. Contradictions between description and action, or between an explanation and the reported details, can justify doubt. The opening invented example works because the reported behavior conflicts with the claim of calmness.\n\nNext, separate uncertainty from a replacement theory. If a narrator's explanation is weak, an alternative explanation is not automatically proven. A good interpretation makes clear which details are established within the text, which are inferred, and which remain unresolved. This is a reading method, not a requirement that every story have one solvable secret.\n\nFinally, ask what the narrative distance accomplishes. Does it create irony, sympathy, discomfort, or suspense? Unreliable narration matters because the act of telling becomes part of the subject: readers experience a person's effort to understand events while also noticing the limits of that understanding."
+                "heading": "Cultural pride without a polished mask",
+                "body": "In his 1926 essay “The Negro Artist and the Racial Mountain,” Hughes defended artistic freedom rooted in Black experience. He challenged the pressure to treat white cultural standards as the measure of artistic achievement or to suppress Black identity to gain approval.\n\nThat position also left room for ordinary people’s imperfections. A literature worthy of its subjects could include hardship, pleasure, humor, and contradiction. Cultural pride did not require every character to become an exemplary spokesperson or every poem to become an uplifting public message.\n\nHughes offers a way to connect literary technique with social meaning. Ask not only what a poem says about equality, but whose voice it makes audible and how it sounds. His influence rests partly on bringing those questions together through language readers can hear."
               }
             ],
             "keyFacts": [
-              "The narrator is the voice telling a story.",
-              "Narration establishes point of view.",
-              "Unreliability can involve misunderstanding, not only intentional lies.",
-              "The Good Soldier is a major example of unreliable narration.",
-              "Holden Caulfield’s narration is complicated by lying and emotional distress.",
-              "Readers can understand implications that the narrator misses."
+              "Hughes was a leading writer of the Harlem Renaissance, not its sole creator.",
+              "His first poetry collection, The Weary Blues, was published in 1926.",
+              "Blues, jazz, and everyday speech shaped his poetic techniques as well as his subjects.",
+              "The poem “The Weary Blues” distinguishes an observing speaker from a performing musician.",
+              "“Harlem” appears in Montage of a Dream Deferred, published in 1951.",
+              "Hughes defended the freedom to represent Black culture without submitting to white approval or idealizing every subject."
             ],
             "quiz": [
               {
-                "question": "What is a narrator?",
+                "question": "Which description best places Hughes within the Harlem Renaissance?",
                 "options": [
-                  "The publisher",
-                  "The voice telling the story",
-                  "Every reader",
-                  "The book’s cover designer"
-                ],
-                "answerIndex": 1,
-                "explanation": "Narration is the telling voice within the work."
-              },
-              {
-                "question": "Must an unreliable narrator deliberately lie?",
-                "options": [
-                  "Yes, without exception",
-                  "Only in first-person novels",
-                  "No; misunderstanding can also produce unreliability",
-                  "No narrator can ever lie"
+                  "He single-handedly created a movement limited entirely to poetry.",
+                  "He opposed writing about contemporary Black life.",
+                  "He was a leading participant in a broader flowering of Black arts and intellectual life.",
+                  "He belonged to a movement devoted exclusively to ancient literature."
                 ],
                 "answerIndex": 2,
-                "explanation": "Incorrect assumptions and limited understanding also matter."
+                "explanation": "The Harlem Renaissance involved many writers and artists, with Harlem as a major center rather than the movement’s only location."
               },
               {
-                "question": "Why not equate narrator and author?",
+                "question": "How did blues and jazz influence Hughes’s poetry?",
                 "options": [
-                  "The author can construct a voice whose claims readers should question",
-                  "They are always the same person",
-                  "Narrators exist only in nonfiction",
-                  "Authors never choose point of view"
+                  "They helped shape rhythm, repetition, voice, and phrasing, not just subject matter.",
+                  "They required every poem to use the same rhyme scheme.",
+                  "They prevented him from writing about social concerns.",
+                  "They appeared only in the titles of his books."
                 ],
                 "answerIndex": 0,
-                "explanation": "The narrative arrangement can create distance from the teller’s claims."
+                "explanation": "Musical traditions helped organize how his poems sound and move, alongside providing subjects and settings."
               },
               {
-                "question": "Which novel provides a major example in this lesson?",
+                "question": "In “The Weary Blues,” why distinguish the speaker from the musician?",
                 "options": [
-                  "The Odyssey",
-                  "Paradise Lost",
-                  "Pride and Prejudice",
-                  "The Good Soldier"
+                  "Because the musician never sings.",
+                  "Because poems cannot contain more than one voice.",
+                  "Because the speaker must be a newspaper reporter.",
+                  "Because the poem includes both an observer’s account and the performer’s lyrics."
                 ],
                 "answerIndex": 3,
-                "explanation": "Ford’s narrator does not fully grasp his own account’s implications."
+                "explanation": "Identifying these voices helps readers follow the structure without assuming every utterance comes directly from Hughes himself."
               },
               {
-                "question": "What follows when a narrator’s explanation is unconvincing?",
+                "question": "What do the physical comparisons in “Harlem” contribute?",
                 "options": [
-                  "Your first alternative is automatically true",
-                  "You should distinguish evidence from inference",
-                  "Every reported event must be false",
-                  "The novel has no meaning"
+                  "They establish that delayed dreams always disappear harmlessly.",
+                  "They make the possible damage of postponed hope tangible through sensory experiences.",
+                  "They prove that the poem is a guide to food storage.",
+                  "They remove any connection to historical inequality."
                 ],
                 "answerIndex": 1,
-                "explanation": "Doubt does not by itself prove a replacement account."
+                "explanation": "Images of decay, injury, and burden give concrete form to the consequences of deferral."
               },
               {
-                "question": "What is a useful final interpretive question?",
+                "question": "Which statement best reflects Hughes’s position in “The Negro Artist and the Racial Mountain”?",
                 "options": [
-                  "How can I ignore the narrative voice?",
-                  "Which character is always morally perfect?",
-                  "What effect does the gap between teller and reader create?",
-                  "Why is all fiction dishonest?"
+                  "Black artists should suppress their cultural identity to gain acceptance.",
+                  "Every Black character must be morally flawless.",
+                  "Black artists should be free to draw on their own culture without making white approval their governing standard.",
+                  "Music has no place in serious literature."
                 ],
                 "answerIndex": 2,
-                "explanation": "The gap can shape irony, sympathy, and the reading experience."
+                "explanation": "The essay defends creative freedom and Black cultural expression against pressures to conform or produce only respectable images."
+              },
+              {
+                "question": "Which reading approach best fits this lesson?",
+                "options": [
+                  "Connect voice, sound, and imagery with the social experiences the poem represents.",
+                  "Assume accessible language cannot carry complex ideas.",
+                  "Treat every speaker as an exact portrait of Hughes.",
+                  "Read “Harlem” only as motivational advice, ignoring its setting and larger sequence."
+                ],
+                "answerIndex": 0,
+                "explanation": "Hughes’s work rewards attention both to how language operates and to the Black lives and historical circumstances it presents."
               }
             ],
             "sources": [
               {
-                "publisher": "Encyclopaedia Britannica",
-                "title": "Narrator",
-                "url": "https://www.britannica.com/art/narrator"
+                "publisher": "Academy of American Poets",
+                "title": "About Langston Hughes",
+                "url": "https://poets.org/poet/langston-hughes",
+                "note": "Supports the overview of Hughes’s writing, first collection, musical influences, and the 1951 publication of Montage of a Dream Deferred."
               },
               {
-                "publisher": "Encyclopaedia Britannica",
-                "title": "Novel: Narrative method and point of view",
-                "url": "https://www.britannica.com/art/novel/Narrative-method-and-point-of-view"
+                "publisher": "Poetry Foundation",
+                "title": "Langston Hughes",
+                "url": "https://www.poetryfoundation.org/poets/langston-hughes",
+                "note": "Supports the Harlem Renaissance context and his portrayal of working-class Black lives without idealization or negative stereotyping."
               },
               {
-                "publisher": "Encyclopaedia Britannica",
-                "title": "The Catcher in the Rye",
-                "url": "https://www.britannica.com/topic/The-Catcher-in-the-Rye"
+                "publisher": "Poetry Foundation",
+                "title": "Langston Hughes, “The Weary Blues”",
+                "url": "https://www.poetryfoundation.org/poems/47347/the-weary-blues",
+                "note": "Primary text supporting the discussion of speaker, musician, repetition, movement, and melancholy. The lesson’s account of these effects is close reading, not a claim about a documented real-life performance."
               },
               {
-                "publisher": "Wikipedia",
-                "title": "Unreliable narrator",
-                "url": "https://en.wikipedia.org/wiki/Unreliable_narrator",
-                "note": "The narrator as a point of view; unreliability that includes fallible or naïve speakers as well as lying; and Holden Caulfield in The Catcher in the Rye as an example."
+                "publisher": "Poetry Foundation",
+                "title": "Langston Hughes: ‘Harlem’",
+                "url": "https://www.poetryfoundation.org/articles/150907/langston-hughes-harlem",
+                "note": "Provides the 1951 poem’s text, its place within Montage of a Dream Deferred, and analysis of imagery, musical structure, historical context, and possible meanings of its ending. Hughes also wrote a different poem titled “Harlem”; this lesson discusses the 1951 poem about a deferred dream."
               },
               {
-                "publisher": "Modernism Lab, Yale University",
-                "title": "The Good Soldier",
-                "url": "https://campuspress.yale.edu/modernismlab/the-good-soldier/",
-                "note": "Ford Madox Ford’s 1915 novel as a major example of unreliable narration: John Dowell is not deliberately misleading, but the reader must assemble what his account does not fully order."
+                "publisher": "Poetry Foundation",
+                "title": "Langston Hughes, “The Negro Artist and the Racial Mountain”",
+                "url": "https://www.poetryfoundation.org/articles/69395/the-negro-artist-and-the-racial-mountain",
+                "note": "Supports the discussion of his 1926 essay, artistic independence, cultural identity, and resistance to respectability pressures. Its historical title is reproduced for identification."
               }
             ],
             "digDeeper": [
               {
-                "id": "the-good-soldier",
-                "label": "The Good Soldier",
-                "kind": "idea"
+                "id": "harlem-renaissance",
+                "label": "The Harlem Renaissance",
+                "kind": "event"
               },
               {
-                "id": "holden-caulfield",
-                "label": "Holden Caulfield",
-                "kind": "person"
-              },
-              {
-                "id": "ford-madox-ford",
-                "label": "Ford Madox Ford",
-                "kind": "person"
-              },
-              {
-                "id": "author-vs-narrator",
-                "label": "Author vs. narrator",
+                "id": "the-weary-blues",
+                "label": "The Weary Blues",
                 "kind": "subtopic"
+              },
+              {
+                "id": "montage-of-a-dream-deferred",
+                "label": "Montage of a Dream Deferred",
+                "kind": "subtopic"
+              },
+              {
+                "id": "blues-and-jazz",
+                "label": "Blues and jazz in poetry",
+                "kind": "idea"
               }
             ]
           }

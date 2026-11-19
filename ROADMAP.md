@@ -87,7 +87,7 @@ Approved plan: `docs/plans/topic-drilldowns.md`. Free tiers only, AI-generated l
 - Better sources for lessons whose sources are all blocked for Dig deeper (for example Britannica- or Met-only lessons added in #54), so generation does not depend on the fallback.
 - Optional maskable home-screen icons, with the art inset to the 80% safe zone (left out of #56).
 - Check the subject badge icons from #45 on a real device **(status unclear)**.
-- Further single-lesson topic consolidation beyond #54, as a plan for Mike to approve first **(status unclear)**.
+- Topic consolidation round 2 (plan approved by Mike, Nov 18): two content-only PRs, World and Ancient History (#66) and Philosophy, Civics, Art History and Poetry & Literature. Single-lesson topics left by decision: Utilitarianism (until a second modern-ethics lesson), Marbury v. Madison, and the Buddhism, Judaism and Islam topics.
 - More U.S. Presidents lessons, added to the existing series topic.
 - Dig deeper follow-ups noted in the plan: reuse already-published lessons instead of generating new ones; a short multi-lesson plan per choice; automated handling of reported lessons.
 - Disable public sign-ups (AC-7), only with Mike's approval **(status unclear; an Oct 10 check found sign-ups already off)**.
