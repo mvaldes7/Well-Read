@@ -4,7 +4,8 @@ import { insertRow, isMissingColumnError, updateSteps, type Attempt, type Update
 
 export type SaveOutcome = "saved" | "kept" | "failed";
 
-const TABLE = "lesson_completions";
+/** Best-attempt tables with the same shape and rules: static lessons, and Dig deeper (generated) lessons. */
+export type CompletionTable = "lesson_completions" | "generated_lesson_completions";
 
 type DbError = { code?: string | null; message?: string | null } | null;
 
@@ -26,6 +27,9 @@ type DbError = { code?: string | null; message?: string | null } | null;
  * first_passed_at uses the app server's clock (PostgREST can't send now()); completed_at on
  * insert uses the database default. They can differ by clock skew (normally milliseconds).
  *
+ * generated_lesson_completions (Dig deeper quizzes) uses the same rules. Its update grant covers score, total, passed and
+ * completed_at; first_passed_at arrives with the Dig deeper progress migration, and until then the retry below drops it.
+ *
  * Until the first_passed_at migration is applied, any write that mentions the column fails
  * with 42703/PGRST204; the write is retried once without it, and later steps skip it too.
  */
@@ -34,6 +38,7 @@ export async function saveBestAttempt(
   userId: string,
   lessonId: string,
   attempt: Attempt,
+  table: CompletionTable = "lesson_completions",
 ): Promise<SaveOutcome> {
   try {
     const now = new Date().toISOString();
@@ -51,35 +56,35 @@ export async function saveBestAttempt(
 
     const inserted = await write((withCol) =>
       supabase
-        .from(TABLE)
+        .from(table)
         .upsert(insertRow(userId, lessonId, attempt, now, withCol), { onConflict: "user_id,lesson_id", ignoreDuplicates: true })
         .select("lesson_id"),
     );
-    if (inserted.error) return logFailure(inserted.error.code);
+    if (inserted.error) return logFailure(table, inserted.error.code);
     if (inserted.data && inserted.data.length > 0) return "saved";
 
     const stepCount = updateSteps(attempt, now, true).length;
     for (let i = 0; i < stepCount; i++) {
-      const updated = await write((withCol) => runStep(supabase, userId, lessonId, updateSteps(attempt, now, withCol)[i]));
-      if (updated.error) return logFailure(updated.error.code);
+      const updated = await write((withCol) => runStep(supabase, table, userId, lessonId, updateSteps(attempt, now, withCol)[i]));
+      if (updated.error) return logFailure(table, updated.error.code);
       if (updated.data && updated.data.length > 0) return "saved";
     }
     return "kept";
   } catch (err) {
     unstable_rethrow(err); // never swallow Next's internal control flow
-    return logFailure("exception");
+    return logFailure(table, "exception");
   }
 }
 
-function runStep(supabase: SupabaseClient, userId: string, lessonId: string, step: UpdateStep) {
-  let q = supabase.from(TABLE).update(step.patch).eq("user_id", userId).eq("lesson_id", lessonId);
+function runStep(supabase: SupabaseClient, table: CompletionTable, userId: string, lessonId: string, step: UpdateStep) {
+  let q = supabase.from(table).update(step.patch).eq("user_id", userId).eq("lesson_id", lessonId);
   if (step.match.passed !== undefined) q = q.eq("passed", step.match.passed);
   if (step.match.scoreBelow !== undefined) q = q.lt("score", step.match.scoreBelow);
   return q.select("lesson_id");
 }
 
-function logFailure(code: string | null | undefined): SaveOutcome {
+function logFailure(table: CompletionTable, code: string | null | undefined): SaveOutcome {
   // Error code only: no user data, answers or messages.
-  console.error(`lesson_completions save failed (${code ?? "unknown"})`);
+  console.error(`${table} save failed (${code ?? "unknown"})`);
   return "failed";
 }

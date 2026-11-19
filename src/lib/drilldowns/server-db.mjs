@@ -63,6 +63,16 @@ export function drilldownDbFor(s) {
         ${p.model}, ${p.reviewStatus}, ${j(p.lesson)}, ${j(p.sources)}, ${j(p.citations)},
         ${j(p.unconfirmedClaims)}, ${j(p.answers)}, ${j(p.explanations)})`;
     },
+    /**
+     * Quiz key for grading (Dig deeper quizzes step 2): answers + explanations, only for a lesson p_user may see
+     * (published, or their own pending/flagged); null otherwise. Server-only: never send it to the client before grading.
+     * @param {string} userId @param {string} lessonId
+     * @returns {Promise<{ answers: unknown, explanations: unknown } | null>}
+     */
+    async quizKey(userId, lessonId) {
+      const [row] = await s`select answers, explanations from public.drilldown_quiz_key(${userId}::uuid, ${lessonId})`;
+      return row ? { answers: row.answers, explanations: row.explanations } : null;
+    },
     /** P4 (20261104214500): per-claim fact-check results for p_user's own lesson created today. @param {string} userId @param {string} id @param {unknown} items */
     async saveFactCheck(userId, id, items) {
       await s`select public.drilldown_save_fact_check(${userId}::uuid, ${id}, ${j(items)})`;
@@ -78,6 +88,9 @@ export function drilldownDbFor(s) {
     },
   };
 }
+
+/** @param {string} userId @param {string} lessonId */
+export const quizKey = (userId, lessonId) => drilldownDbFor(db()).quizKey(userId, lessonId);
 
 /** @param {string} userId @param {number} calls @param {boolean} newLesson */
 export const reserve = (userId, calls, newLesson) => drilldownDbFor(db()).reserve(userId, calls, newLesson);
