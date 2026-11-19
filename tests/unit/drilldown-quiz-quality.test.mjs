@@ -26,15 +26,29 @@ test('a well-formed, grounded, balanced quiz has no problems', () => {
   assert.deepEqual(quizQualityProblems(base()), []);
 });
 
-test('hand-written lessons are a calibration set: at most a few clear length outliers, nothing else', () => {
-  const problems = lessons.flatMap((l) => quizQualityProblems(l).map((p) => `${l.id} ${p}`));
-  assert.ok(problems.every((p) => /length outlier/.test(p)), problems.join('\n'));
-  assert.ok(problems.length <= 5, problems.join('\n'));
+// Hand-written lessons are the calibration set for the content rules (grounding, distractors, explanations, length).
+// Answer-position balance is not checked here: the generator enforces it by reordering options before saving, and the
+// read-time check skips it too, so it is not a rule hand-written content is held to by this guard.
+// Every remaining flag must be a known, reviewed length giveaway (the correct option is 2.5x+ longer than every
+// distractor). These are real content touch-up candidates, listed so a new one shows up as a test failure, not noise.
+const KNOWN_LENGTH_OUTLIERS = [
+  'les_rr01 quiz5', 'les_st02 quiz2', 'les_st02 quiz5', 'les_zt01 quiz2', 'les_mf01 quiz5', 'les_ajo01 quiz6',
+];
+
+test('hand-written lessons are a calibration set: only the known length outliers are flagged', () => {
+  const problems = lessons.flatMap((l) => quizQualityProblems(l, { checkBalance: false }).map((p) => `${l.id} ${p}`));
+  assert.ok(problems.every((p) => /: correct option is a length outlier$/.test(p)), problems.join('\n'));
+  assert.deepEqual(problems.map((p) => p.replace(/: correct option is a length outlier$/, '')).sort(), [...KNOWN_LENGTH_OUTLIERS].sort());
+});
+
+test('a bare "None" is a literal answer, not a meta option', () => {
+  assert.deepEqual(quizQualityProblems(withQ(5, { question: 'How many languages were used?', options: ['Arabic', 'Seven', 'Eleven', 'None'], answerIndex: 0 }))
+    .filter((p) => /all\/none/.test(p)), []);
 });
 
 test('distractors: duplicates after normalizing, meta options, copied options, duplicate questions', () => {
   assert.ok(quizQualityProblems(withQ(0, { options: ['Hunayn ibn Ishaq', 'hunayn  ibn-ishaq', 'Mansa Musa', 'Osman'] })).some((p) => /repeat after normalizing/.test(p)));
-  for (const meta of ['All of the above', 'None of these', 'Both of the above', 'none'])
+  for (const meta of ['All of the above', 'None of these', 'Both of the above', 'Neither of them', 'none of the options'])
     assert.ok(quizQualityProblems(withQ(0, { options: ['Hunayn ibn Ishaq', 'Ibn Battuta', 'Mansa Musa', meta] })).some((p) => /all\/none/.test(p)), meta);
   assert.ok(quizQualityProblems(withQ(0, { question: 'Did Hunayn ibn Ishaq translate Galen into Arabic?' })).some((p) => /copied into the question/.test(p)));
   assert.ok(quizQualityProblems(withQ(1, { question: 'Who translated  Galen into Arabic?' })).some((p) => /duplicate question/.test(p)));

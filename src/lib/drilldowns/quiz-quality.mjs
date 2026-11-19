@@ -9,8 +9,11 @@ const STOP = new Set(("about above after again against also among because been b
   "should some such than that their them then there these they this those through under until very were what when where " +
   "which while whom with would your").split(" "));
 
-/** Options that make a question guessable or ungradable ("all of the above", "none of these", ...). */
-const META_OPTION = /\b(?:all|none|both|neither) of (?:the )?(?:above|these|those|the options)\b|^(?:all|none|both)(?: of them)?$/i;
+/**
+ * Options that refer to the other options ("all of the above", "none of these", ...). A bare "None", "All" or "Both" is
+ * NOT flagged: it is often a literal answer (for example "How many vetoes were overridden? None").
+ */
+const META_OPTION = /\b(?:all|none|both|neither) of (?:the )?(?:above|these|those|the options|them)\b/i;
 /** Explanations must not depend on option order, because options are shuffled before saving. */
 const POSITIONAL = /\b(?:option|answer|choice)\s+[A-D]\b|\([A-D]\)|\b(?:first|second|third|fourth|last)\s+(?:option|answer|choice)\b/i;
 
