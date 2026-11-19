@@ -148,6 +148,9 @@ select t.eq((select string_agg(id, ',') from public.generated_lessons), 'gen_aaa
 select t.expect_error($$select created_by from public.generated_lessons where id = 'gen_aaaaaaaa01'$$, '42501');
 select t.eq((select count(*) from public.drilldown_my_lessons()), 0::bigint, 'B cannot read A''s claims');
 select t.expect_error($$update public.generated_lessons set review_status = 'pending' where id = 'gen_aaaaaaaa01'$$, '42501');
+-- Dig deeper quiz progress (20261119063000): locked until B has submitted the parent lesson's quiz
+select t.expect_error($$insert into public.generated_lesson_completions (lesson_id, score, total, passed) values ('gen_aaaaaaaa01', 4, 6, false)$$, '42501');
+insert into public.lesson_completions (lesson_id, score, total, passed) values ('les_fr02', 1, 6, false);
 insert into public.generated_lesson_completions (lesson_id, score, total, passed) values ('gen_aaaaaaaa01', 4, 6, false);
 commit;
 begin;
