@@ -382,11 +382,15 @@ test('model timeout covers a stalled response body, not only headers', async () 
 }));
 
 test('source phase deadline stops stalled fallback discovery without any model call', async () => withTimer(async () => {
-  const meiji = findLessonChoice(disciplines, 'les_mr01', 'meiji-constitution');
+  // Keep only blocked curated sources so this case still exercises fallback discovery.
+  const blockedOnly = structuredClone(disciplines);
+  const meiji = findLessonChoice(blockedOnly, 'les_mr01', 'meiji-constitution');
+  meiji.lesson.sources = meiji.lesson.sources.filter(s => /britannica.com|metmuseum.org/.test(s.url));
+  assert.ok(meiji.lesson.sources.length > 0);
   assert.ok(meiji.lesson.sources.every(s => /britannica.com|metmuseum.org/.test(s.url)));
   let requests = 0;
   const f = (_url, init) => { requests++; return waitForAbort(init.signal); };
-  const r = await runPrototype({ disciplines, lessonId: 'les_mr01', choiceId: 'meiji-constitution', apiKey: KEY, fetchImpl: f,
+  const r = await runPrototype({ disciplines: blockedOnly, lessonId: 'les_mr01', choiceId: 'meiji-constitution', apiKey: KEY, fetchImpl: f,
     limits: { totalMs: 200, sourcesMs: 10, modelMs: 100 } });
   assert.equal(r.stoppedOn, 'generation timeout');
   assert.equal(r.phase, 'source_fetch');

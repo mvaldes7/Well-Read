@@ -19,11 +19,14 @@ test('lessonHasFetchableSource: Britannica-only lesson is not eligible; mixed le
   assert.equal(lessonHasFetchableSource(null), false);
 });
 
-test('every lesson offers Dig deeper; blocked-only curated sources are still listed for Unreliable Narrator, Meiji, Surrealism, Athenian Democracy, Protestant beliefs, and Egypt', () => {
+test('every lesson offers Dig deeper; formerly blocked-only lessons now have a fetchable curated source', () => {
   const missing = lessons.filter((l) => !lessonOffersDigDeeper(l)).map((l) => l.id);
   assert.deepEqual(missing, []);
   const blockedOnly = lessons.filter((l) => !lessonHasFetchableSource(l)).map((l) => l.id).sort();
-  assert.deepEqual(blockedOnly, ['les_ad01', 'les_eg01', 'les_mr01', 'les_pc01', 'les_su01', 'les_un01']);
+  assert.deepEqual(blockedOnly, []);
+  for (const id of ['les_ad01', 'les_eg01', 'les_mr01', 'les_pc01', 'les_su01', 'les_un01']) {
+    assert.equal(lessonHasFetchableSource(byId(id)), true, id);
+  }
   assert.equal(lessonOffersDigDeeper(byId('les_un01')), true);
   assert.equal(lessonOffersDigDeeper({ digDeeper: [] }), false);
   assert.equal(lessonOffersDigDeeper(null), false);
