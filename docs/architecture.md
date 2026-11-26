@@ -166,8 +166,8 @@ Stack (updated 2026-11-17; repo rules for contributors and AI tools are in `inst
   `supabase/README.md`. Vercel Preview deployments use the same production Supabase project as the live site.
 - **Hosting:** Vercel (Hobby), project `well-read`; `main` auto-deploys to production, and each PR gets a preview.
   Migrations do not run on deploy.
-- **Scheduled jobs:** GitHub Actions `lesson-reminders.yml` sends the daily lesson reminder (see
-  `docs/lesson-reminders.md`).
+- **Scheduled jobs:** GitHub Actions `lesson-reminders.yml` sends the daily lesson reminder in the
+  2-9 PM Pacific window (see `docs/lesson-reminders.md`). There is no public cron endpoint.
 - **Dig deeper (AI lessons):** Gemini free tier, server-side only, behind `WELL_READ_DRILLDOWNS` (on in production
   since 2026-11-04). Design, caps and phases: `docs/plans/topic-drilldowns.md`.
 - **Not added yet:** E2E tests.

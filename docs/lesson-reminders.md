@@ -1,9 +1,12 @@
 # Daily lesson reminders
 
-**Status: live in production.** Each opted-in user gets one "learn a lesson" Web Push a day at 6 PM PST / 7 PM PDT
-(`0 2 * * *` UTC, GitHub Actions `lesson-reminders.yml`), skipped on days they passed a lesson quiz. Tapping it
-opens `/learn`; iOS uses Declarative Web Push (`public/sw.js`). Real delivery and the tap-to-Learn behavior were
-confirmed on Mike's phone on 2026-11-10.
+**Status: live in production.** Each opted-in user gets one "learn a lesson" Web Push a day during the
+2 PM to 9 PM Pacific send window (`0 11-23,0-2 * * *` UTC, GitHub Actions `lesson-reminders.yml`).
+The script only claims and sends when the current `America/Los_Angeles` time is at or after 2 PM and
+before 9 PM (14:00 inclusive, 21:00 exclusive), and only if that Pacific day is not already claimed.
+Reminders are skipped on days the user passed a lesson quiz. Tapping it opens `/learn`; iOS uses
+Declarative Web Push (`public/sw.js`). Real delivery and the tap-to-Learn behavior were confirmed on
+Mike's phone on 2026-11-10.
 
 Shipped in PRs #38 (opt-in reminders), #39 (sender fix), #40 (scheduler), #41-#43 (tap opens `/learn`, Declarative
 Web Push). The migration is applied (file `20261109214457_lesson_reminders.sql`, recorded as `20261109220157`; see
@@ -32,8 +35,8 @@ approval. Emergency stop: see "Verification and rollback" below.
   over guaranteed delivery. Disable/re-enable and replacement devices cannot reset claims.
 - Opt-in, endpoint, completion and claim day are rechecked immediately before each send;
   batches crossing Pacific midnight are skipped. A completion/opt-out racing *after* that
-  check cannot retract an in-flight/queued notification. One-hour TTL limits stale delivery;
-  the provider/OS ultimately controls delivery time.
+  check cannot retract an in-flight/queued notification. A four-hour Web Push TTL (14400 seconds)
+  limits stale delivery; the provider/OS ultimately controls delivery time.
 - 404/410 endpoints are disabled only if still the same endpoint (not a new replacement).
 - Generic lock-screen text; tap always opens same-origin `/learn`. Signed-out users follow
   the existing login `next` flow. No offline/authenticated-content caching.
@@ -60,10 +63,11 @@ approval. Emergency stop: see "Verification and rollback" below.
      per process, prepared statements off for Supavisor transaction pooling.
    - `WELL_READ_LESSON_REMINDERS` — application and sender flag; OFF unless exactly `1`.
    Dedicated Well-Read VAPID keys must be generated only after approval, not reused from Family To-Do.
-4. Add/enable a scheduler **separately**: proposed free GitHub Actions scheduled workflow
-   running the CLI once daily at **6 PM PST / 7 PM PDT** (same instant year-round).
-   Done in PR #40 (see "Scheduler" below). Stay within free Actions minutes and disable if
-   unavailable, never upgrade. No public cron endpoint/auth secret.
+4. Add/enable a scheduler **separately**: proposed free GitHub Actions scheduled workflow.
+   First shipped in PR #40 as a once-daily 02:00 UTC run (6 PM PST / 7 PM PDT). The current
+   schedule (see "Scheduler" below) is an hourly spread, 16 runs a day, with a 2-9 PM Pacific
+   send window. Stay within free Actions minutes and disable if unavailable, never upgrade.
+   No public cron endpoint/auth secret.
 5. Turn on real sending by setting **`WELL_READ_LESSON_REMINDERS=1`**, with all VAPID settings
    and `LESSON_REMINDER_DB_URL` present in the sender, then invoking/scheduling the CLI.
    Feature activation, credential setup, scheduler setup, a real send test and deployment
@@ -73,13 +77,24 @@ Manual sender (only with Mike's approval): `node scripts/send-lesson-reminders.m
 
 ### Scheduler (GitHub Actions, free tier)
 
-`.github/workflows/lesson-reminders.yml` runs the sender once a day at `0 2 * * *` UTC, which is
-6 PM PST in winter and 7 PM PDT in summer; GitHub can start scheduled runs late. Every run first
-does `node scripts/send-lesson-reminders.mjs --check`, which connects with the sender role and
-runs one read-only query (no claim, no push). Scheduled runs then send. Manual runs
-(`workflow_dispatch`) default to `check`; pick `send` for a real run. PRs touching the sender
-run the check only. Repeat runs on the same Pacific day send nothing, because each user's claim
-is per day.
+`.github/workflows/lesson-reminders.yml` runs hourly at minute 0, 16 times a day, on
+`0 11-23,0-2 * * *` (11:00 through 23:00 UTC, then 00:00, 01:00 and 02:00 UTC). The script
+only claims and sends when the current `America/Los_Angeles` time is inside the 2-9 PM
+Pacific window (14:00 inclusive to 21:00 exclusive) and exits without claiming or sending
+when it is not. PDT is UTC-7, so that window is 21:00-04:00 UTC; PST is UTC-8, so it is
+22:00-05:00 UTC. The cron is not packed into those UTC hours: measured lag on this
+workflow (16 scheduled runs, Nov 10-25) was 6h 40m to 10h 04m late (median 7h 25m), so a
+tight band around the window would never start inside it. Spreading hourly slots earlier
+in the UTC day means a delayed start can still land shortly after 2 PM Pacific. The first
+in-window run sends; later runs that day are no-ops because each user's claim is per
+Pacific day. UTC day rollover is fine: claim keys use the Los Angeles date. A 3 AM Pacific
+start must do nothing, so it cannot consume the new day's claim. Every run first does
+`node scripts/send-lesson-reminders.mjs --check`, which connects with the sender role and
+runs one read-only query (no claim, no push, no window requirement). Scheduled runs then
+send only if they are still inside the window. Manual runs (`workflow_dispatch`) default
+to `check`; pick `send` for a real run (the window still applies). PRs touching the sender
+run the check only. Accepted notifications may be held for up to four hours (Web Push TTL
+14400 seconds). There is no public cron endpoint or cron auth secret.
 
 Repository secrets: `LESSON_REMINDER_DB_URL` (Supabase IPv4 session pooler, port 5432, sender
 role only), `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT`. Repository variable:
