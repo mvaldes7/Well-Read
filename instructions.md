@@ -38,8 +38,10 @@ lag. Do not apply a migration just because a README lists it as unapplied.
 - Vercel hosts the app (Hobby plan); `main` auto-deploys to production, and every PR gets a preview.
   Previews use the production Supabase project (see section 4).
 - Web Push for reminders (`web-push`, service worker `public/sw.js`, Declarative Web Push for iOS).
-- GitHub Actions runs `ci.yml` on every push and PR. `lesson-reminders.yml` sends the daily reminder at 02:00 UTC
-  (6 PM PST / 7 PM PDT).
+- GitHub Actions runs `ci.yml` on every push and PR. `lesson-reminders.yml` sends the daily reminder every 15
+  minutes across the 2-6 PM Pacific window (`*/15 21-23,0-1 * * *` UTC). The script only claims and sends from
+  2 PM inclusive to 6 PM exclusive `America/Los_Angeles`; late runs outside that window do nothing. Web Push
+  TTL is 4 hours.
 - AI generation uses the Gemini free tier, server-side only.
 
 | Path | What lives there |

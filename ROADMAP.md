@@ -59,7 +59,7 @@ Approved plan: `docs/plans/topic-drilldowns.md`. Free tiers only, AI-generated l
 ### Daily lesson reminders (Nov 9-10, 2026)
 
 - Opt-in daily "learn a lesson" Web Push, skipped on days a lesson was finished ([#38](https://github.com/mvaldes7/Well-Read/pull/38), [#39](https://github.com/mvaldes7/Well-Read/pull/39), Nov 9).
-- Scheduler on GitHub Actions at 6 PM Pacific (7 PM during daylight time) ([#40](https://github.com/mvaldes7/Well-Read/pull/40), Nov 9).
+- Scheduler on GitHub Actions first shipped as a once-daily 6 PM Pacific / 7 PM PDT run ([#40](https://github.com/mvaldes7/Well-Read/pull/40), Nov 9). The send window is now 2-6 PM Pacific, checked every 15 minutes, with a 4-hour Web Push TTL; late runs outside the window do not claim the day.
 - Tapping the reminder opens Learn, finished with Declarative Web Push for iOS ([#41](https://github.com/mvaldes7/Well-Read/pull/41), [#42](https://github.com/mvaldes7/Well-Read/pull/42), [#43](https://github.com/mvaldes7/Well-Read/pull/43), Nov 9); confirmed working on Mike's phone Nov 10.
 - Runbook: `docs/lesson-reminders.md`.
 

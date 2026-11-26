@@ -1,6 +1,11 @@
 // @ts-check
 // Well-Read currently uses America/Los_Angeles for streaks and has no user timezone setting.
 export const REMINDER_TIME_ZONE = "America/Los_Angeles";
+// Send window in America/Los_Angeles local time: 2 PM inclusive to 6 PM exclusive.
+export const REMINDER_WINDOW_START_HOUR = 14;
+export const REMINDER_WINDOW_END_HOUR = 18;
+// Web Push TTL: how long a provider may hold a notification (4 hours).
+export const REMINDER_PUSH_TTL_SECONDS = 4 * 60 * 60;
 export const LEARN_PATH = "/learn";
 export const APP_ORIGIN = "https://well-read-learn.vercel.app";
 export const LEARN_URL = new URL(LEARN_PATH, APP_ORIGIN).href;
@@ -30,6 +35,24 @@ export function reminderDay(instant) {
   return new Intl.DateTimeFormat("en-CA", {
     timeZone: REMINDER_TIME_ZONE, year: "numeric", month: "2-digit", day: "2-digit",
   }).format(new Date(instant));
+}
+
+/** Local minutes from midnight in America/Los_Angeles. Pure; pass `now` to inject a clock.
+ * @param {Date | string | number} [now] */
+export function reminderLocalMinutes(now = Date.now()) {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: REMINDER_TIME_ZONE, hour: "2-digit", minute: "2-digit", hourCycle: "h23",
+  }).formatToParts(new Date(now));
+  const hour = Number(parts.find((part) => part.type === "hour")?.value);
+  const minute = Number(parts.find((part) => part.type === "minute")?.value);
+  return hour * 60 + minute;
+}
+
+/** True when `now` is in the 2 PM (inclusive) to 6 PM (exclusive) Pacific send window.
+ * @param {Date | string | number} [now] */
+export function isInReminderSendWindow(now = Date.now()) {
+  const minutes = reminderLocalMinutes(now);
+  return minutes >= REMINDER_WINDOW_START_HOUR * 60 && minutes < REMINDER_WINDOW_END_HOUR * 60;
 }
 
 /** Mirrors SQL eligibility for unit tests; SQL remains authoritative and reserves before transport.

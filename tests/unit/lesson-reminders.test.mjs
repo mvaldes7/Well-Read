@@ -2,7 +2,7 @@ import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 import vm from "node:vm";
-import { reminderConfig, reminderDay, shouldRemind, parseSubscription, validPushEndpoint, LEARN_PATH, REMINDER_PAYLOAD } from "../../src/lib/reminders/logic.mjs";
+import { reminderConfig, reminderDay, shouldRemind, parseSubscription, validPushEndpoint, LEARN_PATH, REMINDER_PAYLOAD, REMINDER_PUSH_TTL_SECONDS } from "../../src/lib/reminders/logic.mjs";
 import { sendLessonReminders } from "../../src/lib/reminders/send.mjs";
 import { classifyPath } from "../../src/lib/auth/logic.mjs";
 
@@ -46,10 +46,10 @@ test("disabled or unconfigured worker never claims or sends", async () => {
 });
 test("claim precedes transport, fixed /learn payload, no transport retries", async () => {
   const calls = [];
-  const result = await sendLessonReminders({ env,
+  const result = await sendLessonReminders({ env, now,
     claim: async () => { calls.push("claim"); return [sub]; },
     canSend: async () => true, expire: async () => assert.fail("not expired"),
-    send: async (_s, payload, opts) => { calls.push("send"); assert.equal(JSON.parse(payload).notification.navigate, "https://well-read-learn.vercel.app/learn"); assert.equal(opts.TTL, 3600); },
+    send: async (_s, payload, opts) => { calls.push("send"); assert.equal(JSON.parse(payload).notification.navigate, "https://well-read-learn.vercel.app/learn"); assert.equal(opts.TTL, 14400); },
   });
   assert.deepEqual(calls, ["claim", "send"]);
   assert.deepEqual(result, { disabled: false, claimed: 1, sent: 1, failed: 0 });
@@ -57,7 +57,7 @@ test("claim precedes transport, fixed /learn payload, no transport retries", asy
 test("404/410 clean up matching endpoint; transient failures consume claim without retry", async () => {
   for (const statusCode of [404, 410, 429, 503]) {
     let sends = 0, expires = 0;
-    const result = await sendLessonReminders({ env, claim: async () => [sub],
+    const result = await sendLessonReminders({ env, now, claim: async () => [sub],
       canSend: async () => true, expire: async (user, endpoint) => { expires++; assert.equal(user, sub.user_id); assert.equal(endpoint, sub.endpoint); },
       send: async () => { sends++; throw { statusCode }; },
     });
@@ -66,7 +66,7 @@ test("404/410 clean up matching endpoint; transient failures consume claim witho
   }
 });
 test("revalidate DB endpoints before transport", async () => {
-  const result = await sendLessonReminders({ env, claim: async () => [{ ...sub, endpoint: "https://127.0.0.1" }],
+  const result = await sendLessonReminders({ env, now, claim: async () => [{ ...sub, endpoint: "https://127.0.0.1" }],
     canSend: async () => true, expire: async () => {}, send: async () => assert.fail("SSRF"),
   });
   assert.equal(result.failed, 1);
@@ -114,7 +114,7 @@ test("migration has RLS, locked claims, narrow sender and no credentials/schedul
 });
 
 test("completion/opt-out after claim wins before transport", async () => {
-  const result = await sendLessonReminders({ env, claim: async () => [sub],
+  const result = await sendLessonReminders({ env, now, claim: async () => [sub],
     canSend: async () => false, expire: async () => {}, send: async () => assert.fail("no send"),
   });
   assert.equal(result.claimed, 1); assert.equal(result.sent, 0);
@@ -128,4 +128,15 @@ test("reminder payload is Declarative Web Push with a fixed same-site /learn nav
   assert.equal(new URL(n.navigate).protocol, "https:");
   assert.ok(Object.isFrozen(REMINDER_PAYLOAD) && Object.isFrozen(n));
   assert.deepEqual(Object.keys(REMINDER_PAYLOAD).sort(), ["notification", "web_push"]);
+});
+
+test("Web Push TTL is 4 hours (14400 seconds)", async () => {
+  assert.equal(REMINDER_PUSH_TTL_SECONDS, 4 * 60 * 60);
+  assert.equal(REMINDER_PUSH_TTL_SECONDS, 14400);
+  let ttl;
+  await sendLessonReminders({ env, now, claim: async () => [sub],
+    canSend: async () => true, expire: async () => {},
+    send: async (_s, _p, opts) => { ttl = opts.TTL; },
+  });
+  assert.equal(ttl, 14400);
 });

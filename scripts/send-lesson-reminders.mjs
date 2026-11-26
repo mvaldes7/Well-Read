@@ -1,6 +1,8 @@
-// Sender CLI, run daily by .github/workflows/lesson-reminders.yml (see docs/lesson-reminders.md).
+// Sender CLI, run by .github/workflows/lesson-reminders.yml (see docs/lesson-reminders.md).
 // `--check` connects and runs one read-only query: it never claims, imports web-push, or sends.
-import { reminderConfig } from "../src/lib/reminders/logic.mjs";
+// The send path exits without claiming unless the current America/Los_Angeles time is in the
+// 2 PM (inclusive) to 6 PM (exclusive) window.
+import { reminderConfig, isInReminderSendWindow } from "../src/lib/reminders/logic.mjs";
 import { sendLessonReminders } from "../src/lib/reminders/send.mjs";
 import { checkReminderConnection } from "../src/lib/reminders/check.mjs";
 
@@ -28,7 +30,10 @@ if (checkOnly) {
 
 
 // Fail closed before importing transport or connecting. Never fall back to shared DATABASE_URL.
-if (!reminderConfig(process.env) || !process.env.LESSON_REMINDER_DB_URL) {
+// A late run (for example 3 AM Pacific) must not claim the new Pacific day.
+if (!isInReminderSendWindow()) {
+  console.log(JSON.stringify({ disabled: false, claimed: 0, sent: 0, failed: 0, skipped: "outside_send_window" }));
+} else if (!reminderConfig(process.env) || !process.env.LESSON_REMINDER_DB_URL) {
   console.log("Lesson reminders disabled; no database connection or push attempted.");
 } else {
   const { default: postgres } = await import("postgres");
