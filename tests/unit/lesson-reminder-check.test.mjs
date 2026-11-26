@@ -24,9 +24,10 @@ test("CLI --check exits before web-push import or claim", () => {
   assert.doesNotMatch(checkBlock, /web-push|claim_batch\(\)`|sendLessonReminders/);
 });
 
-test("scheduled workflow: every 15 minutes across the 2-6 PM Pacific window, check-only on PRs, flag from repo variable", () => {
+test("scheduled workflow: hourly 11-23 and 0-2 UTC, check-only on PRs, flag from repo variable", () => {
   const wf = readFileSync(new URL("../../.github/workflows/lesson-reminders.yml", import.meta.url), "utf8");
-  assert.match(wf, /cron: "\*\/15 21-23,0-1 \* \* \*"/);
+  assert.match(wf, /cron: "0 11-23,0-2 \* \* \*"/);
+  assert.doesNotMatch(wf, /\*\/15/);
   assert.match(wf, /WELL_READ_LESSON_REMINDERS: \$\{\{ vars\.WELL_READ_LESSON_REMINDERS \}\}/);
   assert.match(wf, /github\.event_name == 'schedule' \|\| inputs\.mode == 'send'/);
   assert.doesNotMatch(wf, /DATABASE_URL: /);

@@ -1,7 +1,7 @@
 // Sender CLI, run by .github/workflows/lesson-reminders.yml (see docs/lesson-reminders.md).
 // `--check` connects and runs one read-only query: it never claims, imports web-push, or sends.
 // The send path exits without claiming unless the current America/Los_Angeles time is in the
-// 2 PM (inclusive) to 6 PM (exclusive) window.
+// 2 PM (inclusive) to 9 PM (exclusive) window.
 import { reminderConfig, isInReminderSendWindow } from "../src/lib/reminders/logic.mjs";
 import { sendLessonReminders } from "../src/lib/reminders/send.mjs";
 import { checkReminderConnection } from "../src/lib/reminders/check.mjs";

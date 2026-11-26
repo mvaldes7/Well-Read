@@ -1,16 +1,21 @@
 name: Lesson reminders
 
 # Well-Read lesson reminder sender.
-# Every 15 minutes across the 2-6 PM America/Los_Angeles send window, covering both
-# PDT (21:00-01:00 UTC) and PST (22:00-02:00 UTC). The union cron is below; the script
-# only claims and sends from 14:00 inclusive to 18:00 exclusive Pacific. UTC day
-# rollover is fine: claim keys use the Los Angeles date. GitHub may start scheduled
-# runs late; a late run outside the window must no-op and must not claim the day.
+# Hourly at minute 0, 16 times a day: 11:00-23:00 UTC and 00:00, 01:00, 02:00 UTC
+# (`0 11-23,0-2 * * *`). The script only claims and sends from 14:00 inclusive to
+# 21:00 exclusive America/Los_Angeles (2 PM-9 PM Pacific). PDT is UTC-7, so that
+# window is 21:00-04:00 UTC; PST is UTC-8, so it is 22:00-05:00 UTC. The cron is
+# spread across more of the UTC day because GitHub has been starting this job
+# 6h40m to 10h04m late (median 7h25m); packing slots into the window itself would
+# miss it. UTC day rollover is fine: claim keys use the Los Angeles date. A late
+# run outside the window (for example 3 AM Pacific) must no-op and must not claim
+# the day. The first in-window start sends; later runs that day are no-ops because
+# each user's claim is per Pacific day.
 # Emergency stop: set the repo variable WELL_READ_LESSON_REMINDERS to 0 (the sender then exits
 # without connecting), or disable this workflow (gh workflow disable lesson-reminders.yml).
 on:
   schedule:
-    - cron: "*/15 21-23,0-1 * * *"
+    - cron: "0 11-23,0-2 * * *"
   workflow_dispatch:
     inputs:
       mode:

@@ -1,9 +1,9 @@
 // @ts-check
 // Well-Read currently uses America/Los_Angeles for streaks and has no user timezone setting.
 export const REMINDER_TIME_ZONE = "America/Los_Angeles";
-// Send window in America/Los_Angeles local time: 2 PM inclusive to 6 PM exclusive.
+// Send window in America/Los_Angeles local time: 2 PM inclusive to 9 PM exclusive.
 export const REMINDER_WINDOW_START_HOUR = 14;
-export const REMINDER_WINDOW_END_HOUR = 18;
+export const REMINDER_WINDOW_END_HOUR = 21;
 // Web Push TTL: how long a provider may hold a notification (4 hours).
 export const REMINDER_PUSH_TTL_SECONDS = 4 * 60 * 60;
 export const LEARN_PATH = "/learn";
@@ -48,7 +48,7 @@ export function reminderLocalMinutes(now = Date.now()) {
   return hour * 60 + minute;
 }
 
-/** True when `now` is in the 2 PM (inclusive) to 6 PM (exclusive) Pacific send window.
+/** True when `now` is in the 2 PM (inclusive) to 9 PM (exclusive) Pacific send window.
  * @param {Date | string | number} [now] */
 export function isInReminderSendWindow(now = Date.now()) {
   const minutes = reminderLocalMinutes(now);
