@@ -24,10 +24,24 @@ test("CLI --check exits before web-push import or claim", () => {
   assert.doesNotMatch(checkBlock, /web-push|claim_batch\(\)`|sendLessonReminders/);
 });
 
-test("scheduled workflow: daily 02:00 UTC, check-only on PRs, flag from repo variable", () => {
+test("scheduled workflow: hourly 11-23 and 0-2 UTC, check-only on PRs, flag from repo variable", () => {
   const wf = readFileSync(new URL("../../.github/workflows/lesson-reminders.yml", import.meta.url), "utf8");
-  assert.match(wf, /cron: "0 2 \* \* \*"/);
+  assert.match(wf, /cron: "0 11-23,0-2 \* \* \*"/);
+  assert.doesNotMatch(wf, /\*\/15/);
   assert.match(wf, /WELL_READ_LESSON_REMINDERS: \$\{\{ vars\.WELL_READ_LESSON_REMINDERS \}\}/);
   assert.match(wf, /github\.event_name == 'schedule' \|\| inputs\.mode == 'send'/);
   assert.doesNotMatch(wf, /DATABASE_URL: /);
+});
+
+test("CLI send path checks the Pacific window before importing postgres or web-push", () => {
+  const src = readFileSync(new URL("../../scripts/send-lesson-reminders.mjs", import.meta.url), "utf8");
+  const afterCheck = src.slice(src.indexOf("process.exit(process.exitCode ?? 0);"));
+  const guardAt = afterCheck.indexOf("isInReminderSendWindow()");
+  const postgresAt = afterCheck.indexOf("import(\"postgres\")");
+  const webPushAt = afterCheck.indexOf("import(\"web-push\")");
+  const claimAt = afterCheck.indexOf("sendLessonReminders");
+  assert.ok(guardAt >= 0, "send path must call isInReminderSendWindow");
+  assert.ok(postgresAt > guardAt, "window guard must run before importing postgres");
+  assert.ok(webPushAt > guardAt, "window guard must run before importing web-push");
+  assert.ok(claimAt > guardAt, "window guard must run before sendLessonReminders");
 });
