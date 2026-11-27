@@ -62,7 +62,7 @@ test('Discipline Explorer: every discipline; date = latest of each discipline\'s
   assert.equal(byId([row('les_st01', 3, 3, true, D1)])['discipline-explorer'].progress, `1/${disciplines.length} disciplines`);
   // Scoped to the two seed disciplines so the fixture can cover every discipline.
   const seed = disciplines.slice(0, 2);
-  const a = byId([row('les_st01', 3, 3, true, D1), row('les_so01', 3, 4, true, D2), row('les_rr01', 4, 4, true, D3), row('les_fr01', 4, 4, true, D5)], seed);
+  const a = byId([row('les_st01', 3, 3, true, D1), row('les_so01', 3, 4, true, D2), row('les_gk01', 4, 4, true, D3), row('les_fr01', 4, 4, true, D5)], seed);
   assert.equal(a['discipline-explorer'].earned, true);
   assert.equal(a['discipline-explorer'].earnedAt, iso(D3)); // philosophy first by D1, world history first by D3
   assert.equal(a['discipline-explorer'].progress, null);

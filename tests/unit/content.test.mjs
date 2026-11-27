@@ -87,7 +87,7 @@ test('lesson id checks reject missing, duplicate and badly formatted ids', async
   const dup = clone();
   // duplicate across different disciplines (global uniqueness)
   dup[1].topics[0].lessons[0].id = dup[0].topics[0].lessons[0].id;
-  assert.match(lessonIdProblems(dup).join('\n'), /duplicate id "les_rr01"/);
+  assert.match(lessonIdProblems(dup).join('\n'), new RegExp(`duplicate id "${disciplines[0].topics[0].lessons[0].id}"`));
 
   for (const bad of ['rr01', 'les_', 'LES_RR01', 'les_RR01', 'les_rr-01', 'les_' + 'a'.repeat(13), 42]) {
     const b = clone();
@@ -243,9 +243,9 @@ test('paragraphs() splits section bodies on blank lines', async () => {
   assert.deepEqual(paragraphs(''), []);
 });
 
-test('American Civics: one merged Constitution & Bill of Rights topic; lesson ids unchanged, chronological (TSK-014); TSK-022 adds federal-legislative-process after it; nineteen presidents share one topic', () => {
+test('American Civics: one merged Constitution & Bill of Rights topic; lesson ids unchanged, chronological (TSK-014); How the Federal Government Works (lawmaking, Electoral College) after it; Marbury stays separate; nineteen presidents share one topic', () => {
   const ac = disciplines.find((d) => d.slug === 'american-civics');
-  assert.deepEqual(ac.topics.map((t) => t.slug), ['constitution-bill-of-rights', 'federal-legislative-process', 'marbury-v-madison', 'electoral-college', 'us-presidents']);
+  assert.deepEqual(ac.topics.map((t) => t.slug), ['constitution-bill-of-rights', 'how-federal-government-works', 'marbury-v-madison', 'us-presidents']);
   assert.equal(ac.topics[0].title, 'The Constitution & Bill of Rights');
   assert.deepEqual(ac.topics[0].lessons.map((l) => l.id), ['les_cc01', 'les_br01', 'les_br02']);
   const presidents = ac.topics.find((t) => t.slug === 'us-presidents');
@@ -253,29 +253,39 @@ test('American Civics: one merged Constitution & Bill of Rights topic; lesson id
   assert.deepEqual(presidents.lessons.map((l) => l.id), ['les_gw01', 'les_ja01', 'les_tj01', 'les_jm01', 'les_jmo01', 'les_jqa01', 'les_aj01', 'les_mvb01', 'les_whh01', 'les_jt01', 'les_jkp01', 'les_zt01', 'les_mf01', 'les_frp01', 'les_jb01', 'les_al01', 'les_ajo01', 'les_usg01', 'les_tr01']);
 });
 
-test('Ancient History lists Egypt, Hammurabi, Athens, and Ashoka in chronological topic order', () => {
+test('Ancient History groups Egypt with Mesopotamia and Athens, Rome, and Ashoka under Governing the Classical World (round 2)', () => {
   const ah = disciplines.find((d) => d.slug === 'ancient-history');
   assert.deepEqual(ah.topics.map((t) => [t.slug, t.kind, t.lessons.map((l) => l.id)]), [
-    ['the-nile-and-egyptian-kingship', 'civilization', ['les_eg01']],
-    ['code-of-hammurabi', 'era', ['les_ch01']],
-    ['democracy-in-ancient-athens', 'institution', ['les_ad01']],
-    ['ashoka-and-the-mauryan-empire', 'person', ['les_as01']],
+    ['egypt-and-mesopotamia', 'civilization', ['les_eg01', 'les_ch01']],
+    ['governing-the-classical-world', 'era', ['les_ad01', 'les_rr01', 'les_as01']],
   ]);
-  const egypt = ah.topics[0];
-  assert.equal(egypt.title, 'The Nile and Egyptian kingship');
-  assert.equal(egypt.lessons[0].slug, 'how-the-nile-supported-a-kingdom');
+  assert.equal(ah.topics[0].title, 'Egypt and Mesopotamia');
+  assert.equal(ah.topics[1].title, 'Governing the Classical World');
+  assert.deepEqual(ah.topics[0].lessons.map((l) => l.slug), ['how-the-nile-supported-a-kingdom', 'what-ancient-laws-tell-us']);
+  assert.deepEqual(ah.topics[1].lessons.map((l) => l.slug), ['who-counted-as-the-people', 'how-the-republic-was-governed', 'can-an-emperor-rule-through-moral-persuasion']);
 });
 
-test('Art History merges the Renaissance and early twentieth-century art topics', () => {
+test('World History groups Mongols with Ottomans and the French Revolution with Meiji (round 2); Roman Republic moved to Ancient History', () => {
+  const wh = disciplines.find((d) => d.slug === 'world-history');
+  assert.deepEqual(wh.topics.map((t) => [t.slug, t.kind, t.lessons.map((l) => l.id)]), [
+    ['trade-and-exchange-networks', 'network', ['les_sr01', 'les_ig01', 'les_ml01']],
+    ['mongol-and-ottoman-empires', 'era', ['les_gk01', 'les_ot01']],
+    ['revolution-and-reform', 'event', ['les_fr01', 'les_fr02', 'les_mr01']],
+  ]);
+  assert.equal(wh.topics[1].title, 'Land Empires: Mongols and Ottomans');
+  assert.equal(wh.topics[2].title, 'Revolution and Reform');
+  assert.ok(wh.topics.every((t) => t.lessons.length >= 2), 'no single-lesson World History topics');
+});
+
+test('Art History merges the Renaissance (with Perspective) and early twentieth-century art topics', () => {
   const ah = disciplines.find((d) => d.slug === 'art-history');
   assert.deepEqual(ah.topics.map((t) => [t.slug, t.kind, t.lessons.map((l) => l.id)]), [
-    ['renaissance', 'era', ['les_ir01', 'les_nr01']],
+    ['renaissance', 'era', ['les_ir01', 'les_pe01', 'les_nr01']],
     ['impressionism', 'style', ['les_im01', 'les_im02']],
-    ['perspective', 'technique', ['les_pe01']],
     ['early-twentieth-century-art', 'style', ['les_cu01', 'les_su01']],
   ]);
   assert.equal(ah.topics[0].title, 'The Renaissance');
-  assert.equal(ah.topics[3].title, 'Early twentieth-century art');
-  assert.deepEqual(ah.topics[0].lessons.map((l) => l.slug), ['how-renaissance-artists-made-pictures-feel-real', 'detail-symbols-and-printed-images']);
-  assert.deepEqual(ah.topics[3].lessons.map((l) => l.slug), ['why-artists-broke-the-picture-apart', 'when-dreams-disrupt-reality']);
+  assert.equal(ah.topics[2].title, 'Early twentieth-century art');
+  assert.deepEqual(ah.topics[0].lessons.map((l) => l.slug), ['how-renaissance-artists-made-pictures-feel-real', 'how-paintings-create-depth', 'detail-symbols-and-printed-images']);
+  assert.deepEqual(ah.topics[2].lessons.map((l) => l.slug), ['why-artists-broke-the-picture-apart', 'when-dreams-disrupt-reality']);
 });

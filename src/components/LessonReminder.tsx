@@ -62,9 +62,9 @@ export default function LessonReminder({ enabled, available, publicKey, loadFail
     <p id="reminder-help">At most one reminder per day, only if you haven&apos;t passed a lesson quiz that day. Days use Pacific time (America/Los_Angeles). Turning on uses this device; turning off stops reminders for your whole account.</p>
     {!available && <p className="muted">New reminder opt-ins aren&apos;t available on this server yet.</p>}
     {available && !supported && <p className="muted">This browser doesn&apos;t support Web Push here. On iPhone/iPad, add Well-Read to your Home Screen and open it there.</p>}
-    <label><input type="checkbox" role="switch" aria-describedby="reminder-help" checked={on}
+    <label className="reminder-switch"><input type="checkbox" role="switch" aria-describedby="reminder-help" checked={on}
       disabled={busy || loadFailed || (!on && (!available || !supported))} onChange={() => toggle()} /> Daily reminder {on ? "on" : "off"}</label>
-    {loadFailed && <p>Couldn&apos;t load your reminder setting. Refresh to check it, or <button type="button" disabled={busy} onClick={() => toggle(true)}>Turn reminders off</button>.</p>}
+    {loadFailed && <p>Couldn&apos;t load your reminder setting. Refresh to check it, or <button type="button" className="rl-btn" disabled={busy} onClick={() => toggle(true)}>Turn reminders off</button>.</p>}
     <p role="status" aria-live="polite">{message}</p>
     {supported && <ReminderWorkerStatus />}
   </section>;
