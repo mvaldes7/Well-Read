@@ -31,6 +31,8 @@
   --serif: "Didot", "Bodoni 72", "Bodoni Moda", "Big Caslon", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
   --sans: "Avenir Next", Avenir, "Helvetica Neue", "Segoe UI", system-ui, -apple-system, Roboto, Arial, sans-serif;
   --page: 1160px;
+  /* Mobile top bar (UI PR1): 14px padding + 44px controls + 14px + 1px border. Used by scroll-padding so the sticky bar never covers focus. */
+  --topbar-h: 73px;
   --measure: 840px;
 }
 @media (prefers-color-scheme: dark) {
@@ -69,6 +71,8 @@
 
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
+/* UI PR1 (L1): no double-tap zoom delay on controls; brass-tinted tap flash instead of the default grey. */
+a, button, label, summary, select, input[type="radio"], input[type="checkbox"] { touch-action: manipulation; -webkit-tap-highlight-color: rgba(168, 145, 95, 0.18); }
 body {
   margin: 0;
   min-height: 100vh;
@@ -101,7 +105,7 @@ p { margin: 0 0 1rem; }
 .menu-toggle { display: none; }
 .sidebar-panel { flex: 1; display: flex; flex-direction: column; }
 .sidebar nav ul { list-style: none; margin: 0; padding: 18px 12px; display: grid; gap: 4px; }
-.sidebar nav a { display: flex; align-items: center; gap: 12px; padding: 11px 14px; border-left: 2px solid transparent; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--on-char-sub); text-decoration: none; }
+.sidebar nav a { display: flex; align-items: center; gap: 12px; min-height: 44px; padding: 11px 14px; border-left: 2px solid transparent; font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--on-char-sub); text-decoration: none; }
 /* Hover vs active (TSK-020) must read differently: hover is a neutral grey tint with a faint grey
    edge; active is brass text on a brass tint with a solid brass edge and heavier weight. */
 .sidebar nav a:hover { color: var(--on-char); background: rgba(255, 255, 255, 0.07); border-left-color: rgba(255, 255, 255, 0.22); }
@@ -131,8 +135,9 @@ p { margin: 0 0 1rem; }
 .user strong { font-weight: 400; color: var(--on-char); overflow-wrap: anywhere; }
 .user form { margin: 0; }
 /* "Hi, Mike" -> /account. Long names/emails truncate with an ellipsis; full value in title/aria-label. */
-.user-link { display: inline-flex; align-items: baseline; gap: 6px; min-width: 0; max-width: 260px; color: var(--on-char); text-decoration: none; padding: 4px 0; border-bottom: 1px solid transparent; }
-.user-link:hover { border-bottom-color: var(--brass); }
+.user-link { display: inline-flex; align-items: baseline; gap: 6px; min-width: 0; max-width: 260px; color: var(--on-char); text-decoration: none; padding: 4px 0; }
+/* Hover underlines the name itself, so the link box can grow to 44px on mobile without moving the line. */
+.user-link:hover .user-name { text-decoration: underline; text-decoration-color: var(--brass); text-underline-offset: 4px; }
 .user-link .hi { flex: none; color: var(--on-char-sub); }
 .user-link .user-name { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .btn-ghost { font: inherit; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--on-char); background: transparent; border: 1px solid #6a665e; padding: 8px 14px; cursor: pointer; }
@@ -155,9 +160,10 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
 /* ---------- Breadcrumbs + spine motif ---------- */
 .breadcrumbs { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px 0; }
 .breadcrumbs ol { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; margin: 0; padding: 0; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sub); }
-.breadcrumbs a { color: var(--ink); text-decoration: none; }
+.breadcrumbs a { display: inline-flex; align-items: center; min-height: 24px; color: var(--ink); text-decoration: none; }
 .breadcrumbs a:hover { text-decoration: underline; text-decoration-color: var(--brass); }
-.breadcrumbs li + li::before { content: "/"; margin: 0 10px; color: var(--brass-ink); }
+/* Separator trails its crumb (UI PR1, L13), so a wrapped line never starts with "/". */
+.breadcrumbs li:not(:last-child)::after { content: "/"; margin: 0 10px; color: var(--brass-ink); }
 .motif { display: inline-flex; align-items: flex-end; gap: 2px; height: 22px; margin-right: 16px; padding-bottom: 2px; border-bottom: 1.5px solid var(--brass); }
 .motif i { display: block; width: 6px; border-radius: 1px 1px 0 0; box-shadow: inset 0 3px 0 -1.5px rgba(201, 173, 116, 0.9); }
 .motif i:nth-child(1) { height: 16px; background: var(--shade-0, #6f2b30); }
@@ -197,7 +203,7 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
 .status { text-align: center; margin: 0 0 18px; font-size: 14px; }
 .completed-status { color: var(--pass); font-weight: 600; }
 .back-link { text-align: center; margin-top: 48px; font-size: 12px; letter-spacing: 0.24em; text-transform: uppercase; }
-.back-link a { text-decoration: none; }
+.back-link a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; text-decoration: none; }
 
 /* ---------- Quiz ---------- */
 .quiz-frame { background: var(--paper); border: 1px solid var(--line); outline: 1px solid var(--ink); outline-offset: 8px; padding: 40px 48px 38px; margin: 8px; }
@@ -212,6 +218,9 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
 .opts input[type="radio"]:focus-visible { outline: none; }
 .opts label:has(input:focus-visible) { outline: 2px solid var(--ring); outline-offset: 3px; }
 .opts input[type="radio"] { accent-color: var(--ink); width: 16px; height: 16px; margin: 0; flex: none; }
+/* When a radio is focused or scrolled to (e.g. the first unanswered question on submit), keep its option's focus ring
+   and the question above it in view, clear of the sticky mobile bar (UI PR1, H4). */
+.opts input[type="radio"] { scroll-margin-top: 96px; }
 .actions { display: flex; justify-content: center; margin-top: 30px; }
 /* C2 .submit */
 .btn, .submit { font: inherit; font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase; color: #f3efe6; background: var(--char); border: 0; padding: 16px 46px; cursor: pointer; }
@@ -246,6 +255,7 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
 .account-email { text-align: center; color: var(--sub); font-size: 14px; overflow-wrap: anywhere; }
 .auth-form .save { text-align: center; min-height: 1.6em; margin: 10px 0 0; font-size: 14px; }
 .auth-alt { text-align: center; font-size: 14px; color: var(--sub); margin-top: 28px; }
+.forgot a, .auth-alt a { display: inline-flex; align-items: center; min-height: 24px; }
 .notice { text-align: center; }
 /* TSK-018: password reset */
 .auth-page .forgot { text-align: center; font-size: 14px; margin: 14px 0 0; }
@@ -317,6 +327,7 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
 .subject-bar span { display: block; height: 100%; background: var(--accent); }
 .subject-next { margin: 8px 0 12px; font-size: 12.5px; }
 .subject-cta { margin: 0; font-size: 14.5px; }
+.subject-cta a { display: inline-flex; align-items: center; gap: 4px; min-height: 24px; }
 .charts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; max-width: 980px; margin: 0 auto; }
 .chart-card { padding: 20px 22px 16px; background: var(--paper); border: 1px solid var(--edge); border-radius: 2px; box-shadow: inset 0 1px 0 var(--bevel-hi), var(--lift); min-width: 0; }
 .chart-title { font-size: 22px; margin: 2px 0 16px; }
@@ -342,7 +353,9 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
 }
 
 /* ---------- Motion ---------- */
-.spine, .sidebar nav a, .btn, .btn-ghost, .opts label { transition: filter 0.15s, color 0.15s, background-color 0.15s, border-color 0.15s; }
+.spine, .sidebar nav a, .btn, .btn-ghost, .opts label, .rl-btn, .view-toggle button, .menu-toggle { transition: filter 0.15s, color 0.15s, background-color 0.15s, border-color 0.15s, opacity 0.1s; }
+/* Press feedback for secondary controls (UI PR1, L6): a brief opacity dip, no transform (iOS-style). */
+.btn-ghost:active:not(:disabled), .rl-btn:active:not(:disabled), .view-toggle button:active, .menu-toggle:active { opacity: 0.8; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
 }
@@ -354,7 +367,7 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
   .shell { display: block; }
   .sidebar { position: sticky; z-index: 20; height: auto; overflow: visible; border-right: 0; border-bottom: 1px solid var(--header-border); }
   .sidebar-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 14px 18px; border-bottom: 0; }
-  .menu-toggle { display: inline-flex; align-items: center; gap: 8px; font: inherit; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--on-char); background: transparent; border: 1px solid #6a665e; padding: 9px 12px; cursor: pointer; }
+  .menu-toggle { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font: inherit; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--on-char); background: transparent; border: 1px solid #6a665e; padding: 9px 12px; cursor: pointer; }
   .menu-toggle:hover { border-color: var(--brass); }
   .menu-glyph { font-size: 13px; letter-spacing: 0; }
   .sidebar-panel { display: none; border-top: 1px solid var(--char-line); }
@@ -364,9 +377,18 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
   .streak-list { grid-auto-flow: column; justify-content: start; gap: 18px; }
   .sidebar-user { padding: 12px 18px 18px; }
   .sidebar-user .user { flex-direction: row; justify-content: space-between; align-items: center; width: 100%; font-size: 12px; }
-  .sidebar-user .user-placeholder { height: 36px; }
+  .sidebar-user .user-placeholder { height: 44px; }
   .auth-header { padding: 14px 18px; }
-  .btn-ghost { padding: 6px 10px; font-size: 10px; flex: none; }
+  .btn-ghost { min-height: 44px; padding: 6px 12px; flex: none; }
+  /* UI PR1 (H1-H4): 44px mobile hit areas (WIG Targets, MIFB #16). */
+  html { scroll-padding-top: calc(var(--topbar-h) + 14px); }
+  .logo { min-height: 44px; }
+  .user-link { min-height: 44px; align-items: center; }
+  .breadcrumbs ol { row-gap: 0; }
+  .breadcrumbs a { min-height: 44px; }
+  .forgot a, .auth-alt a, .subject-cta a { min-height: 44px; }
+  .entry h2 a, .entry-title a { display: inline-flex; align-items: center; min-height: 44px; }
+  .view-toggle button { min-height: 44px; }
 }
 @media (max-width: 600px) {
   .logo { font-size: 19px; gap: 10px; }
@@ -614,6 +636,7 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
   .rl-url { grid-column: 1 / -1; }
   .rl-add { grid-column: 1 / -1; }
   .rl-item { padding: 12px 14px; }
+  .rl-btn { min-height: 44px; }
 }
 
 /* Dig deeper (drill-downs P3, behind WELL_READ_DRILLDOWNS) */
@@ -645,3 +668,8 @@ main.narrow, .narrow { max-width: var(--measure); margin-left: auto; margin-righ
 .review-actions .btn-ghost { color: var(--ink); border-color: var(--line); }
 .review-actions .btn-ghost:hover { border-color: var(--brass); }
 .pill-reported { text-transform: none; }
+
+/* Daily reminder switch on Account (UI PR1, H3): label and control share one 44px hit target. */
+.reminder-switch { display: flex; align-items: center; gap: 12px; min-height: 44px; cursor: pointer; }
+.reminder-switch input { flex: none; width: 20px; height: 20px; margin: 0; accent-color: var(--ink); }
+.reminder-switch:has(input:disabled) { cursor: not-allowed; }
