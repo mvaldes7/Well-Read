@@ -76,8 +76,17 @@ Approved plan: `docs/plans/topic-drilldowns.md`. Free tiers only, AI-generated l
 
 - Next.js 16.4.5 security upgrade, November 2026 advisories ([#57](https://github.com/mvaldes7/Well-Read/pull/57), Nov 16).
 
+### Dig deeper quizzes (Nov 18, 2026)
+
+Approved plan: `docs/plans/dig-deeper-quizzes.md`. Credit is day streaks only; mastery and achievements are unchanged.
+
+- Quiz quality guards ([#64](https://github.com/mvaldes7/Well-Read/pull/64), Nov 18).
+- Quiz on `/dig` with server-side grading; the app works without the progress migration ([#65](https://github.com/mvaldes7/Well-Read/pull/65), Nov 18).
+
 ## In progress
 
+- Dig deeper quizzes 3/4: progress migration ([#67](https://github.com/mvaldes7/Well-Read/pull/67)). The SQL is unapplied. Merging this PR does not apply it. Needs Mike's merge OK, then a separate OK to apply it to the Well-Read project and record it in `supabase/README.md`.
+- Dig deeper quizzes 4/4: streak credit ([#68](https://github.com/mvaldes7/Well-Read/pull/68), draft). Merge only after #67's migration has been applied with Mike's OK.
 - UI PR 1, mobile tap targets and sticky-bar focus ([#71](https://github.com/mvaldes7/Well-Read/pull/71)); see "UI audit plan" below.
 - Owner review of pending AI lessons in `/review`: approve the Meiji Restoration lesson (`gen_2bf3df36d29b`) if it reads well, and reject the Louisiana Purchase test lesson (`gen_b31e9fc6253f`). Waiting on Mike.
 
@@ -127,7 +136,6 @@ Most findings are mobile-first. These are the ones that also show up, or only sh
 - Check the subject badge icons from #45 on a real device **(status unclear)**.
 - Topic consolidation round 2 (plan approved by Mike, Nov 18): two content-only PRs, World and Ancient History (#66) and Philosophy, Civics, Art History and Poetry & Literature. Single-lesson topics left by decision: Utilitarianism (until a second modern-ethics lesson), Marbury v. Madison, and the Buddhism, Judaism and Islam topics.
 - More U.S. Presidents lessons, added to the existing series topic.
-- Quizzes on Dig deeper lessons ([plan](docs/plans/dig-deeper-quizzes.md), approved Nov 18, credit = streaks only): 1) quiz quality guards, 2) quiz on `/dig` with server-side grading, 3) progress migration (needs Mike's OK to apply), 4) streak logging after 3 is applied.
 - Dig deeper follow-ups noted in the plan: reuse already-published lessons instead of generating new ones; a short multi-lesson plan per choice; automated handling of reported lessons.
 - Disable public sign-ups (AC-7), only with Mike's approval **(status unclear; an Oct 10 check found sign-ups already off)**.
 - Repair the Supabase migration history: several migrations were applied with versions that differ from their repo filenames (see `supabase/README.md`).
