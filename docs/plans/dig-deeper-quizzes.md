@@ -1,6 +1,6 @@
 # Plan: quizzes on Dig deeper lessons
 
-Status: approved by Mike on Nov 18, 2026 ("Dig deeper quiz credit: streaks only"; "Start the quiz PRs (migration still needs my OK)"). Credit option **C2 (streaks only)** was chosen. The migration in step 3 still needs Mike's separate OK to apply.
+Status: approved by Mike on Nov 18, 2026 ("Dig deeper quiz credit: streaks only"; "Start the quiz PRs (migration still needs my OK)"). Credit option **C2 (streaks only)** was chosen. Step 3 was applied to production on Nov 27, 2026.
 
 ## Current state (checked in code and schema)
 - `/dig` (`src/app/dig/page.tsx`) renders the sections, key facts, sources, and Report button. It has **no quiz UI**.
@@ -81,5 +81,5 @@ Recommendation: **C2**. The daily-reminder "finished day" trigger keys on `lesso
 4. After 3 is applied: log streak activity for Dig deeper attempts and passes, and update docs and ROADMAP.
 
 ## Implementation status
-- Step 1: quiz quality guards (#64). Step 2: `/dig` quiz with server-side grading (#65). Step 3: migration `20261119063000_dig_quiz_progress.sql` (#67, unapplied until Mike's separate OK).
-- Step 4: each graded Dig deeper submission logs one `quiz_attempt` row with the `gen_` id, the same as static lessons, so it counts toward day streaks. Mastery, achievements and the daily-reminder "finished" day are unchanged. This merges only after step 3 is applied.
+- Step 1: quiz quality guards (#64). Step 2: `/dig` quiz with server-side grading (#65). Step 3: migration `20261119063000_dig_quiz_progress.sql` (#67, merged as `063cce8`, applied to production on Nov 27, 2026 and recorded as `20261127232541`).
+- Step 4: each graded Dig deeper submission logs one `quiz_attempt` row with the `gen_` id, the same as static lessons, so it counts toward day streaks. Mastery, achievements and the daily-reminder "finished" day are unchanged. In review as #68.
