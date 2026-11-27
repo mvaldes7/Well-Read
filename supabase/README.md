@@ -21,6 +21,7 @@ All of these are applied to the Well-Read project (`pjiuquekewnkctpkhiow`):
 | `20261104224637` | `migrations/20261104214500_drilldown_review.sql`  | Drill-downs P4 | Owner review: `drilldown_owner` (one row, set by owner SQL), `generated_lessons.fact_check` (not client-readable), SECURITY DEFINER `drilldown_save_fact_check()`/`drilldown_review_queue()`/`drilldown_review_action()` (EXECUTE only for `drilldown_server`, owner checked inside). **Recorded version differs from the filename** |
 | `20261105062545` | `migrations/20261105000000_drilldown_release.sql` | Drill-downs cap fix | SECURITY DEFINER `drilldown_release_lesson()` (EXECUTE only for `drilldown_server`) gives back a lesson slot after a failed/rejected attempt; replaces `drilldown_save_lesson()` (same signature) so rejected drafts don't count. **Recorded version differs from the filename** |
 | `20261109220157` | `migrations/20261109214457_lesson_reminders.sql`  | Daily reminders | Opt-in settings, finished days, atomic daily claims, pass trigger, invoker finish RPC, private sender functions and role `lesson_reminder_sender`. See the [lesson reminder runbook](../docs/lesson-reminders.md). **Recorded version differs from the filename** |
+| `20261127232541` | `migrations/20261119063000_dig_quiz_progress.sql` | Dig deeper quizzes step 3 | `generated_lesson_completions.first_passed_at`; insert policy requires a parent `lesson_completions` row; grants restated (select/insert, column update, no delete); `activity_log.ref` also accepts `gen_` ids (streaks only, option C2). **Recorded version differs from the filename** |
 
 **Version mismatch (REV-011 rate limit):** this migration was applied to production on 2026-11-02 and recorded in the
 project's migration history as `20261102212005`, but the file is named `20261102210548_activity_log_rate_limit.sql`. The
@@ -31,20 +32,25 @@ Its header still says `STATUS: UNAPPLIED`; that is historical, as described belo
 
 ## Unapplied migrations
 
-| Version (planned) | File | Task | Adds | Approval |
-| ---------------- | ---- | ---- | ---- | -------- |
-| `20261119063000` | `migrations/20261119063000_dig_quiz_progress.sql` | Dig deeper quizzes step 3 | `generated_lesson_completions.first_passed_at`; insert policy requires a parent `lesson_completions` row; grants restated (select/insert, column update, no delete); `activity_log.ref` also accepts `gen_` ids (streaks only, option C2) | **Not applied. Needs Mike's separate OK before it is applied to any hosted project.** |
+There are currently no unapplied migrations. All files in `migrations/` are applied to the Well-Read project.
 
-Every other file in `migrations/` is applied (checked against the project's migration history on 2026-11-17).
 A new migration file goes here until it is applied with Mike's approval; then move its row up.
 
 ## Recorded versions that differ from filenames
 
-Five applied migrations were recorded under a different version than their filename (REV-011 rate limit and
-the four rows above marked as differing). The recorded version is authoritative. The files are deliberately
-**not** renamed or edited. Tooling that matches files to history by version (`supabase db push`,
-`supabase migration list`) will report the filename versions as local-only and the recorded versions as
-remote-only. Don't re-apply them. Reconcile with `supabase migration repair` only with Mike's approval.
+Six applied migrations were recorded under a different version than their filename (REV-011 rate limit,
+the four later drill-down and reminder rows marked as differing, and dig quiz progress). The recorded
+version is authoritative. The files are deliberately **not** renamed or edited. Tooling that matches files
+to history by version (`supabase db push`, `supabase migration list`) will report the filename versions as
+local-only and the recorded versions as remote-only. Don't re-apply them. Reconcile with `supabase migration
+repair` only with Mike's approval.
+
+**Version mismatch (dig quiz progress):** this migration was applied to production on 2026-11-27 (3:25 PM PT)
+and recorded in the project's migration history as `20261127232541`, but the file is named
+`20261119063000_dig_quiz_progress.sql`. The recorded version is authoritative. The file is deliberately
+**not** renamed or edited, because applied migrations are never touched. Don't re-apply it. Reconcile with
+`supabase migration repair` only with Mike's approval. Its header still says `STATUS: UNAPPLIED`; that is
+historical, as described below.
 
 ## `drilldown_server`
 

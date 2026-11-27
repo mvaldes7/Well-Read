@@ -84,7 +84,7 @@ test('supabase/README.md lists every migration file with its version and marks h
   assert.ok(files.length >= 4);
   for (const f of files) {
     // Applied migrations whose recorded version differs from the filename (documented in the README).
-    const RECORDED = { '20261102210548': '20261102212005', '20261102231600': '20261103015240', '20261104214500': '20261104224637', '20261105000000': '20261105062545', '20261109214457': '20261109220157' };
+    const RECORDED = { '20261102210548': '20261102212005', '20261102231600': '20261103015240', '20261104214500': '20261104224637', '20261105000000': '20261105062545', '20261109214457': '20261109220157', '20261119063000': '20261127232541' };
     const version = RECORDED[f.slice(0, 14)] ?? f.slice(0, 14);
     assert.match(f, /^\d{14}_[a-z0-9_]+\.sql$/);
     // One table row per file: its version cell and its file cell.

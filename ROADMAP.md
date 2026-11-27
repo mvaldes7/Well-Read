@@ -82,11 +82,11 @@ Approved plan: `docs/plans/dig-deeper-quizzes.md`. Credit is day streaks only; m
 
 - Quiz quality guards ([#64](https://github.com/mvaldes7/Well-Read/pull/64), Nov 18).
 - Quiz on `/dig` with server-side grading; the app works without the progress migration ([#65](https://github.com/mvaldes7/Well-Read/pull/65), Nov 18).
+- Progress migration ([#67](https://github.com/mvaldes7/Well-Read/pull/67), merged as [`063cce8`](https://github.com/mvaldes7/Well-Read/commit/063cce86fa69d0a2432b65bd5b231ba9f82c7ace), Nov 27). Applied to the Well-Read project on Nov 27, 2026 (3:25 PM PT) and recorded as version `20261127232541`; the repo file remains `20261119063000_dig_quiz_progress.sql` (the same naming drift as earlier migrations). See `supabase/README.md`.
 
 ## In progress
 
-- Dig deeper quizzes 3/4: progress migration ([#67](https://github.com/mvaldes7/Well-Read/pull/67)). The SQL is unapplied. Merging this PR does not apply it. Needs Mike's merge OK, then a separate OK to apply it to the Well-Read project and record it in `supabase/README.md`.
-- Dig deeper quizzes 4/4: streak credit ([#68](https://github.com/mvaldes7/Well-Read/pull/68), draft). Merge only after #67's migration has been applied with Mike's OK.
+- Dig deeper quizzes 4/4: streak credit ([#68](https://github.com/mvaldes7/Well-Read/pull/68), in review). #67 is merged and the migration is applied; this PR logs Dig deeper submissions toward day streaks.
 - UI PR 1, mobile tap targets and sticky-bar focus ([#71](https://github.com/mvaldes7/Well-Read/pull/71)); see "UI audit plan" below.
 - Owner review of pending AI lessons in `/review`: approve the Meiji Restoration lesson (`gen_2bf3df36d29b`) if it reads well, and reject the Louisiana Purchase test lesson (`gen_b31e9fc6253f`). Waiting on Mike.
 

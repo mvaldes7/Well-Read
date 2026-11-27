@@ -8,13 +8,15 @@ const FILE = '20261119063000_dig_quiz_progress.sql';
 const raw = readFileSync(new URL(FILE, dir), 'utf8');
 const sql = raw.split('\n').filter((l) => !l.trim().startsWith('--')).join('\n');
 
-test('new file, newest, marked unapplied and needing Mike\'s separate OK', () => {
+test('file is newest; header stays UNAPPLIED; README records it as applied under a different version', () => {
   const files = readdirSync(dir).filter((f) => f.endsWith('.sql')).sort();
   assert.equal(files.at(-1), FILE);
   assert.match(raw, /STATUS: UNAPPLIED/);
   assert.match(raw, /until Mike has\s*\n?--\s*separately approved/);
   const readme = readFileSync(new URL('../../supabase/README.md', import.meta.url), 'utf8');
-  assert.match(readme, /20261119063000_dig_quiz_progress\.sql.*Not applied/);
+  assert.match(readme, /`20261127232541`[\s\S]*20261119063000_dig_quiz_progress\.sql/);
+  assert.match(readme, /20261119063000_dig_quiz_progress\.sql[\s\S]*Recorded version differs from the filename/);
+  assert.doesNotMatch(readme, /20261119063000_dig_quiz_progress\.sql.*Not applied/);
 });
 
 test('no functions, no service_role or anon grants, no destructive statements beyond the policy/constraint swap', () => {
