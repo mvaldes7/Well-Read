@@ -78,8 +78,46 @@ Approved plan: `docs/plans/topic-drilldowns.md`. Free tiers only, AI-generated l
 
 ## In progress
 
-- No open pull requests as of Nov 17, 2026.
+- UI PR 1, mobile tap targets and sticky-bar focus ([#71](https://github.com/mvaldes7/Well-Read/pull/71)); see "UI audit plan" below.
 - Owner review of pending AI lessons in `/review`: approve the Meiji Restoration lesson (`gen_2bf3df36d29b`) if it reads well, and reject the Louisiana Purchase test lesson (`gen_b31e9fc6253f`). Waiting on Mike.
+
+## UI audit plan (Nov 27, 2026)
+
+An audit of the whole UI against the web-interface-guidelines and make-interfaces-feel-better skills, iPhone first
+(390x844), then desktop (1440x900). Mike approved adding all three PRs here and starting PR 1 (Nov 27). PRs 2 and 3
+each wait for his separate OK. House rules for all three: 44px mobile hit areas (24px floor on desktop), plain CSS
+in `globals.css`, no new libraries, motion libraries or paid fonts, no emojis, and the gallery/bookshelf look and
+sidebar layout stay as they are. Finding IDs: H = high, M = medium, L = low.
+
+- **PR 1: mobile tap targets and sticky-bar focus** (in progress, [#71](https://github.com/mvaldes7/Well-Read/pull/71)). Findings H1-H4, L1, L6, L13.
+  - H1: 44px sidebar and top-bar controls: Menu/Close, nav links, Sign out, account link, logo.
+  - H2: lesson-flow links and buttons: breadcrumbs, the back link, Dig deeper choices, Report a problem, review buttons.
+  - H3: signed-in page controls: bookshelf view toggle, reading-list buttons, the daily reminder switch, dashboard card links, /learn titles and auth links.
+  - H4: the sticky mobile top bar never covers focused or scrolled-to elements (scroll padding).
+  - L1: touch-action and a brass tap highlight. L6: press feedback (opacity) on secondary controls. L13: breadcrumb separators stay with their crumb when they wrap.
+- **PR 2: quiz and form flow** (planned, needs Mike's OK). Findings H5, M2, M3, M4, M5, M6, M9.
+  - H5: focus and scroll to the score after grading, and to the first question on Retry.
+  - M2: pending buttons keep their label and show a CSS spinner. M3: loading skeletons that mirror the real layout (no layout shift).
+  - M4: "Try again" or "Sign in" on error states (no dead ends). M5: the quiz's own "answer every question" message with inline per-question errors.
+  - M6: focus the first field error on submit. M9: report-form polish (focus, styling, Cmd/Ctrl+Enter) and spellcheck/autocapitalize off on email and URL inputs.
+- **PR 3: accessibility and polish** (planned, needs Mike's OK). Findings M1, M7, M8 (option A), L2, L3, L4, L5, L7, L8, L9, L10, L11, L12.
+  - M1: "Skip to content" link. M7: input and ghost-button borders at 3:1 or better. M8 (A): dark-mode theme-color matches the header.
+  - L2: tabular numbers. L3: balanced heading wraps. L4: font smoothing. L5: hover styles only on devices that hover. L7: SVG icons instead of text glyphs (☰ ✕ ↗).
+  - L8: undefined `--rule` token. L9: shelf overflow. L10: delete dialog scrolls on small screens. L11: `100dvh`. L12: streak stat label for screen readers.
+- **Optional follow-up: M8 option B**, full-bleed iPhone safe areas (`viewport-fit=cover`). Only if Mike wants the charcoal bar under the status bar, and only after a check on a real home-screen iPhone.
+
+### Desktop findings (1440x900)
+
+Most findings are mobile-first. These are the ones that also show up, or only show up, on desktop:
+
+- Breadcrumb links 15px tall and the "Back to ..." link 17px tall, under the 24px desktop floor (H2, PR 1).
+- Dashboard card link ("Continue: ...") 20px tall and the auth page links ("Forgot password?", "Create one", "Sign in") 19px tall, under 24px (H3, PR 1).
+- Nine Tab presses through the sidebar before reaching page content; there's no "Skip to content" link (M1, PR 3).
+- Shelf overflow would clip the first book spines: `.books` centers its spines with `justify-content: center`, and only phones have the auto-margin workaround (L9, PR 3). Latent today, since no discipline has more than 4 topics.
+- Unwanted scrollbars: `body`, `.shell` and the desktop `.sidebar` use `100vh`, which can add an extra scrollbar where the browser toolbar collapses (Safari, iPad); move to `100dvh` (L11, PR 3). No horizontal overflow was measured at 390 or 1440 wide.
+- Hover-only effects (spine brightness, sidebar link tint, quiz option border) are desktop affordances that stick after a tap on touch screens; scope them to `@media (hover: hover)` (L5, PR 3).
+- The desktop sidebar has no left safe-area padding for iPad or landscape home-screen use (part of M8 option B, optional follow-up).
+- Not scheduled: lesson source links are 20px tall on both desktop and mobile. They're citation links inside running text, which WCAG 2.5.8 exempts, so they're left as they are.
 
 ## Planned / backlog
 
