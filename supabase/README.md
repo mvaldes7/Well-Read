@@ -31,7 +31,11 @@ Its header still says `STATUS: UNAPPLIED`; that is historical, as described belo
 
 ## Unapplied migrations
 
-None. Every file in `migrations/` is applied (checked against the project's migration history on 2026-11-17).
+| Version (planned) | File | Task | Adds | Approval |
+| ---------------- | ---- | ---- | ---- | -------- |
+| `20261119063000` | `migrations/20261119063000_dig_quiz_progress.sql` | Dig deeper quizzes step 3 | `generated_lesson_completions.first_passed_at`; insert policy requires a parent `lesson_completions` row; grants restated (select/insert, column update, no delete); `activity_log.ref` also accepts `gen_` ids (streaks only, option C2) | **Not applied. Needs Mike's separate OK before it is applied to any hosted project.** |
+
+Every other file in `migrations/` is applied (checked against the project's migration history on 2026-11-17).
 A new migration file goes here until it is applied with Mike's approval; then move its row up.
 
 ## Recorded versions that differ from filenames
